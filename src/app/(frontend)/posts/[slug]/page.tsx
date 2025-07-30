@@ -1,9 +1,11 @@
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import Link from 'next/link';
+import { PortableText } from 'next-sanity';
 import { sanityFetch } from '@/sanity/lib/live';
 import { POST_QUERY } from '@/sanity/lib/queries';
 import { urlFor } from '@/sanity/lib/image';
-import Image from 'next/image';
+import { components } from '@/sanity/portableTextComponents';
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { data: post } = await sanityFetch({
@@ -16,7 +18,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <main className='container mx-auto grid grid-cols-1 gap-6 py-12'>
+    <main className='container mx-auto grid grid-cols-1 gap-6 p-12'>
       {post?.mainImage ? (
         <Image
           className='w-full aspect-[800/300]'
@@ -27,6 +29,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         />
       ) : null}
       <h1 className='text-4xl font-bold text-balance'>{post?.title}</h1>
+      {post?.body ? (
+        <div className='prose'>
+          <PortableText value={post.body} components={components} />{' '}
+        </div>
+      ) : null}
       <hr />
       <Link href='/posts'>&larr; Return to index</Link>
     </main>
