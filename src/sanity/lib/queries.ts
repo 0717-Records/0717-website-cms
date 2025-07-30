@@ -43,5 +43,9 @@ export const POST_QUERY = defineQuery(`*[_type == "post" && slug.current == $slu
   author->{
     name,
     image
+  },
+  relatedPosts[]{
+    _key, // required for drag and drop
+    ...@->{_id, title, slug} // get fields from the referenced post
   }
 }`);
