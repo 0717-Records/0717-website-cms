@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { createDataAttribute } from 'next-sanity';
 import { POST_QUERYResult } from '@/sanity/types';
 import { client } from '@/sanity/lib/client';
-import { useOptimistic } from 'next-sanity/hooks';
+import { useOptimistic } from 'react';
 
 const { projectId, dataset, stega } = client.config();
 export const createDataAttributeConfig = {
@@ -22,18 +22,24 @@ export function RelatedPosts({
   documentId: string;
   documentType: string;
 }) {
-  const posts = useOptimistic<
-    NonNullable<POST_QUERYResult>['relatedPosts'] | undefined,
-    NonNullable<POST_QUERYResult>
-  >(relatedPosts, (state, action) => {
-    if (action.id === documentId && action?.document?.relatedPosts) {
-      // Optimistic document only has _ref values, not resolved references
-      return action.document.relatedPosts.map(
-        (post) => state?.find((p) => p._key === post._key) ?? post
-      );
+  const [posts] = useOptimistic(
+    relatedPosts,
+    (
+      state: NonNullable<POST_QUERYResult>['relatedPosts'],
+      action: {
+        id: string;
+        document?: { relatedPosts?: NonNullable<POST_QUERYResult>['relatedPosts'] };
+      }
+    ) => {
+      if (action.id === documentId && action?.document?.relatedPosts) {
+        return action.document.relatedPosts.map(
+          (post) => state?.find((p) => p._key === post._key) ?? post
+        );
+      }
+      return state;
     }
-    return state;
-  });
+  );
+
   if (!posts) {
     return null;
   }
