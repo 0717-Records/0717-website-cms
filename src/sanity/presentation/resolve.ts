@@ -1,5 +1,4 @@
 import { defineLocations, PresentationPluginOptions } from 'sanity/presentation';
-import { faqType } from '../schemaTypes/faqType';
 
 export const resolve: PresentationPluginOptions['resolve'] = {
   locations: {
