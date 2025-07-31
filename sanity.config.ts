@@ -35,4 +35,7 @@ export default defineConfig({
       },
     }),
   ],
+  document: {
+    newDocumentOptions: (prev) => prev.filter((item) => item.templateId !== 'siteSettings'),
+  },
 });

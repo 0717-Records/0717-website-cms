@@ -60,3 +60,16 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
     }
   }
 }`);
+
+export const HOME_PAGE_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
+    homePage->{
+      ...,
+      content[]{
+        ...,
+        _type == "faqs" => {
+          ...,
+          faqs[]->
+        }
+      }      
+    }
+  }`);
