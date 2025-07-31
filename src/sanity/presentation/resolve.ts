@@ -1,4 +1,5 @@
 import { defineLocations, PresentationPluginOptions } from 'sanity/presentation';
+import { faqType } from '../schemaTypes/faqType';
 
 export const resolve: PresentationPluginOptions['resolve'] = {
   locations: {
@@ -15,6 +16,20 @@ export const resolve: PresentationPluginOptions['resolve'] = {
             href: `/posts/${doc?.slug}`,
           },
           { title: 'Posts index', href: `/posts` },
+        ],
+      }),
+    }),
+    page: defineLocations({
+      select: {
+        title: 'title',
+        slug: 'slug.current',
+      },
+      resolve: (doc) => ({
+        locations: [
+          {
+            title: doc?.title || 'Untitled',
+            href: `/${doc?.slug}`,
+          },
         ],
       }),
     }),
