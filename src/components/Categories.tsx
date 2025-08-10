@@ -1,10 +1,10 @@
-import { POST_QUERYResult } from '@/sanity/types';
+import type { POST_QUERYResult } from '@/sanity/types';
 
 type CategoriesProps = {
   categories: NonNullable<POST_QUERYResult>['categories'];
 };
 
-export function Categories({ categories }: CategoriesProps) {
+export const Categories = ({ categories }: CategoriesProps) => {
   return categories.map((category) => (
     <span
       key={category._id}
@@ -12,4 +12,4 @@ export function Categories({ categories }: CategoriesProps) {
       {category.title}
     </span>
   ));
-}
+};

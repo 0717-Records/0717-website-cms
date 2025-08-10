@@ -1,4 +1,4 @@
-import { POSTS_QUERYResult } from '@/sanity/types';
+import type { POSTS_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,7 +6,7 @@ import { Categories } from './Categories';
 import { Author } from './Author';
 import { PublishedAt } from './PublishedAt';
 
-export function PostCard(props: POSTS_QUERYResult[0]) {
+export const PostCard = (props: POSTS_QUERYResult[0]) => {
   const { title, author, mainImage, publishedAt, categories } = props;
 
   return (
@@ -38,4 +38,4 @@ export function PostCard(props: POSTS_QUERYResult[0]) {
       </article>
     </Link>
   );
-}
+};

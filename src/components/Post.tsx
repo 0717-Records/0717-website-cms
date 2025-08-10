@@ -1,6 +1,6 @@
 import { components } from '@/sanity/portableTextComponents';
 import { PortableText } from 'next-sanity';
-import { POST_QUERYResult } from '@/sanity/types';
+import type { POST_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import { RelatedPosts } from './RelatedPosts';
@@ -9,7 +9,7 @@ import { Title } from './Title';
 import { PublishedAt } from './PublishedAt';
 import { Categories } from './Categories';
 
-export function Post(props: NonNullable<POST_QUERYResult>) {
+export const Post = (props: NonNullable<POST_QUERYResult>) => {
   const { _id, title, author, mainImage, body, publishedAt, categories, relatedPosts } = props;
 
   return (
@@ -40,4 +40,4 @@ export function Post(props: NonNullable<POST_QUERYResult>) {
       ) : null}
     </article>
   );
-}
+};

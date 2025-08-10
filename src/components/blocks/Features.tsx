@@ -1,11 +1,11 @@
-import { PAGE_QUERYResult } from '@/sanity/types';
+import type { PAGE_QUERYResult } from '@/sanity/types';
 
 type FeaturesProps = Extract<
   NonNullable<NonNullable<PAGE_QUERYResult>['content']>[number],
   { _type: 'features' }
 >;
 
-export function Features({ features, title }: FeaturesProps) {
+export const Features = ({ features, title }: FeaturesProps) => {
   return (
     <section className='container mx-auto flex flex-col gap-8 py-16'>
       {title ? (
@@ -26,4 +26,4 @@ export function Features({ features, title }: FeaturesProps) {
       ) : null}
     </section>
   );
-}
+};

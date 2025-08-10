@@ -1,4 +1,4 @@
-import { PAGE_QUERYResult } from '@/sanity/types';
+import type { PAGE_QUERYResult } from '@/sanity/types';
 import { PortableText } from 'next-sanity';
 
 type FAQsProps = Extract<
@@ -6,7 +6,7 @@ type FAQsProps = Extract<
   { _type: 'faqs' }
 >;
 
-export function FAQs({ _key, title, faqs }: FAQsProps) {
+export const FAQs = ({ _key, title, faqs }: FAQsProps) => {
   return (
     <section className='container mx-auto flex flex-col gap-8 py-16'>
       {title ? (
@@ -34,4 +34,4 @@ export function FAQs({ _key, title, faqs }: FAQsProps) {
       ) : null}
     </section>
   );
-}
+};

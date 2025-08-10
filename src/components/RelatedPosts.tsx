@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { createDataAttribute } from 'next-sanity';
-import { POST_QUERYResult } from '@/sanity/types';
+import type { POST_QUERYResult } from '@/sanity/types';
 import { client } from '@/sanity/lib/client';
 import { useOptimistic } from 'react';
 
@@ -13,7 +13,7 @@ export const createDataAttributeConfig = {
   baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
 };
 
-export function RelatedPosts({
+export const RelatedPosts = ({
   relatedPosts,
   documentId,
   documentType,
@@ -21,7 +21,7 @@ export function RelatedPosts({
   relatedPosts: NonNullable<POST_QUERYResult>['relatedPosts'];
   documentId: string;
   documentType: string;
-}) {
+}) => {
   const [posts] = useOptimistic(
     relatedPosts,
     (
@@ -72,4 +72,4 @@ export function RelatedPosts({
       </div>
     </aside>
   );
-}
+};

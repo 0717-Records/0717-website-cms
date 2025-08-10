@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
-import { PAGE_QUERYResult } from '@/sanity/types';
+import type { PAGE_QUERYResult } from '@/sanity/types';
 import { stegaClean } from 'next-sanity';
 
 type SplitImageProps = Extract<
@@ -8,7 +8,7 @@ type SplitImageProps = Extract<
   { _type: 'splitImage' }
 >;
 
-export function SplitImage({ title, image, orientation }: SplitImageProps) {
+export const SplitImage = ({ title, image, orientation }: SplitImageProps) => {
   return (
     <section
       className="container mx-auto flex gap-8 py-16 data-[orientation='imageRight']:flex-row-reverse"
@@ -31,4 +31,4 @@ export function SplitImage({ title, image, orientation }: SplitImageProps) {
       </div>
     </section>
   );
-}
+};

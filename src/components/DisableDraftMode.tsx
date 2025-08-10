@@ -3,7 +3,7 @@
 import { useDraftModeEnvironment } from 'next-sanity/hooks';
 import Link from 'next/link';
 
-export function DisableDraftMode() {
+export const DisableDraftMode = () => {
   const environment = useDraftModeEnvironment();
 
   // Only show the disable draft mode button when outside of Presentation Tool
@@ -16,4 +16,4 @@ export function DisableDraftMode() {
       Disable Draft Mode
     </Link>
   );
-}
+};
