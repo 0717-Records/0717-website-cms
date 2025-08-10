@@ -31,6 +31,7 @@ This is a Next.js website with Sanity CMS integration. The project uses TypeScri
   ```
 
 - Use `export default` at the bottom of component files
+- Always use Next.js `<Link>` component for internal navigation instead of `<a>` tags
 - Prefer Server Components when possible (Next.js App Router)
 - Use `async/await` for server-side data fetching
 - Always destructure props in function parameters
@@ -143,6 +144,31 @@ const ComponentName = ({ prop1, prop2 }: ComponentProps) => {
 }
 
 export default ComponentName
+```
+
+### Navigation Components
+
+```tsx
+import React from 'react'
+import Link from 'next/link'
+
+const NavigationComponent = () => {
+  return (
+    <nav>
+      {/* Internal links - always use Next.js Link */}
+      <Link href="/posts" className="hover:text-pink-500">
+        Posts
+      </Link>
+
+      {/* External links - use regular anchor tags */}
+      <a href="https://external-site.com" target="_blank" rel="noopener noreferrer">
+        External Link
+      </a>
+    </nav>
+  )
+}
+
+export default NavigationComponent
 ```
 
 ## Error Handling
