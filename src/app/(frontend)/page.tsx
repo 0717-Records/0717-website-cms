@@ -1,11 +1,8 @@
 import { PageBuilder } from '@/componets/PageBuilder';
-import { sanityFetch } from '@/sanity/lib/live';
-import { HOME_PAGE_QUERY } from '@/sanity/lib/queries';
+import { getHomePage } from '@/actions';
 
 export default async function Page() {
-  const { data: page } = await sanityFetch({
-    query: HOME_PAGE_QUERY,
-  });
+  const page = await getHomePage();
 
   return page?.homePage?.content ? (
     <PageBuilder

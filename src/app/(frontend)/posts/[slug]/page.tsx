@@ -1,10 +1,10 @@
 import { Post } from '@/componets/Post';
-import { sanityFetch } from '@/sanity/lib/live';
-import { POST_QUERY } from '@/sanity/lib/queries';
+import { getPostBySlug } from '@/actions';
 import { notFound } from 'next/navigation';
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const { data: post } = await sanityFetch({ query: POST_QUERY, params: await params });
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
