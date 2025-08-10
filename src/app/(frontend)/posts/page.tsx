@@ -1,5 +1,5 @@
-import { PostCard } from '@/componets/PostCard';
-import { Title } from '@/componets/Title';
+import { PostCard } from '@/components/PostCard';
+import { Title } from '@/components/Title';
 import { getAllPosts } from '@/actions';
 
 export default async function Page() {

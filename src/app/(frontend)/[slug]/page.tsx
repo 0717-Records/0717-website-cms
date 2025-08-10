@@ -1,4 +1,4 @@
-import { PageBuilder } from '@/componets/PageBuilder';
+import { PageBuilder } from '@/components/PageBuilder';
 import { getPageBySlug } from '@/actions';
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
