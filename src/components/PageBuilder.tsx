@@ -1,13 +1,14 @@
 'use client';
 
+import React from 'react';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react'; // Changed this import
-import { Hero } from './blocks/Hero';
-import { Features } from './blocks/Features';
-import { SplitImage } from './blocks/SplitImage';
-import { FAQs } from './blocks/FAQs';
+import Hero from './blocks/Hero';
+import Features from './blocks/Features';
+import SplitImage from './blocks/SplitImage';
+import FAQs from './blocks/FAQs';
 
 type PageBuilderProps = {
   content: NonNullable<PAGE_QUERYResult>['content'];
@@ -22,7 +23,7 @@ export const createDataAttributeConfig = {
   baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
 };
 
-export const PageBuilder = ({ content, documentId, documentType }: PageBuilderProps) => {
+const PageBuilder = ({ content, documentId, documentType }: PageBuilderProps) => {
   const [blocks] = useOptimistic<NonNullable<PAGE_QUERYResult>['content']>(content);
 
   if (!Array.isArray(blocks)) {
@@ -83,3 +84,5 @@ export const PageBuilder = ({ content, documentId, documentType }: PageBuilderPr
     </main>
   );
 };
+
+export default PageBuilder;

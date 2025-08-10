@@ -1,3 +1,4 @@
+import React from 'react';
 import type { POST_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
@@ -6,7 +7,7 @@ type AuthorProps = {
   author: NonNullable<POST_QUERYResult>['author'];
 };
 
-export const Author = ({ author }: AuthorProps) => {
+const Author = ({ author }: AuthorProps) => {
   return author?.image || author?.name ? (
     <div className='flex items-center gap-2'>
       {author?.image ? (
@@ -22,3 +23,5 @@ export const Author = ({ author }: AuthorProps) => {
     </div>
   ) : null;
 };
+
+export default Author;

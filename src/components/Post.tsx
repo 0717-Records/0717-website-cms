@@ -1,15 +1,16 @@
+import React from 'react';
 import { components } from '@/sanity/portableTextComponents';
 import { PortableText } from 'next-sanity';
 import type { POST_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
-import { RelatedPosts } from './RelatedPosts';
-import { Author } from './Author';
-import { Title } from './Title';
-import { PublishedAt } from './PublishedAt';
-import { Categories } from './Categories';
+import RelatedPosts from './RelatedPosts';
+import Author from './Author';
+import Title from './Title';
+import PublishedAt from './PublishedAt';
+import Categories from './Categories';
 
-export const Post = (props: NonNullable<POST_QUERYResult>) => {
+const Post = (props: NonNullable<POST_QUERYResult>) => {
   const { _id, title, author, mainImage, body, publishedAt, categories, relatedPosts } = props;
 
   return (
@@ -41,3 +42,5 @@ export const Post = (props: NonNullable<POST_QUERYResult>) => {
     </article>
   );
 };
+
+export default Post;

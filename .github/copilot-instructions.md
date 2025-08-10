@@ -16,7 +16,21 @@ This is a Next.js website with Sanity CMS integration. The project uses TypeScri
 ### React & Next.js
 
 - Use functional components with hooks
-- Always use arrow function syntax for React components
+- Always use arrow function syntax for React components following the `rafce` pattern:
+
+  ```tsx
+  import React from 'react'
+
+  const ComponentName = () => {
+    return (
+      <div>ComponentName</div>
+    )
+  }
+
+  export default ComponentName
+  ```
+
+- Use `export default` at the bottom of component files
 - Prefer Server Components when possible (Next.js App Router)
 - Use `async/await` for server-side data fetching
 - Always destructure props in function parameters
@@ -112,6 +126,23 @@ export async function getDataBySlug(slug: string): Promise<QUERY_NAMEResult | nu
 
   return data;
 }
+```
+
+### Component Functions
+
+```tsx
+import React from 'react'
+import type { ComponentProps } from '@/types'
+
+const ComponentName = ({ prop1, prop2 }: ComponentProps) => {
+  return (
+    <div className="container mx-auto">
+      {/* Component content */}
+    </div>
+  )
+}
+
+export default ComponentName
 ```
 
 ## Error Handling

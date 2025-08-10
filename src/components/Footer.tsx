@@ -1,6 +1,7 @@
+import React from 'react';
 import Link from 'next/link';
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer className='bg-gray-50 border-t border-gray-200 mt-12'>
       <div className='container mx-auto p-6'>
@@ -25,3 +26,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;

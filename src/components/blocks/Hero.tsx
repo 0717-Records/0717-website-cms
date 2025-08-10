@@ -1,15 +1,16 @@
+import React from 'react';
 import { PortableText } from 'next-sanity';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { PAGE_QUERYResult } from '@/sanity/types';
-import { Title } from '../Title';
+import Title from '../Title';
 
 type HeroProps = Extract<
   NonNullable<NonNullable<PAGE_QUERYResult>['content']>[number],
   { _type: 'hero' }
 >;
 
-export const Hero = ({ title, text, image }: HeroProps) => {
+const Hero = ({ title, text, image }: HeroProps) => {
   return (
     <section className='isolate w-full aspect-[2/1] py-16 relative overflow-hidden'>
       <div className='relative flex flex-col justify-center items-center gap-8 h-full z-20'>
@@ -36,3 +37,5 @@ export const Hero = ({ title, text, image }: HeroProps) => {
     </section>
   );
 };
+
+export default Hero;

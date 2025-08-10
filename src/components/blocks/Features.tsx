@@ -1,3 +1,4 @@
+import React from 'react';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 
 type FeaturesProps = Extract<
@@ -5,7 +6,7 @@ type FeaturesProps = Extract<
   { _type: 'features' }
 >;
 
-export const Features = ({ features, title }: FeaturesProps) => {
+const Features = ({ features, title }: FeaturesProps) => {
   return (
     <section className='container mx-auto flex flex-col gap-8 py-16'>
       {title ? (
@@ -27,3 +28,5 @@ export const Features = ({ features, title }: FeaturesProps) => {
     </section>
   );
 };
+
+export default Features;

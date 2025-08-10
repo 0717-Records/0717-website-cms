@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { PAGE_QUERYResult } from '@/sanity/types';
@@ -8,7 +9,7 @@ type SplitImageProps = Extract<
   { _type: 'splitImage' }
 >;
 
-export const SplitImage = ({ title, image, orientation }: SplitImageProps) => {
+const SplitImage = ({ title, image, orientation }: SplitImageProps) => {
   return (
     <section
       className="container mx-auto flex gap-8 py-16 data-[orientation='imageRight']:flex-row-reverse"
@@ -32,3 +33,5 @@ export const SplitImage = ({ title, image, orientation }: SplitImageProps) => {
     </section>
   );
 };
+
+export default SplitImage;

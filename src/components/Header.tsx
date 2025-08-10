@@ -1,6 +1,7 @@
+import React from 'react';
 import Link from 'next/link';
 
-export const Header = () => {
+const Header = () => {
   return (
     <header className='from-pink-50 to-white bg-gradient-to-b p-6'>
       <div className='bg-white/80 shadow-md flex items-center justify-between p-6 rounded-lg container mx-auto shadow-pink-50'>
@@ -25,3 +26,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

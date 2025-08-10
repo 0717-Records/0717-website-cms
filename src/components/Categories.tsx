@@ -1,10 +1,11 @@
+import React from 'react';
 import type { POST_QUERYResult } from '@/sanity/types';
 
 type CategoriesProps = {
   categories: NonNullable<POST_QUERYResult>['categories'];
 };
 
-export const Categories = ({ categories }: CategoriesProps) => {
+const Categories = ({ categories }: CategoriesProps) => {
   return categories.map((category) => (
     <span
       key={category._id}
@@ -13,3 +14,5 @@ export const Categories = ({ categories }: CategoriesProps) => {
     </span>
   ));
 };
+
+export default Categories;

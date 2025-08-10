@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import { createDataAttribute } from 'next-sanity';
 import type { POST_QUERYResult } from '@/sanity/types';
@@ -13,7 +14,7 @@ export const createDataAttributeConfig = {
   baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
 };
 
-export const RelatedPosts = ({
+const RelatedPosts = ({
   relatedPosts,
   documentId,
   documentType,
@@ -73,3 +74,5 @@ export const RelatedPosts = ({
     </aside>
   );
 };
+
+export default RelatedPosts;

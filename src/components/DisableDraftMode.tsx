@@ -1,9 +1,10 @@
 'use client';
 
+import React from 'react';
 import { useDraftModeEnvironment } from 'next-sanity/hooks';
 import Link from 'next/link';
 
-export const DisableDraftMode = () => {
+const DisableDraftMode = () => {
   const environment = useDraftModeEnvironment();
 
   // Only show the disable draft mode button when outside of Presentation Tool
@@ -17,3 +18,5 @@ export const DisableDraftMode = () => {
     </Link>
   );
 };
+
+export default DisableDraftMode;
