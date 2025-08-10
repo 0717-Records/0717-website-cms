@@ -11,8 +11,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <main className='container mx-auto grid grid-cols-1 gap-6 p-12'>
+    <div className='container mx-auto grid grid-cols-1 gap-6 p-12'>
       <Post {...post} />
-    </main>
+    </div>
   );
 }
