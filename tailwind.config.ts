@@ -14,12 +14,12 @@ const config: Config = {
       },
       colors: {
         background: {
-          DEFAULT: '#0a0a0a',
-          secondary: '#1a1a1a',
+          DEFAULT: '#ffffff',
+          secondary: '#f8f9fa',
         },
         foreground: {
-          DEFAULT: '#fffbe9',
-          muted: '#d4d4aa',
+          DEFAULT: '#000000',
+          muted: '#6b7280',
         },
         primary: {
           DEFAULT: '#fbbf24',
@@ -30,19 +30,19 @@ const config: Config = {
           foreground: '#fffbe9',
         },
         muted: {
-          DEFAULT: '#2a2a2a',
-          foreground: '#a3a3a3',
+          DEFAULT: '#f3f4f6',
+          foreground: '#6b7280',
         },
         accent: {
           DEFAULT: '#fcd34d',
-          foreground: '#0a0a0a',
+          foreground: '#000000',
         },
         destructive: {
           DEFAULT: '#ef4444',
-          foreground: '#fffbe9',
+          foreground: '#ffffff',
         },
-        border: '#3a3a3a',
-        input: '#2a2a2a',
+        border: '#e5e7eb',
+        input: '#f9fafb',
         ring: '#fbbf24',
       },
     },
