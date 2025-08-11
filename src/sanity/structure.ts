@@ -16,9 +16,9 @@ export const structure: StructureResolver = (S) =>
         .schemaType('siteSettings')
         .title('Site Settings')
         .child(S.editor().id('siteSettings').schemaType('siteSettings').documentId('siteSettings')),
-      ...S.documentTypeListItems().filter(
-        (item) =>
-          item.getId() &&
-          !['post', 'category', 'author', 'page', 'faq', 'siteSettings'].includes(item.getId()!)
-      ),
+      // ...S.documentTypeListItems().filter(
+      //   (item) =>
+      //     item.getId() &&
+      //     !['post', 'category', 'author', 'page', 'faq', 'siteSettings'].includes(item.getId()!)
+      // ),
     ]);
