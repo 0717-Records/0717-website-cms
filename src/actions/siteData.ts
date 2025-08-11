@@ -1,10 +1,11 @@
 import { sanityFetch } from '@/sanity/lib/live';
-import type { Header, Footer, SiteSettings } from '@/sanity/types';
+import { HEADER_QUERY } from '@/sanity/lib/queries';
+import type { Footer, SiteSettings, HEADER_QUERYResult } from '@/sanity/types';
 
 // Header actions
-export async function getHeader(): Promise<Header | null> {
+export async function getHeader(): Promise<HEADER_QUERYResult | null> {
   const { data } = await sanityFetch({
-    query: `*[_id == "header"][0]`,
+    query: HEADER_QUERY,
   });
 
   return data;

@@ -7,6 +7,7 @@ import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import DisableDraftMode from '@/components/DisableDraftMode';
 import { Signika } from 'next/font/google';
+import { getHeader } from '@/actions';
 
 const signika = Signika({ subsets: ['latin'] });
 
@@ -15,9 +16,11 @@ const FrontendLayout = async ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  const headerData = await getHeader();
+
   return (
     <div className={`min-h-screen flex flex-col ${signika.className} font-variant-small-caps`}>
-      <Header />
+      <Header headerData={headerData} />
       <main className='flex-1'>{children}</main>
       <Footer />
       <SanityLive />

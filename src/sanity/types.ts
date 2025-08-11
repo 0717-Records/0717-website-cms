@@ -20,18 +20,6 @@ export type SiteSettings = {
   _updatedAt: string;
   _rev: string;
   siteTitle?: string;
-  logo?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
   companyEmail?: string;
   siteDescription?: string;
 };
@@ -164,7 +152,6 @@ export type Header = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
   logo?: {
     asset?: {
       _ref: string;
@@ -176,17 +163,6 @@ export type Header = {
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
-  };
-  menuItems?: Array<{
-    label?: string;
-    url?: string;
-    openInNewTab?: boolean;
-    _key: string;
-  }>;
-  ctaButton?: {
-    label?: string;
-    url?: string;
-    style?: "primary" | "secondary" | "outline";
   };
 };
 
@@ -697,7 +673,7 @@ export type HOME_PAGE_QUERYResult = {
 } | {
   _id: string;
   _type: "header";
-  title: string | null;
+  title: null;
   content: null;
   mainImage: null;
 } | {
@@ -899,6 +875,74 @@ export type HOME_PAGE_QUERYResult = {
   content: null;
   mainImage: null;
 } | null;
+// Variable: HEADER_QUERY
+// Query: *[_id == "header"][0]{  _id,  _type,  title,  logo,  menuItems[]{    label,    url,    _key  }}
+export type HEADER_QUERYResult = {
+  _id: string;
+  _type: "category";
+  title: string | null;
+  logo: null;
+  menuItems: null;
+} | {
+  _id: string;
+  _type: "footer";
+  title: null;
+  logo: null;
+  menuItems: null;
+} | {
+  _id: string;
+  _type: "header";
+  title: null;
+  logo: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  menuItems: null;
+} | {
+  _id: string;
+  _type: "homePage";
+  title: string | null;
+  logo: null;
+  menuItems: null;
+} | {
+  _id: string;
+  _type: "page";
+  title: string | null;
+  logo: null;
+  menuItems: null;
+} | {
+  _id: string;
+  _type: "post";
+  title: string | null;
+  logo: null;
+  menuItems: null;
+} | {
+  _id: string;
+  _type: "sanity.fileAsset";
+  title: string | null;
+  logo: null;
+  menuItems: null;
+} | {
+  _id: string;
+  _type: "sanity.imageAsset";
+  title: string | null;
+  logo: null;
+  menuItems: null;
+} | {
+  _id: string;
+  _type: "siteSettings";
+  title: null;
+  logo: null;
+  menuItems: null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -909,5 +953,6 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage,\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  relatedPosts[]{\n    _key, // required for drag and drop\n    ...@->{_id, title, slug} // get fields from the referenced post\n  }\n}": POST_QUERYResult;
     "*[_type == \"page\" && slug.current == $slug][0]{\n  ...,\n  content[]{\n    ...\n  }\n}": PAGE_QUERYResult;
     "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  title,\n  content[]{\n    ...\n  },\n  mainImage\n}": HOME_PAGE_QUERYResult;
+    "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  title,\n  logo,\n  menuItems[]{\n    label,\n    url,\n    _key\n  }\n}": HEADER_QUERYResult;
   }
 }
