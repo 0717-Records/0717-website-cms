@@ -19,12 +19,12 @@ export const structure: StructureResolver = (S) =>
                 .title('Home Page')
                 .child(S.editor().id('homePage').schemaType('homePage').documentId('homePage')),
 
-              // Navbar - Singleton
+              // Header - Singleton
               S.listItem()
-                .id('navbar')
-                .schemaType('navbar')
+                .id('header')
+                .schemaType('header')
                 .title('Header')
-                .child(S.editor().id('navbar').schemaType('navbar').documentId('navbar')),
+                .child(S.editor().id('header').schemaType('header').documentId('header')),
 
               // Footer - Singleton
               S.listItem()

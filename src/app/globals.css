@@ -3,7 +3,7 @@
 
 /* Base styles */
 html {
-  scroll-padding-top: 6rem; /* Adjust this value to match the height of your fixed navbar */
+  scroll-padding-top: 6rem; /* Adjust this value to match the height of your fixed header */
 }
 
 /* Font variant utilities */

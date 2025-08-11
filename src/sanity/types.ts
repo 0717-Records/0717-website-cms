@@ -158,9 +158,9 @@ export type Footer = {
   }>;
 };
 
-export type Navbar = {
+export type Header = {
   _id: string;
-  _type: "navbar";
+  _type: "header";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -465,7 +465,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SiteSettings | SplitImage | Hero | PageBuilder | Footer | Navbar | HomePage | Page | Post | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SiteSettings | SplitImage | Hero | PageBuilder | Footer | Header | HomePage | Page | Post | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -696,6 +696,12 @@ export type HOME_PAGE_QUERYResult = {
   mainImage: null;
 } | {
   _id: string;
+  _type: "header";
+  title: string | null;
+  content: null;
+  mainImage: null;
+} | {
+  _id: string;
   _type: "homePage";
   title: string | null;
   content: Array<{
@@ -775,12 +781,6 @@ export type HOME_PAGE_QUERYResult = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
-} | {
-  _id: string;
-  _type: "navbar";
-  title: string | null;
-  content: null;
-  mainImage: null;
 } | {
   _id: string;
   _type: "page";

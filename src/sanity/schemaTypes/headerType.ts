@@ -1,17 +1,17 @@
 import { MenuIcon } from '@sanity/icons';
 import { defineField, defineType } from 'sanity';
 
-export const navbarType = defineType({
-  name: 'navbar',
-  title: 'Navbar',
+export const headerType = defineType({
+  name: 'header',
+  title: 'Header',
   type: 'document',
   icon: MenuIcon,
   fields: [
     defineField({
       name: 'title',
       type: 'string',
-      title: 'Navigation Title',
-      description: 'Optional title/brand name for the navigation',
+      title: 'Header Title',
+      description: 'Optional title/brand name for the header',
     }),
     defineField({
       name: 'logo',
@@ -20,7 +20,7 @@ export const navbarType = defineType({
       options: {
         hotspot: true,
       },
-      description: 'Logo image for the navigation bar',
+      description: 'Logo image for the header',
     }),
     defineField({
       name: 'menuItems',
@@ -63,7 +63,7 @@ export const navbarType = defineType({
       name: 'ctaButton',
       type: 'object',
       title: 'Call-to-Action Button',
-      description: 'Optional CTA button in the navigation',
+      description: 'Optional CTA button in the header',
       fields: [
         defineField({
           name: 'label',

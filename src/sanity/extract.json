@@ -969,7 +969,7 @@
     }
   },
   {
-    "name": "navbar",
+    "name": "header",
     "type": "document",
     "attributes": {
       "_id": {
@@ -982,7 +982,7 @@
         "type": "objectAttribute",
         "value": {
           "type": "string",
-          "value": "navbar"
+          "value": "header"
         }
       },
       "_createdAt": {

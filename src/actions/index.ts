@@ -5,7 +5,7 @@ export { getHomePage, getPageBySlug } from './pages';
 export { getAllPosts, getPostBySlug } from './posts';
 
 // Site data actions
-export { getNavbar, getFooter, getSiteSettings } from './siteData';
+export { getHeader, getFooter, getSiteSettings } from './siteData';
 
 // Types
 export type {

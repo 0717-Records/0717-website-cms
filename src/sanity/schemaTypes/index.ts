@@ -5,7 +5,7 @@ import { categoryType } from './categoryType';
 import { postType } from './postType';
 import { pageType } from './pageType';
 import { homePageType } from './homePageType';
-import { navbarType } from './navbarType';
+import { headerType } from './headerType';
 import { footerType } from './footerType';
 import { pageBuilderType } from './pageBuilderType';
 import { heroType } from './blocks/heroType';
@@ -19,7 +19,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     postType,
     pageType,
     homePageType,
-    navbarType,
+    headerType,
     footerType,
     pageBuilderType,
     heroType,
