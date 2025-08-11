@@ -43,7 +43,7 @@ const Header = ({ headerData }: HeaderProps) => {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className='text-base font-medium hover:text-yellow-400 transition-colors'>
+                className='text-2xl font-medium hover:text-yellow-400 transition-colors'>
                 {link.label}
               </Link>
             </li>
