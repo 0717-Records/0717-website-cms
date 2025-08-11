@@ -6,9 +6,9 @@ html {
   scroll-padding-top: 6rem; /* Adjust this value to match the height of your fixed navbar */
 }
 
-.default-global {
+/* .default-body {
   font-family: 'Signika', ui-sans-serif, system-ui, sans-serif;
   font-variant: small-caps;
   background-color: #ffffff;
   color: #000000;
-}
+} */
