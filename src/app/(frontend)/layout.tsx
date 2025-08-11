@@ -6,6 +6,9 @@ import '../globals.css';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import DisableDraftMode from '@/components/DisableDraftMode';
+import { Signika } from 'next/font/google';
+
+const signika = Signika({ subsets: ['latin'] });
 
 const FrontendLayout = async ({
   children,
@@ -13,7 +16,7 @@ const FrontendLayout = async ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div className='min-h-screen flex flex-col'>
+    <div className={`min-h-screen flex flex-col ${signika.className} font-variant-small-caps`}>
       <Header />
       <main className='flex-1'>{children}</main>
       <Footer />

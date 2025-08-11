@@ -6,9 +6,11 @@ html {
   scroll-padding-top: 6rem; /* Adjust this value to match the height of your fixed navbar */
 }
 
-/* .default-body {
-  font-family: 'Signika', ui-sans-serif, system-ui, sans-serif;
+/* Font variant utilities */
+.font-variant-small-caps {
   font-variant: small-caps;
-  background-color: #ffffff;
-  color: #000000;
-} */
+}
+
+.font-variant-normal {
+  font-variant: normal;
+}
