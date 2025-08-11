@@ -17,21 +17,31 @@ export const structure: StructureResolver = (S) =>
                 .id('homePage')
                 .schemaType('homePage')
                 .title('Home Page')
-                .child(S.editor().id('homePage').schemaType('homePage').documentId('homePage')),
+                .child(
+                  S.editor()
+                    .id('homePage')
+                    .schemaType('homePage')
+                    .documentId('homePage')
+                    .title('Home Page')
+                ),
 
               // Header - Singleton
               S.listItem()
                 .id('header')
                 .schemaType('header')
                 .title('Header')
-                .child(S.editor().id('header').schemaType('header').documentId('header')),
+                .child(
+                  S.editor().id('header').schemaType('header').documentId('header').title('Header')
+                ),
 
               // Footer - Singleton
               S.listItem()
                 .id('footer')
                 .schemaType('footer')
                 .title('Footer')
-                .child(S.editor().id('footer').schemaType('footer').documentId('footer')),
+                .child(
+                  S.editor().id('footer').schemaType('footer').documentId('footer').title('Footer')
+                ),
 
               // Site Settings - Singleton
               S.listItem()
@@ -43,6 +53,7 @@ export const structure: StructureResolver = (S) =>
                     .id('siteSettings')
                     .schemaType('siteSettings')
                     .documentId('siteSettings')
+                    .title('Site Settings')
                 ),
             ])
         ),
