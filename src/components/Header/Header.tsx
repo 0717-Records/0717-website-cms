@@ -13,7 +13,7 @@ export default function Header() {
     <header className='w-full px-4 md:px-8 py-4 flex items-center justify-between backdrop-blur sticky top-0 z-30 border-b'>
       {/* Logo */}
       <Link href='/' className='flex items-center gap-2'>
-        <span className='text-2xl font-bold text-gradient'>07:17</span>
+        <span className='text-2xl font-bold'>07:17</span>
         <span className='hidden md:inline text-lg font-semibold text-muted-foreground'>
           Records
         </span>

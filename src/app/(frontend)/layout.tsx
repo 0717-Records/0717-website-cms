@@ -12,7 +12,7 @@ export default async function FrontendLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className='bg-background text-foreground min-h-screen flex flex-col'>
+    <div className='min-h-screen flex flex-col default-global'>
       <Header />
       <main className='flex-1'>{children}</main>
       <Footer />

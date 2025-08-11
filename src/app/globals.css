@@ -3,77 +3,12 @@
 
 /* Base styles */
 html {
-  font-family: 'Signika', ui-sans-serif, system-ui, sans-serif;
+  scroll-padding-top: 6rem; /* Adjust this value to match the height of your fixed navbar */
 }
 
-body {
+.default-global {
+  font-family: 'Signika', ui-sans-serif, system-ui, sans-serif;
+  font-variant: small-caps;
   background-color: #ffffff;
   color: #000000;
-  font-variant: small-caps;
-}
-
-/* Component utility classes */
-.section-padding {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-@media (min-width: 768px) {
-  .section-padding {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .section-padding {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-}
-
-.container-max {
-  max-width: 80rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.card-base {
-  background-color: #f8f9fa;
-  border-radius: 0.75rem;
-  padding: 2rem;
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-.card-base:hover {
-  background-color: #f3f4f6;
-  transform: translateY(-0.25rem);
-}
-
-.text-gradient {
-  background-image: linear-gradient(to right, #fbbf24, #f97316, #fcd34d);
-  background-clip: text;
-  color: transparent;
-}
-
-.btn-primary {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  background-color: #fbbf24;
-  color: #0a0a0a;
-  transition-property: color, background-color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-}
-
-.btn-primary:hover {
-  background-color: #f97316;
 }
