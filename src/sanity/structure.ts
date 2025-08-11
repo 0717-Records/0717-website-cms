@@ -65,12 +65,8 @@ export const structure: StructureResolver = (S) =>
                     .title('Pages')
                     .filter('_type == "page" && _id != "homePage"')
                 ),
-
-              // FAQs
-              S.documentTypeListItem('faq').title('FAQs'),
             ])
         ),
-
       S.divider(),
 
       // === BLOG ===

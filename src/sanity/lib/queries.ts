@@ -53,11 +53,7 @@ export const POST_QUERY = defineQuery(`*[_type == "post" && slug.current == $slu
 export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slug][0]{
   ...,
   content[]{
-    ...,
-    _type == "faqs" => {
-      ...,
-      faqs[]->
-    }
+    ...
   }
 }`);
 
@@ -66,11 +62,7 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
   _type,
   title,
   content[]{
-    ...,
-    _type == "faqs" => {
-      ...,
-      faqs[]->
-    }
+    ...
   },
   mainImage
 }`);

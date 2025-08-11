@@ -8,7 +8,6 @@ import { useOptimistic } from 'react'; // Changed this import
 import Hero from './blocks/Hero';
 import Features from './blocks/Features';
 import SplitImage from './blocks/SplitImage';
-import FAQs from './blocks/FAQs';
 
 type PageBuilderProps = {
   content: NonNullable<PAGE_QUERYResult>['content'];
@@ -68,12 +67,6 @@ const PageBuilder = ({ content, documentId, documentType }: PageBuilderProps) =>
             return (
               <DragHandle key={block._key}>
                 <SplitImage {...block} />
-              </DragHandle>
-            );
-          case 'faqs':
-            return (
-              <DragHandle key={block._key}>
-                <FAQs {...block} />
               </DragHandle>
             );
           default:
