@@ -14,15 +14,6 @@ export const siteSettingsType = defineType({
       description: 'The main title of your website',
     }),
     defineField({
-      name: 'logo',
-      type: 'image',
-      title: 'Site Logo',
-      options: {
-        hotspot: true,
-      },
-      description: 'Main logo for your website',
-    }),
-    defineField({
       name: 'companyEmail',
       type: 'string',
       title: 'Company Email',
