@@ -1,8 +1,11 @@
 import { draftMode } from 'next/headers';
 import { VisualEditing } from 'next-sanity';
 import { SanityLive } from '@/sanity/lib/live';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import '../globals.css';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 import DisableDraftMode from '@/components/DisableDraftMode';
 
 export default async function FrontendLayout({

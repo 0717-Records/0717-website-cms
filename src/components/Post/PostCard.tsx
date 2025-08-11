@@ -4,11 +4,10 @@ import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import Link from 'next/link';
 import Categories from './Categories';
-import Author from './Author';
 import PublishedAt from './PublishedAt';
 
 const PostCard = (props: POSTS_QUERYResult[0]) => {
-  const { title, author, mainImage, publishedAt, categories } = props;
+  const { title, mainImage, publishedAt, categories } = props;
 
   return (
     <Link className='group' href={`/posts/${props.slug!.current}`}>
@@ -22,7 +21,6 @@ const PostCard = (props: POSTS_QUERYResult[0]) => {
             <span className='bg-pink-50 z-0 absolute inset-0 rounded-lg opacity-0 transition-all group-hover:opacity-100 group-hover:scale-y-110 group-hover:scale-x-105 scale-75' />
           </h2>
           <div className='flex items-center mt-2 md:mt-6 gap-x-6'>
-            <Author author={author} />
             <PublishedAt publishedAt={publishedAt} />
           </div>
         </div>

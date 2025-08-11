@@ -1,4 +1,4 @@
-import Post from '@/components/Post';
+import Post from '@/components/Post/Post';
 import { getPostBySlug } from '@/actions';
 import { notFound } from 'next/navigation';
 

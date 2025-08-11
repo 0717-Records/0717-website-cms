@@ -5,13 +5,12 @@ import type { POST_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import RelatedPosts from './RelatedPosts';
-import Author from './Author';
-import Title from './Title';
+import Title from '../Typography/Title';
 import PublishedAt from './PublishedAt';
 import Categories from './Categories';
 
 const Post = (props: NonNullable<POST_QUERYResult>) => {
-  const { _id, title, author, mainImage, body, publishedAt, categories, relatedPosts } = props;
+  const { _id, title, mainImage, body, publishedAt, categories, relatedPosts } = props;
 
   return (
     <article className='grid lg:grid-cols-12 gap-y-12'>
@@ -21,7 +20,6 @@ const Post = (props: NonNullable<POST_QUERYResult>) => {
           <PublishedAt publishedAt={publishedAt} />
         </div>
         <Title>{title}</Title>
-        <Author author={author} />
       </header>
       {mainImage ? (
         <figure className='lg:col-span-4 flex flex-col gap-2 items-start'>

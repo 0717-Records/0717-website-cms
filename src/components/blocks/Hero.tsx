@@ -3,7 +3,7 @@ import { PortableText } from 'next-sanity';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { PAGE_QUERYResult } from '@/sanity/types';
-import Title from '../Title';
+import Title from '../Typography/Title';
 
 type HeroProps = Extract<
   NonNullable<NonNullable<PAGE_QUERYResult>['content']>[number],
