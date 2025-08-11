@@ -191,11 +191,12 @@ When making changes to code:
 
 1. Make the requested changes
 2. Run build verification if needed
-3. **Only if the dev server was already running**: restart the dev server with `npm run dev` to ensure changes are properly loaded
-4. Set the restarted dev server to run in background so it continues running
-5. **Never use `pkill` or force-stop the dev server** - let it restart naturally
-6. If the dev server was running but gets stopped during the process, restart it since it was originally running
-7. Do not start the dev server if it wasn't already running
+3. Complete all requested modifications and tasks
+4. **Only at the very end, if the dev server was already running**: restart the dev server with `npm run dev` to ensure all changes are properly loaded
+5. Set the restarted dev server to run in background so it continues running
+6. **Never use `pkill` or force-stop the dev server** - let it restart naturally
+7. If the dev server was running but gets stopped during the process, note it for restart at the end since it was originally running
+8. Do not start the dev server if it wasn't already running
 
 ## Dependencies to Favor
 
