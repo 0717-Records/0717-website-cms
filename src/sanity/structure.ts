@@ -23,7 +23,7 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .id('navbar')
                 .schemaType('navbar')
-                .title('Navigation Menu')
+                .title('Header')
                 .child(S.editor().id('navbar').schemaType('navbar').documentId('navbar')),
 
               // Footer - Singleton

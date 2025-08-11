@@ -94,8 +94,8 @@ export const navbarType = defineType({
   preview: {
     prepare() {
       return {
-        title: 'Navigation Menu',
-        subtitle: 'Site navigation settings',
+        title: 'Header',
+        subtitle: 'Site header settings',
       };
     },
   },
