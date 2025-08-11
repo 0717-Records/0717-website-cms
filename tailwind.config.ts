@@ -8,16 +8,7 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Signika', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-      },
-      colors: {},
-      fontVariant: {
-        'small-caps': 'small-caps',
-        normal: 'normal',
-      },
-    },
+    extend: {},
   },
   plugins: [typography],
 };
