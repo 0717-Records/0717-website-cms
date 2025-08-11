@@ -15,9 +15,7 @@ const Header = () => {
       {/* Logo */}
       <Link href='/' className='flex items-center gap-2'>
         <span className='text-2xl font-bold'>07:17</span>
-        <span className='hidden md:inline text-lg font-semibold text-muted-foreground'>
-          Records
-        </span>
+        <span className='hidden md:inline text-lg font-semibold'>Records</span>
       </Link>
       {/* Nav */}
       <nav>
