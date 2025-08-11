@@ -8,7 +8,6 @@ import { homePageType } from './homePageType';
 import { navbarType } from './navbarType';
 import { footerType } from './footerType';
 import { pageBuilderType } from './pageBuilderType';
-import { featuresType } from './blocks/featuresType';
 import { heroType } from './blocks/heroType';
 import { splitImageType } from './blocks/splitImageType';
 import { siteSettingsType } from './siteSettingsType';
@@ -23,7 +22,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     navbarType,
     footerType,
     pageBuilderType,
-    featuresType,
     heroType,
     splitImageType,
     siteSettingsType,

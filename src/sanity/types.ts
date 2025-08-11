@@ -102,24 +102,11 @@ export type Hero = {
   };
 };
 
-export type Features = {
-  _type: "features";
-  title?: string;
-  features?: Array<{
-    title?: string;
-    text?: string;
-    _type: "feature";
-    _key: string;
-  }>;
-};
-
 export type PageBuilder = Array<{
   _key: string;
 } & Hero | {
   _key: string;
-} & SplitImage | {
-  _key: string;
-} & Features>;
+} & SplitImage>;
 
 export type Footer = {
   _id: string;
@@ -478,7 +465,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SiteSettings | SplitImage | Hero | Features | PageBuilder | Footer | Navbar | HomePage | Page | Post | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SiteSettings | SplitImage | Hero | PageBuilder | Footer | Navbar | HomePage | Page | Post | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -617,16 +604,6 @@ export type PAGE_QUERYResult = {
   slug?: Slug;
   content: Array<{
     _key: string;
-    _type: "features";
-    title?: string;
-    features?: Array<{
-      title?: string;
-      text?: string;
-      _type: "feature";
-      _key: string;
-    }>;
-  } | {
-    _key: string;
     _type: "hero";
     title?: string;
     text?: Array<{
@@ -723,16 +700,6 @@ export type HOME_PAGE_QUERYResult = {
   title: string | null;
   content: Array<{
     _key: string;
-    _type: "features";
-    title?: string;
-    features?: Array<{
-      title?: string;
-      text?: string;
-      _type: "feature";
-      _key: string;
-    }>;
-  } | {
-    _key: string;
     _type: "hero";
     title?: string;
     text?: Array<{
@@ -819,16 +786,6 @@ export type HOME_PAGE_QUERYResult = {
   _type: "page";
   title: string | null;
   content: Array<{
-    _key: string;
-    _type: "features";
-    title?: string;
-    features?: Array<{
-      title?: string;
-      text?: string;
-      _type: "feature";
-      _key: string;
-    }>;
-  } | {
     _key: string;
     _type: "hero";
     title?: string;

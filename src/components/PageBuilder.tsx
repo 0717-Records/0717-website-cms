@@ -6,7 +6,6 @@ import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react'; // Changed this import
 import Hero from './blocks/Hero';
-import Features from './blocks/Features';
 import SplitImage from './blocks/SplitImage';
 
 type PageBuilderProps = {
@@ -55,12 +54,6 @@ const PageBuilder = ({ content, documentId, documentType }: PageBuilderProps) =>
             return (
               <DragHandle key={block._key}>
                 <Hero {...block} />
-              </DragHandle>
-            );
-          case 'features':
-            return (
-              <DragHandle key={block._key}>
-                <Features {...block} />
               </DragHandle>
             );
           case 'splitImage':
