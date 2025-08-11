@@ -10,16 +10,7 @@ export const POSTS_QUERY =
     asset,
     alt
   },
-  publishedAt,
-  "categories": coalesce(
-    categories[]->{
-      _id,
-      slug,
-      title,
-      description
-    },
-    []
-  )
+  publishedAt
 }`);
 
 export const POSTS_SLUGS_QUERY = defineQuery(`*[_type == "post" && defined(slug.current)]{ 
@@ -35,15 +26,6 @@ export const POST_QUERY = defineQuery(`*[_type == "post" && slug.current == $slu
     alt
   },
   publishedAt,
-  "categories": coalesce(
-    categories[]->{
-      _id,
-      slug,
-      title,
-      description
-    },
-    []
-  ),
   relatedPosts[]->{
     _id,
     title,

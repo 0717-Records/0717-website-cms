@@ -74,9 +74,6 @@ export const structure: StructureResolver = (S) =>
         .child(
           S.list()
             .title('Blog Management')
-            .items([
-              S.documentTypeListItem('post').title('Posts'),
-              S.documentTypeListItem('category').title('Categories'),
-            ])
+            .items([S.documentTypeListItem('post').title('Posts')])
         ),
     ]);

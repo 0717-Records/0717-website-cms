@@ -290,13 +290,6 @@ export type Post = {
     alt?: string;
     _type: "image";
   };
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
   publishedAt?: string;
   body?: Array<{
     children?: Array<{
@@ -340,17 +333,6 @@ export type Post = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "post";
   }>;
-};
-
-export type Category = {
-  _id: string;
-  _type: "category";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  description?: string;
 };
 
 export type BlockContent = Array<{
@@ -507,11 +489,11 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SiteSettings | SplitImage | Hero | PageBuilder | Footer | Header | HomePage | Page | Post | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SiteSettings | SplitImage | Hero | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
-// Query: *[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{  _id,  title,  slug,  body,  mainImage{    asset,    alt  },  publishedAt,  "categories": coalesce(    categories[]->{      _id,      slug,      title,      description    },    []  )}
+// Query: *[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{  _id,  title,  slug,  body,  mainImage{    asset,    alt  },  publishedAt}
 export type POSTS_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -561,12 +543,6 @@ export type POSTS_QUERYResult = Array<{
     alt: string | null;
   } | null;
   publishedAt: string | null;
-  categories: Array<{
-    _id: string;
-    slug: Slug | null;
-    title: string | null;
-    description: string | null;
-  }> | Array<never>;
 }>;
 // Variable: POSTS_SLUGS_QUERY
 // Query: *[_type == "post" && defined(slug.current)]{   "slug": slug.current}
@@ -574,7 +550,7 @@ export type POSTS_SLUGS_QUERYResult = Array<{
   slug: string | null;
 }>;
 // Variable: POST_QUERY
-// Query: *[_type == "post" && slug.current == $slug][0]{  _id,  title,  body,  mainImage{    asset,    alt  },  publishedAt,  "categories": coalesce(    categories[]->{      _id,      slug,      title,      description    },    []  ),  relatedPosts[]->{    _id,    title,    slug,    mainImage{      asset,      alt    },    publishedAt  }}
+// Query: *[_type == "post" && slug.current == $slug][0]{  _id,  title,  body,  mainImage{    asset,    alt  },  publishedAt,  relatedPosts[]->{    _id,    title,    slug,    mainImage{      asset,      alt    },    publishedAt  }}
 export type POST_QUERYResult = {
   _id: string;
   title: string | null;
@@ -623,12 +599,6 @@ export type POST_QUERYResult = {
     alt: string | null;
   } | null;
   publishedAt: string | null;
-  categories: Array<{
-    _id: string;
-    slug: Slug | null;
-    title: string | null;
-    description: string | null;
-  }> | Array<never>;
   relatedPosts: Array<{
     _id: string;
     title: string | null;
@@ -734,10 +704,6 @@ export type PAGE_QUERYResult = {
 // Variable: HOME_PAGE_QUERY
 // Query: *[_id == "homePage"][0]{  _id,  _type,  content[]{    ...  }}
 export type HOME_PAGE_QUERYResult = {
-  _id: string;
-  _type: "category";
-  content: null;
-} | {
   _id: string;
   _type: "footer";
   content: null;
@@ -910,10 +876,6 @@ export type HOME_PAGE_QUERYResult = {
 // Query: *[_id == "header"][0]{  _id,  _type,  logo{    asset,    alt  }}
 export type HEADER_QUERYResult = {
   _id: string;
-  _type: "category";
-  logo: null;
-} | {
-  _id: string;
   _type: "footer";
   logo: null;
 } | {
@@ -958,9 +920,9 @@ export type HEADER_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title,\n      description\n    },\n    []\n  )\n}": POSTS_QUERYResult;
+    "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
-    "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt,\n  \"categories\": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title,\n      description\n    },\n    []\n  ),\n  relatedPosts[]->{\n    _id,\n    title,\n    slug,\n    mainImage{\n      asset,\n      alt\n    },\n    publishedAt\n  }\n}": POST_QUERYResult;
+    "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt,\n  relatedPosts[]->{\n    _id,\n    title,\n    slug,\n    mainImage{\n      asset,\n      alt\n    },\n    publishedAt\n  }\n}": POST_QUERYResult;
     "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  slug,\n  content[]{\n    ...\n  },\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
     "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  content[]{\n    ...\n  }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  }\n}": HEADER_QUERYResult;

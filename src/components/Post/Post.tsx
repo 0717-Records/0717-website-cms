@@ -7,16 +7,14 @@ import Image from 'next/image';
 import RelatedPosts from './RelatedPosts';
 import Title from '../Typography/Title';
 import PublishedAt from './PublishedAt';
-import Categories from './Categories';
 
 const Post = (props: NonNullable<POST_QUERYResult>) => {
-  const { _id, title, mainImage, body, publishedAt, categories, relatedPosts } = props;
+  const { _id, title, mainImage, body, publishedAt, relatedPosts } = props;
 
   return (
     <article className='grid lg:grid-cols-12 gap-y-12'>
       <header className='lg:col-span-12 flex flex-col gap-4 items-start'>
         <div className='flex gap-4 items-center'>
-          <Categories categories={categories} />
           <PublishedAt publishedAt={publishedAt} />
         </div>
         <Title>{title}</Title>
