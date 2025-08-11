@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import { defineType, defineField } from 'sanity';
 import { ControlsIcon } from '@sanity/icons';
 
 export const siteSettingsType = defineType({
@@ -8,10 +8,13 @@ export const siteSettingsType = defineType({
   icon: ControlsIcon,
   fields: [
     defineField({
-      name: 'homePage',
-      type: 'reference',
-      to: [{ type: 'page' }],
+      name: 'title',
+      type: 'string',
+      title: 'Site Title',
+      description: 'The title of your website',
     }),
+    // Additional site settings can be added here
+    // The home page is now managed as a separate singleton
   ],
   preview: {
     prepare() {

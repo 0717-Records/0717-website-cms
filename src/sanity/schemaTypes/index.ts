@@ -5,6 +5,7 @@ import { categoryType } from './categoryType';
 import { postType } from './postType';
 import { authorType } from './authorType';
 import { pageType } from './pageType';
+import { homePageType } from './homePageType';
 import { pageBuilderType } from './pageBuilderType';
 import { faqType } from './faqType';
 import { faqsType } from './blocks/faqsType';
@@ -20,6 +21,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     postType,
     authorType,
     pageType,
+    homePageType,
     pageBuilderType,
     faqType,
     faqsType,
