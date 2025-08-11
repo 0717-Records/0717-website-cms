@@ -702,18 +702,89 @@ export type PAGE_QUERYResult = {
   } | null;
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{  _id,  _type,  content[]{    ...  }}
+// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      title,      slug    },    externalLink,    openInNewTab  },  heroContentPosition,  content[]{    ...,    _type == "hero" => {      ...,      image{        asset,        hotspot,        crop,        alt,        _type      }    },    _type == "splitImage" => {      ...,      image{        asset,        hotspot,        crop,        _type      }    }  }}
 export type HOME_PAGE_QUERYResult = {
   _id: string;
   _type: "footer";
+  heroImage: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
   content: null;
 } | {
   _id: string;
   _type: "header";
+  heroImage: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
   content: null;
 } | {
   _id: string;
   _type: "homePage";
+  heroImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    } | null;
+    alt: string | null;
+  } | null;
+  heroTitle: string | null;
+  heroSubtitle: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+      _type: "color";
+      _key: string;
+    } | {
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+  heroCallToAction: {
+    text: string | null;
+    linkType: "external" | "internal" | null;
+    internalLink: {
+      _id: string;
+      title: null;
+      slug: null;
+    } | {
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+    } | null;
+    externalLink: string | null;
+    openInNewTab: boolean | null;
+  } | null;
+  heroContentPosition: "bottom-center" | "bottom-left" | "bottom-right" | "center-center" | "center-left" | "center-right" | "top-center" | "top-left" | "top-right" | null;
   content: Array<{
     _key: string;
     _type: "hero";
@@ -753,39 +824,43 @@ export type HOME_PAGE_QUERYResult = {
       _type: "image";
       _key: string;
     }>;
-    image?: {
-      asset?: {
+    image: {
+      asset: {
         _ref: string;
         _type: "reference";
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
+      } | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: null;
       _type: "image";
-    };
+    } | null;
   } | {
     _key: string;
     _type: "splitImage";
     orientation?: "imageLeft" | "imageRight";
     title?: string;
-    image?: {
-      asset?: {
+    image: {
+      asset: {
         _ref: string;
         _type: "reference";
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
+      } | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
       _type: "image";
-    };
+    } | null;
   }> | null;
 } | {
   _id: string;
   _type: "page";
+  heroImage: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
   content: Array<{
     _key: string;
     _type: "hero";
@@ -825,51 +900,70 @@ export type HOME_PAGE_QUERYResult = {
       _type: "image";
       _key: string;
     }>;
-    image?: {
-      asset?: {
+    image: {
+      asset: {
         _ref: string;
         _type: "reference";
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
+      } | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: null;
       _type: "image";
-    };
+    } | null;
   } | {
     _key: string;
     _type: "splitImage";
     orientation?: "imageLeft" | "imageRight";
     title?: string;
-    image?: {
-      asset?: {
+    image: {
+      asset: {
         _ref: string;
         _type: "reference";
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
+      } | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
       _type: "image";
-    };
+    } | null;
   }> | null;
 } | {
   _id: string;
   _type: "post";
+  heroImage: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
   content: null;
 } | {
   _id: string;
   _type: "sanity.fileAsset";
+  heroImage: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
   content: null;
 } | {
   _id: string;
   _type: "sanity.imageAsset";
+  heroImage: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
   content: null;
 } | {
   _id: string;
   _type: "siteSettings";
+  heroImage: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
   content: null;
 } | null;
 // Variable: HEADER_QUERY
@@ -924,7 +1018,7 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt,\n  relatedPosts[]->{\n    _id,\n    title,\n    slug,\n    mainImage{\n      asset,\n      alt\n    },\n    publishedAt\n  }\n}": POST_QUERYResult;
     "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  slug,\n  content[]{\n    ...\n  },\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
-    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  content[]{\n    ...\n  }\n}": HOME_PAGE_QUERYResult;
+    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalLink,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n    ...,\n    _type == \"hero\" => {\n      ...,\n      image{\n        asset,\n        hotspot,\n        crop,\n        alt,\n        _type\n      }\n    },\n    _type == \"splitImage\" => {\n      ...,\n      image{\n        asset,\n        hotspot,\n        crop,\n        _type\n      }\n    }\n  }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  }\n}": HEADER_QUERYResult;
   }
 }
