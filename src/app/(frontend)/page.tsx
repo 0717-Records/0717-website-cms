@@ -1,7 +1,8 @@
+import React from 'react';
 import PageBuilder from '@/components/PageBuilder';
 import { getHomePage } from '@/actions';
 
-export default async function Page() {
+const Page = async () => {
   const page = await getHomePage();
 
   return page?.content ? (
@@ -9,4 +10,6 @@ export default async function Page() {
   ) : (
     <></>
   );
-}
+};
+
+export default Page;

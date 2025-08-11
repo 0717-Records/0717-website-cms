@@ -1,3 +1,4 @@
+import React from 'react';
 import { draftMode } from 'next/headers';
 import { VisualEditing } from 'next-sanity';
 import { SanityLive } from '@/sanity/lib/live';
@@ -6,11 +7,11 @@ import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import DisableDraftMode from '@/components/DisableDraftMode';
 
-export default async function FrontendLayout({
+const FrontendLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <div className='min-h-screen flex flex-col'>
       <Header />
@@ -25,4 +26,6 @@ export default async function FrontendLayout({
       )}
     </div>
   );
-}
+};
+
+export default FrontendLayout;

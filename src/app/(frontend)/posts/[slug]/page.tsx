@@ -1,8 +1,9 @@
+import React from 'react';
 import Post from '@/components/Post/Post';
 import { getPostBySlug } from '@/actions';
 import { notFound } from 'next/navigation';
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
@@ -15,4 +16,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <Post {...post} />
     </div>
   );
-}
+};
+
+export default Page;

@@ -1,8 +1,9 @@
+import React from 'react';
 import PostCard from '@/components/Post/PostCard';
 import Title from '@/components/Typography/Title';
 import { getAllPosts } from '@/actions';
 
-export default async function Page() {
+const Page = async () => {
   const posts = await getAllPosts();
 
   return (
@@ -15,4 +16,6 @@ export default async function Page() {
       </div>
     </div>
   );
-}
+};
+
+export default Page;
