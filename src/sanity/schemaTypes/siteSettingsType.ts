@@ -8,13 +8,35 @@ export const siteSettingsType = defineType({
   icon: ControlsIcon,
   fields: [
     defineField({
-      name: 'title',
+      name: 'siteTitle',
       type: 'string',
       title: 'Site Title',
-      description: 'The title of your website',
+      description: 'The main title of your website',
     }),
-    // Additional site settings can be added here
-    // The home page is now managed as a separate singleton
+    defineField({
+      name: 'logo',
+      type: 'image',
+      title: 'Site Logo',
+      options: {
+        hotspot: true,
+      },
+      description: 'Main logo for your website',
+    }),
+    defineField({
+      name: 'companyEmail',
+      type: 'string',
+      title: 'Company Email',
+      description: 'Primary contact email for your company',
+      validation: (Rule) => Rule.email(),
+    }),
+    defineField({
+      name: 'siteDescription',
+      type: 'text',
+      title: 'Site Description',
+      description: 'A brief description of your website (used for SEO)',
+      rows: 3,
+    }),
+    // Additional site settings can be added here as needed
   ],
   preview: {
     prepare() {

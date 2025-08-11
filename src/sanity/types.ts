@@ -19,7 +19,21 @@ export type SiteSettings = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
+  siteTitle?: string;
+  logo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  companyEmail?: string;
+  siteDescription?: string;
 };
 
 export type SplitImage = {
@@ -160,6 +174,88 @@ export type PageBuilder = Array<{
 } & Features | {
   _key: string;
 } & Faqs>;
+
+export type Footer = {
+  _id: string;
+  _type: "footer";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  companyInfo?: {
+    companyName?: string;
+    description?: string;
+    logo?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+  };
+  contactInfo?: {
+    email?: string;
+    phone?: string;
+    address?: string;
+  };
+  footerColumns?: Array<{
+    columnTitle?: string;
+    links?: Array<{
+      label?: string;
+      url?: string;
+      _key: string;
+    }>;
+    _key: string;
+  }>;
+  socialMedia?: Array<{
+    platform?: "facebook" | "twitter" | "instagram" | "linkedin" | "youtube" | "tiktok" | "other";
+    url?: string;
+    customName?: string;
+    _key: string;
+  }>;
+  copyrightText?: string;
+  bottomLinks?: Array<{
+    label?: string;
+    url?: string;
+    _key: string;
+  }>;
+};
+
+export type Navbar = {
+  _id: string;
+  _type: "navbar";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  logo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  menuItems?: Array<{
+    label?: string;
+    url?: string;
+    openInNewTab?: boolean;
+    _key: string;
+  }>;
+  ctaButton?: {
+    label?: string;
+    url?: string;
+    style?: "primary" | "secondary" | "outline";
+  };
+};
 
 export type HomePage = {
   _id: string;
@@ -482,7 +578,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SiteSettings | SplitImage | Hero | Features | Faqs | Faq | PageBuilder | HomePage | Page | Post | Author | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SiteSettings | SplitImage | Hero | Features | Faqs | Faq | PageBuilder | Footer | Navbar | HomePage | Page | Post | Author | Category | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -802,6 +898,12 @@ export type HOME_PAGE_QUERYResult = {
   mainImage: null;
 } | {
   _id: string;
+  _type: "footer";
+  title: null;
+  content: null;
+  mainImage: null;
+} | {
+  _id: string;
   _type: "homePage";
   title: string | null;
   content: Array<{
@@ -934,6 +1036,12 @@ export type HOME_PAGE_QUERYResult = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+} | {
+  _id: string;
+  _type: "navbar";
+  title: string | null;
+  content: null;
+  mainImage: null;
 } | {
   _id: string;
   _type: "page";
@@ -1101,7 +1209,7 @@ export type HOME_PAGE_QUERYResult = {
 } | {
   _id: string;
   _type: "siteSettings";
-  title: string | null;
+  title: null;
   content: null;
   mainImage: null;
 } | null;

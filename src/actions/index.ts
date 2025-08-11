@@ -4,6 +4,9 @@ export { getHomePage, getPageBySlug } from './pages';
 // Posts actions
 export { getAllPosts, getPostBySlug } from './posts';
 
+// Site data actions
+export { getNavbar, getFooter, getSiteSettings } from './siteData';
+
 // Types
 export type {
   HOME_PAGE_QUERYResult,
