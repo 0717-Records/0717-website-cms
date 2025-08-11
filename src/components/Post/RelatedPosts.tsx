@@ -34,7 +34,7 @@ const RelatedPosts = ({
     ) => {
       if (action.id === documentId && action?.document?.relatedPosts) {
         return action.document.relatedPosts.map(
-          (post) => state?.find((p) => p._key === post._key) ?? post
+          (post) => state?.find((p) => p._id === post._id) ?? post
         );
       }
       return state;
@@ -58,13 +58,13 @@ const RelatedPosts = ({
           }).toString()}>
           {posts.map((post) => (
             <li
-              key={post._key}
+              key={post._id}
               className='p-4 bg-blue-50 sm:w-1/3 flex-shrink-0'
               data-sanity={createDataAttribute({
                 ...createDataAttributeConfig,
                 id: documentId,
                 type: documentType,
-                path: `relatedPosts[_key=="${post._key}"]`,
+                path: `relatedPosts[_ref=="${post._id}"]`,
               }).toString()}>
               <Link href={`/posts/${post?.slug?.current}`}>{post.title}</Link>
             </li>

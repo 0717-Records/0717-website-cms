@@ -6,13 +6,17 @@ export const POSTS_QUERY =
   title,
   slug,
   body,
-  mainImage,
+  mainImage{
+    asset,
+    alt
+  },
   publishedAt,
   "categories": coalesce(
     categories[]->{
       _id,
       slug,
-      title
+      title,
+      description
     },
     []
   )
@@ -26,47 +30,59 @@ export const POST_QUERY = defineQuery(`*[_type == "post" && slug.current == $slu
   _id,
   title,
   body,
-  mainImage,
+  mainImage{
+    asset,
+    alt
+  },
   publishedAt,
   "categories": coalesce(
     categories[]->{
       _id,
       slug,
-      title
+      title,
+      description
     },
     []
   ),
-  relatedPosts[]{
-    _key, // required for drag and drop
-    ...@->{_id, title, slug} // get fields from the referenced post
+  relatedPosts[]->{
+    _id,
+    title,
+    slug,
+    mainImage{
+      asset,
+      alt
+    },
+    publishedAt
   }
 }`);
 
 export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slug][0]{
-  ...,
+  _id,
+  _type,
+  title,
+  slug,
   content[]{
     ...
+  },
+  mainImage{
+    asset,
+    alt
   }
 }`);
 
 export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
   _id,
   _type,
-  title,
   content[]{
     ...
-  },
-  mainImage
+  }
 }`);
 
 export const HEADER_QUERY = defineQuery(`*[_id == "header"][0]{
   _id,
   _type,
-  title,
-  logo,
-  menuItems[]{
-    label,
-    url,
-    _key
+  logo{
+    asset,
+    alt
   }
 }`);

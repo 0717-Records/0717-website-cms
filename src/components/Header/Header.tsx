@@ -24,7 +24,7 @@ const Header = ({ headerData }: HeaderProps) => {
         {headerData?.logo ? (
           <Image
             src={urlFor(headerData.logo).url()}
-            alt={headerData.title || '07:17 Records'}
+            alt={headerData.logo.alt || '07:17 Records'}
             width={200}
             height={125}
             className='object-contain'
