@@ -1,5 +1,5 @@
 import { defineType, defineArrayMember } from 'sanity';
-import { ImageIcon } from '@sanity/icons';
+import { ImageIcon, DropIcon } from '@sanity/icons';
 
 /**
  * This is the schema type for block content used in the post document type
@@ -57,6 +57,53 @@ export const blockContentType = defineType({
                 type: 'url',
               },
             ],
+          },
+          {
+            title: 'Color',
+            name: 'color',
+            type: 'object',
+            icon: DropIcon,
+            fields: [
+              {
+                title: 'Color',
+                name: 'value',
+                type: 'string',
+                options: {
+                  list: [
+                    { title: 'Default', value: 'default' },
+                    { title: 'Primary', value: 'primary' },
+                    { title: 'Secondary', value: 'secondary' },
+                    { title: 'Accent', value: 'accent' },
+                    { title: 'Muted', value: 'muted' },
+                    { title: 'Success', value: 'success' },
+                    { title: 'Warning', value: 'warning' },
+                    { title: 'Error', value: 'error' },
+                    { title: 'Red', value: 'red' },
+                    { title: 'Blue', value: 'blue' },
+                    { title: 'Green', value: 'green' },
+                    { title: 'Yellow', value: 'yellow' },
+                    { title: 'Purple', value: 'purple' },
+                    { title: 'Pink', value: 'pink' },
+                    { title: 'Gray', value: 'gray' },
+                    { title: 'White', value: 'white' },
+                    { title: 'Black', value: 'black' },
+                  ],
+                  layout: 'dropdown',
+                },
+                initialValue: 'default',
+              },
+            ],
+            preview: {
+              select: {
+                color: 'value',
+              },
+              prepare({ color }) {
+                return {
+                  title: `Color: ${color}`,
+                  subtitle: 'Text color',
+                };
+              },
+            },
           },
         ],
       },

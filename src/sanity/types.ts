@@ -58,6 +58,10 @@ export type Hero = {
       href?: string;
       _type: "link";
       _key: string;
+    } | {
+      value?: "default" | "primary" | "secondary" | "accent" | "muted" | "success" | "warning" | "error" | "red" | "blue" | "green" | "yellow" | "purple" | "pink" | "gray" | "white" | "black";
+      _type: "color";
+      _key: string;
     }>;
     level?: number;
     _type: "block";
@@ -199,6 +203,10 @@ export type HomePage = {
       href?: string;
       _type: "link";
       _key: string;
+    } | {
+      value?: "default" | "primary" | "secondary" | "accent" | "muted" | "success" | "warning" | "error" | "red" | "blue" | "green" | "yellow" | "purple" | "pink" | "gray" | "white" | "black";
+      _type: "color";
+      _key: string;
     }>;
     level?: number;
     _type: "block";
@@ -303,6 +311,10 @@ export type Post = {
       href?: string;
       _type: "link";
       _key: string;
+    } | {
+      value?: "default" | "primary" | "secondary" | "accent" | "muted" | "success" | "warning" | "error" | "red" | "blue" | "green" | "yellow" | "purple" | "pink" | "gray" | "white" | "black";
+      _type: "color";
+      _key: string;
     }>;
     level?: number;
     _type: "block";
@@ -353,6 +365,10 @@ export type BlockContent = Array<{
   markDefs?: Array<{
     href?: string;
     _type: "link";
+    _key: string;
+  } | {
+    value?: "default" | "primary" | "secondary" | "accent" | "muted" | "success" | "warning" | "error" | "red" | "blue" | "green" | "yellow" | "purple" | "pink" | "gray" | "white" | "black";
+    _type: "color";
     _key: string;
   }>;
   level?: number;
@@ -510,6 +526,10 @@ export type POSTS_QUERYResult = Array<{
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
     listItem?: "bullet";
     markDefs?: Array<{
+      value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+      _type: "color";
+      _key: string;
+    } | {
       href?: string;
       _type: "link";
       _key: string;
@@ -568,6 +588,10 @@ export type POST_QUERYResult = {
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
     listItem?: "bullet";
     markDefs?: Array<{
+      value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+      _type: "color";
+      _key: string;
+    } | {
       href?: string;
       _type: "link";
       _key: string;
@@ -642,6 +666,10 @@ export type PAGE_QUERYResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
       listItem?: "bullet";
       markDefs?: Array<{
+        value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+        _type: "color";
+        _key: string;
+      } | {
         href?: string;
         _type: "link";
         _key: string;
@@ -734,6 +762,10 @@ export type HOME_PAGE_QUERYResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
       listItem?: "bullet";
       markDefs?: Array<{
+        value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+        _type: "color";
+        _key: string;
+      } | {
         href?: string;
         _type: "link";
         _key: string;
@@ -802,6 +834,10 @@ export type HOME_PAGE_QUERYResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
       listItem?: "bullet";
       markDefs?: Array<{
+        value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+        _type: "color";
+        _key: string;
+      } | {
         href?: string;
         _type: "link";
         _key: string;
