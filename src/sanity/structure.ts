@@ -12,6 +12,14 @@ export const structure: StructureResolver = (S) =>
           S.list()
             .title('Site Management')
             .items([
+              // Header - Singleton
+              S.listItem()
+                .id('header')
+                .schemaType('header')
+                .title('Header')
+                .child(
+                  S.editor().id('header').schemaType('header').documentId('header').title('Header')
+                ),
               // Home Page - Singleton that can't be deleted
               S.listItem()
                 .id('homePage')
@@ -24,16 +32,6 @@ export const structure: StructureResolver = (S) =>
                     .documentId('homePage')
                     .title('Home Page')
                 ),
-
-              // Header - Singleton
-              S.listItem()
-                .id('header')
-                .schemaType('header')
-                .title('Header')
-                .child(
-                  S.editor().id('header').schemaType('header').documentId('header').title('Header')
-                ),
-
               // Footer - Singleton
               S.listItem()
                 .id('footer')
