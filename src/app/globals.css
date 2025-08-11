@@ -9,6 +9,7 @@ html {
 body {
   background-color: #ffffff;
   color: #000000;
+  font-variant: small-caps;
 }
 
 /* Component utility classes */

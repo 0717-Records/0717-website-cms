@@ -45,6 +45,10 @@ const config: Config = {
         input: '#f9fafb',
         ring: '#fbbf24',
       },
+      fontVariant: {
+        'small-caps': 'small-caps',
+        normal: 'normal',
+      },
     },
   },
   plugins: [typography],
