@@ -49,24 +49,14 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
 
-      // === CONTENT PAGES ===
+      // === PAGES ===
       S.listItem()
-        .title('📄 Pages & Content')
+        .id('pages')
+        .title('📄 Pages')
         .child(
-          S.list()
-            .title('Pages & Content')
-            .items([
-              // Regular pages (excluding home page)
-              S.listItem()
-                .id('pages')
-                .title('Pages')
-                .child(
-                  S.documentTypeList('page')
-                    .title('Pages')
-                    .filter('_type == "page" && _id != "homePage"')
-                ),
-            ])
+          S.documentTypeList('page').title('Pages').filter('_type == "page" && _id != "homePage"')
         ),
+
       S.divider(),
 
       // === BLOG ===
