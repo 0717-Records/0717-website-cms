@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 
 const navLinks = [
@@ -8,7 +9,7 @@ const navLinks = [
   { href: '#contact', label: 'Contact' },
 ];
 
-export default function Header() {
+const Header = () => {
   return (
     <header className='w-full px-4 md:px-8 py-4 flex items-center justify-between backdrop-blur sticky top-0 z-30 border-b'>
       {/* Logo */}
@@ -34,4 +35,6 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+};
+
+export default Header;
