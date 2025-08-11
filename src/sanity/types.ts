@@ -52,7 +52,7 @@ export type Hero = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "small" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -193,7 +193,7 @@ export type HomePage = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "small" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -297,7 +297,7 @@ export type Post = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    style?: "normal" | "small" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -348,7 +348,7 @@ export type BlockContent = Array<{
     _type: "span";
     _key: string;
   }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+  style?: "normal" | "small" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
   listItem?: "bullet";
   markDefs?: Array<{
     href?: string;
@@ -507,7 +507,7 @@ export type POSTS_QUERYResult = Array<{
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -565,7 +565,7 @@ export type POST_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -639,7 +639,7 @@ export type PAGE_QUERYResult = {
         _type: "span";
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
       listItem?: "bullet";
       markDefs?: Array<{
         href?: string;
@@ -731,7 +731,7 @@ export type HOME_PAGE_QUERYResult = {
         _type: "span";
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
       listItem?: "bullet";
       markDefs?: Array<{
         href?: string;
@@ -799,7 +799,7 @@ export type HOME_PAGE_QUERYResult = {
         _type: "span";
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
       listItem?: "bullet";
       markDefs?: Array<{
         href?: string;
