@@ -185,6 +185,16 @@ export default NavigationComponent
 - Minimize client-side JavaScript when possible
 - Cache data appropriately using Next.js caching strategies
 
+## Development Workflow
+
+When making changes to code:
+
+1. Make the requested changes
+2. Run build verification if needed
+3. **Only if the dev server was already running**: restart the dev server with `npm run dev` to ensure changes are properly loaded
+4. Set the restarted dev server to run in background so it continues running
+5. Do not start the dev server if it wasn't already running
+
 ## Dependencies to Favor
 
 - Next.js App Router patterns
