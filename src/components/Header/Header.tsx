@@ -1,30 +1,37 @@
-import React from 'react';
 import Link from 'next/link';
 
-const Header = () => {
+const navLinks = [
+  { href: '#about', label: 'About' },
+  { href: '#artists', label: 'Artists' },
+  { href: '#events', label: 'Events' },
+  { href: '#news', label: 'News' },
+  { href: '#contact', label: 'Contact' },
+];
+
+export default function Header() {
   return (
-    <header className='from-pink-50 to-white bg-gradient-to-b p-6'>
-      <div className='bg-white/80 shadow-md flex items-center justify-between p-6 rounded-lg container mx-auto shadow-pink-50'>
-        <Link className='text-pink-700 md:text-xl font-bold tracking-tight' href='/'>
-          Layer Caker
-        </Link>
-        <nav>
-          <ul className='flex items-center gap-4 font-semibold text-slate-700'>
-            <li>
-              <Link className='hover:text-pink-500 transition-colors' href='/posts'>
-                Posts
+    <header className='w-full px-4 md:px-8 py-4 flex items-center justify-between bg-background/80 backdrop-blur sticky top-0 z-30 border-b border-card'>
+      {/* Logo */}
+      <Link href='/' className='flex items-center gap-2'>
+        <span className='text-2xl font-bold text-gradient'>07:17</span>
+        <span className='hidden md:inline text-lg font-semibold text-muted-foreground'>
+          Records
+        </span>
+      </Link>
+      {/* Nav */}
+      <nav>
+        <ul className='flex items-center gap-6'>
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className='text-base font-medium text-foreground hover:text-yellow-400 transition-colors'>
+                {link.label}
               </Link>
             </li>
-            <li>
-              <Link className='hover:text-pink-500 transition-colors' href='/studio'>
-                Sanity Studio
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
-};
-
-export default Header;
+}
