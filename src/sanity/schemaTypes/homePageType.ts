@@ -8,25 +8,10 @@ export const homePageType = defineType({
   icon: HomeIcon,
   fields: [
     defineField({
-      name: 'title',
-      type: 'string',
-      initialValue: 'Home Page',
-      description: 'The title of your home page',
-    }),
-    defineField({
       name: 'content',
       type: 'pageBuilder',
       title: 'Page Content',
       description: 'The content blocks for your home page',
-    }),
-    defineField({
-      name: 'mainImage',
-      type: 'image',
-      title: 'Featured Image',
-      options: {
-        hotspot: true,
-      },
-      description: 'Main image for the home page (optional)',
     }),
   ],
   preview: {

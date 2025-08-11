@@ -172,20 +172,7 @@ export type HomePage = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
   content?: PageBuilder;
-  mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
 };
 
 export type Page = {
@@ -679,7 +666,7 @@ export type HOME_PAGE_QUERYResult = {
 } | {
   _id: string;
   _type: "homePage";
-  title: string | null;
+  title: null;
   content: Array<{
     _key: string;
     _type: "hero";
@@ -745,18 +732,7 @@ export type HOME_PAGE_QUERYResult = {
       _type: "image";
     };
   }> | null;
-  mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  } | null;
+  mainImage: null;
 } | {
   _id: string;
   _type: "page";
@@ -909,7 +885,7 @@ export type HEADER_QUERYResult = {
 } | {
   _id: string;
   _type: "homePage";
-  title: string | null;
+  title: null;
   logo: null;
   menuItems: null;
 } | {
