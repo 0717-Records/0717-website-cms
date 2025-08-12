@@ -25,14 +25,14 @@ type CTAProps = LinkCTAProps | ButtonCTAProps;
 
 const getVariantStyles = (variant: 'filled' | 'outline' = 'filled') => {
   const baseStyles =
-    'inline-flex items-center justify-center px-8 py-4 font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2';
+    'inline-flex items-center justify-center px-8 py-4 font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
 
   if (variant === 'outline') {
-    return `${baseStyles} border-2 border-pink-500 text-pink-500 bg-transparent hover:bg-pink-500 hover:text-white`;
+    return `${baseStyles} border-2 border-brand-primary text-brand-primary bg-transparent hover:bg-brand-gradient hover:text-black hover:border-transparent focus:ring-brand-primary`;
   }
 
-  // Default to filled variant
-  return `${baseStyles} bg-pink-500 hover:bg-pink-600 text-white`;
+  // Default to filled variant with brand gradient
+  return `${baseStyles} bg-brand-gradient text-black hover:opacity-90 focus:ring-brand-primary`;
 };
 
 const CTA = (props: CTAProps) => {

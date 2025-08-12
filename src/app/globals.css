@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap');
 @import 'tailwindcss';
 
+/* Brand Colors - Single source of truth for Tailwind v4 */
+@theme {
+  --color-brand-primary: #ffea00;
+  --color-brand-secondary: #f4a300;
+  --background-image-brand-gradient: linear-gradient(to right, #ffea00, #ffc800);
+}
+
 /* Base styles */
 html {
   scroll-padding-top: 6rem; /* Adjust this value to match the height of your fixed header */
