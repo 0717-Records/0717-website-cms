@@ -16,7 +16,7 @@ const MenuButton = ({ variant, isMenuOpen = false, onClick, className = '' }: Me
     return (
       <button
         onClick={onClick}
-        className={`w-8 h-8 flex items-center justify-center cursor-pointer focus:outline-none ${className}`}
+        className={`w-8 h-8 flex items-center justify-center cursor-pointer focus:outline-none hover:text-brand-secondary transition-colors ${className}`}
         aria-label='Close menu'>
         <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
           <path
@@ -34,20 +34,20 @@ const MenuButton = ({ variant, isMenuOpen = false, onClick, className = '' }: Me
   return (
     <button
       onClick={onClick}
-      className={`lg:hidden flex flex-col justify-center items-center w-8 h-8 cursor-pointer focus:outline-none ${className}`}
+      className={`lg:hidden flex flex-col justify-center items-center w-8 h-8 cursor-pointer focus:outline-none group ${className}`}
       aria-label='Toggle menu'>
       <span
-        className={`block w-6 h-0.5 bg-black transition-all duration-300 ${
+        className={`block w-6 h-0.5 bg-black group-hover:bg-brand-secondary transition-all duration-300 ${
           isMenuOpen ? 'rotate-45 translate-y-1.5' : ''
         }`}
       />
       <span
-        className={`block w-6 h-0.5 bg-black transition-all duration-300 mt-1.5 ${
+        className={`block w-6 h-0.5 bg-black group-hover:bg-brand-secondary transition-all duration-300 mt-1.5 ${
           isMenuOpen ? 'opacity-0' : ''
         }`}
       />
       <span
-        className={`block w-6 h-0.5 bg-black transition-all duration-300 mt-1.5 ${
+        className={`block w-6 h-0.5 bg-black group-hover:bg-brand-secondary transition-all duration-300 mt-1.5 ${
           isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
         }`}
       />

@@ -99,7 +99,7 @@ const MobileMenu = ({ isMenuOpen, onClose, navLinks, headerData }: MobileMenuPro
                 <Link
                   href={link.href}
                   onClick={onClose}
-                  className='block text-xl font-medium text-black hover:text-yellow-400 transition-colors'>
+                  className='block text-xl font-medium text-black hover:text-brand-secondary transition-colors'>
                   {link.label}
                 </Link>
               </li>
