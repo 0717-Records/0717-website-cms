@@ -1,6 +1,11 @@
 .hero-height {
-  min-height: 100vh;
+  /* Desktop: Account for header height - try a smaller value */
+  min-height: calc(100vh - 6rem);
+  height: calc(100vh - 6rem);
+
   @media (max-width: 640px) {
-    min-height: 100svh;
+    /* Mobile: Account for smaller header height + use svh for mobile browser toolbars */
+    min-height: calc(100svh - 4.5rem);
+    height: calc(100svh - 4.5rem);
   }
 }
