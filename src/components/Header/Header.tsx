@@ -17,8 +17,16 @@ interface HeaderProps {
 }
 
 const Header = ({ headerData }: HeaderProps) => {
+  /* 
+    HEADER HEIGHT DEFINITION:
+    Desktop: h-24 (6rem = 96px)
+    Mobile: h-20 (5rem = 80px)
+    
+    ⚠️ IMPORTANT: If these heights are changed, update the corresponding values in:
+    src/components/HomeHero/styles.module.css
+  */
   return (
-    <header className='w-full px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-30 border-b bg-white'>
+    <header className='w-full px-4 md:px-8 h-20 md:h-24 flex items-center justify-between sticky top-0 z-30 border-b bg-white'>
       {/* Logo */}
       <Link href='/' className='flex items-center gap-2'>
         {headerData?.logo ? (

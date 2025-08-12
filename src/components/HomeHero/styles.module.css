@@ -1,11 +1,20 @@
+/* 
+  HEADER HEIGHT REFERENCE:
+  These values MUST match the header heights defined in src/components/Header/Header.tsx
+  Desktop: 6rem (h-24 = 96px)
+  Mobile: 5rem (h-20 = 80px)
+  
+  ⚠️ IMPORTANT: If header heights are changed, update both files!
+*/
+
 .hero-height {
-  /* Desktop: Account for header height - try a smaller value */
+  /* Desktop: Full viewport minus header height (6rem) */
   min-height: calc(100vh - 6rem);
   height: calc(100vh - 6rem);
 
   @media (max-width: 640px) {
-    /* Mobile: Account for smaller header height + use svh for mobile browser toolbars */
-    min-height: calc(100svh - 4.5rem);
-    height: calc(100svh - 4.5rem);
+    /* Mobile: Full viewport minus header height (5rem) + use svh for browser toolbars */
+    min-height: calc(100svh - 5rem);
+    height: calc(100svh - 5rem);
   }
 }
