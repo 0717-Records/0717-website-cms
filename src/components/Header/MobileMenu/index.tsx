@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { HEADER_QUERYResult } from '@/sanity/types';
-import MenuButton from './MenuButton';
+import MenuButton from '../MenuButton';
+import styles from './MobileMenu.module.css';
 
 interface NavLink {
   href: string;
@@ -27,9 +28,7 @@ const MobileMenu = ({ isMenuOpen, onClose, navLinks, headerData }: MobileMenuPro
       }`}>
       {/* Background Overlay */}
       <div
-        className={`absolute inset-0 bg-black transition-opacity duration-300 ${
-          isMenuOpen ? 'bg-opacity-50' : 'bg-opacity-0'
-        }`}
+        className={`${styles.overlay} ${isMenuOpen ? styles.overlayOpen : styles.overlayClosed}`}
         onClick={onClose}
       />
 
