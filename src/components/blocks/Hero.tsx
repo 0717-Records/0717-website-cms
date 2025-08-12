@@ -1,5 +1,6 @@
 import React from 'react';
 import { PortableText } from 'next-sanity';
+import { components } from '@/sanity/portableTextComponents';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { PAGE_QUERYResult } from '@/sanity/types';
@@ -21,7 +22,7 @@ const Hero = ({ title, text, image }: HeroProps) => {
           <Title>{title}</Title>
         ) : null}
         <div className='prose-lg lg:prose-xl prose-invert flex items-center'>
-          {text ? <PortableText value={text} /> : null}
+          {text ? <PortableText value={text} components={components} /> : null}
         </div>
       </div>
       <div className='absolute inset-0 bg-pink-500 opacity-50 z-10' />
