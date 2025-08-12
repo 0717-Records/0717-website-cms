@@ -18,6 +18,7 @@ const Page = async () => {
         heroImage={page.heroImage}
         heroTitle={page.heroTitle}
         heroSubtitle={page.heroSubtitle}
+        enableHeroCallToAction={page.enableHeroCallToAction}
         heroCallToAction={page.heroCallToAction}
         heroContentPosition={page.heroContentPosition}
         documentId={page._id}

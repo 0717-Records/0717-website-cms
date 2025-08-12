@@ -1047,6 +1047,13 @@
         },
         "optional": true
       },
+      "enableHeroCallToAction": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
       "heroCallToAction": {
         "type": "objectAttribute",
         "value": {

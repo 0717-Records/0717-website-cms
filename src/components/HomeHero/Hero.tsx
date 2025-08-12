@@ -19,6 +19,7 @@ interface HeroProps {
   heroImage: NonNullable<HOME_PAGE_QUERYResult>['heroImage'];
   heroTitle: NonNullable<HOME_PAGE_QUERYResult>['heroTitle'];
   heroSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroSubtitle'];
+  enableHeroCallToAction: NonNullable<HOME_PAGE_QUERYResult>['enableHeroCallToAction'];
   heroCallToAction: NonNullable<HOME_PAGE_QUERYResult>['heroCallToAction'];
   heroContentPosition: NonNullable<HOME_PAGE_QUERYResult>['heroContentPosition'];
   documentId: string;
@@ -29,6 +30,7 @@ const Hero = ({
   heroImage,
   heroTitle,
   heroSubtitle,
+  enableHeroCallToAction,
   heroCallToAction,
   heroContentPosition,
   documentId,
@@ -78,26 +80,35 @@ const Hero = ({
   };
 
   const renderCTA = () => {
-    if (!heroCallToAction?.text) return null;
+    // First check if CTA is enabled
+    if (!enableHeroCallToAction) return null;
 
+    // If CTA is enabled but no heroCallToAction object, show empty CTA
+    if (!heroCallToAction) {
+      return <CTA as='button'> </CTA>;
+    }
+
+    // Show CTA even with empty text if enabled
     if (heroCallToAction.linkType === 'external' && heroCallToAction.externalLink) {
       return (
         <CTA
           href={heroCallToAction.externalLink}
           target={heroCallToAction.openInNewTab ? '_blank' : undefined}
           rel={heroCallToAction.openInNewTab ? 'noopener noreferrer' : undefined}>
-          {heroCallToAction.text}
+          {heroCallToAction.text || ''}
         </CTA>
       );
     }
 
     if (heroCallToAction.linkType === 'internal' && heroCallToAction.internalLink?.slug?.current) {
       return (
-        <CTA href={`/${heroCallToAction.internalLink.slug.current}`}>{heroCallToAction.text}</CTA>
+        <CTA href={`/${heroCallToAction.internalLink.slug.current}`}>
+          {heroCallToAction.text || ''}
+        </CTA>
       );
     }
 
-    return <CTA as='button'>{heroCallToAction.text}</CTA>;
+    return <CTA as='button'>{heroCallToAction.text || ''}</CTA>;
   };
 
   return (

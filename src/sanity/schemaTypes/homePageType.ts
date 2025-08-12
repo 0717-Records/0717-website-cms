@@ -51,17 +51,26 @@ export const homePageType = defineType({
       group: 'hero',
     }),
     defineField({
+      name: 'enableHeroCallToAction',
+      type: 'boolean',
+      title: 'Enable Call to Action',
+      description: 'Show a call to action button in the hero section',
+      group: 'hero',
+      initialValue: false,
+    }),
+    defineField({
       name: 'heroCallToAction',
       type: 'object',
       title: 'Call to Action',
       description: 'Button or link for the hero section',
       group: 'hero',
+      hidden: ({ document }) => !document?.enableHeroCallToAction,
       fields: [
         defineField({
           name: 'text',
           type: 'string',
           title: 'Button Text',
-          description: 'Text displayed on the button',
+          description: 'Text displayed on the button (optional)',
         }),
         defineField({
           name: 'linkType',

@@ -169,6 +169,7 @@ export type HomePage = {
     _type: "image";
     _key: string;
   }>;
+  enableHeroCallToAction?: boolean;
   heroCallToAction?: {
     text?: string;
     linkType?: "internal" | "external";
@@ -620,13 +621,14 @@ export type PAGE_QUERYResult = {
   } | null;
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      title,      slug    },    externalLink,    openInNewTab  },  heroContentPosition,  content[]{    ...,    _type == "hero" => {      ...,      image{        asset,        hotspot,        crop,        alt,        _type      }    },    _type == "splitImage" => {      ...,      image{        asset,        hotspot,        crop,        _type      }    }  }}
+// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      title,      slug    },    externalLink,    openInNewTab  },  heroContentPosition,  content[]{    ...,    _type == "hero" => {      ...,      image{        asset,        hotspot,        crop,        alt,        _type      }    },    _type == "splitImage" => {      ...,      image{        asset,        hotspot,        crop,        _type      }    }  }}
 export type HOME_PAGE_QUERYResult = {
   _id: string;
   _type: "footer";
   heroImage: null;
   heroTitle: null;
   heroSubtitle: null;
+  enableHeroCallToAction: null;
   heroCallToAction: null;
   heroContentPosition: null;
   content: null;
@@ -636,6 +638,7 @@ export type HOME_PAGE_QUERYResult = {
   heroImage: null;
   heroTitle: null;
   heroSubtitle: null;
+  enableHeroCallToAction: null;
   heroCallToAction: null;
   heroContentPosition: null;
   content: null;
@@ -685,6 +688,7 @@ export type HOME_PAGE_QUERYResult = {
     _type: "image";
     _key: string;
   }> | null;
+  enableHeroCallToAction: boolean | null;
   heroCallToAction: {
     text: string | null;
     linkType: "external" | "internal" | null;
@@ -724,6 +728,7 @@ export type HOME_PAGE_QUERYResult = {
   heroImage: null;
   heroTitle: null;
   heroSubtitle: null;
+  enableHeroCallToAction: null;
   heroCallToAction: null;
   heroContentPosition: null;
   content: Array<{
@@ -749,6 +754,7 @@ export type HOME_PAGE_QUERYResult = {
   heroImage: null;
   heroTitle: null;
   heroSubtitle: null;
+  enableHeroCallToAction: null;
   heroCallToAction: null;
   heroContentPosition: null;
   content: null;
@@ -758,6 +764,7 @@ export type HOME_PAGE_QUERYResult = {
   heroImage: null;
   heroTitle: null;
   heroSubtitle: null;
+  enableHeroCallToAction: null;
   heroCallToAction: null;
   heroContentPosition: null;
   content: null;
@@ -767,6 +774,7 @@ export type HOME_PAGE_QUERYResult = {
   heroImage: null;
   heroTitle: null;
   heroSubtitle: null;
+  enableHeroCallToAction: null;
   heroCallToAction: null;
   heroContentPosition: null;
   content: null;
@@ -776,6 +784,7 @@ export type HOME_PAGE_QUERYResult = {
   heroImage: null;
   heroTitle: null;
   heroSubtitle: null;
+  enableHeroCallToAction: null;
   heroCallToAction: null;
   heroContentPosition: null;
   content: null;
@@ -832,7 +841,7 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt,\n  relatedPosts[]->{\n    _id,\n    title,\n    slug,\n    mainImage{\n      asset,\n      alt\n    },\n    publishedAt\n  }\n}": POST_QUERYResult;
     "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  slug,\n  content[]{\n    ...\n  },\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
-    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalLink,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n    ...,\n    _type == \"hero\" => {\n      ...,\n      image{\n        asset,\n        hotspot,\n        crop,\n        alt,\n        _type\n      }\n    },\n    _type == \"splitImage\" => {\n      ...,\n      image{\n        asset,\n        hotspot,\n        crop,\n        _type\n      }\n    }\n  }\n}": HOME_PAGE_QUERYResult;
+    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalLink,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n    ...,\n    _type == \"hero\" => {\n      ...,\n      image{\n        asset,\n        hotspot,\n        crop,\n        alt,\n        _type\n      }\n    },\n    _type == \"splitImage\" => {\n      ...,\n      image{\n        asset,\n        hotspot,\n        crop,\n        _type\n      }\n    }\n  }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  }\n}": HEADER_QUERYResult;
   }
 }
