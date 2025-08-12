@@ -7,7 +7,6 @@ import { homePageType } from './homePageType';
 import { headerType } from './headerType';
 import { footerType } from './footerType';
 import { pageBuilderType } from './pageBuilderType';
-import { heroType } from './blocks/heroType';
 import { splitImageType } from './blocks/splitImageType';
 import { siteSettingsType } from './siteSettingsType';
 
@@ -20,7 +19,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     headerType,
     footerType,
     pageBuilderType,
-    heroType,
     splitImageType,
     siteSettingsType,
   ],

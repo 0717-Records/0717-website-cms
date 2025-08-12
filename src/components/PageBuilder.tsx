@@ -5,7 +5,6 @@ import type { PAGE_QUERYResult } from '@/sanity/types';
 import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react'; // Changed this import
-import Hero from './blocks/Hero';
 import SplitImage from './blocks/SplitImage';
 
 type PageBuilderProps = {
@@ -50,12 +49,6 @@ const PageBuilder = ({ content, documentId, documentType }: PageBuilderProps) =>
         );
 
         switch (block._type) {
-          case 'hero':
-            return (
-              <DragHandle key={block._key}>
-                <Hero {...block} />
-              </DragHandle>
-            );
           case 'splitImage':
             return (
               <DragHandle key={block._key}>
