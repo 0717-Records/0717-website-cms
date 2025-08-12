@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...tool]]/page.tsx` route
+ * This configuration is used to for the Sanity Studio that's mounted on the `/app/studio/[[...tool]]/page.tsx` route
  */
 
 import { visionTool } from '@sanity/vision';
@@ -39,5 +39,21 @@ export default defineConfig({
   ],
   document: {
     newDocumentOptions: (prev) => prev.filter((item) => item.templateId !== 'siteSettings'),
+  },
+  studio: {
+    components: {
+      layout: (props) => {
+        // Import editor styles
+        if (typeof document !== 'undefined') {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = '/sanity-editor-styles.css';
+          if (!document.head.querySelector('link[href="/sanity-editor-styles.css"]')) {
+            document.head.appendChild(link);
+          }
+        }
+        return props.renderDefault(props);
+      },
+    },
   },
 });

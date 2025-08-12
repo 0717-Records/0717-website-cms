@@ -27,7 +27,39 @@ export type SiteSettings = {
 export type SplitImage = {
   _type: "splitImage";
   orientation?: "imageLeft" | "imageRight";
-  title?: string;
+  content?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "small" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    } | {
+      _key: string;
+    } & Color>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
   image?: {
     asset?: {
       _ref: string;
@@ -596,7 +628,39 @@ export type PAGE_QUERYResult = {
     _key: string;
     _type: "splitImage";
     orientation?: "imageLeft" | "imageRight";
-    title?: string;
+    content?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
     image?: {
       asset?: {
         _ref: string;
@@ -709,7 +773,39 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "splitImage";
     orientation?: "imageLeft" | "imageRight";
-    title?: string;
+    content?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
     image: {
       asset: {
         _ref: string;
@@ -735,7 +831,39 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "splitImage";
     orientation?: "imageLeft" | "imageRight";
-    title?: string;
+    content?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
     image: {
       asset: {
         _ref: string;

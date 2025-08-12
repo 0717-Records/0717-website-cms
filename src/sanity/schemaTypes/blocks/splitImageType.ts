@@ -16,8 +16,9 @@ export const splitImageType = defineType({
       },
     }),
     defineField({
-      name: 'title',
-      type: 'string',
+      name: 'content',
+      type: 'blockContent',
+      title: 'Content',
     }),
     defineField({
       name: 'image',
@@ -27,13 +28,13 @@ export const splitImageType = defineType({
   icon: BlockContentIcon,
   preview: {
     select: {
-      title: 'title',
+      content: 'content',
       media: 'image',
     },
-    prepare({ title, media }) {
+    prepare({ content, media }) {
       return {
-        title: title,
-        subtitle: 'Split Image',
+        title: 'Split Image',
+        subtitle: content ? 'With rich text content' : 'No content',
         media: media ?? BlockContentIcon,
       };
     },

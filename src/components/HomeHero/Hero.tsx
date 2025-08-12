@@ -139,7 +139,7 @@ const Hero = ({
         )}
         {heroSubtitle && (
           <div
-            className='text-2xl sm:text-4xl prose prose-invert max-w-none [&>*]:text-white'
+            className='prose prose-invert max-w-none [&>*]:text-white'
             data-sanity={createDataAttribute({
               ...createDataAttributeConfig,
               id: documentId,
