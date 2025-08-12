@@ -5,6 +5,15 @@ import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { PortableText } from 'next-sanity';
 import { components } from '@/sanity/portableTextComponents';
 import { urlFor } from '@/sanity/lib/image';
+import { createDataAttribute } from 'next-sanity';
+import { client } from '@/sanity/lib/client';
+
+const { projectId, dataset, stega } = client.config();
+const createDataAttributeConfig = {
+  projectId,
+  dataset,
+  baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
+};
 
 interface HeroProps {
   heroImage: NonNullable<HOME_PAGE_QUERYResult>['heroImage'];
@@ -12,6 +21,8 @@ interface HeroProps {
   heroSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroSubtitle'];
   heroCallToAction: NonNullable<HOME_PAGE_QUERYResult>['heroCallToAction'];
   heroContentPosition: NonNullable<HOME_PAGE_QUERYResult>['heroContentPosition'];
+  documentId: string;
+  documentType: string;
 }
 
 const Hero = ({
@@ -20,6 +31,8 @@ const Hero = ({
   heroSubtitle,
   heroCallToAction,
   heroContentPosition,
+  documentId,
+  documentType,
 }: HeroProps) => {
   // Convert single Sanity image to array format for HeroImages component
   const images = heroImage
@@ -33,19 +46,28 @@ const Hero = ({
 
   // Map content position to Tailwind classes
   const getPositionClasses = (position: string) => {
+    // Clean the position string to remove any invisible Unicode characters
+    const cleanPosition =
+      position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
+      'center-center';
+
     const positionMap: Record<string, string> = {
-      'top-left': 'top-10 md:top-20 left-4 md:left-10 lg:left-20 text-left',
-      'top-center': 'top-10 md:top-20 left-1/2 transform -translate-x-1/2 text-center',
-      'top-right': 'top-10 md:top-20 right-4 md:right-10 lg:right-20 text-right',
-      'center-left': 'top-1/2 left-4 md:left-10 lg:left-20 transform -translate-y-1/2 text-left',
-      'center-center': 'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center',
+      'top-left': 'top-4 md:top-10 left-4 md:left-10 lg:left-20 text-left p-4 md:p-0',
+      'top-center': 'top-4 md:top-10 left-1/2 transform -translate-x-1/2 text-center p-4 md:p-0',
+      'top-right': 'top-4 md:top-10 right-4 md:right-10 lg:right-20 text-right p-4 md:p-0',
+      'center-left':
+        'top-1/2 left-4 md:left-10 lg:left-20 transform -translate-y-1/2 text-left p-4 md:p-0',
+      'center-center':
+        'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center p-4 md:p-0',
       'center-right':
-        'top-1/2 right-4 md:right-10 lg:right-20 transform -translate-y-1/2 text-right',
-      'bottom-left': 'bottom-10 md:bottom-20 left-4 md:left-10 lg:left-20 text-left',
-      'bottom-center': 'bottom-10 md:bottom-20 left-1/2 transform -translate-x-1/2 text-center',
-      'bottom-right': 'bottom-10 md:bottom-20 right-4 md:right-10 lg:right-20 text-right',
+        'top-1/2 right-4 md:right-10 lg:right-20 transform -translate-y-1/2 text-right p-4 md:p-0',
+      'bottom-left': 'bottom-4 md:bottom-10 left-4 md:left-10 lg:left-20 text-left p-4 md:p-0',
+      'bottom-center':
+        'bottom-4 md:bottom-10 left-1/2 transform -translate-x-1/2 text-center p-4 md:p-0',
+      'bottom-right': 'bottom-4 md:bottom-10 right-4 md:right-10 lg:right-20 text-right p-4 md:p-0',
     };
-    return positionMap[position] || positionMap['center-center'];
+
+    return positionMap[cleanPosition] || positionMap['center-center'];
   };
 
   const renderCTA = () => {
@@ -84,14 +106,46 @@ const Hero = ({
       {images.length > 0 && <HeroImages images={images} />}
       <div className='absolute inset-0 bg-gradient-to-t from-black from-20% to-transparent opacity-90 z-20' />
       <div
-        className={`absolute z-30 text-white space-y-4 w-full p-4 md:p-0 ${getPositionClasses(heroContentPosition || 'center-center')}`}>
-        {heroTitle && <h1 className='text-4xl sm:text-6xl font-bold'>{heroTitle}</h1>}
+        className={`absolute z-30 text-white space-y-4 ${getPositionClasses(heroContentPosition || 'center-center')}`}
+        data-sanity={createDataAttribute({
+          ...createDataAttributeConfig,
+          id: documentId,
+          type: documentType,
+          path: 'heroContentPosition',
+        }).toString()}>
+        {heroTitle && (
+          <h1
+            className='text-4xl sm:text-6xl font-bold'
+            data-sanity={createDataAttribute({
+              ...createDataAttributeConfig,
+              id: documentId,
+              type: documentType,
+              path: 'heroTitle',
+            }).toString()}>
+            {heroTitle}
+          </h1>
+        )}
         {heroSubtitle && (
-          <div className='text-2xl sm:text-4xl prose prose-invert max-w-none [&>*]:text-white'>
+          <div
+            className='text-2xl sm:text-4xl prose prose-invert max-w-none [&>*]:text-white'
+            data-sanity={createDataAttribute({
+              ...createDataAttributeConfig,
+              id: documentId,
+              type: documentType,
+              path: 'heroSubtitle',
+            }).toString()}>
             <PortableText value={heroSubtitle} components={components} />
           </div>
         )}
-        {renderCTA()}
+        <div
+          data-sanity={createDataAttribute({
+            ...createDataAttributeConfig,
+            id: documentId,
+            type: documentType,
+            path: 'heroCallToAction',
+          }).toString()}>
+          {renderCTA()}
+        </div>
       </div>
     </section>
   );

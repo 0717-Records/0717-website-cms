@@ -7,14 +7,6 @@ import type { PAGE_QUERYResult } from '@/sanity/types';
 const Page = async () => {
   const page = await getHomePage();
 
-  console.log('HOME PAGE DATA:');
-  console.log('Full page object:', page);
-  console.log('Content field:', page?.content);
-  console.log('Hero title:', page?.heroTitle);
-  console.log('Hero subtitle:', page?.heroSubtitle);
-  console.log('Hero image:', page?.heroImage);
-  console.log('Hero CTA:', page?.heroCallToAction);
-
   if (!page) {
     return <div>Page not found</div>;
   }
@@ -28,6 +20,8 @@ const Page = async () => {
         heroSubtitle={page.heroSubtitle}
         heroCallToAction={page.heroCallToAction}
         heroContentPosition={page.heroContentPosition}
+        documentId={page._id}
+        documentType={page._type}
       />
 
       {/* Additional Page Builder Content */}
