@@ -1,0 +1,6 @@
+.hero-height {
+  min-height: 100vh;
+  @media (max-width: 640px) {
+    min-height: 100svh;
+  }
+}
