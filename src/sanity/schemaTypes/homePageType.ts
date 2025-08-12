@@ -128,7 +128,8 @@ export const homePageType = defineType({
       name: 'heroContentPosition',
       type: 'string',
       title: 'Content Position',
-      description: 'Choose where to position the hero content over the image',
+      description:
+        'Choose where to position the hero content over the image. Note: On mobile devices, content is always centered horizontally - only the vertical positioning (top/center/bottom) is applied. Full positioning applies on desktop and larger screens.',
       group: 'hero',
       options: {
         list: [
