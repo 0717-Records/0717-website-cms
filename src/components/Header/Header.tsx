@@ -70,12 +70,12 @@ const Header = ({ headerData }: HeaderProps) => {
               alt={headerData.logo.alt || '07:17 Records'}
               width={200}
               height={125}
-              className='object-contain'
+              className='object-contain w-[160px] md:w-[200px] h-auto'
             />
           ) : (
             <>
-              <span className='text-2xl font-bold'>07:17</span>
-              <span className='hidden md:inline text-lg font-semibold'>Records</span>
+              <span className='text-xl md:text-2xl font-bold'>07:17</span>
+              <span className='hidden md:inline text-sm md:text-lg font-semibold'>Records</span>
             </>
           )}
         </Link>

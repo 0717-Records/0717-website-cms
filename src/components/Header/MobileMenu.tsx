@@ -46,8 +46,8 @@ const MobileMenu = ({ isMenuOpen, onClose, navLinks, headerData }: MobileMenuPro
               <Image
                 src={urlFor(headerData.logo).url()}
                 alt={headerData.logo.alt || '07:17 Records'}
-                width={120}
-                height={75}
+                width={160}
+                height={100}
                 className='object-contain'
               />
             ) : (
@@ -63,8 +63,8 @@ const MobileMenu = ({ isMenuOpen, onClose, navLinks, headerData }: MobileMenuPro
         </div>
 
         {/* Menu Navigation */}
-        <nav className='flex flex-col justify-center flex-1 px-6 py-12'>
-          <ul className='space-y-8'>
+        <nav className='flex flex-col justify-center flex-1 px-10 py-12'>
+          <ul className='space-y-6'>
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
