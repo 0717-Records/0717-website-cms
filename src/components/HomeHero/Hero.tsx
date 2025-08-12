@@ -1,12 +1,12 @@
 import styles from './styles.module.css';
 import HeroImages from './HeroImages';
-import Link from 'next/link';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { PortableText } from 'next-sanity';
 import { components } from '@/sanity/portableTextComponents';
 import { urlFor } from '@/sanity/lib/image';
 import { createDataAttribute } from 'next-sanity';
 import { client } from '@/sanity/lib/client';
+import CTA from '../UI/CTA';
 
 const { projectId, dataset, stega } = client.config();
 const createDataAttributeConfig = {
@@ -80,30 +80,33 @@ const Hero = ({
   const renderCTA = () => {
     if (!heroCallToAction?.text) return null;
 
-    const baseClasses =
-      'inline-block bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200';
-
     if (heroCallToAction.linkType === 'external' && heroCallToAction.externalLink) {
       return (
-        <a
+        <CTA
           href={heroCallToAction.externalLink}
           target={heroCallToAction.openInNewTab ? '_blank' : undefined}
           rel={heroCallToAction.openInNewTab ? 'noopener noreferrer' : undefined}
-          className={baseClasses}>
+          className='bg-white text-black hover:bg-gray-100'>
           {heroCallToAction.text}
-        </a>
+        </CTA>
       );
     }
 
     if (heroCallToAction.linkType === 'internal' && heroCallToAction.internalLink?.slug?.current) {
       return (
-        <Link href={`/${heroCallToAction.internalLink.slug.current}`} className={baseClasses}>
+        <CTA
+          href={`/${heroCallToAction.internalLink.slug.current}`}
+          className='bg-white text-black hover:bg-gray-100'>
           {heroCallToAction.text}
-        </Link>
+        </CTA>
       );
     }
 
-    return <button className={baseClasses}>{heroCallToAction.text}</button>;
+    return (
+      <CTA as='button' className='bg-white text-black hover:bg-gray-100'>
+        {heroCallToAction.text}
+      </CTA>
+    );
   };
 
   return (
