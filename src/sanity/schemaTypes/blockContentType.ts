@@ -61,48 +61,21 @@ export const blockContentType = defineType({
           {
             title: 'Color',
             name: 'color',
-            type: 'object',
+            type: 'color',
             icon: DropIcon,
-            fields: [
-              {
-                title: 'Color',
-                name: 'value',
-                type: 'string',
-                options: {
-                  list: [
-                    { title: 'Default', value: 'default' },
-                    { title: 'Primary', value: 'primary' },
-                    { title: 'Secondary', value: 'secondary' },
-                    { title: 'Accent', value: 'accent' },
-                    { title: 'Muted', value: 'muted' },
-                    { title: 'Success', value: 'success' },
-                    { title: 'Warning', value: 'warning' },
-                    { title: 'Error', value: 'error' },
-                    { title: 'Red', value: 'red' },
-                    { title: 'Blue', value: 'blue' },
-                    { title: 'Green', value: 'green' },
-                    { title: 'Yellow', value: 'yellow' },
-                    { title: 'Purple', value: 'purple' },
-                    { title: 'Pink', value: 'pink' },
-                    { title: 'Gray', value: 'gray' },
-                    { title: 'White', value: 'white' },
-                    { title: 'Black', value: 'black' },
-                  ],
-                  layout: 'dropdown',
-                },
-                initialValue: 'default',
-              },
-            ],
-            preview: {
-              select: {
-                color: 'value',
-              },
-              prepare({ color }) {
-                return {
-                  title: `Color: ${color}`,
-                  subtitle: 'Text color',
-                };
-              },
+            options: {
+              disableAlpha: false,
+              presets: [
+                { color: '#ff0000', title: 'Red' },
+                { color: '#00ff00', title: 'Green' },
+                { color: '#0000ff', title: 'Blue' },
+                { color: '#ffff00', title: 'Yellow' },
+                { color: '#ff00ff', title: 'Magenta' },
+                { color: '#00ffff', title: 'Cyan' },
+                { color: '#000000', title: 'Black' },
+                { color: '#ffffff', title: 'White' },
+                { color: '#808080', title: 'Gray' },
+              ],
             },
           },
         ],

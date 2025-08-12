@@ -8,6 +8,7 @@ import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { presentationTool } from 'sanity/presentation';
+import { colorInput } from '@sanity/color-input';
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from './src/sanity/env';
@@ -34,6 +35,7 @@ export default defineConfig({
         },
       },
     }),
+    colorInput(),
   ],
   document: {
     newDocumentOptions: (prev) => prev.filter((item) => item.templateId !== 'siteSettings'),

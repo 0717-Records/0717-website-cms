@@ -59,7 +59,7 @@ export type Hero = {
       _type: "link";
       _key: string;
     } | {
-      value?: "default" | "primary" | "secondary" | "accent" | "muted" | "success" | "warning" | "error" | "red" | "blue" | "green" | "yellow" | "purple" | "pink" | "gray" | "white" | "black";
+      value?: Color;
       _type: "color";
       _key: string;
     }>;
@@ -204,7 +204,7 @@ export type HomePage = {
       _type: "link";
       _key: string;
     } | {
-      value?: "default" | "primary" | "secondary" | "accent" | "muted" | "success" | "warning" | "error" | "red" | "blue" | "green" | "yellow" | "purple" | "pink" | "gray" | "white" | "black";
+      value?: Color;
       _type: "color";
       _key: string;
     }>;
@@ -305,7 +305,7 @@ export type Post = {
       _type: "link";
       _key: string;
     } | {
-      value?: "default" | "primary" | "secondary" | "accent" | "muted" | "success" | "warning" | "error" | "red" | "blue" | "green" | "yellow" | "purple" | "pink" | "gray" | "white" | "black";
+      value?: Color;
       _type: "color";
       _key: string;
     }>;
@@ -349,7 +349,7 @@ export type BlockContent = Array<{
     _type: "link";
     _key: string;
   } | {
-    value?: "default" | "primary" | "secondary" | "accent" | "muted" | "success" | "warning" | "error" | "red" | "blue" | "green" | "yellow" | "purple" | "pink" | "gray" | "white" | "black";
+    value?: Color;
     _type: "color";
     _key: string;
   }>;
@@ -370,6 +370,39 @@ export type BlockContent = Array<{
   _type: "image";
   _key: string;
 }>;
+
+export type Color = {
+  _type: "color";
+  hex?: string;
+  alpha?: number;
+  hsl?: HslaColor;
+  hsv?: HsvaColor;
+  rgb?: RgbaColor;
+};
+
+export type RgbaColor = {
+  _type: "rgbaColor";
+  r?: number;
+  g?: number;
+  b?: number;
+  a?: number;
+};
+
+export type HsvaColor = {
+  _type: "hsvaColor";
+  h?: number;
+  s?: number;
+  v?: number;
+  a?: number;
+};
+
+export type HslaColor = {
+  _type: "hslaColor";
+  h?: number;
+  s?: number;
+  l?: number;
+  a?: number;
+};
 
 export type SanityImagePaletteSwatch = {
   _type: "sanity.imagePaletteSwatch";
@@ -489,7 +522,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SiteSettings | SplitImage | Hero | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SiteSettings | SplitImage | Hero | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -508,7 +541,7 @@ export type POSTS_QUERYResult = Array<{
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
     listItem?: "bullet";
     markDefs?: Array<{
-      value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+      value?: Color;
       _type: "color";
       _key: string;
     } | {
@@ -564,7 +597,7 @@ export type POST_QUERYResult = {
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
     listItem?: "bullet";
     markDefs?: Array<{
-      value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+      value?: Color;
       _type: "color";
       _key: string;
     } | {
@@ -636,7 +669,7 @@ export type PAGE_QUERYResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
       listItem?: "bullet";
       markDefs?: Array<{
-        value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+        value?: Color;
         _type: "color";
         _key: string;
       } | {
@@ -744,7 +777,7 @@ export type HOME_PAGE_QUERYResult = {
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
     listItem?: "bullet";
     markDefs?: Array<{
-      value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+      value?: Color;
       _type: "color";
       _key: string;
     } | {
@@ -799,7 +832,7 @@ export type HOME_PAGE_QUERYResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
       listItem?: "bullet";
       markDefs?: Array<{
-        value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+        value?: Color;
         _type: "color";
         _key: string;
       } | {
@@ -875,7 +908,7 @@ export type HOME_PAGE_QUERYResult = {
       style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
       listItem?: "bullet";
       markDefs?: Array<{
-        value?: "accent" | "black" | "blue" | "default" | "error" | "gray" | "green" | "muted" | "pink" | "primary" | "purple" | "red" | "secondary" | "success" | "warning" | "white" | "yellow";
+        value?: Color;
         _type: "color";
         _key: string;
       } | {

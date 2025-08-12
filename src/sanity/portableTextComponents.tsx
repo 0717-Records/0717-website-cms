@@ -15,4 +15,9 @@ export const components: PortableTextComponents = {
         />
       ) : null,
   },
+  marks: {
+    color: (props) => {
+      return <span style={{ color: props.value?.hex || '#000000' }}>{props.children}</span>;
+    },
+  },
 };
