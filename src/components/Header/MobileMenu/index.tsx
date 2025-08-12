@@ -70,7 +70,7 @@ const MobileMenu = ({ isMenuOpen, onClose, navLinks, headerData }: MobileMenuPro
         {/* Menu Header */}
         <div className='flex items-center justify-between p-6 border-b border-gray-200'>
           {/* Logo in Menu */}
-          <Link href='/' onClick={onClose} className='flex items-center gap-2'>
+          <Link href='/#home' onClick={onClose} className='flex items-center gap-2'>
             {headerData?.logo ? (
               <Image
                 src={urlFor(headerData.logo).url()}

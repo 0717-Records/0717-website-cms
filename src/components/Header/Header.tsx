@@ -63,7 +63,7 @@ const Header = ({ headerData }: HeaderProps) => {
     <>
       <header className='w-full px-4 md:px-8 h-20 md:h-24 flex items-center justify-between sticky top-0 z-30 bg-white'>
         {/* Logo */}
-        <Link href='/' className='flex items-center gap-2'>
+        <Link href='/#home' className='flex items-center gap-2'>
           {headerData?.logo ? (
             <Image
               src={urlFor(headerData.logo).url()}
