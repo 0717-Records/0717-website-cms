@@ -52,25 +52,26 @@ const Hero = ({
       'center-center';
 
     const positionMap: Record<string, string> = {
-      // Mobile: Always centered horizontally, only vertical positioning applies
+      // Mobile: Always centered horizontally with responsive width, only vertical positioning applies
       // Desktop: Full positioning as specified
       'top-left':
-        'top-4 left-1/2 transform -translate-x-1/2 text-center p-4 md:top-10 md:left-10 lg:left-20 md:transform-none md:translate-x-0 md:text-left md:p-0',
-      'top-center': 'top-4 left-1/2 transform -translate-x-1/2 text-center p-4 md:top-10 md:p-0',
+        'top-4 left-4 right-4 text-center px-4 py-4 md:top-10 md:left-10 lg:left-20 md:right-auto md:text-left md:p-0 md:transform-none md:translate-x-0',
+      'top-center':
+        'top-4 left-4 right-4 text-center px-4 py-4 md:top-10 md:left-1/2 md:right-auto md:transform md:-translate-x-1/2 md:p-0',
       'top-right':
-        'top-4 left-1/2 transform -translate-x-1/2 text-center p-4 md:top-10 md:right-10 lg:right-20 md:left-auto md:transform-none md:translate-x-0 md:text-right md:p-0',
+        'top-4 left-4 right-4 text-center px-4 py-4 md:top-10 md:right-10 lg:right-20 md:left-auto md:text-right md:p-0',
       'center-left':
-        'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center p-4 md:left-10 lg:left-20 md:transform md:-translate-y-1/2 md:translate-x-0 md:text-left md:p-0',
+        'top-1/2 left-4 right-4 transform -translate-y-1/2 text-center px-4 py-4 md:left-10 lg:left-20 md:right-auto md:text-left md:p-0 md:translate-x-0',
       'center-center':
-        'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center p-4 md:p-0',
+        'top-1/2 left-4 right-4 transform -translate-y-1/2 text-center px-4 py-4 md:left-1/2 md:right-auto md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:p-0',
       'center-right':
-        'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center p-4 md:right-10 lg:right-20 md:left-auto md:transform md:-translate-y-1/2 md:translate-x-0 md:text-right md:p-0',
+        'top-1/2 left-4 right-4 transform -translate-y-1/2 text-center px-4 py-4 md:right-10 lg:right-20 md:left-auto md:text-right md:p-0 md:translate-x-0',
       'bottom-left':
-        'bottom-4 left-1/2 transform -translate-x-1/2 text-center p-4 md:bottom-10 md:left-10 lg:left-20 md:transform-none md:translate-x-0 md:text-left md:p-0',
+        'bottom-4 left-4 right-4 text-center px-4 py-4 md:bottom-10 md:left-10 lg:left-20 md:right-auto md:text-left md:p-0',
       'bottom-center':
-        'bottom-4 left-1/2 transform -translate-x-1/2 text-center p-4 md:bottom-10 md:p-0',
+        'bottom-4 left-4 right-4 text-center px-4 py-4 md:bottom-10 md:left-1/2 md:right-auto md:transform md:-translate-x-1/2 md:p-0',
       'bottom-right':
-        'bottom-4 left-1/2 transform -translate-x-1/2 text-center p-4 md:bottom-10 md:right-10 lg:right-20 md:left-auto md:transform-none md:translate-x-0 md:text-right md:p-0',
+        'bottom-4 left-4 right-4 text-center px-4 py-4 md:bottom-10 md:right-10 lg:right-20 md:left-auto md:text-right md:p-0',
     };
 
     return positionMap[cleanPosition] || positionMap['center-center'];
