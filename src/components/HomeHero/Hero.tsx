@@ -86,7 +86,7 @@ const Hero = ({
           href={heroCallToAction.externalLink}
           target={heroCallToAction.openInNewTab ? '_blank' : undefined}
           rel={heroCallToAction.openInNewTab ? 'noopener noreferrer' : undefined}
-          className='bg-white text-black hover:bg-gray-100'>
+          className='border-white text-white hover:bg-white hover:text-black'>
           {heroCallToAction.text}
         </CTA>
       );
@@ -96,14 +96,14 @@ const Hero = ({
       return (
         <CTA
           href={`/${heroCallToAction.internalLink.slug.current}`}
-          className='bg-white text-black hover:bg-gray-100'>
+          className='border-white text-white hover:bg-white hover:text-black'>
           {heroCallToAction.text}
         </CTA>
       );
     }
 
     return (
-      <CTA as='button' className='bg-white text-black hover:bg-gray-100'>
+      <CTA as='button' className='border-white text-white hover:bg-white hover:text-black'>
         {heroCallToAction.text}
       </CTA>
     );
