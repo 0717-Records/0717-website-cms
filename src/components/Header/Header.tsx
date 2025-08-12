@@ -18,7 +18,7 @@ interface HeaderProps {
 
 const Header = ({ headerData }: HeaderProps) => {
   return (
-    <header className='w-full px-4 md:px-8 py-4 flex items-center justify-between backdrop-blur sticky top-0 z-30 border-b'>
+    <header className='w-full px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-30 border-b bg-white'>
       {/* Logo */}
       <Link href='/' className='flex items-center gap-2'>
         {headerData?.logo ? (
