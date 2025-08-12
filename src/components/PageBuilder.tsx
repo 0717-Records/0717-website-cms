@@ -29,7 +29,7 @@ const PageBuilder = ({ content, documentId, documentType }: PageBuilderProps) =>
   }
 
   return (
-    <main
+    <div
       data-sanity={createDataAttribute({
         ...createDataAttributeConfig,
         id: documentId,
@@ -67,7 +67,7 @@ const PageBuilder = ({ content, documentId, documentType }: PageBuilderProps) =>
             return <div>Block not found</div>;
         }
       })}
-    </main>
+    </div>
   );
 };
 
