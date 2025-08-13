@@ -24,6 +24,57 @@ export type SiteSettings = {
   siteDescription?: string;
 };
 
+export type Feature = {
+  _type: "feature";
+  title?: string;
+  description?: string;
+  icon?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  layout?: "card" | "inline" | "banner";
+  content?: Array<{
+    _key: string;
+  } & SplitImage | {
+    _key: string;
+  } & Hero | {
+    _key: string;
+  } & Feature>;
+};
+
+export type Hero = {
+  _type: "hero";
+  title?: string;
+  subtitle?: string;
+  backgroundImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  content?: Array<{
+    _key: string;
+  } & SplitImage | {
+    _key: string;
+  } & Feature | {
+    _key: string;
+  } & Hero>;
+};
+
 export type SplitImage = {
   _type: "splitImage";
   orientation?: "imageLeft" | "imageRight";
@@ -74,9 +125,20 @@ export type SplitImage = {
   };
 };
 
+export type Section = {
+  _type: "section";
+  content?: Array<{
+    _key: string;
+  } & SplitImage | {
+    _key: string;
+  } & Hero | {
+    _key: string;
+  } & Feature>;
+};
+
 export type PageBuilder = Array<{
   _key: string;
-} & SplitImage>;
+} & Section>;
 
 export type Footer = {
   _id: string;
@@ -495,7 +557,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SiteSettings | SplitImage | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SiteSettings | Feature | Hero | SplitImage | Section | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -626,53 +688,14 @@ export type PAGE_QUERYResult = {
   slug: Slug | null;
   content: Array<{
     _key: string;
-    _type: "splitImage";
-    orientation?: "imageLeft" | "imageRight";
+    _type: "section";
     content?: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        _key: string;
-      } & Color | {
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
       _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
+    } & Feature | {
       _key: string;
-    }>;
-    image?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    };
+    } & Hero | {
+      _key: string;
+    } & SplitImage>;
   }> | null;
   mainImage: {
     asset: {
@@ -771,52 +794,14 @@ export type HOME_PAGE_QUERYResult = {
   heroContentPosition: "bottom-center" | "bottom-left" | "bottom-right" | "center-center" | "center-left" | "center-right" | "top-center" | "top-left" | "top-right" | null;
   content: Array<{
     _key: string;
-    _type: "splitImage";
-    orientation?: "imageLeft" | "imageRight";
+    _type: "section";
     content?: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        _key: string;
-      } & Color | {
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
       _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
+    } & Feature | {
       _key: string;
-    }>;
-    image: {
-      asset: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      } | null;
-      hotspot: SanityImageHotspot | null;
-      crop: SanityImageCrop | null;
-      _type: "image";
-    } | null;
+    } & Hero | {
+      _key: string;
+    } & SplitImage>;
   }> | null;
 } | {
   _id: string;
@@ -829,52 +814,14 @@ export type HOME_PAGE_QUERYResult = {
   heroContentPosition: null;
   content: Array<{
     _key: string;
-    _type: "splitImage";
-    orientation?: "imageLeft" | "imageRight";
+    _type: "section";
     content?: Array<{
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "blockquote" | "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        _key: string;
-      } & Color | {
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
       _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
+    } & Feature | {
       _key: string;
-    }>;
-    image: {
-      asset: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      } | null;
-      hotspot: SanityImageHotspot | null;
-      crop: SanityImageCrop | null;
-      _type: "image";
-    } | null;
+    } & Hero | {
+      _key: string;
+    } & SplitImage>;
   }> | null;
 } | {
   _id: string;

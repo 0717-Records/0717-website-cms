@@ -21,7 +21,9 @@ export const pageType = defineType({
     defineField({
       name: 'content',
       type: 'pageBuilder',
-      title: 'Content',
+      title: 'Sections',
+      description:
+        'Build your page by adding sections. Each section can contain different types of content blocks.',
     }),
     defineField({
       name: 'mainImage',

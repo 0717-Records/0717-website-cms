@@ -7,7 +7,10 @@ import { homePageType } from './homePageType';
 import { headerType } from './headerType';
 import { footerType } from './footerType';
 import { pageBuilderType } from './pageBuilderType';
+import { sectionType } from './sectionType';
 import { splitImageType } from './blocks/splitImageType';
+import { heroType } from './blocks/heroType';
+import { featureType } from './blocks/featureType';
 import { siteSettingsType } from './siteSettingsType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -19,7 +22,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     headerType,
     footerType,
     pageBuilderType,
+    sectionType,
     splitImageType,
+    heroType,
+    featureType,
     siteSettingsType,
   ],
 };
