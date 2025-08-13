@@ -115,10 +115,11 @@ const Hero = ({
     <section
       id='home'
       className={`relative ${styles['hero-height']} bg-black flex flex-col justify-center`}>
+      {/* Z-index hierarchy: Images (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
       {images.length > 0 && <HeroImages images={images} />}
       <div className='absolute inset-0 bg-gradient-to-t from-black from-20% to-transparent opacity-90 z-20' />
       <div
-        className={`absolute z-30 text-white space-y-4 ${getPositionClasses(heroContentPosition || 'center-center')}`}
+        className={`absolute z-[25] text-white space-y-4 ${getPositionClasses(heroContentPosition || 'center-center')}`}
         data-sanity={createDataAttribute({
           ...createDataAttributeConfig,
           id: documentId,
