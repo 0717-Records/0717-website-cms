@@ -17,7 +17,8 @@ export const iconListType = defineType({
         ],
         layout: 'radio',
       },
-      initialValue: 'left',
+      initialValue: 'center',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'items',

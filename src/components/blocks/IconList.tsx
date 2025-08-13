@@ -1,15 +1,25 @@
 import React from 'react';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
+import { stegaClean } from 'next-sanity';
 import type { IconListBlock } from '@/types/blocks';
 
 interface IconListProps extends Omit<IconListBlock, '_type' | '_key'> {
   className?: string;
 }
 
-const IconList = ({ items = [], alignment = 'left', className = '' }: IconListProps) => {
+const IconList = ({ items = [], alignment, className = '' }: IconListProps) => {
+  // Clean the alignment value to remove Sanity's stega encoding characters
+  const cleanAlignment = stegaClean(alignment);
+
+  // Ensure we always have a valid alignment value, fallback to 'center'
+  const validAlignment =
+    cleanAlignment && ['left', 'center', 'right'].includes(cleanAlignment)
+      ? cleanAlignment
+      : 'center';
+
   const getAlignmentClass = () => {
-    switch (alignment) {
+    switch (validAlignment) {
       case 'center':
         return 'justify-center';
       case 'right':
@@ -23,9 +33,21 @@ const IconList = ({ items = [], alignment = 'left', className = '' }: IconListPr
     return null;
   }
 
+  // Debug: Add a data attribute to see current alignment in the browser
+  console.log(
+    'IconList alignment received:',
+    alignment,
+    'cleaned:',
+    cleanAlignment,
+    'using:',
+    validAlignment
+  );
+
   return (
     <div className={`py-8 ${className}`.trim()}>
-      <div className={`flex flex-wrap gap-4 md:gap-6 ${getAlignmentClass()}`}>
+      <div
+        className={`flex flex-wrap gap-4 md:gap-6 ${getAlignmentClass()}`}
+        data-alignment={validAlignment}>
         {items.map((item) => (
           <div
             key={item._key}
