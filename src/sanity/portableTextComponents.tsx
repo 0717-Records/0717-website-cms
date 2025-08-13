@@ -4,6 +4,9 @@ import { urlFor } from '@/sanity/lib/image';
 
 export const components: PortableTextComponents = {
   block: {
+    // Default style (what users get when they just start typing)
+    normal: ({ children }) => <p className='text-body-base'>{children}</p>,
+
     // Heading styles - semantic HTML with typography utilities
     h1: ({ children }) => <h1 className='text-h1'>{children}</h1>,
     h2: ({ children }) => <h2 className='text-h2'>{children}</h2>,
@@ -15,7 +18,6 @@ export const components: PortableTextComponents = {
     // Body text styles - using appropriate semantic tags with typography utilities
     'body-xs': ({ children }) => <figcaption className='text-body-xs'>{children}</figcaption>,
     'body-sm': ({ children }) => <p className='text-body-sm'>{children}</p>,
-    'body-base': ({ children }) => <p className='text-body-base'>{children}</p>,
     'body-lg': ({ children }) => <p className='text-body-lg'>{children}</p>,
     'body-xl': ({ children }) => <p className='text-body-xl'>{children}</p>,
     'body-2xl': ({ children }) => <p className='text-body-2xl'>{children}</p>,

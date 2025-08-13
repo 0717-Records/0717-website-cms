@@ -35,7 +35,6 @@ export const blockContentType = defineType({
         // Body Text Styles
         { title: 'Body Text - Extra Small', value: 'body-xs' },
         { title: 'Body Text - Small', value: 'body-sm' },
-        { title: 'Body Text - Base (Default)', value: 'body-base' },
         { title: 'Body Text - Large', value: 'body-lg' },
         { title: 'Body Text - Extra Large', value: 'body-xl' },
         { title: 'Body Text - 2X Large', value: 'body-2xl' },
