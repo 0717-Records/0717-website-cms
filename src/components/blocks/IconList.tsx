@@ -33,16 +33,6 @@ const IconList = ({ items = [], alignment, className = '' }: IconListProps) => {
     return null;
   }
 
-  // Debug: Add a data attribute to see current alignment in the browser
-  console.log(
-    'IconList alignment received:',
-    alignment,
-    'cleaned:',
-    cleanAlignment,
-    'using:',
-    validAlignment
-  );
-
   return (
     <div className={`py-8 ${className}`.trim()}>
       <div
