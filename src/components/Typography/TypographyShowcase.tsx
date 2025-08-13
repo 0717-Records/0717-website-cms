@@ -120,12 +120,24 @@ const TypographyShowcase = () => {
       <div className='space-y-6'>
         <h3 className='text-h3 heading-underline-h3'>Size Comparison</h3>
         <div className='space-y-2'>
-          <h1 className='text-h1'>H1</h1>
-          <h2 className='text-h2 heading-underline-h2'>H2</h2>
-          <h3 className='text-h3 heading-underline-h3'>H3</h3>
-          <h4 className='text-h4 heading-underline-h4'>H4</h4>
-          <h5 className='text-h5 heading-underline-h5'>H5</h5>
-          <h6 className='text-h6 heading-underline-h6'>H6</h6>
+          <div>
+            <h1 className='text-h1'>H1</h1>
+          </div>
+          <div>
+            <h2 className='text-h2 heading-underline-h2'>H2</h2>
+          </div>
+          <div>
+            <h3 className='text-h3 heading-underline-h3'>H3</h3>
+          </div>
+          <div>
+            <h4 className='text-h4 heading-underline-h4'>H4</h4>
+          </div>
+          <div>
+            <h5 className='text-h5 heading-underline-h5'>H5</h5>
+          </div>
+          <div>
+            <h6 className='text-h6 heading-underline-h6'>H6</h6>
+          </div>
           <div className='text-body-3xl block'>Body 3XL</div>
           <div className='text-body-2xl block'>Body 2XL</div>
           <div className='text-body-xl block'>Body XL</div>
