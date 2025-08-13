@@ -24,15 +24,24 @@ export const blockContentType = defineType({
       // you want, and decide how you want to deal with it where you want to
       // use your content.
       styles: [
-        { title: 'Normal', value: 'normal' },
-        { title: 'Small Text', value: 'small' },
-        { title: 'Large Text', value: 'large' },
-        { title: 'H1', value: 'h1' },
-        { title: 'H2', value: 'h2' },
-        { title: 'H3', value: 'h3' },
-        { title: 'H4', value: 'h4' },
-        { title: 'H5', value: 'h5' },
-        { title: 'H6', value: 'h6' },
+        // Heading Styles
+        { title: 'Heading 1 (H1)', value: 'h1' },
+        { title: 'Heading 2 (H2)', value: 'h2' },
+        { title: 'Heading 3 (H3)', value: 'h3' },
+        { title: 'Heading 4 (H4)', value: 'h4' },
+        { title: 'Heading 5 (H5)', value: 'h5' },
+        { title: 'Heading 6 (H6)', value: 'h6' },
+
+        // Body Text Styles
+        { title: 'Body Text - Extra Small', value: 'body-xs' },
+        { title: 'Body Text - Small', value: 'body-sm' },
+        { title: 'Body Text - Base (Default)', value: 'body-base' },
+        { title: 'Body Text - Large', value: 'body-lg' },
+        { title: 'Body Text - Extra Large', value: 'body-xl' },
+        { title: 'Body Text - 2X Large', value: 'body-2xl' },
+        { title: 'Body Text - 3X Large', value: 'body-3xl' },
+
+        // Special Styles
         { title: 'Quote', value: 'blockquote' },
       ],
       lists: [{ title: 'Bullet', value: 'bullet' }],

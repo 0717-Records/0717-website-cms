@@ -4,22 +4,26 @@ import { urlFor } from '@/sanity/lib/image';
 
 export const components: PortableTextComponents = {
   block: {
-    // Text size styles
-    normal: ({ children }) => <p className='text-base leading-relaxed'>{children}</p>,
-    small: ({ children }) => <p className='text-sm leading-relaxed'>{children}</p>,
-    large: ({ children }) => <p className='text-lg leading-relaxed'>{children}</p>,
+    // Heading styles - semantic HTML with typography utilities
+    h1: ({ children }) => <h1 className='text-h1'>{children}</h1>,
+    h2: ({ children }) => <h2 className='text-h2'>{children}</h2>,
+    h3: ({ children }) => <h3 className='text-h3'>{children}</h3>,
+    h4: ({ children }) => <h4 className='text-h4'>{children}</h4>,
+    h5: ({ children }) => <h5 className='text-h5'>{children}</h5>,
+    h6: ({ children }) => <h6 className='text-h6'>{children}</h6>,
 
-    // Heading styles - using semantic HTML with global styles
-    h1: ({ children }) => <h1>{children}</h1>,
-    h2: ({ children }) => <h2>{children}</h2>,
-    h3: ({ children }) => <h3>{children}</h3>,
-    h4: ({ children }) => <h4>{children}</h4>,
-    h5: ({ children }) => <h5>{children}</h5>,
-    h6: ({ children }) => <h6>{children}</h6>,
+    // Body text styles - using appropriate semantic tags with typography utilities
+    'body-xs': ({ children }) => <figcaption className='text-body-xs'>{children}</figcaption>,
+    'body-sm': ({ children }) => <p className='text-body-sm'>{children}</p>,
+    'body-base': ({ children }) => <p className='text-body-base'>{children}</p>,
+    'body-lg': ({ children }) => <p className='text-body-lg'>{children}</p>,
+    'body-xl': ({ children }) => <p className='text-body-xl'>{children}</p>,
+    'body-2xl': ({ children }) => <p className='text-body-2xl'>{children}</p>,
+    'body-3xl': ({ children }) => <p className='text-body-3xl'>{children}</p>,
 
-    // Blockquote style
+    // Special styles
     blockquote: ({ children }) => (
-      <blockquote className='border-l-4 border-brand-primary pl-4 italic text-lg leading-relaxed'>
+      <blockquote className='border-l-4 border-brand-primary pl-4 italic text-body-xl'>
         {children}
       </blockquote>
     ),

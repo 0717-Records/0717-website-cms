@@ -34,7 +34,7 @@ export type SplitImage = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "small" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body-xs" | "body-sm" | "body-base" | "body-lg" | "body-xl" | "body-2xl" | "body-3xl" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -175,7 +175,7 @@ export type HomePage = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "small" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body-xs" | "body-sm" | "body-base" | "body-lg" | "body-xl" | "body-2xl" | "body-3xl" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -275,7 +275,7 @@ export type Post = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "small" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body-xs" | "body-sm" | "body-base" | "body-lg" | "body-xl" | "body-2xl" | "body-3xl" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -317,7 +317,7 @@ export type BlockContent = Array<{
     _type: "span";
     _key: string;
   }>;
-  style?: "normal" | "small" | "large" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body-xs" | "body-sm" | "body-base" | "body-lg" | "body-xl" | "body-2xl" | "body-3xl" | "blockquote";
   listItem?: "bullet";
   markDefs?: Array<{
     href?: string;
@@ -511,7 +511,7 @@ export type POSTS_QUERYResult = Array<{
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
+    style?: "blockquote" | "body-2xl" | "body-3xl" | "body-base" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       _key: string;
@@ -565,7 +565,7 @@ export type POST_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
+    style?: "blockquote" | "body-2xl" | "body-3xl" | "body-base" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       _key: string;
@@ -635,7 +635,7 @@ export type PAGE_QUERYResult = {
         _type: "span";
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
+      style?: "blockquote" | "body-2xl" | "body-3xl" | "body-base" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
       listItem?: "bullet";
       markDefs?: Array<{
         _key: string;
@@ -726,7 +726,7 @@ export type HOME_PAGE_QUERYResult = {
       _type: "span";
       _key: string;
     }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
+    style?: "blockquote" | "body-2xl" | "body-3xl" | "body-base" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
     listItem?: "bullet";
     markDefs?: Array<{
       _key: string;
@@ -780,7 +780,7 @@ export type HOME_PAGE_QUERYResult = {
         _type: "span";
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
+      style?: "blockquote" | "body-2xl" | "body-3xl" | "body-base" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
       listItem?: "bullet";
       markDefs?: Array<{
         _key: string;
@@ -838,7 +838,7 @@ export type HOME_PAGE_QUERYResult = {
         _type: "span";
         _key: string;
       }>;
-      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "large" | "normal" | "small";
+      style?: "blockquote" | "body-2xl" | "body-3xl" | "body-base" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
       listItem?: "bullet";
       markDefs?: Array<{
         _key: string;
