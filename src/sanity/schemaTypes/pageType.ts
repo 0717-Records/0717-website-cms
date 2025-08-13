@@ -21,6 +21,7 @@ export const pageType = defineType({
     defineField({
       name: 'content',
       type: 'pageBuilder',
+      title: 'Content',
     }),
     defineField({
       name: 'mainImage',

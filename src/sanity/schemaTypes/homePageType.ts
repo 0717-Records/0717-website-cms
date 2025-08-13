@@ -13,7 +13,7 @@ export const homePageType = defineType({
     },
     {
       name: 'content',
-      title: 'Page Content',
+      title: 'Content',
     },
   ],
   fields: [
@@ -161,7 +161,7 @@ export const homePageType = defineType({
     defineField({
       name: 'content',
       type: 'pageBuilder',
-      title: 'Page Content',
+      title: 'Content',
       description: 'Additional content blocks for your home page',
       group: 'content',
     }),
