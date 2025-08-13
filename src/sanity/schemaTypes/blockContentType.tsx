@@ -1,5 +1,7 @@
 import { defineType, defineArrayMember } from 'sanity';
 import { ImageIcon, DropIcon } from '@sanity/icons';
+import React from 'react';
+import BodyTextPreview, { type BlockStyleProps } from '../components/BodyTextPreview';
 
 /**
  * This is the schema type for block content used in the post document type
@@ -32,13 +34,49 @@ export const blockContentType = defineType({
         { title: 'Heading 5 (H5)', value: 'h5' },
         { title: 'Heading 6 (H6)', value: 'h6' },
 
-        // Body Text Styles
-        { title: 'Body Text - 3X Large', value: 'body-3xl' },
-        { title: 'Body Text - 2X Large', value: 'body-2xl' },
-        { title: 'Body Text - Extra Large', value: 'body-xl' },
-        { title: 'Body Text - Large', value: 'body-lg' },
-        { title: 'Body Text - Small', value: 'body-sm' },
-        { title: 'Body Text - Extra Small', value: 'body-xs' },
+        // Body Text Styles with custom previews
+        {
+          title: 'Body Text - 3X Large',
+          value: 'body-3xl',
+          component: (props: BlockStyleProps) => (
+            <BodyTextPreview value='body-3xl'>{props.children}</BodyTextPreview>
+          ),
+        },
+        {
+          title: 'Body Text - 2X Large',
+          value: 'body-2xl',
+          component: (props: BlockStyleProps) => (
+            <BodyTextPreview value='body-2xl'>{props.children}</BodyTextPreview>
+          ),
+        },
+        {
+          title: 'Body Text - Extra Large',
+          value: 'body-xl',
+          component: (props: BlockStyleProps) => (
+            <BodyTextPreview value='body-xl'>{props.children}</BodyTextPreview>
+          ),
+        },
+        {
+          title: 'Body Text - Large',
+          value: 'body-lg',
+          component: (props: BlockStyleProps) => (
+            <BodyTextPreview value='body-lg'>{props.children}</BodyTextPreview>
+          ),
+        },
+        {
+          title: 'Body Text - Small',
+          value: 'body-sm',
+          component: (props: BlockStyleProps) => (
+            <BodyTextPreview value='body-sm'>{props.children}</BodyTextPreview>
+          ),
+        },
+        {
+          title: 'Body Text - Extra Small',
+          value: 'body-xs',
+          component: (props: BlockStyleProps) => (
+            <BodyTextPreview value='body-xs'>{props.children}</BodyTextPreview>
+          ),
+        },
 
         // Special Styles
         { title: 'Quote', value: 'blockquote' },

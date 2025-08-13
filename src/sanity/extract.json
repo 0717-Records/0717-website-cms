@@ -179,23 +179,7 @@
                           },
                           {
                             "type": "string",
-                            "value": "body-xs"
-                          },
-                          {
-                            "type": "string",
-                            "value": "body-sm"
-                          },
-                          {
-                            "type": "string",
-                            "value": "body-base"
-                          },
-                          {
-                            "type": "string",
-                            "value": "body-lg"
-                          },
-                          {
-                            "type": "string",
-                            "value": "body-xl"
+                            "value": "body-3xl"
                           },
                           {
                             "type": "string",
@@ -203,7 +187,19 @@
                           },
                           {
                             "type": "string",
-                            "value": "body-3xl"
+                            "value": "body-xl"
+                          },
+                          {
+                            "type": "string",
+                            "value": "body-lg"
+                          },
+                          {
+                            "type": "string",
+                            "value": "body-sm"
+                          },
+                          {
+                            "type": "string",
+                            "value": "body-xs"
                           },
                           {
                             "type": "string",
@@ -1152,23 +1148,7 @@
                         },
                         {
                           "type": "string",
-                          "value": "body-xs"
-                        },
-                        {
-                          "type": "string",
-                          "value": "body-sm"
-                        },
-                        {
-                          "type": "string",
-                          "value": "body-base"
-                        },
-                        {
-                          "type": "string",
-                          "value": "body-lg"
-                        },
-                        {
-                          "type": "string",
-                          "value": "body-xl"
+                          "value": "body-3xl"
                         },
                         {
                           "type": "string",
@@ -1176,7 +1156,19 @@
                         },
                         {
                           "type": "string",
-                          "value": "body-3xl"
+                          "value": "body-xl"
+                        },
+                        {
+                          "type": "string",
+                          "value": "body-lg"
+                        },
+                        {
+                          "type": "string",
+                          "value": "body-sm"
+                        },
+                        {
+                          "type": "string",
+                          "value": "body-xs"
                         },
                         {
                           "type": "string",
@@ -1895,23 +1887,7 @@
                         },
                         {
                           "type": "string",
-                          "value": "body-xs"
-                        },
-                        {
-                          "type": "string",
-                          "value": "body-sm"
-                        },
-                        {
-                          "type": "string",
-                          "value": "body-base"
-                        },
-                        {
-                          "type": "string",
-                          "value": "body-lg"
-                        },
-                        {
-                          "type": "string",
-                          "value": "body-xl"
+                          "value": "body-3xl"
                         },
                         {
                           "type": "string",
@@ -1919,7 +1895,19 @@
                         },
                         {
                           "type": "string",
-                          "value": "body-3xl"
+                          "value": "body-xl"
+                        },
+                        {
+                          "type": "string",
+                          "value": "body-lg"
+                        },
+                        {
+                          "type": "string",
+                          "value": "body-sm"
+                        },
+                        {
+                          "type": "string",
+                          "value": "body-xs"
                         },
                         {
                           "type": "string",
@@ -2253,23 +2241,7 @@
                     },
                     {
                       "type": "string",
-                      "value": "body-xs"
-                    },
-                    {
-                      "type": "string",
-                      "value": "body-sm"
-                    },
-                    {
-                      "type": "string",
-                      "value": "body-base"
-                    },
-                    {
-                      "type": "string",
-                      "value": "body-lg"
-                    },
-                    {
-                      "type": "string",
-                      "value": "body-xl"
+                      "value": "body-3xl"
                     },
                     {
                       "type": "string",
@@ -2277,7 +2249,19 @@
                     },
                     {
                       "type": "string",
-                      "value": "body-3xl"
+                      "value": "body-xl"
+                    },
+                    {
+                      "type": "string",
+                      "value": "body-lg"
+                    },
+                    {
+                      "type": "string",
+                      "value": "body-sm"
+                    },
+                    {
+                      "type": "string",
+                      "value": "body-xs"
                     },
                     {
                       "type": "string",

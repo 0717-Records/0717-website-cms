@@ -22,7 +22,19 @@ html {
   font-variant: normal;
 }
 
-/* Custom Typography Utilities with Responsive Behavior */
+/* Custom Typography Utilities with Responsive Behavior 
+ * 
+ * ⚠️  IMPORTANT: KEEP IN SYNC WITH SANITY PREVIEW COMPONENT ⚠️
+ * These @utility definitions must match the corresponding style values in:
+ * src/sanity/components/BodyTextPreview.tsx
+ * 
+ * When updating typography styles:
+ * 1. Update the @utility definitions below (for frontend rendering)
+ * 2. Update the corresponding values in BodyTextPreview.tsx (for Sanity Studio previews)
+ * 
+ * Both files must have identical font-size, line-height, font-weight, and letter-spacing values
+ * to ensure consistency between Sanity Studio previews and frontend display.
+ */
 
 /* Heading Utilities */
 @utility text-h1 {
@@ -91,7 +103,8 @@ html {
   }
 }
 
-/* Body Text Utilities */
+/* Body Text Utilities 
+ * ⚠️ These values are also duplicated in src/sanity/components/BodyTextPreview.tsx ⚠️ */
 @utility text-body-xs {
   font-size: 0.625rem;
   line-height: 1.5;
