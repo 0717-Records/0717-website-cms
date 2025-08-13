@@ -33,12 +33,12 @@ export const blockContentType = defineType({
         { title: 'Heading 6 (H6)', value: 'h6' },
 
         // Body Text Styles
-        { title: 'Body Text - Extra Small', value: 'body-xs' },
-        { title: 'Body Text - Small', value: 'body-sm' },
-        { title: 'Body Text - Large', value: 'body-lg' },
-        { title: 'Body Text - Extra Large', value: 'body-xl' },
-        { title: 'Body Text - 2X Large', value: 'body-2xl' },
         { title: 'Body Text - 3X Large', value: 'body-3xl' },
+        { title: 'Body Text - 2X Large', value: 'body-2xl' },
+        { title: 'Body Text - Extra Large', value: 'body-xl' },
+        { title: 'Body Text - Large', value: 'body-lg' },
+        { title: 'Body Text - Small', value: 'body-sm' },
+        { title: 'Body Text - Extra Small', value: 'body-xs' },
 
         // Special Styles
         { title: 'Quote', value: 'blockquote' },
