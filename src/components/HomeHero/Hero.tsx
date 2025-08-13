@@ -2,7 +2,7 @@ import styles from './styles.module.css';
 import HeroImages from './HeroImages';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { PortableText } from 'next-sanity';
-import { components } from '@/sanity/portableTextComponents';
+import { heroComponents } from '@/sanity/portableTextComponents';
 import { urlFor } from '@/sanity/lib/image';
 import { createDataAttribute } from 'next-sanity';
 import { client } from '@/sanity/lib/client';
@@ -147,7 +147,7 @@ const Hero = ({
               type: documentType,
               path: 'heroSubtitle',
             }).toString()}>
-            <PortableText value={heroSubtitle} components={components} />
+            <PortableText value={heroSubtitle} components={heroComponents} />
           </div>
         )}
         <div

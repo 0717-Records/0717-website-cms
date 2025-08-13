@@ -11,6 +11,7 @@ This project implements a sophisticated nested block architecture that supports 
 - **Sections** can only be added at the page level
 - **Sections** cannot be nested within other blocks
 - **Sections** provide semantic HTML structure and consistent spacing
+- **Sections** can have optional titles with gradient underlines
 - This ensures proper page hierarchy and accessibility
 
 ### 2. Blocks Can Be Nested Infinitely
@@ -20,7 +21,15 @@ This project implements a sophisticated nested block architecture that supports 
 - This allows for complex, flexible content structures
 - Each block type defines which other blocks it can contain
 
-### 3. Universal Rendering System
+### 4. Gradient Underline System
+
+- **All headings** (h2-h6) automatically get gradient underlines
+- **h1 headings** never get underlines (excluded by design)
+- **Underline thickness** scales responsively with heading level
+- **Developer control** available via `showUnderline` prop
+- **Hero content** automatically has underlines disabled
+
+### 5. Universal Rendering System
 
 - The `BlockRenderer` component handles any block type at any nesting level
 - New block types are automatically supported without changing the renderer

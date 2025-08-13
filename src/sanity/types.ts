@@ -127,6 +127,7 @@ export type SplitImage = {
 
 export type Section = {
   _type: "section";
+  title?: string;
   content?: Array<{
     _key: string;
   } & SplitImage | {
@@ -689,6 +690,7 @@ export type PAGE_QUERYResult = {
   content: Array<{
     _key: string;
     _type: "section";
+    title?: string;
     content?: Array<{
       _key: string;
     } & Feature | {
@@ -795,6 +797,7 @@ export type HOME_PAGE_QUERYResult = {
   content: Array<{
     _key: string;
     _type: "section";
+    title?: string;
     content?: Array<{
       _key: string;
     } & Feature | {
@@ -815,6 +818,7 @@ export type HOME_PAGE_QUERYResult = {
   content: Array<{
     _key: string;
     _type: "section";
+    title?: string;
     content?: Array<{
       _key: string;
     } & Feature | {

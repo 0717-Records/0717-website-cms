@@ -8,6 +8,12 @@ export const sectionType = defineType({
   icon: () => '📄',
   fields: [
     defineField({
+      name: 'title',
+      title: 'Section Title',
+      type: 'string',
+      description: 'Optional title for this section',
+    }),
+    defineField({
       name: 'content',
       title: 'Content',
       type: 'array',
@@ -32,12 +38,13 @@ export const sectionType = defineType({
   ],
   preview: {
     select: {
+      title: 'title',
       content: 'content',
     },
-    prepare({ content }) {
+    prepare({ title, content }) {
       const blockCount = Array.isArray(content) ? content.length : 0;
       return {
-        title: `Section`,
+        title: title || 'Section',
         subtitle: blockCount === 1 ? '1 block' : `${blockCount} blocks`,
       };
     },
