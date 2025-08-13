@@ -46,6 +46,7 @@ export const featureType = defineType({
         // Feature can contain various blocks but NOT sections
         { type: 'splitImage' },
         { type: 'hero' },
+        { type: 'divider' },
         // Features can even contain other features for complex nested structures
         { type: 'feature' },
       ],

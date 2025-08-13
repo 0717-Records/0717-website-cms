@@ -1,5 +1,6 @@
 import React from 'react';
 import Heading from './UI/Heading';
+import Divider from './UI/Divider';
 import { createDataAttribute } from 'next-sanity';
 
 interface SectionProps {
@@ -81,6 +82,7 @@ const Section = ({
                 {subtitle}
               </p>
             )}
+            <Divider />
           </div>
         )}
         {children}

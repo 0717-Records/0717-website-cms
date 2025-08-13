@@ -33,6 +33,7 @@ export const heroType = defineType({
         // Hero can contain other blocks (but NOT sections - sections are root-level only)
         { type: 'splitImage' },
         { type: 'feature' },
+        { type: 'divider' },
         // Can even contain other heroes for complex layouts
         { type: 'hero' },
       ],

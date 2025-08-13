@@ -30,8 +30,12 @@ export interface FeatureBlock extends BaseBlock {
   content?: NestedBlock[];
 }
 
+export interface DividerBlock extends BaseBlock {
+  _type: 'divider';
+}
+
 // Union of all possible block types (current and future)
-export type NestedBlock = SectionBlock | SplitImageBlock | HeroBlock | FeatureBlock;
+export type NestedBlock = SectionBlock | SplitImageBlock | HeroBlock | FeatureBlock | DividerBlock;
 // Add more block types here as needed
 
 // Union of blocks that can contain nested content
@@ -48,4 +52,8 @@ export const isSectionBlock = (block: NestedBlock): block is SectionBlock => {
 
 export const isSplitImageBlock = (block: NestedBlock): block is SplitImageBlock => {
   return block._type === 'splitImage';
+};
+
+export const isDividerBlock = (block: NestedBlock): block is DividerBlock => {
+  return block._type === 'divider';
 };

@@ -8,6 +8,7 @@ import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react';
 import Section from './Section';
 import SplitImage from './blocks/SplitImage';
+import Divider from './UI/Divider';
 
 type PageBuilderProps = {
   content: NonNullable<PAGE_QUERYResult>['content'];
@@ -112,6 +113,13 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
                   <div>Feature Block</div>
                   {renderNestedContent(block.content)}
                 </div>
+              </BlockWrapper>
+            );
+
+          case 'divider':
+            return (
+              <BlockWrapper key={block._key}>
+                <Divider />
               </BlockWrapper>
             );
 

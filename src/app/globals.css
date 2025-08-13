@@ -23,6 +23,11 @@ html {
   font-variant: normal;
 }
 
+/* Brand gradient utility */
+.bg-brand-gradient {
+  background: var(--background-image-brand-gradient);
+}
+
 /* Custom Typography Utilities with Responsive Behavior 
  * 
  * ⚠️  IMPORTANT: KEEP IN SYNC WITH SANITY PREVIEW COMPONENT ⚠️

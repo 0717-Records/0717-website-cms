@@ -24,6 +24,11 @@ export type SiteSettings = {
   siteDescription?: string;
 };
 
+export type Divider = {
+  _type: "divider";
+  style?: "default";
+};
+
 export type Feature = {
   _type: "feature";
   title?: string;
@@ -46,6 +51,8 @@ export type Feature = {
   } & SplitImage | {
     _key: string;
   } & Hero | {
+    _key: string;
+  } & Divider | {
     _key: string;
   } & Feature>;
 };
@@ -71,6 +78,8 @@ export type Hero = {
   } & SplitImage | {
     _key: string;
   } & Feature | {
+    _key: string;
+  } & Divider | {
     _key: string;
   } & Hero>;
 };
@@ -135,7 +144,9 @@ export type Section = {
     _key: string;
   } & Hero | {
     _key: string;
-  } & Feature>;
+  } & Feature | {
+    _key: string;
+  } & Divider>;
 };
 
 export type PageBuilder = Array<{
@@ -559,7 +570,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SiteSettings | Feature | Hero | SplitImage | Section | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SiteSettings | Divider | Feature | Hero | SplitImage | Section | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -695,6 +706,8 @@ export type PAGE_QUERYResult = {
     subtitle?: string;
     content?: Array<{
       _key: string;
+    } & Divider | {
+      _key: string;
     } & Feature | {
       _key: string;
     } & Hero | {
@@ -803,6 +816,8 @@ export type HOME_PAGE_QUERYResult = {
     subtitle?: string;
     content?: Array<{
       _key: string;
+    } & Divider | {
+      _key: string;
     } & Feature | {
       _key: string;
     } & Hero | {
@@ -824,6 +839,8 @@ export type HOME_PAGE_QUERYResult = {
     title?: string;
     subtitle?: string;
     content?: Array<{
+      _key: string;
+    } & Divider | {
       _key: string;
     } & Feature | {
       _key: string;
