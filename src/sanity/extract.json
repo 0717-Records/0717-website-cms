@@ -819,6 +819,13 @@
           },
           "optional": true
         },
+        "subtitle": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "content": {
           "type": "objectAttribute",
           "value": {

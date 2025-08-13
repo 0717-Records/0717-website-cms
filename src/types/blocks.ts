@@ -9,6 +9,7 @@ export interface BaseBlock {
 export interface SectionBlock extends BaseBlock {
   _type: 'section';
   title?: string;
+  subtitle?: string;
   content?: NestedBlock[];
 }
 

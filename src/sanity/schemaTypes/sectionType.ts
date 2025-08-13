@@ -14,6 +14,12 @@ export const sectionType = defineType({
       description: 'Optional title for this section',
     }),
     defineField({
+      name: 'subtitle',
+      title: 'Section Subtitle',
+      type: 'text',
+      description: 'Optional subtitle for this section',
+    }),
+    defineField({
       name: 'content',
       title: 'Content',
       type: 'array',

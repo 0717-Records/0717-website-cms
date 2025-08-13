@@ -74,9 +74,11 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
               <BlockWrapper key={block._key}>
                 <Section
                   title={block.title}
+                  subtitle={block.subtitle}
                   documentId={documentId}
                   documentType={documentType}
-                  titlePath={`${blockPath}.title`}>
+                  titlePath={`${blockPath}.title`}
+                  subtitlePath={`${blockPath}.subtitle`}>
                   {renderNestedContent(block.content)}
                 </Section>
               </BlockWrapper>
