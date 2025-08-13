@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { PortableTextComponents } from 'next-sanity';
 import { urlFor } from '@/sanity/lib/image';
-import Heading from '@/components/UI/Heading';
+import Heading from '@/components/Typography/Heading';
 
 // Default components with gradient underlines
 export const components: PortableTextComponents = {

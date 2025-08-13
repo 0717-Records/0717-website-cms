@@ -6,7 +6,7 @@ import type { NestedBlock } from '@/types/blocks';
 import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react';
-import Section from './Section';
+import Section from './Layout/Section';
 import SplitImage from './blocks/SplitImage';
 import IconList from './blocks/IconList';
 import Divider from './UI/Divider';

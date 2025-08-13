@@ -1,6 +1,6 @@
 import React from 'react';
-import Heading from './UI/Heading';
-import Divider from './UI/Divider';
+import Heading from '../Typography/Heading';
+import Divider from '../UI/Divider';
 import { createDataAttribute } from 'next-sanity';
 
 interface SectionProps {
