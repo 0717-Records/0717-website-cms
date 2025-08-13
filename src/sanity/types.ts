@@ -24,6 +24,29 @@ export type SiteSettings = {
   siteDescription?: string;
 };
 
+export type IconList = {
+  _type: "iconList";
+  alignment?: "left" | "center" | "right";
+  items?: Array<{
+    text?: string;
+    icon?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    _type: "listItem";
+    _key: string;
+  }>;
+};
+
 export type Divider = {
   _type: "divider";
   style?: "default";
@@ -146,7 +169,9 @@ export type Section = {
     _key: string;
   } & Feature | {
     _key: string;
-  } & Divider>;
+  } & Divider | {
+    _key: string;
+  } & IconList>;
 };
 
 export type PageBuilder = Array<{
@@ -570,7 +595,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SiteSettings | Divider | Feature | Hero | SplitImage | Section | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SiteSettings | IconList | Divider | Feature | Hero | SplitImage | Section | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -712,6 +737,8 @@ export type PAGE_QUERYResult = {
       _key: string;
     } & Hero | {
       _key: string;
+    } & IconList | {
+      _key: string;
     } & SplitImage>;
   }> | null;
   mainImage: {
@@ -822,6 +849,8 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & Hero | {
       _key: string;
+    } & IconList | {
+      _key: string;
     } & SplitImage>;
   }> | null;
 } | {
@@ -845,6 +874,8 @@ export type HOME_PAGE_QUERYResult = {
     } & Feature | {
       _key: string;
     } & Hero | {
+      _key: string;
+    } & IconList | {
       _key: string;
     } & SplitImage>;
   }> | null;

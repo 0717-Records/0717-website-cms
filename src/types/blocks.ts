@@ -1,6 +1,8 @@
 // Block types that support unlimited nesting
 // This type represents any block that can contain other blocks
 
+import type { SplitImage, IconList, Divider, Hero, Feature } from '@/sanity/types';
+
 export interface BaseBlock {
   _key: string;
   _type: string;
@@ -13,30 +15,21 @@ export interface SectionBlock extends BaseBlock {
   content?: NestedBlock[];
 }
 
-export interface SplitImageBlock extends BaseBlock {
-  _type: 'splitImage';
-  // SplitImage specific properties would go here
-  [key: string]: unknown; // Temporary until we define exact props
-}
-
-// Future blocks that can contain nested content
-export interface HeroBlock extends BaseBlock {
-  _type: 'hero';
-  content?: NestedBlock[];
-}
-
-export interface FeatureBlock extends BaseBlock {
-  _type: 'feature';
-  content?: NestedBlock[];
-}
-
-export interface DividerBlock extends BaseBlock {
-  _type: 'divider';
-}
+// Use generated Sanity types for proper typing
+export type SplitImageBlock = SplitImage & { _key: string };
+export type IconListBlock = IconList & { _key: string };
+export type DividerBlock = Divider & { _key: string };
+export type HeroBlock = Hero & { _key: string; content?: NestedBlock[] };
+export type FeatureBlock = Feature & { _key: string; content?: NestedBlock[] };
 
 // Union of all possible block types (current and future)
-export type NestedBlock = SectionBlock | SplitImageBlock | HeroBlock | FeatureBlock | DividerBlock;
-// Add more block types here as needed
+export type NestedBlock =
+  | SectionBlock
+  | SplitImageBlock
+  | HeroBlock
+  | FeatureBlock
+  | DividerBlock
+  | IconListBlock;
 
 // Union of blocks that can contain nested content
 export type BlockWithContent = SectionBlock | HeroBlock | FeatureBlock;
@@ -56,4 +49,8 @@ export const isSplitImageBlock = (block: NestedBlock): block is SplitImageBlock 
 
 export const isDividerBlock = (block: NestedBlock): block is DividerBlock => {
   return block._type === 'divider';
+};
+
+export const isIconListBlock = (block: NestedBlock): block is IconListBlock => {
+  return block._type === 'iconList';
 };

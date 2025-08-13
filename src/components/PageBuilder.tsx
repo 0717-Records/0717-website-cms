@@ -8,6 +8,7 @@ import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react';
 import Section from './Section';
 import SplitImage from './blocks/SplitImage';
+import IconList from './blocks/IconList';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -120,6 +121,13 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
             return (
               <BlockWrapper key={block._key}>
                 <Divider />
+              </BlockWrapper>
+            );
+
+          case 'iconList':
+            return (
+              <BlockWrapper key={block._key}>
+                <IconList {...block} />
               </BlockWrapper>
             );
 

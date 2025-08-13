@@ -12,6 +12,7 @@ import { splitImageType } from './blocks/splitImageType';
 import { heroType } from './blocks/heroType';
 import { featureType } from './blocks/featureType';
 import { dividerType } from './blocks/dividerType';
+import { iconListType } from './blocks/iconListType';
 import { siteSettingsType } from './siteSettingsType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -28,6 +29,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     heroType,
     featureType,
     dividerType,
+    iconListType,
     siteSettingsType,
   ],
 };
