@@ -71,6 +71,9 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
           );
         };
 
+        // IMPORTANT: All block types should be wrapped in BlockWrapper to enable Sanity Live Editing.
+        // BlockWrapper provides the necessary data-sanity attributes for visual editing in Sanity Studio.
+        // Only skip BlockWrapper if the block component handles its own Sanity data attributes internally.
         switch (block._type) {
           case 'section':
             return (
@@ -96,16 +99,16 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
 
           case 'itemList':
             return (
-              <div key={block._key}>
+              <BlockWrapper key={block._key}>
                 <ItemList {...block} />
-              </div>
+              </BlockWrapper>
             );
 
           case 'grid':
             return (
-              <div key={block._key}>
+              <BlockWrapper key={block._key}>
                 <Grid {...block} />
-              </div>
+              </BlockWrapper>
             );
 
           case 'richText':
