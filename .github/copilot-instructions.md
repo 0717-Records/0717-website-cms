@@ -59,6 +59,8 @@ This is a Next.js website with Sanity CMS integration. The project uses TypeScri
 - Prefer query result types (e.g., `POSTS_QUERYResult`) over base types
 - Keep queries in `src/sanity/lib/queries.ts`
 - Use `sanityFetch` from live.ts for real-time updates
+- **Implement live editing for all new components and blocks** by adding proper data attributes (see `docs/sanity-live-editing-guide.md` for detailed implementation patterns)
+- When creating new Sanity schema types or blocks, ensure frontend components include the necessary `data-sanity` attributes for presentation view compatibility
 
 ### Component Structure
 
@@ -66,6 +68,7 @@ This is a Next.js website with Sanity CMS integration. The project uses TypeScri
 - Extract business logic to action functions
 - Use proper prop typing
 - Handle loading and error states
+- **Maintain semantic heading hierarchy** (h1 → h2 → h3 → h4 → h5 → h6) to ensure proper document structure and accessibility
 
 ## Naming Conventions
 
@@ -88,6 +91,11 @@ This is a Next.js website with Sanity CMS integration. The project uses TypeScri
 - Prefer utility classes over custom CSS
 - Use responsive prefixes consistently
 - Group related classes logically
+- **Utilize existing global CSS classes and custom utilities** from `src/app/globals.css` before creating new styles:
+  - Typography utilities: `text-h1` through `text-h6`, `text-body-xs` through `text-body-3xl`
+  - Brand gradient utilities: `bg-brand-gradient`, heading underline classes (`heading-underline-h2`, etc.)
+  - CSS custom properties: `--color-brand-primary`, `--color-brand-secondary`, `--color-text-subtle`
+  - Font variant utilities: `font-variant-small-caps`, `font-variant-normal`
 
 ## Common Patterns
 
