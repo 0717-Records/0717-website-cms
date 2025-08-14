@@ -71,7 +71,7 @@ const Section = ({
         {(title || subtitle) && (
           <div className='mb-8 md:mb-12 text-center'>
             {title && (
-              <Heading level='h2' className='mb-6' {...getTitleDataAttribute()}>
+              <Heading level='h2' className='mb-6' showMargin={false} {...getTitleDataAttribute()}>
                 {title}
               </Heading>
             )}

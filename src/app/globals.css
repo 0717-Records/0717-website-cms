@@ -9,11 +9,11 @@
   --background-image-brand-gradient: linear-gradient(to right, #ffea00, #ffc800);
   --background-image-card-gradient: linear-gradient(
     135deg,
-    #fffacc10 0%,
+    #fffacc90 0%,
     #fffef0 25%,
     #ffffff 50%,
     #fffef0 75%,
-    #fffacc10 100%
+    #fffacc90 100%
   );
 }
 

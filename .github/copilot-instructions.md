@@ -70,6 +70,34 @@ This is a Next.js website with Sanity CMS integration. The project uses TypeScri
 - Handle loading and error states
 - **Maintain semantic heading hierarchy** (h1 → h2 → h3 → h4 → h5 → h6) to ensure proper document structure and accessibility
 
+### Block Spacing Standards
+
+**Standardized Block Spacing System:**
+
+- **Between blocks**: `mb-8` (2rem) is automatically applied to all blocks except the last one in a group
+- **Section padding**: `py-16 md:py-24` (4rem/6rem vertical)
+- **Section header spacing**: `mb-8 md:mb-12` (2rem/3rem) for title/subtitle areas
+
+**Implementation:**
+
+- The `PageBuilder` automatically adds `mb-8` to all blocks except the last one
+- Individual components should NOT add their own bottom margins - spacing is handled centrally
+- Last blocks in a group get no bottom margin to avoid conflicting with section padding
+- This ensures consistent spacing across all block combinations
+
+**When adding new block components:**
+
+1. Do NOT add bottom margins (`mb-*`) to the root element
+2. Focus on internal spacing and padding within the component
+3. The PageBuilder will handle spacing between blocks automatically
+4. For standalone components outside of PageBuilder, manually add `mb-8` if needed
+
+**Heading Component Spacing:**
+
+- Headings used in Rich Text content: Default `showMargin={true}` provides `mb-4` spacing
+- Headings used as standalone blocks: Use `showMargin={false}` to rely on PageBuilder spacing
+- Section titles: Use `showMargin={false}` with manual `className='mb-6'` for specific spacing
+
 ## Naming Conventions
 
 ### Files

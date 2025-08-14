@@ -43,11 +43,13 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
 
   return (
     <>
-      {blocks.map((block) => {
+      {blocks.map((block, index) => {
         const blockPath = `${pathPrefix}[_key=="${block._key}"]`;
+        const isLastBlock = index === blocks.length - 1;
 
         const BlockWrapper = ({ children }: { children: React.ReactNode }) => (
           <div
+            className={!isLastBlock ? 'mb-8' : ''}
             data-sanity={createDataAttribute({
               ...createDataAttributeConfig,
               id: documentId,

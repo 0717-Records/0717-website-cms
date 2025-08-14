@@ -7,9 +7,16 @@ interface HeadingProps {
   children: React.ReactNode;
   className?: string;
   showUnderline?: boolean;
+  showMargin?: boolean;
 }
 
-const Heading = ({ level, children, className = '', showUnderline = true }: HeadingProps) => {
+const Heading = ({
+  level,
+  children,
+  className = '',
+  showUnderline = true,
+  showMargin = true,
+}: HeadingProps) => {
   // Get the text utility class for the heading level
   const getTextClass = (level: HeadingLevel) => {
     const textClasses = {
@@ -40,7 +47,8 @@ const Heading = ({ level, children, className = '', showUnderline = true }: Head
 
   const textClass = getTextClass(level);
   const underlineClass = getUnderlineClass(level, showUnderline);
-  const combinedClassName = `${textClass} ${underlineClass} mb-8 ${className}`.trim();
+  const marginClass = showMargin ? 'mb-4' : '';
+  const combinedClassName = `${textClass} ${underlineClass} ${marginClass} ${className}`.trim();
 
   const HeadingTag = level;
 
