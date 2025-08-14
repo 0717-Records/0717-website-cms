@@ -45,9 +45,10 @@ const IconList = ({ items = [], alignment, className = '' }: IconListProps) => {
             {item.icon && item.icon.asset ? (
               <div className='relative w-6 h-6 flex-shrink-0'>
                 <Image
-                  src={urlFor(item.icon).width(24).height(24).url()}
+                  src={urlFor(item.icon).width(72).height(72).url()}
                   alt={item.icon.alt || ''}
                   fill
+                  sizes='24px'
                   className='object-contain'
                 />
               </div>

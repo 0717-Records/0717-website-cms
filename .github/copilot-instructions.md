@@ -193,6 +193,65 @@ export default NavigationComponent
 - Minimize client-side JavaScript when possible
 - Cache data appropriately using Next.js caching strategies
 
+### Image Optimization Best Practices
+
+**Always ensure crisp images on high-DPI displays:**
+
+- **For small icons/images (24px or smaller)**: Request 3x the display size from Sanity (e.g., 72px for 24px display)
+- **For medium images (up to 200px)**: Request 2-3x the display size
+- **For large images**: Use responsive sizing with multiple breakpoints
+
+**Sanity Image Implementation Pattern:**
+
+```tsx
+// ✅ CORRECT - Crisp on all displays
+<Image
+  src={urlFor(image).width(72).height(72).url()}
+  alt={image.alt || ''}
+  fill
+  sizes='24px'
+  className='object-contain'
+/>
+
+// ❌ INCORRECT - Blurry on high-DPI displays
+<Image
+  src={urlFor(image).width(24).height(24).url()}
+  alt={image.alt || ''}
+  fill
+  className='object-contain'
+/>
+```
+
+**Always handle uploading/incomplete images:**
+
+```tsx
+// ✅ CORRECT - Handles uploading state
+{image && image.asset ? (
+  <Image src={urlFor(image).width(72).height(72).url()} ... />
+) : image && !image.asset ? (
+  <div className="loading-placeholder animate-pulse">...</div>
+) : null}
+
+// ❌ INCORRECT - Will crash on uploading images
+{image && (
+  <Image src={urlFor(image).width(72).height(72).url()} ... />
+)}
+```
+
+**Sizing Guidelines:**
+
+- Icons (16-32px display): Request 48-96px from Sanity
+- Small images (32-100px display): Request 96-300px from Sanity
+- Medium images (100-400px display): Request 300-1200px from Sanity
+- Large images (400px+ display): Use responsive sizing with `sizes` attribute
+
+**Always include:**
+
+- `sizes` attribute for responsive images
+- `alt` text from Sanity (with fallback)
+- Asset existence check before rendering
+- Loading state for uploading images
+
 ## Development Workflow
 
 When making changes to code:
