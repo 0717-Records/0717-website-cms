@@ -265,6 +265,26 @@ When making changes to code:
 7. If the dev server was running but gets stopped during the process, note it for restart at the end since it was originally running
 8. Do not start the dev server if it wasn't already running
 
+### File Management Best Practices
+
+**Always use Git commands for file operations to prevent files reappearing:**
+
+- **For renaming files**: Use `git mv old-file.tsx new-file.tsx` instead of `mv`
+- **For deleting files**: Use `git rm file.tsx` instead of `rm`
+- **After file operations**: Note that changes need to be committed manually by the user
+- **Never use terminal `mv` or `rm`** for tracked files - this causes files to reappear when VS Code reopens
+
+**Proper file operation workflow:**
+
+```bash
+# ✅ CORRECT - Git tracks the changes
+git mv src/components/OldComponent.tsx src/components/NewComponent.tsx
+# User will commit manually when ready
+
+# ❌ INCORRECT - File will reappear as untracked
+mv src/components/OldComponent.tsx src/components/NewComponent.tsx
+```
+
 ## Dependencies to Favor
 
 - Next.js App Router patterns
