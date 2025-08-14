@@ -78,7 +78,7 @@ export const itemListType = defineType({
             ? 'right-aligned'
             : 'left-aligned';
       return {
-        title: `Icon List (${itemCount} items)`,
+        title: `Item List (${itemCount} items)`,
         subtitle: `${alignmentText}`,
       };
     },
