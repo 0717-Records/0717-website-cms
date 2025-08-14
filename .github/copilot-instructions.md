@@ -271,18 +271,23 @@ When making changes to code:
 
 - **For renaming files**: Use `git mv old-file.tsx new-file.tsx` instead of `mv`
 - **For deleting files**: Use `git rm file.tsx` instead of `rm`
-- **After file operations**: Note that changes need to be committed manually by the user
+- **After file operations**: Leave all changes for the user to manually stage and commit outside of the copilot chat
 - **Never use terminal `mv` or `rm`** for tracked files - this causes files to reappear when VS Code reopens
+- **Never run `git add` or `git commit`** - the user will handle staging and committing manually outside of the copilot chat
 
 **Proper file operation workflow:**
 
 ```bash
-# ✅ CORRECT - Git tracks the changes
+# ✅ CORRECT - Git tracks the changes, user handles staging/committing
 git mv src/components/OldComponent.tsx src/components/NewComponent.tsx
-# User will commit manually when ready
+# Leave changes unstaged for user to review and commit when ready
 
 # ❌ INCORRECT - File will reappear as untracked
 mv src/components/OldComponent.tsx src/components/NewComponent.tsx
+
+# ❌ INCORRECT - Don't stage or commit automatically
+git add .
+git commit -m "..."
 ```
 
 ## Dependencies to Favor
