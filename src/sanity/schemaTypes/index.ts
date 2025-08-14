@@ -13,6 +13,7 @@ import { heroType } from './blocks/heroType';
 import { featureType } from './blocks/featureType';
 import { dividerType } from './blocks/dividerType';
 import { itemListType } from './blocks/itemListType';
+import { gridType } from './blocks/gridType';
 import { siteSettingsType } from './siteSettingsType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -30,6 +31,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     featureType,
     dividerType,
     itemListType,
+    gridType,
     siteSettingsType,
   ],
 };

@@ -9,6 +9,7 @@ import { useOptimistic } from 'react';
 import Section from './Layout/Section';
 import SplitImage from './blocks/SplitImage';
 import ItemList from './blocks/ItemList';
+import Grid from './blocks/Grid';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -128,6 +129,13 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
             return (
               <div key={block._key}>
                 <ItemList {...block} />
+              </div>
+            );
+
+          case 'grid':
+            return (
+              <div key={block._key}>
+                <Grid {...block} />
               </div>
             );
 
