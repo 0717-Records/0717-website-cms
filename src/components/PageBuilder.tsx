@@ -9,6 +9,7 @@ import { useOptimistic } from 'react';
 import Section from './Layout/Section';
 import ItemList from './blocks/ItemList';
 import Grid from './blocks/Grid';
+import RichText from './blocks/RichText';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -105,6 +106,13 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
               <div key={block._key}>
                 <Grid {...block} />
               </div>
+            );
+
+          case 'richText':
+            return (
+              <BlockWrapper key={block._key}>
+                <RichText {...block} />
+              </BlockWrapper>
             );
 
           default: {

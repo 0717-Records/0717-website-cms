@@ -1,7 +1,7 @@
 // Block types that support unlimited nesting
 // This type represents any block that can contain other blocks
 
-import type { ItemList, Divider, Grid } from '@/sanity/types';
+import type { ItemList, Divider, Grid, RichText } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -19,9 +19,10 @@ export interface SectionBlock extends BaseBlock {
 export type ItemListBlock = ItemList & { _key: string };
 export type DividerBlock = Divider & { _key: string };
 export type GridBlock = Grid & { _key: string };
+export type RichTextBlock = RichText & { _key: string };
 
 // Union of all possible block types (current and future)
-export type NestedBlock = SectionBlock | DividerBlock | ItemListBlock | GridBlock;
+export type NestedBlock = SectionBlock | DividerBlock | ItemListBlock | GridBlock | RichTextBlock;
 
 // Union of blocks that can contain nested content
 export type BlockWithContent = SectionBlock | GridBlock;
@@ -45,4 +46,8 @@ export const isItemListBlock = (block: NestedBlock): block is ItemListBlock => {
 
 export const isGridBlock = (block: NestedBlock): block is GridBlock => {
   return block._type === 'grid';
+};
+
+export const isRichTextBlock = (block: NestedBlock): block is RichTextBlock => {
+  return block._type === 'richText';
 };

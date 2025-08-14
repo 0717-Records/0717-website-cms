@@ -2,6 +2,7 @@ import React from 'react';
 import { stegaClean } from 'next-sanity';
 import type { GridBlock } from '@/types/blocks';
 import ItemList from './ItemList';
+import RichText from './RichText';
 import Divider from '../UI/Divider';
 
 interface GridProps extends Omit<GridBlock, '_type' | '_key'> {
@@ -62,6 +63,9 @@ const Grid = ({ items = [], columns, alignment, className = '' }: GridProps) => 
                 return <ItemList {...(item as any)} />;
               case 'divider':
                 return <Divider />;
+              case 'richText':
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                return <RichText {...(item as any)} />;
               default:
                 // This should never happen with proper typing
                 return <div className='text-gray-500 text-center p-4'>Unknown block type</div>;
