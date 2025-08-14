@@ -42,7 +42,7 @@ const IconList = ({ items = [], alignment, className = '' }: IconListProps) => {
           <div
             key={item._key}
             className='group flex items-center gap-3 px-4 py-3 rounded-2xl border border-gray-200'>
-            {item.icon && (
+            {item.icon && item.icon.asset ? (
               <div className='relative w-6 h-6 flex-shrink-0'>
                 <Image
                   src={urlFor(item.icon).width(24).height(24).url()}
@@ -51,7 +51,11 @@ const IconList = ({ items = [], alignment, className = '' }: IconListProps) => {
                   className='object-contain'
                 />
               </div>
-            )}
+            ) : item.icon && !item.icon.asset ? (
+              <div className='w-6 h-6 flex-shrink-0 bg-gray-100 border border-gray-200 rounded flex items-center justify-center'>
+                <div className='w-3 h-3 bg-gray-300 rounded animate-pulse'></div>
+              </div>
+            ) : null}
             <span className='text-body-lg font-medium text-gray-800 whitespace-nowrap'>
               {item.text}
             </span>
