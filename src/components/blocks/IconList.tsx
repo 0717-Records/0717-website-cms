@@ -41,7 +41,7 @@ const IconList = ({ items = [], alignment, className = '' }: IconListProps) => {
         {items.map((item) => (
           <div
             key={item._key}
-            className='group flex items-center gap-3 px-4 py-3 rounded-full border border-brand-secondary/20 bg-brand-secondary/5 transition-all duration-300 hover:border-brand-secondary/40 hover:bg-brand-secondary/10 hover:shadow-md hover:-translate-y-0.5'>
+            className='group flex items-center gap-3 px-4 py-3 rounded-2xl border border-gray-200'>
             {item.icon && (
               <div className='relative w-6 h-6 flex-shrink-0'>
                 <Image
@@ -52,7 +52,7 @@ const IconList = ({ items = [], alignment, className = '' }: IconListProps) => {
                 />
               </div>
             )}
-            <span className='text-body-base font-medium text-gray-800 whitespace-nowrap'>
+            <span className='text-body-lg font-medium text-gray-800 whitespace-nowrap'>
               {item.text}
             </span>
           </div>
