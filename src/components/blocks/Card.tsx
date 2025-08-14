@@ -29,8 +29,8 @@ const Card = ({
   return (
     <div
       className={`
-        bg-yellow-50 
-        border border-gray-300 
+        bg-card-gradient 
+        border border-gray-200 
         rounded-lg 
         p-6 md:p-10 
         w-full 

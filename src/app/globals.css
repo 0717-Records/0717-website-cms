@@ -7,6 +7,14 @@
   --color-brand-secondary: #f4a300;
   --color-text-subtle: #6b7280;
   --background-image-brand-gradient: linear-gradient(to right, #ffea00, #ffc800);
+  --background-image-card-gradient: linear-gradient(
+    135deg,
+    #fffacc10 0%,
+    #fffef0 25%,
+    #ffffff 50%,
+    #fffef0 75%,
+    #fffacc10 100%
+  );
 }
 
 /* Base styles */
@@ -26,6 +34,11 @@ html {
 /* Brand gradient utility */
 .bg-brand-gradient {
   background: var(--background-image-brand-gradient);
+}
+
+/* Card gradient utility */
+.bg-card-gradient {
+  background: var(--background-image-card-gradient);
 }
 
 /* Custom Typography Utilities with Responsive Behavior 
