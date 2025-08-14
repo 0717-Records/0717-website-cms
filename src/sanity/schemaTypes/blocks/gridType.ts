@@ -43,6 +43,8 @@ export const gridType = defineType({
         defineArrayMember({ type: 'itemList' }),
         defineArrayMember({ type: 'divider' }),
         defineArrayMember({ type: 'richText' }),
+        defineArrayMember({ type: 'card' }),
+        defineArrayMember({ type: 'cardGrid' }),
       ],
       validation: (Rule) => Rule.min(1).max(12),
     }),

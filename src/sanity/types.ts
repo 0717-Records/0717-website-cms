@@ -13,6 +13,25 @@
  */
 
 // Source: schema.json
+export type CardGrid = {
+  _type: "cardGrid";
+  columns?: "2" | "3" | "4";
+  cards?: Array<{
+    _key: string;
+  } & Card>;
+};
+
+export type Card = {
+  _type: "card";
+  content?: Array<{
+    _key: string;
+  } & Divider | {
+    _key: string;
+  } & ItemList | {
+    _key: string;
+  } & RichText>;
+};
+
 export type RichText = {
   _type: "richText";
   content?: Array<{
@@ -60,7 +79,11 @@ export type Grid = {
     _key: string;
   } & Divider | {
     _key: string;
-  } & RichText>;
+  } & RichText | {
+    _key: string;
+  } & Card | {
+    _key: string;
+  } & CardGrid>;
 };
 
 export type ItemList = {
@@ -103,7 +126,11 @@ export type Section = {
     _key: string;
   } & Grid | {
     _key: string;
-  } & RichText>;
+  } & RichText | {
+    _key: string;
+  } & Card | {
+    _key: string;
+  } & CardGrid>;
 };
 
 export type PageBuilder = Array<{
@@ -474,7 +501,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = RichText | Grid | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = CardGrid | Card | RichText | Grid | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -545,6 +572,10 @@ export type PAGE_QUERYResult = {
     title?: string;
     subtitle?: string;
     content?: Array<{
+      _key: string;
+    } & Card | {
+      _key: string;
+    } & CardGrid | {
       _key: string;
     } & Divider | {
       _key: string;
@@ -624,6 +655,10 @@ export type HOME_PAGE_QUERYResult = {
     subtitle?: string;
     content?: Array<{
       _key: string;
+    } & Card | {
+      _key: string;
+    } & CardGrid | {
+      _key: string;
     } & Divider | {
       _key: string;
     } & Grid | {
@@ -647,6 +682,10 @@ export type HOME_PAGE_QUERYResult = {
     title?: string;
     subtitle?: string;
     content?: Array<{
+      _key: string;
+    } & Card | {
+      _key: string;
+    } & CardGrid | {
       _key: string;
     } & Divider | {
       _key: string;

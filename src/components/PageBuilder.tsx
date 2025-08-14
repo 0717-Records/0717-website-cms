@@ -10,6 +10,8 @@ import Section from './Layout/Section';
 import ItemList from './blocks/ItemList';
 import Grid from './blocks/Grid';
 import RichText from './blocks/RichText';
+import Card from './blocks/Card';
+import CardGrid from './blocks/CardGrid';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -115,6 +117,20 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
             return (
               <BlockWrapper key={block._key}>
                 <RichText {...block} />
+              </BlockWrapper>
+            );
+
+          case 'card':
+            return (
+              <BlockWrapper key={block._key}>
+                <Card {...block} />
+              </BlockWrapper>
+            );
+
+          case 'cardGrid':
+            return (
+              <BlockWrapper key={block._key}>
+                <CardGrid {...block} />
               </BlockWrapper>
             );
 

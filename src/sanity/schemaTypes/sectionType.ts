@@ -28,6 +28,8 @@ export const sectionType = defineType({
         defineArrayMember({ type: 'itemList' }),
         defineArrayMember({ type: 'grid' }),
         defineArrayMember({ type: 'richText' }),
+        defineArrayMember({ type: 'card' }),
+        defineArrayMember({ type: 'cardGrid' }),
         // Add other block types here as you create them
         // Note: Sections cannot contain other sections - sections are root-level only
       ],
