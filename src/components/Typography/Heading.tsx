@@ -40,7 +40,7 @@ const Heading = ({ level, children, className = '', showUnderline = true }: Head
 
   const textClass = getTextClass(level);
   const underlineClass = getUnderlineClass(level, showUnderline);
-  const combinedClassName = `${textClass} ${underlineClass} ${className}`.trim();
+  const combinedClassName = `${textClass} ${underlineClass} mb-8 ${className}`.trim();
 
   const HeadingTag = level;
 
