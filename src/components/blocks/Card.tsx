@@ -32,7 +32,7 @@ const Card = ({
         bg-yellow-50 
         border border-gray-300 
         rounded-lg 
-        p-6 
+        p-6 md:p-10 
         w-full 
         flex 
         flex-col 
