@@ -1,7 +1,7 @@
 // Block types that support unlimited nesting
 // This type represents any block that can contain other blocks
 
-import type { SplitImage, IconList, Divider, Hero, Feature } from '@/sanity/types';
+import type { SplitImage, ItemList, Divider, Hero, Feature } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -17,7 +17,7 @@ export interface SectionBlock extends BaseBlock {
 
 // Use generated Sanity types for proper typing
 export type SplitImageBlock = SplitImage & { _key: string };
-export type IconListBlock = IconList & { _key: string };
+export type ItemListBlock = ItemList & { _key: string };
 export type DividerBlock = Divider & { _key: string };
 export type HeroBlock = Hero & { _key: string; content?: NestedBlock[] };
 export type FeatureBlock = Feature & { _key: string; content?: NestedBlock[] };
@@ -29,7 +29,7 @@ export type NestedBlock =
   | HeroBlock
   | FeatureBlock
   | DividerBlock
-  | IconListBlock;
+  | ItemListBlock;
 
 // Union of blocks that can contain nested content
 export type BlockWithContent = SectionBlock | HeroBlock | FeatureBlock;
@@ -51,6 +51,6 @@ export const isDividerBlock = (block: NestedBlock): block is DividerBlock => {
   return block._type === 'divider';
 };
 
-export const isIconListBlock = (block: NestedBlock): block is IconListBlock => {
-  return block._type === 'iconList';
+export const isItemListBlock = (block: NestedBlock): block is ItemListBlock => {
+  return block._type === 'itemList';
 };

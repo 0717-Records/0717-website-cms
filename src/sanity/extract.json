@@ -58,7 +58,7 @@
     }
   },
   {
-    "name": "iconList",
+    "name": "itemList",
     "type": "type",
     "value": {
       "type": "object",
@@ -67,7 +67,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "iconList"
+            "value": "itemList"
           }
         },
         "alignment": {
@@ -1114,7 +1114,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "iconList"
+                    "name": "itemList"
                   }
                 }
               ]

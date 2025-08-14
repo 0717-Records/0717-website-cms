@@ -2,13 +2,13 @@ import React from 'react';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { stegaClean } from 'next-sanity';
-import type { IconListBlock } from '@/types/blocks';
+import type { ItemListBlock } from '@/types/blocks';
 
-interface IconListProps extends Omit<IconListBlock, '_type' | '_key'> {
+interface ItemListProps extends Omit<ItemListBlock, '_type' | '_key'> {
   className?: string;
 }
 
-const IconList = ({ items = [], alignment, className = '' }: IconListProps) => {
+const ItemList = ({ items = [], alignment, className = '' }: ItemListProps) => {
   // Clean the alignment value to remove Sanity's stega encoding characters
   const cleanAlignment = stegaClean(alignment);
 
@@ -67,4 +67,4 @@ const IconList = ({ items = [], alignment, className = '' }: IconListProps) => {
   );
 };
 
-export default IconList;
+export default ItemList;

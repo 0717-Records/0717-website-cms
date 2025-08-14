@@ -28,7 +28,7 @@ export const sectionType = defineType({
         defineArrayMember({ type: 'hero' }),
         defineArrayMember({ type: 'feature' }),
         defineArrayMember({ type: 'divider' }),
-        defineArrayMember({ type: 'iconList' }),
+        defineArrayMember({ type: 'itemList' }),
         // Add other block types here as you create them
         // Note: Sections cannot contain other sections - sections are root-level only
       ],

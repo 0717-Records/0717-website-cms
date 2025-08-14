@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity';
 
-export const iconListType = defineType({
-  name: 'iconList',
-  title: 'Icon List',
+export const itemListType = defineType({
+  name: 'itemList',
+  title: 'Item List',
   type: 'object',
   fields: [
     defineField({

@@ -24,8 +24,8 @@ export type SiteSettings = {
   siteDescription?: string;
 };
 
-export type IconList = {
-  _type: "iconList";
+export type ItemList = {
+  _type: "itemList";
   alignment?: "left" | "center" | "right";
   items?: Array<{
     text?: string;
@@ -171,7 +171,7 @@ export type Section = {
     _key: string;
   } & Divider | {
     _key: string;
-  } & IconList>;
+  } & ItemList>;
 };
 
 export type PageBuilder = Array<{
@@ -595,7 +595,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SiteSettings | IconList | Divider | Feature | Hero | SplitImage | Section | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SiteSettings | ItemList | Divider | Feature | Hero | SplitImage | Section | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -737,7 +737,7 @@ export type PAGE_QUERYResult = {
       _key: string;
     } & Hero | {
       _key: string;
-    } & IconList | {
+    } & ItemList | {
       _key: string;
     } & SplitImage>;
   }> | null;
@@ -849,7 +849,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & Hero | {
       _key: string;
-    } & IconList | {
+    } & ItemList | {
       _key: string;
     } & SplitImage>;
   }> | null;
@@ -875,7 +875,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & Hero | {
       _key: string;
-    } & IconList | {
+    } & ItemList | {
       _key: string;
     } & SplitImage>;
   }> | null;
