@@ -37,6 +37,7 @@ const Card = ({
         flex 
         flex-col 
         items-center 
+        text-center 
         ${className}
       `.trim()}>
       <div className='w-full space-y-4'>
