@@ -13,32 +13,15 @@
  */
 
 // Source: schema.json
-export type SiteSettings = {
-  _id: string;
-  _type: "siteSettings";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  siteTitle?: string;
-  companyEmail?: string;
-  siteDescription?: string;
-};
-
 export type Grid = {
   _type: "grid";
   columns?: "2" | "3" | "4";
   alignment?: "left" | "center" | "right";
   items?: Array<{
     _key: string;
-  } & SplitImage | {
-    _key: string;
   } & ItemList | {
     _key: string;
-  } & Divider | {
-    _key: string;
-  } & Hero | {
-    _key: string;
-  } & Feature>;
+  } & Divider>;
 };
 
 export type ItemList = {
@@ -69,122 +52,11 @@ export type Divider = {
   style?: "default";
 };
 
-export type Feature = {
-  _type: "feature";
-  title?: string;
-  description?: string;
-  icon?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  layout?: "card" | "inline" | "banner";
-  content?: Array<{
-    _key: string;
-  } & SplitImage | {
-    _key: string;
-  } & Hero | {
-    _key: string;
-  } & Divider | {
-    _key: string;
-  } & Feature>;
-};
-
-export type Hero = {
-  _type: "hero";
-  title?: string;
-  subtitle?: string;
-  backgroundImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  content?: Array<{
-    _key: string;
-  } & SplitImage | {
-    _key: string;
-  } & Feature | {
-    _key: string;
-  } & Divider | {
-    _key: string;
-  } & Hero>;
-};
-
-export type SplitImage = {
-  _type: "splitImage";
-  orientation?: "imageLeft" | "imageRight";
-  content?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    } | {
-      _key: string;
-    } & Color>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-};
-
 export type Section = {
   _type: "section";
   title?: string;
   subtitle?: string;
   content?: Array<{
-    _key: string;
-  } & SplitImage | {
-    _key: string;
-  } & Hero | {
-    _key: string;
-  } & Feature | {
     _key: string;
   } & Divider | {
     _key: string;
@@ -267,6 +139,72 @@ export type Header = {
   };
 };
 
+export type BlockContent = Array<{
+  children?: Array<{
+    marks?: Array<string>;
+    text?: string;
+    _type: "span";
+    _key: string;
+  }>;
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
+  listItem?: "bullet";
+  markDefs?: Array<{
+    href?: string;
+    _type: "link";
+    _key: string;
+  } | {
+    _key: string;
+  } & Color>;
+  level?: number;
+  _type: "block";
+  _key: string;
+} | {
+  asset?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+  };
+  media?: unknown;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  alt?: string;
+  _type: "image";
+  _key: string;
+}>;
+
+export type Post = {
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  publishedAt?: string;
+  body?: BlockContent;
+  relatedPosts?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "post";
+  }>;
+};
+
 export type HomePage = {
   _id: string;
   _type: "homePage";
@@ -287,39 +225,7 @@ export type HomePage = {
     _type: "image";
   };
   heroTitle?: string;
-  heroSubtitle?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    } | {
-      _key: string;
-    } & Color>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
+  heroSubtitle?: BlockContent;
   enableHeroCallToAction?: boolean;
   heroCallToAction?: {
     text?: string;
@@ -365,103 +271,16 @@ export type Page = {
   };
 };
 
-export type Post = {
+export type SiteSettings = {
   _id: string;
-  _type: "post";
+  _type: "siteSettings";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
-  slug?: Slug;
-  mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  publishedAt?: string;
-  body?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    } | {
-      _key: string;
-    } & Color>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  relatedPosts?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "post";
-  }>;
+  siteTitle?: string;
+  companyEmail?: string;
+  siteDescription?: string;
 };
-
-export type BlockContent = Array<{
-  children?: Array<{
-    marks?: Array<string>;
-    text?: string;
-    _type: "span";
-    _key: string;
-  }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
-  listItem?: "bullet";
-  markDefs?: Array<{
-    href?: string;
-    _type: "link";
-    _key: string;
-  } | {
-    _key: string;
-  } & Color>;
-  level?: number;
-  _type: "block";
-  _key: string;
-} | {
-  asset?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-  };
-  media?: unknown;
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  alt?: string;
-  _type: "image";
-  _key: string;
-}>;
 
 export type Color = {
   _type: "color";
@@ -614,7 +433,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SiteSettings | Grid | ItemList | Divider | Feature | Hero | SplitImage | Section | PageBuilder | Footer | Header | HomePage | Page | Post | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Grid | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -623,39 +442,7 @@ export type POSTS_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
-  body: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      _key: string;
-    } & Color | {
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
+  body: BlockContent | null;
   mainImage: {
     asset: {
       _ref: string;
@@ -677,39 +464,7 @@ export type POSTS_SLUGS_QUERYResult = Array<{
 export type POST_QUERYResult = {
   _id: string;
   title: string | null;
-  body: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      _key: string;
-    } & Color | {
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
+  body: BlockContent | null;
   mainImage: {
     asset: {
       _ref: string;
@@ -752,15 +507,9 @@ export type PAGE_QUERYResult = {
       _key: string;
     } & Divider | {
       _key: string;
-    } & Feature | {
-      _key: string;
     } & Grid | {
       _key: string;
-    } & Hero | {
-      _key: string;
-    } & ItemList | {
-      _key: string;
-    } & SplitImage>;
+    } & ItemList>;
   }> | null;
   mainImage: {
     asset: {
@@ -773,7 +522,7 @@ export type PAGE_QUERYResult = {
   } | null;
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      title,      slug    },    externalLink,    openInNewTab  },  heroContentPosition,  content[]{    ...,    _type == "hero" => {      ...,      image{        asset,        hotspot,        crop,        alt,        _type      }    },    _type == "splitImage" => {      ...,      image{        asset,        hotspot,        crop,        _type      }    }  }}
+// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      title,      slug    },    externalLink,    openInNewTab  },  heroContentPosition,  content[]{    ...,  }}
 export type HOME_PAGE_QUERYResult = {
   _id: string;
   _type: "footer";
@@ -807,39 +556,7 @@ export type HOME_PAGE_QUERYResult = {
     alt: string | null;
   } | null;
   heroTitle: string | null;
-  heroSubtitle: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      _key: string;
-    } & Color | {
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
+  heroSubtitle: BlockContent | null;
   enableHeroCallToAction: boolean | null;
   heroCallToAction: {
     text: string | null;
@@ -866,15 +583,9 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & Divider | {
       _key: string;
-    } & Feature | {
-      _key: string;
     } & Grid | {
       _key: string;
-    } & Hero | {
-      _key: string;
-    } & ItemList | {
-      _key: string;
-    } & SplitImage>;
+    } & ItemList>;
   }> | null;
 } | {
   _id: string;
@@ -894,15 +605,9 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & Divider | {
       _key: string;
-    } & Feature | {
-      _key: string;
     } & Grid | {
       _key: string;
-    } & Hero | {
-      _key: string;
-    } & ItemList | {
-      _key: string;
-    } & SplitImage>;
+    } & ItemList>;
   }> | null;
 } | {
   _id: string;
@@ -997,7 +702,7 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt,\n  relatedPosts[]->{\n    _id,\n    title,\n    slug,\n    mainImage{\n      asset,\n      alt\n    },\n    publishedAt\n  }\n}": POST_QUERYResult;
     "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  slug,\n  content[]{\n    ...\n  },\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
-    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalLink,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n    ...,\n    _type == \"hero\" => {\n      ...,\n      image{\n        asset,\n        hotspot,\n        crop,\n        alt,\n        _type\n      }\n    },\n    _type == \"splitImage\" => {\n      ...,\n      image{\n        asset,\n        hotspot,\n        crop,\n        _type\n      }\n    }\n  }\n}": HOME_PAGE_QUERYResult;
+    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalLink,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n    ...,\n  }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  }\n}": HEADER_QUERYResult;
   }
 }

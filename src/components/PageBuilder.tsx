@@ -7,7 +7,6 @@ import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react';
 import Section from './Layout/Section';
-import SplitImage from './blocks/SplitImage';
 import ItemList from './blocks/ItemList';
 import Grid from './blocks/Grid';
 import Divider from './UI/Divider';
@@ -84,37 +83,6 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
                   subtitlePath={`${blockPath}.subtitle`}>
                   {renderNestedContent(block.content)}
                 </Section>
-              </BlockWrapper>
-            );
-
-          case 'splitImage':
-            return (
-              <BlockWrapper key={block._key}>
-                {/* @ts-expect-error - Temporary fix while we restructure types */}
-                <SplitImage {...block} />
-              </BlockWrapper>
-            );
-
-          // Future blocks that can contain nested content
-          case 'hero':
-            return (
-              <BlockWrapper key={block._key}>
-                <div className='hero-block'>
-                  {/* Hero component will go here */}
-                  <div>Hero Block</div>
-                  {renderNestedContent(block.content)}
-                </div>
-              </BlockWrapper>
-            );
-
-          case 'feature':
-            return (
-              <BlockWrapper key={block._key}>
-                <div className='feature-block'>
-                  {/* Feature component will go here */}
-                  <div>Feature Block</div>
-                  {renderNestedContent(block.content)}
-                </div>
               </BlockWrapper>
             );
 

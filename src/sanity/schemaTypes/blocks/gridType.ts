@@ -40,11 +40,8 @@ export const gridType = defineType({
       title: 'Grid Items',
       type: 'array',
       of: [
-        defineArrayMember({ type: 'splitImage' }),
         defineArrayMember({ type: 'itemList' }),
         defineArrayMember({ type: 'divider' }),
-        defineArrayMember({ type: 'hero' }),
-        defineArrayMember({ type: 'feature' }),
       ],
       validation: (Rule) => Rule.min(1).max(12),
     }),

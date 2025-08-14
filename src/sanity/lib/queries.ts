@@ -76,25 +76,6 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
   heroContentPosition,
   content[]{
     ...,
-    _type == "hero" => {
-      ...,
-      image{
-        asset,
-        hotspot,
-        crop,
-        alt,
-        _type
-      }
-    },
-    _type == "splitImage" => {
-      ...,
-      image{
-        asset,
-        hotspot,
-        crop,
-        _type
-      }
-    }
   }
 }`);
 

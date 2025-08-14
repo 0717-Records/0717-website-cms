@@ -24,9 +24,6 @@ export const sectionType = defineType({
       title: 'Content',
       type: 'array',
       of: [
-        defineArrayMember({ type: 'splitImage' }),
-        defineArrayMember({ type: 'hero' }),
-        defineArrayMember({ type: 'feature' }),
         defineArrayMember({ type: 'divider' }),
         defineArrayMember({ type: 'itemList' }),
         defineArrayMember({ type: 'grid' }),

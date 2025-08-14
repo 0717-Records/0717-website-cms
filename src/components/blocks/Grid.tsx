@@ -62,14 +62,11 @@ const Grid = ({ items = [], columns, alignment, className = '' }: GridProps) => 
                 return <ItemList {...(item as any)} />;
               case 'divider':
                 return <Divider />;
-              case 'splitImage':
-              case 'hero':
-              case 'feature':
               default:
-                // For now, only ItemList and Divider are supported in Grid
+                // This should never happen with proper typing
                 return (
                   <div className='text-gray-500 text-center p-4'>
-                    {item._type} blocks not yet supported in Grid
+                    Unknown block type
                   </div>
                 );
             }
