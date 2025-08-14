@@ -34,7 +34,7 @@ const ItemList = ({ items = [], alignment, className = '' }: ItemListProps) => {
   }
 
   return (
-    <div className={`py-8 ${className}`.trim()}>
+    <div className={`pb-8 ${className}`.trim()}>
       <div
         className={`flex flex-wrap gap-4 md:gap-6 ${getAlignmentClass()}`}
         data-alignment={validAlignment}>
