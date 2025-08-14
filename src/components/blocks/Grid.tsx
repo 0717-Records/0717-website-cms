@@ -64,11 +64,7 @@ const Grid = ({ items = [], columns, alignment, className = '' }: GridProps) => 
                 return <Divider />;
               default:
                 // This should never happen with proper typing
-                return (
-                  <div className='text-gray-500 text-center p-4'>
-                    Unknown block type
-                  </div>
-                );
+                return <div className='text-gray-500 text-center p-4'>Unknown block type</div>;
             }
           };
 

@@ -21,21 +21,14 @@ export type DividerBlock = Divider & { _key: string };
 export type GridBlock = Grid & { _key: string };
 
 // Union of all possible block types (current and future)
-export type NestedBlock =
-  | SectionBlock
-  | DividerBlock
-  | ItemListBlock
-  | GridBlock;
+export type NestedBlock = SectionBlock | DividerBlock | ItemListBlock | GridBlock;
 
 // Union of blocks that can contain nested content
 export type BlockWithContent = SectionBlock | GridBlock;
 
 // Type guard functions
 export const isBlockWithContent = (block: NestedBlock): block is BlockWithContent => {
-  return (
-    block._type === 'section' ||
-    block._type === 'grid'
-  );
+  return block._type === 'section' || block._type === 'grid';
 };
 
 export const isSectionBlock = (block: NestedBlock): block is SectionBlock => {
