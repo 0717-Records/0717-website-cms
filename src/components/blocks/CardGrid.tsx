@@ -8,20 +8,9 @@ const CardGrid = ({ columns = '2', cards }: CardGridBlock) => {
     return null;
   }
 
-  // Clean the columns value to remove Sanity's stega encoding
   const cleanColumns = stegaClean(columns) || '2';
-
-  // Ensure we have a valid value
   const validColumns = ['2', '3', '4'].includes(cleanColumns) ? cleanColumns : '2';
 
-  // Get the effective number of columns for the current breakpoint
-  const getEffectiveColumns = (selectedCols: string) => {
-    // For implementation, we'll use the desktop column count to calculate rows
-    // CSS will handle the responsive behavior
-    return parseInt(selectedCols);
-  };
-
-  // Get CSS classes for responsive card widths
   const getCardClasses = (cols: string) => {
     switch (cols) {
       case '2':
@@ -35,43 +24,18 @@ const CardGrid = ({ columns = '2', cards }: CardGridBlock) => {
     }
   };
 
-  // Calculate rows for equal height cards based on desktop column count
-  const getCardsInRows = (cols: string) => {
-    const colsNum = getEffectiveColumns(cols);
-    const rows = [];
-
-    for (let i = 0; i < cards.length; i += colsNum) {
-      rows.push(cards.slice(i, i + colsNum));
-    }
-
-    return rows;
-  };
-
-  const rows = getCardsInRows(validColumns);
   const cardClasses = getCardClasses(validColumns);
 
   return (
-    <div className='w-full space-y-6'>
-      {rows.map((row, rowIndex) => {
-        const isIncompleteRow = row.length < getEffectiveColumns(validColumns);
-
-        return (
-          <div
-            key={rowIndex}
-            className={`
-              flex flex-wrap gap-6 w-full
-              ${isIncompleteRow ? 'justify-center' : 'justify-start'}
-            `.trim()}>
-            {row.map((card, cardIndex) => (
-              <Card
-                key={card._key || cardIndex}
-                content={card.content}
-                className={`h-full ${cardClasses}`}
-              />
-            ))}
-          </div>
-        );
-      })}
+    <div className='w-full flex justify-center flex-wrap gap-6'>
+      {cards.map((card, idx) => (
+        <Card
+          key={card._key || idx}
+          content={card.content}
+          className={`h-full ${cardClasses}`}
+          isGridChild
+        />
+      ))}
     </div>
   );
 };

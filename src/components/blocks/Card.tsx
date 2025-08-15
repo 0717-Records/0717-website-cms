@@ -4,10 +4,12 @@ import ItemList from './ItemList';
 import RichText from './RichText';
 import Divider from '../UI/Divider';
 
-const Card = ({
-  content,
-  className = '',
-}: Omit<CardBlock, '_type' | '_key'> & { className?: string }) => {
+interface CardProps extends Omit<CardBlock, '_type' | '_key'> {
+  className?: string;
+  isGridChild?: boolean;
+}
+
+const Card = ({ content, className = '', isGridChild = false }: CardProps) => {
   if (!content || !Array.isArray(content) || content.length === 0) {
     return null;
   }
@@ -33,11 +35,11 @@ const Card = ({
         border border-gray-200 
         rounded-lg 
         p-6 md:p-10 
-        w-full 
         flex 
         flex-col 
         items-center 
         text-center 
+        ${!isGridChild ? 'max-w-[800px] mx-auto' : ''}
         ${className}
       `.trim()}>
       <div className='w-full space-y-4'>
