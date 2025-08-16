@@ -97,37 +97,30 @@ const Modal: React.FC<ModalProps> = ({
     <div
       className={`fixed inset-0 z-50 flex items-center justify-center ${overlayClassName}`}
       onClick={handleOverlayClick}
-      role="dialog"
-      aria-modal="true"
+      role='dialog'
+      aria-modal='true'
       aria-labelledby={ariaLabelledBy}
-      aria-describedby={ariaDescribedBy}
-    >
+      aria-describedby={ariaDescribedBy}>
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black bg-opacity-50 transition-opacity" />
-      
+      <div className='absolute inset-0 bg-black/90 transition-opacity' />
+
       {/* Modal content */}
-      <div
-        ref={modalRef}
-        className={`relative z-10 ${className}`}
-        tabIndex={-1}
-      >
+      <div ref={modalRef} className={`relative z-10 ${className}`} tabIndex={-1}>
         {showCloseButton && (
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-20 p-2 bg-white bg-opacity-10 hover:bg-opacity-20 rounded-full transition-colors"
-            aria-label="Close modal"
-          >
+            className='absolute top-4 right-4 z-20 p-2 bg-opacity-10 hover:bg-opacity-20 rounded-full transition-colors cursor-pointer'
+            aria-label='Close modal'>
             <svg
-              className="w-6 h-6 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+              className='w-6 h-6 text-white'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'>
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
+                d='M6 18L18 6M6 6l12 12'
               />
             </svg>
           </button>
