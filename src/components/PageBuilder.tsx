@@ -12,7 +12,7 @@ import RichText from './blocks/RichText';
 import Card from './blocks/Card';
 import CardGrid from './blocks/CardGrid';
 import Icon from './blocks/Icon';
-import Image from './blocks/Image';
+import ImageBlock from './blocks/Image';
 import ImageGallery from './blocks/ImageGallery';
 import Divider from './UI/Divider';
 
@@ -142,7 +142,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
           case 'imageBlock':
             return (
               <BlockWrapper key={block._key}>
-                <Image 
+                <ImageBlock 
                   {...block} 
                   documentId={documentId}
                   documentType={documentType}

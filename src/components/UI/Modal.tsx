@@ -103,7 +103,7 @@ const Modal: React.FC<ModalProps> = ({
       aria-describedby={ariaDescribedBy}
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black bg-opacity-75 transition-opacity" />
+      <div className="absolute inset-0 bg-black bg-opacity-50 transition-opacity" />
       
       {/* Modal content */}
       <div

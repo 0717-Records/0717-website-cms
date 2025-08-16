@@ -6,7 +6,7 @@ import NextImage from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { client } from '@/sanity/lib/client';
 import type { ImageBlock } from '@/types/blocks';
-import Modal from '@/components/ui/Modal';
+import Modal from '@/components/UI/Modal';
 
 interface ImageProps extends ImageBlock {
   className?: string;
