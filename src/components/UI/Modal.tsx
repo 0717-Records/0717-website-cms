@@ -1,14 +1,12 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
-  overlayClassName?: string;
   showCloseButton?: boolean;
   closeOnEscape?: boolean;
   closeOnOverlayClick?: boolean;
@@ -21,91 +19,66 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
   children,
   className = '',
-  overlayClassName = '',
   showCloseButton = true,
   closeOnEscape = true,
   closeOnOverlayClick = true,
   'aria-labelledby': ariaLabelledBy,
   'aria-describedby': ariaDescribedBy,
 }) => {
-  const modalRef = useRef<HTMLDivElement>(null);
-  const previousActiveElement = useRef<Element | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    if (isOpen) {
-      previousActiveElement.current = document.activeElement;
-      modalRef.current?.focus();
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-      if (previousActiveElement.current instanceof HTMLElement) {
-        previousActiveElement.current.focus();
-      }
-    }
+    const dialog = dialogRef.current;
+    if (!dialog) return;
 
-    return () => {
-      document.body.style.overflow = '';
-    };
+    if (isOpen) {
+      dialog.showModal();
+    } else {
+      dialog.close();
+    }
   }, [isOpen]);
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (!isOpen) return;
+    const dialog = dialogRef.current;
+    if (!dialog) return;
 
-      if (event.key === 'Escape' && closeOnEscape) {
-        onClose();
-      }
+    const handleClose = () => {
+      onClose();
+    };
 
-      // Trap focus within modal
-      if (event.key === 'Tab') {
-        const modal = modalRef.current;
-        if (!modal) return;
-
-        const focusableElements = modal.querySelectorAll(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
-        const firstElement = focusableElements[0] as HTMLElement;
-        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
-
-        if (event.shiftKey) {
-          if (document.activeElement === firstElement) {
-            lastElement?.focus();
-            event.preventDefault();
-          }
-        } else {
-          if (document.activeElement === lastElement) {
-            firstElement?.focus();
-            event.preventDefault();
-          }
-        }
+    const handleCancel = (event: Event) => {
+      if (!closeOnEscape) {
+        event.preventDefault();
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, closeOnEscape, onClose]);
+    const handleClick = (event: MouseEvent) => {
+      if (closeOnOverlayClick && event.target === dialog) {
+        // Clicked on backdrop
+        onClose();
+      }
+    };
 
-  const handleOverlayClick = (event: React.MouseEvent) => {
-    if (event.target === event.currentTarget && closeOnOverlayClick) {
-      onClose();
-    }
-  };
+    dialog.addEventListener('close', handleClose);
+    dialog.addEventListener('cancel', handleCancel);
+    dialog.addEventListener('click', handleClick);
+
+    return () => {
+      dialog.removeEventListener('close', handleClose);
+      dialog.removeEventListener('cancel', handleCancel);
+      dialog.removeEventListener('click', handleClick);
+    };
+  }, [onClose, closeOnEscape, closeOnOverlayClick]);
 
   if (!isOpen) return null;
 
-  const modalContent = (
-    <div
-      className={`fixed inset-0 z-50 flex items-center justify-center ${overlayClassName}`}
-      onClick={handleOverlayClick}
-      role='dialog'
-      aria-modal='true'
+  return (
+    <dialog
+      ref={dialogRef}
+      className='fixed inset-0 z-50 flex items-center justify-center backdrop:bg-black/90 backdrop:transition-opacity bg-transparent border-none p-0 max-w-none max-h-none w-full h-full'
       aria-labelledby={ariaLabelledBy}
       aria-describedby={ariaDescribedBy}>
-      {/* Backdrop */}
-      <div className='absolute inset-0 bg-black/90 transition-opacity' />
-
-      {/* Modal content */}
-      <div ref={modalRef} className={`relative z-10 ${className}`} tabIndex={-1}>
+      <div className={`relative ${className}`}>
         {showCloseButton && (
           <button
             onClick={onClose}
@@ -127,10 +100,8 @@ const Modal: React.FC<ModalProps> = ({
         )}
         {children}
       </div>
-    </div>
+    </dialog>
   );
-
-  return createPortal(modalContent, document.body);
 };
 
 export default Modal;
