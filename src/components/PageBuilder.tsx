@@ -12,6 +12,8 @@ import RichText from './blocks/RichText';
 import Card from './blocks/Card';
 import CardGrid from './blocks/CardGrid';
 import Icon from './blocks/Icon';
+import Image from './blocks/Image';
+import ImageGallery from './blocks/ImageGallery';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -134,6 +136,30 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
             return (
               <BlockWrapper key={block._key}>
                 <Icon {...block} />
+              </BlockWrapper>
+            );
+
+          case 'imageBlock':
+            return (
+              <BlockWrapper key={block._key}>
+                <Image 
+                  {...block} 
+                  documentId={documentId}
+                  documentType={documentType}
+                  pathPrefix={blockPath}
+                />
+              </BlockWrapper>
+            );
+
+          case 'imageGallery':
+            return (
+              <BlockWrapper key={block._key}>
+                <ImageGallery 
+                  {...block} 
+                  documentId={documentId}
+                  documentType={documentType}
+                  pathPrefix={blockPath}
+                />
               </BlockWrapper>
             );
 

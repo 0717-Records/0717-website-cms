@@ -30,6 +30,8 @@ export const sectionType = defineType({
         defineArrayMember({ type: 'card' }),
         defineArrayMember({ type: 'cardGrid' }),
         defineArrayMember({ type: 'icon' }),
+        defineArrayMember({ type: 'imageBlock' }),
+        defineArrayMember({ type: 'imageGallery' }),
         // Add other block types here as you create them
         // Note: Sections cannot contain other sections - sections are root-level only
       ],

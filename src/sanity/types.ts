@@ -13,6 +13,47 @@
  */
 
 // Source: schema.json
+export type ImageGallery = {
+  _type: "imageGallery";
+  columns?: "2" | "3" | "4";
+  images?: Array<{
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    caption?: string;
+    _key: string;
+  }>;
+};
+
+export type ImageBlock = {
+  _type: "imageBlock";
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  size?: "full" | "small";
+  caption?: string;
+};
+
 export type Icon = {
   _type: "icon";
   image?: {
@@ -49,7 +90,11 @@ export type Card = {
     _key: string;
   } & RichText | {
     _key: string;
-  } & Icon>;
+  } & Icon | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery>;
 };
 
 export type RichText = {
@@ -133,7 +178,11 @@ export type Section = {
     _key: string;
   } & CardGrid | {
     _key: string;
-  } & Icon>;
+  } & Icon | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery>;
 };
 
 export type PageBuilder = Array<{
@@ -504,7 +553,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Icon | CardGrid | Card | RichText | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = ImageGallery | ImageBlock | Icon | CardGrid | Card | RichText | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -583,6 +632,10 @@ export type PAGE_QUERYResult = {
     } & Divider | {
       _key: string;
     } & Icon | {
+      _key: string;
+    } & ImageBlock | {
+      _key: string;
+    } & ImageGallery | {
       _key: string;
     } & ItemList | {
       _key: string;
@@ -667,6 +720,10 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & Icon | {
       _key: string;
+    } & ImageBlock | {
+      _key: string;
+    } & ImageGallery | {
+      _key: string;
     } & ItemList | {
       _key: string;
     } & RichText>;
@@ -695,6 +752,10 @@ export type HOME_PAGE_QUERYResult = {
     } & Divider | {
       _key: string;
     } & Icon | {
+      _key: string;
+    } & ImageBlock | {
+      _key: string;
+    } & ImageGallery | {
       _key: string;
     } & ItemList | {
       _key: string;
