@@ -26,7 +26,6 @@ export const sectionType = defineType({
       of: [
         defineArrayMember({ type: 'divider' }),
         defineArrayMember({ type: 'itemList' }),
-        defineArrayMember({ type: 'grid' }),
         defineArrayMember({ type: 'richText' }),
         defineArrayMember({ type: 'card' }),
         defineArrayMember({ type: 'cardGrid' }),
@@ -34,16 +33,6 @@ export const sectionType = defineType({
         // Add other block types here as you create them
         // Note: Sections cannot contain other sections - sections are root-level only
       ],
-      options: {
-        insertMenu: {
-          views: [
-            {
-              name: 'grid',
-              previewImageUrl: (schemaType) => `/block-previews/${schemaType}.png`,
-            },
-          ],
-        },
-      },
     }),
   ],
   preview: {

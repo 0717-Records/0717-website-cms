@@ -8,7 +8,6 @@ import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react';
 import Section from './Layout/Section';
 import ItemList from './blocks/ItemList';
-import Grid from './blocks/Grid';
 import RichText from './blocks/RichText';
 import Card from './blocks/Card';
 import CardGrid from './blocks/CardGrid';
@@ -109,12 +108,6 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
               </BlockWrapper>
             );
 
-          case 'grid':
-            return (
-              <BlockWrapper key={block._key}>
-                <Grid {...block} />
-              </BlockWrapper>
-            );
 
           case 'richText':
             return (

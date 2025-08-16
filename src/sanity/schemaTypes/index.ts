@@ -10,7 +10,6 @@ import { pageBuilderType } from './pageBuilderType';
 import { sectionType } from './sectionType';
 import { dividerType } from './blocks/dividerType';
 import { itemListType } from './blocks/itemListType';
-import { gridType } from './blocks/gridType';
 import { richTextType } from './blocks/richTextType';
 import { cardType } from './blocks/cardType';
 import { cardGridType } from './blocks/cardGridType';
@@ -32,7 +31,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     sectionType,
     dividerType,
     itemListType,
-    gridType,
     richTextType,
     cardType,
     cardGridType,

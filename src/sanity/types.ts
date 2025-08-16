@@ -89,25 +89,6 @@ export type RichText = {
   }>;
 };
 
-export type Grid = {
-  _type: "grid";
-  columns?: "2" | "3" | "4";
-  alignment?: "left" | "center" | "right";
-  items?: Array<{
-    _key: string;
-  } & ItemList | {
-    _key: string;
-  } & Divider | {
-    _key: string;
-  } & RichText | {
-    _key: string;
-  } & Card | {
-    _key: string;
-  } & CardGrid | {
-    _key: string;
-  } & Icon>;
-};
-
 export type ItemList = {
   _type: "itemList";
   alignment?: "left" | "center" | "right";
@@ -145,8 +126,6 @@ export type Section = {
   } & Divider | {
     _key: string;
   } & ItemList | {
-    _key: string;
-  } & Grid | {
     _key: string;
   } & RichText | {
     _key: string;
@@ -525,7 +504,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Icon | CardGrid | Card | RichText | Grid | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Icon | CardGrid | Card | RichText | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -602,8 +581,6 @@ export type PAGE_QUERYResult = {
     } & CardGrid | {
       _key: string;
     } & Divider | {
-      _key: string;
-    } & Grid | {
       _key: string;
     } & Icon | {
       _key: string;
@@ -688,8 +665,6 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & Divider | {
       _key: string;
-    } & Grid | {
-      _key: string;
     } & Icon | {
       _key: string;
     } & ItemList | {
@@ -718,8 +693,6 @@ export type HOME_PAGE_QUERYResult = {
     } & CardGrid | {
       _key: string;
     } & Divider | {
-      _key: string;
-    } & Grid | {
       _key: string;
     } & Icon | {
       _key: string;
