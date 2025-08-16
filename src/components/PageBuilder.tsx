@@ -12,6 +12,7 @@ import Grid from './blocks/Grid';
 import RichText from './blocks/RichText';
 import Card from './blocks/Card';
 import CardGrid from './blocks/CardGrid';
+import Icon from './blocks/Icon';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -133,6 +134,13 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
             return (
               <BlockWrapper key={block._key}>
                 <CardGrid {...block} />
+              </BlockWrapper>
+            );
+
+          case 'icon':
+            return (
+              <BlockWrapper key={block._key}>
+                <Icon {...block} />
               </BlockWrapper>
             );
 

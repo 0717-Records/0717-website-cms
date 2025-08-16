@@ -14,6 +14,7 @@ import { gridType } from './blocks/gridType';
 import { richTextType } from './blocks/richTextType';
 import { cardType } from './blocks/cardType';
 import { cardGridType } from './blocks/cardGridType';
+import { iconType } from './blocks/iconType';
 import { siteSettingsType } from './siteSettingsType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -35,5 +36,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     richTextType,
     cardType,
     cardGridType,
+    iconType,
   ],
 };

@@ -44,7 +44,13 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
   title,
   slug,
   content[]{
-    ...
+    ...,
+    image{
+      asset,
+      alt,
+      hotspot,
+      crop
+    }
   },
   mainImage{
     asset,
@@ -76,6 +82,12 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
   heroContentPosition,
   content[]{
     ...,
+    image{
+      asset,
+      alt,
+      hotspot,
+      crop
+    }
   }
 }`);
 

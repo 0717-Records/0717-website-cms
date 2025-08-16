@@ -2,6 +2,7 @@ import React from 'react';
 import type { CardBlock } from '@/types/blocks';
 import ItemList from './ItemList';
 import RichText from './RichText';
+import Icon from './Icon';
 import Divider from '../UI/Divider';
 
 interface CardProps extends Omit<CardBlock, '_type' | '_key'> {
@@ -23,6 +24,8 @@ const Card = ({ content, className = '', isGridChild = false }: CardProps) => {
         return <Divider key={item._key || index} />;
       case 'richText':
         return <RichText key={item._key || index} {...item} />;
+      case 'icon':
+        return <Icon key={item._key || index} {...item} />;
       default:
         return null;
     }

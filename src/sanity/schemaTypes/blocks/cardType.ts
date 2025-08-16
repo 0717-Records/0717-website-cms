@@ -15,6 +15,7 @@ export const cardType = defineType({
         defineArrayMember({ type: 'divider' }),
         defineArrayMember({ type: 'itemList' }),
         defineArrayMember({ type: 'richText' }),
+        defineArrayMember({ type: 'icon' }),
         // Note: cards cannot contain other cards or cardGrids to prevent nesting
       ],
       validation: (Rule) =>

@@ -13,6 +13,24 @@
  */
 
 // Source: schema.json
+export type Icon = {
+  _type: "icon";
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  alignment?: "left" | "center" | "right";
+};
+
 export type CardGrid = {
   _type: "cardGrid";
   columns?: "2" | "3" | "4";
@@ -29,7 +47,9 @@ export type Card = {
     _key: string;
   } & ItemList | {
     _key: string;
-  } & RichText>;
+  } & RichText | {
+    _key: string;
+  } & Icon>;
 };
 
 export type RichText = {
@@ -83,7 +103,9 @@ export type Grid = {
     _key: string;
   } & Card | {
     _key: string;
-  } & CardGrid>;
+  } & CardGrid | {
+    _key: string;
+  } & Icon>;
 };
 
 export type ItemList = {
@@ -130,7 +152,9 @@ export type Section = {
     _key: string;
   } & Card | {
     _key: string;
-  } & CardGrid>;
+  } & CardGrid | {
+    _key: string;
+  } & Icon>;
 };
 
 export type PageBuilder = Array<{
@@ -501,7 +525,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = CardGrid | Card | RichText | Grid | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Icon | CardGrid | Card | RichText | Grid | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -560,7 +584,7 @@ export type POST_QUERYResult = {
   }> | null;
 } | null;
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{  _id,  _type,  title,  slug,  content[]{    ...  },  mainImage{    asset,    alt  }}
+// Query: *[_type == "page" && slug.current == $slug][0]{  _id,  _type,  title,  slug,  content[]{    ...,    image{      asset,      alt,      hotspot,      crop    }  },  mainImage{    asset,    alt  }}
 export type PAGE_QUERYResult = {
   _id: string;
   _type: "page";
@@ -581,9 +605,12 @@ export type PAGE_QUERYResult = {
       _key: string;
     } & Grid | {
       _key: string;
+    } & Icon | {
+      _key: string;
     } & ItemList | {
       _key: string;
     } & RichText>;
+    image: null;
   }> | null;
   mainImage: {
     asset: {
@@ -596,7 +623,7 @@ export type PAGE_QUERYResult = {
   } | null;
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      title,      slug    },    externalLink,    openInNewTab  },  heroContentPosition,  content[]{    ...,  }}
+// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      title,      slug    },    externalLink,    openInNewTab  },  heroContentPosition,  content[]{    ...,    image{      asset,      alt,      hotspot,      crop    }  }}
 export type HOME_PAGE_QUERYResult = {
   _id: string;
   _type: "footer";
@@ -663,9 +690,12 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & Grid | {
       _key: string;
+    } & Icon | {
+      _key: string;
     } & ItemList | {
       _key: string;
     } & RichText>;
+    image: null;
   }> | null;
 } | {
   _id: string;
@@ -691,9 +721,12 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & Grid | {
       _key: string;
+    } & Icon | {
+      _key: string;
     } & ItemList | {
       _key: string;
     } & RichText>;
+    image: null;
   }> | null;
 } | {
   _id: string;
@@ -787,8 +820,8 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt,\n  relatedPosts[]->{\n    _id,\n    title,\n    slug,\n    mainImage{\n      asset,\n      alt\n    },\n    publishedAt\n  }\n}": POST_QUERYResult;
-    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  slug,\n  content[]{\n    ...\n  },\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
-    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalLink,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n    ...,\n  }\n}": HOME_PAGE_QUERYResult;
+    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  slug,\n  content[]{\n    ...,\n    image{\n      asset,\n      alt,\n      hotspot,\n      crop\n    }\n  },\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
+    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalLink,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n    ...,\n    image{\n      asset,\n      alt,\n      hotspot,\n      crop\n    }\n  }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  }\n}": HEADER_QUERYResult;
   }
 }
