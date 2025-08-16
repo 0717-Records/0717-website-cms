@@ -14,25 +14,25 @@ const CardGrid = ({ columns = '2', cards }: CardGridBlock) => {
   const getCardClasses = (cols: string) => {
     switch (cols) {
       case '2':
-        return 'w-full md:w-[calc(50%-12px)]';
+        return 'w-full md:w-[calc(50%-16px)]';
       case '3':
-        return 'w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]';
+        return 'w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]';
       case '4':
-        return 'w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]';
+        return 'w-full md:w-[calc(50%-16px)] lg:w-[calc(25%-24px)]';
       default:
-        return 'w-full md:w-[calc(50%-12px)]';
+        return 'w-full md:w-[calc(50%-16px)]';
     }
   };
 
   const cardClasses = getCardClasses(validColumns);
 
   return (
-    <div className='w-full flex justify-center flex-wrap gap-6'>
+    <div className='w-full flex justify-center flex-wrap gap-8'>
       {cards.map((card, idx) => (
         <Card
           key={card._key || idx}
           content={card.content}
-          className={`h-full ${cardClasses}`}
+          className={`${cardClasses}`}
           isGridChild
         />
       ))}

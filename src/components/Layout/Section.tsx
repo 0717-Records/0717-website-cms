@@ -67,7 +67,7 @@ const Section = ({
 
   return (
     <section className={`py-16 md:py-24 ${className}`.trim()}>
-      <div className='container mx-auto px-8'>
+      <div className='container max-w-[80rem] mx-auto px-8'>
         {(title || subtitle) && (
           <div className='mb-8 md:mb-12 text-center'>
             {title && (
