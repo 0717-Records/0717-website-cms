@@ -69,8 +69,29 @@ const SpotifyWidget: React.FC<SpotifyWidgetProps> = ({
 
   const heightClass = getHeightClass(cleanHeight);
 
+  // Create data attribute for the widget container if Sanity props are provided
+  const getWidgetDataAttribute = () => {
+    if (!documentId || !documentType || !pathPrefix) return {};
+
+    try {
+      return {
+        'data-sanity': createDataAttribute({
+          ...createDataAttributeConfig,
+          id: documentId,
+          type: documentType,
+          path: pathPrefix,
+        }).toString(),
+      };
+    } catch {
+      return {};
+    }
+  };
+
   return (
-    <div className={`w-full max-w-[500px] mx-auto ${className}`}>
+    <div 
+      className={`w-full max-w-[500px] mx-auto ${className}`}
+      {...getWidgetDataAttribute()}
+    >
       <iframe
         src={embedUrl}
         className={`w-full ${heightClass} rounded-xl border-0`}
