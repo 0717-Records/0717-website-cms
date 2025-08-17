@@ -30,7 +30,7 @@ const Modal: React.FC<ModalProps> = ({
   const [shouldRender, setShouldRender] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   
-  useBodyScrollLock(isOpen);
+  useBodyScrollLock(isOpen || shouldRender);
 
   useEffect(() => {
     if (isOpen) {
