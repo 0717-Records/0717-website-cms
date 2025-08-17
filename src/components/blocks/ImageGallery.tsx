@@ -144,7 +144,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
           return (
             <figure key={item._key || idx} className={gridClasses}>
               <div
-                className='relative cursor-pointer'
+                className='relative cursor-pointer aspect-[4/3]'
                 onClick={() => handleImageClick(idx)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -158,9 +158,9 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                 <NextImage
                   src={imageUrl}
                   alt={imageAlt}
-                  width={400}
-                  height={300}
-                  className='w-full object-cover rounded-lg'
+                  fill
+                  sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
+                  className='object-cover rounded-lg'
                 />
               </div>
               {caption && (
