@@ -1,5 +1,6 @@
 'use client';
 
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 import React, { useEffect, useRef } from 'react';
 
 interface ModalProps {
@@ -26,6 +27,7 @@ const Modal: React.FC<ModalProps> = ({
   'aria-describedby': ariaDescribedBy,
 }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  useBodyScrollLock(isOpen);
 
   useEffect(() => {
     const dialog = dialogRef.current;
