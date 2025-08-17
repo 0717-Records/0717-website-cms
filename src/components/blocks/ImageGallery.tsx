@@ -45,13 +45,13 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
   const getGridClasses = (cols: string) => {
     switch (cols) {
       case '2':
-        return 'w-full md:w-[calc(50%-16px)]';
+        return 'w-[calc(50%-16px)]';
       case '3':
-        return 'w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]';
+        return 'w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]';
       case '4':
-        return 'w-full md:w-[calc(50%-16px)] lg:w-[calc(25%-24px)]';
+        return 'w-[calc(50%-16px)] lg:w-[calc(25%-24px)]';
       default:
-        return 'w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]';
+        return 'w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]';
     }
   };
 
@@ -132,7 +132,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
 
   return (
     <>
-      <div className={`w-full flex justify-center flex-wrap gap-8 ${className}`}>
+      <div
+        className={`w-full flex justify-center flex-wrap gap-x-3 gap-y-3 md:gap-x-8 md:gap-y-4 ${className}`}>
         {images.map((item, idx) => {
           if (!item.image?.asset) return null;
 
@@ -159,7 +160,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                   alt={imageAlt}
                   width={400}
                   height={300}
-                  className='w-full h-64 object-cover rounded-lg'
+                  className='w-full object-cover rounded-lg'
                 />
               </div>
               {caption && (
