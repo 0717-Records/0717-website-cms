@@ -178,11 +178,11 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
       <Modal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        className='w-[95vw] h-[95vh] max-w-[95vw] max-h-[95vh]'
+        className='w-[95vw] h-[95svh] max-w-[95vw] max-h-[95svh]'
         aria-labelledby='gallery-modal-title'
         aria-describedby='gallery-modal-description'>
         <div
-          className='flex flex-col items-center h-full max-h-[95vh] overflow-hidden'
+          className='flex flex-col items-center justify-center h-full max-h-[95svh] overflow-hidden'
           onKeyDown={handleKeyNavigation}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
@@ -237,21 +237,21 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
           </div>
 
           {/* Main image */}
-          <div className='relative flex-1 flex items-center justify-center min-h-0'>
+          <div className='relative flex items-center justify-center'>
             {currentImageUrl && (
               <NextImage
                 src={currentImageUrl}
                 alt={currentImageAlt}
                 width={1200}
                 height={900}
-                className='max-w-full max-h-full w-auto h-auto object-contain'
+                className='max-w-[90vw] max-h-[60svh] w-auto h-auto object-contain'
                 priority
               />
             )}
           </div>
 
-          {/* Image info and thumbnails - fixed at bottom */}
-          <div className='flex-shrink-0 w-full'>
+          {/* Image info and thumbnails */}
+          <div className='flex-shrink-0 w-full mt-4'>
             {/* Image info */}
             <div className='mt-2 text-center text-white'>
               <div className='text-sm opacity-75 mb-1'>
