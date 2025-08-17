@@ -31,7 +31,10 @@ const CardGrid = ({ columns = '2', cards }: CardGridBlock) => {
       {cards.map((card, idx) => (
         <Card
           key={card._key || idx}
-          content={card.content}
+          icon={card.icon}
+          title={card.title}
+          bodyText={card.bodyText}
+          button={card.button}
           className={`${cardClasses}`}
           isGridChild
         />

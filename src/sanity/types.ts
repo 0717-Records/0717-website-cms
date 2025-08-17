@@ -54,6 +54,25 @@ export type ImageBlock = {
   caption?: string;
 };
 
+export type CardGrid = {
+  _type: "cardGrid";
+  columns?: "2" | "3" | "4";
+  cards?: Array<{
+    _key: string;
+  } & Card>;
+};
+
+export type Card = {
+  _type: "card";
+  icon?: Icon;
+  title?: string;
+  bodyText?: string;
+  button?: {
+    text?: string;
+    link?: string;
+  };
+};
+
 export type Icon = {
   _type: "icon";
   image?: {
@@ -70,31 +89,6 @@ export type Icon = {
     _type: "image";
   };
   alignment?: "left" | "center" | "right";
-};
-
-export type CardGrid = {
-  _type: "cardGrid";
-  columns?: "2" | "3" | "4";
-  cards?: Array<{
-    _key: string;
-  } & Card>;
-};
-
-export type Card = {
-  _type: "card";
-  content?: Array<{
-    _key: string;
-  } & Divider | {
-    _key: string;
-  } & ItemList | {
-    _key: string;
-  } & RichText | {
-    _key: string;
-  } & Icon | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery>;
 };
 
 export type RichText = {
@@ -553,7 +547,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = ImageGallery | ImageBlock | Icon | CardGrid | Card | RichText | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY

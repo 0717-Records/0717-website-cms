@@ -20,11 +20,9 @@ export const iconType = defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative Text',
-          description: 'Important for accessibility and SEO.',
-          validation: (Rule) => Rule.required().error('Alt text is required for icons'),
+          description: 'Important for accessibility and SEO. Required when an icon image is provided.',
         },
       ],
-      validation: (Rule) => Rule.required().error('Icon image is required'),
     }),
     defineField({
       name: 'alignment',

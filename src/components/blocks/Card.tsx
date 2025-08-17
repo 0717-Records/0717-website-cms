@@ -1,35 +1,31 @@
 import React from 'react';
+import { stegaClean } from 'next-sanity';
 import type { CardBlock } from '@/types/blocks';
-import ItemList from './ItemList';
-import RichText from './RichText';
 import Icon from './Icon';
-import Divider from '../UI/Divider';
+import CTA from '../UI/CTA';
 
 interface CardProps extends Omit<CardBlock, '_type' | '_key'> {
   className?: string;
   isGridChild?: boolean;
 }
 
-const Card = ({ content, className = '', isGridChild = false }: CardProps) => {
-  if (!content || !Array.isArray(content) || content.length === 0) {
+const Card = ({
+  icon,
+  title,
+  bodyText,
+  button,
+  className = '',
+  isGridChild = false,
+}: CardProps) => {
+  const cleanTitle = stegaClean(title);
+  const cleanBodyText = stegaClean(bodyText);
+  const cleanButtonText = stegaClean(button?.text);
+  const cleanButtonLink = stegaClean(button?.link);
+
+  // Don't render empty cards
+  if (!icon?.image && !cleanTitle && !cleanBodyText && !cleanButtonText) {
     return null;
   }
-
-  // Render content items
-  const renderContentItem = (item: (typeof content)[0], index: number) => {
-    switch (item._type) {
-      case 'itemList':
-        return <ItemList key={item._key || index} {...item} />;
-      case 'divider':
-        return <Divider key={item._key || index} />;
-      case 'richText':
-        return <RichText key={item._key || index} {...item} />;
-      case 'icon':
-        return <Icon key={item._key || index} {...item} />;
-      default:
-        return null;
-    }
-  };
 
   return (
     <div
@@ -46,7 +42,33 @@ const Card = ({ content, className = '', isGridChild = false }: CardProps) => {
         ${className}
       `.trim()}>
       <div className='w-full space-y-4'>
-        {content.map((item, index) => renderContentItem(item, index))}
+        {/* Icon */}
+        {icon && icon.image && (
+          <div className='flex justify-center'>
+            <Icon {...icon} />
+          </div>
+        )}
+
+        {/* Title */}
+        {cleanTitle && (
+          <div className='text-h3 heading-underline-h3 font-semibold text-gray-900'>
+            {cleanTitle}
+          </div>
+        )}
+
+        {/* Body Text */}
+        {cleanBodyText && (
+          <p className='text-body-xl text-gray-600 leading-relaxed whitespace-pre-line'>{cleanBodyText}</p>
+        )}
+
+        {/* Button */}
+        {cleanButtonText && cleanButtonLink && (
+          <div className='pt-2'>
+            <CTA href={cleanButtonLink} variant='filled'>
+              {cleanButtonText}
+            </CTA>
+          </div>
+        )}
       </div>
     </div>
   );

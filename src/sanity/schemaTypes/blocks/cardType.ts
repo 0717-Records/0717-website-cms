@@ -1,4 +1,4 @@
-import { defineField, defineType, defineArrayMember } from 'sanity';
+import { defineField, defineType } from 'sanity';
 import { DocumentIcon } from '@sanity/icons';
 
 export const cardType = defineType({
@@ -8,36 +8,60 @@ export const cardType = defineType({
   icon: DocumentIcon,
   fields: [
     defineField({
-      name: 'content',
-      title: 'Content',
-      type: 'array',
-      of: [
-        defineArrayMember({ type: 'divider' }),
-        defineArrayMember({ type: 'itemList' }),
-        defineArrayMember({ type: 'richText' }),
-        defineArrayMember({ type: 'icon' }),
-        defineArrayMember({ type: 'imageBlock' }),
-        defineArrayMember({ type: 'imageGallery' }),
-        // Note: cards cannot contain other cards or cardGrids to prevent nesting
+      name: 'icon',
+      title: 'Icon',
+      type: 'icon',
+      description: 'Optional icon to display at the top of the card',
+    }),
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      description: 'Card title (will be styled as h3)',
+    }),
+    defineField({
+      name: 'bodyText',
+      title: 'Body Text',
+      type: 'text',
+      rows: 4,
+      description: 'Main content text for the card',
+    }),
+    defineField({
+      name: 'button',
+      title: 'Button',
+      type: 'object',
+      description: 'Optional call-to-action button',
+      fields: [
+        defineField({
+          name: 'text',
+          title: 'Button Text',
+          type: 'string',
+        }),
+        defineField({
+          name: 'link',
+          title: 'Link',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              allowRelative: true,
+              scheme: ['http', 'https', 'mailto', 'tel'],
+            }),
+        }),
       ],
-      validation: (Rule) =>
-        Rule.required().min(1).error('Card must contain at least one content item'),
     }),
   ],
   preview: {
     select: {
-      content: 'content',
+      title: 'title',
+      icon: 'icon.name',
+      bodyText: 'bodyText',
     },
-    prepare({ content }) {
-      const itemCount = content?.length || 0;
-      const title = `Card (${itemCount} item${itemCount !== 1 ? 's' : ''})`;
-
-      // Show preview of first content item if available
-      const firstItem = content?.[0];
-      const subtitle = firstItem ? `First: ${firstItem._type}` : 'Empty card';
+    prepare({ title, icon, bodyText }) {
+      const displayTitle = title || 'Untitled Card';
+      const subtitle = icon ? `Icon: ${icon}` : bodyText ? `${bodyText.slice(0, 50)}...` : 'No content';
 
       return {
-        title,
+        title: displayTitle,
         subtitle,
         media: DocumentIcon,
       };
