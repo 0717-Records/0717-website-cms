@@ -53,7 +53,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
 
         const BlockWrapper = ({ children }: { children: React.ReactNode }) => (
           <div
-            className={!isLastBlock ? 'mb-8' : ''}
+            className={!isLastBlock ? 'mb-6' : ''}
             data-sanity={createDataAttribute({
               ...createDataAttributeConfig,
               id: documentId,

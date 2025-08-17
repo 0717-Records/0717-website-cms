@@ -57,11 +57,11 @@ const Section = ({
 
 
   return (
-    <section className={`py-16 md:py-24 ${className}`.trim()}>
+    <section className={`py-8 md:py-12 ${className}`.trim()}>
       <div className='container max-w-[80rem] mx-auto px-8'>
         {title && (
-          <div className='mb-8 md:mb-12 text-center'>
-            <Heading level={getHeadingLevel()} className='mb-6' showMargin={false} {...getTitleDataAttribute()}>
+          <div className='mb-6 md:mb-8 text-center'>
+            <Heading level={getHeadingLevel()} className='mb-4' showMargin={false} {...getTitleDataAttribute()}>
               {title}
             </Heading>
           </div>
