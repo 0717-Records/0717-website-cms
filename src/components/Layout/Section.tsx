@@ -1,6 +1,7 @@
 import React from 'react';
 import Heading from '../Typography/Heading';
 import { createDataAttribute } from 'next-sanity';
+import { usePageSectionContext } from './PageSection';
 
 interface SectionProps {
   children: React.ReactNode;
@@ -22,9 +23,16 @@ const Section = ({
   documentType,
   titlePath,
 }: SectionProps) => {
-  // Calculate the appropriate heading level based on nesting depth
+  const { hasTitle: pageSectionHasTitle } = usePageSectionContext();
+  
+  // Calculate the appropriate heading level based on:
+  // 1. Whether the parent PageSection has a title (h2)
+  // 2. The current nesting level within sections
   const getHeadingLevel = (): 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' => {
-    const level = Math.min(Math.max(nestingLevel, 1), 6);
+    // If PageSection has a title (h2), start sections at h3
+    // If PageSection has no title, start sections at h2
+    const baseLevel = pageSectionHasTitle ? 3 : 2;
+    const level = Math.min(Math.max(baseLevel + (nestingLevel - 1), 1), 6);
     return `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   };
   // Create data attribute for title if Sanity props are provided
