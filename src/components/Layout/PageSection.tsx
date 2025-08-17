@@ -1,16 +1,20 @@
 import React, { createContext, useContext } from 'react';
 import Heading from '../Typography/Heading';
 import Divider from '../UI/Divider';
-import { createDataAttribute } from 'next-sanity';
+import { createDataAttribute, stegaClean } from 'next-sanity';
 
 // Context to track if PageSection has a title (affects nested section heading levels)
 const PageSectionContext = createContext<{ hasTitle: boolean }>({ hasTitle: false });
+
+// Context to cascade text alignment through the component tree
+export const TextAlignmentContext = createContext<{ textAlign: 'left' | 'center' | 'right' }>({ textAlign: 'center' });
 
 interface PageSectionProps {
   children: React.ReactNode;
   className?: string;
   title?: string;
   subtitle?: string;
+  textAlign?: 'left' | 'center' | 'right';
   isFirst?: boolean;
   // Sanity Live editing props
   documentId?: string;
@@ -24,6 +28,7 @@ const PageSection = ({
   className = '',
   title,
   subtitle,
+  textAlign = 'center',
   isFirst = false,
   documentId,
   documentType,
@@ -72,11 +77,24 @@ const PageSection = ({
 
   const hasTitle = Boolean(title);
   const paddingClasses = isFirst ? 'pt-16 md:pt-24 pb-16 md:pb-24' : 'pb-16 md:pb-24';
+  
+  // Clean the textAlign value to remove Sanity's stega encoding
+  const cleanTextAlign = stegaClean(textAlign) || 'center';
+  
+  const getTextAlignClass = (align: 'left' | 'center' | 'right') => {
+    switch (align) {
+      case 'left': return 'text-left';
+      case 'center': return 'text-center';
+      case 'right': return 'text-right';
+      default: return 'text-center';
+    }
+  };
 
   return (
     <PageSectionContext.Provider value={{ hasTitle }}>
-      <section className={`${paddingClasses} ${className}`.trim()}>
-        <div className='container max-w-[80rem] mx-auto'>
+      <TextAlignmentContext.Provider value={{ textAlign: cleanTextAlign }}>
+        <section className={`${paddingClasses} ${getTextAlignClass(cleanTextAlign)} ${className}`.trim()}>
+          <div className='container max-w-[80rem] mx-auto'>
           {(title || subtitle) && (
             <div className='text-center'>
               {title && (
@@ -99,13 +117,17 @@ const PageSection = ({
             </div>
           )}
           {children}
-        </div>
-      </section>
+          </div>
+        </section>
+      </TextAlignmentContext.Provider>
     </PageSectionContext.Provider>
   );
 };
 
 // Hook to access PageSection context
 export const usePageSectionContext = () => useContext(PageSectionContext);
+
+// Hook to access text alignment context
+export const useTextAlignmentContext = () => useContext(TextAlignmentContext);
 
 export default PageSection;

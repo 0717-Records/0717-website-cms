@@ -20,6 +20,21 @@ export const pageSectionType = defineType({
       description: 'Optional subtitle for this section',
     }),
     defineField({
+      name: 'textAlign',
+      title: 'Text Alignment',
+      type: 'string',
+      description: 'Text alignment for this section and its content',
+      options: {
+        list: [
+          { title: 'Left', value: 'left' },
+          { title: 'Center', value: 'center' },
+          { title: 'Right', value: 'right' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'center',
+    }),
+    defineField({
       name: 'content',
       title: 'Content',
       type: 'array',

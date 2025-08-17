@@ -13,6 +13,22 @@ export const richTextType = defineType({
       type: 'blockContent',
       validation: (Rule) => Rule.required().error('Rich text content is required'),
     }),
+    defineField({
+      name: 'textAlign',
+      title: 'Text Alignment',
+      type: 'string',
+      description: 'Text alignment for this rich text block (overrides section alignment)',
+      options: {
+        list: [
+          { title: 'Inherit from Section', value: 'inherit' },
+          { title: 'Left', value: 'left' },
+          { title: 'Center', value: 'center' },
+          { title: 'Right', value: 'right' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'inherit',
+    }),
   ],
   preview: {
     select: {

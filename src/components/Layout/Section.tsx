@@ -1,7 +1,10 @@
 import React from 'react';
 import Heading from '../Typography/Heading';
-import { createDataAttribute } from 'next-sanity';
-import { usePageSectionContext } from './PageSection';
+import { createDataAttribute, stegaClean } from 'next-sanity';
+import { usePageSectionContext, useTextAlignmentContext } from './PageSection';
+
+// Import the TextAlignmentContext to provide it to children
+import { TextAlignmentContext } from './PageSection';
 
 interface SectionProps {
   children: React.ReactNode;
@@ -9,6 +12,7 @@ interface SectionProps {
   title?: string;
   nestingLevel?: number;
   omitBottomPadding?: boolean;
+  textAlign?: 'inherit' | 'left' | 'center' | 'right';
   // Sanity Live editing props
   documentId?: string;
   documentType?: string;
@@ -21,11 +25,13 @@ const Section = ({
   title,
   nestingLevel = 1,
   omitBottomPadding = false,
+  textAlign = 'inherit',
   documentId,
   documentType,
   titlePath,
 }: SectionProps) => {
   const { hasTitle: pageSectionHasTitle } = usePageSectionContext();
+  const { textAlign: parentTextAlign } = useTextAlignmentContext();
 
   // Calculate the appropriate heading level based on:
   // 1. Whether the parent PageSection has a title (h2)
@@ -57,25 +63,42 @@ const Section = ({
     }
   };
 
+  // Clean the textAlign value to remove Sanity's stega encoding
+  const cleanTextAlign = stegaClean(textAlign) || 'inherit';
+  
+  // Determine the effective text alignment
+  const effectiveTextAlign = cleanTextAlign === 'inherit' ? parentTextAlign : cleanTextAlign;
+  
+  const getTextAlignClass = (align: 'left' | 'center' | 'right') => {
+    switch (align) {
+      case 'left': return 'text-left';
+      case 'center': return 'text-center';
+      case 'right': return 'text-right';
+      default: return 'text-center';
+    }
+  };
+
   const paddingClasses = omitBottomPadding ? '' : 'pb-8 md:pb-12';
 
   return (
-    <section className={`${paddingClasses} ${className}`.trim()}>
-      <div className='container max-w-[80rem] mx-auto px-8'>
-        {title && (
-          <div className='mb-6 md:mb-8 text-center'>
-            <Heading
-              level={getHeadingLevel()}
-              className='mb-4'
-              showMargin={false}
-              {...getTitleDataAttribute()}>
-              {title}
-            </Heading>
-          </div>
-        )}
-        {children}
-      </div>
-    </section>
+    <TextAlignmentContext.Provider value={{ textAlign: effectiveTextAlign }}>
+      <section className={`${paddingClasses} ${getTextAlignClass(effectiveTextAlign)} ${className}`.trim()}>
+        <div className='container max-w-[80rem] mx-auto px-8'>
+          {title && (
+            <div className='mb-6 md:mb-8 text-center'>
+              <Heading
+                level={getHeadingLevel()}
+                className='mb-4'
+                showMargin={false}
+                {...getTitleDataAttribute()}>
+                {title}
+              </Heading>
+            </div>
+          )}
+          {children}
+        </div>
+      </section>
+    </TextAlignmentContext.Provider>
   );
 };
 

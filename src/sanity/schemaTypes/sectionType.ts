@@ -15,6 +15,22 @@ export const sectionType = defineType({
       validation: (Rule) => Rule.required().error('Section title is required'),
     }),
     defineField({
+      name: 'textAlign',
+      title: 'Text Alignment',
+      type: 'string',
+      description: 'Text alignment for this section and its content (overrides parent section alignment)',
+      options: {
+        list: [
+          { title: 'Inherit from Parent', value: 'inherit' },
+          { title: 'Left', value: 'left' },
+          { title: 'Center', value: 'center' },
+          { title: 'Right', value: 'right' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'inherit',
+    }),
+    defineField({
       name: 'content',
       title: 'Content',
       type: 'array',

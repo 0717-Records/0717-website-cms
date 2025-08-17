@@ -92,6 +92,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
                 <PageSection
                   title={block.title}
                   subtitle={block.subtitle}
+                  textAlign={block.textAlign}
                   isFirst={isFirstPageSection}
                   documentId={documentId}
                   documentType={documentType}
@@ -107,6 +108,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
               <BlockWrapper key={block._key}>
                 <Section
                   title={block.title}
+                  textAlign={block.textAlign}
                   nestingLevel={nestingLevel}
                   documentId={documentId}
                   documentType={documentType}
