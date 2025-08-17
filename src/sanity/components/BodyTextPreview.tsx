@@ -29,42 +29,49 @@ const BodyTextPreview = ({ children, value }: BodyTextPreviewProps) => {
     switch (styleType) {
       case 'body-3xl':
         return {
-          fontSize: '1.875rem',
+          fontSize: '2.0625rem',
           lineHeight: '2.25rem',
           fontWeight: '400',
-          letterSpacing: '-0.025em',
+          letterSpacing: '0',
         };
       case 'body-2xl':
         return {
-          fontSize: '1.5rem',
+          fontSize: '1.625rem',
           lineHeight: '2rem',
           fontWeight: '400',
-          letterSpacing: '-0.025em',
+          letterSpacing: '0',
         };
       case 'body-xl':
+        return {
+          fontSize: '1.375rem',
+          lineHeight: '1.75rem',
+          fontWeight: '400',
+          letterSpacing: '0',
+        };
+      case 'body-lg':
         return {
           fontSize: '1.25rem',
           lineHeight: '1.75rem',
           fontWeight: '400',
-          letterSpacing: '-0.025em',
+          letterSpacing: '0',
         };
-      case 'body-lg':
+      case 'body-base':
         return {
           fontSize: '1.125rem',
           lineHeight: '1.75rem',
           fontWeight: '400',
-          letterSpacing: '-0.025em',
+          letterSpacing: '0',
         };
       case 'body-sm':
         return {
-          fontSize: '0.875rem',
+          fontSize: '0.9375rem',
           lineHeight: '1.25rem',
           fontWeight: '400',
           letterSpacing: '0em',
         };
       case 'body-xs':
         return {
-          fontSize: '0.75rem',
+          fontSize: '0.8125rem',
           lineHeight: '1rem',
           fontWeight: '400',
           letterSpacing: '0em',

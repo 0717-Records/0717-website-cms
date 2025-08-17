@@ -167,108 +167,97 @@ html {
 
 /* Heading Utilities */
 @utility text-h1 {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   line-height: 1.1;
   letter-spacing: -0.025em;
   font-weight: 700;
 
   @media (min-width: 768px) {
-    font-size: 3.5rem;
+    font-size: 3.875rem;
   }
 }
 
 @utility text-h2 {
-  font-size: 2rem;
+  font-size: 2.25rem;
   line-height: 1.1;
   letter-spacing: -0.025em;
   font-weight: 700;
 
   @media (min-width: 768px) {
-    font-size: 2.75rem;
+    font-size: 3rem;
   }
 }
 
 @utility text-h3 {
-  font-size: 1.75rem;
+  font-size: 1.9375rem;
   line-height: 1.25;
   letter-spacing: -0.025em;
   font-weight: 600;
 
   @media (min-width: 768px) {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
 }
 
 @utility text-h4 {
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   line-height: 1.25;
   letter-spacing: 0;
   font-weight: 600;
 
   @media (min-width: 768px) {
-    font-size: 1.875rem;
+    font-size: 2.0625rem;
   }
 }
 
 @utility text-h5 {
+  font-size: 1.375rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-weight: 500;
+
+  @media (min-width: 768px) {
+    font-size: 1.625rem;
+  }
+}
+
+@utility text-h6 {
   font-size: 1.25rem;
   line-height: 1.5;
   letter-spacing: 0;
   font-weight: 500;
 
   @media (min-width: 768px) {
-    font-size: 1.5rem;
-  }
-}
-
-@utility text-h6 {
-  font-size: 1.125rem;
-  line-height: 1.5;
-  letter-spacing: 0;
-  font-weight: 500;
-
-  @media (min-width: 768px) {
-    font-size: 1.25rem;
+    font-size: 1.375rem;
   }
 }
 
 /* Body Text Utilities 
  * ⚠️ These values are also duplicated in src/sanity/components/BodyTextPreview.tsx ⚠️ */
 @utility text-body-xs {
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   line-height: 1.5;
   letter-spacing: 0;
   font-weight: 400;
 
   @media (min-width: 768px) {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
   }
 }
 
 @utility text-body-sm {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   line-height: 1.5;
   letter-spacing: 0;
   font-weight: 400;
 
   @media (min-width: 768px) {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
   }
 }
 
 @utility text-body-base {
-  font-size: 0.875rem;
-  line-height: 1.625;
-  letter-spacing: 0;
-  font-weight: 400;
-
-  @media (min-width: 768px) {
-    font-size: 1rem;
-  }
-}
-
-@utility text-body-lg {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   line-height: 1.625;
   letter-spacing: 0;
   font-weight: 400;
@@ -278,7 +267,7 @@ html {
   }
 }
 
-@utility text-body-xl {
+@utility text-body-lg {
   font-size: 1.125rem;
   line-height: 1.625;
   letter-spacing: 0;
@@ -289,24 +278,35 @@ html {
   }
 }
 
-@utility text-body-2xl {
+@utility text-body-xl {
   font-size: 1.25rem;
+  line-height: 1.625;
+  letter-spacing: 0;
+  font-weight: 400;
+
+  @media (min-width: 768px) {
+    font-size: 1.375rem;
+  }
+}
+
+@utility text-body-2xl {
+  font-size: 1.375rem;
   line-height: 1.5;
   letter-spacing: 0;
   font-weight: 400;
 
   @media (min-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.625rem;
   }
 }
 
 @utility text-body-3xl {
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   line-height: 1.25;
   letter-spacing: 0;
   font-weight: 400;
 
   @media (min-width: 768px) {
-    font-size: 1.875rem;
+    font-size: 2.0625rem;
   }
 }

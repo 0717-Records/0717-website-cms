@@ -3,55 +3,55 @@
 
 /* Text size styles */
 [data-slate-editor] [data-testid="text-style__normal"] {
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.625;
 }
 
 [data-slate-editor] [data-testid="text-style__small"] {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1.625;
 }
 
 [data-slate-editor] [data-testid="text-style__large"] {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   line-height: 1.625;
 }
 
 /* Heading styles */
 [data-slate-editor] [data-testid="text-style__h1"] {
-  font-size: 2.25rem;
+  font-size: 2.75rem;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.1;
 }
 
 [data-slate-editor] [data-testid="text-style__h2"] {
-  font-size: 1.875rem;
+  font-size: 2.25rem;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.1;
 }
 
 [data-slate-editor] [data-testid="text-style__h3"] {
-  font-size: 1.5rem;
+  font-size: 1.9375rem;
   font-weight: 600;
   line-height: 1.25;
 }
 
 [data-slate-editor] [data-testid="text-style__h4"] {
-  font-size: 1.25rem;
+  font-size: 1.625rem;
   font-weight: 600;
   line-height: 1.25;
 }
 
 [data-slate-editor] [data-testid="text-style__h5"] {
-  font-size: 1.125rem;
+  font-size: 1.375rem;
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 1.5;
 }
 
 [data-slate-editor] [data-testid="text-style__h6"] {
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 1.5;
 }
 
 /* Blockquote style */
@@ -59,7 +59,7 @@
   border-left: 4px solid #ffea00;
   padding-left: 1rem;
   font-style: italic;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   line-height: 1.625;
 }
 

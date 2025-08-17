@@ -8,7 +8,7 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body className='text-body-base'>{children}</body>
     </html>
   );
 };
