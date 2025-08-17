@@ -45,9 +45,9 @@ export const homePageType = defineType({
     }),
     defineField({
       name: 'heroSubtitle',
-      type: 'blockContent',
+      type: 'text',
       title: 'Hero Subtitle',
-      description: 'Rich text subtitle for the hero section',
+      description: 'Plain text subtitle for the hero section (line breaks allowed)',
       group: 'hero',
     }),
     defineField({

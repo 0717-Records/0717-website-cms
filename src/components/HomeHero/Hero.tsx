@@ -1,8 +1,6 @@
 import styles from './styles.module.css';
 import HeroImages from './HeroImages';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
-import { PortableText } from 'next-sanity';
-import { heroComponents } from '@/sanity/portableTextComponents';
 import { urlFor } from '@/sanity/lib/image';
 import { createDataAttribute } from 'next-sanity';
 import { client } from '@/sanity/lib/client';
@@ -140,14 +138,15 @@ const Hero = ({
         )}
         {heroSubtitle && (
           <div
-            className='prose prose-invert max-w-none [&>*]:text-white'
+            className='text-lg sm:text-xl text-white'
+            style={{ whiteSpace: 'pre-line' }}
             data-sanity={createDataAttribute({
               ...createDataAttributeConfig,
               id: documentId,
               type: documentType,
               path: 'heroSubtitle',
             }).toString()}>
-            <PortableText value={heroSubtitle} components={heroComponents} />
+            {typeof heroSubtitle === 'string' ? heroSubtitle : 'Please update subtitle in Sanity Studio'}
           </div>
         )}
         <div

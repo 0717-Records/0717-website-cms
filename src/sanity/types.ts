@@ -345,7 +345,7 @@ export type HomePage = {
     _type: "image";
   };
   heroTitle?: string;
-  heroSubtitle?: BlockContent;
+  heroSubtitle?: string;
   enableHeroCallToAction?: boolean;
   heroCallToAction?: {
     text?: string;
@@ -687,7 +687,7 @@ export type HOME_PAGE_QUERYResult = {
     alt: string | null;
   } | null;
   heroTitle: string | null;
-  heroSubtitle: BlockContent | null;
+  heroSubtitle: string | null;
   enableHeroCallToAction: boolean | null;
   heroCallToAction: {
     text: string | null;
