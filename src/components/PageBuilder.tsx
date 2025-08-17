@@ -10,6 +10,7 @@ import Section from './Layout/Section';
 import PageSection from './Layout/PageSection';
 import ItemList from './blocks/ItemList';
 import RichText from './blocks/RichText';
+import Quote from './blocks/Quote';
 import Card from './blocks/Card';
 import CardGrid from './blocks/CardGrid';
 import Icon from './blocks/Icon';
@@ -140,6 +141,13 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
             return (
               <BlockWrapper key={block._key}>
                 <RichText {...block} />
+              </BlockWrapper>
+            );
+
+          case 'quote':
+            return (
+              <BlockWrapper key={block._key}>
+                <Quote {...block} />
               </BlockWrapper>
             );
 

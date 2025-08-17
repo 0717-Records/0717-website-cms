@@ -39,6 +39,7 @@ export const sectionType = defineType({
         defineArrayMember({ type: 'divider' }),
         defineArrayMember({ type: 'itemList' }),
         defineArrayMember({ type: 'richText' }),
+        defineArrayMember({ type: 'quote' }),
         defineArrayMember({ type: 'card' }),
         defineArrayMember({ type: 'cardGrid' }),
         defineArrayMember({ type: 'icon' }),

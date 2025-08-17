@@ -13,6 +13,13 @@
  */
 
 // Source: schema.json
+export type Quote = {
+  _type: "quote";
+  text?: string;
+  attribution?: string;
+  textAlign?: "inherit" | "left" | "center" | "right";
+};
+
 export type BandcampWidget = {
   _type: "bandcampWidget";
   embedCode?: string;
@@ -188,6 +195,8 @@ export type PageSection = {
     _key: string;
   } & RichText | {
     _key: string;
+  } & Quote | {
+    _key: string;
   } & Card | {
     _key: string;
   } & CardGrid | {
@@ -212,6 +221,8 @@ export type Section = {
   } & ItemList | {
     _key: string;
   } & RichText | {
+    _key: string;
+  } & Quote | {
     _key: string;
   } & Card | {
     _key: string;
@@ -598,7 +609,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -684,6 +695,8 @@ export type PAGE_QUERYResult = {
     } & ImageGallery | {
       _key: string;
     } & ItemList | {
+      _key: string;
+    } & Quote | {
       _key: string;
     } & RichText | {
       _key: string;
@@ -775,6 +788,8 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & ItemList | {
       _key: string;
+    } & Quote | {
+      _key: string;
     } & RichText | {
       _key: string;
     } & Section>;
@@ -810,6 +825,8 @@ export type HOME_PAGE_QUERYResult = {
     } & ImageGallery | {
       _key: string;
     } & ItemList | {
+      _key: string;
+    } & Quote | {
       _key: string;
     } & RichText | {
       _key: string;
