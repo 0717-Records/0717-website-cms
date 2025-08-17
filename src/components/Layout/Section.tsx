@@ -8,6 +8,7 @@ interface SectionProps {
   className?: string;
   title?: string;
   nestingLevel?: number;
+  omitBottomPadding?: boolean;
   // Sanity Live editing props
   documentId?: string;
   documentType?: string;
@@ -19,12 +20,13 @@ const Section = ({
   className = '',
   title,
   nestingLevel = 1,
+  omitBottomPadding = false,
   documentId,
   documentType,
   titlePath,
 }: SectionProps) => {
   const { hasTitle: pageSectionHasTitle } = usePageSectionContext();
-  
+
   // Calculate the appropriate heading level based on:
   // 1. Whether the parent PageSection has a title (h2)
   // 2. The current nesting level within sections
@@ -55,13 +57,18 @@ const Section = ({
     }
   };
 
+  const paddingClasses = omitBottomPadding ? '' : 'pb-8 md:pb-12';
 
   return (
-    <section className={`py-8 md:py-12 ${className}`.trim()}>
+    <section className={`${paddingClasses} ${className}`.trim()}>
       <div className='container max-w-[80rem] mx-auto px-8'>
         {title && (
           <div className='mb-6 md:mb-8 text-center'>
-            <Heading level={getHeadingLevel()} className='mb-4' showMargin={false} {...getTitleDataAttribute()}>
+            <Heading
+              level={getHeadingLevel()}
+              className='mb-4'
+              showMargin={false}
+              {...getTitleDataAttribute()}>
               {title}
             </Heading>
           </div>

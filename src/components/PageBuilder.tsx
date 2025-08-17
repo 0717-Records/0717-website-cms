@@ -85,11 +85,14 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
         // Only skip BlockWrapper if the block component handles its own Sanity data attributes internally.
         switch (block._type) {
           case 'pageSection':
+            // Check if this is the first PageSection in the entire blocks array
+            const isFirstPageSection = blocks.findIndex(b => b._type === 'pageSection') === index;
             return (
               <BlockWrapper key={block._key}>
                 <PageSection
                   title={block.title}
                   subtitle={block.subtitle}
+                  isFirst={isFirstPageSection}
                   documentId={documentId}
                   documentType={documentType}
                   titlePath={`${blockPath}.title`}

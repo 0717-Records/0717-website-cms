@@ -11,6 +11,7 @@ interface PageSectionProps {
   className?: string;
   title?: string;
   subtitle?: string;
+  isFirst?: boolean;
   // Sanity Live editing props
   documentId?: string;
   documentType?: string;
@@ -23,6 +24,7 @@ const PageSection = ({
   className = '',
   title,
   subtitle,
+  isFirst = false,
   documentId,
   documentType,
   titlePath,
@@ -69,15 +71,20 @@ const PageSection = ({
   };
 
   const hasTitle = Boolean(title);
+  const paddingClasses = isFirst ? 'pt-16 md:pt-24 pb-16 md:pb-24' : 'pb-16 md:pb-24';
 
   return (
     <PageSectionContext.Provider value={{ hasTitle }}>
-      <section className={`py-16 md:py-24 ${className}`.trim()}>
-        <div className='container max-w-[80rem] mx-auto px-8'>
+      <section className={`${paddingClasses} ${className}`.trim()}>
+        <div className='container max-w-[80rem] mx-auto'>
           {(title || subtitle) && (
-            <div className='mb-8 md:mb-12 text-center'>
+            <div className='text-center'>
               {title && (
-                <Heading level='h2' className='mb-6' showMargin={false} {...getTitleDataAttribute()}>
+                <Heading
+                  level='h2'
+                  className='mb-6'
+                  showMargin={false}
+                  {...getTitleDataAttribute()}>
                   {title}
                 </Heading>
               )}
