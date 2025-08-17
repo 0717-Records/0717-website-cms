@@ -11,6 +11,7 @@ import PageSection from './Layout/PageSection';
 import ItemList from './blocks/ItemList';
 import RichText from './blocks/RichText';
 import Quote from './blocks/Quote';
+import TextImage from './blocks/TextImage';
 import Card from './blocks/Card';
 import CardGrid from './blocks/CardGrid';
 import Icon from './blocks/Icon';
@@ -148,6 +149,18 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
             return (
               <BlockWrapper key={block._key}>
                 <Quote {...block} />
+              </BlockWrapper>
+            );
+
+          case 'textImage':
+            return (
+              <BlockWrapper key={block._key}>
+                <TextImage 
+                  {...block} 
+                  documentId={documentId}
+                  documentType={documentType}
+                  pathPrefix={blockPath}
+                />
               </BlockWrapper>
             );
 

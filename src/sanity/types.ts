@@ -13,6 +13,57 @@
  */
 
 // Source: schema.json
+export type TextImage = {
+  _type: "textImage";
+  content?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    } | {
+      _key: string;
+    } & Color>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  layout?: "text-left" | "text-right";
+};
+
 export type Quote = {
   _type: "quote";
   text?: string;
@@ -197,6 +248,8 @@ export type PageSection = {
     _key: string;
   } & Quote | {
     _key: string;
+  } & TextImage | {
+    _key: string;
   } & Card | {
     _key: string;
   } & CardGrid | {
@@ -223,6 +276,8 @@ export type Section = {
   } & RichText | {
     _key: string;
   } & Quote | {
+    _key: string;
+  } & TextImage | {
     _key: string;
   } & Card | {
     _key: string;
@@ -609,7 +664,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -700,7 +755,9 @@ export type PAGE_QUERYResult = {
       _key: string;
     } & RichText | {
       _key: string;
-    } & Section>;
+    } & Section | {
+      _key: string;
+    } & TextImage>;
     image: null;
   }> | null;
   mainImage: {
@@ -792,7 +849,9 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & RichText | {
       _key: string;
-    } & Section>;
+    } & Section | {
+      _key: string;
+    } & TextImage>;
     image: null;
   }> | null;
 } | {
@@ -830,7 +889,9 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & RichText | {
       _key: string;
-    } & Section>;
+    } & Section | {
+      _key: string;
+    } & TextImage>;
     image: null;
   }> | null;
 } | {

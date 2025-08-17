@@ -21,6 +21,7 @@ import { youTubeVideoType } from './blocks/youTubeVideoType';
 import { spotifyWidgetType } from './blocks/spotifyWidgetType';
 import { bandcampWidgetType } from './blocks/bandcampWidgetType';
 import { quoteType } from './blocks/quoteType';
+import { textImageType } from './blocks/textImageType';
 import { siteSettingsType } from './siteSettingsType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -49,5 +50,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     spotifyWidgetType,
     bandcampWidgetType,
     quoteType,
+    textImageType,
   ],
 };
