@@ -1,0 +1,69 @@
+'use client';
+
+import React from 'react';
+import { stegaClean, createDataAttribute } from 'next-sanity';
+import { client } from '@/sanity/lib/client';
+import type { YouTubeVideo as YouTubeVideoType } from '@/sanity/types';
+
+interface YouTubeVideoProps extends YouTubeVideoType {
+  className?: string;
+  documentId?: string;
+  documentType?: string;
+  pathPrefix?: string;
+}
+
+const { projectId, dataset, stega } = client.config();
+export const createDataAttributeConfig = {
+  projectId,
+  dataset,
+  baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
+};
+
+const getEmbedUrl = (url: string) => {
+  const regex =
+    /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  const match = url.match(regex);
+  return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+};
+
+const YouTubeVideo: React.FC<YouTubeVideoProps> = ({
+  url,
+  className = '',
+  documentId,
+  documentType,
+  pathPrefix,
+}) => {
+  const cleanUrl = stegaClean(url);
+  
+  if (!cleanUrl) {
+    return null;
+  }
+
+  const embedUrl = getEmbedUrl(cleanUrl);
+  
+  if (!embedUrl) {
+    return (
+      <div className={`${className} p-4 border border-red-200 rounded-lg bg-red-50`}>
+        <p className="text-red-600">Invalid YouTube URL provided</p>
+      </div>
+    );
+  }
+
+
+  return (
+    <div className={`w-full ${className}`}>
+      <div className="relative w-full mx-auto lg:max-w-[972px]">
+        <iframe
+          className="rounded-2xl lg:rounded-[1.25rem] w-full aspect-video"
+          src={embedUrl}
+          title="YouTube Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
+    </div>
+  );
+};
+
+export default YouTubeVideo;

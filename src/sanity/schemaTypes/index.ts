@@ -17,6 +17,7 @@ import { cardGridType } from './blocks/cardGridType';
 import { iconType } from './blocks/iconType';
 import { imageType } from './blocks/imageType';
 import { imageGalleryType } from './blocks/imageGalleryType';
+import { youTubeVideoType } from './blocks/youTubeVideoType';
 import { siteSettingsType } from './siteSettingsType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -41,5 +42,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     iconType,
     imageType,
     imageGalleryType,
+    youTubeVideoType,
   ],
 };

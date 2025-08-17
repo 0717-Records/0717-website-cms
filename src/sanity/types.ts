@@ -13,6 +13,11 @@
  */
 
 // Source: schema.json
+export type YouTubeVideo = {
+  _type: "youTubeVideo";
+  url?: string;
+};
+
 export type ImageGallery = {
   _type: "imageGallery";
   columns?: "2" | "3" | "4";
@@ -126,6 +131,7 @@ export type RichText = {
     _type: "image";
     _key: string;
   }>;
+  textAlign?: "inherit" | "left" | "center" | "right";
 };
 
 export type ItemList = {
@@ -160,6 +166,7 @@ export type PageSection = {
   _type: "pageSection";
   title?: string;
   subtitle?: string;
+  textAlign?: "left" | "center" | "right";
   content?: Array<{
     _key: string;
   } & Section | {
@@ -184,6 +191,7 @@ export type PageSection = {
 export type Section = {
   _type: "section";
   title?: string;
+  textAlign?: "inherit" | "left" | "center" | "right";
   content?: Array<{
     _key: string;
   } & Section | {
@@ -202,7 +210,9 @@ export type Section = {
     _key: string;
   } & ImageBlock | {
     _key: string;
-  } & ImageGallery>;
+  } & ImageGallery | {
+    _key: string;
+  } & YouTubeVideo>;
 };
 
 export type PageBuilder = Array<{
@@ -573,7 +583,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -643,6 +653,7 @@ export type PAGE_QUERYResult = {
     _type: "pageSection";
     title?: string;
     subtitle?: string;
+    textAlign?: "center" | "left" | "right";
     content?: Array<{
       _key: string;
     } & Card | {
@@ -732,6 +743,7 @@ export type HOME_PAGE_QUERYResult = {
     _type: "pageSection";
     title?: string;
     subtitle?: string;
+    textAlign?: "center" | "left" | "right";
     content?: Array<{
       _key: string;
     } & Card | {
@@ -767,6 +779,7 @@ export type HOME_PAGE_QUERYResult = {
     _type: "pageSection";
     title?: string;
     subtitle?: string;
+    textAlign?: "center" | "left" | "right";
     content?: Array<{
       _key: string;
     } & Card | {

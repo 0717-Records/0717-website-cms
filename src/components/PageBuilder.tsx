@@ -15,6 +15,7 @@ import CardGrid from './blocks/CardGrid';
 import Icon from './blocks/Icon';
 import ImageBlock from './blocks/Image';
 import ImageGallery from './blocks/ImageGallery';
+import YouTubeVideo from './blocks/YouTubeVideo';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -177,6 +178,18 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
             return (
               <BlockWrapper key={block._key}>
                 <ImageGallery 
+                  {...block} 
+                  documentId={documentId}
+                  documentType={documentType}
+                  pathPrefix={blockPath}
+                />
+              </BlockWrapper>
+            );
+
+          case 'youTubeVideo':
+            return (
+              <BlockWrapper key={block._key}>
+                <YouTubeVideo 
                   {...block} 
                   documentId={documentId}
                   documentType={documentType}
