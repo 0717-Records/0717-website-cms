@@ -1,7 +1,7 @@
 // Block types that support unlimited nesting
 // This type represents any block that can contain other blocks
 
-import type { ItemList, Divider, RichText, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, PageSection } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -28,6 +28,7 @@ export type ImageBlock = SanityImageBlock & { _key: string };
 export type ImageGalleryBlock = ImageGallery & { _key: string };
 export type YouTubeVideoBlock = YouTubeVideo & { _key: string };
 export type SpotifyWidgetBlock = SpotifyWidget & { _key: string };
+export type BandcampWidgetBlock = BandcampWidget & { _key: string };
 
 // Union of all possible block types (current and future)
 export type NestedBlock =
@@ -42,7 +43,8 @@ export type NestedBlock =
   | ImageBlock
   | ImageGalleryBlock
   | YouTubeVideoBlock
-  | SpotifyWidgetBlock;
+  | SpotifyWidgetBlock
+  | BandcampWidgetBlock;
 
 // Union of blocks that can contain nested content
 export type BlockWithContent = PageSectionBlock | SectionBlock | CardBlock;
@@ -99,4 +101,8 @@ export const isYouTubeVideoBlock = (block: NestedBlock): block is YouTubeVideoBl
 
 export const isSpotifyWidgetBlock = (block: NestedBlock): block is SpotifyWidgetBlock => {
   return block._type === 'spotifyWidget';
+};
+
+export const isBandcampWidgetBlock = (block: NestedBlock): block is BandcampWidgetBlock => {
+  return block._type === 'bandcampWidget';
 };

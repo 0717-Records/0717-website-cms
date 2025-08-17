@@ -46,6 +46,7 @@ export const sectionType = defineType({
         defineArrayMember({ type: 'imageGallery' }),
         defineArrayMember({ type: 'youTubeVideo' }),
         defineArrayMember({ type: 'spotifyWidget' }),
+        defineArrayMember({ type: 'bandcampWidget' }),
         // Add other block types here as you create them
         // Note: Sections can now contain nested sections for proper semantic hierarchy
       ],

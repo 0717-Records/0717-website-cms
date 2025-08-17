@@ -13,6 +13,11 @@
  */
 
 // Source: schema.json
+export type BandcampWidget = {
+  _type: "bandcampWidget";
+  embedCode?: string;
+};
+
 export type SpotifyWidget = {
   _type: "spotifyWidget";
   url?: string;
@@ -220,7 +225,9 @@ export type Section = {
     _key: string;
   } & YouTubeVideo | {
     _key: string;
-  } & SpotifyWidget>;
+  } & SpotifyWidget | {
+    _key: string;
+  } & BandcampWidget>;
 };
 
 export type PageBuilder = Array<{
@@ -591,7 +598,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY

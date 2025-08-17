@@ -17,6 +17,7 @@ import ImageBlock from './blocks/Image';
 import ImageGallery from './blocks/ImageGallery';
 import YouTubeVideo from './blocks/YouTubeVideo';
 import SpotifyWidget from './blocks/SpotifyWidget';
+import BandcampWidget from './blocks/BandcampWidget';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -203,6 +204,18 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
             return (
               <BlockWrapper key={block._key}>
                 <SpotifyWidget 
+                  {...block} 
+                  documentId={documentId}
+                  documentType={documentType}
+                  pathPrefix={blockPath}
+                />
+              </BlockWrapper>
+            );
+
+          case 'bandcampWidget':
+            return (
+              <BlockWrapper key={block._key}>
+                <BandcampWidget 
                   {...block} 
                   documentId={documentId}
                   documentType={documentType}
