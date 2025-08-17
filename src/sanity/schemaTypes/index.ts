@@ -18,6 +18,7 @@ import { iconType } from './blocks/iconType';
 import { imageType } from './blocks/imageType';
 import { imageGalleryType } from './blocks/imageGalleryType';
 import { youTubeVideoType } from './blocks/youTubeVideoType';
+import { spotifyWidgetType } from './blocks/spotifyWidgetType';
 import { siteSettingsType } from './siteSettingsType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -43,5 +44,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     imageType,
     imageGalleryType,
     youTubeVideoType,
+    spotifyWidgetType,
   ],
 };

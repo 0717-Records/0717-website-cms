@@ -16,6 +16,7 @@ import Icon from './blocks/Icon';
 import ImageBlock from './blocks/Image';
 import ImageGallery from './blocks/ImageGallery';
 import YouTubeVideo from './blocks/YouTubeVideo';
+import SpotifyWidget from './blocks/SpotifyWidget';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -190,6 +191,18 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
             return (
               <BlockWrapper key={block._key}>
                 <YouTubeVideo 
+                  {...block} 
+                  documentId={documentId}
+                  documentType={documentType}
+                  pathPrefix={blockPath}
+                />
+              </BlockWrapper>
+            );
+
+          case 'spotifyWidget':
+            return (
+              <BlockWrapper key={block._key}>
+                <SpotifyWidget 
                   {...block} 
                   documentId={documentId}
                   documentType={documentType}
