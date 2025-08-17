@@ -65,16 +65,20 @@ const Section = ({
 
   // Clean the textAlign value to remove Sanity's stega encoding
   const cleanTextAlign = stegaClean(textAlign) || 'inherit';
-  
+
   // Determine the effective text alignment
   const effectiveTextAlign = cleanTextAlign === 'inherit' ? parentTextAlign : cleanTextAlign;
-  
+
   const getTextAlignClass = (align: 'left' | 'center' | 'right') => {
     switch (align) {
-      case 'left': return 'text-left';
-      case 'center': return 'text-center';
-      case 'right': return 'text-right';
-      default: return 'text-center';
+      case 'left':
+        return 'text-left';
+      case 'center':
+        return 'text-center';
+      case 'right':
+        return 'text-right';
+      default:
+        return 'text-center';
     }
   };
 
@@ -82,8 +86,9 @@ const Section = ({
 
   return (
     <TextAlignmentContext.Provider value={{ textAlign: effectiveTextAlign }}>
-      <section className={`${paddingClasses} ${getTextAlignClass(effectiveTextAlign)} ${className}`.trim()}>
-        <div className='container max-w-[80rem] mx-auto px-8'>
+      <section
+        className={`${paddingClasses} ${getTextAlignClass(effectiveTextAlign)} ${className}`.trim()}>
+        <div className='container mx-auto px-8'>
           {title && (
             <div className='mb-3 md:mb-4 text-center'>
               <Heading
