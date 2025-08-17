@@ -101,7 +101,7 @@ const PageSection = ({
       <TextAlignmentContext.Provider value={{ textAlign: cleanTextAlign }}>
         <section
           className={`${paddingClasses} ${getTextAlignClass(cleanTextAlign)} ${className}`.trim()}>
-          <div className='container max-w-[60rem] mx-auto'>
+          <div className='container max-w-[60rem] mx-auto px-8'>
             {(title || subtitle) && (
               <div className='text-center'>
                 {title && (

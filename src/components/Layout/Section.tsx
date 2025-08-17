@@ -88,7 +88,7 @@ const Section = ({
     <TextAlignmentContext.Provider value={{ textAlign: effectiveTextAlign }}>
       <section
         className={`${paddingClasses} ${getTextAlignClass(effectiveTextAlign)} ${className}`.trim()}>
-        <div className='container mx-auto px-8'>
+        <div className={nestingLevel === 1 ? 'container mx-auto px-8' : ''}>
           {title && (
             <div className='mb-3 md:mb-4 text-center'>
               <Heading
