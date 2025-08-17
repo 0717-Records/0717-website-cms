@@ -1,7 +1,7 @@
 // Block types that support unlimited nesting
 // This type represents any block that can contain other blocks
 
-import type { ItemList, Divider, RichText, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, PageSection } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -16,6 +16,7 @@ export interface SectionBlock extends BaseBlock {
 }
 
 // Use generated Sanity types for proper typing
+export type PageSectionBlock = PageSection & { _key: string };
 export type ItemListBlock = ItemList & { _key: string };
 export type DividerBlock = Divider & { _key: string };
 export type RichTextBlock = RichText & { _key: string };
@@ -27,6 +28,7 @@ export type ImageGalleryBlock = ImageGallery & { _key: string };
 
 // Union of all possible block types (current and future)
 export type NestedBlock =
+  | PageSectionBlock
   | SectionBlock
   | DividerBlock
   | ItemListBlock
@@ -38,11 +40,15 @@ export type NestedBlock =
   | ImageGalleryBlock;
 
 // Union of blocks that can contain nested content
-export type BlockWithContent = SectionBlock | CardBlock;
+export type BlockWithContent = PageSectionBlock | SectionBlock | CardBlock;
 
 // Type guard functions
 export const isBlockWithContent = (block: NestedBlock): block is BlockWithContent => {
-  return block._type === 'section' || block._type === 'card';
+  return block._type === 'pageSection' || block._type === 'section' || block._type === 'card';
+};
+
+export const isPageSectionBlock = (block: NestedBlock): block is PageSectionBlock => {
+  return block._type === 'pageSection';
 };
 
 export const isSectionBlock = (block: NestedBlock): block is SectionBlock => {

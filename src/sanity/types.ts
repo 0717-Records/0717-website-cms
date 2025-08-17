@@ -100,7 +100,7 @@ export type RichText = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
+    style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -156,11 +156,37 @@ export type Divider = {
   style?: "default";
 };
 
-export type Section = {
-  _type: "section";
+export type PageSection = {
+  _type: "pageSection";
   title?: string;
   subtitle?: string;
   content?: Array<{
+    _key: string;
+  } & Section | {
+    _key: string;
+  } & Divider | {
+    _key: string;
+  } & ItemList | {
+    _key: string;
+  } & RichText | {
+    _key: string;
+  } & Card | {
+    _key: string;
+  } & CardGrid | {
+    _key: string;
+  } & Icon | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery>;
+};
+
+export type Section = {
+  _type: "section";
+  title?: string;
+  content?: Array<{
+    _key: string;
+  } & Section | {
     _key: string;
   } & Divider | {
     _key: string;
@@ -181,7 +207,7 @@ export type Section = {
 
 export type PageBuilder = Array<{
   _key: string;
-} & Section>;
+} & PageSection>;
 
 export type Footer = {
   _id: string;
@@ -260,7 +286,7 @@ export type BlockContent = Array<{
     _type: "span";
     _key: string;
   }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
+  style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
   listItem?: "bullet";
   markDefs?: Array<{
     href?: string;
@@ -547,7 +573,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -614,7 +640,7 @@ export type PAGE_QUERYResult = {
   slug: Slug | null;
   content: Array<{
     _key: string;
-    _type: "section";
+    _type: "pageSection";
     title?: string;
     subtitle?: string;
     content?: Array<{
@@ -633,7 +659,9 @@ export type PAGE_QUERYResult = {
       _key: string;
     } & ItemList | {
       _key: string;
-    } & RichText>;
+    } & RichText | {
+      _key: string;
+    } & Section>;
     image: null;
   }> | null;
   mainImage: {
@@ -701,7 +729,7 @@ export type HOME_PAGE_QUERYResult = {
   heroContentPosition: "bottom-center" | "bottom-left" | "bottom-right" | "center-center" | "center-left" | "center-right" | "top-center" | "top-left" | "top-right" | null;
   content: Array<{
     _key: string;
-    _type: "section";
+    _type: "pageSection";
     title?: string;
     subtitle?: string;
     content?: Array<{
@@ -720,7 +748,9 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & ItemList | {
       _key: string;
-    } & RichText>;
+    } & RichText | {
+      _key: string;
+    } & Section>;
     image: null;
   }> | null;
 } | {
@@ -734,7 +764,7 @@ export type HOME_PAGE_QUERYResult = {
   heroContentPosition: null;
   content: Array<{
     _key: string;
-    _type: "section";
+    _type: "pageSection";
     title?: string;
     subtitle?: string;
     content?: Array<{
@@ -753,7 +783,9 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & ItemList | {
       _key: string;
-    } & RichText>;
+    } & RichText | {
+      _key: string;
+    } & Section>;
     image: null;
   }> | null;
 } | {

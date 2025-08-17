@@ -6,7 +6,7 @@ export const pageBuilderType = defineType({
   type: 'array',
   of: [
     defineArrayMember({
-      type: 'section',
+      type: 'pageSection',
     }),
   ],
   options: {
@@ -22,5 +22,5 @@ export const pageBuilderType = defineType({
   },
   // Clear description for editors
   description:
-    'Build your page by adding sections. Each section can contain different types of content blocks.',
+    'Build your page by adding page sections. Each page section can contain nested sections and content blocks.',
 });

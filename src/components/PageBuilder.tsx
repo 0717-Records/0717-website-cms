@@ -7,6 +7,7 @@ import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react';
 import Section from './Layout/Section';
+import PageSection from './Layout/PageSection';
 import ItemList from './blocks/ItemList';
 import RichText from './blocks/RichText';
 import Card from './blocks/Card';
@@ -28,6 +29,7 @@ type BlockRendererProps = {
   documentId: string;
   documentType: string;
   pathPrefix: string;
+  nestingLevel?: number;
 };
 
 const { projectId, dataset, stega } = client.config();
@@ -38,7 +40,7 @@ export const createDataAttributeConfig = {
 };
 
 // Universal block renderer that can handle any block type at any nesting level
-const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRendererProps) => {
+const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLevel = 1 }: BlockRendererProps) => {
   if (!Array.isArray(blocks)) {
     return null;
   }
@@ -73,6 +75,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
               documentId={documentId}
               documentType={documentType}
               pathPrefix={`${blockPath}.content`}
+              nestingLevel={nestingLevel + 1}
             />
           );
         };
@@ -81,16 +84,30 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix }: BlockRe
         // BlockWrapper provides the necessary data-sanity attributes for visual editing in Sanity Studio.
         // Only skip BlockWrapper if the block component handles its own Sanity data attributes internally.
         switch (block._type) {
-          case 'section':
+          case 'pageSection':
             return (
               <BlockWrapper key={block._key}>
-                <Section
+                <PageSection
                   title={block.title}
                   subtitle={block.subtitle}
                   documentId={documentId}
                   documentType={documentType}
                   titlePath={`${blockPath}.title`}
                   subtitlePath={`${blockPath}.subtitle`}>
+                  {renderNestedContent(block.content)}
+                </PageSection>
+              </BlockWrapper>
+            );
+
+          case 'section':
+            return (
+              <BlockWrapper key={block._key}>
+                <Section
+                  title={block.title}
+                  nestingLevel={nestingLevel}
+                  documentId={documentId}
+                  documentType={documentType}
+                  titlePath={`${blockPath}.title`}>
                   {renderNestedContent(block.content)}
                 </Section>
               </BlockWrapper>

@@ -1,21 +1,12 @@
 import Image from 'next/image';
 import { PortableTextComponents } from 'next-sanity';
 import { urlFor } from '@/sanity/lib/image';
-import Heading from '@/components/Typography/Heading';
 
 // Default components with gradient underlines
 export const components: PortableTextComponents = {
   block: {
     // Default style (what users get when they just start typing)
     normal: ({ children }) => <p className='text-body-base'>{children}</p>,
-
-    // Heading styles - semantic HTML with typography utilities and gradient underlines
-    h1: ({ children }) => <Heading level='h1'>{children}</Heading>,
-    h2: ({ children }) => <Heading level='h2'>{children}</Heading>,
-    h3: ({ children }) => <Heading level='h3'>{children}</Heading>,
-    h4: ({ children }) => <Heading level='h4'>{children}</Heading>,
-    h5: ({ children }) => <Heading level='h5'>{children}</Heading>,
-    h6: ({ children }) => <Heading level='h6'>{children}</Heading>,
 
     // Body text styles - using appropriate semantic tags with typography utilities
     'body-xs': ({ children }) => <figcaption className='text-body-xs'>{children}</figcaption>,
@@ -76,58 +67,7 @@ export const components: PortableTextComponents = {
   },
 };
 
-// Components specifically for hero content (no gradient underlines)
+// Components specifically for hero content
 export const heroComponents: PortableTextComponents = {
   ...components,
-  block: {
-    // Default style (what users get when they just start typing)
-    normal: ({ children }) => <p className='text-body-base'>{children}</p>,
-
-    // Override heading styles to remove gradient underlines in hero sections
-    h1: ({ children }) => (
-      <Heading level='h1' showUnderline={false}>
-        {children}
-      </Heading>
-    ),
-    h2: ({ children }) => (
-      <Heading level='h2' showUnderline={false}>
-        {children}
-      </Heading>
-    ),
-    h3: ({ children }) => (
-      <Heading level='h3' showUnderline={false}>
-        {children}
-      </Heading>
-    ),
-    h4: ({ children }) => (
-      <Heading level='h4' showUnderline={false}>
-        {children}
-      </Heading>
-    ),
-    h5: ({ children }) => (
-      <Heading level='h5' showUnderline={false}>
-        {children}
-      </Heading>
-    ),
-    h6: ({ children }) => (
-      <Heading level='h6' showUnderline={false}>
-        {children}
-      </Heading>
-    ),
-
-    // Body text styles - using appropriate semantic tags with typography utilities
-    'body-xs': ({ children }) => <figcaption className='text-body-xs'>{children}</figcaption>,
-    'body-sm': ({ children }) => <p className='text-body-sm'>{children}</p>,
-    'body-lg': ({ children }) => <p className='text-body-lg'>{children}</p>,
-    'body-xl': ({ children }) => <p className='text-body-xl'>{children}</p>,
-    'body-2xl': ({ children }) => <p className='text-body-2xl'>{children}</p>,
-    'body-3xl': ({ children }) => <p className='text-body-3xl'>{children}</p>,
-
-    // Special styles
-    blockquote: ({ children }) => (
-      <blockquote className='border-l-4 border-brand-primary pl-4 italic text-body-xl'>
-        {children}
-      </blockquote>
-    ),
-  },
 };

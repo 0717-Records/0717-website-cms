@@ -8,6 +8,7 @@ import { headerType } from './headerType';
 import { footerType } from './footerType';
 import { pageBuilderType } from './pageBuilderType';
 import { sectionType } from './sectionType';
+import { pageSectionType } from './pageSectionType';
 import { dividerType } from './blocks/dividerType';
 import { itemListType } from './blocks/itemListType';
 import { richTextType } from './blocks/richTextType';
@@ -31,6 +32,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     footerType,
     pageBuilderType,
     sectionType,
+    pageSectionType,
     dividerType,
     itemListType,
     richTextType,

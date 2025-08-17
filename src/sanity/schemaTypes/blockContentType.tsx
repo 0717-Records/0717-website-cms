@@ -26,13 +26,8 @@ export const blockContentType = defineType({
       // you want, and decide how you want to deal with it where you want to
       // use your content.
       styles: [
-        // Heading Styles
-        { title: 'Heading 1 (H1)', value: 'h1' },
-        { title: 'Heading 2 (H2)', value: 'h2' },
-        { title: 'Heading 3 (H3)', value: 'h3' },
-        { title: 'Heading 4 (H4)', value: 'h4' },
-        { title: 'Heading 5 (H5)', value: 'h5' },
-        { title: 'Heading 6 (H6)', value: 'h6' },
+        // Default paragraph style  
+        { title: 'Normal', value: 'normal' },
 
         // Body Text Styles with custom previews
         {

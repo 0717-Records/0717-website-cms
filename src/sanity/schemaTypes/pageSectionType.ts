@@ -1,18 +1,23 @@
 import { defineType, defineArrayMember, defineField } from 'sanity';
 
-export const sectionType = defineType({
-  name: 'section',
-  title: 'Section',
+export const pageSectionType = defineType({
+  name: 'pageSection',
+  title: 'Page Section',
   type: 'object',
-  description: 'A nestable section for organizing content with semantic heading hierarchy (no subtitle)',
-  icon: () => '📄',
+  description: 'A page-level section with title, subtitle, and content blocks (cannot be nested)',
+  icon: () => '📋',
   fields: [
     defineField({
       name: 'title',
       title: 'Section Title',
       type: 'string',
-      description: 'Title for this section (used to generate semantic heading hierarchy)',
-      validation: (Rule) => Rule.required().error('Section title is required'),
+      description: 'Optional title for this section (will be rendered as h2)',
+    }),
+    defineField({
+      name: 'subtitle',
+      title: 'Section Subtitle',
+      type: 'text',
+      description: 'Optional subtitle for this section',
     }),
     defineField({
       name: 'content',
@@ -28,21 +33,25 @@ export const sectionType = defineType({
         defineArrayMember({ type: 'icon' }),
         defineArrayMember({ type: 'imageBlock' }),
         defineArrayMember({ type: 'imageGallery' }),
-        // Add other block types here as you create them
-        // Note: Sections can now contain nested sections for proper semantic hierarchy
+        // Note: pageSection cannot contain other pageSections - only regular nestable sections
       ],
     }),
   ],
   preview: {
     select: {
       title: 'title',
+      subtitle: 'subtitle',
       content: 'content',
     },
-    prepare({ title, content }) {
+    prepare({ title, subtitle, content }) {
       const blockCount = Array.isArray(content) ? content.length : 0;
+      const displaySubtitle = subtitle 
+        ? `${subtitle.slice(0, 50)}${subtitle.length > 50 ? '...' : ''}`
+        : `${blockCount} block${blockCount !== 1 ? 's' : ''}`;
+      
       return {
-        title: title || 'Section',
-        subtitle: blockCount === 1 ? '1 block' : `${blockCount} blocks`,
+        title: title || 'Page Section',
+        subtitle: displaySubtitle,
       };
     },
   },
