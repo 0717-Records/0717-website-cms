@@ -85,7 +85,7 @@ const Section = ({
       <section className={`${paddingClasses} ${getTextAlignClass(effectiveTextAlign)} ${className}`.trim()}>
         <div className='container max-w-[80rem] mx-auto px-8'>
           {title && (
-            <div className='mb-6 md:mb-8 text-center'>
+            <div className='mb-3 md:mb-4 text-center'>
               <Heading
                 level={getHeadingLevel()}
                 className='mb-4'
