@@ -178,11 +178,11 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
       <Modal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        className='max-w-[95vw] max-h-[95vh]'
+        className='w-[95vw] h-[95vh] max-w-[95vw] max-h-[95vh]'
         aria-labelledby='gallery-modal-title'
         aria-describedby='gallery-modal-description'>
         <div
-          className='flex flex-col items-center'
+          className='flex flex-col items-center h-full max-h-[95vh] overflow-hidden'
           onKeyDown={handleKeyNavigation}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
@@ -237,53 +237,58 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
           </div>
 
           {/* Main image */}
-          <div className='relative'>
+          <div className='relative flex-1 flex items-center justify-center min-h-0'>
             {currentImageUrl && (
               <NextImage
                 src={currentImageUrl}
                 alt={currentImageAlt}
                 width={1200}
                 height={900}
-                className='max-w-full max-h-[75vh] object-contain'
+                className='max-w-full max-h-full w-auto h-auto object-contain'
                 priority
               />
             )}
           </div>
 
-          {/* Image info */}
-          <div className='mt-4 text-center text-white'>
-            <div className='text-sm opacity-75 mb-2'>
-              {currentImageIndex + 1} of {images.length}
+          {/* Image info and thumbnails - fixed at bottom */}
+          <div className='flex-shrink-0 w-full'>
+            {/* Image info */}
+            <div className='mt-2 text-center text-white'>
+              <div className='text-sm opacity-75 mb-1'>
+                {currentImageIndex + 1} of {images.length}
+              </div>
+              {currentCaption && (
+                <p className='max-w-2xl px-4 text-sm line-clamp-2 mx-auto'>{currentCaption}</p>
+              )}
             </div>
-            {currentCaption && <p className='max-w-2xl px-4'>{currentCaption}</p>}
-          </div>
 
-          {/* Thumbnail navigation */}
-          <div className='mt-4 flex gap-2 overflow-x-auto max-w-full px-4'>
-            {images.map((item, idx) => {
-              if (!item.image?.asset) return null;
+            {/* Thumbnail navigation */}
+            <div className='mt-2 pb-4 flex gap-1 md:gap-2 overflow-x-auto max-w-full px-4 scrollbar-hide justify-center'>
+              {images.map((item, idx) => {
+                if (!item.image?.asset) return null;
 
-              const thumbUrl = urlFor(item.image).width(100).height(75).url();
-              const isActive = idx === currentImageIndex;
+                const thumbUrl = urlFor(item.image).width(100).height(75).url();
+                const isActive = idx === currentImageIndex;
 
-              return (
-                <button
-                  key={item._key || idx}
-                  onClick={() => setCurrentImageIndex(idx)}
-                  className={`flex-shrink-0 ${
-                    isActive ? 'ring-2 ring-white ring-opacity-75' : 'opacity-60 hover:opacity-80'
-                  } transition-all rounded overflow-hidden`}
-                  aria-label={`Go to image ${idx + 1}`}>
-                  <NextImage
-                    src={thumbUrl}
-                    alt={`Thumbnail ${idx + 1}`}
-                    width={60}
-                    height={45}
-                    className='object-cover'
-                  />
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={item._key || idx}
+                    onClick={() => setCurrentImageIndex(idx)}
+                    className={`flex-shrink-0 ${
+                      isActive ? 'ring-2 ring-white ring-opacity-75' : 'opacity-60 hover:opacity-80'
+                    } transition-all rounded overflow-hidden`}
+                    aria-label={`Go to image ${idx + 1}`}>
+                    <NextImage
+                      src={thumbUrl}
+                      alt={`Thumbnail ${idx + 1}`}
+                      width={50}
+                      height={40}
+                      className='object-cover w-10 h-8 md:w-12 md:h-10'
+                    />
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </Modal>
