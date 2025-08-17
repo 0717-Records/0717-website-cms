@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { HEADER_QUERYResult } from '@/sanity/types';
 import MenuButton from '../MenuButton';
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 import styles from './MobileMenu.module.css';
 
 interface NavLink {
@@ -21,35 +22,7 @@ interface MobileMenuProps {
 }
 
 const MobileMenu = ({ isMenuOpen, onClose, navLinks, headerData }: MobileMenuProps) => {
-  // Disable body scroll when menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      // Store current scroll position
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
-    } else {
-      // Restore scroll position
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.style.overflow = '';
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
-    }
-
-    // Cleanup function
-    return () => {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.style.overflow = '';
-    };
-  }, [isMenuOpen]);
+  useBodyScrollLock(isMenuOpen);
 
   return (
     <div
