@@ -13,6 +13,21 @@
  */
 
 // Source: schema.json
+export type CtaButton = {
+  _type: "ctaButton";
+  text?: string;
+  variant?: "filled" | "outline";
+  alignment?: "inherit" | "left" | "center" | "right";
+  linkType?: "internal" | "external";
+  internalLink?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "page";
+  };
+  externalUrl?: string;
+};
+
 export type TextImage = {
   _type: "textImage";
   content?: Array<{
@@ -253,6 +268,8 @@ export type PageSection = {
     _key: string;
   } & CtaCard | {
     _key: string;
+  } & CtaButton | {
+    _key: string;
   } & CardGrid | {
     _key: string;
   } & Icon | {
@@ -281,6 +298,8 @@ export type Section = {
   } & TextImage | {
     _key: string;
   } & CtaCard | {
+    _key: string;
+  } & CtaButton | {
     _key: string;
   } & CardGrid | {
     _key: string;
@@ -665,7 +684,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -739,6 +758,8 @@ export type PAGE_QUERYResult = {
     content?: Array<{
       _key: string;
     } & CardGrid | {
+      _key: string;
+    } & CtaButton | {
       _key: string;
     } & CtaCard | {
       _key: string;
@@ -834,6 +855,8 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
     } & CardGrid | {
       _key: string;
+    } & CtaButton | {
+      _key: string;
     } & CtaCard | {
       _key: string;
     } & Divider | {
@@ -873,6 +896,8 @@ export type HOME_PAGE_QUERYResult = {
     content?: Array<{
       _key: string;
     } & CardGrid | {
+      _key: string;
+    } & CtaButton | {
       _key: string;
     } & CtaCard | {
       _key: string;

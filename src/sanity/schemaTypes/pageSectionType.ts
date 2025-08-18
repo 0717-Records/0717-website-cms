@@ -46,6 +46,7 @@ export const pageSectionType = defineType({
         defineArrayMember({ type: 'quote' }),
         defineArrayMember({ type: 'textImage' }),
         defineArrayMember({ type: 'ctaCard' }),
+        defineArrayMember({ type: 'ctaButton' }),
         defineArrayMember({ type: 'cardGrid' }),
         defineArrayMember({ type: 'icon' }),
         defineArrayMember({ type: 'imageBlock' }),

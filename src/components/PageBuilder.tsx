@@ -13,6 +13,7 @@ import RichText from './blocks/RichText';
 import Quote from './blocks/Quote';
 import TextImage from './blocks/TextImage';
 import CTACard from './blocks/CTACard';
+import CTAButton from './blocks/CTAButton';
 import CardGrid from './blocks/CardGrid';
 import Icon from './blocks/Icon';
 import ImageBlock from './blocks/Image';
@@ -182,6 +183,13 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
             return (
               <BlockWrapper key={block._key}>
                 <CTACard {...block} />
+              </BlockWrapper>
+            );
+
+          case 'ctaButton':
+            return (
+              <BlockWrapper key={block._key}>
+                <CTAButton {...block} />
               </BlockWrapper>
             );
 

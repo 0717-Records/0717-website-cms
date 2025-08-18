@@ -1,7 +1,7 @@
 // Block types that support unlimited nesting
 // This type represents any block that can contain other blocks
 
-import type { ItemList, Divider, RichText, Quote, TextImage, CtaCard, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Quote, TextImage, CtaCard, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -31,6 +31,7 @@ export type ImageGalleryBlock = ImageGallery & { _key: string };
 export type YouTubeVideoBlock = YouTubeVideo & { _key: string };
 export type SpotifyWidgetBlock = SpotifyWidget & { _key: string };
 export type BandcampWidgetBlock = BandcampWidget & { _key: string };
+export type CTAButtonBlock = CtaButton & { _key: string };
 
 // Union of all possible block types (current and future)
 export type NestedBlock =
@@ -48,7 +49,8 @@ export type NestedBlock =
   | ImageGalleryBlock
   | YouTubeVideoBlock
   | SpotifyWidgetBlock
-  | BandcampWidgetBlock;
+  | BandcampWidgetBlock
+  | CTAButtonBlock;
 
 // Union of blocks that can contain nested content
 export type BlockWithContent = PageSectionBlock | SectionBlock | CTACardBlock;
@@ -117,4 +119,8 @@ export const isSpotifyWidgetBlock = (block: NestedBlock): block is SpotifyWidget
 
 export const isBandcampWidgetBlock = (block: NestedBlock): block is BandcampWidgetBlock => {
   return block._type === 'bandcampWidget';
+};
+
+export const isCTAButtonBlock = (block: NestedBlock): block is CTAButtonBlock => {
+  return block._type === 'ctaButton';
 };
