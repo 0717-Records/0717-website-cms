@@ -56,18 +56,32 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
         const blockPath = `${pathPrefix}[_key=="${block._key}"]`;
         const isLastBlock = index === blocks.length - 1;
 
-        const BlockWrapper = ({ children }: { children: React.ReactNode }) => (
-          <div
-            className={!isLastBlock ? 'mb-6' : ''}
-            data-sanity={createDataAttribute({
-              ...createDataAttributeConfig,
-              id: documentId,
-              type: documentType,
-              path: blockPath,
-            }).toString()}>
-            {children}
-          </div>
-        );
+        const BlockWrapper = ({ children }: { children: React.ReactNode }) => {
+          // Check if the next block is a section type that needs extra spacing
+          const nextBlock = blocks[index + 1];
+          const nextBlockIsSection = nextBlock && (nextBlock._type === 'pageSection' || nextBlock._type === 'section');
+          
+          // Apply spacing logic:
+          // - Regular blocks get mb-6 unless they're the last block
+          // - If the next block is a section, add extra margin (mb-12 instead of mb-6)
+          let marginClass = '';
+          if (!isLastBlock) {
+            marginClass = nextBlockIsSection ? 'mb-12' : 'mb-6';
+          }
+          
+          return (
+            <div
+              className={marginClass}
+              data-sanity={createDataAttribute({
+                ...createDataAttributeConfig,
+                id: documentId,
+                type: documentType,
+                path: blockPath,
+              }).toString()}>
+              {children}
+            </div>
+          );
+        };
 
         // Handle nested content for blocks that support it
         const renderNestedContent = (nestedBlocks?: NestedBlock[]) => {
