@@ -12,7 +12,7 @@ import { pageSectionType } from './pageSectionType';
 import { dividerType } from './blocks/dividerType';
 import { itemListType } from './blocks/itemListType';
 import { richTextType } from './blocks/richTextType';
-import { cardType } from './blocks/cardType';
+import { ctaCardType } from './blocks/ctaCardType';
 import { cardGridType } from './blocks/cardGridType';
 import { iconType } from './blocks/iconType';
 import { imageType } from './blocks/imageType';
@@ -41,7 +41,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     dividerType,
     itemListType,
     richTextType,
-    cardType,
+    ctaCardType,
     cardGridType,
     iconType,
     imageType,

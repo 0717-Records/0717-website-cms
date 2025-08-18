@@ -841,7 +841,7 @@
               },
               "rest": {
                 "type": "inline",
-                "name": "card"
+                "name": "ctaCard"
               }
             }
           },
@@ -851,7 +851,7 @@
     }
   },
   {
-    "name": "card",
+    "name": "ctaCard",
     "type": "type",
     "value": {
       "type": "object",
@@ -860,7 +860,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "card"
+            "value": "ctaCard"
           }
         },
         "icon": {
@@ -1691,7 +1691,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "card"
+                    "name": "ctaCard"
                   }
                 },
                 {
@@ -1916,7 +1916,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "card"
+                    "name": "ctaCard"
                   }
                 },
                 {

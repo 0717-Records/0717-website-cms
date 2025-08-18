@@ -1,7 +1,7 @@
 import React from 'react';
 import { stegaClean } from 'next-sanity';
 import type { CardGridBlock } from '@/types/blocks';
-import Card from './Card';
+import CTACard from './CTACard';
 
 const CardGrid = ({ columns = '2', cards }: CardGridBlock) => {
   if (!cards || !Array.isArray(cards) || cards.length === 0) {
@@ -29,7 +29,7 @@ const CardGrid = ({ columns = '2', cards }: CardGridBlock) => {
   return (
     <div className='w-full flex justify-center flex-wrap gap-8'>
       {cards.map((card, idx) => (
-        <Card
+        <CTACard
           key={card._key || idx}
           icon={card.icon}
           title={card.title}

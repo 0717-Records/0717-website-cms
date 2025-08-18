@@ -1,7 +1,7 @@
 // Block types that support unlimited nesting
 // This type represents any block that can contain other blocks
 
-import type { ItemList, Divider, RichText, Quote, TextImage, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Quote, TextImage, CtaCard, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -23,7 +23,7 @@ export type DividerBlock = Divider & { _key: string };
 export type RichTextBlock = RichText & { _key: string };
 export type QuoteBlock = Quote & { _key: string };
 export type TextImageBlock = TextImage & { _key: string };
-export type CardBlock = Card & { _key: string };
+export type CTACardBlock = CtaCard & { _key: string };
 export type CardGridBlock = CardGrid & { _key: string };
 export type IconBlock = Icon & { _key: string };
 export type ImageBlock = SanityImageBlock & { _key: string };
@@ -41,7 +41,7 @@ export type NestedBlock =
   | RichTextBlock
   | QuoteBlock
   | TextImageBlock
-  | CardBlock
+  | CTACardBlock
   | CardGridBlock
   | IconBlock
   | ImageBlock
@@ -51,11 +51,11 @@ export type NestedBlock =
   | BandcampWidgetBlock;
 
 // Union of blocks that can contain nested content
-export type BlockWithContent = PageSectionBlock | SectionBlock | CardBlock;
+export type BlockWithContent = PageSectionBlock | SectionBlock | CTACardBlock;
 
 // Type guard functions
 export const isBlockWithContent = (block: NestedBlock): block is BlockWithContent => {
-  return block._type === 'pageSection' || block._type === 'section' || block._type === 'card';
+  return block._type === 'pageSection' || block._type === 'section' || block._type === 'ctaCard';
 };
 
 export const isPageSectionBlock = (block: NestedBlock): block is PageSectionBlock => {
@@ -87,8 +87,8 @@ export const isTextImageBlock = (block: NestedBlock): block is TextImageBlock =>
   return block._type === 'textImage';
 };
 
-export const isCardBlock = (block: NestedBlock): block is CardBlock => {
-  return block._type === 'card';
+export const isCTACardBlock = (block: NestedBlock): block is CTACardBlock => {
+  return block._type === 'ctaCard';
 };
 
 export const isCardGridBlock = (block: NestedBlock): block is CardGridBlock => {

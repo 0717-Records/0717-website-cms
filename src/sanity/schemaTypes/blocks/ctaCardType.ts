@@ -1,9 +1,9 @@
 import { defineField, defineType } from 'sanity';
 import { DocumentIcon } from '@sanity/icons';
 
-export const cardType = defineType({
-  name: 'card',
-  title: 'Card',
+export const ctaCardType = defineType({
+  name: 'ctaCard',
+  title: 'CTA Card',
   type: 'object',
   icon: DocumentIcon,
   fields: [
@@ -57,7 +57,7 @@ export const cardType = defineType({
       bodyText: 'bodyText',
     },
     prepare({ title, icon, bodyText }) {
-      const displayTitle = title || 'Untitled Card';
+      const displayTitle = title || 'Untitled CTA Card';
       const subtitle = icon ? `Icon: ${icon}` : bodyText ? `${bodyText.slice(0, 50)}...` : 'No content';
 
       return {

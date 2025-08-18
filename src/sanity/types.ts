@@ -133,11 +133,11 @@ export type CardGrid = {
   columns?: "2" | "3" | "4";
   cards?: Array<{
     _key: string;
-  } & Card>;
+  } & CtaCard>;
 };
 
-export type Card = {
-  _type: "card";
+export type CtaCard = {
+  _type: "ctaCard";
   icon?: Icon;
   title?: string;
   bodyText?: string;
@@ -251,7 +251,7 @@ export type PageSection = {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & Card | {
+  } & CtaCard | {
     _key: string;
   } & CardGrid | {
     _key: string;
@@ -280,7 +280,7 @@ export type Section = {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & Card | {
+  } & CtaCard | {
     _key: string;
   } & CardGrid | {
     _key: string;
@@ -665,7 +665,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -738,9 +738,9 @@ export type PAGE_QUERYResult = {
     textAlign?: "center" | "left" | "right";
     content?: Array<{
       _key: string;
-    } & Card | {
-      _key: string;
     } & CardGrid | {
+      _key: string;
+    } & CtaCard | {
       _key: string;
     } & Divider | {
       _key: string;
@@ -832,9 +832,9 @@ export type HOME_PAGE_QUERYResult = {
     textAlign?: "center" | "left" | "right";
     content?: Array<{
       _key: string;
-    } & Card | {
-      _key: string;
     } & CardGrid | {
+      _key: string;
+    } & CtaCard | {
       _key: string;
     } & Divider | {
       _key: string;
@@ -872,9 +872,9 @@ export type HOME_PAGE_QUERYResult = {
     textAlign?: "center" | "left" | "right";
     content?: Array<{
       _key: string;
-    } & Card | {
-      _key: string;
     } & CardGrid | {
+      _key: string;
+    } & CtaCard | {
       _key: string;
     } & Divider | {
       _key: string;

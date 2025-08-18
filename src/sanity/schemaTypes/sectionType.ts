@@ -41,7 +41,7 @@ export const sectionType = defineType({
         defineArrayMember({ type: 'richText' }),
         defineArrayMember({ type: 'quote' }),
         defineArrayMember({ type: 'textImage' }),
-        defineArrayMember({ type: 'card' }),
+        defineArrayMember({ type: 'ctaCard' }),
         defineArrayMember({ type: 'cardGrid' }),
         defineArrayMember({ type: 'icon' }),
         defineArrayMember({ type: 'imageBlock' }),
