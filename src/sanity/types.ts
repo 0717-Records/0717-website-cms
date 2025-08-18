@@ -22,7 +22,7 @@ export type TextImage = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
+    style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "standout";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -175,7 +175,7 @@ export type RichText = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
+    style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "standout";
     listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
@@ -378,7 +378,7 @@ export type BlockContent = Array<{
     _type: "span";
     _key: string;
   }>;
-  style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "blockquote";
+  style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "standout";
   listItem?: "bullet";
   markDefs?: Array<{
     href?: string;

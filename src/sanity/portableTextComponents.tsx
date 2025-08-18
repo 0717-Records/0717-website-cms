@@ -17,10 +17,10 @@ export const components: PortableTextComponents = {
     'body-3xl': ({ children }) => <p className='text-body-3xl'>{children}</p>,
 
     // Special styles
-    blockquote: ({ children }) => (
-      <blockquote className='border-l-4 border-brand-primary pl-4 italic text-body-xl'>
+    standout: ({ children }) => (
+      <div className='border-l-4 border-brand-primary bg-gray-50 pl-4 py-3 my-4 rounded-r-lg italic text-body-xl'>
         {children}
-      </blockquote>
+      </div>
     ),
   },
 

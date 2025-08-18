@@ -74,7 +74,7 @@ export const blockContentType = defineType({
         },
 
         // Special Styles
-        { title: 'Quote', value: 'blockquote' },
+        { title: 'Standout', value: 'standout' },
       ],
       lists: [{ title: 'Bullet', value: 'bullet' }],
       // Marks let you mark up inline text in the Portable Text Editor
