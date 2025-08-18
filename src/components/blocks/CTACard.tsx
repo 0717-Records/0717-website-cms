@@ -2,7 +2,7 @@ import React from 'react';
 import { stegaClean } from 'next-sanity';
 import type { CTACardBlock } from '@/types/blocks';
 import Icon from './Icon';
-import CTA from '../UI/CTA';
+import EmbeddedCTAButton from './EmbeddedCTAButton';
 import CardContainer from '../UI/CardContainer';
 
 interface CTACardProps extends Omit<CTACardBlock, '_type' | '_key'> {
@@ -21,7 +21,6 @@ const CTACard = ({
   const cleanTitle = stegaClean(title);
   const cleanBodyText = stegaClean(bodyText);
   const cleanButtonText = stegaClean(button?.text);
-  const cleanButtonLink = stegaClean(button?.link);
 
   // Don't render empty cards
   if (!icon?.image && !cleanTitle && !cleanBodyText && !cleanButtonText) {
@@ -50,11 +49,9 @@ const CTACard = ({
       )}
 
       {/* Button */}
-      {cleanButtonText && cleanButtonLink && (
+      {button && cleanButtonText && (
         <div className='pt-2'>
-          <CTA href={cleanButtonLink} variant='filled'>
-            {cleanButtonText}
-          </CTA>
+          <EmbeddedCTAButton {...button} />
         </div>
       )}
     </CardContainer>

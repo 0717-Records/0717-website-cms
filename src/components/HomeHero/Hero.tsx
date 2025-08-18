@@ -4,7 +4,7 @@ import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import { createDataAttribute } from 'next-sanity';
 import { client } from '@/sanity/lib/client';
-import CTA from '../UI/CTA';
+import EmbeddedCTAButton from '../blocks/EmbeddedCTAButton';
 
 const { projectId, dataset, stega } = client.config();
 const createDataAttributeConfig = {
@@ -81,32 +81,11 @@ const Hero = ({
     // First check if CTA is enabled
     if (!enableHeroCallToAction) return null;
 
-    // If CTA is enabled but no heroCallToAction object, show empty CTA
-    if (!heroCallToAction) {
-      return <CTA as='button'> </CTA>;
-    }
+    // If CTA is enabled but no heroCallToAction object, return null
+    if (!heroCallToAction) return null;
 
-    // Show CTA even with empty text if enabled
-    if (heroCallToAction.linkType === 'external' && heroCallToAction.externalLink) {
-      return (
-        <CTA
-          href={heroCallToAction.externalLink}
-          target={heroCallToAction.openInNewTab ? '_blank' : undefined}
-          rel={heroCallToAction.openInNewTab ? 'noopener noreferrer' : undefined}>
-          {heroCallToAction.text || ''}
-        </CTA>
-      );
-    }
-
-    if (heroCallToAction.linkType === 'internal' && heroCallToAction.internalLink?.slug?.current) {
-      return (
-        <CTA href={`/${heroCallToAction.internalLink.slug.current}`}>
-          {heroCallToAction.text || ''}
-        </CTA>
-      );
-    }
-
-    return <CTA as='button'>{heroCallToAction.text || ''}</CTA>;
+    // Use EmbeddedCTAButton component
+    return <EmbeddedCTAButton {...heroCallToAction} />;
   };
 
   return (

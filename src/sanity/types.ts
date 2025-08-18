@@ -157,10 +157,7 @@ export type CtaCard = {
   icon?: Icon;
   title?: string;
   bodyText?: string;
-  button?: {
-    text?: string;
-    link?: string;
-  };
+  button?: EmbeddedCtaButton;
 };
 
 export type Icon = {
@@ -457,6 +454,29 @@ export type Post = {
   }>;
 };
 
+export type Page = {
+  _id: string;
+  _type: "page";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  content?: PageBuilder;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
+
 export type HomePage = {
   _id: string;
   _type: "homePage";
@@ -479,48 +499,24 @@ export type HomePage = {
   heroTitle?: string;
   heroSubtitle?: string;
   enableHeroCallToAction?: boolean;
-  heroCallToAction?: {
-    text?: string;
-    linkType?: "internal" | "external";
-    internalLink?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "page";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "homePage";
-    };
-    externalLink?: string;
-    openInNewTab?: boolean;
-  };
+  heroCallToAction?: EmbeddedCtaButton;
   heroContentPosition?: "top-left" | "top-center" | "top-right" | "center-left" | "center-center" | "center-right" | "bottom-left" | "bottom-center" | "bottom-right";
   content?: PageBuilder;
 };
 
-export type Page = {
-  _id: string;
-  _type: "page";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  content?: PageBuilder;
-  mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
+export type EmbeddedCtaButton = {
+  _type: "embeddedCtaButton";
+  text?: string;
+  variant?: "filled" | "outline";
+  linkType?: "internal" | "external";
+  internalLink?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "page";
   };
+  openInNewTab?: boolean;
+  externalUrl?: string;
 };
 
 export type SiteSettings = {
@@ -685,7 +681,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | HomePage | Page | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -787,10 +783,7 @@ export type PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      button?: {
-        text?: string;
-        link?: string;
-      };
+      button?: EmbeddedCtaButton;
       image: null;
       content: null;
     } | {
@@ -967,10 +960,7 @@ export type PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        button?: {
-          text?: string;
-          link?: string;
-        };
+        button?: EmbeddedCtaButton;
         image: null;
       } | {
         _key: string;
@@ -1302,14 +1292,10 @@ export type HOME_PAGE_QUERYResult = {
     linkType: "external" | "internal" | null;
     internalLink: {
       _id: string;
-      title: null;
-      slug: null;
-    } | {
-      _id: string;
       title: string | null;
       slug: Slug | null;
     } | null;
-    externalLink: string | null;
+    externalLink: null;
     openInNewTab: boolean | null;
   } | null;
   heroContentPosition: "bottom-center" | "bottom-left" | "bottom-right" | "center-center" | "center-left" | "center-right" | "top-center" | "top-left" | "top-right" | null;
@@ -1350,10 +1336,7 @@ export type HOME_PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      button?: {
-        text?: string;
-        link?: string;
-      };
+      button?: EmbeddedCtaButton;
       image: null;
       content: null;
     } | {
@@ -1530,10 +1513,7 @@ export type HOME_PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        button?: {
-          text?: string;
-          link?: string;
-        };
+        button?: EmbeddedCtaButton;
         image: null;
       } | {
         _key: string;
@@ -1859,10 +1839,7 @@ export type HOME_PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      button?: {
-        text?: string;
-        link?: string;
-      };
+      button?: EmbeddedCtaButton;
       image: null;
       content: null;
     } | {
@@ -2039,10 +2016,7 @@ export type HOME_PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        button?: {
-          text?: string;
-          link?: string;
-        };
+        button?: EmbeddedCtaButton;
         image: null;
       } | {
         _key: string;

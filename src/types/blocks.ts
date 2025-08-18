@@ -1,7 +1,7 @@
 // Block types that support unlimited nesting
 // This type represents any block that can contain other blocks
 
-import type { ItemList, Divider, RichText, Quote, TextImage, CtaCard, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Quote, TextImage, CtaCard, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, EmbeddedCtaButton } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -32,6 +32,7 @@ export type YouTubeVideoBlock = YouTubeVideo & { _key: string };
 export type SpotifyWidgetBlock = SpotifyWidget & { _key: string };
 export type BandcampWidgetBlock = BandcampWidget & { _key: string };
 export type CTAButtonBlock = CtaButton & { _key: string };
+export type EmbeddedCTAButtonBlock = EmbeddedCtaButton & { _key: string };
 
 // Union of all possible block types (current and future)
 export type NestedBlock =

@@ -60,78 +60,11 @@ export const homePageType = defineType({
     }),
     defineField({
       name: 'heroCallToAction',
-      type: 'object',
-      title: 'Call to Action',
+      type: 'embeddedCtaButton',
+      title: 'Call to Action Button',
       description: 'Button or link for the hero section',
       group: 'hero',
       hidden: ({ document }) => !document?.enableHeroCallToAction,
-      fields: [
-        defineField({
-          name: 'text',
-          type: 'string',
-          title: 'Button Text',
-          description: 'Text displayed on the button (optional)',
-        }),
-        defineField({
-          name: 'linkType',
-          type: 'string',
-          title: 'Link Type',
-          description: 'Choose whether to link to an internal page or external URL',
-          options: {
-            list: [
-              { title: 'Internal Page', value: 'internal' },
-              { title: 'External URL', value: 'external' },
-            ],
-            layout: 'radio',
-          },
-          initialValue: 'internal',
-        }),
-        defineField({
-          name: 'internalLink',
-          type: 'reference',
-          title: 'Internal Page',
-          description: 'Select a page on this website',
-          to: [{ type: 'page' }, { type: 'homePage' }],
-          hidden: ({ parent }) => parent?.linkType !== 'internal',
-        }),
-        defineField({
-          name: 'externalLink',
-          type: 'url',
-          title: 'External URL',
-          description: 'Enter a full URL (e.g., https://example.com)',
-          hidden: ({ parent }) => parent?.linkType !== 'external',
-          validation: (Rule) =>
-            Rule.uri({
-              scheme: ['http', 'https', 'mailto', 'tel'],
-            }),
-        }),
-        defineField({
-          name: 'openInNewTab',
-          type: 'boolean',
-          title: 'Open in New Tab',
-          description: 'Check to open the link in a new tab/window',
-          initialValue: false,
-          hidden: ({ parent }) => parent?.linkType !== 'external',
-        }),
-      ],
-      preview: {
-        select: {
-          title: 'text',
-          linkType: 'linkType',
-          internalLink: 'internalLink.title',
-          externalLink: 'externalLink',
-        },
-        prepare({ title, linkType, internalLink, externalLink }) {
-          const subtitle =
-            linkType === 'internal'
-              ? `Internal: ${internalLink || 'No page selected'}`
-              : `External: ${externalLink || 'No URL entered'}`;
-          return {
-            title: title || 'No button text',
-            subtitle,
-          };
-        },
-      },
     }),
     defineField({
       name: 'heroContentPosition',
