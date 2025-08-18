@@ -108,6 +108,13 @@
           },
           "optional": true
         },
+        "openInNewTab": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "externalUrl": {
           "type": "objectAttribute",
           "value": {

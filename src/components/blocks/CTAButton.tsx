@@ -29,6 +29,7 @@ const CTAButton = ({
   linkType,
   internalLink,
   externalUrl,
+  openInNewTab = false,
   className = '',
 }: CTAButtonProps) => {
   const cleanText = stegaClean(text);
@@ -59,8 +60,8 @@ const CTAButton = ({
     return null;
   }
 
-  // Determine if this is an external link
-  const isExternal = linkType === 'external';
+  // Determine if this should open in a new tab
+  const shouldOpenInNewTab = linkType === 'external' || (linkType === 'internal' && openInNewTab);
 
   // Determine alignment classes
   let alignmentClasses = '';
@@ -104,11 +105,11 @@ const CTAButton = ({
       <CTA
         href={href}
         variant={cleanVariant}
-        target={isExternal ? '_blank' : undefined}
-        rel={isExternal ? 'noopener noreferrer' : undefined}
+        target={shouldOpenInNewTab ? '_blank' : undefined}
+        rel={shouldOpenInNewTab ? 'noopener noreferrer' : undefined}
       >
         {cleanText}
-        {isExternal && <ExternalLinkIcon />}
+        {shouldOpenInNewTab && <ExternalLinkIcon />}
       </CTA>
     </div>
   );

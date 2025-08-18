@@ -91,6 +91,15 @@ export const ctaButtonType = defineType({
         }),
     }),
     defineField({
+      name: 'openInNewTab',
+      title: 'Open in New Tab',
+      type: 'boolean',
+      group: 'link',
+      description: 'Check this to open the link in a new tab/window',
+      initialValue: false,
+      hidden: ({ parent }) => parent?.linkType !== 'internal',
+    }),
+    defineField({
       name: 'externalUrl',
       title: 'External URL',
       type: 'url',
@@ -124,20 +133,22 @@ export const ctaButtonType = defineType({
       linkType: 'linkType',
       internalTitle: 'internalLink.title',
       externalUrl: 'externalUrl',
+      openInNewTab: 'openInNewTab',
     },
-    prepare({ text, variant, linkType, internalTitle, externalUrl }) {
+    prepare({ text, variant, linkType, internalTitle, externalUrl, openInNewTab }) {
       const buttonText = text || 'Untitled Button';
       const style = variant === 'outline' ? 'Outline' : 'Filled';
       
       let linkInfo = 'No link';
       if (linkType === 'internal' && internalTitle) {
-        linkInfo = `→ ${internalTitle}`;
+        const newTabIndicator = openInNewTab ? ' ↗' : '';
+        linkInfo = `→ ${internalTitle}${newTabIndicator}`;
       } else if (linkType === 'external' && externalUrl) {
         try {
           const url = new URL(externalUrl);
-          linkInfo = `→ ${url.hostname}`;
+          linkInfo = `→ ${url.hostname} ↗`;
         } catch {
-          linkInfo = '→ External URL';
+          linkInfo = '→ External URL ↗';
         }
       }
 

@@ -51,11 +51,12 @@ const CTA = (props: CTAProps) => {
   // Default to link behavior
   const { href, target, rel } = restProps as LinkCTAProps;
 
-  // Use Next.js Link for internal links, regular anchor for external
+  // Use Next.js Link for internal links, regular anchor for external links or when target="_blank"
   const isExternal =
     href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:');
+  const shouldUseAnchor = isExternal || target === '_blank';
 
-  if (isExternal) {
+  if (shouldUseAnchor) {
     return (
       <a href={href} target={target} rel={rel} className={combinedClassName}>
         {children}

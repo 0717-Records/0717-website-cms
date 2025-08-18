@@ -25,6 +25,7 @@ export type CtaButton = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "page";
   };
+  openInNewTab?: boolean;
   externalUrl?: string;
 };
 
@@ -776,6 +777,7 @@ export type PAGE_QUERYResult = {
         title: string | null;
         slug: Slug | null;
       } | null;
+      openInNewTab?: boolean;
       externalUrl?: string;
       image: null;
       content: null;
@@ -956,6 +958,7 @@ export type PAGE_QUERYResult = {
           title: string | null;
           slug: Slug | null;
         } | null;
+        openInNewTab?: boolean;
         externalUrl?: string;
         image: null;
       } | {
@@ -1337,6 +1340,7 @@ export type HOME_PAGE_QUERYResult = {
         title: string | null;
         slug: Slug | null;
       } | null;
+      openInNewTab?: boolean;
       externalUrl?: string;
       image: null;
       content: null;
@@ -1517,6 +1521,7 @@ export type HOME_PAGE_QUERYResult = {
           title: string | null;
           slug: Slug | null;
         } | null;
+        openInNewTab?: boolean;
         externalUrl?: string;
         image: null;
       } | {
@@ -1844,6 +1849,7 @@ export type HOME_PAGE_QUERYResult = {
         title: string | null;
         slug: Slug | null;
       } | null;
+      openInNewTab?: boolean;
       externalUrl?: string;
       image: null;
       content: null;
@@ -2024,6 +2030,7 @@ export type HOME_PAGE_QUERYResult = {
           title: string | null;
           slug: Slug | null;
         } | null;
+        openInNewTab?: boolean;
         externalUrl?: string;
         image: null;
       } | {
