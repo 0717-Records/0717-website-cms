@@ -50,6 +50,48 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
       alt,
       hotspot,
       crop
+    },
+    _type == "ctaButton" => {
+      ...,
+      internalLink->{
+        _id,
+        title,
+        slug
+      }
+    },
+    content[]{
+      ...,
+      image{
+        asset,
+        alt,
+        hotspot,
+        crop
+      },
+      _type == "ctaButton" => {
+        ...,
+        internalLink->{
+          _id,
+          title,
+          slug
+        }
+      },
+      content[]{
+        ...,
+        image{
+          asset,
+          alt,
+          hotspot,
+          crop
+        },
+        _type == "ctaButton" => {
+          ...,
+          internalLink->{
+            _id,
+            title,
+            slug
+          }
+        }
+      }
     }
   },
   mainImage{
@@ -87,6 +129,48 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
       alt,
       hotspot,
       crop
+    },
+    _type == "ctaButton" => {
+      ...,
+      internalLink->{
+        _id,
+        title,
+        slug
+      }
+    },
+    content[]{
+      ...,
+      image{
+        asset,
+        alt,
+        hotspot,
+        crop
+      },
+      _type == "ctaButton" => {
+        ...,
+        internalLink->{
+          _id,
+          title,
+          slug
+        }
+      },
+      content[]{
+        ...,
+        image{
+          asset,
+          alt,
+          hotspot,
+          crop
+        },
+        _type == "ctaButton" => {
+          ...,
+          internalLink->{
+            _id,
+            title,
+            slug
+          }
+        }
+      }
     }
   }
 }`);
