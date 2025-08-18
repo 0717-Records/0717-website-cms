@@ -8,6 +8,14 @@ export const richTextType = defineType({
   icon: DocumentTextIcon,
   fields: [
     defineField({
+      name: 'isCallout',
+      title: 'Callout Style',
+      type: 'boolean',
+      description:
+        'Apply emphasized styling with background and border to make this text more prominent',
+      initialValue: false,
+    }),
+    defineField({
       name: 'content',
       title: 'Content',
       type: 'blockContent',

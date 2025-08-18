@@ -167,6 +167,7 @@ export type Icon = {
 
 export type RichText = {
   _type: "richText";
+  isCallout?: boolean;
   content?: Array<{
     children?: Array<{
       marks?: Array<string>;

@@ -1037,6 +1037,13 @@
             "value": "richText"
           }
         },
+        "isCallout": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "content": {
           "type": "objectAttribute",
           "value": {
