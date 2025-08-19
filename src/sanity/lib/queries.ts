@@ -59,6 +59,17 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
         slug
       }
     },
+    _type == "ctaCard" => {
+      ...,
+      button{
+        ...,
+        internalLink->{
+          _id,
+          title,
+          slug
+        }
+      }
+    },
     content[]{
       ...,
       image{
@@ -75,6 +86,17 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
           slug
         }
       },
+      _type == "ctaCard" => {
+        ...,
+        button{
+          ...,
+          internalLink->{
+            _id,
+            title,
+            slug
+          }
+        }
+      },
       content[]{
         ...,
         image{
@@ -89,6 +111,45 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
             _id,
             title,
             slug
+          }
+        },
+        _type == "ctaCard" => {
+          ...,
+          button{
+            ...,
+            internalLink->{
+              _id,
+              title,
+              slug
+            }
+          }
+        },
+        content[]{
+          ...,
+          image{
+            asset,
+            alt,
+            hotspot,
+            crop
+          },
+          _type == "ctaButton" => {
+            ...,
+            internalLink->{
+              _id,
+              title,
+              slug
+            }
+          },
+          _type == "ctaCard" => {
+            ...,
+            button{
+              ...,
+              internalLink->{
+                _id,
+                title,
+                slug
+              }
+            }
           }
         }
       }
@@ -118,7 +179,7 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
       title,
       slug
     },
-    externalLink,
+    externalUrl,
     openInNewTab
   },
   heroContentPosition,
@@ -138,6 +199,17 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
         slug
       }
     },
+    _type == "ctaCard" => {
+      ...,
+      button{
+        ...,
+        internalLink->{
+          _id,
+          title,
+          slug
+        }
+      }
+    },
     content[]{
       ...,
       image{
@@ -154,6 +226,17 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
           slug
         }
       },
+      _type == "ctaCard" => {
+        ...,
+        button{
+          ...,
+          internalLink->{
+            _id,
+            title,
+            slug
+          }
+        }
+      },
       content[]{
         ...,
         image{
@@ -168,6 +251,45 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
             _id,
             title,
             slug
+          }
+        },
+        _type == "ctaCard" => {
+          ...,
+          button{
+            ...,
+            internalLink->{
+              _id,
+              title,
+              slug
+            }
+          }
+        },
+        content[]{
+          ...,
+          image{
+            asset,
+            alt,
+            hotspot,
+            crop
+          },
+          _type == "ctaButton" => {
+            ...,
+            internalLink->{
+              _id,
+              title,
+              slug
+            }
+          },
+          _type == "ctaCard" => {
+            ...,
+            button{
+              ...,
+              internalLink->{
+                _id,
+                title,
+                slug
+              }
+            }
           }
         }
       }
