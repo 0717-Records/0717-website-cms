@@ -76,4 +76,14 @@ export const structure: StructureResolver = (S) =>
             .title('Blog Management')
             .items([S.documentTypeListItem('post').title('Posts')])
         ),
+
+      S.divider(),
+
+      // === EVENTS ===
+      S.listItem()
+        .id('events')
+        .title('📅 Events')
+        .child(
+          S.documentTypeList('event').title('Events')
+        ),
     ]);

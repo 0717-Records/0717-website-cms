@@ -1920,13 +1920,7 @@
         "style": {
           "type": "objectAttribute",
           "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "default"
-              }
-            ]
+            "type": "string"
           },
           "optional": true
         }
@@ -4182,6 +4176,541 @@
             }
           }
         ]
+      }
+    }
+  },
+  {
+    "name": "event",
+    "type": "document",
+    "attributes": {
+      "_id": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_type": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string",
+          "value": "event"
+        }
+      },
+      "_createdAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_updatedAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_rev": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "name": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "image": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "object",
+          "attributes": {
+            "asset": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "object",
+                "attributes": {
+                  "_ref": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "_type": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string",
+                      "value": "reference"
+                    }
+                  },
+                  "_weak": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "boolean"
+                    },
+                    "optional": true
+                  }
+                },
+                "dereferencesTo": "sanity.imageAsset"
+              },
+              "optional": true
+            },
+            "media": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "unknown"
+              },
+              "optional": true
+            },
+            "hotspot": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "sanity.imageHotspot"
+              },
+              "optional": true
+            },
+            "crop": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "sanity.imageCrop"
+              },
+              "optional": true
+            },
+            "alt": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string"
+              },
+              "optional": true
+            },
+            "_type": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string",
+                "value": "image"
+              }
+            }
+          }
+        },
+        "optional": true
+      },
+      "location": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "tags": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "string"
+          }
+        },
+        "optional": true
+      },
+      "link": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "startDate": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "startTime": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "object",
+          "attributes": {
+            "hour": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "union",
+                "of": [
+                  {
+                    "type": "number",
+                    "value": 0
+                  },
+                  {
+                    "type": "number",
+                    "value": 1
+                  },
+                  {
+                    "type": "number",
+                    "value": 2
+                  },
+                  {
+                    "type": "number",
+                    "value": 3
+                  },
+                  {
+                    "type": "number",
+                    "value": 4
+                  },
+                  {
+                    "type": "number",
+                    "value": 5
+                  },
+                  {
+                    "type": "number",
+                    "value": 6
+                  },
+                  {
+                    "type": "number",
+                    "value": 7
+                  },
+                  {
+                    "type": "number",
+                    "value": 8
+                  },
+                  {
+                    "type": "number",
+                    "value": 9
+                  },
+                  {
+                    "type": "number",
+                    "value": 10
+                  },
+                  {
+                    "type": "number",
+                    "value": 11
+                  },
+                  {
+                    "type": "number",
+                    "value": 12
+                  },
+                  {
+                    "type": "number",
+                    "value": 13
+                  },
+                  {
+                    "type": "number",
+                    "value": 14
+                  },
+                  {
+                    "type": "number",
+                    "value": 15
+                  },
+                  {
+                    "type": "number",
+                    "value": 16
+                  },
+                  {
+                    "type": "number",
+                    "value": 17
+                  },
+                  {
+                    "type": "number",
+                    "value": 18
+                  },
+                  {
+                    "type": "number",
+                    "value": 19
+                  },
+                  {
+                    "type": "number",
+                    "value": 20
+                  },
+                  {
+                    "type": "number",
+                    "value": 21
+                  },
+                  {
+                    "type": "number",
+                    "value": 22
+                  },
+                  {
+                    "type": "number",
+                    "value": 23
+                  }
+                ]
+              },
+              "optional": true
+            },
+            "minute": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "union",
+                "of": [
+                  {
+                    "type": "number",
+                    "value": 0
+                  },
+                  {
+                    "type": "number",
+                    "value": 5
+                  },
+                  {
+                    "type": "number",
+                    "value": 10
+                  },
+                  {
+                    "type": "number",
+                    "value": 15
+                  },
+                  {
+                    "type": "number",
+                    "value": 20
+                  },
+                  {
+                    "type": "number",
+                    "value": 25
+                  },
+                  {
+                    "type": "number",
+                    "value": 30
+                  },
+                  {
+                    "type": "number",
+                    "value": 35
+                  },
+                  {
+                    "type": "number",
+                    "value": 40
+                  },
+                  {
+                    "type": "number",
+                    "value": 45
+                  },
+                  {
+                    "type": "number",
+                    "value": 50
+                  },
+                  {
+                    "type": "number",
+                    "value": 55
+                  }
+                ]
+              },
+              "optional": true
+            }
+          }
+        },
+        "optional": true
+      },
+      "endDate": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "endTime": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "object",
+          "attributes": {
+            "hour": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "union",
+                "of": [
+                  {
+                    "type": "number",
+                    "value": 0
+                  },
+                  {
+                    "type": "number",
+                    "value": 1
+                  },
+                  {
+                    "type": "number",
+                    "value": 2
+                  },
+                  {
+                    "type": "number",
+                    "value": 3
+                  },
+                  {
+                    "type": "number",
+                    "value": 4
+                  },
+                  {
+                    "type": "number",
+                    "value": 5
+                  },
+                  {
+                    "type": "number",
+                    "value": 6
+                  },
+                  {
+                    "type": "number",
+                    "value": 7
+                  },
+                  {
+                    "type": "number",
+                    "value": 8
+                  },
+                  {
+                    "type": "number",
+                    "value": 9
+                  },
+                  {
+                    "type": "number",
+                    "value": 10
+                  },
+                  {
+                    "type": "number",
+                    "value": 11
+                  },
+                  {
+                    "type": "number",
+                    "value": 12
+                  },
+                  {
+                    "type": "number",
+                    "value": 13
+                  },
+                  {
+                    "type": "number",
+                    "value": 14
+                  },
+                  {
+                    "type": "number",
+                    "value": 15
+                  },
+                  {
+                    "type": "number",
+                    "value": 16
+                  },
+                  {
+                    "type": "number",
+                    "value": 17
+                  },
+                  {
+                    "type": "number",
+                    "value": 18
+                  },
+                  {
+                    "type": "number",
+                    "value": 19
+                  },
+                  {
+                    "type": "number",
+                    "value": 20
+                  },
+                  {
+                    "type": "number",
+                    "value": 21
+                  },
+                  {
+                    "type": "number",
+                    "value": 22
+                  },
+                  {
+                    "type": "number",
+                    "value": 23
+                  }
+                ]
+              },
+              "optional": true
+            },
+            "minute": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "union",
+                "of": [
+                  {
+                    "type": "number",
+                    "value": 0
+                  },
+                  {
+                    "type": "number",
+                    "value": 5
+                  },
+                  {
+                    "type": "number",
+                    "value": 10
+                  },
+                  {
+                    "type": "number",
+                    "value": 15
+                  },
+                  {
+                    "type": "number",
+                    "value": 20
+                  },
+                  {
+                    "type": "number",
+                    "value": 25
+                  },
+                  {
+                    "type": "number",
+                    "value": 30
+                  },
+                  {
+                    "type": "number",
+                    "value": 35
+                  },
+                  {
+                    "type": "number",
+                    "value": 40
+                  },
+                  {
+                    "type": "number",
+                    "value": 45
+                  },
+                  {
+                    "type": "number",
+                    "value": 50
+                  },
+                  {
+                    "type": "number",
+                    "value": 55
+                  }
+                ]
+              },
+              "optional": true
+            }
+          }
+        },
+        "optional": true
+      },
+      "pastEventText": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "pastEventLinkBehavior": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "keep"
+            },
+            {
+              "type": "string",
+              "value": "change"
+            },
+            {
+              "type": "string",
+              "value": "remove"
+            }
+          ]
+        },
+        "optional": true
+      },
+      "pastEventLink": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
       }
     }
   },

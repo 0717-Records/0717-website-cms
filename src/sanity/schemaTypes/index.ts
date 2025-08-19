@@ -30,6 +30,7 @@ import { ctaCalloutLinkType } from './blocks/ctaCalloutLinkType';
 import { ctaEmailButtonType } from './blocks/ctaEmailButtonType';
 import { embeddedCtaButtonType } from './blocks/embeddedCtaButtonType';
 import { siteSettingsType } from './siteSettingsType';
+import { eventType } from './eventType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -38,6 +39,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     homePageType,
     pageType,
     postType,
+    eventType,
     blockContentType,
     // Objects
     headerType,

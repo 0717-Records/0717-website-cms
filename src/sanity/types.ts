@@ -286,7 +286,7 @@ export type ItemList = {
 
 export type Divider = {
   _type: "divider";
-  style?: "default";
+  style?: string;
 };
 
 export type SubSubSection = {
@@ -592,6 +592,44 @@ export type BlockContent = Array<{
   _key: string;
 }>;
 
+export type Event = {
+  _id: string;
+  _type: "event";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  location?: string;
+  tags?: Array<string>;
+  link?: string;
+  startDate?: string;
+  startTime?: {
+    hour?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23;
+    minute?: 0 | 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55;
+  };
+  endDate?: string;
+  endTime?: {
+    hour?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23;
+    minute?: 0 | 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55;
+  };
+  pastEventText?: string;
+  pastEventLinkBehavior?: "keep" | "change" | "remove";
+  pastEventLink?: string;
+};
+
 export type Post = {
   _id: string;
   _type: "post";
@@ -851,7 +889,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Event | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -1017,7 +1055,7 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "divider";
-    style?: "default";
+    style?: string;
     image: null;
     content: null;
   } | {
@@ -1207,7 +1245,7 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "divider";
-      style?: "default";
+      style?: string;
       image: null;
       content: null;
     } | {
@@ -1454,7 +1492,7 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "divider";
-        style?: "default";
+        style?: string;
         image: null;
         content: null;
       } | {
@@ -1693,7 +1731,7 @@ export type PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "divider";
-          style?: "default";
+          style?: string;
           image: null;
         } | {
           _key: string;
@@ -2127,6 +2165,16 @@ export type PAGE_QUERYResult = {
 // Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      title,      slug    },    externalUrl,    openInNewTab  },  heroContentPosition,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  }      }    }  }}}
 export type HOME_PAGE_QUERYResult = {
   _id: string;
+  _type: "event";
+  heroImage: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  enableHeroCallToAction: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
+  content: null;
+} | {
+  _id: string;
   _type: "footer";
   heroImage: null;
   heroTitle: null;
@@ -2273,7 +2321,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "divider";
-    style?: "default";
+    style?: string;
     image: null;
     content: null;
   } | {
@@ -2463,7 +2511,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "divider";
-      style?: "default";
+      style?: string;
       image: null;
       content: null;
     } | {
@@ -2710,7 +2758,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "divider";
-        style?: "default";
+        style?: string;
         image: null;
         content: null;
       } | {
@@ -2949,7 +2997,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "divider";
-          style?: "default";
+          style?: string;
           image: null;
         } | {
           _key: string;
@@ -3479,7 +3527,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "divider";
-    style?: "default";
+    style?: string;
     image: null;
     content: null;
   } | {
@@ -3669,7 +3717,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "divider";
-      style?: "default";
+      style?: string;
       image: null;
       content: null;
     } | {
@@ -3916,7 +3964,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "divider";
-        style?: "default";
+        style?: string;
         image: null;
         content: null;
       } | {
@@ -4155,7 +4203,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "divider";
-          style?: "default";
+          style?: string;
           image: null;
         } | {
           _key: string;
@@ -4620,6 +4668,10 @@ export type HOME_PAGE_QUERYResult = {
 // Query: *[_id == "header"][0]{  _id,  _type,  logo{    asset,    alt  }}
 export type HEADER_QUERYResult = {
   _id: string;
+  _type: "event";
+  logo: null;
+} | {
+  _id: string;
   _type: "footer";
   logo: null;
 } | {
@@ -4662,6 +4714,12 @@ export type HEADER_QUERYResult = {
 // Variable: SITE_SETTINGS_QUERY
 // Query: *[_id == "siteSettings"][0]{  _id,  _type,  siteTitle,  companyEmail,  siteDescription}
 export type SITE_SETTINGS_QUERYResult = {
+  _id: string;
+  _type: "event";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+} | {
   _id: string;
   _type: "footer";
   siteTitle: null;
