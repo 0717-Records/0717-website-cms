@@ -7,14 +7,8 @@ export const ctaCardType = defineType({
   type: 'object',
   icon: DocumentIcon,
   groups: [
-    {
-      name: 'content',
-      title: 'Content',
-    },
-    {
-      name: 'button',
-      title: 'Button',
-    },
+    { name: 'content', title: 'Content' },
+    { name: 'button', title: 'Button' },
   ],
   fields: [
     defineField({
@@ -48,12 +42,13 @@ export const ctaCardType = defineType({
         list: [
           { title: 'Link Button', value: 'link' },
           { title: 'Email Button', value: 'email' },
-          { title: 'No Button', value: 'none' }
+          { title: 'No Button', value: 'none' },
         ],
         layout: 'radio',
       },
       initialValue: 'link',
-      description: 'Choose the type of button to display, or select "No Button" if the call-to-action is in the text only',
+      description:
+        'Choose the type of button to display, or select "No Button" if the call-to-action is in the text only',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -62,8 +57,16 @@ export const ctaCardType = defineType({
       type: 'string',
       group: 'button',
       description: 'The text that will appear on the button',
-      validation: (Rule) => Rule.required().min(1).max(50),
       hidden: ({ parent }) => parent?.buttonType !== 'link',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as Record<string, unknown>;
+          if (parent?.buttonType === 'link') {
+            if (!value || value.length < 1) return 'Button text is required';
+            if (value.length > 50) return 'Button text must be at most 50 characters';
+          }
+          return true;
+        }),
     }),
     defineField({
       name: 'variant',
@@ -79,6 +82,14 @@ export const ctaCardType = defineType({
       initialValue: 'filled',
       description: 'Choose the visual style of the button',
       hidden: ({ parent }) => parent?.buttonType !== 'link',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as Record<string, unknown>;
+          if (parent?.buttonType === 'link' && !value) {
+            return 'Button style is required';
+          }
+          return true;
+        }),
     }),
     defineField({
       name: 'linkType',
@@ -94,6 +105,14 @@ export const ctaCardType = defineType({
       initialValue: 'internal',
       description: 'Choose whether this links to another page on your site or an external URL',
       hidden: ({ parent }) => parent?.buttonType !== 'link',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as Record<string, unknown>;
+          if (parent?.buttonType === 'link' && !value) {
+            return 'Link type is required';
+          }
+          return true;
+        }),
     }),
     defineField({
       name: 'internalLink',
@@ -120,6 +139,7 @@ export const ctaCardType = defineType({
       description: 'Check this to open the link in a new tab/window',
       initialValue: false,
       hidden: ({ parent }) => parent?.buttonType !== 'link' || parent?.linkType !== 'internal',
+      // Optional, no validation needed
     }),
     defineField({
       name: 'externalUrl',
