@@ -1,7 +1,7 @@
 // Block types that support unlimited nesting
 // This type represents any block that can contain other blocks
 
-import type { ItemList, Divider, RichText, Quote, TextImage, CtaCard, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, EmbeddedCtaButton } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Quote, TextImage, CtaCard, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, EmbeddedCtaButton, SubSection, SubSubSection } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -17,7 +17,10 @@ export interface SectionBlock extends BaseBlock {
 }
 
 // Use generated Sanity types for proper typing
-export type PageSectionBlock = PageSection & { _key: string };
+// Override generated types to make title required (validation ensures this)
+export type PageSectionBlock = Omit<PageSection, 'title'> & { _key: string; title: string };
+export type SubSectionBlock = Omit<SubSection, 'title'> & { _key: string; title: string };
+export type SubSubSectionBlock = Omit<SubSubSection, 'title'> & { _key: string; title: string };
 export type ItemListBlock = ItemList & { _key: string };
 export type DividerBlock = Divider & { _key: string };
 export type RichTextBlock = RichText & { _key: string };
@@ -37,6 +40,8 @@ export type EmbeddedCTAButtonBlock = EmbeddedCtaButton & { _key: string };
 // Union of all possible block types (current and future)
 export type NestedBlock =
   | PageSectionBlock
+  | SubSectionBlock
+  | SubSubSectionBlock
   | SectionBlock
   | DividerBlock
   | ItemListBlock
@@ -54,15 +59,23 @@ export type NestedBlock =
   | CTAButtonBlock;
 
 // Union of blocks that can contain nested content
-export type BlockWithContent = PageSectionBlock | SectionBlock | CTACardBlock;
+export type BlockWithContent = PageSectionBlock | SubSectionBlock | SubSubSectionBlock | SectionBlock | CTACardBlock;
 
 // Type guard functions
 export const isBlockWithContent = (block: NestedBlock): block is BlockWithContent => {
-  return block._type === 'pageSection' || block._type === 'section' || block._type === 'ctaCard';
+  return block._type === 'pageSection' || block._type === 'subSection' || block._type === 'subSubSection' || block._type === 'section' || block._type === 'ctaCard';
 };
 
 export const isPageSectionBlock = (block: NestedBlock): block is PageSectionBlock => {
   return block._type === 'pageSection';
+};
+
+export const isSubSectionBlock = (block: NestedBlock): block is SubSectionBlock => {
+  return block._type === 'subSection';
+};
+
+export const isSubSubSectionBlock = (block: NestedBlock): block is SubSubSectionBlock => {
+  return block._type === 'subSubSection';
 };
 
 export const isSectionBlock = (block: NestedBlock): block is SectionBlock => {

@@ -245,14 +245,11 @@ export type Divider = {
   style?: "default";
 };
 
-export type PageSection = {
-  _type: "pageSection";
+export type SubSubSection = {
+  _type: "subSubSection";
   title?: string;
-  subtitle?: string;
-  textAlign?: "left" | "center" | "right";
+  textAlign?: "inherit" | "left" | "center" | "right";
   content?: Array<{
-    _key: string;
-  } & Section | {
     _key: string;
   } & Divider | {
     _key: string;
@@ -274,7 +271,88 @@ export type PageSection = {
     _key: string;
   } & ImageBlock | {
     _key: string;
-  } & ImageGallery>;
+  } & ImageGallery | {
+    _key: string;
+  } & YouTubeVideo | {
+    _key: string;
+  } & SpotifyWidget | {
+    _key: string;
+  } & BandcampWidget>;
+};
+
+export type SubSection = {
+  _type: "subSection";
+  title?: string;
+  textAlign?: "inherit" | "left" | "center" | "right";
+  content?: Array<{
+    _key: string;
+  } & SubSubSection | {
+    _key: string;
+  } & Divider | {
+    _key: string;
+  } & ItemList | {
+    _key: string;
+  } & RichText | {
+    _key: string;
+  } & Quote | {
+    _key: string;
+  } & TextImage | {
+    _key: string;
+  } & CtaCard | {
+    _key: string;
+  } & CtaButton | {
+    _key: string;
+  } & CardGrid | {
+    _key: string;
+  } & Icon | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
+    _key: string;
+  } & YouTubeVideo | {
+    _key: string;
+  } & SpotifyWidget | {
+    _key: string;
+  } & BandcampWidget>;
+};
+
+export type PageSection = {
+  _type: "pageSection";
+  title?: string;
+  subtitle?: string;
+  textAlign?: "inherit" | "left" | "center" | "right";
+  content?: Array<{
+    _key: string;
+  } & SubSection | {
+    _key: string;
+  } & Divider | {
+    _key: string;
+  } & ItemList | {
+    _key: string;
+  } & RichText | {
+    _key: string;
+  } & Quote | {
+    _key: string;
+  } & TextImage | {
+    _key: string;
+  } & CtaCard | {
+    _key: string;
+  } & CtaButton | {
+    _key: string;
+  } & CardGrid | {
+    _key: string;
+  } & Icon | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
+    _key: string;
+  } & YouTubeVideo | {
+    _key: string;
+  } & SpotifyWidget | {
+    _key: string;
+  } & BandcampWidget>;
 };
 
 export type Section = {
@@ -316,7 +394,35 @@ export type Section = {
 
 export type PageBuilder = Array<{
   _key: string;
-} & PageSection>;
+} & PageSection | {
+  _key: string;
+} & Divider | {
+  _key: string;
+} & ItemList | {
+  _key: string;
+} & RichText | {
+  _key: string;
+} & Quote | {
+  _key: string;
+} & TextImage | {
+  _key: string;
+} & CtaCard | {
+  _key: string;
+} & CtaButton | {
+  _key: string;
+} & CardGrid | {
+  _key: string;
+} & Icon | {
+  _key: string;
+} & ImageBlock | {
+  _key: string;
+} & ImageGallery | {
+  _key: string;
+} & YouTubeVideo | {
+  _key: string;
+} & SpotifyWidget | {
+  _key: string;
+} & BandcampWidget>;
 
 export type Footer = {
   _id: string;
@@ -681,7 +787,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -748,11 +854,143 @@ export type PAGE_QUERYResult = {
   slug: Slug | null;
   content: Array<{
     _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "cardGrid";
+    columns?: "2" | "3" | "4";
+    cards?: Array<{
+      _key: string;
+    } & CtaCard>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+    } | null;
+    openInNewTab?: boolean;
+    externalUrl?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCard";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    button?: EmbeddedCtaButton;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: "default";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "icon";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    alignment?: "center" | "left" | "right";
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "pageSection";
     title?: string;
     subtitle?: string;
-    textAlign?: "center" | "left" | "right";
+    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
       _key: string;
       _type: "cardGrid";
       columns?: "2" | "3" | "4";
@@ -923,7 +1161,14 @@ export type PAGE_QUERYResult = {
       image: null;
     } | {
       _key: string;
-      _type: "section";
+      _type: "spotifyWidget";
+      url?: string;
+      height?: "compact" | "normal";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
       title?: string;
       textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
@@ -1091,7 +1336,13 @@ export type PAGE_QUERYResult = {
         image: null;
       } | {
         _key: string;
-        _type: "section";
+        _type: "spotifyWidget";
+        url?: string;
+        height?: "compact" | "normal";
+        image: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
         title?: string;
         textAlign?: "center" | "inherit" | "left" | "right";
         content?: Array<{
@@ -1118,19 +1369,11 @@ export type PAGE_QUERYResult = {
           _key: string;
         } & RichText | {
           _key: string;
-        } & Section | {
-          _key: string;
         } & SpotifyWidget | {
           _key: string;
         } & TextImage | {
           _key: string;
         } & YouTubeVideo>;
-        image: null;
-      } | {
-        _key: string;
-        _type: "spotifyWidget";
-        url?: string;
-        height?: "compact" | "normal";
         image: null;
       } | {
         _key: string;
@@ -1237,8 +1480,130 @@ export type PAGE_QUERYResult = {
         crop: SanityImageCrop | null;
       } | null;
       layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
     }> | null;
     image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    url?: string;
+    height?: "compact" | "normal";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
   }> | null;
   mainImage: {
     asset: {
@@ -1301,11 +1666,143 @@ export type HOME_PAGE_QUERYResult = {
   heroContentPosition: "bottom-center" | "bottom-left" | "bottom-right" | "center-center" | "center-left" | "center-right" | "top-center" | "top-left" | "top-right" | null;
   content: Array<{
     _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "cardGrid";
+    columns?: "2" | "3" | "4";
+    cards?: Array<{
+      _key: string;
+    } & CtaCard>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+    } | null;
+    openInNewTab?: boolean;
+    externalUrl?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCard";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    button?: EmbeddedCtaButton;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: "default";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "icon";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    alignment?: "center" | "left" | "right";
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "pageSection";
     title?: string;
     subtitle?: string;
-    textAlign?: "center" | "left" | "right";
+    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
       _key: string;
       _type: "cardGrid";
       columns?: "2" | "3" | "4";
@@ -1476,7 +1973,14 @@ export type HOME_PAGE_QUERYResult = {
       image: null;
     } | {
       _key: string;
-      _type: "section";
+      _type: "spotifyWidget";
+      url?: string;
+      height?: "compact" | "normal";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
       title?: string;
       textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
@@ -1644,7 +2148,13 @@ export type HOME_PAGE_QUERYResult = {
         image: null;
       } | {
         _key: string;
-        _type: "section";
+        _type: "spotifyWidget";
+        url?: string;
+        height?: "compact" | "normal";
+        image: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
         title?: string;
         textAlign?: "center" | "inherit" | "left" | "right";
         content?: Array<{
@@ -1671,19 +2181,11 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
         } & RichText | {
           _key: string;
-        } & Section | {
-          _key: string;
         } & SpotifyWidget | {
           _key: string;
         } & TextImage | {
           _key: string;
         } & YouTubeVideo>;
-        image: null;
-      } | {
-        _key: string;
-        _type: "spotifyWidget";
-        url?: string;
-        height?: "compact" | "normal";
         image: null;
       } | {
         _key: string;
@@ -1790,8 +2292,130 @@ export type HOME_PAGE_QUERYResult = {
         crop: SanityImageCrop | null;
       } | null;
       layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
     }> | null;
     image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    url?: string;
+    height?: "compact" | "normal";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
   }> | null;
 } | {
   _id: string;
@@ -1804,11 +2428,143 @@ export type HOME_PAGE_QUERYResult = {
   heroContentPosition: null;
   content: Array<{
     _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "cardGrid";
+    columns?: "2" | "3" | "4";
+    cards?: Array<{
+      _key: string;
+    } & CtaCard>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+    } | null;
+    openInNewTab?: boolean;
+    externalUrl?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCard";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    button?: EmbeddedCtaButton;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: "default";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "icon";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    alignment?: "center" | "left" | "right";
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "pageSection";
     title?: string;
     subtitle?: string;
-    textAlign?: "center" | "left" | "right";
+    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
       _key: string;
       _type: "cardGrid";
       columns?: "2" | "3" | "4";
@@ -1979,7 +2735,14 @@ export type HOME_PAGE_QUERYResult = {
       image: null;
     } | {
       _key: string;
-      _type: "section";
+      _type: "spotifyWidget";
+      url?: string;
+      height?: "compact" | "normal";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
       title?: string;
       textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
@@ -2147,7 +2910,13 @@ export type HOME_PAGE_QUERYResult = {
         image: null;
       } | {
         _key: string;
-        _type: "section";
+        _type: "spotifyWidget";
+        url?: string;
+        height?: "compact" | "normal";
+        image: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
         title?: string;
         textAlign?: "center" | "inherit" | "left" | "right";
         content?: Array<{
@@ -2174,19 +2943,11 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
         } & RichText | {
           _key: string;
-        } & Section | {
-          _key: string;
         } & SpotifyWidget | {
           _key: string;
         } & TextImage | {
           _key: string;
         } & YouTubeVideo>;
-        image: null;
-      } | {
-        _key: string;
-        _type: "spotifyWidget";
-        url?: string;
-        height?: "compact" | "normal";
         image: null;
       } | {
         _key: string;
@@ -2293,8 +3054,130 @@ export type HOME_PAGE_QUERYResult = {
         crop: SanityImageCrop | null;
       } | null;
       layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
     }> | null;
     image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    url?: string;
+    height?: "compact" | "normal";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
   }> | null;
 } | {
   _id: string;

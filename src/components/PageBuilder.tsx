@@ -8,6 +8,8 @@ import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react';
 import Section from './Layout/Section';
 import PageSection from './Layout/PageSection';
+import SubSection from './Layout/SubSection';
+import SubSubSection from './Layout/SubSubSection';
 import ItemList from './blocks/ItemList';
 import RichText from './blocks/RichText';
 import Quote from './blocks/Quote';
@@ -60,14 +62,30 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
         const BlockWrapper = ({ children }: { children: React.ReactNode }) => {
           // Check if the next block is a section type that needs extra spacing
           const nextBlock = blocks[index + 1];
-          const nextBlockIsSection = nextBlock && (nextBlock._type === 'pageSection' || nextBlock._type === 'section');
+          const nextBlockIsSection = nextBlock && (
+            nextBlock._type === 'pageSection' || 
+            nextBlock._type === 'subSection' || 
+            nextBlock._type === 'subSubSection' || 
+            nextBlock._type === 'section'
+          );
           
           // Apply spacing logic:
           // - Regular blocks get mb-6 unless they're the last block
           // - If the next block is a section, add extra margin (mb-12 instead of mb-6)
+          // - If this is the first block and NOT a PageSection at top level, add top padding
           let marginClass = '';
           if (!isLastBlock) {
             marginClass = nextBlockIsSection ? 'mb-12' : 'mb-6';
+          }
+          
+          // Add top padding for first non-PageSection block at top level (main content)
+          const isFirstBlock = index === 0;
+          const isTopLevel = nestingLevel === 1;
+          const isNotPageSection = block._type !== 'pageSection';
+          const needsTopPadding = isFirstBlock && isTopLevel && isNotPageSection;
+          
+          if (needsTopPadding) {
+            marginClass = `pt-16 md:pt-24 ${marginClass}`.trim();
           }
           
           return (
@@ -85,13 +103,13 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
         };
 
         // Handle nested content for blocks that support it
-        const renderNestedContent = (nestedBlocks?: NestedBlock[]) => {
+        const renderNestedContent = (nestedBlocks?: unknown[]) => {
           if (!nestedBlocks || !Array.isArray(nestedBlocks)) {
             return null;
           }
           return (
             <BlockRenderer
-              blocks={nestedBlocks}
+              blocks={nestedBlocks as NestedBlock[]}
               documentId={documentId}
               documentType={documentType}
               pathPrefix={`${blockPath}.content`}
@@ -110,7 +128,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
             return (
               <BlockWrapper key={block._key}>
                 <PageSection
-                  title={block.title}
+                  title={block.title!} // Required field
                   subtitle={block.subtitle}
                   textAlign={block.textAlign}
                   isFirst={isFirstPageSection}
@@ -120,6 +138,34 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
                   subtitlePath={`${blockPath}.subtitle`}>
                   {renderNestedContent(block.content)}
                 </PageSection>
+              </BlockWrapper>
+            );
+
+          case 'subSection':
+            return (
+              <BlockWrapper key={block._key}>
+                <SubSection
+                  title={block.title!} // Required field
+                  textAlign={block.textAlign}
+                  documentId={documentId}
+                  documentType={documentType}
+                  titlePath={`${blockPath}.title`}>
+                  {renderNestedContent(block.content)}
+                </SubSection>
+              </BlockWrapper>
+            );
+
+          case 'subSubSection':
+            return (
+              <BlockWrapper key={block._key}>
+                <SubSubSection
+                  title={block.title!} // Required field
+                  textAlign={block.textAlign}
+                  documentId={documentId}
+                  documentType={documentType}
+                  titlePath={`${blockPath}.title`}>
+                  {renderNestedContent(block.content)}
+                </SubSubSection>
               </BlockWrapper>
             );
 

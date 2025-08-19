@@ -14,9 +14,9 @@ export const TextAlignmentContext = createContext<{ textAlign: 'left' | 'center'
 interface PageSectionProps {
   children: React.ReactNode;
   className?: string;
-  title?: string;
+  title: string; // Now required since titles are mandatory
   subtitle?: string;
-  textAlign?: 'left' | 'center' | 'right';
+  textAlign?: 'inherit' | 'left' | 'center' | 'right';
   isFirst?: boolean;
   // Sanity Live editing props
   documentId?: string;
@@ -81,7 +81,9 @@ const PageSection = ({
   const paddingClasses = isFirst ? 'pt-16 md:pt-24 pb-16 md:pb-24' : 'pb-16 md:pb-24';
 
   // Clean the textAlign value to remove Sanity's stega encoding
-  const cleanTextAlign = stegaClean(textAlign) || 'center';
+  // For PageSection, 'inherit' doesn't make sense, so default to 'center'
+  const rawTextAlign = stegaClean(textAlign);
+  const cleanTextAlign = (rawTextAlign === 'inherit' || !rawTextAlign) ? 'center' : rawTextAlign;
 
   const getTextAlignClass = (align: 'left' | 'center' | 'right') => {
     switch (align) {
@@ -102,27 +104,24 @@ const PageSection = ({
         <section
           className={`${paddingClasses} ${getTextAlignClass(cleanTextAlign)} ${className}`.trim()}>
           <div className='container max-w-[60rem] mx-auto px-8'>
-            {(title || subtitle) && (
-              <div className='text-center'>
-                {title && (
-                  <Heading
-                    level='h2'
-                    className='mb-6'
-                    showMargin={false}
-                    {...getTitleDataAttribute()}>
-                    {title}
-                  </Heading>
-                )}
-                {subtitle && (
-                  <p
-                    className='text-body-2xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line'
-                    {...getSubtitleDataAttribute()}>
-                    {subtitle}
-                  </p>
-                )}
-                <Divider />
-              </div>
-            )}
+            {/* Title is now always present since it's required */}
+            <div className='text-center'>
+              <Heading
+                level='h2'
+                className='mb-6'
+                showMargin={false}
+                {...getTitleDataAttribute()}>
+                {title}
+              </Heading>
+              {subtitle && (
+                <p
+                  className='text-body-2xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line'
+                  {...getSubtitleDataAttribute()}>
+                  {subtitle}
+                </p>
+              )}
+              <Divider />
+            </div>
             {children}
           </div>
         </section>

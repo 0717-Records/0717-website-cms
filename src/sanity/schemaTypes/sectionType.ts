@@ -1,71 +1,15 @@
-import { defineType, defineArrayMember, defineField } from 'sanity';
+// DEPRECATED: This schema is being phased out in favor of the new structured approach:
+// - PageSection (h2) -> SubSection (h3) -> SubSubSection (h4)
+// This ensures clear heading hierarchy and prevents infinite nesting
 
-export const sectionType = defineType({
+import { createSectionSchema } from './shared/sectionFactory';
+
+// Legacy section type - will be replaced by the new structured hierarchy
+export const sectionType = createSectionSchema({
   name: 'section',
-  title: 'Section',
-  type: 'object',
-  description: 'A nestable section for organizing content with semantic heading hierarchy (no subtitle)',
-  icon: () => '📄',
-  fields: [
-    defineField({
-      name: 'title',
-      title: 'Section Title',
-      type: 'string',
-      description: 'Title for this section (used to generate semantic heading hierarchy)',
-      validation: (Rule) => Rule.required().error('Section title is required'),
-    }),
-    defineField({
-      name: 'textAlign',
-      title: 'Text Alignment',
-      type: 'string',
-      description: 'Text alignment for this section and its content (overrides parent section alignment)',
-      options: {
-        list: [
-          { title: 'Inherit from Parent', value: 'inherit' },
-          { title: 'Left', value: 'left' },
-          { title: 'Center', value: 'center' },
-          { title: 'Right', value: 'right' },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'inherit',
-    }),
-    defineField({
-      name: 'content',
-      title: 'Content',
-      type: 'array',
-      of: [
-        defineArrayMember({ type: 'section' }),
-        defineArrayMember({ type: 'divider' }),
-        defineArrayMember({ type: 'itemList' }),
-        defineArrayMember({ type: 'richText' }),
-        defineArrayMember({ type: 'quote' }),
-        defineArrayMember({ type: 'textImage' }),
-        defineArrayMember({ type: 'ctaCard' }),
-        defineArrayMember({ type: 'ctaButton' }),
-        defineArrayMember({ type: 'cardGrid' }),
-        defineArrayMember({ type: 'icon' }),
-        defineArrayMember({ type: 'imageBlock' }),
-        defineArrayMember({ type: 'imageGallery' }),
-        defineArrayMember({ type: 'youTubeVideo' }),
-        defineArrayMember({ type: 'spotifyWidget' }),
-        defineArrayMember({ type: 'bandcampWidget' }),
-        // Add other block types here as you create them
-        // Note: Sections can now contain nested sections for proper semantic hierarchy
-      ],
-    }),
-  ],
-  preview: {
-    select: {
-      title: 'title',
-      content: 'content',
-    },
-    prepare({ title, content }) {
-      const blockCount = Array.isArray(content) ? content.length : 0;
-      return {
-        title: title || 'Section',
-        subtitle: blockCount === 1 ? '1 block' : `${blockCount} blocks`,
-      };
-    },
-  },
+  title: 'Section (Legacy)',
+  description: 'DEPRECATED: Use SubSection or SubSubSection instead for proper hierarchy',
+  icon: '📄',
+  hasSubtitle: false,
+  allowedChildSections: ['section'], // Allow self-nesting for backwards compatibility
 });

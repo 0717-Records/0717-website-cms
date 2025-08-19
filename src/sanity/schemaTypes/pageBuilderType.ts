@@ -1,4 +1,5 @@
 import { defineType, defineArrayMember } from 'sanity';
+import { commonContentBlocks } from './shared/sectionFactory';
 
 export const pageBuilderType = defineType({
   name: 'pageBuilder',
@@ -8,6 +9,7 @@ export const pageBuilderType = defineType({
     defineArrayMember({
       type: 'pageSection',
     }),
+    ...commonContentBlocks,
   ],
   options: {
     insertMenu: {
@@ -22,5 +24,5 @@ export const pageBuilderType = defineType({
   },
   // Clear description for editors
   description:
-    'Build your page by adding page sections. Each page section can contain nested sections and content blocks.',
+    'Build your page by adding page sections and content blocks. Page sections provide structure and can contain nested sub-sections and content.',
 });
