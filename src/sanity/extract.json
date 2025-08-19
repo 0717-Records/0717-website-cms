@@ -1213,6 +1213,10 @@
               {
                 "type": "string",
                 "value": "email"
+              },
+              {
+                "type": "string",
+                "value": "none"
               }
             ]
           },

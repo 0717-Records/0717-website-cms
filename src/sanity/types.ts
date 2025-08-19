@@ -190,7 +190,7 @@ export type CtaCard = {
   icon?: Icon;
   title?: string;
   bodyText?: string;
-  buttonType?: "link" | "email";
+  buttonType?: "link" | "email" | "none";
   text?: string;
   variant?: "filled" | "outline";
   linkType?: "internal" | "external";
@@ -932,7 +932,7 @@ export type PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link";
+      buttonType?: "email" | "link" | "none";
       text?: string;
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
@@ -995,7 +995,7 @@ export type PAGE_QUERYResult = {
     icon?: Icon;
     title?: string;
     bodyText?: string;
-    buttonType?: "email" | "link";
+    buttonType?: "email" | "link" | "none";
     text?: string;
     variant?: "filled" | "outline";
     linkType?: "external" | "internal";
@@ -1122,7 +1122,7 @@ export type PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link";
+        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -1185,7 +1185,7 @@ export type PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link";
+      buttonType?: "email" | "link" | "none";
       text?: string;
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
@@ -1369,7 +1369,7 @@ export type PAGE_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link";
+          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
@@ -1432,7 +1432,7 @@ export type PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link";
+        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -1613,7 +1613,7 @@ export type PAGE_QUERYResult = {
             icon?: Icon;
             title?: string;
             bodyText?: string;
-            buttonType?: "email" | "link";
+            buttonType?: "email" | "link" | "none";
             text?: string;
             variant?: "filled" | "outline";
             linkType?: "external" | "internal";
@@ -1673,7 +1673,7 @@ export type PAGE_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link";
+          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
@@ -2188,7 +2188,7 @@ export type HOME_PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link";
+      buttonType?: "email" | "link" | "none";
       text?: string;
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
@@ -2251,7 +2251,7 @@ export type HOME_PAGE_QUERYResult = {
     icon?: Icon;
     title?: string;
     bodyText?: string;
-    buttonType?: "email" | "link";
+    buttonType?: "email" | "link" | "none";
     text?: string;
     variant?: "filled" | "outline";
     linkType?: "external" | "internal";
@@ -2378,7 +2378,7 @@ export type HOME_PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link";
+        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -2441,7 +2441,7 @@ export type HOME_PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link";
+      buttonType?: "email" | "link" | "none";
       text?: string;
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
@@ -2625,7 +2625,7 @@ export type HOME_PAGE_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link";
+          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
@@ -2688,7 +2688,7 @@ export type HOME_PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link";
+        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -2869,7 +2869,7 @@ export type HOME_PAGE_QUERYResult = {
             icon?: Icon;
             title?: string;
             bodyText?: string;
-            buttonType?: "email" | "link";
+            buttonType?: "email" | "link" | "none";
             text?: string;
             variant?: "filled" | "outline";
             linkType?: "external" | "internal";
@@ -2929,7 +2929,7 @@ export type HOME_PAGE_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link";
+          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
@@ -3394,7 +3394,7 @@ export type HOME_PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link";
+      buttonType?: "email" | "link" | "none";
       text?: string;
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
@@ -3457,7 +3457,7 @@ export type HOME_PAGE_QUERYResult = {
     icon?: Icon;
     title?: string;
     bodyText?: string;
-    buttonType?: "email" | "link";
+    buttonType?: "email" | "link" | "none";
     text?: string;
     variant?: "filled" | "outline";
     linkType?: "external" | "internal";
@@ -3584,7 +3584,7 @@ export type HOME_PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link";
+        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -3647,7 +3647,7 @@ export type HOME_PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link";
+      buttonType?: "email" | "link" | "none";
       text?: string;
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
@@ -3831,7 +3831,7 @@ export type HOME_PAGE_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link";
+          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
@@ -3894,7 +3894,7 @@ export type HOME_PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link";
+        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -4075,7 +4075,7 @@ export type HOME_PAGE_QUERYResult = {
             icon?: Icon;
             title?: string;
             bodyText?: string;
-            buttonType?: "email" | "link";
+            buttonType?: "email" | "link" | "none";
             text?: string;
             variant?: "filled" | "outline";
             linkType?: "external" | "internal";
@@ -4135,7 +4135,7 @@ export type HOME_PAGE_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link";
+          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";

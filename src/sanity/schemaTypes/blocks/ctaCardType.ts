@@ -47,12 +47,13 @@ export const ctaCardType = defineType({
       options: {
         list: [
           { title: 'Link Button', value: 'link' },
-          { title: 'Email Button', value: 'email' }
+          { title: 'Email Button', value: 'email' },
+          { title: 'No Button', value: 'none' }
         ],
         layout: 'radio',
       },
       initialValue: 'link',
-      description: 'Choose the type of button to display',
+      description: 'Choose the type of button to display, or select "No Button" if the call-to-action is in the text only',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

@@ -31,8 +31,8 @@ const CTACard = ({
   const cleanBodyText = stegaClean(bodyText);
   const cleanButtonText = stegaClean(text);
 
-  // Don't render empty cards
-  if (!icon?.image && !cleanTitle && !cleanBodyText && !buttonType) {
+  // Don't render empty cards (but allow cards with just text content and no button)
+  if (!icon?.image && !cleanTitle && !cleanBodyText) {
     return null;
   }
 
@@ -58,7 +58,7 @@ const CTACard = ({
       )}
 
       {/* Button */}
-      {buttonType && (
+      {buttonType && buttonType !== 'none' && (
         <div className='pt-2'>
           {buttonType === 'link' && cleanButtonText && (
             <EmbeddedCTAButton
