@@ -237,7 +237,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           case 'ctaCard':
             return (
               <BlockWrapper key={block._key}>
-                <CTACard {...block} />
+                <CTACard {...block} email={siteSettings?.companyEmail} />
               </BlockWrapper>
             );
 
@@ -268,7 +268,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           case 'cardGrid':
             return (
               <BlockWrapper key={block._key}>
-                <CardGrid {...block} />
+                <CardGrid {...block} email={siteSettings?.companyEmail} />
               </BlockWrapper>
             );
 

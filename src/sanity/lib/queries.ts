@@ -69,7 +69,15 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
     },
     _type == "ctaCard" => {
       ...,
-      button{
+      internalLink->{
+        _id,
+        title,
+        slug
+      }
+    },
+    _type == "cardGrid" => {
+      ...,
+      cards[]{
         ...,
         internalLink->{
           _id,
@@ -104,7 +112,15 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
       },
       _type == "ctaCard" => {
         ...,
-        button{
+        internalLink->{
+          _id,
+          title,
+          slug
+        }
+      },
+      _type == "cardGrid" => {
+        ...,
+        cards[]{
           ...,
           internalLink->{
             _id,
@@ -139,7 +155,15 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
         },
         _type == "ctaCard" => {
           ...,
-          button{
+          internalLink->{
+            _id,
+            title,
+            slug
+          }
+        },
+        _type == "cardGrid" => {
+          ...,
+          cards[]{
             ...,
             internalLink->{
               _id,
@@ -174,7 +198,15 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
           },
           _type == "ctaCard" => {
             ...,
-            button{
+            internalLink->{
+              _id,
+              title,
+              slug
+            }
+          },
+          _type == "cardGrid" => {
+            ...,
+            cards[]{
               ...,
               internalLink->{
                 _id,
@@ -241,7 +273,15 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
     },
     _type == "ctaCard" => {
       ...,
-      button{
+      internalLink->{
+        _id,
+        title,
+        slug
+      }
+    },
+    _type == "cardGrid" => {
+      ...,
+      cards[]{
         ...,
         internalLink->{
           _id,
@@ -276,7 +316,15 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
       },
       _type == "ctaCard" => {
         ...,
-        button{
+        internalLink->{
+          _id,
+          title,
+          slug
+        }
+      },
+      _type == "cardGrid" => {
+        ...,
+        cards[]{
           ...,
           internalLink->{
             _id,
@@ -311,7 +359,15 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
         },
         _type == "ctaCard" => {
           ...,
-          button{
+          internalLink->{
+            _id,
+            title,
+            slug
+          }
+        },
+        _type == "cardGrid" => {
+          ...,
+          cards[]{
             ...,
             internalLink->{
               _id,
@@ -346,7 +402,15 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
           },
           _type == "ctaCard" => {
             ...,
-            button{
+            internalLink->{
+              _id,
+              title,
+              slug
+            }
+          },
+          _type == "cardGrid" => {
+            ...,
+            cards[]{
               ...,
               internalLink->{
                 _id,

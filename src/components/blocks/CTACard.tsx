@@ -3,27 +3,36 @@ import { stegaClean } from 'next-sanity';
 import type { CTACardBlock } from '@/types/blocks';
 import Icon from './Icon';
 import EmbeddedCTAButton from './EmbeddedCTAButton';
+import CTAEmailButtonComponent from './CTAEmailButton';
 import CardContainer from '../UI/CardContainer';
 
 interface CTACardProps extends Omit<CTACardBlock, '_type' | '_key'> {
   className?: string;
   isGridChild?: boolean;
+  email?: string; // For passing company email from siteSettings
 }
 
 const CTACard = ({
   icon,
   title,
   bodyText,
-  button,
+  buttonType,
+  text,
+  variant,
+  linkType,
+  internalLink,
+  openInNewTab,
+  externalUrl,
   className = '',
   isGridChild = false,
+  email,
 }: CTACardProps) => {
   const cleanTitle = stegaClean(title);
   const cleanBodyText = stegaClean(bodyText);
-  const cleanButtonText = stegaClean(button?.text);
+  const cleanButtonText = stegaClean(text);
 
   // Don't render empty cards
-  if (!icon?.image && !cleanTitle && !cleanBodyText && !cleanButtonText) {
+  if (!icon?.image && !cleanTitle && !cleanBodyText && !buttonType) {
     return null;
   }
 
@@ -49,9 +58,21 @@ const CTACard = ({
       )}
 
       {/* Button */}
-      {button && cleanButtonText && (
+      {buttonType && (
         <div className='pt-2'>
-          <EmbeddedCTAButton {...button} />
+          {buttonType === 'link' && cleanButtonText && (
+            <EmbeddedCTAButton
+              text={text}
+              variant={variant}
+              linkType={linkType}
+              internalLink={internalLink}
+              openInNewTab={openInNewTab}
+              externalUrl={externalUrl}
+            />
+          )}
+          {buttonType === 'email' && (
+            <CTAEmailButtonComponent email={email} />
+          )}
         </div>
       )}
     </CardContainer>

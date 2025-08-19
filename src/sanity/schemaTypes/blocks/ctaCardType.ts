@@ -40,11 +40,110 @@ export const ctaCardType = defineType({
       description: 'Main content text for the card',
     }),
     defineField({
-      name: 'button',
-      title: 'Call to Action Button',
-      type: 'embeddedCtaButton',
+      name: 'buttonType',
+      title: 'Button Type',
+      type: 'string',
       group: 'button',
-      description: 'Call-to-action button for the card',
+      options: {
+        list: [
+          { title: 'Link Button', value: 'link' },
+          { title: 'Email Button', value: 'email' }
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'link',
+      description: 'Choose the type of button to display',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'text',
+      title: 'Button Text',
+      type: 'string',
+      group: 'button',
+      description: 'The text that will appear on the button',
+      validation: (Rule) => Rule.required().min(1).max(50),
+      hidden: ({ parent }) => parent?.buttonType !== 'link',
+    }),
+    defineField({
+      name: 'variant',
+      title: 'Button Style',
+      type: 'string',
+      group: 'button',
+      options: {
+        list: [
+          { title: 'Filled (Default)', value: 'filled' },
+          { title: 'Outline', value: 'outline' },
+        ],
+      },
+      initialValue: 'filled',
+      description: 'Choose the visual style of the button',
+      hidden: ({ parent }) => parent?.buttonType !== 'link',
+    }),
+    defineField({
+      name: 'linkType',
+      title: 'Link Type',
+      type: 'string',
+      group: 'button',
+      options: {
+        list: [
+          { title: 'Internal Page', value: 'internal' },
+          { title: 'External URL', value: 'external' },
+        ],
+      },
+      initialValue: 'internal',
+      description: 'Choose whether this links to another page on your site or an external URL',
+      hidden: ({ parent }) => parent?.buttonType !== 'link',
+    }),
+    defineField({
+      name: 'internalLink',
+      title: 'Internal Page',
+      type: 'reference',
+      group: 'button',
+      to: [{ type: 'page' }],
+      description: 'Select a page from your website',
+      hidden: ({ parent }) => parent?.buttonType !== 'link' || parent?.linkType !== 'internal',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as Record<string, unknown>;
+          if (parent?.buttonType === 'link' && parent?.linkType === 'internal' && !value) {
+            return 'Please select a page to link to';
+          }
+          return true;
+        }),
+    }),
+    defineField({
+      name: 'openInNewTab',
+      title: 'Open in New Tab',
+      type: 'boolean',
+      group: 'button',
+      description: 'Check this to open the link in a new tab/window',
+      initialValue: false,
+      hidden: ({ parent }) => parent?.buttonType !== 'link' || parent?.linkType !== 'internal',
+    }),
+    defineField({
+      name: 'externalUrl',
+      title: 'External URL',
+      type: 'url',
+      group: 'button',
+      description: 'Enter the full URL (e.g., https://example.com)',
+      placeholder: 'https://example.com',
+      hidden: ({ parent }) => parent?.buttonType !== 'link' || parent?.linkType !== 'external',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as Record<string, unknown>;
+          if (parent?.buttonType === 'link' && parent?.linkType === 'external') {
+            if (!value) {
+              return 'Please enter an external URL';
+            }
+            try {
+              new URL(value as string);
+              return true;
+            } catch {
+              return 'Please enter a valid URL';
+            }
+          }
+          return true;
+        }),
     }),
   ],
   preview: {

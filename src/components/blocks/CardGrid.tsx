@@ -3,7 +3,11 @@ import { stegaClean } from 'next-sanity';
 import type { CardGridBlock } from '@/types/blocks';
 import CTACard from './CTACard';
 
-const CardGrid = ({ columns = '2', cards }: CardGridBlock) => {
+interface CardGridProps extends CardGridBlock {
+  email?: string; // For passing company email from siteSettings
+}
+
+const CardGrid = ({ columns = '2', cards, email }: CardGridProps) => {
   if (!cards || !Array.isArray(cards) || cards.length === 0) {
     return null;
   }
@@ -34,7 +38,14 @@ const CardGrid = ({ columns = '2', cards }: CardGridBlock) => {
           icon={card.icon}
           title={card.title}
           bodyText={card.bodyText}
-          button={card.button}
+          buttonType={card.buttonType}
+          text={card.text}
+          variant={card.variant}
+          linkType={card.linkType}
+          internalLink={card.internalLink}
+          openInNewTab={card.openInNewTab}
+          externalUrl={card.externalUrl}
+          email={email}
           className={`${cardClasses}`}
           isGridChild
         />
