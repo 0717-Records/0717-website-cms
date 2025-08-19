@@ -38,7 +38,9 @@ export default defineConfig({
     colorInput(),
   ],
   document: {
-    newDocumentOptions: (prev) => prev.filter((item) => item.templateId !== 'siteSettings'),
+    newDocumentOptions: (prev) => prev.filter((item) => 
+      !['siteSettings', 'header', 'footer', 'homePage'].includes(item.templateId)
+    ),
   },
   studio: {
     components: {
