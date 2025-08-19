@@ -1,5 +1,63 @@
 import { defineQuery } from 'next-sanity';
 
+// Single content block projection that recursively handles nested content
+// Add new block types here and they'll work at all nesting levels automatically
+const contentProjection = `
+  ...,
+  image{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
+  _type == "ctaButton" => {
+    ...,
+    internalLink->{
+      _id,
+      title,
+      slug
+    }
+  },
+  _type == "ctaCalloutLink" => {
+    ...,
+    internalLink->{
+      _id,
+      title,
+      slug
+    }
+  },
+  _type == "ctaCard" => {
+    ...,
+    internalLink->{
+      _id,
+      title,
+      slug
+    }
+  },
+  _type == "cardGrid" => {
+    ...,
+    cards[]{
+      ...,
+      internalLink->{
+        _id,
+        title,
+        slug
+      }
+    }
+  }
+`;
+
+// Recursive content structure with 4 levels of nesting
+// This is the complete content pattern that can be reused across queries
+const recursiveContent = `content[]{${contentProjection},
+  "content": content[]{${contentProjection},
+    "content": content[]{${contentProjection},
+      "content": content[]{${contentProjection}
+      }
+    }
+  }
+}`;
+
 export const POSTS_QUERY =
   defineQuery(`*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{
   _id,
@@ -43,182 +101,7 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
   _type,
   title,
   slug,
-  content[]{
-    ...,
-    image{
-      asset,
-      alt,
-      hotspot,
-      crop
-    },
-    _type == "ctaButton" => {
-      ...,
-      internalLink->{
-        _id,
-        title,
-        slug
-      }
-    },
-    _type == "ctaCalloutLink" => {
-      ...,
-      internalLink->{
-        _id,
-        title,
-        slug
-      }
-    },
-    _type == "ctaCard" => {
-      ...,
-      internalLink->{
-        _id,
-        title,
-        slug
-      }
-    },
-    _type == "cardGrid" => {
-      ...,
-      cards[]{
-        ...,
-        internalLink->{
-          _id,
-          title,
-          slug
-        }
-      }
-    },
-    content[]{
-      ...,
-      image{
-        asset,
-        alt,
-        hotspot,
-        crop
-      },
-      _type == "ctaButton" => {
-        ...,
-        internalLink->{
-          _id,
-          title,
-          slug
-        }
-      },
-      _type == "ctaCalloutLink" => {
-        ...,
-        internalLink->{
-          _id,
-          title,
-          slug
-        }
-      },
-      _type == "ctaCard" => {
-        ...,
-        internalLink->{
-          _id,
-          title,
-          slug
-        }
-      },
-      _type == "cardGrid" => {
-        ...,
-        cards[]{
-          ...,
-          internalLink->{
-            _id,
-            title,
-            slug
-          }
-        }
-      },
-      content[]{
-        ...,
-        image{
-          asset,
-          alt,
-          hotspot,
-          crop
-        },
-        _type == "ctaButton" => {
-          ...,
-          internalLink->{
-            _id,
-            title,
-            slug
-          }
-        },
-        _type == "ctaCalloutLink" => {
-          ...,
-          internalLink->{
-            _id,
-            title,
-            slug
-          }
-        },
-        _type == "ctaCard" => {
-          ...,
-          internalLink->{
-            _id,
-            title,
-            slug
-          }
-        },
-        _type == "cardGrid" => {
-          ...,
-          cards[]{
-            ...,
-            internalLink->{
-              _id,
-              title,
-              slug
-            }
-          }
-        },
-        content[]{
-          ...,
-          image{
-            asset,
-            alt,
-            hotspot,
-            crop
-          },
-          _type == "ctaButton" => {
-            ...,
-            internalLink->{
-              _id,
-              title,
-              slug
-            }
-          },
-          _type == "ctaCalloutLink" => {
-            ...,
-            internalLink->{
-              _id,
-              title,
-              slug
-            }
-          },
-          _type == "ctaCard" => {
-            ...,
-            internalLink->{
-              _id,
-              title,
-              slug
-            }
-          },
-          _type == "cardGrid" => {
-            ...,
-            cards[]{
-              ...,
-              internalLink->{
-                _id,
-                title,
-                slug
-              }
-            }
-          }
-        }
-      }
-    }
-  },
+  ${recursiveContent},
   mainImage{
     asset,
     alt
@@ -247,182 +130,7 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
     openInNewTab
   },
   heroContentPosition,
-  content[]{
-    ...,
-    image{
-      asset,
-      alt,
-      hotspot,
-      crop
-    },
-    _type == "ctaButton" => {
-      ...,
-      internalLink->{
-        _id,
-        title,
-        slug
-      }
-    },
-    _type == "ctaCalloutLink" => {
-      ...,
-      internalLink->{
-        _id,
-        title,
-        slug
-      }
-    },
-    _type == "ctaCard" => {
-      ...,
-      internalLink->{
-        _id,
-        title,
-        slug
-      }
-    },
-    _type == "cardGrid" => {
-      ...,
-      cards[]{
-        ...,
-        internalLink->{
-          _id,
-          title,
-          slug
-        }
-      }
-    },
-    content[]{
-      ...,
-      image{
-        asset,
-        alt,
-        hotspot,
-        crop
-      },
-      _type == "ctaButton" => {
-        ...,
-        internalLink->{
-          _id,
-          title,
-          slug
-        }
-      },
-      _type == "ctaCalloutLink" => {
-        ...,
-        internalLink->{
-          _id,
-          title,
-          slug
-        }
-      },
-      _type == "ctaCard" => {
-        ...,
-        internalLink->{
-          _id,
-          title,
-          slug
-        }
-      },
-      _type == "cardGrid" => {
-        ...,
-        cards[]{
-          ...,
-          internalLink->{
-            _id,
-            title,
-            slug
-          }
-        }
-      },
-      content[]{
-        ...,
-        image{
-          asset,
-          alt,
-          hotspot,
-          crop
-        },
-        _type == "ctaButton" => {
-          ...,
-          internalLink->{
-            _id,
-            title,
-            slug
-          }
-        },
-        _type == "ctaCalloutLink" => {
-          ...,
-          internalLink->{
-            _id,
-            title,
-            slug
-          }
-        },
-        _type == "ctaCard" => {
-          ...,
-          internalLink->{
-            _id,
-            title,
-            slug
-          }
-        },
-        _type == "cardGrid" => {
-          ...,
-          cards[]{
-            ...,
-            internalLink->{
-              _id,
-              title,
-              slug
-            }
-          }
-        },
-        content[]{
-          ...,
-          image{
-            asset,
-            alt,
-            hotspot,
-            crop
-          },
-          _type == "ctaButton" => {
-            ...,
-            internalLink->{
-              _id,
-              title,
-              slug
-            }
-          },
-          _type == "ctaCalloutLink" => {
-            ...,
-            internalLink->{
-              _id,
-              title,
-              slug
-            }
-          },
-          _type == "ctaCard" => {
-            ...,
-            internalLink->{
-              _id,
-              title,
-              slug
-            }
-          },
-          _type == "cardGrid" => {
-            ...,
-            cards[]{
-              ...,
-              internalLink->{
-                _id,
-                title,
-                slug
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  ${recursiveContent}
 }`);
 
 export const HEADER_QUERY = defineQuery(`*[_id == "header"][0]{
