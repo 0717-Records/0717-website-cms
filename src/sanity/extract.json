@@ -12,7 +12,7 @@
             "value": "ctaEmailButton"
           }
         },
-        "placeholder": {
+        "buttonText": {
           "type": "objectAttribute",
           "value": {
             "type": "string"

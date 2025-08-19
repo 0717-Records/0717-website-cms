@@ -1,21 +1,23 @@
 import { defineType, defineField } from 'sanity';
 import { EnvelopeIcon } from '@sanity/icons';
 
-
 export const ctaEmailButtonType = defineType({
   name: 'ctaEmailButton',
   title: 'CTA Email Button',
   type: 'object',
   icon: EnvelopeIcon,
   description: 'A button that displays the company email and copies it to clipboard when clicked',
+  options: {
+    columns: 1,
+    collapsible: false,
+  },
   fields: [
-    // Hidden placeholder field - required because Sanity objects need at least one field
     defineField({
-      name: 'placeholder',
-      title: 'Placeholder',
+      name: 'buttonText',
+      title: 'Email Button Added!',
       type: 'string',
-      hidden: true,
-      initialValue: 'ctaEmailButton',
+      initialValue: 'You can close this dialog',
+      readOnly: true,
     }),
   ],
   preview: {

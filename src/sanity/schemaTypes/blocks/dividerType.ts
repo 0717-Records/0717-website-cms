@@ -4,16 +4,17 @@ export const dividerType = defineType({
   name: 'divider',
   title: 'Divider',
   type: 'object',
+  options: {
+    columns: 1,
+    collapsible: false,
+  },
   fields: [
     defineField({
       name: 'style',
-      title: 'Style',
+      title: 'Divider Added!',
       type: 'string',
-      options: {
-        list: [{ title: 'Default', value: 'default' }],
-      },
-      initialValue: 'default',
-      hidden: true, // Hide this field as it's not needed for now
+      initialValue: 'You can close this dialog',
+      readOnly: true,
     }),
   ],
   preview: {

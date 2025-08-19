@@ -15,7 +15,7 @@
 // Source: schema.json
 export type CtaEmailButton = {
   _type: "ctaEmailButton";
-  placeholder?: string;
+  buttonText?: string;
 };
 
 export type CtaCalloutLink = {
@@ -1011,7 +1011,7 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "ctaEmailButton";
-    placeholder?: string;
+    buttonText?: string;
     image: null;
     content: null;
   } | {
@@ -1201,7 +1201,7 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "ctaEmailButton";
-      placeholder?: string;
+      buttonText?: string;
       image: null;
       content: null;
     } | {
@@ -1448,7 +1448,7 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "ctaEmailButton";
-        placeholder?: string;
+        buttonText?: string;
         image: null;
         content: null;
       } | {
@@ -1688,7 +1688,7 @@ export type PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "ctaEmailButton";
-          placeholder?: string;
+          buttonText?: string;
           image: null;
         } | {
           _key: string;
@@ -2267,7 +2267,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "ctaEmailButton";
-    placeholder?: string;
+    buttonText?: string;
     image: null;
     content: null;
   } | {
@@ -2457,7 +2457,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "ctaEmailButton";
-      placeholder?: string;
+      buttonText?: string;
       image: null;
       content: null;
     } | {
@@ -2704,7 +2704,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "ctaEmailButton";
-        placeholder?: string;
+        buttonText?: string;
         image: null;
         content: null;
       } | {
@@ -2944,7 +2944,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "ctaEmailButton";
-          placeholder?: string;
+          buttonText?: string;
           image: null;
         } | {
           _key: string;
@@ -3473,7 +3473,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "ctaEmailButton";
-    placeholder?: string;
+    buttonText?: string;
     image: null;
     content: null;
   } | {
@@ -3663,7 +3663,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "ctaEmailButton";
-      placeholder?: string;
+      buttonText?: string;
       image: null;
       content: null;
     } | {
@@ -3910,7 +3910,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "ctaEmailButton";
-        placeholder?: string;
+        buttonText?: string;
         image: null;
         content: null;
       } | {
@@ -4150,7 +4150,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "ctaEmailButton";
-          placeholder?: string;
+          buttonText?: string;
           image: null;
         } | {
           _key: string;
