@@ -78,7 +78,7 @@ const SubSubSection = ({
             className='mb-3'
             showMargin={false}
             {...getTitleDataAttribute()}>
-            {title}
+            {stegaClean(title)}
           </Heading>
           <Divider />
         </div>

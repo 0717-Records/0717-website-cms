@@ -111,7 +111,7 @@ const PageSection = ({
                 className='mb-6'
                 showMargin={false}
                 {...getTitleDataAttribute()}>
-                {title}
+                {stegaClean(title)}
               </Heading>
               {subtitle && (
                 <p

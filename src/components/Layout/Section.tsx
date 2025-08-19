@@ -96,7 +96,7 @@ const Section = ({
                 className='mb-4'
                 showMargin={false}
                 {...getTitleDataAttribute()}>
-                {title}
+                {stegaClean(title)}
               </Heading>
             </div>
           )}
