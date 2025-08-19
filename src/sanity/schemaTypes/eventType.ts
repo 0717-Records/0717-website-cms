@@ -38,7 +38,7 @@ export const eventType = defineType({
       title: 'Event Image',
       type: 'image',
       group: 'details',
-      description: 'Optional image for the event. Will display the Past Event Text overlay when the event has ended.',
+      description: 'Optional image/poster for the event.',
       options: {
         hotspot: true,
       },
@@ -65,7 +65,8 @@ export const eventType = defineType({
       type: 'array',
       group: 'additional',
       of: [{ type: 'string' }],
-      description: 'Optional tags to categorize the event (e.g., Electronic, Synthwave, Rock). Leave empty if not needed.',
+      description:
+        'Optional tags to categorize the event (e.g., Electronic, Synthwave, Rock). Leave empty if not needed.',
       options: {
         layout: 'tags',
       },
@@ -75,7 +76,8 @@ export const eventType = defineType({
       title: 'Event Link',
       type: 'url',
       group: 'additional',
-      description: 'Optional external link for more information about the event. Leave empty if not needed.',
+      description:
+        'Optional external link for more information about the event. Leave empty if not needed.',
       validation: (Rule) =>
         Rule.uri({
           scheme: ['http', 'https'],
@@ -133,7 +135,8 @@ export const eventType = defineType({
       title: 'End Date',
       type: 'date',
       group: 'timing',
-      description: 'Optional end date. If left empty, the event will be assumed to end at the end of the evening on the start date.',
+      description:
+        'Optional end date. If left empty, the event will be assumed to end at the end of the evening on the start date.',
       options: {
         dateFormat: 'YYYY-MM-DD',
       },
@@ -141,10 +144,10 @@ export const eventType = defineType({
         Rule.custom((endDate, context) => {
           const startDate = (context.parent as Record<string, unknown>)?.startDate;
           if (!endDate || !startDate) return true; // Allow empty end date
-          
+
           const start = new Date(startDate as string);
           const end = new Date(endDate as string);
-          
+
           if (end < start) {
             return 'End date must be on or after the start date';
           }
@@ -190,24 +193,31 @@ export const eventType = defineType({
       validation: (Rule) =>
         Rule.custom((endTime, context) => {
           if (!endTime?.hour && !endTime?.minute) return true; // Optional field
-          
+
           const parent = context.parent as Record<string, unknown>;
           const startDate = parent?.startDate;
           const endDate = parent?.endDate;
           const startTime = parent?.startTime as { hour?: number; minute?: number } | undefined;
-          
+
           // If same date and both times provided, end time must be after start time
-          if (startDate && endDate && startTime && startDate === endDate && 
-              typeof startTime.hour === 'number' && typeof startTime.minute === 'number' &&
-              typeof endTime.hour === 'number' && typeof endTime.minute === 'number') {
+          if (
+            startDate &&
+            endDate &&
+            startTime &&
+            startDate === endDate &&
+            typeof startTime.hour === 'number' &&
+            typeof startTime.minute === 'number' &&
+            typeof endTime.hour === 'number' &&
+            typeof endTime.minute === 'number'
+          ) {
             const startMinutes = startTime.hour * 60 + startTime.minute;
             const endMinutes = endTime.hour * 60 + endTime.minute;
-            
+
             if (endMinutes <= startMinutes) {
               return 'End time must be after start time when on the same date';
             }
           }
-          
+
           return true;
         }),
     }),
@@ -217,9 +227,9 @@ export const eventType = defineType({
       type: 'text',
       group: 'past',
       rows: 3,
-      description: 'Text that will display over the event image when the event has ended. Use line breaks to separate sentences.',
+      description:
+        'Text that will display over the event image when the event has ended. Use line breaks to separate sentences.',
       initialValue: 'This Event Has Been.\nThanks For Your Support.',
-      validation: (Rule) => Rule.required().error('Past event text is required'),
     }),
     defineField({
       name: 'pastEventLinkBehavior',
@@ -228,23 +238,24 @@ export const eventType = defineType({
       group: 'past',
       options: {
         list: [
-          { 
-            title: 'Keep the same link', 
+          {
+            title: 'Keep the same link',
             value: 'keep',
           },
-          { 
-            title: 'Change to a different link', 
+          {
+            title: 'Change to a different link',
             value: 'change',
           },
-          { 
-            title: 'Remove the link entirely', 
+          {
+            title: 'Remove the link entirely',
             value: 'remove',
           },
         ],
         layout: 'radio',
       },
       initialValue: 'keep',
-      description: 'Choose what happens to the event link after the event has ended. "Keep the same link" will use the original event link (or no link if none was provided).',
+      description:
+        'Choose what happens to the event link after the event has ended. "Keep the same link" will use the original event link (or no link if none was provided).',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -310,7 +321,7 @@ export const eventType = defineType({
         timeString = ` at ${hour}:${minute}`;
       }
       const dateTimeString = date ? ` • ${date}${timeString}` : '';
-      
+
       return {
         title: title || 'Untitled Event',
         subtitle: `${subtitle || 'No location'}${dateTimeString}`,
