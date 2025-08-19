@@ -59,6 +59,14 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
         slug
       }
     },
+    _type == "ctaCalloutLink" => {
+      ...,
+      internalLink->{
+        _id,
+        title,
+        slug
+      }
+    },
     _type == "ctaCard" => {
       ...,
       button{
@@ -79,6 +87,14 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
         crop
       },
       _type == "ctaButton" => {
+        ...,
+        internalLink->{
+          _id,
+          title,
+          slug
+        }
+      },
+      _type == "ctaCalloutLink" => {
         ...,
         internalLink->{
           _id,
@@ -113,6 +129,14 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
             slug
           }
         },
+        _type == "ctaCalloutLink" => {
+          ...,
+          internalLink->{
+            _id,
+            title,
+            slug
+          }
+        },
         _type == "ctaCard" => {
           ...,
           button{
@@ -133,6 +157,14 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
             crop
           },
           _type == "ctaButton" => {
+            ...,
+            internalLink->{
+              _id,
+              title,
+              slug
+            }
+          },
+          _type == "ctaCalloutLink" => {
             ...,
             internalLink->{
               _id,
@@ -199,6 +231,14 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
         slug
       }
     },
+    _type == "ctaCalloutLink" => {
+      ...,
+      internalLink->{
+        _id,
+        title,
+        slug
+      }
+    },
     _type == "ctaCard" => {
       ...,
       button{
@@ -219,6 +259,14 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
         crop
       },
       _type == "ctaButton" => {
+        ...,
+        internalLink->{
+          _id,
+          title,
+          slug
+        }
+      },
+      _type == "ctaCalloutLink" => {
         ...,
         internalLink->{
           _id,
@@ -253,6 +301,14 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
             slug
           }
         },
+        _type == "ctaCalloutLink" => {
+          ...,
+          internalLink->{
+            _id,
+            title,
+            slug
+          }
+        },
         _type == "ctaCard" => {
           ...,
           button{
@@ -273,6 +329,14 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
             crop
           },
           _type == "ctaButton" => {
+            ...,
+            internalLink->{
+              _id,
+              title,
+              slug
+            }
+          },
+          _type == "ctaCalloutLink" => {
             ...,
             internalLink->{
               _id,

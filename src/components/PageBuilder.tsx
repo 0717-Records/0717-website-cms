@@ -16,6 +16,7 @@ import Quote from './blocks/Quote';
 import TextImage from './blocks/TextImage';
 import CTACard from './blocks/CTACard';
 import CTAButton from './blocks/CTAButton';
+import CTACalloutLinkComponent from './blocks/CTACalloutLink';
 import CardGrid from './blocks/CardGrid';
 import Icon from './blocks/Icon';
 import ImageBlock from './blocks/Image';
@@ -236,6 +237,13 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
             return (
               <BlockWrapper key={block._key}>
                 <CTAButton {...block} />
+              </BlockWrapper>
+            );
+
+          case 'ctaCalloutLink':
+            return (
+              <BlockWrapper key={block._key}>
+                <CTACalloutLinkComponent {...block} />
               </BlockWrapper>
             );
 

@@ -3,7 +3,6 @@ import PageBuilder from '@/components/PageBuilder';
 import Hero from '@/components/HomeHero/Hero';
 import { getHomePage } from '@/actions';
 import type { PAGE_QUERYResult } from '@/sanity/types';
-import CTACalloutLinkExamples from '@/components/UI/CTACalloutLink.example';
 
 const Page = async () => {
   const page = await getHomePage();
@@ -25,8 +24,6 @@ const Page = async () => {
         documentId={page._id}
         documentType={page._type}
       />
-
-      <CTACalloutLinkExamples />
 
       {/* Additional Page Builder Content */}
       {page.content && (

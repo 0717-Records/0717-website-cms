@@ -1,0 +1,94 @@
+import React from 'react';
+import { stegaClean } from 'next-sanity';
+import { urlFor } from '@/sanity/lib/image';
+import type { CTACalloutLinkBlock } from '@/types/blocks';
+import CTACalloutLink from '../UI/CTACalloutLink';
+
+// Type for a dereferenced page object
+interface DereferencedPage {
+  _id: string;
+  title?: string;
+  slug?: {
+    current: string;
+  };
+}
+
+// Type for internalLink that can be either a reference or dereferenced
+type InternalLinkType = 
+  | { _ref: string; _type: 'reference' }
+  | DereferencedPage;
+
+interface CTACalloutLinkProps extends Omit<CTACalloutLinkBlock, '_type' | '_key' | 'internalLink'> {
+  className?: string;
+  internalLink?: InternalLinkType;
+}
+
+const CTACalloutLinkComponent = ({
+  heading,
+  text,
+  image,
+  linkType,
+  internalLink,
+  externalUrl,
+  openInNewTab = false,
+  className = '',
+}: CTACalloutLinkProps) => {
+  const cleanHeading = stegaClean(heading);
+  const cleanText = stegaClean(text);
+  const cleanExternalUrl = stegaClean(externalUrl);
+
+  // Don't render if no text (which is required)
+  if (!cleanText) {
+    return null;
+  }
+
+  // Determine the href based on link type
+  let href = '';
+  if (linkType === 'internal' && internalLink) {
+    // Handle both reference objects and dereferenced objects
+    if ('slug' in internalLink && internalLink.slug?.current) {
+      href = `/${internalLink.slug.current}`;
+    }
+    // If it's just a reference, we can't build the URL without dereferencing
+    // This would need to be handled in the GROQ query by dereferencing with ->
+  } else if (linkType === 'external' && cleanExternalUrl) {
+    href = cleanExternalUrl;
+  }
+
+  // Don't render if no valid href
+  if (!href) {
+    return null;
+  }
+
+  // Determine if this should open in a new tab
+  const shouldOpenInNewTab = linkType === 'external' || (linkType === 'internal' && openInNewTab);
+
+  // Process image if provided
+  let processedImage;
+  if (image?.asset) {
+    const imageUrl = urlFor(image.asset).width(96).height(96).url();
+    const altText = stegaClean(image.alt) || '';
+    
+    processedImage = {
+      src: imageUrl,
+      alt: altText,
+      width: 96,
+      height: 96,
+    };
+  }
+
+  return (
+    <div className={className}>
+      <CTACalloutLink
+        heading={cleanHeading}
+        text={cleanText}
+        image={processedImage}
+        href={href}
+        target={shouldOpenInNewTab ? '_blank' : undefined}
+        rel={shouldOpenInNewTab ? 'noopener noreferrer' : undefined}
+      />
+    </div>
+  );
+};
+
+export default CTACalloutLinkComponent;

@@ -9,6 +9,7 @@ export const commonContentBlocks = [
   defineArrayMember({ type: 'textImage' }),
   defineArrayMember({ type: 'ctaCard' }),
   defineArrayMember({ type: 'ctaButton' }),
+  defineArrayMember({ type: 'ctaCalloutLink' }),
   defineArrayMember({ type: 'cardGrid' }),
   defineArrayMember({ type: 'icon' }),
   defineArrayMember({ type: 'imageBlock' }),

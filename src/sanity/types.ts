@@ -13,6 +13,34 @@
  */
 
 // Source: schema.json
+export type CtaCalloutLink = {
+  _type: "ctaCalloutLink";
+  heading?: string;
+  text?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  linkType?: "internal" | "external";
+  internalLink?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "page";
+  };
+  openInNewTab?: boolean;
+  externalUrl?: string;
+};
+
 export type CtaButton = {
   _type: "ctaButton";
   text?: string;
@@ -265,6 +293,8 @@ export type SubSubSection = {
     _key: string;
   } & CtaButton | {
     _key: string;
+  } & CtaCalloutLink | {
+    _key: string;
   } & CardGrid | {
     _key: string;
   } & Icon | {
@@ -301,6 +331,8 @@ export type SubSection = {
   } & CtaCard | {
     _key: string;
   } & CtaButton | {
+    _key: string;
+  } & CtaCalloutLink | {
     _key: string;
   } & CardGrid | {
     _key: string;
@@ -340,6 +372,8 @@ export type PageSection = {
     _key: string;
   } & CtaButton | {
     _key: string;
+  } & CtaCalloutLink | {
+    _key: string;
   } & CardGrid | {
     _key: string;
   } & Icon | {
@@ -377,6 +411,8 @@ export type Section = {
     _key: string;
   } & CtaButton | {
     _key: string;
+  } & CtaCalloutLink | {
+    _key: string;
   } & CardGrid | {
     _key: string;
   } & Icon | {
@@ -409,6 +445,8 @@ export type PageBuilder = Array<{
 } & CtaCard | {
   _key: string;
 } & CtaButton | {
+  _key: string;
+} & CtaCalloutLink | {
   _key: string;
 } & CardGrid | {
   _key: string;
@@ -787,7 +825,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -846,7 +884,7 @@ export type POST_QUERYResult = {
   }> | null;
 } | null;
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{  _id,  _type,  title,  slug,  content[]{    ...,    image{      asset,      alt,      hotspot,      crop    },    _type == "ctaButton" => {      ...,      internalLink->{        _id,        title,        slug      }    },    _type == "ctaCard" => {      ...,      button{        ...,        internalLink->{          _id,          title,          slug        }      }    },    content[]{      ...,      image{        asset,        alt,        hotspot,        crop      },      _type == "ctaButton" => {        ...,        internalLink->{          _id,          title,          slug        }      },      _type == "ctaCard" => {        ...,        button{          ...,          internalLink->{            _id,            title,            slug          }        }      },      content[]{        ...,        image{          asset,          alt,          hotspot,          crop        },        _type == "ctaButton" => {          ...,          internalLink->{            _id,            title,            slug          }        },        _type == "ctaCard" => {          ...,          button{            ...,            internalLink->{              _id,              title,              slug            }          }        },        content[]{          ...,          image{            asset,            alt,            hotspot,            crop          },          _type == "ctaButton" => {            ...,            internalLink->{              _id,              title,              slug            }          },          _type == "ctaCard" => {            ...,            button{              ...,              internalLink->{                _id,                title,                slug              }            }          }        }      }    }  },  mainImage{    asset,    alt  }}
+// Query: *[_type == "page" && slug.current == $slug][0]{  _id,  _type,  title,  slug,  content[]{    ...,    image{      asset,      alt,      hotspot,      crop    },    _type == "ctaButton" => {      ...,      internalLink->{        _id,        title,        slug      }    },    _type == "ctaCalloutLink" => {      ...,      internalLink->{        _id,        title,        slug      }    },    _type == "ctaCard" => {      ...,      button{        ...,        internalLink->{          _id,          title,          slug        }      }    },    content[]{      ...,      image{        asset,        alt,        hotspot,        crop      },      _type == "ctaButton" => {        ...,        internalLink->{          _id,          title,          slug        }      },      _type == "ctaCalloutLink" => {        ...,        internalLink->{          _id,          title,          slug        }      },      _type == "ctaCard" => {        ...,        button{          ...,          internalLink->{            _id,            title,            slug          }        }      },      content[]{        ...,        image{          asset,          alt,          hotspot,          crop        },        _type == "ctaButton" => {          ...,          internalLink->{            _id,            title,            slug          }        },        _type == "ctaCalloutLink" => {          ...,          internalLink->{            _id,            title,            slug          }        },        _type == "ctaCard" => {          ...,          button{            ...,            internalLink->{              _id,              title,              slug            }          }        },        content[]{          ...,          image{            asset,            alt,            hotspot,            crop          },          _type == "ctaButton" => {            ...,            internalLink->{              _id,              title,              slug            }          },          _type == "ctaCalloutLink" => {            ...,            internalLink->{              _id,              title,              slug            }          },          _type == "ctaCard" => {            ...,            button{              ...,              internalLink->{                _id,                title,                slug              }            }          }        }      }    }  },  mainImage{    asset,    alt  }}
 export type PAGE_QUERYResult = {
   _id: string;
   _type: "page";
@@ -882,6 +920,33 @@ export type PAGE_QUERYResult = {
     openInNewTab?: boolean;
     externalUrl?: string;
     image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+    } | null;
+    openInNewTab?: boolean;
+    externalUrl?: string;
     content: null;
   } | {
     _key: string;
@@ -1026,6 +1091,33 @@ export type PAGE_QUERYResult = {
       openInNewTab?: boolean;
       externalUrl?: string;
       image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        title: string | null;
+        slug: Slug | null;
+      } | null;
+      openInNewTab?: boolean;
+      externalUrl?: string;
       content: null;
     } | {
       _key: string;
@@ -1230,6 +1322,33 @@ export type PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          title: string | null;
+          slug: Slug | null;
+        } | null;
+        openInNewTab?: boolean;
+        externalUrl?: string;
+        content: null;
+      } | {
+        _key: string;
         _type: "ctaCard";
         icon?: Icon;
         title?: string;
@@ -1424,6 +1543,32 @@ export type PAGE_QUERYResult = {
           openInNewTab?: boolean;
           externalUrl?: string;
           image: null;
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            title: string | null;
+            slug: Slug | null;
+          } | null;
+          openInNewTab?: boolean;
+          externalUrl?: string;
         } | {
           _key: string;
           _type: "ctaCard";
@@ -1878,7 +2023,7 @@ export type PAGE_QUERYResult = {
   } | null;
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      title,      slug    },    externalUrl,    openInNewTab  },  heroContentPosition,  content[]{    ...,    image{      asset,      alt,      hotspot,      crop    },    _type == "ctaButton" => {      ...,      internalLink->{        _id,        title,        slug      }    },    _type == "ctaCard" => {      ...,      button{        ...,        internalLink->{          _id,          title,          slug        }      }    },    content[]{      ...,      image{        asset,        alt,        hotspot,        crop      },      _type == "ctaButton" => {        ...,        internalLink->{          _id,          title,          slug        }      },      _type == "ctaCard" => {        ...,        button{          ...,          internalLink->{            _id,            title,            slug          }        }      },      content[]{        ...,        image{          asset,          alt,          hotspot,          crop        },        _type == "ctaButton" => {          ...,          internalLink->{            _id,            title,            slug          }        },        _type == "ctaCard" => {          ...,          button{            ...,            internalLink->{              _id,              title,              slug            }          }        },        content[]{          ...,          image{            asset,            alt,            hotspot,            crop          },          _type == "ctaButton" => {            ...,            internalLink->{              _id,              title,              slug            }          },          _type == "ctaCard" => {            ...,            button{              ...,              internalLink->{                _id,                title,                slug              }            }          }        }      }    }  }}
+// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      title,      slug    },    externalUrl,    openInNewTab  },  heroContentPosition,  content[]{    ...,    image{      asset,      alt,      hotspot,      crop    },    _type == "ctaButton" => {      ...,      internalLink->{        _id,        title,        slug      }    },    _type == "ctaCalloutLink" => {      ...,      internalLink->{        _id,        title,        slug      }    },    _type == "ctaCard" => {      ...,      button{        ...,        internalLink->{          _id,          title,          slug        }      }    },    content[]{      ...,      image{        asset,        alt,        hotspot,        crop      },      _type == "ctaButton" => {        ...,        internalLink->{          _id,          title,          slug        }      },      _type == "ctaCalloutLink" => {        ...,        internalLink->{          _id,          title,          slug        }      },      _type == "ctaCard" => {        ...,        button{          ...,          internalLink->{            _id,            title,            slug          }        }      },      content[]{        ...,        image{          asset,          alt,          hotspot,          crop        },        _type == "ctaButton" => {          ...,          internalLink->{            _id,            title,            slug          }        },        _type == "ctaCalloutLink" => {          ...,          internalLink->{            _id,            title,            slug          }        },        _type == "ctaCard" => {          ...,          button{            ...,            internalLink->{              _id,              title,              slug            }          }        },        content[]{          ...,          image{            asset,            alt,            hotspot,            crop          },          _type == "ctaButton" => {            ...,            internalLink->{              _id,              title,              slug            }          },          _type == "ctaCalloutLink" => {            ...,            internalLink->{              _id,              title,              slug            }          },          _type == "ctaCard" => {            ...,            button{              ...,              internalLink->{                _id,                title,                slug              }            }          }        }      }    }  }}
 export type HOME_PAGE_QUERYResult = {
   _id: string;
   _type: "footer";
@@ -1956,6 +2101,33 @@ export type HOME_PAGE_QUERYResult = {
     openInNewTab?: boolean;
     externalUrl?: string;
     image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+    } | null;
+    openInNewTab?: boolean;
+    externalUrl?: string;
     content: null;
   } | {
     _key: string;
@@ -2100,6 +2272,33 @@ export type HOME_PAGE_QUERYResult = {
       openInNewTab?: boolean;
       externalUrl?: string;
       image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        title: string | null;
+        slug: Slug | null;
+      } | null;
+      openInNewTab?: boolean;
+      externalUrl?: string;
       content: null;
     } | {
       _key: string;
@@ -2304,6 +2503,33 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          title: string | null;
+          slug: Slug | null;
+        } | null;
+        openInNewTab?: boolean;
+        externalUrl?: string;
+        content: null;
+      } | {
+        _key: string;
         _type: "ctaCard";
         icon?: Icon;
         title?: string;
@@ -2498,6 +2724,32 @@ export type HOME_PAGE_QUERYResult = {
           openInNewTab?: boolean;
           externalUrl?: string;
           image: null;
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            title: string | null;
+            slug: Slug | null;
+          } | null;
+          openInNewTab?: boolean;
+          externalUrl?: string;
         } | {
           _key: string;
           _type: "ctaCard";
@@ -2983,6 +3235,33 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      title: string | null;
+      slug: Slug | null;
+    } | null;
+    openInNewTab?: boolean;
+    externalUrl?: string;
+    content: null;
+  } | {
+    _key: string;
     _type: "ctaCard";
     icon?: Icon;
     title?: string;
@@ -3124,6 +3403,33 @@ export type HOME_PAGE_QUERYResult = {
       openInNewTab?: boolean;
       externalUrl?: string;
       image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        title: string | null;
+        slug: Slug | null;
+      } | null;
+      openInNewTab?: boolean;
+      externalUrl?: string;
       content: null;
     } | {
       _key: string;
@@ -3328,6 +3634,33 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          title: string | null;
+          slug: Slug | null;
+        } | null;
+        openInNewTab?: boolean;
+        externalUrl?: string;
+        content: null;
+      } | {
+        _key: string;
         _type: "ctaCard";
         icon?: Icon;
         title?: string;
@@ -3522,6 +3855,32 @@ export type HOME_PAGE_QUERYResult = {
           openInNewTab?: boolean;
           externalUrl?: string;
           image: null;
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            title: string | null;
+            slug: Slug | null;
+          } | null;
+          openInNewTab?: boolean;
+          externalUrl?: string;
         } | {
           _key: string;
           _type: "ctaCard";
@@ -4057,8 +4416,8 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt,\n  relatedPosts[]->{\n    _id,\n    title,\n    slug,\n    mainImage{\n      asset,\n      alt\n    },\n    publishedAt\n  }\n}": POST_QUERYResult;
-    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  slug,\n  content[]{\n    ...,\n    image{\n      asset,\n      alt,\n      hotspot,\n      crop\n    },\n    _type == \"ctaButton\" => {\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    },\n    _type == \"ctaCard\" => {\n      ...,\n      button{\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      }\n    },\n    content[]{\n      ...,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      _type == \"ctaButton\" => {\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      },\n      _type == \"ctaCard\" => {\n        ...,\n        button{\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        }\n      },\n      content[]{\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        },\n        _type == \"ctaButton\" => {\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        },\n        _type == \"ctaCard\" => {\n          ...,\n          button{\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          }\n        },\n        content[]{\n          ...,\n          image{\n            asset,\n            alt,\n            hotspot,\n            crop\n          },\n          _type == \"ctaButton\" => {\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          },\n          _type == \"ctaCard\" => {\n            ...,\n            button{\n              ...,\n              internalLink->{\n                _id,\n                title,\n                slug\n              }\n            }\n          }\n        }\n      }\n    }\n  },\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
-    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalUrl,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n    ...,\n    image{\n      asset,\n      alt,\n      hotspot,\n      crop\n    },\n    _type == \"ctaButton\" => {\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    },\n    _type == \"ctaCard\" => {\n      ...,\n      button{\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      }\n    },\n    content[]{\n      ...,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      _type == \"ctaButton\" => {\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      },\n      _type == \"ctaCard\" => {\n        ...,\n        button{\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        }\n      },\n      content[]{\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        },\n        _type == \"ctaButton\" => {\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        },\n        _type == \"ctaCard\" => {\n          ...,\n          button{\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          }\n        },\n        content[]{\n          ...,\n          image{\n            asset,\n            alt,\n            hotspot,\n            crop\n          },\n          _type == \"ctaButton\" => {\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          },\n          _type == \"ctaCard\" => {\n            ...,\n            button{\n              ...,\n              internalLink->{\n                _id,\n                title,\n                slug\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}": HOME_PAGE_QUERYResult;
+    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  slug,\n  content[]{\n    ...,\n    image{\n      asset,\n      alt,\n      hotspot,\n      crop\n    },\n    _type == \"ctaButton\" => {\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    },\n    _type == \"ctaCalloutLink\" => {\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    },\n    _type == \"ctaCard\" => {\n      ...,\n      button{\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      }\n    },\n    content[]{\n      ...,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      _type == \"ctaButton\" => {\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      },\n      _type == \"ctaCalloutLink\" => {\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      },\n      _type == \"ctaCard\" => {\n        ...,\n        button{\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        }\n      },\n      content[]{\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        },\n        _type == \"ctaButton\" => {\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        },\n        _type == \"ctaCalloutLink\" => {\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        },\n        _type == \"ctaCard\" => {\n          ...,\n          button{\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          }\n        },\n        content[]{\n          ...,\n          image{\n            asset,\n            alt,\n            hotspot,\n            crop\n          },\n          _type == \"ctaButton\" => {\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          },\n          _type == \"ctaCalloutLink\" => {\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          },\n          _type == \"ctaCard\" => {\n            ...,\n            button{\n              ...,\n              internalLink->{\n                _id,\n                title,\n                slug\n              }\n            }\n          }\n        }\n      }\n    }\n  },\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
+    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalUrl,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n    ...,\n    image{\n      asset,\n      alt,\n      hotspot,\n      crop\n    },\n    _type == \"ctaButton\" => {\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    },\n    _type == \"ctaCalloutLink\" => {\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    },\n    _type == \"ctaCard\" => {\n      ...,\n      button{\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      }\n    },\n    content[]{\n      ...,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      _type == \"ctaButton\" => {\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      },\n      _type == \"ctaCalloutLink\" => {\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      },\n      _type == \"ctaCard\" => {\n        ...,\n        button{\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        }\n      },\n      content[]{\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        },\n        _type == \"ctaButton\" => {\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        },\n        _type == \"ctaCalloutLink\" => {\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        },\n        _type == \"ctaCard\" => {\n          ...,\n          button{\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          }\n        },\n        content[]{\n          ...,\n          image{\n            asset,\n            alt,\n            hotspot,\n            crop\n          },\n          _type == \"ctaButton\" => {\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          },\n          _type == \"ctaCalloutLink\" => {\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          },\n          _type == \"ctaCard\" => {\n            ...,\n            button{\n              ...,\n              internalLink->{\n                _id,\n                title,\n                slug\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  }\n}": HEADER_QUERYResult;
   }
 }

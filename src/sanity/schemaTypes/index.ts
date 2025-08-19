@@ -25,6 +25,7 @@ import { bandcampWidgetType } from './blocks/bandcampWidgetType';
 import { quoteType } from './blocks/quoteType';
 import { textImageType } from './blocks/textImageType';
 import { ctaButtonType } from './blocks/ctaButtonType';
+import { ctaCalloutLinkType } from './blocks/ctaCalloutLinkType';
 import { embeddedCtaButtonType } from './blocks/embeddedCtaButtonType';
 import { siteSettingsType } from './siteSettingsType';
 
@@ -58,6 +59,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     quoteType,
     textImageType,
     ctaButtonType,
+    ctaCalloutLinkType,
     embeddedCtaButtonType,
   ],
 };
