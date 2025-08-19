@@ -70,11 +70,10 @@ export const structure: StructureResolver = (S) =>
 
       // === BLOG ===
       S.listItem()
+        .id('posts')
         .title('📝 Blog')
         .child(
-          S.list()
-            .title('Blog Management')
-            .items([S.documentTypeListItem('post').title('Posts')])
+          S.documentTypeList('post').title('Posts')
         ),
 
       S.divider(),
