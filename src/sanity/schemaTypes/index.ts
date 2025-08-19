@@ -1,5 +1,6 @@
 import { type SchemaTypeDefinition } from 'sanity';
 
+
 import { blockContentType } from './blockContentType';
 import { postType } from './postType';
 import { pageType } from './pageType';
@@ -26,6 +27,7 @@ import { quoteType } from './blocks/quoteType';
 import { textImageType } from './blocks/textImageType';
 import { ctaButtonType } from './blocks/ctaButtonType';
 import { ctaCalloutLinkType } from './blocks/ctaCalloutLinkType';
+import { ctaEmailButtonType } from './blocks/ctaEmailButtonType';
 import { embeddedCtaButtonType } from './blocks/embeddedCtaButtonType';
 import { siteSettingsType } from './siteSettingsType';
 
@@ -60,6 +62,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     textImageType,
     ctaButtonType,
     ctaCalloutLinkType,
+    ctaEmailButtonType,
     embeddedCtaButtonType,
   ],
 };

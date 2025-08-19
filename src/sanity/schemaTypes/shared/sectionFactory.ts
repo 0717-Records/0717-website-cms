@@ -1,5 +1,6 @@
 import { defineType, defineArrayMember, defineField, type FieldDefinition } from 'sanity';
 
+
 // Common content blocks available to all sections
 export const commonContentBlocks = [
   defineArrayMember({ type: 'divider' }),
@@ -10,6 +11,7 @@ export const commonContentBlocks = [
   defineArrayMember({ type: 'ctaCard' }),
   defineArrayMember({ type: 'ctaButton' }),
   defineArrayMember({ type: 'ctaCalloutLink' }),
+  defineArrayMember({ type: 'ctaEmailButton' }),
   defineArrayMember({ type: 'cardGrid' }),
   defineArrayMember({ type: 'icon' }),
   defineArrayMember({ type: 'imageBlock' }),

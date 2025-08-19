@@ -1,6 +1,6 @@
 import { sanityFetch } from '@/sanity/lib/live';
-import { HEADER_QUERY } from '@/sanity/lib/queries';
-import type { Footer, SiteSettings, HEADER_QUERYResult } from '@/sanity/types';
+import { HEADER_QUERY, SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
+import type { Footer, SiteSettings, HEADER_QUERYResult, SITE_SETTINGS_QUERYResult } from '@/sanity/types';
 
 // Header actions
 export async function getHeader(): Promise<HEADER_QUERYResult | null> {
@@ -21,9 +21,9 @@ export async function getFooter(): Promise<Footer | null> {
 }
 
 // Site Settings actions
-export async function getSiteSettings(): Promise<SiteSettings | null> {
+export async function getSiteSettings(): Promise<SITE_SETTINGS_QUERYResult | null> {
   const { data } = await sanityFetch({
-    query: `*[_id == "siteSettings"][0]`,
+    query: SITE_SETTINGS_QUERY,
   });
 
   return data;

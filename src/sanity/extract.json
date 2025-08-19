@@ -1,5 +1,28 @@
 [
   {
+    "name": "ctaEmailButton",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "ctaEmailButton"
+          }
+        },
+        "placeholder": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
     "name": "ctaCalloutLink",
     "type": "type",
     "value": {
@@ -1996,6 +2019,21 @@
                   },
                   "rest": {
                     "type": "inline",
+                    "name": "ctaEmailButton"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
                     "name": "cardGrid"
                   }
                 },
@@ -2282,6 +2320,21 @@
                   "rest": {
                     "type": "inline",
                     "name": "ctaCalloutLink"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "ctaEmailButton"
                   }
                 },
                 {
@@ -2603,6 +2656,21 @@
                   },
                   "rest": {
                     "type": "inline",
+                    "name": "ctaEmailButton"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
                     "name": "cardGrid"
                   }
                 },
@@ -2903,6 +2971,21 @@
                   },
                   "rest": {
                     "type": "inline",
+                    "name": "ctaEmailButton"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
                     "name": "cardGrid"
                   }
                 },
@@ -3145,6 +3228,21 @@
             "rest": {
               "type": "inline",
               "name": "ctaCalloutLink"
+            }
+          },
+          {
+            "type": "object",
+            "attributes": {
+              "_key": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "rest": {
+              "type": "inline",
+              "name": "ctaEmailButton"
             }
           },
           {

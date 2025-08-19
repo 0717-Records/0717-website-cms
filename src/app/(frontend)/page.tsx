@@ -1,11 +1,14 @@
 import React from 'react';
 import PageBuilder from '@/components/PageBuilder';
 import Hero from '@/components/HomeHero/Hero';
-import { getHomePage } from '@/actions';
+import { getHomePage, getSiteSettings } from '@/actions';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 
 const Page = async () => {
-  const page = await getHomePage();
+  const [page, siteSettings] = await Promise.all([
+    getHomePage(),
+    getSiteSettings(),
+  ]);
 
   if (!page) {
     return <div>Page not found</div>;
@@ -31,6 +34,7 @@ const Page = async () => {
           content={page.content as NonNullable<PAGE_QUERYResult>['content']}
           documentId={page._id}
           documentType={page._type}
+          siteSettings={siteSettings ? { companyEmail: siteSettings.companyEmail || undefined } : undefined}
         />
       )}
     </>

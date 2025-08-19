@@ -13,6 +13,11 @@
  */
 
 // Source: schema.json
+export type CtaEmailButton = {
+  _type: "ctaEmailButton";
+  placeholder?: string;
+};
+
 export type CtaCalloutLink = {
   _type: "ctaCalloutLink";
   heading?: string;
@@ -295,6 +300,8 @@ export type SubSubSection = {
     _key: string;
   } & CtaCalloutLink | {
     _key: string;
+  } & CtaEmailButton | {
+    _key: string;
   } & CardGrid | {
     _key: string;
   } & Icon | {
@@ -333,6 +340,8 @@ export type SubSection = {
   } & CtaButton | {
     _key: string;
   } & CtaCalloutLink | {
+    _key: string;
+  } & CtaEmailButton | {
     _key: string;
   } & CardGrid | {
     _key: string;
@@ -374,6 +383,8 @@ export type PageSection = {
     _key: string;
   } & CtaCalloutLink | {
     _key: string;
+  } & CtaEmailButton | {
+    _key: string;
   } & CardGrid | {
     _key: string;
   } & Icon | {
@@ -413,6 +424,8 @@ export type Section = {
     _key: string;
   } & CtaCalloutLink | {
     _key: string;
+  } & CtaEmailButton | {
+    _key: string;
   } & CardGrid | {
     _key: string;
   } & Icon | {
@@ -447,6 +460,8 @@ export type PageBuilder = Array<{
 } & CtaButton | {
   _key: string;
 } & CtaCalloutLink | {
+  _key: string;
+} & CtaEmailButton | {
   _key: string;
 } & CardGrid | {
   _key: string;
@@ -825,7 +840,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -967,6 +982,12 @@ export type PAGE_QUERYResult = {
       openInNewTab?: boolean;
       externalUrl?: string;
     } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    placeholder?: string;
     image: null;
     content: null;
   } | {
@@ -1138,6 +1159,12 @@ export type PAGE_QUERYResult = {
         openInNewTab?: boolean;
         externalUrl?: string;
       } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      placeholder?: string;
       image: null;
       content: null;
     } | {
@@ -1370,6 +1397,12 @@ export type PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "ctaEmailButton";
+        placeholder?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "divider";
         style?: "default";
         image: null;
@@ -1588,6 +1621,11 @@ export type PAGE_QUERYResult = {
             openInNewTab?: boolean;
             externalUrl?: string;
           } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          placeholder?: string;
           image: null;
         } | {
           _key: string;
@@ -2152,6 +2190,12 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "ctaEmailButton";
+    placeholder?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "divider";
     style?: "default";
     image: null;
@@ -2319,6 +2363,12 @@ export type HOME_PAGE_QUERYResult = {
         openInNewTab?: boolean;
         externalUrl?: string;
       } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      placeholder?: string;
       image: null;
       content: null;
     } | {
@@ -2551,6 +2601,12 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "ctaEmailButton";
+        placeholder?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "divider";
         style?: "default";
         image: null;
@@ -2769,6 +2825,11 @@ export type HOME_PAGE_QUERYResult = {
             openInNewTab?: boolean;
             externalUrl?: string;
           } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          placeholder?: string;
           image: null;
         } | {
           _key: string;
@@ -3283,6 +3344,12 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "ctaEmailButton";
+    placeholder?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "divider";
     style?: "default";
     image: null;
@@ -3450,6 +3517,12 @@ export type HOME_PAGE_QUERYResult = {
         openInNewTab?: boolean;
         externalUrl?: string;
       } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      placeholder?: string;
       image: null;
       content: null;
     } | {
@@ -3682,6 +3755,12 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "ctaEmailButton";
+        placeholder?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "divider";
         style?: "default";
         image: null;
@@ -3900,6 +3979,11 @@ export type HOME_PAGE_QUERYResult = {
             openInNewTab?: boolean;
             externalUrl?: string;
           } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          placeholder?: string;
           image: null;
         } | {
           _key: string;
@@ -4408,6 +4492,57 @@ export type HEADER_QUERYResult = {
   _type: "siteSettings";
   logo: null;
 } | null;
+// Variable: SITE_SETTINGS_QUERY
+// Query: *[_id == "siteSettings"][0]{  _id,  _type,  siteTitle,  companyEmail,  siteDescription}
+export type SITE_SETTINGS_QUERYResult = {
+  _id: string;
+  _type: "footer";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+} | {
+  _id: string;
+  _type: "header";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+} | {
+  _id: string;
+  _type: "homePage";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+} | {
+  _id: string;
+  _type: "page";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+} | {
+  _id: string;
+  _type: "post";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+} | {
+  _id: string;
+  _type: "sanity.fileAsset";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+} | {
+  _id: string;
+  _type: "sanity.imageAsset";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+} | {
+  _id: string;
+  _type: "siteSettings";
+  siteTitle: string | null;
+  companyEmail: string | null;
+  siteDescription: string | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -4419,5 +4554,6 @@ declare module "@sanity/client" {
     "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  slug,\n  content[]{\n    ...,\n    image{\n      asset,\n      alt,\n      hotspot,\n      crop\n    },\n    _type == \"ctaButton\" => {\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    },\n    _type == \"ctaCalloutLink\" => {\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    },\n    _type == \"ctaCard\" => {\n      ...,\n      button{\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      }\n    },\n    content[]{\n      ...,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      _type == \"ctaButton\" => {\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      },\n      _type == \"ctaCalloutLink\" => {\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      },\n      _type == \"ctaCard\" => {\n        ...,\n        button{\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        }\n      },\n      content[]{\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        },\n        _type == \"ctaButton\" => {\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        },\n        _type == \"ctaCalloutLink\" => {\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        },\n        _type == \"ctaCard\" => {\n          ...,\n          button{\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          }\n        },\n        content[]{\n          ...,\n          image{\n            asset,\n            alt,\n            hotspot,\n            crop\n          },\n          _type == \"ctaButton\" => {\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          },\n          _type == \"ctaCalloutLink\" => {\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          },\n          _type == \"ctaCard\" => {\n            ...,\n            button{\n              ...,\n              internalLink->{\n                _id,\n                title,\n                slug\n              }\n            }\n          }\n        }\n      }\n    }\n  },\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
     "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalUrl,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n    ...,\n    image{\n      asset,\n      alt,\n      hotspot,\n      crop\n    },\n    _type == \"ctaButton\" => {\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    },\n    _type == \"ctaCalloutLink\" => {\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    },\n    _type == \"ctaCard\" => {\n      ...,\n      button{\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      }\n    },\n    content[]{\n      ...,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      _type == \"ctaButton\" => {\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      },\n      _type == \"ctaCalloutLink\" => {\n        ...,\n        internalLink->{\n          _id,\n          title,\n          slug\n        }\n      },\n      _type == \"ctaCard\" => {\n        ...,\n        button{\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        }\n      },\n      content[]{\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        },\n        _type == \"ctaButton\" => {\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        },\n        _type == \"ctaCalloutLink\" => {\n          ...,\n          internalLink->{\n            _id,\n            title,\n            slug\n          }\n        },\n        _type == \"ctaCard\" => {\n          ...,\n          button{\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          }\n        },\n        content[]{\n          ...,\n          image{\n            asset,\n            alt,\n            hotspot,\n            crop\n          },\n          _type == \"ctaButton\" => {\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          },\n          _type == \"ctaCalloutLink\" => {\n            ...,\n            internalLink->{\n              _id,\n              title,\n              slug\n            }\n          },\n          _type == \"ctaCard\" => {\n            ...,\n            button{\n              ...,\n              internalLink->{\n                _id,\n                title,\n                slug\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  }\n}": HEADER_QUERYResult;
+    "*[_id == \"siteSettings\"][0]{\n  _id,\n  _type,\n  siteTitle,\n  companyEmail,\n  siteDescription\n}": SITE_SETTINGS_QUERYResult;
   }
 }

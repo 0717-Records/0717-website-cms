@@ -17,6 +17,7 @@ import TextImage from './blocks/TextImage';
 import CTACard from './blocks/CTACard';
 import CTAButton from './blocks/CTAButton';
 import CTACalloutLinkComponent from './blocks/CTACalloutLink';
+import CTAEmailButtonComponent from './blocks/CTAEmailButton';
 import CardGrid from './blocks/CardGrid';
 import Icon from './blocks/Icon';
 import ImageBlock from './blocks/Image';
@@ -31,6 +32,9 @@ type PageBuilderProps = {
   documentId: string;
   documentType: string;
   pathPrefix?: string;
+  siteSettings?: {
+    companyEmail?: string;
+  };
 };
 
 type BlockRendererProps = {
@@ -39,6 +43,9 @@ type BlockRendererProps = {
   documentType: string;
   pathPrefix: string;
   nestingLevel?: number;
+  siteSettings?: {
+    companyEmail?: string;
+  };
 };
 
 const { projectId, dataset, stega } = client.config();
@@ -49,7 +56,7 @@ export const createDataAttributeConfig = {
 };
 
 // Universal block renderer that can handle any block type at any nesting level
-const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLevel = 1 }: BlockRendererProps) => {
+const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLevel = 1, siteSettings }: BlockRendererProps) => {
   if (!Array.isArray(blocks)) {
     return null;
   }
@@ -115,6 +122,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
               documentType={documentType}
               pathPrefix={`${blockPath}.content`}
               nestingLevel={nestingLevel + 1}
+              siteSettings={siteSettings}
             />
           );
         };
@@ -247,6 +255,16 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
               </BlockWrapper>
             );
 
+          case 'ctaEmailButton':
+            return (
+              <BlockWrapper key={block._key}>
+                <CTAEmailButtonComponent 
+                  {...block} 
+                  email={siteSettings?.companyEmail || 'noemailexists@noemail.com'} 
+                />
+              </BlockWrapper>
+            );
+
           case 'cardGrid':
             return (
               <BlockWrapper key={block._key}>
@@ -341,6 +359,7 @@ const PageBuilder = ({
   documentId,
   documentType,
   pathPrefix = 'content',
+  siteSettings,
 }: PageBuilderProps) => {
   const [sections] = useOptimistic<NonNullable<PAGE_QUERYResult>['content']>(content);
 
@@ -361,6 +380,7 @@ const PageBuilder = ({
         documentId={documentId}
         documentType={documentType}
         pathPrefix={pathPrefix}
+        siteSettings={siteSettings}
       />
     </div>
   );

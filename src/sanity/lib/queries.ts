@@ -369,3 +369,11 @@ export const HEADER_QUERY = defineQuery(`*[_id == "header"][0]{
     alt
   }
 }`);
+
+export const SITE_SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
+  _id,
+  _type,
+  siteTitle,
+  companyEmail,
+  siteDescription
+}`);
