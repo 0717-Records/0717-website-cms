@@ -1,6 +1,5 @@
 import React from 'react';
 import Heading from '../Typography/Heading';
-import Divider from '../UI/Divider';
 import { createDataAttribute, stegaClean } from 'next-sanity';
 import { useTextAlignmentContext } from './PageSection';
 
@@ -80,7 +79,6 @@ const SubSection = ({
             {...getTitleDataAttribute()}>
             {stegaClean(title)}
           </Heading>
-          <Divider />
         </div>
         {children}
       </section>

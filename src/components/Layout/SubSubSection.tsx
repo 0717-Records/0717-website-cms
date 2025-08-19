@@ -1,6 +1,5 @@
 import React from 'react';
 import Heading from '../Typography/Heading';
-import Divider from '../UI/Divider';
 import { createDataAttribute, stegaClean } from 'next-sanity';
 import { useTextAlignmentContext } from './PageSection';
 
@@ -77,10 +76,10 @@ const SubSubSection = ({
             level='h4' // Fixed h4 level for SubSubSections
             className='mb-3'
             showMargin={false}
+            showUnderline={false}
             {...getTitleDataAttribute()}>
             {stegaClean(title)}
           </Heading>
-          <Divider />
         </div>
         {children}
       </section>
