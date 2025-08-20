@@ -1,7 +1,5 @@
 import React from 'react';
-import CTA from '../UI/CTA';
 import Image from 'next/image';
-import { FaExternalLinkAlt } from 'react-icons/fa';
 
 interface EventCardProps {
   title: string;
@@ -26,23 +24,27 @@ function formatEventDate(
   timeDescription?: string | null
 ): { dateDisplay: string; timeDisplay: string } {
   const start = new Date(startDate);
-  const startFormatted = start.toLocaleDateString('en-AU', {
-    weekday: 'short',
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  }).toUpperCase();
+  const startFormatted = start
+    .toLocaleDateString('en-AU', {
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    })
+    .toUpperCase();
 
   let dateDisplay = startFormatted;
 
   if (endDate) {
     const end = new Date(endDate);
-    const endFormatted = end.toLocaleDateString('en-AU', {
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-    }).toUpperCase();
+    const endFormatted = end
+      .toLocaleDateString('en-AU', {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      })
+      .toUpperCase();
 
     if (startFormatted !== endFormatted) {
       dateDisplay = `${startFormatted} - ${endFormatted}`;
@@ -98,9 +100,13 @@ const EventCard = (props: EventCardProps) => {
 
   const { dateDisplay, timeDisplay } = formatEventDate(startDate, endDate, timeDescription);
   const eventLink = getEventLink(props);
+  const hasLink = Boolean(eventLink);
 
-  return (
-    <div className='w-full h-full bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col'>
+  const cardContent = (
+    <div
+      className={`w-full h-full bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 ${
+        hasLink ? 'group hover:shadow-xl hover:scale-103 cursor-pointer' : ''
+      }`}>
       {/* Event Poster */}
       <div className='relative aspect-[3/4] bg-gray-900 overflow-hidden'>
         {image ? (
@@ -117,7 +123,8 @@ const EventCard = (props: EventCardProps) => {
           </>
         ) : (
           <div className='w-full h-full relative'>
-            <div className={`w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 ${isPast ? 'brightness-50' : ''}`}>
+            <div
+              className={`w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 ${isPast ? 'brightness-50' : ''}`}>
               <div className='text-center text-white/70'>
                 <div className='text-6xl mb-2'>🎭</div>
               </div>
@@ -133,7 +140,9 @@ const EventCard = (props: EventCardProps) => {
         {timeDisplay && <div className='text-brand-secondary mb-3'>{timeDisplay}</div>}
 
         {/* Title */}
-        <p className='text-h5 font-bold mb-3 text-gray-800'>{title}</p>
+        <p className={`text-h5 font-bold mb-3 text-gray-800 transition-all duration-300 ${
+          hasLink ? 'group-hover:underline' : ''
+        }`}>{title}</p>
 
         {/* Short Description */}
         {shortDescription && (
@@ -164,37 +173,34 @@ const EventCard = (props: EventCardProps) => {
         {tags && tags.length > 0 && (
           <div className='flex flex-wrap justify-center gap-2 mb-4'>
             {tags.map((tag) => (
-              <span key={tag} className='px-2 py-1 bg-gray-100 text-text-subtle text-body-xs rounded'>
+              <span
+                key={tag}
+                className='px-2 py-1 bg-gray-100 text-text-subtle text-body-xs rounded'>
                 {tag}
               </span>
             ))}
           </div>
         )}
-
-        <div className='mt-auto'>
-          {eventLink ? (
-            <CTA
-              href={eventLink}
-              variant='filled'
-              className='w-full justify-center'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              MORE INFO <FaExternalLinkAlt className='ml-2' />
-            </CTA>
-          ) : isPast ? (
-            <div className='w-full bg-gray-300 text-gray-500 font-bold py-3 px-4 rounded-md cursor-not-allowed text-center'>
-              EVENT COMPLETED
-            </div>
-          ) : (
-            <div className='w-full bg-gray-200 text-gray-400 font-bold py-3 px-4 rounded-md cursor-not-allowed text-center'>
-              NO LINK AVAILABLE
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );
+
+  // If there's a link, wrap the entire card in an anchor tag
+  if (hasLink && eventLink) {
+    return (
+      <a
+        href={eventLink}
+        target='_blank'
+        rel='noopener noreferrer'
+        className='block w-full h-full text-inherit no-underline'
+        aria-label={`View details for ${title} event`}>
+        {cardContent}
+      </a>
+    );
+  }
+
+  // If no link, return the card content directly
+  return cardContent;
 };
 
 export default EventCard;
