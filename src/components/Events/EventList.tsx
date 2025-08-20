@@ -25,7 +25,9 @@ interface EventListProps {
 }
 
 function isEventPast(event: Event): boolean {
-  const today = new Date();
+  // Get current date/time in New Zealand timezone
+  const nowInNZ = new Date().toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+  const today = new Date(nowInNZ);
   today.setHours(0, 0, 0, 0);
 
   const eventEndDate = event.endDate ? new Date(event.endDate) : new Date(event.startDate);
