@@ -7,7 +7,6 @@ import { getEvents } from './getEvents';
 
 interface EventBlockProps {
   maxEvents?: number;
-  eventFilter: 'all' | 'upcoming';
 }
 
 interface Event {
@@ -26,7 +25,7 @@ interface Event {
   pastEventLink?: string | null;
 }
 
-const EventBlock = ({ maxEvents = 6, eventFilter = 'all' }: EventBlockProps) => {
+const EventBlock = ({ maxEvents = 6 }: EventBlockProps) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -58,7 +57,7 @@ const EventBlock = ({ maxEvents = 6, eventFilter = 'all' }: EventBlockProps) => 
     <div className='w-full'>
       <EventList 
         events={events}
-        filter={eventFilter}
+        filter="upcoming"
         limit={maxEvents}
         noEventsText="No events at the moment. Check back soon!"
       />

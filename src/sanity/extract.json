@@ -18,23 +18,6 @@
             "type": "number"
           },
           "optional": true
-        },
-        "eventFilter": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "all"
-              },
-              {
-                "type": "string",
-                "value": "upcoming"
-              }
-            ]
-          },
-          "optional": true
         }
       }
     }

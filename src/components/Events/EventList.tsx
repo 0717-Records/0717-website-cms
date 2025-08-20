@@ -26,18 +26,18 @@ interface EventListProps {
 
 function isEventPast(event: Event): boolean {
   // Get current date/time in New Zealand timezone
-  const nowInNZ = new Date().toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
-  const today = new Date(nowInNZ);
-  today.setHours(0, 0, 0, 0);
-
-  const eventEndDate = event.endDate ? new Date(event.endDate) : new Date(event.startDate);
-  eventEndDate.setHours(0, 0, 0, 0);
-
-  // Event is considered past the day after it ends
-  const dayAfterEvent = new Date(eventEndDate);
+  const nowInNZ = new Date(new Date().toLocaleString('en-US', { timeZone: 'Pacific/Auckland' }));
+  
+  // Create event end date (or start date if no end date)
+  const eventDateString = event.endDate || event.startDate;
+  const eventDate = new Date(eventDateString + 'T00:00:00'); // Ensure consistent parsing
+  
+  // Event is considered past at midnight NZ time the day after it ends
+  const dayAfterEvent = new Date(eventDate);
   dayAfterEvent.setDate(dayAfterEvent.getDate() + 1);
+  dayAfterEvent.setHours(0, 0, 0, 0);
 
-  return today >= dayAfterEvent;
+  return nowInNZ >= dayAfterEvent;
 }
 
 const EventList = ({ events, filter, limit, noEventsText }: EventListProps) => {
@@ -57,8 +57,24 @@ const EventList = ({ events, filter, limit, noEventsText }: EventListProps) => {
       break;
   }
 
-  // Sort events by startDate (latest first)
-  filteredEvents.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
+  // Sort events by startDate based on filter type
+  filteredEvents.sort((a, b) => {
+    const dateA = new Date(a.startDate).getTime();
+    const dateB = new Date(b.startDate).getTime();
+    
+    if (filter === 'upcoming') {
+      // Upcoming events: earliest first (soonest events first)
+      return dateA - dateB;
+    } else {
+      // Past events and 'all': latest first (most recent first)
+      return dateB - dateA;
+    }
+  });
+
+  // Debug logging for upcoming events
+  if (filter === 'upcoming' && typeof window !== 'undefined') {
+    console.log('Upcoming events sorted:', filteredEvents.map(e => `${e.title}: ${e.startDate}`));
+  }
 
   // Apply limit if provided
   if (limit && limit > 0) {

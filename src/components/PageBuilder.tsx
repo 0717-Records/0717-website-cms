@@ -345,7 +345,6 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
               <BlockWrapper key={block._key}>
                 <EventBlock 
                   maxEvents={block.maxEvents}
-                  eventFilter={block.eventFilter}
                 />
               </BlockWrapper>
             );

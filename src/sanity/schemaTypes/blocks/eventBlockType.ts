@@ -15,7 +15,7 @@ export const eventBlockType = defineType({
       name: 'maxEvents',
       title: 'Maximum Number of Events',
       type: 'number',
-      description: 'Maximum number of events to display. Leave empty to show all events.',
+      description: 'Maximum number of upcoming events to display. Leave empty to show all upcoming events.',
       initialValue: 6,
       validation: (Rule) =>
         Rule.min(1)
@@ -23,39 +23,17 @@ export const eventBlockType = defineType({
           .integer()
           .warning('We recommend showing between 1-12 events for better user experience'),
     }),
-    defineField({
-      name: 'eventFilter',
-      title: 'Which Events to Show',
-      type: 'string',
-      options: {
-        list: [
-          {
-            title: 'Show All Events',
-            value: 'all',
-          },
-          {
-            title: 'Show Upcoming Events Only',
-            value: 'upcoming',
-          },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'all',
-      validation: (Rule) => Rule.required(),
-    }),
   ],
   preview: {
     select: {
       maxEvents: 'maxEvents',
-      eventFilter: 'eventFilter',
     },
-    prepare({ maxEvents, eventFilter }) {
-      const filterText = eventFilter === 'all' ? 'All Events' : 'Upcoming Events';
+    prepare({ maxEvents }) {
       const limitText = maxEvents ? ` (max ${maxEvents})` : '';
       
       return {
         title: 'Event Block',
-        subtitle: `${filterText}${limitText}`,
+        subtitle: `Upcoming Events${limitText}`,
         media: CalendarIcon,
       };
     },

@@ -16,7 +16,6 @@
 export type EventBlock = {
   _type: "eventBlock";
   maxEvents?: number;
-  eventFilter?: "all" | "upcoming";
 };
 
 export type CtaEmailButton = {
@@ -1073,7 +1072,6 @@ export type PAGE_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     maxEvents?: number;
-    eventFilter?: "all" | "upcoming";
     image: null;
     content: null;
   } | {
@@ -1270,7 +1268,6 @@ export type PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       maxEvents?: number;
-      eventFilter?: "all" | "upcoming";
       image: null;
       content: null;
     } | {
@@ -1524,7 +1521,6 @@ export type PAGE_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         maxEvents?: number;
-        eventFilter?: "all" | "upcoming";
         image: null;
         content: null;
       } | {
@@ -1769,7 +1765,6 @@ export type PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           maxEvents?: number;
-          eventFilter?: "all" | "upcoming";
           image: null;
         } | {
           _key: string;
@@ -2366,7 +2361,6 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     maxEvents?: number;
-    eventFilter?: "all" | "upcoming";
     image: null;
     content: null;
   } | {
@@ -2563,7 +2557,6 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       maxEvents?: number;
-      eventFilter?: "all" | "upcoming";
       image: null;
       content: null;
     } | {
@@ -2817,7 +2810,6 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         maxEvents?: number;
-        eventFilter?: "all" | "upcoming";
         image: null;
         content: null;
       } | {
@@ -3062,7 +3054,6 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           maxEvents?: number;
-          eventFilter?: "all" | "upcoming";
           image: null;
         } | {
           _key: string;
@@ -3599,7 +3590,6 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     maxEvents?: number;
-    eventFilter?: "all" | "upcoming";
     image: null;
     content: null;
   } | {
@@ -3796,7 +3786,6 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       maxEvents?: number;
-      eventFilter?: "all" | "upcoming";
       image: null;
       content: null;
     } | {
@@ -4050,7 +4039,6 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         maxEvents?: number;
-        eventFilter?: "all" | "upcoming";
         image: null;
         content: null;
       } | {
@@ -4295,7 +4283,6 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           maxEvents?: number;
-          eventFilter?: "all" | "upcoming";
           image: null;
         } | {
           _key: string;
