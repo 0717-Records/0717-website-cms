@@ -1,5 +1,45 @@
 [
   {
+    "name": "eventBlock",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "eventBlock"
+          }
+        },
+        "maxEvents": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        },
+        "eventFilter": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "all"
+              },
+              {
+                "type": "string",
+                "value": "upcoming"
+              }
+            ]
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
     "name": "ctaEmailButton",
     "type": "type",
     "value": {
@@ -2218,6 +2258,21 @@
                     "type": "inline",
                     "name": "bandcampWidget"
                   }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "eventBlock"
+                  }
                 }
               ]
             }
@@ -2532,6 +2587,21 @@
                   "rest": {
                     "type": "inline",
                     "name": "bandcampWidget"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "eventBlock"
                   }
                 }
               ]
@@ -2855,6 +2925,21 @@
                     "type": "inline",
                     "name": "bandcampWidget"
                   }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "eventBlock"
+                  }
                 }
               ]
             }
@@ -3170,6 +3255,21 @@
                     "type": "inline",
                     "name": "bandcampWidget"
                   }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "eventBlock"
+                  }
                 }
               ]
             }
@@ -3440,6 +3540,21 @@
             "rest": {
               "type": "inline",
               "name": "bandcampWidget"
+            }
+          },
+          {
+            "type": "object",
+            "attributes": {
+              "_key": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "rest": {
+              "type": "inline",
+              "name": "eventBlock"
             }
           }
         ]
@@ -4235,6 +4350,13 @@
         },
         "optional": true
       },
+      "location": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "image": {
         "type": "objectAttribute",
         "value": {
@@ -4308,13 +4430,6 @@
               }
             }
           }
-        },
-        "optional": true
-      },
-      "location": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
         },
         "optional": true
       },

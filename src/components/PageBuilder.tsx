@@ -25,6 +25,7 @@ import ImageGallery from './blocks/ImageGallery';
 import YouTubeVideo from './blocks/YouTubeVideo';
 import SpotifyWidget from './blocks/SpotifyWidget';
 import BandcampWidget from './blocks/BandcampWidget';
+import EventBlock from './Events/EventBlock';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -335,6 +336,16 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
                   documentId={documentId}
                   documentType={documentType}
                   pathPrefix={blockPath}
+                />
+              </BlockWrapper>
+            );
+
+          case 'eventBlock':
+            return (
+              <BlockWrapper key={block._key}>
+                <EventBlock 
+                  maxEvents={block.maxEvents}
+                  eventFilter={block.eventFilter}
                 />
               </BlockWrapper>
             );

@@ -13,6 +13,12 @@
  */
 
 // Source: schema.json
+export type EventBlock = {
+  _type: "eventBlock";
+  maxEvents?: number;
+  eventFilter?: "all" | "upcoming";
+};
+
 export type CtaEmailButton = {
   _type: "ctaEmailButton";
   buttonText?: string;
@@ -325,7 +331,9 @@ export type SubSubSection = {
     _key: string;
   } & SpotifyWidget | {
     _key: string;
-  } & BandcampWidget>;
+  } & BandcampWidget | {
+    _key: string;
+  } & EventBlock>;
 };
 
 export type SubSection = {
@@ -366,7 +374,9 @@ export type SubSection = {
     _key: string;
   } & SpotifyWidget | {
     _key: string;
-  } & BandcampWidget>;
+  } & BandcampWidget | {
+    _key: string;
+  } & EventBlock>;
 };
 
 export type PageSection = {
@@ -408,7 +418,9 @@ export type PageSection = {
     _key: string;
   } & SpotifyWidget | {
     _key: string;
-  } & BandcampWidget>;
+  } & BandcampWidget | {
+    _key: string;
+  } & EventBlock>;
 };
 
 export type Section = {
@@ -449,7 +461,9 @@ export type Section = {
     _key: string;
   } & SpotifyWidget | {
     _key: string;
-  } & BandcampWidget>;
+  } & BandcampWidget | {
+    _key: string;
+  } & EventBlock>;
 };
 
 export type PageBuilder = Array<{
@@ -486,7 +500,9 @@ export type PageBuilder = Array<{
   _key: string;
 } & SpotifyWidget | {
   _key: string;
-} & BandcampWidget>;
+} & BandcampWidget | {
+  _key: string;
+} & EventBlock>;
 
 export type Footer = {
   _id: string;
@@ -601,6 +617,7 @@ export type Event = {
   title?: string;
   shortDescription?: string;
   venue?: string;
+  location?: string;
   image?: {
     asset?: {
       _ref: string;
@@ -614,7 +631,6 @@ export type Event = {
     alt?: string;
     _type: "image";
   };
-  location?: string;
   tags?: Array<string>;
   link?: string;
   startDate?: string;
@@ -884,7 +900,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Event | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = EventBlock | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Event | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -1051,6 +1067,13 @@ export type PAGE_QUERYResult = {
     _key: string;
     _type: "divider";
     style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    eventFilter?: "all" | "upcoming";
     image: null;
     content: null;
   } | {
@@ -1241,6 +1264,13 @@ export type PAGE_QUERYResult = {
       _key: string;
       _type: "divider";
       style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      eventFilter?: "all" | "upcoming";
       image: null;
       content: null;
     } | {
@@ -1492,6 +1522,13 @@ export type PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        eventFilter?: "all" | "upcoming";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "icon";
         image: {
           asset: {
@@ -1727,6 +1764,12 @@ export type PAGE_QUERYResult = {
           _key: string;
           _type: "divider";
           style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          eventFilter?: "all" | "upcoming";
           image: null;
         } | {
           _key: string;
@@ -2321,6 +2364,13 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    eventFilter?: "all" | "upcoming";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "icon";
     image: {
       asset: {
@@ -2507,6 +2557,13 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "divider";
       style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      eventFilter?: "all" | "upcoming";
       image: null;
       content: null;
     } | {
@@ -2758,6 +2815,13 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        eventFilter?: "all" | "upcoming";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "icon";
         image: {
           asset: {
@@ -2993,6 +3057,12 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "divider";
           style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          eventFilter?: "all" | "upcoming";
           image: null;
         } | {
           _key: string;
@@ -3527,6 +3597,13 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    eventFilter?: "all" | "upcoming";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "icon";
     image: {
       asset: {
@@ -3713,6 +3790,13 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "divider";
       style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      eventFilter?: "all" | "upcoming";
       image: null;
       content: null;
     } | {
@@ -3964,6 +4048,13 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        eventFilter?: "all" | "upcoming";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "icon";
         image: {
           asset: {
@@ -4199,6 +4290,12 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "divider";
           style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          eventFilter?: "all" | "upcoming";
           image: null;
         } | {
           _key: string;
