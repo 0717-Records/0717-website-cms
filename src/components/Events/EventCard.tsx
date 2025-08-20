@@ -1,16 +1,15 @@
+import CTA from '../UI/CTA';
+
 interface EventCardProps {
   title: string;
   date: string;
   time: string;
   venue: string;
   location: string;
-  price: string;
   artists: string[];
   genres: string[];
-  image: string;
-  colorClass: string;
+  image?: string;
   status: 'active' | 'completed';
-  posterStyle: string;
 }
 
 export default function EventCard({
@@ -19,18 +18,31 @@ export default function EventCard({
   time,
   venue,
   location,
-  price,
   artists,
   genres,
   image,
-  colorClass,
   status,
-  posterStyle,
 }: EventCardProps) {
   return (
-    <div className='w-full md:w-[calc(33.333%-4rem)] bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col'>
+    <div className='w-full bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col'>
       {/* Event Poster */}
-      <div className='relative aspect-[3/4] bg-gray-900'>{/* event img goes here */}</div>
+      <div className='relative aspect-[3/4] bg-gray-900 overflow-hidden'>
+        {image ? (
+          <img 
+            src={image} 
+            alt={`${title} event poster`}
+            className='w-full h-full object-cover'
+          />
+        ) : (
+          <div className='w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900'>
+            <div className='text-center text-white/70'>
+              <div className='text-4xl mb-2'>🎵</div>
+              <div className='text-sm font-semibold'>EVENT POSTER</div>
+              <div className='text-xs'>COMING SOON</div>
+            </div>
+          </div>
+        )}
+      </div>
       {/* Event Details */}
       <div className='p-4 flex flex-col flex-grow'>
         <div className='text-yellow-500 text-sm font-semibold mb-1'>{date}</div>
@@ -57,13 +69,17 @@ export default function EventCard({
 
         <div className='mt-auto'>
           {status === 'active' ? (
-            <button className='w-full bg-yellow-400 text-black font-bold py-3 px-4 rounded-md hover:bg-yellow-500 transition-colors duration-200'>
+            <CTA 
+              href="#"
+              variant="filled"
+              className="w-full justify-center"
+            >
               MORE INFO
-            </button>
+            </CTA>
           ) : (
-            <button className='w-full bg-gray-300 text-gray-500 font-bold py-3 px-4 rounded-md cursor-not-allowed'>
+            <div className='w-full bg-gray-300 text-gray-500 font-bold py-3 px-4 rounded-md cursor-not-allowed text-center'>
               EVENT COMPLETED
-            </button>
+            </div>
           )}
         </div>
       </div>

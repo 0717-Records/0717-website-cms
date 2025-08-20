@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext } from 'react';
 import Heading from '../Typography/Heading';
 import Divider from '../UI/Divider';
@@ -83,7 +85,7 @@ const PageSection = ({
   // Clean the textAlign value to remove Sanity's stega encoding
   // For PageSection, 'inherit' doesn't make sense, so default to 'center'
   const rawTextAlign = stegaClean(textAlign);
-  const cleanTextAlign = (rawTextAlign === 'inherit' || !rawTextAlign) ? 'center' : rawTextAlign;
+  const cleanTextAlign = rawTextAlign === 'inherit' || !rawTextAlign ? 'center' : rawTextAlign;
 
   const getTextAlignClass = (align: 'left' | 'center' | 'right') => {
     switch (align) {
@@ -106,11 +108,7 @@ const PageSection = ({
           <div className='container max-w-[60rem] mx-auto px-8'>
             {/* Title is now always present since it's required */}
             <div className='text-center'>
-              <Heading
-                level='h2'
-                className='mb-6'
-                showMargin={false}
-                {...getTitleDataAttribute()}>
+              <Heading level='h2' className='mb-6' showMargin={false} {...getTitleDataAttribute()}>
                 {stegaClean(title)}
               </Heading>
               {subtitle && (
