@@ -15,6 +15,21 @@
     "pastEventLink": null
   },
   {
+    "title": "Electronic Fusion Night",
+    "shortDescription": "Star Control brings their signature synthwave sound to the warehouse",
+    "venue": "Warehouse 23",
+    "location": "Sydney, NSW",
+    "image": "/event-test-img.webp",
+    "tags": ["Electronic", "Synthwave", "Underground"],
+    "link": "https://example.com/tickets/electronic-fusion",
+    "startDate": "2025-09-15",
+    "endDate": null,
+    "timeDescription": "8PM - LATE",
+    "pastEventText": "This Event Has Been.\nThanks For Your Support.",
+    "pastEventLinkBehavior": "keep",
+    "pastEventLink": null
+  },
+  {
     "title": "Summer Music Festival",
     "shortDescription": "Three days of eclectic music featuring Star Control, Brother Sister, and JJ Mist",
     "venue": "Riverside Park",
