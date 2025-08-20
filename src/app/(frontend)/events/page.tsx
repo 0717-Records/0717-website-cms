@@ -61,9 +61,13 @@ export default async function EventsPage() {
       {/* Upcoming Events Section */}
       <PageSection title='Upcoming Events' isFirst>
         {upcomingEvents.length > 0 ? (
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div className='flex flex-wrap justify-center md:gap-4 lg:gap-8'>
             {upcomingEvents.map((event, index: number) => (
-              <EventCard key={`upcoming-${event.title}-${index}`} {...event} isPast={false} />
+              <div
+                key={`upcoming-${event.title}-${index}`}
+                className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] max-w-sm flex'>
+                <EventCard {...event} isPast={false} />
+              </div>
             ))}
           </div>
         ) : (
@@ -79,9 +83,13 @@ export default async function EventsPage() {
       {/* Past Events Section */}
       <PageSection title='Past Events'>
         {pastEvents.length > 0 ? (
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div className='flex flex-wrap justify-center md:gap-4 lg:gap-8'>
             {pastEvents.map((event, index: number) => (
-              <EventCard key={`past-${event.title}-${index}`} {...event} isPast={true} />
+              <div
+                key={`past-${event.title}-${index}`}
+                className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] max-w-sm flex'>
+                <EventCard {...event} isPast={true} />
+              </div>
             ))}
           </div>
         ) : (

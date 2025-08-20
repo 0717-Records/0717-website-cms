@@ -100,7 +100,7 @@ const EventCard = (props: EventCardProps) => {
   const eventLink = getEventLink(props);
 
   return (
-    <div className='w-full bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col'>
+    <div className='w-full h-full bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col'>
       {/* Event Poster */}
       <div className='relative aspect-[3/4] bg-gray-900 overflow-hidden'>
         {image ? (
