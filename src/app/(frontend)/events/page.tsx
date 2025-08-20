@@ -38,7 +38,7 @@ export default async function EventsPage() {
 
       {/* Upcoming Events Section */}
       {upcomingEvents.length > 0 && (
-        <PageSection title='UPCOMING EVENTS' isFirst>
+        <PageSection title='Upcoming Events' isFirst>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {upcomingEvents.map((event, index: number) => (
               <EventCard key={`upcoming-${event.title}-${index}`} {...event} />
@@ -49,7 +49,7 @@ export default async function EventsPage() {
 
       {/* Past Events Section */}
       {pastEvents.length > 0 && (
-        <PageSection title='PAST EVENTS'>
+        <PageSection title='Past Events'>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {pastEvents.map((event, index: number) => (
               <EventCard key={`past-${event.title}-${index}`} {...event} />
