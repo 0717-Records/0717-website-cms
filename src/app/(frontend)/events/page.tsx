@@ -1,6 +1,6 @@
 import EventCard from '@/components/Events/EventCard';
 import { getEvents } from '../../../components/Events/getEvents';
-import PageHero from '@/components/UI/PageHero';
+import PageHero from '@/components/Page/PageHero';
 import PageSection from '@/components/Layout/PageSection';
 
 interface Event {
@@ -30,6 +30,10 @@ export default async function EventsPage() {
         title='ALL EVENTS'
         subtitle='COMPLETE LISTING OF 07:17 RECORDS EVENTS'
         height='medium'
+        showBackLink={true}
+        backLinkText='Back to Home'
+        backLinkHref='/'
+        backgroundImage='/event-test-img.webp'
       />
 
       {/* Upcoming Events Section */}
