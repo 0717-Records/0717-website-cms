@@ -598,7 +598,9 @@ export type Event = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
+  title?: string;
+  shortDescription?: string;
+  venue?: string;
   image?: {
     asset?: {
       _ref: string;
@@ -616,15 +618,8 @@ export type Event = {
   tags?: Array<string>;
   link?: string;
   startDate?: string;
-  startTime?: {
-    hour?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23;
-    minute?: 0 | 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55;
-  };
   endDate?: string;
-  endTime?: {
-    hour?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23;
-    minute?: 0 | 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55;
-  };
+  timeDescription?: string;
   pastEventText?: string;
   pastEventLinkBehavior?: "keep" | "change" | "remove";
   pastEventLink?: string;

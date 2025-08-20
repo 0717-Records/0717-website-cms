@@ -1,3 +1,7 @@
+// AI Helper: This is a Sanity CMS schema definition. It defines the structure and validation rules for content types.
+// When modifying, ensure all fields have appropriate validation, titles, and descriptions for content editors.
+// Follow the existing patterns in other schema files for consistency.
+
 import { defineField, defineType } from 'sanity';
 import { CalendarIcon } from '@sanity/icons';
 
@@ -26,12 +30,39 @@ export const eventType = defineType({
   ],
   fields: [
     defineField({
-      name: 'name',
-      title: 'Event Name',
+      name: 'title',
+      title: 'Event Title',
       type: 'string',
       group: 'details',
-      description: 'The name or title of the event',
-      validation: (Rule) => Rule.required().error('Event name is required'),
+      description: 'The title or name of the event',
+      validation: (Rule) => Rule.required().error('Event title is required'),
+    }),
+    defineField({
+      name: 'shortDescription',
+      title: 'Short Description',
+      type: 'text',
+      group: 'details',
+      rows: 2,
+      description:
+        'Optional short description. Can be used to describe the event or list artists (e.g., "Star Control, Brother Sister, JJ Mist" or "An eclectic festival of the finest music and art from the underground!")',
+      validation: (Rule) =>
+        Rule.max(200).warning('Keep description concise - under 200 characters works best'),
+    }),
+    defineField({
+      name: 'venue',
+      title: 'Venue',
+      type: 'string',
+      group: 'details',
+      description: 'Optional venue name (e.g., "Warehouse 23", "Metro Theatre")',
+      validation: (Rule) => Rule.max(100).warning('Keep venue name concise'),
+    }),
+    defineField({
+      name: 'location',
+      title: 'Event Location',
+      type: 'string',
+      group: 'details',
+      description: 'Where the event is taking place (city, or online)',
+      validation: (Rule) => Rule.required().error('Event location is required'),
     }),
     defineField({
       name: 'image',
@@ -50,14 +81,6 @@ export const eventType = defineType({
           description: 'Important for SEO and accessibility when image cannot be displayed',
         },
       ],
-    }),
-    defineField({
-      name: 'location',
-      title: 'Event Location',
-      type: 'string',
-      group: 'details',
-      description: 'Where the event is taking place (venue, city, or online)',
-      validation: (Rule) => Rule.required().error('Event location is required'),
     }),
     defineField({
       name: 'tags',
@@ -88,55 +111,20 @@ export const eventType = defineType({
       title: 'Start Date',
       type: 'date',
       group: 'timing',
-      description: 'The date when the event begins',
+      description:
+        'The date when the event begins. This field determines when the event is considered past (at 12:00 AM the day after this date for single-day events).',
       options: {
         dateFormat: 'YYYY-MM-DD',
       },
       validation: (Rule) => Rule.required().error('Start date is required'),
     }),
     defineField({
-      name: 'startTime',
-      title: 'Start Time',
-      type: 'object',
-      group: 'timing',
-      description: 'Optional start time. Leave empty if time is not specified.',
-      fields: [
-        {
-          name: 'hour',
-          title: 'Hour',
-          type: 'number',
-          options: {
-            list: Array.from({ length: 24 }, (_, i) => ({
-              title: i.toString().padStart(2, '0'),
-              value: i,
-            })),
-          },
-          validation: (Rule) => Rule.min(0).max(23),
-        },
-        {
-          name: 'minute',
-          title: 'Minute',
-          type: 'number',
-          options: {
-            list: Array.from({ length: 12 }, (_, i) => ({
-              title: (i * 5).toString().padStart(2, '0'),
-              value: i * 5,
-            })),
-          },
-          validation: (Rule) => Rule.min(0).max(59),
-        },
-      ],
-      options: {
-        columns: 2,
-      },
-    }),
-    defineField({
       name: 'endDate',
-      title: 'End Date',
+      title: 'End Date (Optional)',
       type: 'date',
       group: 'timing',
       description:
-        'Optional end date. If left empty, the event will be assumed to end at the end of the evening on the start date.',
+        'Only add an end date for multi-day events. If provided, the event is considered past at 12:00 AM the day after this date. Leave empty for single-day events.',
       options: {
         dateFormat: 'YYYY-MM-DD',
       },
@@ -155,71 +143,14 @@ export const eventType = defineType({
         }),
     }),
     defineField({
-      name: 'endTime',
-      title: 'End Time',
-      type: 'object',
+      name: 'timeDescription',
+      title: 'Time Description',
+      type: 'string',
       group: 'timing',
-      description: 'Optional end time. Only relevant if an end date is specified.',
-      fields: [
-        {
-          name: 'hour',
-          title: 'Hour',
-          type: 'number',
-          options: {
-            list: Array.from({ length: 24 }, (_, i) => ({
-              title: i.toString().padStart(2, '0'),
-              value: i,
-            })),
-          },
-          validation: (Rule) => Rule.min(0).max(23),
-        },
-        {
-          name: 'minute',
-          title: 'Minute',
-          type: 'number',
-          options: {
-            list: Array.from({ length: 12 }, (_, i) => ({
-              title: (i * 5).toString().padStart(2, '0'),
-              value: i * 5,
-            })),
-          },
-          validation: (Rule) => Rule.min(0).max(59),
-        },
-      ],
-      options: {
-        columns: 2,
-      },
-      hidden: ({ parent }) => !parent?.endDate,
-      validation: (Rule) =>
-        Rule.custom((endTime, context) => {
-          if (!endTime?.hour && !endTime?.minute) return true; // Optional field
-
-          const parent = context.parent as Record<string, unknown>;
-          const startDate = parent?.startDate;
-          const endDate = parent?.endDate;
-          const startTime = parent?.startTime as { hour?: number; minute?: number } | undefined;
-
-          // If same date and both times provided, end time must be after start time
-          if (
-            startDate &&
-            endDate &&
-            startTime &&
-            startDate === endDate &&
-            typeof startTime.hour === 'number' &&
-            typeof startTime.minute === 'number' &&
-            typeof endTime.hour === 'number' &&
-            typeof endTime.minute === 'number'
-          ) {
-            const startMinutes = startTime.hour * 60 + startTime.minute;
-            const endMinutes = endTime.hour * 60 + endTime.minute;
-
-            if (endMinutes <= startMinutes) {
-              return 'End time must be after start time when on the same date';
-            }
-          }
-
-          return true;
-        }),
+      description:
+        'Flexible time description (e.g., "8PM - LATE", "2PM - 11PM", "9PM - 3AM", "All Day"). This gives you full control over how time is displayed.',
+      placeholder: 'e.g., 8PM - LATE',
+      validation: (Rule) => Rule.max(50).warning('Keep time description concise'),
     }),
     defineField({
       name: 'pastEventText',
@@ -228,7 +159,7 @@ export const eventType = defineType({
       group: 'past',
       rows: 3,
       description:
-        'Text that will display over the event image when the event has ended. Use line breaks to separate sentences.',
+        'Text that will display over the event image when the event has ended. Use line breaks to separate sentences. Event becomes "past" at 12:00 AM the day after the Start Date (single-day events) or End Date (multi-day events).',
       initialValue: 'This Event Has Been.\nThanks For Your Support.',
     }),
     defineField({
@@ -296,9 +227,9 @@ export const eventType = defineType({
       by: [{ field: 'startDate', direction: 'asc' }],
     },
     {
-      title: 'Event Name A-Z',
-      name: 'nameAsc',
-      by: [{ field: 'name', direction: 'asc' }],
+      title: 'Event Title A-Z',
+      name: 'titleAsc',
+      by: [{ field: 'title', direction: 'asc' }],
     },
   ],
   initialValue: () => ({
@@ -306,25 +237,26 @@ export const eventType = defineType({
   }),
   preview: {
     select: {
-      title: 'name',
+      title: 'title',
       subtitle: 'location',
       media: 'image',
       startDate: 'startDate',
-      startTime: 'startTime',
+      endDate: 'endDate',
+      timeDescription: 'timeDescription',
+      venue: 'venue',
     },
-    prepare({ title, subtitle, media, startDate, startTime }) {
+    prepare({ title, subtitle, media, startDate, endDate, timeDescription, venue }) {
       const date = startDate ? new Date(startDate).toLocaleDateString() : '';
-      let timeString = '';
-      if (startTime && typeof startTime.hour === 'number' && typeof startTime.minute === 'number') {
-        const hour = startTime.hour.toString().padStart(2, '0');
-        const minute = startTime.minute.toString().padStart(2, '0');
-        timeString = ` at ${hour}:${minute}`;
-      }
-      const dateTimeString = date ? ` • ${date}${timeString}` : '';
+      const endDateStr = endDate ? ` - ${new Date(endDate).toLocaleDateString()}` : '';
+      const timeString = timeDescription ? ` • ${timeDescription}` : '';
+      const venueString = venue ? ` @ ${venue}` : '';
+      const locationString = subtitle ? ` • ${subtitle}` : '';
+
+      const dateTimeString = date ? ` • ${date}${endDateStr}${timeString}` : '';
 
       return {
         title: title || 'Untitled Event',
-        subtitle: `${subtitle || 'No location'}${dateTimeString}`,
+        subtitle: `${venueString}${locationString}${dateTimeString}`.replace(/^• /, ''),
         media,
       };
     },

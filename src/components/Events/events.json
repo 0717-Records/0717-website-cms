@@ -1,11 +1,11 @@
 [
   {
-    "title": "Back to the 80s",
-    "date": "SAT 30TH AUG, 2024",
-    "time": "9PM - LATE",
-    "venue": "DING DONG LOUNGE",
-    "location": "Melbourne, VIC",
-    "artists": ["STAR CONTROL", "BROTHER SISTER", "JJ MIST"],
+    "title": "Electronic Fusion Night",
+    "date": "FRI 15TH SEP, 2024",
+    "time": "8PM - 2AM",
+    "venue": "WAREHOUSE 23",
+    "location": "Sydney, NSW",
+    "artists": ["STAR CONTROL"],
     "genres": ["Electronic", "Synthwave"],
     "image": "/event-test-img.webp",
     "status": "active"
