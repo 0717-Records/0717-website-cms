@@ -2,6 +2,7 @@ import React from 'react';
 import { stegaClean } from 'next-sanity';
 import type { CTAButtonBlock } from '@/types/blocks';
 import CTA from '../UI/CTA';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 // Type for a dereferenced page object
 interface DereferencedPage {
@@ -13,9 +14,7 @@ interface DereferencedPage {
 }
 
 // Type for internalLink that can be either a reference or dereferenced
-type InternalLinkType = 
-  | { _ref: string; _type: 'reference' }
-  | DereferencedPage;
+type InternalLinkType = { _ref: string; _type: 'reference' } | DereferencedPage;
 
 interface CTAButtonProps extends Omit<CTAButtonBlock, '_type' | '_key' | 'internalLink'> {
   className?: string;
@@ -81,35 +80,15 @@ const CTAButton = ({
       break;
   }
 
-  // Create external link icon (using SVG since we don't have a specific icon import)
-  const ExternalLinkIcon = () => (
-    <svg
-      className="w-4 h-4 ml-1.5 inline-block"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-      />
-    </svg>
-  );
-
   return (
     <div className={`${alignmentClasses} ${className}`.trim()}>
       <CTA
         href={href}
         variant={cleanVariant}
         target={shouldOpenInNewTab ? '_blank' : undefined}
-        rel={shouldOpenInNewTab ? 'noopener noreferrer' : undefined}
-      >
+        rel={shouldOpenInNewTab ? 'noopener noreferrer' : undefined}>
         {cleanText}
-        {shouldOpenInNewTab && <ExternalLinkIcon />}
+        {shouldOpenInNewTab && <FaExternalLinkAlt className='ml-4' />}
       </CTA>
     </div>
   );

@@ -1,4 +1,7 @@
+import React from 'react';
 import CTA from '../UI/CTA';
+import Image from 'next/image';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 interface EventCardProps {
   title: string;
@@ -12,7 +15,7 @@ interface EventCardProps {
   status: 'active' | 'completed';
 }
 
-export default function EventCard({
+const EventCard = ({
   title,
   date,
   time,
@@ -22,46 +25,62 @@ export default function EventCard({
   genres,
   image,
   status,
-}: EventCardProps) {
+}: EventCardProps) => {
   return (
     <div className='w-full bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col'>
       {/* Event Poster */}
       <div className='relative aspect-[3/4] bg-gray-900 overflow-hidden'>
         {image ? (
-          <img 
-            src={image} 
+          <Image
+            src={image}
             alt={`${title} event poster`}
-            className='w-full h-full object-cover'
+            fill
+            sizes='(max-width: 640px) 100vw, 400px'
+            className='object-cover'
+            priority
           />
         ) : (
           <div className='w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900'>
             <div className='text-center text-white/70'>
-              <div className='text-4xl mb-2'>🎵</div>
-              <div className='text-sm font-semibold'>EVENT POSTER</div>
-              <div className='text-xs'>COMING SOON</div>
+              <div className='text-6xl mb-2'>🎭</div>
             </div>
           </div>
         )}
       </div>
       {/* Event Details */}
       <div className='p-4 flex flex-col flex-grow'>
-        <div className='text-yellow-500 text-sm font-semibold mb-1'>{date}</div>
-        <div className='text-yellow-500 text-sm mb-3'>{time}</div>
+        {/* Date / Time */}
+        <div className='text-brand-secondary font-semibold mb-1'>{date}</div>
+        <div className='text-brand-secondary mb-3'>{time}</div>
 
-        <h3 className='text-xl font-bold mb-3 text-gray-800'>{title}</h3>
+        {/* Title */}
+        <p className='text-h5 font-bold mb-3 text-gray-800'>{title}</p>
 
-        <div className='text-gray-600 mb-3'>
+        {/* Artists */}
+        <div className='text-text-subtle mb-3'>
           <div className='font-semibold'>{artists.join(', ')}</div>
         </div>
 
-        <div className='flex items-center text-gray-600 mb-3'>
-          <span className='text-orange-500 mr-2'>📍</span>
-          <span className='font-medium'>{venue}</span>
+        {/* Venue and Location */}
+        <div className='flex flex-col items-center gap-1 mb-3'>
+          <div className='flex items-center text-text-subtle text-sm'>
+            <span className='mr-2' aria-label='Venue' title='Venue'>
+              🎭
+            </span>
+            <span className='font-medium'>{venue}</span>
+          </div>
+          <div className='flex items-center text-text-subtle'>
+            <span className='mr-2' aria-label='Location' title='Location'>
+              📍
+            </span>
+            <span className='font-medium'>{location || 'Everywhere'}</span>
+          </div>
         </div>
 
-        <div className='flex gap-2 mb-4'>
+        {/* Tags */}
+        <div className='flex justify-center gap-2 mb-4'>
           {genres.map((genre) => (
-            <span key={genre} className='px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded'>
+            <span key={genre} className='px-2 py-1 bg-gray-100 text-text-subtle text-sm rounded'>
               {genre}
             </span>
           ))}
@@ -69,12 +88,8 @@ export default function EventCard({
 
         <div className='mt-auto'>
           {status === 'active' ? (
-            <CTA 
-              href="#"
-              variant="filled"
-              className="w-full justify-center"
-            >
-              MORE INFO
+            <CTA href='#' variant='filled' className='w-full justify-center'>
+              MORE INFO <FaExternalLinkAlt className='ml-2' />
             </CTA>
           ) : (
             <div className='w-full bg-gray-300 text-gray-500 font-bold py-3 px-4 rounded-md cursor-not-allowed text-center'>
@@ -85,4 +100,6 @@ export default function EventCard({
       </div>
     </div>
   );
-}
+};
+
+export default EventCard;
