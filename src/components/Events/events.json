@@ -1,0 +1,71 @@
+[
+  {
+    "title": "Back to the 80s",
+    "date": "SAT 30TH AUG, 2024",
+    "time": "9PM - LATE",
+    "venue": "DING DONG LOUNGE",
+    "location": "Melbourne, VIC",
+    "price": "$25",
+    "artists": ["STAR CONTROL", "BROTHER SISTER", "JJ MIST"],
+    "genres": ["Electronic", "Synthwave"],
+    "image": "/event-test-img.webp",
+    "colorClass": "bg-gradient-to-br from-blue-600 to-purple-800",
+    "status": "active",
+    "posterStyle": "retro"
+  },
+  {
+    "title": "Back to the 80s",
+    "date": "SAT 30TH AUG, 2024",
+    "time": "9PM - LATE",
+    "venue": "DING DONG LOUNGE",
+    "location": "Melbourne, VIC",
+    "price": "$25",
+    "artists": ["STAR CONTROL"],
+    "genres": ["Electronic", "Synthwave"],
+    "image": "/event-test-img.webp",
+    "colorClass": "bg-gradient-to-br from-blue-600 to-purple-800",
+    "status": "active",
+    "posterStyle": "retro"
+  },
+  {
+    "title": "Back to the 80s",
+    "date": "SAT 30TH AUG, 2024",
+    "time": "9PM - LATE",
+    "venue": "DING DONG LOUNGE",
+    "location": "Melbourne, VIC",
+    "price": "$25",
+    "artists": ["STAR CONTROL", "BROTHER SISTER", "JJ MIST"],
+    "genres": ["Electronic", "Synthwave"],
+    "colorClass": "bg-gradient-to-br from-blue-600 to-purple-800",
+    "status": "active",
+    "posterStyle": "retro"
+  },
+  {
+    "title": "Back to the 80s",
+    "date": "SAT 30TH AUG, 2024",
+    "time": "9PM - LATE",
+    "venue": "DING DONG LOUNGE",
+    "location": "Melbourne, VIC",
+    "price": "$25",
+    "artists": ["STAR CONTROL", "BROTHER SISTER", "JJ MIST"],
+    "genres": ["Electronic", "Synthwave"],
+    "image": "/event-test-img.webp",
+    "colorClass": "bg-gradient-to-br from-blue-600 to-purple-800",
+    "status": "completed",
+    "posterStyle": "retro"
+  },
+  {
+    "title": "Back to the 80s",
+    "date": "SAT 30TH AUG, 2024",
+    "time": "9PM - LATE",
+    "venue": "DING DONG LOUNGE",
+    "location": "Melbourne, VIC",
+    "price": "$25",
+    "artists": ["STAR CONTROL", "BROTHER SISTER", "JJ MIST"],
+    "genres": ["Electronic", "Synthwave"],
+    "image": "/event-test-img.webp",
+    "colorClass": "bg-gradient-to-br from-blue-600 to-purple-800",
+    "status": "completed",
+    "posterStyle": "retro"
+  }
+]
