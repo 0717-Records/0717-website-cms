@@ -2,7 +2,6 @@ import EventCard from '@/components/Events/EventCard';
 import { getEvents } from '../../../components/Events/getEvents';
 import PageHero from '@/components/UI/PageHero';
 import PageSection from '@/components/Layout/PageSection';
-import CTA from '@/components/UI/CTA';
 
 interface Event {
   title: string;
