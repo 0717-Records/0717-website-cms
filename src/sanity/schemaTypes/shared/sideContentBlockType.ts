@@ -4,7 +4,6 @@
 
 import { defineField, defineType, defineArrayMember } from 'sanity';
 import { DocumentIcon } from '@sanity/icons';
-import { createLinkFieldSet } from './linkSystem';
 
 export const sideContentBlockType = defineType({
   name: 'sideContentBlock',
@@ -20,10 +19,6 @@ export const sideContentBlockType = defineType({
     {
       name: 'styling',
       title: 'Styling',
-    },
-    {
-      name: 'cta',
-      title: 'Call to Action',
     },
   ],
   fields: [
@@ -58,93 +53,53 @@ export const sideContentBlockType = defineType({
       description: 'Rich text content for this block',
     }),
     defineField({
-      name: 'ctaType',
-      title: 'Call to Action Type',
-      type: 'string',
-      group: 'cta',
-      description:
-        'Choose what type of call to action to include (if any). Company Email Button will render the standard company email button component.',
-      options: {
-        list: [
-          { title: 'None', value: 'none' },
-          { title: 'Button Link', value: 'button' },
-          { title: 'Company Email Button', value: 'email' },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'none',
-    }),
-    defineField({
-      name: 'ctaButton',
-      title: 'CTA Button',
-      type: 'object',
-      group: 'cta',
-      description: 'Configure the button link',
-      hidden: ({ parent }) => parent?.ctaType !== 'button',
-      fields: [
-        defineField({
-          name: 'text',
-          title: 'Button Text',
-          type: 'string',
-          description: 'Text to display on the button',
-          validation: (Rule) => Rule.required().min(1).max(50),
+      name: 'ctaBlocks',
+      title: 'Call to Action (Optional)',
+      type: 'array',
+      group: 'content',
+      description: 'Optional call to action - can add a link button or email button',
+      of: [
+        defineArrayMember({
+          type: 'ctaButton',
+          title: 'CTA Button',
         }),
-        defineField({
-          name: 'variant',
-          title: 'Button Style',
-          type: 'string',
-          options: {
-            list: [
-              { title: 'Filled (Default)', value: 'filled' },
-              { title: 'Outline', value: 'outline' },
-            ],
-          },
-          initialValue: 'filled',
+        defineArrayMember({
+          type: 'ctaEmailButton',
+          title: 'CTA Email Button',
         }),
-        defineField({
-          name: 'alignment',
-          title: 'Button Alignment',
-          type: 'string',
-          options: {
-            list: [
-              { title: 'Inherit from parent (Default)', value: 'inherit' },
-              { title: 'Left', value: 'left' },
-              { title: 'Center', value: 'center' },
-              { title: 'Right', value: 'right' },
-            ],
-          },
-          initialValue: 'inherit',
-        }),
-        ...createLinkFieldSet(),
       ],
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const parent = context.parent as Record<string, unknown>;
-          // Only require button configuration if CTA type is specifically set to 'button'
-          if (parent?.ctaType === 'button' && !value) {
-            return 'Please configure the button settings when Button Link is selected';
-          }
-          return true;
-        }),
+      options: {
+        insertMenu: {
+          views: [
+            {
+              name: 'list',
+            },
+          ],
+        },
+      },
+      validation: (Rule) => Rule.max(1).error('Only one CTA block is allowed'),
     }),
   ],
   preview: {
     select: {
       title: 'title',
       style: 'style',
-      ctaType: 'ctaType',
-      ctaButtonText: 'ctaButton.text',
       richText: 'richText',
+      ctaBlocks: 'ctaBlocks',
     },
-    prepare({ title, style, ctaType, ctaButtonText, richText }) {
+    prepare({ title, style, richText, ctaBlocks }) {
       const blockTitle = title || 'Side Content Block';
       const styleText = style === 'highlighted' ? 'Highlighted' : 'Plain';
 
       let ctaText = '';
-      if (ctaType === 'button' && ctaButtonText) {
-        ctaText = ` • Button: ${ctaButtonText}`;
-      } else if (ctaType === 'email') {
-        ctaText = ' • Company Email Button';
+      if (Array.isArray(ctaBlocks) && ctaBlocks.length > 0) {
+        const firstCta = ctaBlocks[0];
+        if (firstCta._type === 'ctaCalloutLink') {
+          const ctaTitle = firstCta.heading || firstCta.text?.slice(0, 20) + '...' || 'Link';
+          ctaText = ` • CTA: ${ctaTitle}`;
+        } else if (firstCta._type === 'ctaEmailButton') {
+          ctaText = ' • Email Button';
+        }
       }
 
       const hasContent = Array.isArray(richText) && richText.length > 0;

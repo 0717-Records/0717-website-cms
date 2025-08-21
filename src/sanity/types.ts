@@ -54,36 +54,11 @@ export type SideContentBlock = {
     _type: "image";
     _key: string;
   }>;
-  ctaType?: "none" | "button" | "email";
-  ctaButton?: {
-    text?: string;
-    variant?: "filled" | "outline";
-    alignment?: "inherit" | "left" | "center" | "right";
-    linkType?: "internal" | "external";
-    internalLink?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "page";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "homePage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "collab";
-    };
-    externalUrl?: string;
-    openInNewTab?: boolean;
-  };
+  ctaBlocks?: Array<{
+    _key: string;
+  } & CtaCalloutLink | {
+    _key: string;
+  } & CtaEmailButton>;
 };
 
 export type EventBlock = {

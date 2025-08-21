@@ -341,225 +341,44 @@
           },
           "optional": true
         },
-        "ctaType": {
+        "ctaBlocks": {
           "type": "objectAttribute",
           "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "none"
-              },
-              {
-                "type": "string",
-                "value": "button"
-              },
-              {
-                "type": "string",
-                "value": "email"
-              }
-            ]
-          },
-          "optional": true
-        },
-        "ctaButton": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "object",
-            "attributes": {
-              "text": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                },
-                "optional": true
-              },
-              "variant": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "union",
-                  "of": [
-                    {
-                      "type": "string",
-                      "value": "filled"
-                    },
-                    {
-                      "type": "string",
-                      "value": "outline"
+            "type": "array",
+            "of": {
+              "type": "union",
+              "of": [
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
                     }
-                  ]
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "ctaCalloutLink"
+                  }
                 },
-                "optional": true
-              },
-              "alignment": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "union",
-                  "of": [
-                    {
-                      "type": "string",
-                      "value": "inherit"
-                    },
-                    {
-                      "type": "string",
-                      "value": "left"
-                    },
-                    {
-                      "type": "string",
-                      "value": "center"
-                    },
-                    {
-                      "type": "string",
-                      "value": "right"
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
                     }
-                  ]
-                },
-                "optional": true
-              },
-              "linkType": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "union",
-                  "of": [
-                    {
-                      "type": "string",
-                      "value": "internal"
-                    },
-                    {
-                      "type": "string",
-                      "value": "external"
-                    }
-                  ]
-                },
-                "optional": true
-              },
-              "internalLink": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "union",
-                  "of": [
-                    {
-                      "type": "object",
-                      "attributes": {
-                        "_ref": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "string"
-                          }
-                        },
-                        "_type": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "string",
-                            "value": "reference"
-                          }
-                        },
-                        "_weak": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "boolean"
-                          },
-                          "optional": true
-                        }
-                      },
-                      "dereferencesTo": "page"
-                    },
-                    {
-                      "type": "object",
-                      "attributes": {
-                        "_ref": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "string"
-                          }
-                        },
-                        "_type": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "string",
-                            "value": "reference"
-                          }
-                        },
-                        "_weak": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "boolean"
-                          },
-                          "optional": true
-                        }
-                      },
-                      "dereferencesTo": "homePage"
-                    },
-                    {
-                      "type": "object",
-                      "attributes": {
-                        "_ref": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "string"
-                          }
-                        },
-                        "_type": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "string",
-                            "value": "reference"
-                          }
-                        },
-                        "_weak": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "boolean"
-                          },
-                          "optional": true
-                        }
-                      },
-                      "dereferencesTo": "eventsIndexPage"
-                    },
-                    {
-                      "type": "object",
-                      "attributes": {
-                        "_ref": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "string"
-                          }
-                        },
-                        "_type": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "string",
-                            "value": "reference"
-                          }
-                        },
-                        "_weak": {
-                          "type": "objectAttribute",
-                          "value": {
-                            "type": "boolean"
-                          },
-                          "optional": true
-                        }
-                      },
-                      "dereferencesTo": "collab"
-                    }
-                  ]
-                },
-                "optional": true
-              },
-              "externalUrl": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                },
-                "optional": true
-              },
-              "openInNewTab": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "boolean"
-                },
-                "optional": true
-              }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "ctaEmailButton"
+                  }
+                }
+              ]
             }
           },
           "optional": true
