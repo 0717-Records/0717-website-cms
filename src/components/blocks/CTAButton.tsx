@@ -46,17 +46,22 @@ const CTAButton = ({
 
   // Determine the href based on link type
   let href = '';
-  if (linkType === 'internal' && internalLink) {
-    // Handle both reference objects and dereferenced objects
-    if ('href' in internalLink && internalLink.href) {
-      // Use the pre-computed href from the GROQ query
-      href = internalLink.href;
-    } else if ('slug' in internalLink && internalLink.slug?.current) {
-      // Fallback to slug-based URL for backward compatibility
-      href = `/${internalLink.slug.current}`;
+  if (linkType === 'internal') {
+    if (internalLink) {
+      // Handle both reference objects and dereferenced objects
+      if ('href' in internalLink && internalLink.href) {
+        // Use the pre-computed href from the GROQ query
+        href = internalLink.href;
+      } else if ('slug' in internalLink && internalLink.slug?.current) {
+        // Fallback to slug-based URL for backward compatibility
+        href = `/${internalLink.slug.current}`;
+      }
+      // If it's just a reference, we can't build the URL without dereferencing
+      // This would need to be handled in the GROQ query by dereferencing with ->
+    } else {
+      // Default to home page if no internal link is selected
+      href = '/';
     }
-    // If it's just a reference, we can't build the URL without dereferencing
-    // This would need to be handled in the GROQ query by dereferencing with ->
   } else if (linkType === 'external' && cleanExternalUrl) {
     href = cleanExternalUrl;
   }

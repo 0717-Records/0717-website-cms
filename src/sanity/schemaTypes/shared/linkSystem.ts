@@ -86,20 +86,13 @@ export const createLinkFieldSet = (options: {
     // Internal Link Reference
     defineField({
       name: internalLinkConfig.name || 'internalLink',
-      title: internalLinkConfig.title || 'Internal Page',
+      title: internalLinkConfig.title || 'Internal Page (Optional)',
       type: 'reference',
       group,
       to: [...LINKABLE_PAGE_TYPES],
-      description: internalLinkConfig.description || 'Select a page from your website',
+      description: internalLinkConfig.description || 'Select a page from your website. If left empty, will link to the home page',
       hidden: internalLinkConfig.hidden || (({ parent }) => parent?.linkType !== 'internal'),
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const parent = context.parent as Record<string, unknown>;
-          if (parent?.linkType === 'internal' && !value) {
-            return internalLinkConfig.validationMessage || 'Please select a page to link to';
-          }
-          return true;
-        }),
+      // Removed validation - making this field optional
     }),
 
     // External URL
@@ -154,16 +147,19 @@ export const createInternalLinkField = (options: {
   hidden?: (context: { parent?: Record<string, unknown> }) => boolean;
   validationCondition?: (parent: Record<string, unknown>) => boolean;
   validationMessage?: string;
+  makeOptional?: boolean; // New option to control validation
 } = {}) => {
   return defineField({
     name: options.name || 'internalLink',
-    title: options.title || 'Internal Page',
+    title: options.title || (options.makeOptional ? 'Internal Page (Optional)' : 'Internal Page'),
     type: 'reference',
     group: options.group,
     to: [...LINKABLE_PAGE_TYPES],
-    description: options.description || 'Select a page from your website',
+    description: options.description || (options.makeOptional 
+      ? 'Select a page from your website. If left empty, will link to the home page' 
+      : 'Select a page from your website'),
     hidden: options.hidden,
-    validation: (Rule) =>
+    validation: options.makeOptional ? undefined : (Rule) =>
       Rule.custom((value, context) => {
         const parent = context.parent as Record<string, unknown>;
         

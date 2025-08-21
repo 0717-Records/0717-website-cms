@@ -56,7 +56,7 @@ export type SideContentBlock = {
   }>;
   ctaBlocks?: Array<{
     _key: string;
-  } & CtaCalloutLink | {
+  } & CtaButton | {
     _key: string;
   } & CtaEmailButton>;
 };
@@ -74,6 +74,36 @@ export type CtaEvent = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "event";
   };
+};
+
+export type EmbeddedCtaButton = {
+  _type: "embeddedCtaButton";
+  text?: string;
+  variant?: "filled" | "outline";
+  linkType?: "internal" | "external";
+  internalLink?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "page";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "homePage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "collab";
+  };
+  externalUrl?: string;
+  openInNewTab?: boolean;
 };
 
 export type CtaEmailButton = {
@@ -967,15 +997,14 @@ export type HomePage = {
   heroTitle?: string;
   heroSubtitle?: string;
   enableHeroCallToAction?: boolean;
-  heroCallToAction?: EmbeddedCtaButton;
+  heroCallToAction?: HomeHeroCtaButton;
   heroContentPosition?: "top-left" | "top-center" | "top-right" | "center-left" | "center-center" | "center-right" | "bottom-left" | "bottom-center" | "bottom-right";
   content?: PageBuilder;
 };
 
-export type EmbeddedCtaButton = {
-  _type: "embeddedCtaButton";
+export type HomeHeroCtaButton = {
+  _type: "homeHeroCtaButton";
   text?: string;
-  variant?: "filled" | "outline";
   linkType?: "internal" | "external";
   internalLink?: {
     _ref: string;
@@ -1164,7 +1193,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SideContent | SideContentBlock | EventBlock | CtaEvent | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SideContent | SideContentBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
