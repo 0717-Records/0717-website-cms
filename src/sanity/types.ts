@@ -46,6 +46,16 @@ export type CtaCalloutLink = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "page";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "homePage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "eventsIndexPage";
   };
   openInNewTab?: boolean;
   externalUrl?: string;
@@ -62,6 +72,16 @@ export type CtaButton = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "page";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "homePage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "eventsIndexPage";
   };
   openInNewTab?: boolean;
   externalUrl?: string;
@@ -204,6 +224,16 @@ export type CtaCard = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "page";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "homePage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "eventsIndexPage";
   };
   openInNewTab?: boolean;
   externalUrl?: string;
@@ -760,6 +790,16 @@ export type EmbeddedCtaButton = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "page";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "homePage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "eventsIndexPage";
   };
   openInNewTab?: boolean;
   externalUrl?: string;
@@ -1016,6 +1056,14 @@ export type PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
+        _id: string;
         title: string | null;
         slug: Slug | null;
       } | null;
@@ -1032,6 +1080,14 @@ export type PAGE_QUERYResult = {
     alignment?: "center" | "inherit" | "left" | "right";
     linkType?: "external" | "internal";
     internalLink: {
+      _id: string;
+      title: null;
+      slug: null;
+    } | {
+      _id: string;
+      title: string | null;
+      slug: null;
+    } | {
       _id: string;
       title: string | null;
       slug: Slug | null;
@@ -1061,6 +1117,14 @@ export type PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      title: null;
+      slug: null;
+    } | {
+      _id: string;
+      title: string | null;
+      slug: null;
+    } | {
+      _id: string;
       title: string | null;
       slug: Slug | null;
     } | null;
@@ -1078,6 +1142,14 @@ export type PAGE_QUERYResult = {
     variant?: "filled" | "outline";
     linkType?: "external" | "internal";
     internalLink: {
+      _id: string;
+      title: null;
+      slug: null;
+    } | {
+      _id: string;
+      title: string | null;
+      slug: null;
+    } | {
       _id: string;
       title: string | null;
       slug: Slug | null;
@@ -1212,6 +1284,14 @@ export type PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
+          _id: string;
           title: string | null;
           slug: Slug | null;
         } | null;
@@ -1228,6 +1308,14 @@ export type PAGE_QUERYResult = {
       alignment?: "center" | "inherit" | "left" | "right";
       linkType?: "external" | "internal";
       internalLink: {
+        _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
         _id: string;
         title: string | null;
         slug: Slug | null;
@@ -1257,6 +1345,14 @@ export type PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
+        _id: string;
         title: string | null;
         slug: Slug | null;
       } | null;
@@ -1274,6 +1370,14 @@ export type PAGE_QUERYResult = {
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
       internalLink: {
+        _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
         _id: string;
         title: string | null;
         slug: Slug | null;
@@ -1465,6 +1569,14 @@ export type PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
+            _id: string;
             title: string | null;
             slug: Slug | null;
           } | null;
@@ -1481,6 +1593,14 @@ export type PAGE_QUERYResult = {
         alignment?: "center" | "inherit" | "left" | "right";
         linkType?: "external" | "internal";
         internalLink: {
+          _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
           _id: string;
           title: string | null;
           slug: Slug | null;
@@ -1510,6 +1630,14 @@ export type PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
+          _id: string;
           title: string | null;
           slug: Slug | null;
         } | null;
@@ -1527,6 +1655,14 @@ export type PAGE_QUERYResult = {
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
         internalLink: {
+          _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
           _id: string;
           title: string | null;
           slug: Slug | null;
@@ -1715,6 +1851,14 @@ export type PAGE_QUERYResult = {
             linkType?: "external" | "internal";
             internalLink: {
               _id: string;
+              title: null;
+              slug: null;
+            } | {
+              _id: string;
+              title: string | null;
+              slug: null;
+            } | {
+              _id: string;
               title: string | null;
               slug: Slug | null;
             } | null;
@@ -1730,6 +1874,14 @@ export type PAGE_QUERYResult = {
           alignment?: "center" | "inherit" | "left" | "right";
           linkType?: "external" | "internal";
           internalLink: {
+            _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
             _id: string;
             title: string | null;
             slug: Slug | null;
@@ -1758,6 +1910,14 @@ export type PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
+            _id: string;
             title: string | null;
             slug: Slug | null;
           } | null;
@@ -1774,6 +1934,14 @@ export type PAGE_QUERYResult = {
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
           internalLink: {
+            _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
             _id: string;
             title: string | null;
             slug: Slug | null;
@@ -2286,6 +2454,14 @@ export type HOME_PAGE_QUERYResult = {
     linkType: "external" | "internal" | null;
     internalLink: {
       _id: string;
+      title: null;
+      slug: null;
+    } | {
+      _id: string;
+      title: string | null;
+      slug: null;
+    } | {
+      _id: string;
       title: string | null;
       slug: Slug | null;
     } | null;
@@ -2315,6 +2491,14 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
+        _id: string;
         title: string | null;
         slug: Slug | null;
       } | null;
@@ -2331,6 +2515,14 @@ export type HOME_PAGE_QUERYResult = {
     alignment?: "center" | "inherit" | "left" | "right";
     linkType?: "external" | "internal";
     internalLink: {
+      _id: string;
+      title: null;
+      slug: null;
+    } | {
+      _id: string;
+      title: string | null;
+      slug: null;
+    } | {
       _id: string;
       title: string | null;
       slug: Slug | null;
@@ -2360,6 +2552,14 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      title: null;
+      slug: null;
+    } | {
+      _id: string;
+      title: string | null;
+      slug: null;
+    } | {
+      _id: string;
       title: string | null;
       slug: Slug | null;
     } | null;
@@ -2377,6 +2577,14 @@ export type HOME_PAGE_QUERYResult = {
     variant?: "filled" | "outline";
     linkType?: "external" | "internal";
     internalLink: {
+      _id: string;
+      title: null;
+      slug: null;
+    } | {
+      _id: string;
+      title: string | null;
+      slug: null;
+    } | {
       _id: string;
       title: string | null;
       slug: Slug | null;
@@ -2511,6 +2719,14 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
+          _id: string;
           title: string | null;
           slug: Slug | null;
         } | null;
@@ -2527,6 +2743,14 @@ export type HOME_PAGE_QUERYResult = {
       alignment?: "center" | "inherit" | "left" | "right";
       linkType?: "external" | "internal";
       internalLink: {
+        _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
         _id: string;
         title: string | null;
         slug: Slug | null;
@@ -2556,6 +2780,14 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
+        _id: string;
         title: string | null;
         slug: Slug | null;
       } | null;
@@ -2573,6 +2805,14 @@ export type HOME_PAGE_QUERYResult = {
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
       internalLink: {
+        _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
         _id: string;
         title: string | null;
         slug: Slug | null;
@@ -2764,6 +3004,14 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
+            _id: string;
             title: string | null;
             slug: Slug | null;
           } | null;
@@ -2780,6 +3028,14 @@ export type HOME_PAGE_QUERYResult = {
         alignment?: "center" | "inherit" | "left" | "right";
         linkType?: "external" | "internal";
         internalLink: {
+          _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
           _id: string;
           title: string | null;
           slug: Slug | null;
@@ -2809,6 +3065,14 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
+          _id: string;
           title: string | null;
           slug: Slug | null;
         } | null;
@@ -2826,6 +3090,14 @@ export type HOME_PAGE_QUERYResult = {
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
         internalLink: {
+          _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
           _id: string;
           title: string | null;
           slug: Slug | null;
@@ -3014,6 +3286,14 @@ export type HOME_PAGE_QUERYResult = {
             linkType?: "external" | "internal";
             internalLink: {
               _id: string;
+              title: null;
+              slug: null;
+            } | {
+              _id: string;
+              title: string | null;
+              slug: null;
+            } | {
+              _id: string;
               title: string | null;
               slug: Slug | null;
             } | null;
@@ -3029,6 +3309,14 @@ export type HOME_PAGE_QUERYResult = {
           alignment?: "center" | "inherit" | "left" | "right";
           linkType?: "external" | "internal";
           internalLink: {
+            _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
             _id: string;
             title: string | null;
             slug: Slug | null;
@@ -3057,6 +3345,14 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
+            _id: string;
             title: string | null;
             slug: Slug | null;
           } | null;
@@ -3073,6 +3369,14 @@ export type HOME_PAGE_QUERYResult = {
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
           internalLink: {
+            _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
             _id: string;
             title: string | null;
             slug: Slug | null;
@@ -3544,6 +3848,14 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
+        _id: string;
         title: string | null;
         slug: Slug | null;
       } | null;
@@ -3560,6 +3872,14 @@ export type HOME_PAGE_QUERYResult = {
     alignment?: "center" | "inherit" | "left" | "right";
     linkType?: "external" | "internal";
     internalLink: {
+      _id: string;
+      title: null;
+      slug: null;
+    } | {
+      _id: string;
+      title: string | null;
+      slug: null;
+    } | {
       _id: string;
       title: string | null;
       slug: Slug | null;
@@ -3589,6 +3909,14 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      title: null;
+      slug: null;
+    } | {
+      _id: string;
+      title: string | null;
+      slug: null;
+    } | {
+      _id: string;
       title: string | null;
       slug: Slug | null;
     } | null;
@@ -3606,6 +3934,14 @@ export type HOME_PAGE_QUERYResult = {
     variant?: "filled" | "outline";
     linkType?: "external" | "internal";
     internalLink: {
+      _id: string;
+      title: null;
+      slug: null;
+    } | {
+      _id: string;
+      title: string | null;
+      slug: null;
+    } | {
       _id: string;
       title: string | null;
       slug: Slug | null;
@@ -3740,6 +4076,14 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
+          _id: string;
           title: string | null;
           slug: Slug | null;
         } | null;
@@ -3756,6 +4100,14 @@ export type HOME_PAGE_QUERYResult = {
       alignment?: "center" | "inherit" | "left" | "right";
       linkType?: "external" | "internal";
       internalLink: {
+        _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
         _id: string;
         title: string | null;
         slug: Slug | null;
@@ -3785,6 +4137,14 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
+        _id: string;
         title: string | null;
         slug: Slug | null;
       } | null;
@@ -3802,6 +4162,14 @@ export type HOME_PAGE_QUERYResult = {
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
       internalLink: {
+        _id: string;
+        title: null;
+        slug: null;
+      } | {
+        _id: string;
+        title: string | null;
+        slug: null;
+      } | {
         _id: string;
         title: string | null;
         slug: Slug | null;
@@ -3993,6 +4361,14 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
+            _id: string;
             title: string | null;
             slug: Slug | null;
           } | null;
@@ -4009,6 +4385,14 @@ export type HOME_PAGE_QUERYResult = {
         alignment?: "center" | "inherit" | "left" | "right";
         linkType?: "external" | "internal";
         internalLink: {
+          _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
           _id: string;
           title: string | null;
           slug: Slug | null;
@@ -4038,6 +4422,14 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
+          _id: string;
           title: string | null;
           slug: Slug | null;
         } | null;
@@ -4055,6 +4447,14 @@ export type HOME_PAGE_QUERYResult = {
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
         internalLink: {
+          _id: string;
+          title: null;
+          slug: null;
+        } | {
+          _id: string;
+          title: string | null;
+          slug: null;
+        } | {
           _id: string;
           title: string | null;
           slug: Slug | null;
@@ -4243,6 +4643,14 @@ export type HOME_PAGE_QUERYResult = {
             linkType?: "external" | "internal";
             internalLink: {
               _id: string;
+              title: null;
+              slug: null;
+            } | {
+              _id: string;
+              title: string | null;
+              slug: null;
+            } | {
+              _id: string;
               title: string | null;
               slug: Slug | null;
             } | null;
@@ -4258,6 +4666,14 @@ export type HOME_PAGE_QUERYResult = {
           alignment?: "center" | "inherit" | "left" | "right";
           linkType?: "external" | "internal";
           internalLink: {
+            _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
             _id: string;
             title: string | null;
             slug: Slug | null;
@@ -4286,6 +4702,14 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
+            _id: string;
             title: string | null;
             slug: Slug | null;
           } | null;
@@ -4302,6 +4726,14 @@ export type HOME_PAGE_QUERYResult = {
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
           internalLink: {
+            _id: string;
+            title: null;
+            slug: null;
+          } | {
+            _id: string;
+            title: string | null;
+            slug: null;
+          } | {
             _id: string;
             title: string | null;
             slug: Slug | null;

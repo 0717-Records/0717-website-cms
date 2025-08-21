@@ -119,7 +119,11 @@ export const ctaCardType = defineType({
       title: 'Internal Page',
       type: 'reference',
       group: 'button',
-      to: [{ type: 'page' }],
+      to: [
+        { type: 'page' },
+        { type: 'homePage' },
+        { type: 'eventsIndexPage' }
+      ],
       description: 'Select a page from your website',
       hidden: ({ parent }) => parent?.buttonType !== 'link' || parent?.linkType !== 'internal',
       validation: (Rule) =>

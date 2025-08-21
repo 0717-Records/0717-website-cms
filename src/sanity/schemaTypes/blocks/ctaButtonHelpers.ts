@@ -98,7 +98,11 @@ export const createCTAButtonFields = (options: CTAButtonOptions = {}) => {
       title: 'Internal Page',
       type: 'reference',
       group: groups.length > 0 ? 'link' : undefined,
-      to: [{ type: 'page' }],
+      to: [
+        { type: 'page' },
+        { type: 'homePage' },
+        { type: 'eventsIndexPage' }
+      ],
       description: 'Select a page from your website',
       hidden: ({ parent }) => parent?.linkType !== 'internal',
       validation: (Rule) =>
