@@ -1,5 +1,5 @@
 import EventList from '@/components/Events/EventList';
-import { getEvents } from '../../../components/Events/getEvents';
+import { getEvents } from '../../../../scripts/events/getEvents'; // Uncomment/comment to switch between CMS data and test JSON data.
 import PageHero from '@/components/Page/PageHero';
 import PageSection from '@/components/Layout/PageSection';
 
@@ -20,7 +20,7 @@ interface Event {
 }
 
 export default async function EventsPage() {
-  const allEvents = (await getEvents()) as Event[];
+  const allEvents = (await getEvents()) as Event[]; // Uncomment/comment to switch between CMS data and test JSON data.
 
   return (
     <>

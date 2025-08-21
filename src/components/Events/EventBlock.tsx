@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import EventList from './EventList';
 import CTA from '../UI/CTA';
-import { getEvents } from './getEvents';
+import { getEvents } from '../../../scripts/events/getEvents';
 
 interface EventBlockProps {
   maxEvents?: number;
@@ -55,19 +55,16 @@ const EventBlock = ({ maxEvents = 6 }: EventBlockProps) => {
 
   return (
     <div className='w-full'>
-      <EventList 
+      <EventList
         events={events}
-        filter="upcoming"
+        filter='upcoming'
         limit={maxEvents}
-        noEventsText="No events at the moment. Check back soon!"
+        noEventsText='No events at the moment. Check back soon!'
       />
-      
+
       {/* CTA Link to view all events */}
       <div className='flex justify-center mt-8'>
-        <CTA 
-          href='/events' 
-          variant='outline'
-        >
+        <CTA href='/events' variant='outline'>
           View all events
         </CTA>
       </div>
