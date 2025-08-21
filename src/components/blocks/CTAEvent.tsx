@@ -40,7 +40,9 @@ interface CTAEventProps {
 }
 
 // Type guard to check if event is dereferenced
-function isDereferencedEvent(event: DereferencedEvent | ReferencedEvent | null | undefined): event is DereferencedEvent {
+function isDereferencedEvent(
+  event: DereferencedEvent | ReferencedEvent | null | undefined
+): event is DereferencedEvent {
   return event !== null && event !== undefined && '_id' in event && 'title' in event;
 }
 
@@ -105,12 +107,12 @@ function getEventLink(
 function isEventPast(startDate: string, endDate?: string | null): boolean {
   const now = new Date();
   const eventEndDate = endDate ? new Date(endDate) : new Date(startDate);
-  
+
   // Add one day to the end date to check if it's past midnight the day after
   const dayAfterEvent = new Date(eventEndDate);
   dayAfterEvent.setDate(dayAfterEvent.getDate() + 1);
   dayAfterEvent.setHours(0, 0, 0, 0);
-  
+
   return now >= dayAfterEvent;
 }
 
@@ -166,7 +168,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
 
   const cardContent = (
     <div
-      className={`w-full max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden flex flex-row transition-all duration-300 ${
+      className={`max-w-[800px] mx-auto bg-white rounded-lg shadow-lg overflow-hidden flex flex-row transition-all duration-300 ${
         hasLink ? 'group hover:shadow-xl hover:scale-103 cursor-pointer' : ''
       }`}>
       {/* Event Poster - Mobile layout always (1/3 width) */}
@@ -181,7 +183,11 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
               className={`object-cover transition-all duration-300 ${isPast ? 'brightness-50' : ''}`}
               priority
             />
-            {isPast && <PastEventOverlay text={pastEventText || 'This Event Has Been.\nThanks For Your Support.'} />}
+            {isPast && (
+              <PastEventOverlay
+                text={pastEventText || 'This Event Has Been.\nThanks For Your Support.'}
+              />
+            )}
           </>
         ) : (
           <div className='w-full h-full relative'>
@@ -191,11 +197,15 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
                 <div className='text-3xl mb-1'>🎭</div>
               </div>
             </div>
-            {isPast && <PastEventOverlay text={pastEventText || 'This Event Has Been.\nThanks For Your Support.'} />}
+            {isPast && (
+              <PastEventOverlay
+                text={pastEventText || 'This Event Has Been.\nThanks For Your Support.'}
+              />
+            )}
           </div>
         )}
       </div>
-      
+
       {/* Event Details - Mobile layout (2/3 width) */}
       <div className='p-3 flex flex-col items-start text-left flex-grow w-2/3'>
         {/* Date / Time */}
@@ -236,9 +246,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
         {tags && tags.length > 0 && (
           <div className='flex flex-wrap justify-start gap-1 mb-2'>
             {tags.map((tag) => (
-              <span
-                key={tag}
-                className='px-1 py-0.5 bg-gray-100 text-text-subtle text-xs rounded'>
+              <span key={tag} className='px-1 py-0.5 bg-gray-100 text-text-subtle text-xs rounded'>
                 {tag}
               </span>
             ))}
