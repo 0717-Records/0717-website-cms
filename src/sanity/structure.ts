@@ -107,4 +107,14 @@ export const structure: StructureResolver = (S) =>
                 ),
             ])
         ),
+
+      S.divider(),
+
+      // === COLLABORATIONS ===
+      S.listItem()
+        .id('collabs')
+        .title('🤝 Collaborations')
+        .child(
+          S.documentTypeList('collab').title('Collaborations')
+        ),
     ]);

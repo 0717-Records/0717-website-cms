@@ -29,6 +29,7 @@ interface SectionFactoryConfig {
   description: string;
   icon: string;
   hasSubtitle?: boolean;
+  hasTextAlign?: boolean;
   allowedChildSections?: string[];
 }
 
@@ -41,7 +42,11 @@ export function createSectionSchema(config: SectionFactoryConfig) {
       description: `Title for this ${config.title.toLowerCase()} (will render as ${config.name === 'pageSection' ? 'h2' : config.name === 'subSection' ? 'h3' : config.name === 'subSubSection' ? 'h4' : 'heading'})`,
       validation: (Rule) => Rule.required().error(`${config.title} title is required`),
     }),
-    defineField({
+  ];
+
+  // Add text alignment field if enabled (default: true for backward compatibility)
+  if (config.hasTextAlign !== false) {
+    fields.push(defineField({
       name: 'textAlign',
       title: 'Text Alignment',
       type: 'string',
@@ -56,8 +61,8 @@ export function createSectionSchema(config: SectionFactoryConfig) {
         layout: 'radio',
       },
       initialValue: config.name === 'pageSection' ? 'center' : 'inherit',
-    }),
-  ];
+    }));
+  }
 
   // Add subtitle field for PageSection only
   if (config.hasSubtitle) {

@@ -34,6 +34,10 @@ import { eventBlockType } from './blocks/eventBlockType';
 import { siteSettingsType } from './siteSettingsType';
 import { eventType } from './eventType';
 import { eventsIndexPageType } from './eventsIndexPageType';
+import { collabType } from './collabType';
+import { collabPageSectionType } from './collabPageSectionType';
+import { socialLinksType } from './shared/socialLinksType';
+import { sideContentBlockType, sideContentType } from './shared/sideContentBlockType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -44,6 +48,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     postType,
     eventType,
     eventsIndexPageType,
+    collabType,
     blockContentType,
     // Objects
     headerType,
@@ -51,6 +56,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     pageBuilderType,
     sectionType,
     pageSectionType,
+    collabPageSectionType,
     subSectionType,
     subSubSectionType,
     dividerType,
@@ -72,5 +78,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     embeddedCtaButtonType,
     ctaEventType,
     eventBlockType,
+    // Shared Components
+    socialLinksType,
+    sideContentBlockType,
+    sideContentType,
   ],
 };
