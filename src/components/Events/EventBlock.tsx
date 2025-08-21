@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import EventList from './EventList';
 import CTA from '../UI/CTA';
-import { getEvents } from '../../../scripts/events/getEvents';
+import { getAllEventsClient } from '@/actions/events-client'; // CMS data
+// import { getEvents } from '../../../scripts/events/getEvents'; // Test JSON data - uncomment for testing
 
 interface EventBlockProps {
   maxEvents?: number;
@@ -32,7 +33,8 @@ const EventBlock = ({ maxEvents = 6 }: EventBlockProps) => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const allEvents = (await getEvents()) as Event[];
+        const allEvents = (await getAllEventsClient()) as Event[]; // CMS data
+        // const allEvents = (await getEvents()) as Event[]; // Test JSON data - uncomment for testing
         setEvents(allEvents);
       } catch (error) {
         console.error('Failed to fetch events:', error);

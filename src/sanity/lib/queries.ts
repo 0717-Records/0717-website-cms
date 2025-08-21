@@ -149,3 +149,25 @@ export const SITE_SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
   companyEmail,
   siteDescription
 }`);
+
+export const EVENTS_QUERY = defineQuery(`*[_type == "event"]|order(startDate desc){
+  _id,
+  title,
+  shortDescription,
+  venue,
+  location,
+  image{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
+  tags,
+  link,
+  startDate,
+  endDate,
+  timeDescription,
+  pastEventText,
+  pastEventLinkBehavior,
+  pastEventLink
+}`);

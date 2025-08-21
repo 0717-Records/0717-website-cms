@@ -4847,6 +4847,34 @@ export type SITE_SETTINGS_QUERYResult = {
   companyEmail: string | null;
   siteDescription: string | null;
 } | null;
+// Variable: EVENTS_QUERY
+// Query: *[_type == "event"]|order(startDate desc){  _id,  title,  shortDescription,  venue,  location,  image{    asset,    alt,    hotspot,    crop  },  tags,  link,  startDate,  endDate,  timeDescription,  pastEventText,  pastEventLinkBehavior,  pastEventLink}
+export type EVENTS_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  shortDescription: string | null;
+  venue: string | null;
+  location: string | null;
+  image: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    } | null;
+    alt: string | null;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
+  } | null;
+  tags: Array<string> | null;
+  link: string | null;
+  startDate: string | null;
+  endDate: string | null;
+  timeDescription: string | null;
+  pastEventText: string | null;
+  pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+  pastEventLink: string | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -4859,5 +4887,6 @@ declare module "@sanity/client" {
     "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalUrl,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n\n      }\n    }\n  }\n}\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  }\n}": HEADER_QUERYResult;
     "*[_id == \"siteSettings\"][0]{\n  _id,\n  _type,\n  siteTitle,\n  companyEmail,\n  siteDescription\n}": SITE_SETTINGS_QUERYResult;
+    "*[_type == \"event\"]|order(startDate desc){\n  _id,\n  title,\n  shortDescription,\n  venue,\n  location,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  tags,\n  link,\n  startDate,\n  endDate,\n  timeDescription,\n  pastEventText,\n  pastEventLinkBehavior,\n  pastEventLink\n}": EVENTS_QUERYResult;
   }
 }
