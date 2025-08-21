@@ -18,6 +18,7 @@ import CTACard from './blocks/CTACard';
 import CTAButton from './blocks/CTAButton';
 import CTACalloutLinkComponent from './blocks/CTACalloutLink';
 import CTAEmailButtonComponent from './blocks/CTAEmailButton';
+import CTAEvent from './blocks/CTAEvent';
 import CardGrid from './blocks/CardGrid';
 import Icon from './blocks/Icon';
 import ImageBlock from './blocks/Image';
@@ -287,6 +288,13 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
                   {...block} 
                   email={siteSettings?.companyEmail || 'noemailexists@noemail.com'} 
                 />
+              </BlockWrapper>
+            );
+
+          case 'ctaEvent':
+            return (
+              <BlockWrapper key={block._key}>
+                <CTAEvent {...block} />
               </BlockWrapper>
             );
 

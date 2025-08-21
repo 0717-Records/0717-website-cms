@@ -42,6 +42,30 @@ const contentProjection = `
       ...,
       internalLink->${internalLinkProjection}
     }
+  },
+  _type == "ctaEvent" => {
+    ...,
+    event->{
+      _id,
+      title,
+      shortDescription,
+      venue,
+      location,
+      image{
+        asset,
+        alt,
+        hotspot,
+        crop
+      },
+      tags,
+      link,
+      startDate,
+      endDate,
+      timeDescription,
+      pastEventText,
+      pastEventLinkBehavior,
+      pastEventLink
+    }
   }
 `;
 

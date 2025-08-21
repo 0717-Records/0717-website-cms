@@ -18,6 +18,16 @@ export type EventBlock = {
   maxEvents?: number;
 };
 
+export type CtaEvent = {
+  _type: "ctaEvent";
+  event?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "event";
+  };
+};
+
 export type CtaEmailButton = {
   _type: "ctaEmailButton";
   buttonText?: string;
@@ -348,6 +358,8 @@ export type SubSubSection = {
     _key: string;
   } & CtaEmailButton | {
     _key: string;
+  } & CtaEvent | {
+    _key: string;
   } & CardGrid | {
     _key: string;
   } & Icon | {
@@ -390,6 +402,8 @@ export type SubSection = {
   } & CtaCalloutLink | {
     _key: string;
   } & CtaEmailButton | {
+    _key: string;
+  } & CtaEvent | {
     _key: string;
   } & CardGrid | {
     _key: string;
@@ -435,6 +449,8 @@ export type PageSection = {
     _key: string;
   } & CtaEmailButton | {
     _key: string;
+  } & CtaEvent | {
+    _key: string;
   } & CardGrid | {
     _key: string;
   } & Icon | {
@@ -478,6 +494,8 @@ export type Section = {
     _key: string;
   } & CtaEmailButton | {
     _key: string;
+  } & CtaEvent | {
+    _key: string;
   } & CardGrid | {
     _key: string;
   } & Icon | {
@@ -516,6 +534,8 @@ export type PageBuilder = Array<{
 } & CtaCalloutLink | {
   _key: string;
 } & CtaEmailButton | {
+  _key: string;
+} & CtaEvent | {
   _key: string;
 } & CardGrid | {
   _key: string;
@@ -967,7 +987,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = EventBlock | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | EventsIndexPage | Event | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = EventBlock | CtaEvent | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | EventsIndexPage | Event | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -1026,7 +1046,7 @@ export type POST_QUERYResult = {
   }> | null;
 } | null;
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{  _id,  _type,  title,  subtitle,  alignment,  slug,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  }      }    }  }},  mainImage{    asset,    alt  }}
+// Query: *[_type == "page" && slug.current == $slug][0]{  _id,  _type,  title,  subtitle,  alignment,  slug,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  }      }    }  }},  mainImage{    asset,    alt  }}
 export type PAGE_QUERYResult = {
   _id: string;
   _type: "page";
@@ -1198,6 +1218,37 @@ export type PAGE_QUERYResult = {
     _key: string;
     _type: "ctaEmailButton";
     buttonText?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvent";
+    event: {
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    } | null;
     image: null;
     content: null;
   } | {
@@ -1462,6 +1513,37 @@ export type PAGE_QUERYResult = {
       _key: string;
       _type: "ctaEmailButton";
       buttonText?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvent";
+      event: {
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      } | null;
       image: null;
       content: null;
     } | {
@@ -1787,6 +1869,37 @@ export type PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "ctaEvent";
+        event: {
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "divider";
         style?: string;
         image: null;
@@ -2097,6 +2210,36 @@ export type PAGE_QUERYResult = {
           _key: string;
           _type: "ctaEmailButton";
           buttonText?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvent";
+          event: {
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          } | null;
           image: null;
         } | {
           _key: string;
@@ -2537,7 +2680,7 @@ export type PAGE_QUERYResult = {
   } | null;
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )},    externalUrl,    openInNewTab  },  heroContentPosition,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  }      }    }  }}}
+// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )},    externalUrl,    openInNewTab  },  heroContentPosition,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "ctaCard" => {    ...,    internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    "/" + slug.current  )}    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  }      }    }  }}}
 export type HOME_PAGE_QUERYResult = {
   _id: string;
   _type: "event";
@@ -2786,6 +2929,37 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "ctaEmailButton";
     buttonText?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvent";
+    event: {
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    } | null;
     image: null;
     content: null;
   } | {
@@ -3050,6 +3224,37 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "ctaEmailButton";
       buttonText?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvent";
+      event: {
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      } | null;
       image: null;
       content: null;
     } | {
@@ -3375,6 +3580,37 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "ctaEvent";
+        event: {
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "divider";
         style?: string;
         image: null;
@@ -3685,6 +3921,36 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "ctaEmailButton";
           buttonText?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvent";
+          event: {
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          } | null;
           image: null;
         } | {
           _key: string;
@@ -4291,6 +4557,37 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "ctaEvent";
+    event: {
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "divider";
     style?: string;
     image: null;
@@ -4551,6 +4848,37 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "ctaEmailButton";
       buttonText?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvent";
+      event: {
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      } | null;
       image: null;
       content: null;
     } | {
@@ -4876,6 +5204,37 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "ctaEvent";
+        event: {
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "divider";
         style?: string;
         image: null;
@@ -5186,6 +5545,36 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "ctaEmailButton";
           buttonText?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvent";
+          event: {
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          } | null;
           image: null;
         } | {
           _key: string;
@@ -5899,8 +6288,8 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt,\n  relatedPosts[]->{\n    _id,\n    title,\n    slug,\n    mainImage{\n      asset,\n      alt\n    },\n    publishedAt\n  }\n}": POST_QUERYResult;
-    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  subtitle,\n  alignment,\n  slug,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  }\n\n      }\n    }\n  }\n},\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
-    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n},\n    externalUrl,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  }\n\n      }\n    }\n  }\n}\n}": HOME_PAGE_QUERYResult;
+    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  subtitle,\n  alignment,\n  slug,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n\n      }\n    }\n  }\n},\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
+    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n},\n    externalUrl,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n\n      }\n    }\n  }\n}\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  }\n}": HEADER_QUERYResult;
     "*[_id == \"siteSettings\"][0]{\n  _id,\n  _type,\n  siteTitle,\n  companyEmail,\n  siteDescription\n}": SITE_SETTINGS_QUERYResult;
     "*[_type == \"event\"]|order(startDate desc){\n  _id,\n  title,\n  shortDescription,\n  venue,\n  location,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  tags,\n  link,\n  startDate,\n  endDate,\n  timeDescription,\n  pastEventText,\n  pastEventLinkBehavior,\n  pastEventLink\n}": EVENTS_QUERYResult;
