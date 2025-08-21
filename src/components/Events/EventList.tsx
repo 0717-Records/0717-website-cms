@@ -27,11 +27,11 @@ interface EventListProps {
 function isEventPast(event: Event): boolean {
   // Get current date/time in New Zealand timezone
   const nowInNZ = new Date(new Date().toLocaleString('en-US', { timeZone: 'Pacific/Auckland' }));
-  
+
   // Create event end date (or start date if no end date)
   const eventDateString = event.endDate || event.startDate;
   const eventDate = new Date(eventDateString + 'T00:00:00'); // Ensure consistent parsing
-  
+
   // Event is considered past at midnight NZ time the day after it ends
   const dayAfterEvent = new Date(eventDate);
   dayAfterEvent.setDate(dayAfterEvent.getDate() + 1);
@@ -61,7 +61,7 @@ const EventList = ({ events, filter, limit, noEventsText }: EventListProps) => {
   filteredEvents.sort((a, b) => {
     const dateA = new Date(a.startDate).getTime();
     const dateB = new Date(b.startDate).getTime();
-    
+
     if (filter === 'upcoming') {
       // Upcoming events: earliest first (soonest events first)
       return dateA - dateB;
@@ -73,7 +73,10 @@ const EventList = ({ events, filter, limit, noEventsText }: EventListProps) => {
 
   // Debug logging for upcoming events
   if (filter === 'upcoming' && typeof window !== 'undefined') {
-    console.log('Upcoming events sorted:', filteredEvents.map(e => `${e.title}: ${e.startDate}`));
+    console.log(
+      'Upcoming events sorted:',
+      filteredEvents.map((e) => `${e.title}: ${e.startDate}`)
+    );
   }
 
   // Apply limit if provided
@@ -95,7 +98,7 @@ const EventList = ({ events, filter, limit, noEventsText }: EventListProps) => {
       {filteredEvents.map((event, index: number) => (
         <div
           key={`${filter}-${event.title}-${index}`}
-          className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] max-w-sm flex'>
+          className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] flex'>
           <EventCard {...event} isPast={isEventPast(event)} />
         </div>
       ))}

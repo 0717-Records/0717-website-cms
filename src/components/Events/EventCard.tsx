@@ -134,15 +134,19 @@ const EventCard = (props: EventCardProps) => {
         )}
       </div>
       {/* Event Details */}
-      <div className='p-3 md:p-4 flex flex-col items-start md:items-center flex-grow w-2/3 md:w-full'>
+      <div className='p-3 md:p-4 flex flex-col items-start md:items-center text-left md:text-center flex-grow w-2/3 md:w-full'>
         {/* Date / Time */}
-        <div className='text-brand-secondary font-semibold mb-1 text-xs md:text-base'>
-          {dateDisplay}
+        <div className='text-brand-secondary font-semibold mb-2 md:mb-1 text-xs md:text-base'>
+          <span>{dateDisplay}</span>
+          {timeDisplay && (
+            <>
+              <span className='md:hidden mx-1'>•</span>
+              <span className='md:hidden'>{timeDisplay}</span>
+            </>
+          )}
         </div>
         {timeDisplay && (
-          <div className='text-brand-secondary mb-2 md:mb-3 text-xs md:text-base'>
-            {timeDisplay}
-          </div>
+          <div className='hidden md:block text-brand-secondary mb-3 text-base'>{timeDisplay}</div>
         )}
 
         {/* Title */}
@@ -155,27 +159,17 @@ const EventCard = (props: EventCardProps) => {
 
         {/* Short Description */}
         {shortDescription && (
-          <div className='text-text-subtle mb-2 md:mb-3'>
+          <div className=' text-text-subtle mb-2 md:mb-3'>
             <div className='text-xs md:text-body-sm leading-snug'>{shortDescription}</div>
           </div>
         )}
 
         {/* Venue and Location */}
-        <div className='flex flex-col items-start md:items-center gap-1 mb-2 md:mb-3'>
-          {venue && (
-            <div className='flex items-center text-text-subtle text-xs md:text-body-xs'>
-              <span className='mr-1 md:mr-2' aria-label='Venue' title='Venue'>
-                🎭
-              </span>
-              <span className='font-medium'>{venue}</span>
-            </div>
-          )}
-          <div className='flex items-center text-text-subtle text-xs md:text-base'>
-            <span className='mr-1 md:mr-2' aria-label='Location' title='Location'>
-              📍
-            </span>
-            <span className='font-medium'>{location}</span>
-          </div>
+        <div className='flex items-center text-text-subtle text-xs md:text-base mb-2 md:mb-3'>
+          <span className='mr-1 md:mr-2' aria-label='Location' title='Location'>
+            📍
+          </span>
+          <span className='font-medium'>{venue ? `${venue}, ${location}` : location}</span>
         </div>
 
         {/* Tags */}
