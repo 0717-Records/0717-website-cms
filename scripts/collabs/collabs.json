@@ -1,0 +1,458 @@
+[
+  {
+    "_id": "cr-avery",
+    "_type": "collab",
+    "_createdAt": "2024-01-15T10:00:00Z",
+    "_updatedAt": "2024-01-15T10:00:00Z",
+    "_rev": "v1",
+    "name": "C.R. Avery",
+    "slug": {
+      "current": "cr-avery",
+      "_type": "slug"
+    },
+    "genre": "Spoken Word Blues",
+    "location": "Smiths Falls, Ontario",
+    "heroImage": {
+      "asset": {
+        "_ref": "image-cr-avery-hero",
+        "_type": "reference"
+      },
+      "alt": "C.R. Avery performing on stage with microphone",
+      "_type": "image",
+      "hotspot": {
+        "x": 0.5,
+        "y": 0.3,
+        "height": 0.6,
+        "width": 0.8
+      }
+    },
+    "previewImage": {
+      "asset": {
+        "_ref": "image-cr-avery-preview",
+        "_type": "reference"
+      },
+      "alt": "C.R. Avery portrait",
+      "_type": "image"
+    },
+    "shortDescription": "High Art meets Low Brow - A distinctive blend of spoken word, beat-box, and Chicago blues that pushes creative boundaries.",
+    "useShortDescriptionForCards": true,
+    "cardDescription": null,
+    "bio": "C.R. Avery is a Canadian artist from Smiths Falls, Ontario, known for his unique fusion of spoken word poetry, beat-boxing, and Chicago blues influences. His distinctive lyrical style and vocal delivery have made him a standout performer in the indie music scene. Avery's work represents a collision between high art and low brow entertainment, creating something entirely new and captivating.",
+    "mainContent": [
+      {
+        "_key": "section1",
+        "_type": "collabPageSection",
+        "title": "About C.R. Avery",
+        "content": [
+          {
+            "_key": "richtext1",
+            "_type": "richText",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "block1",
+                "style": "normal",
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "span1",
+                    "text": "C.R. Avery has been pushing the boundaries of performance art and music for over a decade. His live performances are an experience that combines raw emotion, technical skill, and theatrical storytelling."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_key": "image1",
+            "_type": "imageBlock",
+            "image": {
+              "asset": {
+                "_ref": "image-cr-avery-performance",
+                "_type": "reference"
+              },
+              "alt": "C.R. Avery live performance",
+              "_type": "image"
+            },
+            "caption": "Live performance at Toronto Music Festival 2023"
+          }
+        ]
+      },
+      {
+        "_key": "section2", 
+        "_type": "collabPageSection",
+        "title": "Latest Work",
+        "content": [
+          {
+            "_key": "gallery1",
+            "_type": "imageGallery",
+            "images": [
+              {
+                "_key": "img1",
+                "asset": {
+                  "_ref": "image-cr-avery-album1",
+                  "_type": "reference"
+                },
+                "alt": "Album artwork",
+                "_type": "image"
+              },
+              {
+                "_key": "img2",
+                "asset": {
+                  "_ref": "image-cr-avery-album2",
+                  "_type": "reference"
+                },
+                "alt": "Studio session",
+                "_type": "image"
+              }
+            ],
+            "title": "Recent Releases"
+          },
+          {
+            "_key": "cta1",
+            "_type": "ctaButton",
+            "text": "Listen Now",
+            "variant": "filled",
+            "alignment": "center",
+            "linkType": "external",
+            "externalUrl": "https://cravery.com",
+            "openInNewTab": true
+          }
+        ]
+      }
+    ],
+    "links": {
+      "_type": "socialLinks",
+      "facebook": "https://facebook.com/craverymusic",
+      "instagram": "https://instagram.com/cravery",
+      "youtube": "https://youtube.com/cravery",
+      "twitter": "https://twitter.com/cravery",
+      "soundcloud": "https://soundcloud.com/cravery",
+      "bandcamp": "https://cravery.bandcamp.com",
+      "spotify": "https://open.spotify.com/artist/cravery",
+      "itunes": "https://music.apple.com/artist/cravery",
+      "officialWebsite": "https://cravery.com",
+      "genericLinks": []
+    },
+    "sideContent": [
+      {
+        "_key": "side1",
+        "_type": "sideContentBlock",
+        "style": "highlighted",
+        "title": "Latest News",
+        "richText": [
+          {
+            "_type": "block",
+            "_key": "sideblock1",
+            "style": "normal",
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sidespan1",
+                "text": "New film project premiering this fall. Stay tuned for tour dates and exclusive content."
+              }
+            ]
+          }
+        ],
+        "ctaType": "button",
+        "ctaButton": {
+          "_type": "ctaButton",
+          "text": "Tour Dates",
+          "variant": "outline",
+          "alignment": "inherit",
+          "linkType": "external",
+          "externalUrl": "https://cravery.com/tour",
+          "openInNewTab": false
+        }
+      },
+      {
+        "_key": "side2",
+        "_type": "sideContentBlock",
+        "style": "plain",
+        "title": "Get In Touch",
+        "richText": [
+          {
+            "_type": "block",
+            "_key": "sideblock2",
+            "style": "normal",
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sidespan2",
+                "text": "For booking inquiries and collaborations, reach out to our team."
+              }
+            ]
+          }
+        ],
+        "ctaType": "email"
+      }
+    ],
+    "seoTitle": "C.R. Avery - Spoken Word Blues Artist | 07:17 Records",
+    "seoDescription": "Discover C.R. Avery's unique blend of spoken word, beat-box, and Chicago blues. High Art meets Low Brow in this distinctive Canadian artist's work."
+  },
+  {
+    "_id": "star-control",
+    "_type": "collab",
+    "_createdAt": "2024-01-20T14:30:00Z",
+    "_updatedAt": "2024-01-20T14:30:00Z",
+    "_rev": "v1",
+    "name": "Star Control",
+    "slug": {
+      "current": "star-control",
+      "_type": "slug"
+    },
+    "genre": "Progressive Synthwave",
+    "location": "Auckland, New Zealand",
+    "heroImage": {
+      "asset": {
+        "_ref": "image-star-control-hero",
+        "_type": "reference"
+      },
+      "alt": "Star Control synthwave performance with neon lighting",
+      "_type": "image",
+      "hotspot": {
+        "x": 0.5,
+        "y": 0.4,
+        "height": 0.7,
+        "width": 0.9
+      }
+    },
+    "previewImage": {
+      "asset": {
+        "_ref": "image-star-control-preview",
+        "_type": "reference"
+      },
+      "alt": "Star Control logo with retro aesthetic",
+      "_type": "image"
+    },
+    "shortDescription": "Progressive synthwave from Auckland, pushing the boundaries of electronic music with cinematic soundscapes and retro-futuristic vibes.",
+    "useShortDescriptionForCards": false,
+    "cardDescription": "Electronic music collective creating immersive synthwave experiences.",
+    "bio": "Star Control is a progressive synthwave project based in Auckland, New Zealand. Known for their cinematic approach to electronic music, they blend classic 80s synthesizer sounds with modern production techniques to create immersive sonic experiences. Their music has been featured in films, games, and has garnered a dedicated following in the synthwave community worldwide.",
+    "mainContent": [
+      {
+        "_key": "section1",
+        "_type": "collabPageSection", 
+        "title": "The Sound",
+        "content": [
+          {
+            "_key": "richtext1",
+            "_type": "richText",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "block1",
+                "style": "normal",
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "span1",
+                    "text": "Star Control crafts atmospheric journeys through synthesized landscapes, combining nostalgic 80s aesthetics with forward-thinking composition. Each track tells a story, evoking images of neon-lit cityscapes and distant galaxies."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_key": "spotify1",
+            "_type": "spotifyWidget",
+            "spotifyUrl": "https://open.spotify.com/album/starcontrol-mark-i"
+          }
+        ]
+      },
+      {
+        "_key": "section2",
+        "_type": "collabPageSection",
+        "title": "Visual Experience", 
+        "content": [
+          {
+            "_key": "gallery1",
+            "_type": "imageGallery",
+            "images": [
+              {
+                "_key": "img1",
+                "asset": {
+                  "_ref": "image-star-control-live1",
+                  "_type": "reference"
+                },
+                "alt": "Star Control live performance with laser lights",
+                "_type": "image"
+              },
+              {
+                "_key": "img2", 
+                "asset": {
+                  "_ref": "image-star-control-live2",
+                  "_type": "reference"
+                },
+                "alt": "Synthesizer setup during performance",
+                "_type": "image"
+              },
+              {
+                "_key": "img3",
+                "asset": {
+                  "_ref": "image-star-control-artwork",
+                  "_type": "reference" 
+                },
+                "alt": "Album artwork featuring retro-futuristic design",
+                "_type": "image"
+              }
+            ],
+            "title": "Live Performances & Artwork"
+          },
+          {
+            "_key": "quote1",
+            "_type": "quote",
+            "text": "Star Control doesn't just make music, they create entire worlds of sound that transport you to another dimension.",
+            "author": "Electronic Music Review",
+            "role": "Music Critic"
+          }
+        ]
+      },
+      {
+        "_key": "section3",
+        "_type": "collabPageSection",
+        "title": "Mark I Album",
+        "content": [
+          {
+            "_key": "textimage1",
+            "_type": "textImage",
+            "heading": "Latest Release",
+            "text": [
+              {
+                "_type": "block",
+                "_key": "textblock1",
+                "style": "normal",
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "textspan1",
+                    "text": "The Mark I album represents a new chapter in Star Control's evolution, featuring more complex arrangements and deeper exploration of progressive synthwave territories."
+                  }
+                ]
+              }
+            ],
+            "image": {
+              "asset": {
+                "_ref": "image-star-control-mark-i",
+                "_type": "reference"
+              },
+              "alt": "Mark I album cover",
+              "_type": "image"
+            },
+            "imagePosition": "right"
+          },
+          {
+            "_key": "bandcamp1",
+            "_type": "bandcampWidget",
+            "bandcampUrl": "https://starcontrol1.bandcamp.com/album/mark-i"
+          }
+        ]
+      }
+    ],
+    "links": {
+      "_type": "socialLinks",
+      "facebook": "https://facebook.com/starcontrolnz",
+      "instagram": "https://instagram.com/starcontrolmusic",
+      "youtube": "https://youtube.com/starcontrol",
+      "twitter": "https://twitter.com/starcontrolnz",
+      "soundcloud": "https://soundcloud.com/starcontrol",
+      "bandcamp": "https://starcontrol1.bandcamp.com",
+      "spotify": "https://open.spotify.com/artist/starcontrol",
+      "officialWebsite": "https://starcontrol.music",
+      "genericLinks": [
+        {
+          "_key": "generic1",
+          "title": "Discogs",
+          "url": "https://discogs.com/artist/starcontrol"
+        }
+      ]
+    },
+    "sideContent": [
+      {
+        "_key": "side1",
+        "_type": "sideContentBlock",
+        "style": "highlighted",
+        "title": "Upcoming Shows",
+        "richText": [
+          {
+            "_type": "block",
+            "_key": "sideblock1",
+            "style": "normal",
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sidespan1",
+                "text": "Catch Star Control at electronic music festivals across New Zealand and Australia this summer."
+              }
+            ]
+          }
+        ],
+        "ctaType": "button",
+        "ctaButton": {
+          "_type": "ctaButton",
+          "text": "View Events",
+          "variant": "filled",
+          "alignment": "inherit",
+          "linkType": "internal",
+          "internalLink": {
+            "_type": "reference",
+            "_ref": "eventsIndexPage"
+          },
+          "openInNewTab": false
+        }
+      },
+      {
+        "_key": "side2",
+        "_type": "sideContentBlock",
+        "style": "plain",
+        "title": "Latest Release",
+        "richText": [
+          {
+            "_type": "block",
+            "_key": "sideblock2", 
+            "style": "normal",
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sidespan2",
+                "text": "Mark I is now available on all streaming platforms. Experience the evolution of progressive synthwave."
+              }
+            ]
+          }
+        ],
+        "ctaType": "button",
+        "ctaButton": {
+          "_type": "ctaButton",
+          "text": "Stream Now",
+          "variant": "outline",
+          "alignment": "inherit",
+          "linkType": "external", 
+          "externalUrl": "https://starcontrol1.bandcamp.com/album/mark-i",
+          "openInNewTab": true
+        }
+      },
+      {
+        "_key": "side3",
+        "_type": "sideContentBlock",
+        "style": "plain",
+        "title": "Contact",
+        "richText": [
+          {
+            "_type": "block",
+            "_key": "sideblock3",
+            "style": "normal", 
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sidespan3",
+                "text": "For booking and collaboration inquiries, get in touch with our team."
+              }
+            ]
+          }
+        ],
+        "ctaType": "email"
+      }
+    ],
+    "seoTitle": "Star Control - Progressive Synthwave from New Zealand | 07:17 Records",
+    "seoDescription": "Experience Star Control's progressive synthwave from Auckland. Cinematic electronic music blending 80s nostalgia with modern production."
+  }
+]
