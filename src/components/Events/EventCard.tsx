@@ -104,18 +104,18 @@ const EventCard = (props: EventCardProps) => {
 
   const cardContent = (
     <div
-      className={`w-full h-full bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 ${
+      className={`w-full h-full bg-white rounded-lg shadow-lg overflow-hidden flex flex-row md:flex-col transition-all duration-300 ${
         hasLink ? 'group hover:shadow-xl hover:scale-103 cursor-pointer' : ''
       }`}>
       {/* Event Poster */}
-      <div className='relative aspect-[3/4] bg-gray-900 overflow-hidden'>
+      <div className='relative w-1/3 md:w-full aspect-[3/4] bg-gray-900 overflow-hidden flex-shrink-0'>
         {image ? (
           <>
             <Image
               src={image}
               alt={`${title} event poster`}
               fill
-              sizes='(max-width: 640px) 100vw, 400px'
+              sizes='(max-width: 768px) 33vw, 400px'
               className={`object-cover transition-all duration-300 ${isPast ? 'brightness-50' : ''}`}
               priority
             />
@@ -126,7 +126,7 @@ const EventCard = (props: EventCardProps) => {
             <div
               className={`w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 ${isPast ? 'brightness-50' : ''}`}>
               <div className='text-center text-white/70'>
-                <div className='text-6xl mb-2'>🎭</div>
+                <div className='text-3xl md:text-6xl mb-1 md:mb-2'>🎭</div>
               </div>
             </div>
             {isPast && <PastEventOverlay text={pastEventText} />}
@@ -134,35 +134,44 @@ const EventCard = (props: EventCardProps) => {
         )}
       </div>
       {/* Event Details */}
-      <div className='p-4 flex flex-col flex-grow'>
+      <div className='p-3 md:p-4 flex flex-col items-start md:items-center flex-grow w-2/3 md:w-full'>
         {/* Date / Time */}
-        <div className='text-brand-secondary font-semibold mb-1'>{dateDisplay}</div>
-        {timeDisplay && <div className='text-brand-secondary mb-3'>{timeDisplay}</div>}
+        <div className='text-brand-secondary font-semibold mb-1 text-xs md:text-base'>
+          {dateDisplay}
+        </div>
+        {timeDisplay && (
+          <div className='text-brand-secondary mb-2 md:mb-3 text-xs md:text-base'>
+            {timeDisplay}
+          </div>
+        )}
 
         {/* Title */}
-        <p className={`text-h5 font-bold mb-3 text-gray-800 transition-all duration-300 ${
-          hasLink ? 'group-hover:underline' : ''
-        }`}>{title}</p>
+        <p
+          className={`text-sm md:text-h5 font-bold mb-2 md:mb-3 text-gray-800 transition-all duration-300 leading-tight ${
+            hasLink ? 'group-hover:underline' : ''
+          }`}>
+          {title}
+        </p>
 
         {/* Short Description */}
         {shortDescription && (
-          <div className='text-text-subtle mb-3'>
-            <div className='text-body-sm'>{shortDescription}</div>
+          <div className='text-text-subtle mb-2 md:mb-3'>
+            <div className='text-xs md:text-body-sm leading-snug'>{shortDescription}</div>
           </div>
         )}
 
         {/* Venue and Location */}
-        <div className='flex flex-col items-center gap-1 mb-3'>
+        <div className='flex flex-col items-start md:items-center gap-1 mb-2 md:mb-3'>
           {venue && (
-            <div className='flex items-center text-text-subtle text-body-xs'>
-              <span className='mr-2' aria-label='Venue' title='Venue'>
+            <div className='flex items-center text-text-subtle text-xs md:text-body-xs'>
+              <span className='mr-1 md:mr-2' aria-label='Venue' title='Venue'>
                 🎭
               </span>
               <span className='font-medium'>{venue}</span>
             </div>
           )}
-          <div className='flex items-center text-text-subtle'>
-            <span className='mr-2' aria-label='Location' title='Location'>
+          <div className='flex items-center text-text-subtle text-xs md:text-base'>
+            <span className='mr-1 md:mr-2' aria-label='Location' title='Location'>
               📍
             </span>
             <span className='font-medium'>{location}</span>
@@ -171,11 +180,11 @@ const EventCard = (props: EventCardProps) => {
 
         {/* Tags */}
         {tags && tags.length > 0 && (
-          <div className='flex flex-wrap justify-center gap-2 mb-4'>
+          <div className='flex flex-wrap justify-start md:justify-center gap-1 md:gap-2 mb-2 md:mb-4'>
             {tags.map((tag) => (
               <span
                 key={tag}
-                className='px-2 py-1 bg-gray-100 text-text-subtle text-body-xs rounded'>
+                className='px-1 py-0.5 md:px-2 md:py-1 bg-gray-100 text-text-subtle text-xs md:text-body-xs rounded'>
                 {tag}
               </span>
             ))}
