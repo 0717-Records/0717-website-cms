@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 interface PageHeroProps {
   title: string;
-  subtitle?: string;
   backgroundImage?: string;
   height?: 'small' | 'medium' | 'large';
   overlay?: boolean;
@@ -16,7 +15,6 @@ interface PageHeroProps {
 
 const PageHero = ({
   title,
-  subtitle,
   backgroundImage,
   height = 'medium',
   overlay = true,
@@ -69,9 +67,6 @@ const PageHero = ({
           {title}
           <div className='w-20 h-1 bg-yellow-400 mx-auto mt-3'></div>
         </h1>
-        {subtitle && (
-          <p className='text-lg md:text-xl text-white/90 mt-4 max-w-2xl mx-auto'>{subtitle}</p>
-        )}
       </div>
     </section>
   );

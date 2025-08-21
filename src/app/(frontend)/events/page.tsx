@@ -14,14 +14,17 @@ export default async function EventsPage() {
     <>
       {/* Page Hero */}
       <PageHero
-        title='ALL EVENTS'
-        subtitle='COMPLETE LISTING OF 07:17 RECORDS EVENTS'
+        title='All Events'
         height='medium'
         showBackLink={true}
         backLinkText='Back to Home'
         backLinkHref='/'
         backgroundImage='/event-test-img.webp'
       />
+
+      <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line'>
+        Sub Title text will go here
+      </p>
 
       {/* Upcoming Events Section */}
       <PageSection title='Upcoming Events' isFirst>
