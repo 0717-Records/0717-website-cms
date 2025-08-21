@@ -6,16 +6,22 @@
  * 2. Run: node scripts/collabs/populate-collabs.js
  */
 
-// Load environment variables from .env.local
-import 'dotenv/config';
-import { createClient } from '@sanity/client';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-// Get __dirname equivalent for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Load environment variables from .env.local
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.local') });
+const { createClient } = require('@sanity/client');
+const fs = require('fs');
+
+// Debug environment variables
+console.log('🔍 Environment check:');
+console.log('Project ID:', process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ? '✓ Found' : '✗ Missing');
+console.log('Dataset:', process.env.NEXT_PUBLIC_SANITY_DATASET ? '✓ Found' : '✗ Missing');
+console.log('Write Token:', process.env.SANITY_API_WRITE_TOKEN ? '✓ Found' : '✗ Missing');
 
 // Sanity client configuration
 const client = createClient({
@@ -126,7 +132,7 @@ function transformCollabForSanity(collab) {
           externalUrl: block.ctaButton.externalUrl,
           openInNewTab: block.ctaButton.openInNewTab,
         };
-        
+
         // Handle internal links
         if (block.ctaButton.internalLink) {
           sanitizedBlock.ctaButton.internalLink = block.ctaButton.internalLink._ref;
@@ -199,7 +205,7 @@ async function populateCollabs() {
     console.log('4. Add any missing content blocks (image galleries, Spotify/Bandcamp widgets)');
     console.log('5. Fix any internal link references that need to point to actual pages');
     console.log('6. Review and publish the collaborations');
-    
+
     console.log('\n💡 Note: This script creates basic content structure but excludes:');
     console.log('   - Image assets (need manual upload)');
     console.log('   - Image galleries');

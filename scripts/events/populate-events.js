@@ -6,11 +6,16 @@
  * 2. Run: node scripts/populate-events.js
  */
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 // Load environment variables from .env.local
-import 'dotenv/config';
-import { createClient } from '@sanity/client';
-import fs from 'fs';
-import path from 'path';
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.local') });
+const { createClient } = require('@sanity/client');
+const fs = require('fs');
 
 // Sanity client configuration
 const client = createClient({
@@ -26,7 +31,7 @@ async function populateEvents() {
     console.log('🚀 Starting event population...');
 
     // Read the events.json file
-    const eventsJsonPath = path.join(__dirname, '..', 'src', 'components', 'Events', 'events.json');
+    const eventsJsonPath = path.join(__dirname, 'events.json');
     const eventsData = JSON.parse(fs.readFileSync(eventsJsonPath, 'utf8'));
 
     console.log(`📖 Found ${eventsData.length} events in JSON file`);
