@@ -38,6 +38,7 @@ const Page = async () => {
           documentType={page._type}
           siteSettings={siteSettings ? { companyEmail: siteSettings.companyEmail || undefined } : undefined}
           events={events}
+          alignment='center'
         />
       )}
     </>

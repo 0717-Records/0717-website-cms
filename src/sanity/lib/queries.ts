@@ -100,6 +100,8 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
   _id,
   _type,
   title,
+  subtitle,
+  alignment,
   slug,
   ${recursiveContent},
   mainImage{

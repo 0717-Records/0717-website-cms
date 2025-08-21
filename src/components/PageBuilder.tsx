@@ -37,6 +37,7 @@ type PageBuilderProps = {
     companyEmail?: string;
   };
   events?: EVENTS_QUERYResult;
+  alignment?: 'left' | 'center' | 'right';
 };
 
 type BlockRendererProps = {
@@ -49,6 +50,7 @@ type BlockRendererProps = {
     companyEmail?: string;
   };
   events?: EVENTS_QUERYResult;
+  alignment?: 'left' | 'center' | 'right';
 };
 
 const { projectId, dataset, stega } = client.config();
@@ -59,7 +61,7 @@ export const createDataAttributeConfig = {
 };
 
 // Universal block renderer that can handle any block type at any nesting level
-const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLevel = 1, siteSettings, events }: BlockRendererProps) => {
+const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLevel = 1, siteSettings, events, alignment = 'center' }: BlockRendererProps) => {
   if (!Array.isArray(blocks)) {
     return null;
   }
@@ -98,10 +100,28 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           if (needsTopPadding) {
             marginClass = `pt-16 md:pt-24 ${marginClass}`.trim();
           }
+
+          // Apply alignment for non-section components
+          const isSectionType = block._type === 'pageSection' || 
+                               block._type === 'subSection' || 
+                               block._type === 'subSubSection' || 
+                               block._type === 'section';
+          
+          let alignmentClass = '';
+          if (!isSectionType) {
+            const alignmentMap = {
+              left: 'text-left',
+              center: 'text-center',
+              right: 'text-right',
+            };
+            alignmentClass = alignmentMap[alignment] || 'text-center';
+          }
+          
+          const combinedClasses = [marginClass, alignmentClass].filter(Boolean).join(' ');
           
           return (
             <div
-              className={marginClass}
+              className={combinedClasses}
               data-sanity={createDataAttribute({
                 ...createDataAttributeConfig,
                 id: documentId,
@@ -127,6 +147,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
               nestingLevel={nestingLevel + 1}
               siteSettings={siteSettings}
               events={events}
+              alignment={alignment}
             />
           );
         };
@@ -375,6 +396,7 @@ const PageBuilder = ({
   pathPrefix = 'content',
   siteSettings,
   events,
+  alignment = 'center',
 }: PageBuilderProps) => {
   const [sections] = useOptimistic<NonNullable<PAGE_QUERYResult>['content']>(content);
 
@@ -397,6 +419,7 @@ const PageBuilder = ({
         pathPrefix={pathPrefix}
         siteSettings={siteSettings}
         events={events}
+        alignment={alignment}
       />
     </div>
   );
