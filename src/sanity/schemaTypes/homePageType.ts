@@ -60,7 +60,7 @@ export const homePageType = defineType({
     }),
     defineField({
       name: 'heroCallToAction',
-      type: 'embeddedCtaButton',
+      type: 'homeHeroCtaButton',
       title: 'Call to Action Button',
       description: 'Button or link for the hero section',
       group: 'hero',
