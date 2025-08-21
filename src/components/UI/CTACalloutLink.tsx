@@ -75,7 +75,7 @@ const CTACalloutLink = ({
 
         {/* Content */}
         <div className='flex-grow min-w-0'>
-          {heading && <div className='font-semibold text-lg text-gray-900 mb-1'>{heading}</div>}
+          {heading && <div className='font-semibold text-body-lg text-gray-900 mb-1'>{heading}</div>}
           <p className='text-gray-700 leading-relaxed whitespace-pre-line'>{text}</p>
         </div>
 

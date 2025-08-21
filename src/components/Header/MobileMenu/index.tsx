@@ -54,8 +54,8 @@ const MobileMenu = ({ isMenuOpen, onClose, navLinks, headerData }: MobileMenuPro
               />
             ) : (
               <>
-                <span className='text-xl font-bold'>07:17</span>
-                <span className='text-sm font-semibold'>Records</span>
+                <span className='text-body-xl font-bold'>07:17</span>
+                <span className='text-body-sm font-semibold'>Records</span>
               </>
             )}
           </Link>
@@ -72,7 +72,7 @@ const MobileMenu = ({ isMenuOpen, onClose, navLinks, headerData }: MobileMenuPro
                 <Link
                   href={link.href}
                   onClick={onClose}
-                  className='block text-xl font-medium text-black hover:text-brand-secondary transition-colors'>
+                  className='block text-body-xl font-medium text-black hover:text-brand-secondary transition-colors'>
                   {link.label}
                 </Link>
               </li>

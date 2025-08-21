@@ -105,7 +105,7 @@ const Hero = ({
         }).toString()}>
         {heroTitle && (
           <h1
-            className='text-4xl sm:text-6xl font-bold'
+            className='text-h4 sm:text-h2 font-bold'
             data-sanity={createDataAttribute({
               ...createDataAttributeConfig,
               id: documentId,
@@ -117,7 +117,7 @@ const Hero = ({
         )}
         {heroSubtitle && (
           <div
-            className='text-lg sm:text-xl text-white'
+            className='text-body-lg sm:text-body-xl text-white'
             style={{ whiteSpace: 'pre-line' }}
             data-sanity={createDataAttribute({
               ...createDataAttributeConfig,

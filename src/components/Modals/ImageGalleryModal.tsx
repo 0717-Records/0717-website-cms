@@ -123,11 +123,11 @@ const ImageGalleryModal: React.FC<ImageGalleryModalProps> = ({
         <div className='flex-shrink-0 w-full mt-4'>
           {/* Image info */}
           <div className='mt-2 text-center text-white'>
-            <div className='text-sm opacity-75 mb-1'>
+            <div className='text-body-sm opacity-75 mb-1'>
               {currentImageIndex + 1} of {images.length}
             </div>
             {currentCaption && (
-              <p className='max-w-2xl px-4 text-sm line-clamp-2 mx-auto'>{currentCaption}</p>
+              <p className='max-w-2xl px-4 text-body-sm line-clamp-2 mx-auto'>{currentCaption}</p>
             )}
           </div>
 

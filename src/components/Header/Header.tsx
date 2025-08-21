@@ -74,8 +74,8 @@ const Header = ({ headerData }: HeaderProps) => {
             />
           ) : (
             <>
-              <span className='text-xl md:text-2xl font-bold'>07:17</span>
-              <span className='hidden md:inline text-sm md:text-lg font-semibold'>Records</span>
+              <span className='text-body-xl md:text-h6 font-bold'>07:17</span>
+              <span className='hidden md:inline text-body-sm md:text-body-lg font-semibold'>Records</span>
             </>
           )}
         </Link>

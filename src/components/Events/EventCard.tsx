@@ -126,7 +126,7 @@ const EventCard = (props: EventCardProps) => {
             <div
               className={`w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 ${isPast ? 'brightness-50' : ''}`}>
               <div className='text-center text-white/70'>
-                <div className='text-3xl md:text-6xl mb-1 md:mb-2'>🎭</div>
+                <div className='text-body-3xl md:text-h2 mb-1 md:mb-2'>🎭</div>
               </div>
             </div>
             {isPast && <PastEventOverlay text={pastEventText} />}
@@ -136,7 +136,7 @@ const EventCard = (props: EventCardProps) => {
       {/* Event Details */}
       <div className='p-3 md:p-4 flex flex-col items-start md:items-center text-left md:text-center flex-grow w-2/3 md:w-full'>
         {/* Date / Time */}
-        <div className='text-brand-secondary font-semibold mb-2 md:mb-1 text-xs md:text-base'>
+        <div className='text-brand-secondary font-semibold mb-2 md:mb-1 text-body-xs md:text-body-base'>
           <span>{dateDisplay}</span>
           {timeDisplay && (
             <>
@@ -146,12 +146,12 @@ const EventCard = (props: EventCardProps) => {
           )}
         </div>
         {timeDisplay && (
-          <div className='hidden md:block text-brand-secondary mb-3 text-base'>{timeDisplay}</div>
+          <div className='hidden md:block text-brand-secondary mb-3 text-body-base'>{timeDisplay}</div>
         )}
 
         {/* Title */}
         <p
-          className={`text-sm md:text-h5 font-bold mb-2 md:mb-3 text-gray-800 transition-all duration-300 leading-tight ${
+          className={`text-body-sm md:text-h5 font-bold mb-2 md:mb-3 text-gray-800 transition-all duration-300 leading-tight ${
             hasLink ? 'group-hover:underline' : ''
           }`}>
           {title}
@@ -160,12 +160,12 @@ const EventCard = (props: EventCardProps) => {
         {/* Short Description */}
         {shortDescription && (
           <div className=' text-text-subtle mb-2 md:mb-3'>
-            <div className='text-xs md:text-body-sm leading-snug'>{shortDescription}</div>
+            <div className='text-body-xs md:text-body-sm leading-snug'>{shortDescription}</div>
           </div>
         )}
 
         {/* Venue and Location */}
-        <div className='flex items-center text-text-subtle text-xs md:text-base mb-2 md:mb-3'>
+        <div className='flex items-center text-text-subtle text-body-xs md:text-body-base mb-2 md:mb-3'>
           <span className='mr-1 md:mr-2' aria-label='Location' title='Location'>
             📍
           </span>
@@ -178,7 +178,7 @@ const EventCard = (props: EventCardProps) => {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className='px-1 py-0.5 md:px-2 md:py-1 bg-gray-100 text-text-subtle text-xs md:text-body-xs rounded'>
+                className='px-1 py-0.5 md:px-2 md:py-1 bg-gray-100 text-text-subtle text-body-xs md:text-body-xs rounded'>
                 {tag}
               </span>
             ))}

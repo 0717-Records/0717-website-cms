@@ -20,7 +20,7 @@ const Navbar = ({ navLinks }: NavbarProps) => {
           <li key={link.href}>
             <Link
               href={link.href}
-              className='text-xl font-medium hover:text-brand-secondary transition-colors'>
+              className='text-body-xl font-medium hover:text-brand-secondary transition-colors'>
               {link.label}
             </Link>
           </li>

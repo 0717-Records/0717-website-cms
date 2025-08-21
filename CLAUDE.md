@@ -24,6 +24,27 @@ When creating or modifying Sanity schema files, include this standardized commen
 
 This comment should be referenced and applied consistently across all schema files to maintain development standards.
 
+## Typography Guidelines
+**IMPORTANT: Always use custom font size classes from globals.css instead of native Tailwind font size classes.**
+
+### Custom Font Size Classes Available:
+- **Headings**: `text-h1`, `text-h2`, `text-h3`, `text-h4`, `text-h5`, `text-h6`
+- **Body Text**: `text-body-xs`, `text-body-sm`, `text-body-base`, `text-body-lg`, `text-body-xl`, `text-body-2xl`, `text-body-3xl`
+
+### Mapping Guide:
+- `text-xs` → `text-body-xs`
+- `text-sm` → `text-body-sm` 
+- `text-base` → `text-body-base`
+- `text-lg` → `text-body-lg`
+- `text-xl` → `text-body-xl`
+- `text-2xl` → `text-body-2xl` or `text-h6` (depending on usage)
+- `text-3xl` → `text-body-3xl` or `text-h5` (depending on usage)
+- `text-4xl` → `text-h4`
+- `text-5xl` → `text-h3`
+- `text-6xl` → `text-h2`
+
+**These custom classes include responsive behavior and proper line heights. Never use native Tailwind font size classes like `text-xs`, `text-sm`, `text-lg`, `text-xl`, `text-2xl`, etc.**
+
 ## General Development Guidelines
 - Follow existing code patterns and conventions
 - Ensure proper TypeScript types are maintained

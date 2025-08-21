@@ -165,7 +165,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
               </div>
               {caption && (
                 <figcaption
-                  className='mt-2 text-sm text-gray-600 text-center italic'
+                  className='mt-2 text-body-sm text-gray-600 text-center italic'
                   {...getCaptionDataAttribute(idx)}>
                   {caption}
                 </figcaption>

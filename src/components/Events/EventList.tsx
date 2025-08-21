@@ -87,8 +87,8 @@ const EventList = ({ events, filter, limit, noEventsText }: EventListProps) => {
   if (filteredEvents.length === 0) {
     return (
       <div className='text-center py-16'>
-        <div className='text-gray-400 text-6xl mb-4'>🎭</div>
-        <p className='text-gray-500 text-lg'>{noEventsText}</p>
+        <div className='text-gray-400 text-h2 mb-4'>🎭</div>
+        <p className='text-gray-500 text-body-lg'>{noEventsText}</p>
       </div>
     );
   }
