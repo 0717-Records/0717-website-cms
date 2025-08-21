@@ -60,6 +60,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
             <CollabBasicInfo 
               genre={collab.genre}
               location={collab.location}
+              previewImage={collab.previewImage}
             />
 
             {/* Side Content Blocks */}

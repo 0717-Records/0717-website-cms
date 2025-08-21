@@ -249,6 +249,12 @@ export const COLLAB_QUERY = defineQuery(`*[_type == "collab" && slug.current == 
     hotspot,
     crop
   },
+  previewImage{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
   shortDescription,
   bio,
   ${collabContentProjection},
