@@ -47,8 +47,6 @@ function transformCollabForSanity(collab) {
     useShortDescriptionForCards: collab.useShortDescriptionForCards,
     cardDescription: collab.cardDescription,
     bio: collab.bio,
-    seoTitle: collab.seoTitle,
-    seoDescription: collab.seoDescription,
   };
 
   // Handle social links

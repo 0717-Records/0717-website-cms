@@ -198,24 +198,6 @@ export const collabType = defineType({
       description: 'Content blocks for the right sidebar of the collaboration page',
     }),
 
-    // SEO and Meta
-    defineField({
-      name: 'seoTitle',
-      title: 'SEO Title',
-      type: 'string',
-      group: 'basic',
-      description: 'Custom title for search engines (optional, defaults to collaboration name)',
-      validation: (Rule) => Rule.max(60),
-    }),
-    defineField({
-      name: 'seoDescription',
-      title: 'SEO Description',
-      type: 'text',
-      group: 'basic',
-      description: 'Description for search engines (optional, defaults to short description)',
-      rows: 2,
-      validation: (Rule) => Rule.max(160),
-    }),
   ],
   
   orderings: [
