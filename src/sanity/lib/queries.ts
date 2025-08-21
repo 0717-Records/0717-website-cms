@@ -1,5 +1,19 @@
 import { defineQuery } from 'next-sanity';
 
+// Reusable internal link dereferencing with href computation
+const internalLinkProjection = `{
+  _id,
+  _type,
+  title,
+  slug,
+  "pageType": _type,
+  "href": select(
+    _type == "homePage" => "/",
+    _type == "eventsIndexPage" => "/events",
+    "/" + slug.current
+  )
+}`;
+
 // Single content block projection that recursively handles nested content
 // Add new block types here and they'll work at all nesting levels automatically
 const contentProjection = `
@@ -12,65 +26,21 @@ const contentProjection = `
   },
   _type == "ctaButton" => {
     ...,
-    internalLink->{
-      _id,
-      _type,
-      title,
-      slug,
-      "pageType": _type,
-      "href": select(
-        _type == "homePage" => "/",
-        _type == "eventsIndexPage" => "/events",
-        "/" + slug.current
-      )
-    }
+    internalLink->${internalLinkProjection}
   },
   _type == "ctaCalloutLink" => {
     ...,
-    internalLink->{
-      _id,
-      _type,
-      title,
-      slug,
-      "pageType": _type,
-      "href": select(
-        _type == "homePage" => "/",
-        _type == "eventsIndexPage" => "/events",
-        "/" + slug.current
-      )
-    }
+    internalLink->${internalLinkProjection}
   },
   _type == "ctaCard" => {
     ...,
-    internalLink->{
-      _id,
-      _type,
-      title,
-      slug,
-      "pageType": _type,
-      "href": select(
-        _type == "homePage" => "/",
-        _type == "eventsIndexPage" => "/events",
-        "/" + slug.current
-      )
-    }
+    internalLink->${internalLinkProjection}
   },
   _type == "cardGrid" => {
     ...,
     cards[]{
       ...,
-      internalLink->{
-        _id,
-        _type,
-        title,
-        slug,
-        "pageType": _type,
-        "href": select(
-          _type == "homePage" => "/",
-          _type == "eventsIndexPage" => "/events",
-          "/" + slug.current
-        )
-      }
+      internalLink->${internalLinkProjection}
     }
   }
 `;
@@ -151,18 +121,7 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
   heroCallToAction{
     text,
     linkType,
-    internalLink->{
-      _id,
-      _type,
-      title,
-      slug,
-      "pageType": _type,
-      "href": select(
-        _type == "homePage" => "/",
-        _type == "eventsIndexPage" => "/events",
-        "/" + slug.current
-      )
-    },
+    internalLink->${internalLinkProjection},
     externalUrl,
     openInNewTab
   },
