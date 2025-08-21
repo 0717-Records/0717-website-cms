@@ -1,64 +1,22 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import EventList from './EventList';
 import CTA from '../UI/CTA';
-import { getAllEventsClient } from '@/actions/events-client'; // CMS data
-// import { getEvents } from '../../../scripts/events/getEvents'; // Test JSON data - uncomment for testing
+import type { EVENTS_QUERYResult } from '@/sanity/types';
+import { transformEvents } from '@/utils/transformEvents';
 
 interface EventBlockProps {
   maxEvents?: number;
+  events: EVENTS_QUERYResult;
 }
 
-interface Event {
-  title: string;
-  shortDescription?: string | null;
-  venue?: string | null;
-  location: string;
-  image?: string | null;
-  tags?: string[] | null;
-  link?: string | null;
-  startDate: string;
-  endDate?: string | null;
-  timeDescription?: string | null;
-  pastEventText: string;
-  pastEventLinkBehavior: 'keep' | 'change' | 'remove';
-  pastEventLink?: string | null;
-}
-
-const EventBlock = ({ maxEvents = 6 }: EventBlockProps) => {
-  const [events, setEvents] = useState<Event[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const allEvents = (await getAllEventsClient()) as Event[]; // CMS data
-        // const allEvents = (await getEvents()) as Event[]; // Test JSON data - uncomment for testing
-        setEvents(allEvents);
-      } catch (error) {
-        console.error('Failed to fetch events:', error);
-        setEvents([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchEvents();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className='w-full flex justify-center py-16'>
-        <div className='text-gray-500'>Loading events...</div>
-      </div>
-    );
-  }
+const EventBlock = ({ maxEvents = 6, events }: EventBlockProps) => {
+  // Transform Sanity data to EventList format
+  const transformedEvents = transformEvents(events);
 
   return (
     <div className='w-full'>
       <EventList
-        events={events}
+        events={transformedEvents}
         filter='upcoming'
         limit={maxEvents}
         noEventsText='No events at the moment. Check back soon!'

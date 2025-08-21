@@ -2,12 +2,14 @@ import React from 'react';
 import PageBuilder from '@/components/PageBuilder';
 import Hero from '@/components/HomeHero/Hero';
 import { getHomePage, getSiteSettings } from '@/actions';
+import { getAllEvents } from '@/actions/events';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 
 const Page = async () => {
-  const [page, siteSettings] = await Promise.all([
+  const [page, siteSettings, events] = await Promise.all([
     getHomePage(),
     getSiteSettings(),
+    getAllEvents(),
   ]);
 
   if (!page) {
@@ -35,6 +37,7 @@ const Page = async () => {
           documentId={page._id}
           documentType={page._type}
           siteSettings={siteSettings ? { companyEmail: siteSettings.companyEmail || undefined } : undefined}
+          events={events}
         />
       )}
     </>

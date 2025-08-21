@@ -3,26 +3,12 @@ import { getAllEvents } from '@/actions/events'; // CMS data
 // import { getEvents } from '../../../../scripts/events/getEvents'; // Test JSON data - uncomment for testing
 import PageHero from '@/components/Page/PageHero';
 import PageSection from '@/components/Layout/PageSection';
-
-interface Event {
-  title: string;
-  shortDescription?: string | null;
-  venue?: string | null;
-  location: string;
-  image?: string | null;
-  tags?: string[] | null;
-  link?: string | null;
-  startDate: string;
-  endDate?: string | null;
-  timeDescription?: string | null;
-  pastEventText: string;
-  pastEventLinkBehavior: 'keep' | 'change' | 'remove';
-  pastEventLink?: string | null;
-}
+import { transformEvents } from '@/utils/transformEvents';
 
 export default async function EventsPage() {
-  const allEvents = (await getAllEvents()) as Event[]; // CMS data
-  // const allEvents = (await getEvents()) as Event[]; // Test JSON data - uncomment for testing
+  const rawEvents = await getAllEvents(); // CMS data
+  const allEvents = transformEvents(rawEvents);
+  // const allEvents = (await getEvents()) as TransformedEvent[]; // Test JSON data - uncomment for testing
 
   return (
     <>

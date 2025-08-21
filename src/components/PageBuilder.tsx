@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import type { PAGE_QUERYResult } from '@/sanity/types';
+import type { PAGE_QUERYResult, EVENTS_QUERYResult } from '@/sanity/types';
 import type { NestedBlock } from '@/types/blocks';
 import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
@@ -36,6 +36,7 @@ type PageBuilderProps = {
   siteSettings?: {
     companyEmail?: string;
   };
+  events?: EVENTS_QUERYResult;
 };
 
 type BlockRendererProps = {
@@ -47,6 +48,7 @@ type BlockRendererProps = {
   siteSettings?: {
     companyEmail?: string;
   };
+  events?: EVENTS_QUERYResult;
 };
 
 const { projectId, dataset, stega } = client.config();
@@ -57,7 +59,7 @@ export const createDataAttributeConfig = {
 };
 
 // Universal block renderer that can handle any block type at any nesting level
-const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLevel = 1, siteSettings }: BlockRendererProps) => {
+const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLevel = 1, siteSettings, events }: BlockRendererProps) => {
   if (!Array.isArray(blocks)) {
     return null;
   }
@@ -124,6 +126,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
               pathPrefix={`${blockPath}.content`}
               nestingLevel={nestingLevel + 1}
               siteSettings={siteSettings}
+              events={events}
             />
           );
         };
@@ -345,6 +348,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
               <BlockWrapper key={block._key}>
                 <EventBlock 
                   maxEvents={block.maxEvents}
+                  events={events || []}
                 />
               </BlockWrapper>
             );
@@ -370,6 +374,7 @@ const PageBuilder = ({
   documentType,
   pathPrefix = 'content',
   siteSettings,
+  events,
 }: PageBuilderProps) => {
   const [sections] = useOptimistic<NonNullable<PAGE_QUERYResult>['content']>(content);
 
@@ -391,6 +396,7 @@ const PageBuilder = ({
         documentType={documentType}
         pathPrefix={pathPrefix}
         siteSettings={siteSettings}
+        events={events}
       />
     </div>
   );
