@@ -76,85 +76,10 @@ export const sideContentBlockType = defineType({
     defineField({
       name: 'ctaButton',
       title: 'CTA Button',
-      type: 'object',
+      type: 'ctaButton',
       group: 'cta',
       description: 'Configure the button link',
       hidden: ({ parent }) => parent?.ctaType !== 'button',
-      fields: [
-        defineField({
-          name: 'text',
-          title: 'Button Text',
-          type: 'string',
-          description: 'Text to display on the button',
-          validation: (Rule) => Rule.required().min(1).max(30),
-        }),
-        defineField({
-          name: 'variant',
-          title: 'Button Style',
-          type: 'string',
-          options: {
-            list: [
-              { title: 'Filled (Default)', value: 'filled' },
-              { title: 'Outline', value: 'outline' },
-            ],
-          },
-          initialValue: 'filled',
-        }),
-        defineField({
-          name: 'linkType',
-          title: 'Link Type',
-          type: 'string',
-          options: {
-            list: [
-              { title: 'Internal Page', value: 'internal' },
-              { title: 'External URL', value: 'external' },
-            ],
-          },
-          initialValue: 'internal',
-        }),
-        defineField({
-          name: 'internalLink',
-          title: 'Internal Page',
-          type: 'reference',
-          to: [
-            { type: 'page' },
-            { type: 'homePage' },
-            { type: 'eventsIndexPage' },
-            { type: 'collab' },
-          ],
-          hidden: ({ parent }) => parent?.linkType !== 'internal',
-          validation: (Rule) =>
-            Rule.custom((value, context) => {
-              const parent = context.parent as Record<string, unknown>;
-              if (parent?.linkType === 'internal' && !value) {
-                return 'Please select a page to link to';
-              }
-              return true;
-            }),
-        }),
-        defineField({
-          name: 'externalUrl',
-          title: 'External URL',
-          type: 'url',
-          placeholder: 'https://example.com',
-          hidden: ({ parent }) => parent?.linkType !== 'external',
-          validation: (Rule) =>
-            Rule.custom((value, context) => {
-              const parent = context.parent as Record<string, unknown>;
-              if (parent?.linkType === 'external' && !value) {
-                return 'Please enter an external URL';
-              }
-              return true;
-            }),
-        }),
-        defineField({
-          name: 'openInNewTab',
-          title: 'Open in New Tab',
-          type: 'boolean',
-          description: 'Open link in a new tab/window',
-          initialValue: false,
-        }),
-      ],
       validation: (Rule) =>
         Rule.custom((value, context) => {
           const parent = context.parent as Record<string, unknown>;

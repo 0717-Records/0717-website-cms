@@ -81,7 +81,8 @@ export const ctaButtonType = defineType({
       to: [
         { type: 'page' },
         { type: 'homePage' },
-        { type: 'eventsIndexPage' }
+        { type: 'eventsIndexPage' },
+        { type: 'collab' }
       ],
       description: 'Select a page from your website',
       hidden: ({ parent }) => parent?.linkType !== 'internal',
