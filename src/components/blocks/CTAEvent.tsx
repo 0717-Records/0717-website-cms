@@ -209,7 +209,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
       {/* Event Details - Mobile layout (2/3 width) */}
       <div className='p-3 flex flex-col items-start text-left flex-grow w-2/3'>
         {/* Date / Time */}
-        <div className='text-brand-secondary font-semibold mb-2 text-body-xs'>
+        <div className='text-brand-secondary font-semibold mb-2 text-body-xs md:text-body-base'>
           <span>{dateDisplay}</span>
           {timeDisplay && (
             <>
@@ -221,7 +221,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
 
         {/* Title */}
         <p
-          className={`text-body-sm font-bold mb-2 text-gray-800 transition-all duration-300 leading-tight ${
+          className={`text-body-sm md:text-body-xl font-bold md:font-bold mb-2 text-gray-800 transition-all duration-300 leading-tight ${
             hasLink ? 'group-hover:underline' : ''
           }`}>
           {title}
@@ -230,12 +230,12 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
         {/* Short Description */}
         {shortDescription && (
           <div className='text-text-subtle mb-2'>
-            <div className='text-body-xs leading-snug'>{shortDescription}</div>
+            <div className='text-body-xs md:text-body-sm leading-snug'>{shortDescription}</div>
           </div>
         )}
 
         {/* Venue and Location */}
-        <div className='flex items-center text-text-subtle text-body-xs mb-2'>
+        <div className='flex items-center text-text-subtle text-body-xs md:text-body-sm mb-2'>
           <span className='mr-1' aria-label='Location' title='Location'>
             📍
           </span>
@@ -246,7 +246,9 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
         {tags && tags.length > 0 && (
           <div className='flex flex-wrap justify-start gap-1 mb-2'>
             {tags.map((tag) => (
-              <span key={tag} className='px-1 py-0.5 bg-gray-100 text-text-subtle text-body-xs rounded'>
+              <span
+                key={tag}
+                className='px-1 py-0.5 bg-gray-100 text-text-subtle text-body-xs md:text-body-sm rounded'>
                 {tag}
               </span>
             ))}
