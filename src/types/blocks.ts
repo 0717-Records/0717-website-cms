@@ -2,7 +2,7 @@
 // This type represents any block that can contain other blocks
 
 
-import type { ItemList, Divider, RichText, Quote, TextImage, CtaCard, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, SubSection, SubSubSection } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Quote, TextImage, CtaCard, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, SubSection, SubSubSection, EventBlock } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -39,6 +39,7 @@ export type CTAButtonBlock = CtaButton & { _key: string };
 export type CTACalloutLinkBlock = CtaCalloutLink & { _key: string };
 export type CTAEmailButtonBlock = CtaEmailButton & { _key: string };
 export type EmbeddedCTAButtonBlock = EmbeddedCtaButton & { _key: string };
+export type EventBlockType = EventBlock & { _key: string };
 
 // Union of all possible block types (current and future)
 export type NestedBlock =
@@ -61,7 +62,8 @@ export type NestedBlock =
   | BandcampWidgetBlock
   | CTAButtonBlock
   | CTACalloutLinkBlock
-  | CTAEmailButtonBlock;
+  | CTAEmailButtonBlock
+  | EventBlockType;
 
 // Union of blocks that can contain nested content
 export type BlockWithContent = PageSectionBlock | SubSectionBlock | SubSubSectionBlock | SectionBlock | CTACardBlock;
@@ -150,4 +152,8 @@ export const isCTACalloutLinkBlock = (block: NestedBlock): block is CTACalloutLi
 
 export const isCTAEmailButtonBlock = (block: NestedBlock): block is CTAEmailButtonBlock => {
   return block._type === 'ctaEmailButton';
+};
+
+export const isEventBlock = (block: NestedBlock): block is EventBlockType => {
+  return block._type === 'eventBlock';
 };
