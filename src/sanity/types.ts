@@ -1026,7 +1026,7 @@ export type POST_QUERYResult = {
   }> | null;
 } | null;
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{  _id,  _type,  title,  subtitle,  alignment,  slug,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  }      }    }  }},  mainImage{    asset,    alt  }}
+// Query: *[_type == "page" && slug.current == $slug][0]{  _id,  _type,  title,  subtitle,  alignment,  slug,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        _type,        title,        slug,        "pageType": _type,        "href": select(          _type == "homePage" => "/",          _type == "eventsIndexPage" => "/events",          "/" + slug.current        )      }    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        _type,        title,        slug,        "pageType": _type,        "href": select(          _type == "homePage" => "/",          _type == "eventsIndexPage" => "/events",          "/" + slug.current        )      }    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        _type,        title,        slug,        "pageType": _type,        "href": select(          _type == "homePage" => "/",          _type == "eventsIndexPage" => "/events",          "/" + slug.current        )      }    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        _type,        title,        slug,        "pageType": _type,        "href": select(          _type == "homePage" => "/",          _type == "eventsIndexPage" => "/events",          "/" + slug.current        )      }    }  }      }    }  }},  mainImage{    asset,    alt  }}
 export type PAGE_QUERYResult = {
   _id: string;
   _type: "page";
@@ -1056,16 +1056,25 @@ export type PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -1081,16 +1090,25 @@ export type PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
       title: null;
       slug: null;
+      pageType: "homePage";
+      href: "/";
     } | {
       _id: string;
-      title: string | null;
-      slug: null;
-    } | {
-      _id: string;
+      _type: "page";
       title: string | null;
       slug: Slug | null;
+      pageType: "page";
+      href: string | null;
     } | null;
     openInNewTab?: boolean;
     externalUrl?: string;
@@ -1117,16 +1135,25 @@ export type PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
       title: null;
       slug: null;
+      pageType: "homePage";
+      href: "/";
     } | {
       _id: string;
-      title: string | null;
-      slug: null;
-    } | {
-      _id: string;
+      _type: "page";
       title: string | null;
       slug: Slug | null;
+      pageType: "page";
+      href: string | null;
     } | null;
     openInNewTab?: boolean;
     externalUrl?: string;
@@ -1143,16 +1170,25 @@ export type PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
       title: null;
       slug: null;
+      pageType: "homePage";
+      href: "/";
     } | {
       _id: string;
-      title: string | null;
-      slug: null;
-    } | {
-      _id: string;
+      _type: "page";
       title: string | null;
       slug: Slug | null;
+      pageType: "page";
+      href: string | null;
     } | null;
     openInNewTab?: boolean;
     externalUrl?: string;
@@ -1284,16 +1320,25 @@ export type PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -1309,16 +1354,25 @@ export type PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -1345,16 +1399,25 @@ export type PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -1371,16 +1434,25 @@ export type PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -1569,16 +1641,25 @@ export type PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -1594,16 +1675,25 @@ export type PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -1630,16 +1720,25 @@ export type PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -1656,16 +1755,25 @@ export type PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -1851,16 +1959,25 @@ export type PAGE_QUERYResult = {
             linkType?: "external" | "internal";
             internalLink: {
               _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
               title: null;
               slug: null;
+              pageType: "homePage";
+              href: "/";
             } | {
               _id: string;
-              title: string | null;
-              slug: null;
-            } | {
-              _id: string;
+              _type: "page";
               title: string | null;
               slug: Slug | null;
+              pageType: "page";
+              href: string | null;
             } | null;
             openInNewTab?: boolean;
             externalUrl?: string;
@@ -1875,16 +1992,25 @@ export type PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -1910,16 +2036,25 @@ export type PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -1935,16 +2070,25 @@ export type PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -2393,7 +2537,7 @@ export type PAGE_QUERYResult = {
   } | null;
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      title,      slug    },    externalUrl,    openInNewTab  },  heroContentPosition,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      title,      slug    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        title,        slug      }    }  }      }    }  }}}
+// Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{    text,    linkType,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    },    externalUrl,    openInNewTab  },  heroContentPosition,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        _type,        title,        slug,        "pageType": _type,        "href": select(          _type == "homePage" => "/",          _type == "eventsIndexPage" => "/events",          "/" + slug.current        )      }    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        _type,        title,        slug,        "pageType": _type,        "href": select(          _type == "homePage" => "/",          _type == "eventsIndexPage" => "/events",          "/" + slug.current        )      }    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        _type,        title,        slug,        "pageType": _type,        "href": select(          _type == "homePage" => "/",          _type == "eventsIndexPage" => "/events",          "/" + slug.current        )      }    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "ctaButton" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCalloutLink" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "ctaCard" => {    ...,    internalLink->{      _id,      _type,      title,      slug,      "pageType": _type,      "href": select(        _type == "homePage" => "/",        _type == "eventsIndexPage" => "/events",        "/" + slug.current      )    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      internalLink->{        _id,        _type,        title,        slug,        "pageType": _type,        "href": select(          _type == "homePage" => "/",          _type == "eventsIndexPage" => "/events",          "/" + slug.current        )      }    }  }      }    }  }}}
 export type HOME_PAGE_QUERYResult = {
   _id: string;
   _type: "event";
@@ -2454,16 +2598,25 @@ export type HOME_PAGE_QUERYResult = {
     linkType: "external" | "internal" | null;
     internalLink: {
       _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
       title: null;
       slug: null;
+      pageType: "homePage";
+      href: "/";
     } | {
       _id: string;
-      title: string | null;
-      slug: null;
-    } | {
-      _id: string;
+      _type: "page";
       title: string | null;
       slug: Slug | null;
+      pageType: "page";
+      href: string | null;
     } | null;
     externalUrl: string | null;
     openInNewTab: boolean | null;
@@ -2491,16 +2644,25 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -2516,16 +2678,25 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
       title: null;
       slug: null;
+      pageType: "homePage";
+      href: "/";
     } | {
       _id: string;
-      title: string | null;
-      slug: null;
-    } | {
-      _id: string;
+      _type: "page";
       title: string | null;
       slug: Slug | null;
+      pageType: "page";
+      href: string | null;
     } | null;
     openInNewTab?: boolean;
     externalUrl?: string;
@@ -2552,16 +2723,25 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
       title: null;
       slug: null;
+      pageType: "homePage";
+      href: "/";
     } | {
       _id: string;
-      title: string | null;
-      slug: null;
-    } | {
-      _id: string;
+      _type: "page";
       title: string | null;
       slug: Slug | null;
+      pageType: "page";
+      href: string | null;
     } | null;
     openInNewTab?: boolean;
     externalUrl?: string;
@@ -2578,16 +2758,25 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
       title: null;
       slug: null;
+      pageType: "homePage";
+      href: "/";
     } | {
       _id: string;
-      title: string | null;
-      slug: null;
-    } | {
-      _id: string;
+      _type: "page";
       title: string | null;
       slug: Slug | null;
+      pageType: "page";
+      href: string | null;
     } | null;
     openInNewTab?: boolean;
     externalUrl?: string;
@@ -2719,16 +2908,25 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -2744,16 +2942,25 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -2780,16 +2987,25 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -2806,16 +3022,25 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -3004,16 +3229,25 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -3029,16 +3263,25 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -3065,16 +3308,25 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -3091,16 +3343,25 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -3286,16 +3547,25 @@ export type HOME_PAGE_QUERYResult = {
             linkType?: "external" | "internal";
             internalLink: {
               _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
               title: null;
               slug: null;
+              pageType: "homePage";
+              href: "/";
             } | {
               _id: string;
-              title: string | null;
-              slug: null;
-            } | {
-              _id: string;
+              _type: "page";
               title: string | null;
               slug: Slug | null;
+              pageType: "page";
+              href: string | null;
             } | null;
             openInNewTab?: boolean;
             externalUrl?: string;
@@ -3310,16 +3580,25 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -3345,16 +3624,25 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -3370,16 +3658,25 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -3848,16 +4145,25 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -3873,16 +4179,25 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
       title: null;
       slug: null;
+      pageType: "homePage";
+      href: "/";
     } | {
       _id: string;
-      title: string | null;
-      slug: null;
-    } | {
-      _id: string;
+      _type: "page";
       title: string | null;
       slug: Slug | null;
+      pageType: "page";
+      href: string | null;
     } | null;
     openInNewTab?: boolean;
     externalUrl?: string;
@@ -3909,16 +4224,25 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
       title: null;
       slug: null;
+      pageType: "homePage";
+      href: "/";
     } | {
       _id: string;
-      title: string | null;
-      slug: null;
-    } | {
-      _id: string;
+      _type: "page";
       title: string | null;
       slug: Slug | null;
+      pageType: "page";
+      href: string | null;
     } | null;
     openInNewTab?: boolean;
     externalUrl?: string;
@@ -3935,16 +4259,25 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
       title: null;
       slug: null;
+      pageType: "homePage";
+      href: "/";
     } | {
       _id: string;
-      title: string | null;
-      slug: null;
-    } | {
-      _id: string;
+      _type: "page";
       title: string | null;
       slug: Slug | null;
+      pageType: "page";
+      href: string | null;
     } | null;
     openInNewTab?: boolean;
     externalUrl?: string;
@@ -4076,16 +4409,25 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -4101,16 +4443,25 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -4137,16 +4488,25 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -4163,16 +4523,25 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
         title: null;
         slug: null;
+        pageType: "homePage";
+        href: "/";
       } | {
         _id: string;
-        title: string | null;
-        slug: null;
-      } | {
-        _id: string;
+        _type: "page";
         title: string | null;
         slug: Slug | null;
+        pageType: "page";
+        href: string | null;
       } | null;
       openInNewTab?: boolean;
       externalUrl?: string;
@@ -4361,16 +4730,25 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -4386,16 +4764,25 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -4422,16 +4809,25 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -4448,16 +4844,25 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
           title: null;
           slug: null;
+          pageType: "homePage";
+          href: "/";
         } | {
           _id: string;
-          title: string | null;
-          slug: null;
-        } | {
-          _id: string;
+          _type: "page";
           title: string | null;
           slug: Slug | null;
+          pageType: "page";
+          href: string | null;
         } | null;
         openInNewTab?: boolean;
         externalUrl?: string;
@@ -4643,16 +5048,25 @@ export type HOME_PAGE_QUERYResult = {
             linkType?: "external" | "internal";
             internalLink: {
               _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
               title: null;
               slug: null;
+              pageType: "homePage";
+              href: "/";
             } | {
               _id: string;
-              title: string | null;
-              slug: null;
-            } | {
-              _id: string;
+              _type: "page";
               title: string | null;
               slug: Slug | null;
+              pageType: "page";
+              href: string | null;
             } | null;
             openInNewTab?: boolean;
             externalUrl?: string;
@@ -4667,16 +5081,25 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -4702,16 +5125,25 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -4727,16 +5159,25 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
             title: null;
             slug: null;
+            pageType: "homePage";
+            href: "/";
           } | {
             _id: string;
-            title: string | null;
-            slug: null;
-          } | {
-            _id: string;
+            _type: "page";
             title: string | null;
             slug: Slug | null;
+            pageType: "page";
+            href: string | null;
           } | null;
           openInNewTab?: boolean;
           externalUrl?: string;
@@ -5458,8 +5899,8 @@ declare module "@sanity/client" {
     "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt,\n  relatedPosts[]->{\n    _id,\n    title,\n    slug,\n    mainImage{\n      asset,\n      alt\n    },\n    publishedAt\n  }\n}": POST_QUERYResult;
-    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  subtitle,\n  alignment,\n  slug,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n\n      }\n    }\n  }\n},\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
-    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      title,\n      slug\n    },\n    externalUrl,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      title,\n      slug\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        title,\n        slug\n      }\n    }\n  }\n\n      }\n    }\n  }\n}\n}": HOME_PAGE_QUERYResult;
+    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  subtitle,\n  alignment,\n  slug,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        _type,\n        title,\n        slug,\n        \"pageType\": _type,\n        \"href\": select(\n          _type == \"homePage\" => \"/\",\n          _type == \"eventsIndexPage\" => \"/events\",\n          \"/\" + slug.current\n        )\n      }\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        _type,\n        title,\n        slug,\n        \"pageType\": _type,\n        \"href\": select(\n          _type == \"homePage\" => \"/\",\n          _type == \"eventsIndexPage\" => \"/events\",\n          \"/\" + slug.current\n        )\n      }\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        _type,\n        title,\n        slug,\n        \"pageType\": _type,\n        \"href\": select(\n          _type == \"homePage\" => \"/\",\n          _type == \"eventsIndexPage\" => \"/events\",\n          \"/\" + slug.current\n        )\n      }\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        _type,\n        title,\n        slug,\n        \"pageType\": _type,\n        \"href\": select(\n          _type == \"homePage\" => \"/\",\n          _type == \"eventsIndexPage\" => \"/events\",\n          \"/\" + slug.current\n        )\n      }\n    }\n  }\n\n      }\n    }\n  }\n},\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
+    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n    text,\n    linkType,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    },\n    externalUrl,\n    openInNewTab\n  },\n  heroContentPosition,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        _type,\n        title,\n        slug,\n        \"pageType\": _type,\n        \"href\": select(\n          _type == \"homePage\" => \"/\",\n          _type == \"eventsIndexPage\" => \"/events\",\n          \"/\" + slug.current\n        )\n      }\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        _type,\n        title,\n        slug,\n        \"pageType\": _type,\n        \"href\": select(\n          _type == \"homePage\" => \"/\",\n          _type == \"eventsIndexPage\" => \"/events\",\n          \"/\" + slug.current\n        )\n      }\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        _type,\n        title,\n        slug,\n        \"pageType\": _type,\n        \"href\": select(\n          _type == \"homePage\" => \"/\",\n          _type == \"eventsIndexPage\" => \"/events\",\n          \"/\" + slug.current\n        )\n      }\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n      _id,\n      _type,\n      title,\n      slug,\n      \"pageType\": _type,\n      \"href\": select(\n        _type == \"homePage\" => \"/\",\n        _type == \"eventsIndexPage\" => \"/events\",\n        \"/\" + slug.current\n      )\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n        _id,\n        _type,\n        title,\n        slug,\n        \"pageType\": _type,\n        \"href\": select(\n          _type == \"homePage\" => \"/\",\n          _type == \"eventsIndexPage\" => \"/events\",\n          \"/\" + slug.current\n        )\n      }\n    }\n  }\n\n      }\n    }\n  }\n}\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  }\n}": HEADER_QUERYResult;
     "*[_id == \"siteSettings\"][0]{\n  _id,\n  _type,\n  siteTitle,\n  companyEmail,\n  siteDescription\n}": SITE_SETTINGS_QUERYResult;
     "*[_type == \"event\"]|order(startDate desc){\n  _id,\n  title,\n  shortDescription,\n  venue,\n  location,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  tags,\n  link,\n  startDate,\n  endDate,\n  timeDescription,\n  pastEventText,\n  pastEventLinkBehavior,\n  pastEventLink\n}": EVENTS_QUERYResult;

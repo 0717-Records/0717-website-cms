@@ -7,10 +7,13 @@ import CTACalloutLink from '../UI/CTACalloutLink';
 // Type for a dereferenced page object
 interface DereferencedPage {
   _id: string;
+  _type?: string;
   title?: string;
   slug?: {
     current: string;
   };
+  pageType?: string;
+  href?: string | null;
 }
 
 // Type for internalLink that can be either a reference or dereferenced
@@ -46,7 +49,11 @@ const CTACalloutLinkComponent = ({
   let href = '';
   if (linkType === 'internal' && internalLink) {
     // Handle both reference objects and dereferenced objects
-    if ('slug' in internalLink && internalLink.slug?.current) {
+    if ('href' in internalLink && internalLink.href) {
+      // Use the pre-computed href from the GROQ query
+      href = internalLink.href;
+    } else if ('slug' in internalLink && internalLink.slug?.current) {
+      // Fallback to slug-based URL for backward compatibility
       href = `/${internalLink.slug.current}`;
     }
     // If it's just a reference, we can't build the URL without dereferencing

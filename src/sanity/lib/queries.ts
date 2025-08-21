@@ -14,24 +14,45 @@ const contentProjection = `
     ...,
     internalLink->{
       _id,
+      _type,
       title,
-      slug
+      slug,
+      "pageType": _type,
+      "href": select(
+        _type == "homePage" => "/",
+        _type == "eventsIndexPage" => "/events",
+        "/" + slug.current
+      )
     }
   },
   _type == "ctaCalloutLink" => {
     ...,
     internalLink->{
       _id,
+      _type,
       title,
-      slug
+      slug,
+      "pageType": _type,
+      "href": select(
+        _type == "homePage" => "/",
+        _type == "eventsIndexPage" => "/events",
+        "/" + slug.current
+      )
     }
   },
   _type == "ctaCard" => {
     ...,
     internalLink->{
       _id,
+      _type,
       title,
-      slug
+      slug,
+      "pageType": _type,
+      "href": select(
+        _type == "homePage" => "/",
+        _type == "eventsIndexPage" => "/events",
+        "/" + slug.current
+      )
     }
   },
   _type == "cardGrid" => {
@@ -40,8 +61,15 @@ const contentProjection = `
       ...,
       internalLink->{
         _id,
+        _type,
         title,
-        slug
+        slug,
+        "pageType": _type,
+        "href": select(
+          _type == "homePage" => "/",
+          _type == "eventsIndexPage" => "/events",
+          "/" + slug.current
+        )
       }
     }
   }
@@ -125,8 +153,15 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
     linkType,
     internalLink->{
       _id,
+      _type,
       title,
-      slug
+      slug,
+      "pageType": _type,
+      "href": select(
+        _type == "homePage" => "/",
+        _type == "eventsIndexPage" => "/events",
+        "/" + slug.current
+      )
     },
     externalUrl,
     openInNewTab
