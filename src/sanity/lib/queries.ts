@@ -10,6 +10,7 @@ const internalLinkProjection = `{
   "href": select(
     _type == "homePage" => "/",
     _type == "eventsIndexPage" => "/events",
+    _type == "collab" => "/collabs/" + slug.current,
     "/" + slug.current
   )
 }`;
@@ -205,4 +206,67 @@ export const EVENTS_INDEX_PAGE_QUERY = defineQuery(`*[_id == "eventsIndexPage"][
   subtitle,
   noUpcomingEventsMessage,
   noPastEventsMessage
+}`);
+
+// Side content projection for sidebar sections
+const sideContentProjection = `sideContent[]{
+  _type,
+  _key,
+  style,
+  title,
+  richText,
+  ctaBlocks[]{
+    _type,
+    _key,
+    _type == "ctaCalloutLink" => {
+      ...,
+      internalLink->${internalLinkProjection}
+    },
+    _type == "ctaEmailButton" => {
+      ...
+    }
+  }
+}`;
+
+// Collab page section projection for main content
+const collabContentProjection = `mainContent[]{
+  _type,
+  _key,
+  title,
+  ${recursiveContent}
+}`;
+
+export const COLLAB_QUERY = defineQuery(`*[_type == "collab" && slug.current == $slug][0]{
+  _id,
+  _type,
+  name,
+  slug,
+  genre,
+  location,
+  heroImage{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
+  shortDescription,
+  bio,
+  ${collabContentProjection},
+  ${sideContentProjection},
+  links{
+    _type,
+    instagram,
+    twitter,
+    facebook,
+    youtube,
+    spotify,
+    appleMusic,
+    bandcamp,
+    soundcloud,
+    website
+  }
+}`);
+
+export const COLLABS_SLUGS_QUERY = defineQuery(`*[_type == "collab" && defined(slug.current)]{ 
+  "slug": slug.current
 }`);
