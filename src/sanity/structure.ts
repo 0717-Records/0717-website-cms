@@ -83,6 +83,28 @@ export const structure: StructureResolver = (S) =>
         .id('events')
         .title('📅 Events')
         .child(
-          S.documentTypeList('event').title('Events')
+          S.list()
+            .title('Events Management')
+            .items([
+              // Events Index Page - Singleton
+              S.listItem()
+                .id('eventsIndexPage')
+                .schemaType('eventsIndexPage')
+                .title('Event Index Page')
+                .child(
+                  S.editor()
+                    .id('eventsIndexPage')
+                    .schemaType('eventsIndexPage')
+                    .documentId('eventsIndexPage')
+                    .title('Event Index Page')
+                ),
+              // Individual Events
+              S.listItem()
+                .id('events')
+                .title('Events')
+                .child(
+                  S.documentTypeList('event').title('Events')
+                ),
+            ])
         ),
     ]);

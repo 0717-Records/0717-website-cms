@@ -1,43 +1,61 @@
 import EventList from '@/components/Events/EventList';
-import { getAllEvents } from '@/actions/events'; // CMS data
+import { getAllEvents, getEventsIndexPage } from '@/actions/events'; // CMS data
 // import { getEvents } from '../../../../scripts/events/getEvents'; // Test JSON data - uncomment for testing
 import PageHero from '@/components/Page/PageHero';
 import PageSection from '@/components/Layout/PageSection';
 import { transformEvents } from '@/utils/transformEvents';
+import { urlFor } from '@/sanity/lib/image';
 
 export default async function EventsPage() {
-  const rawEvents = await getAllEvents(); // CMS data
+  const [rawEvents, eventsIndexPage] = await Promise.all([
+    getAllEvents(), // CMS data
+    getEventsIndexPage(), // CMS page data
+  ]);
   const allEvents = transformEvents(rawEvents);
   // const allEvents = (await getEvents()) as TransformedEvent[]; // Test JSON data - uncomment for testing
+  
+  // Get background image or fallback to placeholder
+  const backgroundImage = eventsIndexPage?.backgroundImage 
+    ? urlFor(eventsIndexPage.backgroundImage).url()
+    : '/pagePlaceholderImg.webp';
 
   return (
     <>
       {/* Page Hero */}
       <PageHero
-        title='All Events'
+        title={eventsIndexPage?.title || 'All Events'}
         height='medium'
         showBackLink={true}
         backLinkText='Back to Home'
         backLinkHref='/'
-        backgroundImage='/event-test-img.webp'
+        backgroundImage={backgroundImage}
       />
 
-      <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line'>
-        Sub Title text will go here
-      </p>
+      {/* Page Subtitle */}
+      {eventsIndexPage?.subtitle && (
+        <div className='container mx-auto px-4 md:px-8 py-8'>
+          <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line text-center'>
+            {eventsIndexPage.subtitle}
+          </p>
+        </div>
+      )}
 
       {/* Upcoming Events Section */}
       <PageSection title='Upcoming Events' isFirst>
         <EventList
           events={allEvents}
           filter='upcoming'
-          noEventsText='No upcoming events at the moment. Check back soon!'
+          noEventsText={eventsIndexPage?.noUpcomingEventsMessage || 'No upcoming events at the moment. Check back soon!'}
         />
       </PageSection>
 
       {/* Past Events Section */}
       <PageSection title='Past Events'>
-        <EventList events={allEvents} filter='past' noEventsText='No past events to display yet.' />
+        <EventList 
+          events={allEvents} 
+          filter='past' 
+          noEventsText={eventsIndexPage?.noPastEventsMessage || 'No past events to display yet.'} 
+        />
       </PageSection>
     </>
   );

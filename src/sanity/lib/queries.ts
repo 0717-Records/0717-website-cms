@@ -173,3 +173,18 @@ export const EVENTS_QUERY = defineQuery(`*[_type == "event"]|order(startDate des
   pastEventLinkBehavior,
   pastEventLink
 }`);
+
+export const EVENTS_INDEX_PAGE_QUERY = defineQuery(`*[_id == "eventsIndexPage"][0]{
+  _id,
+  _type,
+  title,
+  backgroundImage{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
+  subtitle,
+  noUpcomingEventsMessage,
+  noPastEventsMessage
+}`);

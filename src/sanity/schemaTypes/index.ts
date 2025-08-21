@@ -32,6 +32,7 @@ import { embeddedCtaButtonType } from './blocks/embeddedCtaButtonType';
 import { eventBlockType } from './blocks/eventBlockType';
 import { siteSettingsType } from './siteSettingsType';
 import { eventType } from './eventType';
+import { eventsIndexPageType } from './eventsIndexPageType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -41,6 +42,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     pageType,
     postType,
     eventType,
+    eventsIndexPageType,
     blockContentType,
     // Objects
     headerType,

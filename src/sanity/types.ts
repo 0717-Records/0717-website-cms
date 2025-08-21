@@ -607,6 +607,31 @@ export type BlockContent = Array<{
   _key: string;
 }>;
 
+export type EventsIndexPage = {
+  _id: string;
+  _type: "eventsIndexPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  backgroundImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  subtitle?: string;
+  noUpcomingEventsMessage?: string;
+  noPastEventsMessage?: string;
+};
+
 export type Event = {
   _id: string;
   _type: "event";
@@ -902,7 +927,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = EventBlock | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Event | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = EventBlock | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | EventsIndexPage | Event | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -2204,6 +2229,16 @@ export type PAGE_QUERYResult = {
 export type HOME_PAGE_QUERYResult = {
   _id: string;
   _type: "event";
+  heroImage: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  enableHeroCallToAction: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "eventsIndexPage";
   heroImage: null;
   heroTitle: null;
   heroSubtitle: null;
@@ -4756,6 +4791,10 @@ export type HEADER_QUERYResult = {
   logo: null;
 } | {
   _id: string;
+  _type: "eventsIndexPage";
+  logo: null;
+} | {
+  _id: string;
   _type: "footer";
   logo: null;
 } | {
@@ -4800,6 +4839,12 @@ export type HEADER_QUERYResult = {
 export type SITE_SETTINGS_QUERYResult = {
   _id: string;
   _type: "event";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+} | {
+  _id: string;
+  _type: "eventsIndexPage";
   siteTitle: null;
   companyEmail: null;
   siteDescription: null;
@@ -4880,6 +4925,99 @@ export type EVENTS_QUERYResult = Array<{
   pastEventLinkBehavior: "change" | "keep" | "remove" | null;
   pastEventLink: string | null;
 }>;
+// Variable: EVENTS_INDEX_PAGE_QUERY
+// Query: *[_id == "eventsIndexPage"][0]{  _id,  _type,  title,  backgroundImage{    asset,    alt,    hotspot,    crop  },  subtitle,  noUpcomingEventsMessage,  noPastEventsMessage}
+export type EVENTS_INDEX_PAGE_QUERYResult = {
+  _id: string;
+  _type: "event";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+} | {
+  _id: string;
+  _type: "eventsIndexPage";
+  title: string | null;
+  backgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    } | null;
+    alt: string | null;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
+  } | null;
+  subtitle: string | null;
+  noUpcomingEventsMessage: string | null;
+  noPastEventsMessage: string | null;
+} | {
+  _id: string;
+  _type: "footer";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+} | {
+  _id: string;
+  _type: "header";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+} | {
+  _id: string;
+  _type: "homePage";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+} | {
+  _id: string;
+  _type: "page";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: string | null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+} | {
+  _id: string;
+  _type: "post";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+} | {
+  _id: string;
+  _type: "sanity.fileAsset";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+} | {
+  _id: string;
+  _type: "sanity.imageAsset";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+} | {
+  _id: string;
+  _type: "siteSettings";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -4893,5 +5031,6 @@ declare module "@sanity/client" {
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  }\n}": HEADER_QUERYResult;
     "*[_id == \"siteSettings\"][0]{\n  _id,\n  _type,\n  siteTitle,\n  companyEmail,\n  siteDescription\n}": SITE_SETTINGS_QUERYResult;
     "*[_type == \"event\"]|order(startDate desc){\n  _id,\n  title,\n  shortDescription,\n  venue,\n  location,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  tags,\n  link,\n  startDate,\n  endDate,\n  timeDescription,\n  pastEventText,\n  pastEventLinkBehavior,\n  pastEventLink\n}": EVENTS_QUERYResult;
+    "*[_id == \"eventsIndexPage\"][0]{\n  _id,\n  _type,\n  title,\n  backgroundImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  subtitle,\n  noUpcomingEventsMessage,\n  noPastEventsMessage\n}": EVENTS_INDEX_PAGE_QUERYResult;
   }
 }

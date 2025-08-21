@@ -23,6 +23,8 @@ const PageHero = ({
   backLinkText = 'Back to Home',
   backLinkHref = '/',
 }: PageHeroProps) => {
+  // Use provided background image or fallback to placeholder
+  const finalBackgroundImage = backgroundImage || '/pagePlaceholderImg.webp';
   const getHeightClass = () => {
     switch (height) {
       case 'small':
@@ -40,9 +42,7 @@ const PageHero = ({
     <section
       className={`relative ${getHeightClass()} bg-black flex items-center justify-center ${className}`}>
       {/* Background Image */}
-      {backgroundImage && (
-        <Image src={backgroundImage} alt='' fill className='object-cover z-10' priority />
-      )}
+      <Image src={finalBackgroundImage} alt='' fill className='object-cover z-10' priority />
 
       {/* Overlay */}
       {overlay && (
