@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity';
 import { LinkIcon } from '@sanity/icons';
+import { createLinkFieldSet } from '../shared/linkSystem';
 
 export const ctaButtonType = defineType({
   name: 'ctaButton',
@@ -59,77 +60,8 @@ export const ctaButtonType = defineType({
       initialValue: 'inherit',
       description: 'How the button should be aligned within its container',
     }),
-    defineField({
-      name: 'linkType',
-      title: 'Link Type',
-      type: 'string',
-      group: 'link',
-      options: {
-        list: [
-          { title: 'Internal Page', value: 'internal' },
-          { title: 'External URL', value: 'external' },
-        ],
-      },
-      initialValue: 'internal',
-      description: 'Choose whether this links to another page on your site or an external URL',
-    }),
-    defineField({
-      name: 'internalLink',
-      title: 'Internal Page',
-      type: 'reference',
-      group: 'link',
-      to: [
-        { type: 'page' },
-        { type: 'homePage' },
-        { type: 'eventsIndexPage' },
-        { type: 'collab' }
-      ],
-      description: 'Select a page from your website',
-      hidden: ({ parent }) => parent?.linkType !== 'internal',
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const parent = context.parent as Record<string, unknown>;
-          if (parent?.linkType === 'internal' && !value) {
-            return 'Please select a page to link to';
-          }
-          return true;
-        }),
-    }),
-    defineField({
-      name: 'openInNewTab',
-      title: 'Open in New Tab',
-      type: 'boolean',
-      group: 'link',
-      description: 'Check this to open the link in a new tab/window',
-      initialValue: false,
-      hidden: ({ parent }) => parent?.linkType !== 'internal',
-    }),
-    defineField({
-      name: 'externalUrl',
-      title: 'External URL',
-      type: 'url',
-      group: 'link',
-      description: 'Enter the full URL (e.g., https://example.com)',
-      placeholder: 'https://example.com',
-      hidden: ({ parent }) => parent?.linkType !== 'external',
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const parent = context.parent as Record<string, unknown>;
-          if (parent?.linkType === 'external') {
-            if (!value) {
-              return 'Please enter an external URL';
-            }
-            // Basic URL validation
-            try {
-              new URL(value as string);
-              return true;
-            } catch {
-              return 'Please enter a valid URL';
-            }
-          }
-          return true;
-        }),
-    }),
+    // Use unified link system
+    ...createLinkFieldSet({ group: 'link' }),
   ],
   preview: {
     select: {

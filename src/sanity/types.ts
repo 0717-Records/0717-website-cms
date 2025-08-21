@@ -58,6 +58,7 @@ export type SideContentBlock = {
   ctaButton?: {
     text?: string;
     variant?: "filled" | "outline";
+    alignment?: "inherit" | "left" | "center" | "right";
     linkType?: "internal" | "external";
     internalLink?: {
       _ref: string;
@@ -82,12 +83,6 @@ export type SideContentBlock = {
     };
     externalUrl?: string;
     openInNewTab?: boolean;
-  };
-  ctaEmail?: {
-    buttonText?: string;
-    emailAddress?: string;
-    subject?: string;
-    variant?: "filled" | "outline";
   };
 };
 
@@ -144,9 +139,14 @@ export type CtaCalloutLink = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "collab";
   };
-  openInNewTab?: boolean;
   externalUrl?: string;
+  openInNewTab?: boolean;
 };
 
 export type CtaButton = {
@@ -170,9 +170,14 @@ export type CtaButton = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "collab";
   };
-  openInNewTab?: boolean;
   externalUrl?: string;
+  openInNewTab?: boolean;
 };
 
 export type TextImage = {
@@ -322,9 +327,14 @@ export type CtaCard = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "collab";
   };
-  openInNewTab?: boolean;
   externalUrl?: string;
+  openInNewTab?: boolean;
 };
 
 export type Icon = {
@@ -462,6 +472,50 @@ export type SubSection = {
   content?: Array<{
     _key: string;
   } & SubSubSection | {
+    _key: string;
+  } & Divider | {
+    _key: string;
+  } & ItemList | {
+    _key: string;
+  } & RichText | {
+    _key: string;
+  } & Quote | {
+    _key: string;
+  } & TextImage | {
+    _key: string;
+  } & CtaCard | {
+    _key: string;
+  } & CtaButton | {
+    _key: string;
+  } & CtaCalloutLink | {
+    _key: string;
+  } & CtaEmailButton | {
+    _key: string;
+  } & CtaEvent | {
+    _key: string;
+  } & CardGrid | {
+    _key: string;
+  } & Icon | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
+    _key: string;
+  } & YouTubeVideo | {
+    _key: string;
+  } & SpotifyWidget | {
+    _key: string;
+  } & BandcampWidget | {
+    _key: string;
+  } & EventBlock>;
+};
+
+export type CollabPageSection = {
+  _type: "collabPageSection";
+  title?: string;
+  content?: Array<{
+    _key: string;
+  } & SubSection | {
     _key: string;
   } & Divider | {
     _key: string;
@@ -777,11 +831,9 @@ export type Collab = {
   bio?: string;
   mainContent?: Array<{
     _key: string;
-  } & PageSection>;
+  } & CollabPageSection>;
   links?: SocialLinks;
   sideContent?: SideContent;
-  seoTitle?: string;
-  seoDescription?: string;
 };
 
 export type SocialLinks = {
@@ -965,9 +1017,14 @@ export type EmbeddedCtaButton = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "collab";
   };
-  openInNewTab?: boolean;
   externalUrl?: string;
+  openInNewTab?: boolean;
 };
 
 export type SiteSettings = {
@@ -1132,7 +1189,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SideContent | SideContentBlock | EventBlock | CtaEvent | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SideContent | SideContentBlock | EventBlock | CtaEvent | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | EmbeddedCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -1221,6 +1278,13 @@ export type PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
         _type: "eventsIndexPage";
         title: string | null;
         slug: null;
@@ -1241,8 +1305,8 @@ export type PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
     }> | null;
     image: null;
     content: null;
@@ -1254,6 +1318,13 @@ export type PAGE_QUERYResult = {
     alignment?: "center" | "inherit" | "left" | "right";
     linkType?: "external" | "internal";
     internalLink: {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
       _id: string;
       _type: "eventsIndexPage";
       title: string | null;
@@ -1275,8 +1346,8 @@ export type PAGE_QUERYResult = {
       pageType: "page";
       href: string | null;
     } | null;
-    openInNewTab?: boolean;
     externalUrl?: string;
+    openInNewTab?: boolean;
     image: null;
     content: null;
   } | {
@@ -1300,6 +1371,13 @@ export type PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
       _type: "eventsIndexPage";
       title: string | null;
       slug: null;
@@ -1320,8 +1398,8 @@ export type PAGE_QUERYResult = {
       pageType: "page";
       href: string | null;
     } | null;
-    openInNewTab?: boolean;
     externalUrl?: string;
+    openInNewTab?: boolean;
     content: null;
   } | {
     _key: string;
@@ -1335,6 +1413,13 @@ export type PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
       _type: "eventsIndexPage";
       title: string | null;
       slug: null;
@@ -1355,8 +1440,8 @@ export type PAGE_QUERYResult = {
       pageType: "page";
       href: string | null;
     } | null;
-    openInNewTab?: boolean;
     externalUrl?: string;
+    openInNewTab?: boolean;
     image: null;
     content: null;
   } | {
@@ -1516,6 +1601,13 @@ export type PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
           _type: "eventsIndexPage";
           title: string | null;
           slug: null;
@@ -1536,8 +1628,8 @@ export type PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
       }> | null;
       image: null;
       content: null;
@@ -1549,6 +1641,13 @@ export type PAGE_QUERYResult = {
       alignment?: "center" | "inherit" | "left" | "right";
       linkType?: "external" | "internal";
       internalLink: {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
         _id: string;
         _type: "eventsIndexPage";
         title: string | null;
@@ -1570,8 +1669,8 @@ export type PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
       image: null;
       content: null;
     } | {
@@ -1595,6 +1694,13 @@ export type PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
         _type: "eventsIndexPage";
         title: string | null;
         slug: null;
@@ -1615,8 +1721,8 @@ export type PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
       content: null;
     } | {
       _key: string;
@@ -1630,6 +1736,13 @@ export type PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
         _type: "eventsIndexPage";
         title: string | null;
         slug: null;
@@ -1650,8 +1763,8 @@ export type PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
       image: null;
       content: null;
     } | {
@@ -1868,6 +1981,13 @@ export type PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
             _type: "eventsIndexPage";
             title: string | null;
             slug: null;
@@ -1888,8 +2008,8 @@ export type PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
         }> | null;
         image: null;
         content: null;
@@ -1901,6 +2021,13 @@ export type PAGE_QUERYResult = {
         alignment?: "center" | "inherit" | "left" | "right";
         linkType?: "external" | "internal";
         internalLink: {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
           _id: string;
           _type: "eventsIndexPage";
           title: string | null;
@@ -1922,8 +2049,8 @@ export type PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
         image: null;
         content: null;
       } | {
@@ -1947,6 +2074,13 @@ export type PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
           _type: "eventsIndexPage";
           title: string | null;
           slug: null;
@@ -1967,8 +2101,8 @@ export type PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
         content: null;
       } | {
         _key: string;
@@ -1982,6 +2116,13 @@ export type PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
           _type: "eventsIndexPage";
           title: string | null;
           slug: null;
@@ -2002,8 +2143,8 @@ export type PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
         image: null;
         content: null;
       } | {
@@ -2217,6 +2358,13 @@ export type PAGE_QUERYResult = {
             linkType?: "external" | "internal";
             internalLink: {
               _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
               _type: "eventsIndexPage";
               title: string | null;
               slug: null;
@@ -2237,8 +2385,8 @@ export type PAGE_QUERYResult = {
               pageType: "page";
               href: string | null;
             } | null;
-            openInNewTab?: boolean;
             externalUrl?: string;
+            openInNewTab?: boolean;
           }> | null;
           image: null;
         } | {
@@ -2249,6 +2397,13 @@ export type PAGE_QUERYResult = {
           alignment?: "center" | "inherit" | "left" | "right";
           linkType?: "external" | "internal";
           internalLink: {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
             _id: string;
             _type: "eventsIndexPage";
             title: string | null;
@@ -2270,8 +2425,8 @@ export type PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
           image: null;
         } | {
           _key: string;
@@ -2294,6 +2449,13 @@ export type PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
             _type: "eventsIndexPage";
             title: string | null;
             slug: null;
@@ -2314,8 +2476,8 @@ export type PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
         } | {
           _key: string;
           _type: "ctaCard";
@@ -2328,6 +2490,13 @@ export type PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
             _type: "eventsIndexPage";
             title: string | null;
             slug: null;
@@ -2348,8 +2517,8 @@ export type PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
           image: null;
         } | {
           _key: string;
@@ -2904,6 +3073,13 @@ export type HOME_PAGE_QUERYResult = {
     linkType: "external" | "internal" | null;
     internalLink: {
       _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
       _type: "eventsIndexPage";
       title: string | null;
       slug: null;
@@ -2950,6 +3126,13 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
         _type: "eventsIndexPage";
         title: string | null;
         slug: null;
@@ -2970,8 +3153,8 @@ export type HOME_PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
     }> | null;
     image: null;
     content: null;
@@ -2983,6 +3166,13 @@ export type HOME_PAGE_QUERYResult = {
     alignment?: "center" | "inherit" | "left" | "right";
     linkType?: "external" | "internal";
     internalLink: {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
       _id: string;
       _type: "eventsIndexPage";
       title: string | null;
@@ -3004,8 +3194,8 @@ export type HOME_PAGE_QUERYResult = {
       pageType: "page";
       href: string | null;
     } | null;
-    openInNewTab?: boolean;
     externalUrl?: string;
+    openInNewTab?: boolean;
     image: null;
     content: null;
   } | {
@@ -3029,6 +3219,13 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
       _type: "eventsIndexPage";
       title: string | null;
       slug: null;
@@ -3049,8 +3246,8 @@ export type HOME_PAGE_QUERYResult = {
       pageType: "page";
       href: string | null;
     } | null;
-    openInNewTab?: boolean;
     externalUrl?: string;
+    openInNewTab?: boolean;
     content: null;
   } | {
     _key: string;
@@ -3064,6 +3261,13 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
       _type: "eventsIndexPage";
       title: string | null;
       slug: null;
@@ -3084,8 +3288,8 @@ export type HOME_PAGE_QUERYResult = {
       pageType: "page";
       href: string | null;
     } | null;
-    openInNewTab?: boolean;
     externalUrl?: string;
+    openInNewTab?: boolean;
     image: null;
     content: null;
   } | {
@@ -3245,6 +3449,13 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
           _type: "eventsIndexPage";
           title: string | null;
           slug: null;
@@ -3265,8 +3476,8 @@ export type HOME_PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
       }> | null;
       image: null;
       content: null;
@@ -3278,6 +3489,13 @@ export type HOME_PAGE_QUERYResult = {
       alignment?: "center" | "inherit" | "left" | "right";
       linkType?: "external" | "internal";
       internalLink: {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
         _id: string;
         _type: "eventsIndexPage";
         title: string | null;
@@ -3299,8 +3517,8 @@ export type HOME_PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
       image: null;
       content: null;
     } | {
@@ -3324,6 +3542,13 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
         _type: "eventsIndexPage";
         title: string | null;
         slug: null;
@@ -3344,8 +3569,8 @@ export type HOME_PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
       content: null;
     } | {
       _key: string;
@@ -3359,6 +3584,13 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
         _type: "eventsIndexPage";
         title: string | null;
         slug: null;
@@ -3379,8 +3611,8 @@ export type HOME_PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
       image: null;
       content: null;
     } | {
@@ -3597,6 +3829,13 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
             _type: "eventsIndexPage";
             title: string | null;
             slug: null;
@@ -3617,8 +3856,8 @@ export type HOME_PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
         }> | null;
         image: null;
         content: null;
@@ -3630,6 +3869,13 @@ export type HOME_PAGE_QUERYResult = {
         alignment?: "center" | "inherit" | "left" | "right";
         linkType?: "external" | "internal";
         internalLink: {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
           _id: string;
           _type: "eventsIndexPage";
           title: string | null;
@@ -3651,8 +3897,8 @@ export type HOME_PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
         image: null;
         content: null;
       } | {
@@ -3676,6 +3922,13 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
           _type: "eventsIndexPage";
           title: string | null;
           slug: null;
@@ -3696,8 +3949,8 @@ export type HOME_PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
         content: null;
       } | {
         _key: string;
@@ -3711,6 +3964,13 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
           _type: "eventsIndexPage";
           title: string | null;
           slug: null;
@@ -3731,8 +3991,8 @@ export type HOME_PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
         image: null;
         content: null;
       } | {
@@ -3946,6 +4206,13 @@ export type HOME_PAGE_QUERYResult = {
             linkType?: "external" | "internal";
             internalLink: {
               _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
               _type: "eventsIndexPage";
               title: string | null;
               slug: null;
@@ -3966,8 +4233,8 @@ export type HOME_PAGE_QUERYResult = {
               pageType: "page";
               href: string | null;
             } | null;
-            openInNewTab?: boolean;
             externalUrl?: string;
+            openInNewTab?: boolean;
           }> | null;
           image: null;
         } | {
@@ -3978,6 +4245,13 @@ export type HOME_PAGE_QUERYResult = {
           alignment?: "center" | "inherit" | "left" | "right";
           linkType?: "external" | "internal";
           internalLink: {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
             _id: string;
             _type: "eventsIndexPage";
             title: string | null;
@@ -3999,8 +4273,8 @@ export type HOME_PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
           image: null;
         } | {
           _key: string;
@@ -4023,6 +4297,13 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
             _type: "eventsIndexPage";
             title: string | null;
             slug: null;
@@ -4043,8 +4324,8 @@ export type HOME_PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
         } | {
           _key: string;
           _type: "ctaCard";
@@ -4057,6 +4338,13 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
             _type: "eventsIndexPage";
             title: string | null;
             slug: null;
@@ -4077,8 +4365,8 @@ export type HOME_PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
           image: null;
         } | {
           _key: string;
@@ -4574,6 +4862,13 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
         _type: "eventsIndexPage";
         title: string | null;
         slug: null;
@@ -4594,8 +4889,8 @@ export type HOME_PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
     }> | null;
     image: null;
     content: null;
@@ -4607,6 +4902,13 @@ export type HOME_PAGE_QUERYResult = {
     alignment?: "center" | "inherit" | "left" | "right";
     linkType?: "external" | "internal";
     internalLink: {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
       _id: string;
       _type: "eventsIndexPage";
       title: string | null;
@@ -4628,8 +4930,8 @@ export type HOME_PAGE_QUERYResult = {
       pageType: "page";
       href: string | null;
     } | null;
-    openInNewTab?: boolean;
     externalUrl?: string;
+    openInNewTab?: boolean;
     image: null;
     content: null;
   } | {
@@ -4653,6 +4955,13 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
       _type: "eventsIndexPage";
       title: string | null;
       slug: null;
@@ -4673,8 +4982,8 @@ export type HOME_PAGE_QUERYResult = {
       pageType: "page";
       href: string | null;
     } | null;
-    openInNewTab?: boolean;
     externalUrl?: string;
+    openInNewTab?: boolean;
     content: null;
   } | {
     _key: string;
@@ -4688,6 +4997,13 @@ export type HOME_PAGE_QUERYResult = {
     linkType?: "external" | "internal";
     internalLink: {
       _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
       _type: "eventsIndexPage";
       title: string | null;
       slug: null;
@@ -4708,8 +5024,8 @@ export type HOME_PAGE_QUERYResult = {
       pageType: "page";
       href: string | null;
     } | null;
-    openInNewTab?: boolean;
     externalUrl?: string;
+    openInNewTab?: boolean;
     image: null;
     content: null;
   } | {
@@ -4869,6 +5185,13 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
           _type: "eventsIndexPage";
           title: string | null;
           slug: null;
@@ -4889,8 +5212,8 @@ export type HOME_PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
       }> | null;
       image: null;
       content: null;
@@ -4902,6 +5225,13 @@ export type HOME_PAGE_QUERYResult = {
       alignment?: "center" | "inherit" | "left" | "right";
       linkType?: "external" | "internal";
       internalLink: {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
         _id: string;
         _type: "eventsIndexPage";
         title: string | null;
@@ -4923,8 +5253,8 @@ export type HOME_PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
       image: null;
       content: null;
     } | {
@@ -4948,6 +5278,13 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
         _type: "eventsIndexPage";
         title: string | null;
         slug: null;
@@ -4968,8 +5305,8 @@ export type HOME_PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
       content: null;
     } | {
       _key: string;
@@ -4983,6 +5320,13 @@ export type HOME_PAGE_QUERYResult = {
       linkType?: "external" | "internal";
       internalLink: {
         _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
         _type: "eventsIndexPage";
         title: string | null;
         slug: null;
@@ -5003,8 +5347,8 @@ export type HOME_PAGE_QUERYResult = {
         pageType: "page";
         href: string | null;
       } | null;
-      openInNewTab?: boolean;
       externalUrl?: string;
+      openInNewTab?: boolean;
       image: null;
       content: null;
     } | {
@@ -5221,6 +5565,13 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
             _type: "eventsIndexPage";
             title: string | null;
             slug: null;
@@ -5241,8 +5592,8 @@ export type HOME_PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
         }> | null;
         image: null;
         content: null;
@@ -5254,6 +5605,13 @@ export type HOME_PAGE_QUERYResult = {
         alignment?: "center" | "inherit" | "left" | "right";
         linkType?: "external" | "internal";
         internalLink: {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
           _id: string;
           _type: "eventsIndexPage";
           title: string | null;
@@ -5275,8 +5633,8 @@ export type HOME_PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
         image: null;
         content: null;
       } | {
@@ -5300,6 +5658,13 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
           _type: "eventsIndexPage";
           title: string | null;
           slug: null;
@@ -5320,8 +5685,8 @@ export type HOME_PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
         content: null;
       } | {
         _key: string;
@@ -5335,6 +5700,13 @@ export type HOME_PAGE_QUERYResult = {
         linkType?: "external" | "internal";
         internalLink: {
           _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
           _type: "eventsIndexPage";
           title: string | null;
           slug: null;
@@ -5355,8 +5727,8 @@ export type HOME_PAGE_QUERYResult = {
           pageType: "page";
           href: string | null;
         } | null;
-        openInNewTab?: boolean;
         externalUrl?: string;
+        openInNewTab?: boolean;
         image: null;
         content: null;
       } | {
@@ -5570,6 +5942,13 @@ export type HOME_PAGE_QUERYResult = {
             linkType?: "external" | "internal";
             internalLink: {
               _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
               _type: "eventsIndexPage";
               title: string | null;
               slug: null;
@@ -5590,8 +5969,8 @@ export type HOME_PAGE_QUERYResult = {
               pageType: "page";
               href: string | null;
             } | null;
-            openInNewTab?: boolean;
             externalUrl?: string;
+            openInNewTab?: boolean;
           }> | null;
           image: null;
         } | {
@@ -5602,6 +5981,13 @@ export type HOME_PAGE_QUERYResult = {
           alignment?: "center" | "inherit" | "left" | "right";
           linkType?: "external" | "internal";
           internalLink: {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
             _id: string;
             _type: "eventsIndexPage";
             title: string | null;
@@ -5623,8 +6009,8 @@ export type HOME_PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
           image: null;
         } | {
           _key: string;
@@ -5647,6 +6033,13 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
             _type: "eventsIndexPage";
             title: string | null;
             slug: null;
@@ -5667,8 +6060,8 @@ export type HOME_PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
         } | {
           _key: string;
           _type: "ctaCard";
@@ -5681,6 +6074,13 @@ export type HOME_PAGE_QUERYResult = {
           linkType?: "external" | "internal";
           internalLink: {
             _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
             _type: "eventsIndexPage";
             title: string | null;
             slug: null;
@@ -5701,8 +6101,8 @@ export type HOME_PAGE_QUERYResult = {
             pageType: "page";
             href: string | null;
           } | null;
-          openInNewTab?: boolean;
           externalUrl?: string;
+          openInNewTab?: boolean;
           image: null;
         } | {
           _key: string;

@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity';
 import { DocumentIcon } from '@sanity/icons';
+import { LINKABLE_PAGE_TYPES, LINK_TYPE_OPTIONS } from '../shared/linkSystem';
 
 export const ctaCardType = defineType({
   name: 'ctaCard',
@@ -97,10 +98,7 @@ export const ctaCardType = defineType({
       type: 'string',
       group: 'button',
       options: {
-        list: [
-          { title: 'Internal Page', value: 'internal' },
-          { title: 'External URL', value: 'external' },
-        ],
+        list: [...LINK_TYPE_OPTIONS],
       },
       initialValue: 'internal',
       description: 'Choose whether this links to another page on your site or an external URL',
@@ -119,11 +117,7 @@ export const ctaCardType = defineType({
       title: 'Internal Page',
       type: 'reference',
       group: 'button',
-      to: [
-        { type: 'page' },
-        { type: 'homePage' },
-        { type: 'eventsIndexPage' }
-      ],
+      to: [...LINKABLE_PAGE_TYPES],
       description: 'Select a page from your website',
       hidden: ({ parent }) => parent?.buttonType !== 'link' || parent?.linkType !== 'internal',
       validation: (Rule) =>
@@ -134,16 +128,6 @@ export const ctaCardType = defineType({
           }
           return true;
         }),
-    }),
-    defineField({
-      name: 'openInNewTab',
-      title: 'Open in New Tab',
-      type: 'boolean',
-      group: 'button',
-      description: 'Check this to open the link in a new tab/window',
-      initialValue: false,
-      hidden: ({ parent }) => parent?.buttonType !== 'link' || parent?.linkType !== 'internal',
-      // Optional, no validation needed
     }),
     defineField({
       name: 'externalUrl',
@@ -169,6 +153,15 @@ export const ctaCardType = defineType({
           }
           return true;
         }),
+    }),
+    defineField({
+      name: 'openInNewTab',
+      title: 'Open in New Tab',
+      type: 'boolean',
+      group: 'button',
+      description: 'Check this to open the link in a new tab/window',
+      initialValue: false,
+      hidden: ({ parent }) => parent?.buttonType !== 'link' || parent?.linkType !== 'internal',
     }),
   ],
   preview: {

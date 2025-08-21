@@ -4,6 +4,7 @@
 
 import { defineField, defineType, defineArrayMember } from 'sanity';
 import { DocumentIcon } from '@sanity/icons';
+import { createLinkFieldSet } from './linkSystem';
 
 export const sideContentBlockType = defineType({
   name: 'sideContentBlock',
@@ -76,15 +77,52 @@ export const sideContentBlockType = defineType({
     defineField({
       name: 'ctaButton',
       title: 'CTA Button',
-      type: 'ctaButton',
+      type: 'object',
       group: 'cta',
       description: 'Configure the button link',
       hidden: ({ parent }) => parent?.ctaType !== 'button',
+      fields: [
+        defineField({
+          name: 'text',
+          title: 'Button Text',
+          type: 'string',
+          description: 'Text to display on the button',
+          validation: (Rule) => Rule.required().min(1).max(50),
+        }),
+        defineField({
+          name: 'variant',
+          title: 'Button Style',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Filled (Default)', value: 'filled' },
+              { title: 'Outline', value: 'outline' },
+            ],
+          },
+          initialValue: 'filled',
+        }),
+        defineField({
+          name: 'alignment',
+          title: 'Button Alignment',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Inherit from parent (Default)', value: 'inherit' },
+              { title: 'Left', value: 'left' },
+              { title: 'Center', value: 'center' },
+              { title: 'Right', value: 'right' },
+            ],
+          },
+          initialValue: 'inherit',
+        }),
+        ...createLinkFieldSet(),
+      ],
       validation: (Rule) =>
         Rule.custom((value, context) => {
           const parent = context.parent as Record<string, unknown>;
+          // Only require button configuration if CTA type is specifically set to 'button'
           if (parent?.ctaType === 'button' && !value) {
-            return 'Please configure the button settings';
+            return 'Please configure the button settings when Button Link is selected';
           }
           return true;
         }),
