@@ -605,51 +605,6 @@ export type PageSection = {
   } & EventBlock>;
 };
 
-export type Section = {
-  _type: "section";
-  title?: string;
-  textAlign?: "inherit" | "left" | "center" | "right";
-  content?: Array<{
-    _key: string;
-  } & Section | {
-    _key: string;
-  } & Divider | {
-    _key: string;
-  } & ItemList | {
-    _key: string;
-  } & RichText | {
-    _key: string;
-  } & Quote | {
-    _key: string;
-  } & TextImage | {
-    _key: string;
-  } & CtaCard | {
-    _key: string;
-  } & CtaButton | {
-    _key: string;
-  } & CtaCalloutLink | {
-    _key: string;
-  } & CtaEmailButton | {
-    _key: string;
-  } & CtaEvent | {
-    _key: string;
-  } & CardGrid | {
-    _key: string;
-  } & Icon | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
-    _key: string;
-  } & YouTubeVideo | {
-    _key: string;
-  } & SpotifyWidget | {
-    _key: string;
-  } & BandcampWidget | {
-    _key: string;
-  } & EventBlock>;
-};
-
 export type PageBuilder = Array<{
   _key: string;
 } & PageSection | {
@@ -1193,7 +1148,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SideContent | SideContentBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | Section | PageBuilder | Footer | Header | BlockContent | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SideContent | SideContentBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY

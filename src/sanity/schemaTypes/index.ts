@@ -8,7 +8,6 @@ import { homePageType } from './homePageType';
 import { headerType } from './headerType';
 import { footerType } from './footerType';
 import { pageBuilderType } from './pageBuilderType';
-import { sectionType } from './sectionType';
 import { pageSectionType } from './pageSectionType';
 import { subSectionType } from './subSectionType';
 import { subSubSectionType } from './subSubSectionType';
@@ -55,7 +54,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     headerType,
     footerType,
     pageBuilderType,
-    sectionType,
     pageSectionType,
     collabPageSectionType,
     subSectionType,

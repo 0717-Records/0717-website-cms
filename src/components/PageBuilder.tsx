@@ -6,7 +6,6 @@ import type { NestedBlock } from '@/types/blocks';
 import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react';
-import Section from './Layout/Section';
 import PageSection from './Layout/PageSection';
 import SubSection from './Layout/SubSection';
 import SubSubSection from './Layout/SubSubSection';
@@ -79,8 +78,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           const nextBlockIsSection = nextBlock && (
             nextBlock._type === 'pageSection' || 
             nextBlock._type === 'subSection' || 
-            nextBlock._type === 'subSubSection' || 
-            nextBlock._type === 'section'
+            nextBlock._type === 'subSubSection'
           );
           
           // Apply spacing logic:
@@ -105,8 +103,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           // Apply alignment for non-section components
           const isSectionType = block._type === 'pageSection' || 
                                block._type === 'subSection' || 
-                               block._type === 'subSubSection' || 
-                               block._type === 'section';
+                               block._type === 'subSubSection';
           
           let alignmentClass = '';
           if (!isSectionType) {
@@ -204,20 +201,6 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
               </BlockWrapper>
             );
 
-          case 'section':
-            return (
-              <BlockWrapper key={block._key}>
-                <Section
-                  title={block.title}
-                  textAlign={block.textAlign}
-                  nestingLevel={nestingLevel}
-                  documentId={documentId}
-                  documentType={documentType}
-                  titlePath={`${blockPath}.title`}>
-                  {renderNestedContent(block.content)}
-                </Section>
-              </BlockWrapper>
-            );
 
           case 'divider':
             return (
