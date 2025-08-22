@@ -341,9 +341,6 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
               <BlockWrapper key={block._key}>
                 <YouTubeVideo 
                   {...block} 
-                  documentId={documentId}
-                  documentType={documentType}
-                  pathPrefix={blockPath}
                 />
               </BlockWrapper>
             );

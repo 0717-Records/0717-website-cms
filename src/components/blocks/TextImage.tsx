@@ -1,28 +1,20 @@
 'use client';
 
 import React, { useState } from 'react';
-import { stegaClean, createDataAttribute } from 'next-sanity';
+import { stegaClean } from 'next-sanity';
 import NextImage from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
-import { client } from '@/sanity/lib/client';
 import { PortableText } from 'next-sanity';
 import { components } from '@/sanity/portableTextComponents';
 import type { TextImageBlock } from '@/types/blocks';
 import ImageModal from '../Modals/ImageModal';
+import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
 
-interface TextImageProps extends TextImageBlock {
+interface TextImageProps extends TextImageBlock, Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
   className?: string;
-  documentId?: string;
-  documentType?: string;
   pathPrefix?: string;
 }
 
-const { projectId, dataset, stega } = client.config();
-export const createDataAttributeConfig = {
-  projectId,
-  dataset,
-  baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
-};
 
 const TextImage: React.FC<TextImageProps> = ({
   content,
@@ -52,40 +44,14 @@ const TextImage: React.FC<TextImageProps> = ({
     setIsModalOpen(false);
   };
 
-  // Create data attributes for Sanity Live Editing
-  const getContentDataAttribute = () => {
-    if (!documentId || !documentType || !pathPrefix) return {};
+  // Create data attributes for Sanity live editing
+  const contentDataAttribute = pathPrefix
+    ? createSanityDataAttribute(documentId, documentType, `${pathPrefix}.content`)
+    : {};
+  const imageDataAttribute = pathPrefix
+    ? createSanityDataAttribute(documentId, documentType, `${pathPrefix}.image`)
+    : {};
 
-    try {
-      return {
-        'data-sanity': createDataAttribute({
-          ...createDataAttributeConfig,
-          id: documentId,
-          type: documentType,
-          path: `${pathPrefix}.content`,
-        }).toString(),
-      };
-    } catch {
-      return {};
-    }
-  };
-
-  const getImageDataAttribute = () => {
-    if (!documentId || !documentType || !pathPrefix) return {};
-
-    try {
-      return {
-        'data-sanity': createDataAttribute({
-          ...createDataAttributeConfig,
-          id: documentId,
-          type: documentType,
-          path: `${pathPrefix}.image`,
-        }).toString(),
-      };
-    } catch {
-      return {};
-    }
-  };
 
   // Layout classes based on the selected layout
   const getLayoutClasses = () => {
@@ -116,14 +82,14 @@ const TextImage: React.FC<TextImageProps> = ({
     <>
       <div className={`${layoutClasses.container} ${className}`.trim()}>
         {/* Text Content */}
-        <div className={`w-full lg:w-1/2 ${layoutClasses.textOrder}`} {...getContentDataAttribute()}>
+        <div className={`w-full lg:w-1/2 ${layoutClasses.textOrder}`} {...contentDataAttribute}>
           <div className="prose prose-slate max-w-none">
             <PortableText value={content} components={components} />
           </div>
         </div>
 
         {/* Image */}
-        <div className={`w-full lg:w-1/2 ${layoutClasses.imageOrder}`} {...getImageDataAttribute()}>
+        <div className={`w-full lg:w-1/2 ${layoutClasses.imageOrder}`} {...imageDataAttribute}>
           <div
             className="relative cursor-pointer"
             onClick={handleImageClick}

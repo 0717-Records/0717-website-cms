@@ -1,23 +1,15 @@
 'use client';
 
 import React from 'react';
-import { stegaClean, createDataAttribute } from 'next-sanity';
-import { client } from '@/sanity/lib/client';
+import { stegaClean } from 'next-sanity';
 import type { BandcampWidget as BandcampWidgetType } from '@/sanity/types';
+import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
 
-interface BandcampWidgetProps extends BandcampWidgetType {
+interface BandcampWidgetProps extends BandcampWidgetType, Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
   className?: string;
-  documentId?: string;
-  documentType?: string;
   pathPrefix?: string;
 }
 
-const { projectId, dataset, stega } = client.config();
-export const createDataAttributeConfig = {
-  projectId,
-  dataset,
-  baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
-};
 
 
 const BandcampWidget: React.FC<BandcampWidgetProps> = ({
@@ -56,27 +48,14 @@ const BandcampWidget: React.FC<BandcampWidgetProps> = ({
   
 
   // Create data attribute for the widget container if Sanity props are provided
-  const getWidgetDataAttribute = () => {
-    if (!documentId || !documentType || !pathPrefix) return {};
-
-    try {
-      return {
-        'data-sanity': createDataAttribute({
-          ...createDataAttributeConfig,
-          id: documentId,
-          type: documentType,
-          path: pathPrefix,
-        }).toString(),
-      };
-    } catch {
-      return {};
-    }
-  };
+  const widgetDataAttribute = pathPrefix
+    ? createSanityDataAttribute(documentId, documentType, pathPrefix)
+    : {};
 
   return (
     <div 
       className={`flex justify-center ${className}`}
-      {...getWidgetDataAttribute()}
+      {...widgetDataAttribute}
     >
       <iframe
         src={embedUrl}

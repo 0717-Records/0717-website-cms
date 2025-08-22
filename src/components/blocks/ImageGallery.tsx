@@ -1,26 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import { stegaClean, createDataAttribute } from 'next-sanity';
+import { stegaClean } from 'next-sanity';
 import NextImage from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
-import { client } from '@/sanity/lib/client';
 import type { ImageGalleryBlock } from '@/types/blocks';
 import ImageGalleryModal from '../Modals/ImageGalleryModal';
+import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
 
-interface ImageGalleryProps extends ImageGalleryBlock {
+interface ImageGalleryProps extends ImageGalleryBlock, Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
   className?: string;
-  documentId?: string;
-  documentType?: string;
   pathPrefix?: string;
 }
 
-const { projectId, dataset, stega } = client.config();
-export const createDataAttributeConfig = {
-  projectId,
-  dataset,
-  baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
-};
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({
   columns = '3',
@@ -114,20 +106,9 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
 
   // Create data attribute for individual image caption if Sanity props are provided
   const getCaptionDataAttribute = (imageIndex: number) => {
-    if (!documentId || !documentType || !pathPrefix) return {};
-
-    try {
-      return {
-        'data-sanity': createDataAttribute({
-          ...createDataAttributeConfig,
-          id: documentId,
-          type: documentType,
-          path: `${pathPrefix}.images[${imageIndex}].caption`,
-        }).toString(),
-      };
-    } catch {
-      return {};
-    }
+    return pathPrefix
+      ? createSanityDataAttribute(documentId, documentType, `${pathPrefix}.images[${imageIndex}].caption`)
+      : {};
   };
 
   return (

@@ -1,23 +1,15 @@
 'use client';
 
 import React from 'react';
-import { stegaClean, createDataAttribute } from 'next-sanity';
-import { client } from '@/sanity/lib/client';
+import { stegaClean } from 'next-sanity';
 import type { SpotifyWidget as SpotifyWidgetType } from '@/sanity/types';
+import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
 
-interface SpotifyWidgetProps extends SpotifyWidgetType {
+interface SpotifyWidgetProps extends SpotifyWidgetType, Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
   className?: string;
-  documentId?: string;
-  documentType?: string;
   pathPrefix?: string;
 }
 
-const { projectId, dataset, stega } = client.config();
-export const createDataAttributeConfig = {
-  projectId,
-  dataset,
-  baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
-};
 
 const getSpotifyEmbedUrl = (url: string) => {
   // Spotify share URLs: https://open.spotify.com/track/ID or https://open.spotify.com/album/ID etc.
@@ -70,27 +62,14 @@ const SpotifyWidget: React.FC<SpotifyWidgetProps> = ({
   const heightClass = getHeightClass(cleanHeight);
 
   // Create data attribute for the widget container if Sanity props are provided
-  const getWidgetDataAttribute = () => {
-    if (!documentId || !documentType || !pathPrefix) return {};
-
-    try {
-      return {
-        'data-sanity': createDataAttribute({
-          ...createDataAttributeConfig,
-          id: documentId,
-          type: documentType,
-          path: pathPrefix,
-        }).toString(),
-      };
-    } catch {
-      return {};
-    }
-  };
+  const widgetDataAttribute = pathPrefix
+    ? createSanityDataAttribute(documentId, documentType, pathPrefix)
+    : {};
 
   return (
     <div 
       className={`w-full max-w-[500px] mx-auto ${className}`}
-      {...getWidgetDataAttribute()}
+      {...widgetDataAttribute}
     >
       <iframe
         src={embedUrl}

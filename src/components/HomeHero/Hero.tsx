@@ -2,16 +2,9 @@ import styles from './styles.module.css';
 import HeroImages from './HeroImages';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
-import { createDataAttribute } from 'next-sanity';
-import { client } from '@/sanity/lib/client';
 import EmbeddedCTAButton from '../blocks/EmbeddedCTAButton';
+import { createSanityDataAttribute } from '../../utils/sectionHelpers';
 
-const { projectId, dataset, stega } = client.config();
-const createDataAttributeConfig = {
-  projectId,
-  dataset,
-  baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
-};
 
 interface HeroProps {
   heroImage: NonNullable<HOME_PAGE_QUERYResult>['heroImage'];
@@ -97,21 +90,11 @@ const Hero = ({
       <div className='absolute inset-0 bg-gradient-to-t from-black from-20% to-transparent opacity-90 z-20' />
       <div
         className={`absolute z-[25] text-white space-y-4 ${getPositionClasses(heroContentPosition || 'center-center')}`}
-        data-sanity={createDataAttribute({
-          ...createDataAttributeConfig,
-          id: documentId,
-          type: documentType,
-          path: 'heroContentPosition',
-        }).toString()}>
+        {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
         {heroTitle && (
           <h1
             className='text-h4 sm:text-h2 font-bold'
-            data-sanity={createDataAttribute({
-              ...createDataAttributeConfig,
-              id: documentId,
-              type: documentType,
-              path: 'heroTitle',
-            }).toString()}>
+            {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
             {heroTitle}
           </h1>
         )}
@@ -119,22 +102,12 @@ const Hero = ({
           <div
             className='text-body-lg sm:text-body-xl text-white'
             style={{ whiteSpace: 'pre-line' }}
-            data-sanity={createDataAttribute({
-              ...createDataAttributeConfig,
-              id: documentId,
-              type: documentType,
-              path: 'heroSubtitle',
-            }).toString()}>
+            {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
             {typeof heroSubtitle === 'string' ? heroSubtitle : 'Please update subtitle in Sanity Studio'}
           </div>
         )}
         <div
-          data-sanity={createDataAttribute({
-            ...createDataAttributeConfig,
-            id: documentId,
-            type: documentType,
-            path: 'heroCallToAction',
-          }).toString()}>
+          {...createSanityDataAttribute(documentId, documentType, 'heroCallToAction')}>
           {renderCTA()}
         </div>
       </div>

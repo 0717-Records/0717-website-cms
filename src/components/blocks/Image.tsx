@@ -1,26 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import { stegaClean, createDataAttribute } from 'next-sanity';
+import { stegaClean } from 'next-sanity';
 import NextImage from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
-import { client } from '@/sanity/lib/client';
 import type { ImageBlock } from '@/types/blocks';
 import ImageModal from '../Modals/ImageModal';
+import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
 
-interface ImageProps extends ImageBlock {
+interface ImageProps extends ImageBlock, Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
   className?: string;
-  documentId?: string;
-  documentType?: string;
   pathPrefix?: string;
 }
 
-const { projectId, dataset, stega } = client.config();
-export const createDataAttributeConfig = {
-  projectId,
-  dataset,
-  baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
-};
 
 const Image: React.FC<ImageProps> = ({
   image,
@@ -64,22 +56,9 @@ const Image: React.FC<ImageProps> = ({
   };
 
   // Create data attribute for caption if Sanity props are provided
-  const getCaptionDataAttribute = () => {
-    if (!documentId || !documentType || !pathPrefix) return {};
-
-    try {
-      return {
-        'data-sanity': createDataAttribute({
-          ...createDataAttributeConfig,
-          id: documentId,
-          type: documentType,
-          path: `${pathPrefix}.caption`,
-        }).toString(),
-      };
-    } catch {
-      return {};
-    }
-  };
+  const captionDataAttribute = pathPrefix
+    ? createSanityDataAttribute(documentId, documentType, `${pathPrefix}.caption`)
+    : {};
 
   return (
     <>
@@ -108,7 +87,7 @@ const Image: React.FC<ImageProps> = ({
         {cleanCaption && (
           <figcaption
             className='mt-2 text-body-sm text-gray-600 text-center italic'
-            {...getCaptionDataAttribute()}>
+            {...captionDataAttribute}>
             {cleanCaption}
           </figcaption>
         )}

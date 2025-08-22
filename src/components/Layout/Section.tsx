@@ -1,22 +1,24 @@
 import React from 'react';
 import Heading from '../Typography/Heading';
-import { createDataAttribute, stegaClean } from 'next-sanity';
+import { stegaClean } from 'next-sanity';
 import { usePageSectionContext, useTextAlignmentContext } from './PageSection';
+import {
+  createSanityDataAttribute,
+  getTextAlignClass,
+  resolveTextAlignment,
+  type SanityLiveEditingProps,
+} from '../../utils/sectionHelpers';
 
 // Import the TextAlignmentContext to provide it to children
 import { TextAlignmentContext } from './PageSection';
 
-interface SectionProps {
+interface SectionProps extends SanityLiveEditingProps {
   children: React.ReactNode;
   className?: string;
   title?: string;
   nestingLevel?: number;
   omitBottomPadding?: boolean;
   textAlign?: 'inherit' | 'left' | 'center' | 'right';
-  // Sanity Live editing props
-  documentId?: string;
-  documentType?: string;
-  titlePath?: string;
 }
 
 const Section = ({
@@ -43,44 +45,11 @@ const Section = ({
     const level = Math.min(Math.max(baseLevel + (nestingLevel - 1), 1), 6);
     return `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   };
-  // Create data attribute for title if Sanity props are provided
-  const getTitleDataAttribute = () => {
-    if (!documentId || !documentType || !titlePath) return {};
-
-    try {
-      return {
-        'data-sanity': createDataAttribute({
-          projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-          dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-          baseUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL || '',
-          id: documentId,
-          type: documentType,
-          path: titlePath,
-        }).toString(),
-      };
-    } catch {
-      return {};
-    }
-  };
-
-  // Clean the textAlign value to remove Sanity's stega encoding
-  const cleanTextAlign = stegaClean(textAlign) || 'inherit';
+  // Create data attribute for Sanity live editing
+  const titleDataAttribute = createSanityDataAttribute(documentId, documentType, titlePath);
 
   // Determine the effective text alignment
-  const effectiveTextAlign = cleanTextAlign === 'inherit' ? parentTextAlign : cleanTextAlign;
-
-  const getTextAlignClass = (align: 'left' | 'center' | 'right') => {
-    switch (align) {
-      case 'left':
-        return 'text-left';
-      case 'center':
-        return 'text-center';
-      case 'right':
-        return 'text-right';
-      default:
-        return 'text-center';
-    }
-  };
+  const effectiveTextAlign = resolveTextAlignment(textAlign || 'inherit', parentTextAlign);
 
   const paddingClasses = omitBottomPadding ? '' : 'pb-8 md:pb-12';
 
@@ -95,7 +64,7 @@ const Section = ({
                 level={getHeadingLevel()}
                 className='mb-4'
                 showMargin={false}
-                {...getTitleDataAttribute()}>
+                {...titleDataAttribute}>
                 {stegaClean(title)}
               </Heading>
             </div>

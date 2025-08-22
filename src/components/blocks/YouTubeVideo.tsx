@@ -1,23 +1,13 @@
 'use client';
 
 import React from 'react';
-import { stegaClean, createDataAttribute } from 'next-sanity';
-import { client } from '@/sanity/lib/client';
+import { stegaClean } from 'next-sanity';
 import type { YouTubeVideo as YouTubeVideoType } from '@/sanity/types';
 
 interface YouTubeVideoProps extends YouTubeVideoType {
   className?: string;
-  documentId?: string;
-  documentType?: string;
-  pathPrefix?: string;
 }
 
-const { projectId, dataset, stega } = client.config();
-export const createDataAttributeConfig = {
-  projectId,
-  dataset,
-  baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
-};
 
 const getEmbedUrl = (url: string) => {
   const regex =
@@ -29,9 +19,6 @@ const getEmbedUrl = (url: string) => {
 const YouTubeVideo: React.FC<YouTubeVideoProps> = ({
   url,
   className = '',
-  documentId,
-  documentType,
-  pathPrefix,
 }) => {
   const cleanUrl = stegaClean(url);
   

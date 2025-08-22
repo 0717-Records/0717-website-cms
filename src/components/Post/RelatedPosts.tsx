@@ -2,17 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { createDataAttribute } from 'next-sanity';
 import type { POST_QUERYResult } from '@/sanity/types';
-import { client } from '@/sanity/lib/client';
 import { useOptimistic } from 'react';
+import { createSanityDataAttribute } from '../../utils/sectionHelpers';
 
-const { projectId, dataset, stega } = client.config();
-export const createDataAttributeConfig = {
-  projectId,
-  dataset,
-  baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
-};
 
 const RelatedPosts = ({
   relatedPosts,
@@ -50,22 +43,12 @@ const RelatedPosts = ({
       <div className='not-prose text-balance'>
         <ul
           className='flex flex-col sm:flex-row gap-0.5'
-          data-sanity={createDataAttribute({
-            ...createDataAttributeConfig,
-            id: documentId,
-            type: documentType,
-            path: 'relatedPosts',
-          }).toString()}>
+          {...createSanityDataAttribute(documentId, documentType, 'relatedPosts')}>
           {posts.map((post) => (
             <li
               key={post._id}
               className='p-4 bg-blue-50 sm:w-1/3 flex-shrink-0'
-              data-sanity={createDataAttribute({
-                ...createDataAttributeConfig,
-                id: documentId,
-                type: documentType,
-                path: `relatedPosts[_ref=="${post._id}"]`,
-              }).toString()}>
+              {...createSanityDataAttribute(documentId, documentType, `relatedPosts[_ref=="${post._id}"]`)}>
               <Link href={`/posts/${post?.slug?.current}`}>{post.title}</Link>
             </li>
           ))}
