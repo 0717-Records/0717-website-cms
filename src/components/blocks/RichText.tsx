@@ -3,6 +3,7 @@ import { PortableText, stegaClean } from 'next-sanity';
 import { components } from '@/sanity/portableTextComponents';
 import type { RichTextBlock } from '@/types/blocks';
 import { useTextAlignmentContext } from '../Layout/PageSection';
+import { getTextAlignClass, resolveTextAlignment, type TextAlignment } from '../../utils/sectionHelpers';
 
 const RichText = ({ content, textAlign = 'inherit', isCallout = false }: RichTextBlock) => {
   const { textAlign: parentTextAlign } = useTextAlignmentContext();
@@ -13,30 +14,17 @@ const RichText = ({ content, textAlign = 'inherit', isCallout = false }: RichTex
 
   // Determine the effective text alignment
   // For callouts, default to center alignment unless explicitly set
-  const effectiveTextAlign =
-    cleanIsCallout && cleanTextAlign === 'inherit'
-      ? 'center'
-      : cleanTextAlign === 'inherit'
-        ? parentTextAlign
-        : cleanTextAlign;
-
-  const getTextAlignClass = (align: 'left' | 'center' | 'right') => {
-    switch (align) {
-      case 'left':
-        return 'text-left';
-      case 'center':
-        return 'text-center';
-      case 'right':
-        return 'text-right';
-      default:
-        return 'text-center';
-    }
-  };
+  const fallbackAlignment: TextAlignment = cleanIsCallout ? 'center' : parentTextAlign;
+  const effectiveTextAlign = resolveTextAlignment(
+    cleanTextAlign as 'inherit' | 'left' | 'center' | 'right', 
+    parentTextAlign, 
+    fallbackAlignment
+  );
   if (!content) {
     return null;
   }
 
-  const getCustomStyles = (align: 'left' | 'center' | 'right') => {
+  const getCustomStyles = (align: TextAlignment) => {
     if (align === 'center') {
       return {
         '--list-style-position': 'inside',
@@ -45,7 +33,7 @@ const RichText = ({ content, textAlign = 'inherit', isCallout = false }: RichTex
     return {};
   };
 
-  const getListStyleClass = (align: 'left' | 'center' | 'right') => {
+  const getListStyleClass = (align: TextAlignment) => {
     if (align === 'center') {
       return '[&_ul]:list-inside [&_ol]:list-inside [&_ul]:pl-0 [&_ol]:pl-0';
     }
