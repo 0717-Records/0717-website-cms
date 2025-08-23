@@ -1,6 +1,5 @@
 import React from 'react';
 import PageBuilder from '@/components/PageBuilder';
-import { stegaClean } from 'next-sanity';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 import Heading from '../Typography/Heading/Heading';
 
@@ -38,7 +37,7 @@ export default function CollabMainContent({
             Biography
           </Heading>
           <p className='text-body-lg text-gray-700 leading-relaxed whitespace-pre-line'>
-            {stegaClean(bio)}
+            {bio}
           </p>
         </section>
       )}
@@ -53,7 +52,7 @@ export default function CollabMainContent({
                   level='h2'
                   className='text-h2 font-bold text-gray-900 mb-6'
                   showUnderline={true}>
-                  {stegaClean(section.title)}
+                  {section.title}
                 </Heading>
               )}
               {!!(section.content && Array.isArray(section.content)) && (

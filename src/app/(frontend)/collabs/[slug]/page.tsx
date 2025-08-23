@@ -29,7 +29,12 @@ export default async function CollabPage({ params }: CollabPageProps) {
   return (
     <>
       {/* Hero Section */}
-      <CollabHero name={collab.name} heroImage={collab.heroImage} />
+      <CollabHero 
+        name={collab.name} 
+        heroImage={collab.heroImage}
+        documentId={collab._id}
+        documentType={collab._type}
+      />
 
       {/* Short Description */}
       <CollabShortDescription shortDescription={collab.shortDescription} />
@@ -40,6 +45,8 @@ export default async function CollabPage({ params }: CollabPageProps) {
           genre={collab.genre}
           location={collab.location}
           previewImage={collab.previewImage}
+          documentId={collab._id}
+          documentType={collab._type}
         />
       </div>
 
@@ -65,6 +72,8 @@ export default async function CollabPage({ params }: CollabPageProps) {
                 genre={collab.genre}
                 location={collab.location}
                 previewImage={collab.previewImage}
+                documentId={collab._id}
+                documentType={collab._type}
               />
             </div>
 
