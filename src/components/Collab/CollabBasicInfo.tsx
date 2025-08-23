@@ -36,7 +36,7 @@ export default function CollabBasicInfo({ genre, location, previewImage }: Colla
         </div>
       </div>
 
-      <h3 className='text-h4 font-bold text-gray-900 mb-4 text-center'>Info</h3>
+      <h3 className='sr-only'>General Info</h3>
       <div className='space-y-3'>
         {genre && (
           <div>
