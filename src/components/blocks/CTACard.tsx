@@ -5,6 +5,7 @@ import Icon from './Icon';
 import EmbeddedCTAButton from './EmbeddedCTAButton';
 import CTAEmailButtonComponent from './CTAEmailButton';
 import CardContainer from '../UI/CardContainer';
+import Heading from '../Typography/Heading/Heading';
 
 interface CTACardProps extends Omit<CTACardBlock, '_type' | '_key'> {
   className?: string;
@@ -47,14 +48,16 @@ const CTACard = ({
 
       {/* Title */}
       {cleanTitle && (
-        <div className='text-h3 heading-underline-h3 font-semibold text-gray-900'>
+        <Heading level='h3' showUnderline asDiv>
           {cleanTitle}
-        </div>
+        </Heading>
       )}
 
       {/* Body Text */}
       {cleanBodyText && (
-        <p className='text-body-xl text-gray-600 leading-relaxed whitespace-pre-line'>{cleanBodyText}</p>
+        <p className='text-body-xl text-gray-600 leading-relaxed whitespace-pre-line'>
+          {cleanBodyText}
+        </p>
       )}
 
       {/* Button */}
@@ -70,9 +73,7 @@ const CTACard = ({
               externalUrl={externalUrl}
             />
           )}
-          {buttonType === 'email' && (
-            <CTAEmailButtonComponent email={email} />
-          )}
+          {buttonType === 'email' && <CTAEmailButtonComponent email={email} />}
         </div>
       )}
     </CardContainer>

@@ -9,6 +9,7 @@ interface HeadingProps {
   className?: string;
   showUnderline?: boolean;
   showMargin?: boolean;
+  asDiv?: boolean;
 }
 
 const Heading = ({
@@ -17,6 +18,7 @@ const Heading = ({
   className = '',
   showUnderline = false,
   showMargin = true,
+  asDiv = false,
 }: HeadingProps) => {
   // Get the text utility class for the heading level
   const getTextClass = (level: HeadingLevel) => {
@@ -51,7 +53,7 @@ const Heading = ({
   const marginClass = showMargin ? 'mb-4' : '';
   const combinedClassName = `${textClass} ${underlineClass} ${marginClass} ${className}`.trim();
 
-  const HeadingTag = level;
+  const HeadingTag = asDiv ? 'div' : level;
 
   return <HeadingTag className={combinedClassName}>{children}</HeadingTag>;
 };
