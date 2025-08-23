@@ -2,11 +2,22 @@ import React from 'react';
 import { PortableText, stegaClean } from 'next-sanity';
 import { components } from '@/sanity/portableTextComponents';
 import type { RichTextBlock } from '@/types/blocks';
-import { useTextAlignmentContext } from '../Layout/PageSection';
-import { getTextAlignClass, resolveTextAlignment, type TextAlignment } from '../../utils/sectionHelpers';
+import {
+  getTextAlignClass,
+  resolveTextAlignment,
+  type TextAlignment,
+} from '../../utils/sectionHelpers';
 
-const RichText = ({ content, textAlign = 'inherit', isCallout = false }: RichTextBlock) => {
-  const { textAlign: parentTextAlign } = useTextAlignmentContext();
+interface RichTextProps extends RichTextBlock {
+  alignment?: 'left' | 'center' | 'right';
+}
+
+const RichText = ({
+  content,
+  textAlign = 'inherit',
+  isCallout = false,
+  alignment = 'center',
+}: RichTextProps) => {
 
   // Clean the values to remove Sanity's stega encoding
   const cleanTextAlign = stegaClean(textAlign) || 'inherit';
@@ -14,10 +25,10 @@ const RichText = ({ content, textAlign = 'inherit', isCallout = false }: RichTex
 
   // Determine the effective text alignment
   // For callouts, default to center alignment unless explicitly set
-  const fallbackAlignment: TextAlignment = cleanIsCallout ? 'center' : parentTextAlign;
+  const fallbackAlignment: TextAlignment = cleanIsCallout ? 'center' : alignment;
   const effectiveTextAlign = resolveTextAlignment(
-    cleanTextAlign as 'inherit' | 'left' | 'center' | 'right', 
-    parentTextAlign, 
+    cleanTextAlign as 'inherit' | 'left' | 'center' | 'right',
+    alignment,
     fallbackAlignment
   );
   if (!content) {

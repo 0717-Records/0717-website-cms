@@ -220,14 +220,14 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           case 'richText':
             return (
               <BlockWrapper key={block._key}>
-                <RichText {...block} />
+                <RichText {...block} alignment={alignment} />
               </BlockWrapper>
             );
 
           case 'quote':
             return (
               <BlockWrapper key={block._key}>
-                <Quote {...block} />
+                <Quote {...block} alignment={alignment} />
               </BlockWrapper>
             );
 
