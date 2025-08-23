@@ -16,7 +16,8 @@ interface CollabBasicInfoProps {
 export default function CollabBasicInfo({ genre, location, previewImage, documentId, documentType }: CollabBasicInfoProps) {
   // Process image data
   const imageData = previewImage as { asset?: { _ref: string; _type: string }; alt?: string };
-  const imageUrl = imageData?.asset ? urlFor(imageData.asset).width(120).height(120).url() : null;
+  // Request 3x size for crisp display on high-DPI screens (max container is 280px, so request 840px)
+  const imageUrl = imageData?.asset ? urlFor(imageData.asset).width(840).height(840).quality(90).url() : null;
 
   return (
     <aside className='bg-white border border-gray-200 rounded-lg p-6'>
@@ -31,7 +32,7 @@ export default function CollabBasicInfo({ genre, location, previewImage, documen
               src={imageUrl}
               alt={imageData?.alt || 'Collaboration profile'}
               fill
-              sizes='80px'
+              sizes='(max-width: 768px) 75vw, (max-width: 1024px) 280px, 280px'
               className='object-cover'
             />
           ) : (
