@@ -34,6 +34,15 @@ export default async function CollabPage({ params }: CollabPageProps) {
       {/* Short Description */}
       <CollabShortDescription shortDescription={collab.shortDescription} />
 
+      {/* Mobile Basic Info - Only visible on mobile, positioned between subtitle and bio */}
+      <div className='lg:hidden container mx-auto px-4 md:px-8 pb-8'>
+        <CollabBasicInfo
+          genre={collab.genre}
+          location={collab.location}
+          previewImage={collab.previewImage}
+        />
+      </div>
+
       {/* Two Column Layout */}
       <div className='container mx-auto px-4 md:px-8 pb-16'>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12'>
@@ -50,12 +59,14 @@ export default async function CollabPage({ params }: CollabPageProps) {
 
           {/* Right Column - Sidebar Content (1/3 width) */}
           <div className='space-y-6'>
-            {/* Basic Info */}
-            <CollabBasicInfo
-              genre={collab.genre}
-              location={collab.location}
-              previewImage={collab.previewImage}
-            />
+            {/* Basic Info - Only visible on desktop */}
+            <div className='hidden lg:block'>
+              <CollabBasicInfo
+                genre={collab.genre}
+                location={collab.location}
+                previewImage={collab.previewImage}
+              />
+            </div>
 
             {/* Side Content Blocks */}
             <CollabSideContent sideContent={collab.sideContent} companyEmail={companyEmail} />
