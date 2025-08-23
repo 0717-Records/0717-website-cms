@@ -3,7 +3,7 @@ import styles from './Heading.module.css';
 
 type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-interface HeadingProps {
+interface HeadingProps extends React.HTMLAttributes<HTMLElement> {
   level: HeadingLevel;
   children: React.ReactNode;
   className?: string;
@@ -19,6 +19,7 @@ const Heading = ({
   showUnderline = false,
   showMargin = true,
   asDiv = false,
+  ...rest
 }: HeadingProps) => {
   // Get the text utility class for the heading level
   const getTextClass = (level: HeadingLevel) => {
@@ -55,7 +56,7 @@ const Heading = ({
 
   const HeadingTag = asDiv ? 'div' : level;
 
-  return <HeadingTag className={combinedClassName}>{children}</HeadingTag>;
+  return <HeadingTag className={combinedClassName} {...rest}>{children}</HeadingTag>;
 };
 
 export default Heading;
