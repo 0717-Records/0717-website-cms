@@ -2,6 +2,7 @@ import React from 'react';
 import PageBuilder from '@/components/PageBuilder';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 import Heading from '../Typography/Heading/Heading';
+import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 
 // Type definitions
 interface CollabPageSection {
@@ -51,7 +52,8 @@ export default function CollabMainContent({
                 <Heading
                   level='h2'
                   className='text-h2 font-bold text-gray-900 mb-6'
-                  showUnderline={true}>
+                  showUnderline={true}
+                  {...createSanityDataAttribute(collabId, collabType, `mainContent[_key=="${section._key}"].title`)}>
                   {section.title}
                 </Heading>
               )}

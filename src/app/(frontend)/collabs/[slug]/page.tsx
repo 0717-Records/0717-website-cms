@@ -78,7 +78,12 @@ export default async function CollabPage({ params }: CollabPageProps) {
             </div>
 
             {/* Side Content Blocks */}
-            <CollabSideContent sideContent={collab.sideContent} companyEmail={companyEmail} />
+            <CollabSideContent 
+              sideContent={collab.sideContent} 
+              companyEmail={companyEmail}
+              documentId={collab._id}
+              documentType={collab._type}
+            />
           </div>
         </div>
       </div>

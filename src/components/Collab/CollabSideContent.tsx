@@ -8,6 +8,7 @@ import { stegaClean } from 'next-sanity';
 import type { CTACalloutLinkBlock } from '@/types/blocks';
 import type { RichText as SanityRichText } from '@/sanity/types';
 import Heading from '../Typography/Heading/Heading';
+import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 
 // Type definitions
 interface CollabCTABlock {
@@ -28,9 +29,11 @@ interface CollabSideContentBlock {
 interface CollabSideContentProps {
   sideContent: CollabSideContentBlock[] | null;
   companyEmail?: string;
+  documentId?: string;
+  documentType?: string;
 }
 
-export default function CollabSideContent({ sideContent, companyEmail }: CollabSideContentProps) {
+export default function CollabSideContent({ sideContent, companyEmail, documentId, documentType }: CollabSideContentProps) {
   if (!sideContent || sideContent.length === 0) {
     return null;
   }
@@ -40,7 +43,6 @@ export default function CollabSideContent({ sideContent, companyEmail }: CollabS
       {(sideContent as CollabSideContentBlock[]).map(
         (sideBlock: CollabSideContentBlock, index: number) => {
           const isHighlighted = stegaClean(sideBlock.style) === 'highlighted';
-          const cleanTitle = stegaClean(sideBlock.title);
 
           return (
             <aside
@@ -53,7 +55,15 @@ export default function CollabSideContent({ sideContent, companyEmail }: CollabS
                   : 'bg-white border border-gray-200'
               }
             `.trim()}>
-              {cleanTitle && <Heading level='h3' className='text-h4 font-bold text-gray-900 mb-4'>{cleanTitle}</Heading>}
+              {sideBlock.title && (
+                <Heading 
+                  level='h3' 
+                  className='text-h4 font-bold text-gray-900 mb-4'
+                  {...createSanityDataAttribute(documentId, documentType, `sideContent[_key=="${sideBlock._key}"].title`)}
+                >
+                  {sideBlock.title}
+                </Heading>
+              )}
 
               {!!(sideBlock.richText && Array.isArray(sideBlock.richText)) && (
                 <div className='mb-4'>
