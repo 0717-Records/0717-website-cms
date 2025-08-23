@@ -18,10 +18,7 @@ interface CollabPageProps {
 
 export default async function CollabPage({ params }: CollabPageProps) {
   const { slug } = await params;
-  const [collab, siteSettings] = await Promise.all([
-    getCollab(slug),
-    getSiteSettings(),
-  ]);
+  const [collab, siteSettings] = await Promise.all([getCollab(slug), getSiteSettings()]);
 
   if (!collab) {
     notFound();
@@ -32,10 +29,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
   return (
     <>
       {/* Hero Section */}
-      <CollabHero 
-        name={collab.name}
-        heroImage={collab.heroImage}
-      />
+      <CollabHero name={collab.name} heroImage={collab.heroImage} />
 
       {/* Short Description */}
       <CollabShortDescription shortDescription={collab.shortDescription} />
@@ -57,17 +51,14 @@ export default async function CollabPage({ params }: CollabPageProps) {
           {/* Right Column - Sidebar Content (1/3 width) */}
           <div className='space-y-6'>
             {/* Basic Info */}
-            <CollabBasicInfo 
+            <CollabBasicInfo
               genre={collab.genre}
               location={collab.location}
               previewImage={collab.previewImage}
             />
 
             {/* Side Content Blocks */}
-            <CollabSideContent
-              sideContent={collab.sideContent}
-              companyEmail={companyEmail}
-            />
+            <CollabSideContent sideContent={collab.sideContent} companyEmail={companyEmail} />
           </div>
         </div>
       </div>
