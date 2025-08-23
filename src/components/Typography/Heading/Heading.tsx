@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Heading.module.css';
 
 type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -14,7 +15,7 @@ const Heading = ({
   level,
   children,
   className = '',
-  showUnderline = true,
+  showUnderline = false,
   showMargin = true,
 }: HeadingProps) => {
   // Get the text utility class for the heading level
@@ -30,17 +31,17 @@ const Heading = ({
     return textClasses[level];
   };
 
-  // Get the underline class for the heading level (h1 doesn't get underline)
+  // Get the underline class for the heading level
   const getUnderlineClass = (level: HeadingLevel, show: boolean) => {
-    if (!show || level === 'h1') return '';
+    if (!show) return '';
 
     const underlineClasses = {
-      h1: '', // h1 never gets underline
-      h2: 'heading-underline-h2',
-      h3: 'heading-underline-h3',
-      h4: 'heading-underline-h4',
-      h5: 'heading-underline-h5',
-      h6: 'heading-underline-h6',
+      h1: styles.underlineH1,
+      h2: styles.underlineH2,
+      h3: styles.underlineH3,
+      h4: styles.underlineH4,
+      h5: styles.underlineH5,
+      h6: styles.underlineH6,
     };
     return underlineClasses[level];
   };

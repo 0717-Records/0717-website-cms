@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Heading from '../Typography/Heading/Heading';
 
 interface PageHeroProps {
   title: string;
@@ -63,10 +64,9 @@ const PageHero = ({
 
       {/* Content */}
       <div className='relative z-[25] text-white text-center px-4'>
-        <h1 className='text-h5 md:text-h3 font-bold mb-2'>
+        <Heading level='h1' showUnderline className='text-h5 md:text-h3 font-bold mb-2'>
           {title}
-          <div className='w-20 h-1 bg-yellow-400 mx-auto mt-3'></div>
-        </h1>
+        </Heading>
       </div>
     </section>
   );

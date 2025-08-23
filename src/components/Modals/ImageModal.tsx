@@ -3,6 +3,7 @@
 import React from 'react';
 import NextImage from 'next/image';
 import Modal from '@/components/UI/Modal';
+import Heading from '../Typography/Heading/Heading';
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -27,9 +28,9 @@ const ImageModal: React.FC<ImageModalProps> = ({
       aria-labelledby="image-modal-title"
       aria-describedby="image-modal-description">
       <div className="flex flex-col items-center justify-center h-full max-h-[95svh] overflow-hidden">
-        <h2 id="image-modal-title" className="sr-only">
+        <Heading level='h2' id="image-modal-title" className="sr-only">
           Full-screen image view
-        </h2>
+        </Heading>
         <div id="image-modal-description" className="sr-only">
           {imageAlt}
         </div>

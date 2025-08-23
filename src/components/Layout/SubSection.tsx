@@ -1,5 +1,5 @@
 import React from 'react';
-import Heading from '../Typography/Heading';
+import Heading from '../Typography/Heading/Heading';
 import { stegaClean } from 'next-sanity';
 import { useTextAlignmentContext } from './PageSection';
 import {

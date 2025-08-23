@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { stegaClean } from 'next-sanity';
 import { urlFor } from '@/sanity/lib/image';
 import { FaMusic, FaMapMarkerAlt, FaUser } from 'react-icons/fa';
+import Heading from '../Typography/Heading/Heading';
 
 interface CollabBasicInfoProps {
   genre?: string | null;
@@ -36,7 +37,7 @@ export default function CollabBasicInfo({ genre, location, previewImage }: Colla
         </div>
       </div>
 
-      <h3 className='sr-only'>General Info</h3>
+      <Heading level='h3' className='sr-only'>General Info</Heading>
       <div className='space-y-3'>
         {genre && (
           <div>

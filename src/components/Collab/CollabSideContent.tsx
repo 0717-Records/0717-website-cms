@@ -7,6 +7,7 @@ import CTAEmailButton from '@/components/blocks/CTAEmailButton';
 import { stegaClean } from 'next-sanity';
 import type { CTACalloutLinkBlock } from '@/types/blocks';
 import type { RichText as SanityRichText } from '@/sanity/types';
+import Heading from '../Typography/Heading/Heading';
 
 // Type definitions
 interface CollabCTABlock {
@@ -52,7 +53,7 @@ export default function CollabSideContent({ sideContent, companyEmail }: CollabS
                   : 'bg-white border border-gray-200'
               }
             `.trim()}>
-              {cleanTitle && <h3 className='text-h4 font-bold text-gray-900 mb-4'>{cleanTitle}</h3>}
+              {cleanTitle && <Heading level='h3' className='text-h4 font-bold text-gray-900 mb-4'>{cleanTitle}</Heading>}
 
               {!!(sideBlock.richText && Array.isArray(sideBlock.richText)) && (
                 <div className='mb-4'>

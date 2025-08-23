@@ -4,6 +4,7 @@ import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import EmbeddedCTAButton from '../blocks/EmbeddedCTAButton';
 import { createSanityDataAttribute } from '../../utils/sectionHelpers';
+import Heading from '../Typography/Heading/Heading';
 
 
 interface HeroProps {
@@ -92,11 +93,12 @@ const Hero = ({
         className={`absolute z-[25] text-white space-y-4 ${getPositionClasses(heroContentPosition || 'center-center')}`}
         {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
         {heroTitle && (
-          <h1
+          <Heading
+            level='h1'
             className='text-h4 sm:text-h2 font-bold'
             {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
             {heroTitle}
-          </h1>
+          </Heading>
         )}
         {heroSubtitle && (
           <div

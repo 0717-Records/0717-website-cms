@@ -6,6 +6,7 @@ import NextImage from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { ImageGalleryBlock } from '@/types/blocks';
 import Modal from '@/components/UI/Modal';
+import Heading from '../Typography/Heading/Heading';
 
 interface ImageGalleryModalProps {
   isOpen: boolean;
@@ -57,9 +58,9 @@ const ImageGalleryModal: React.FC<ImageGalleryModalProps> = ({
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
         tabIndex={-1}>
-        <h2 id='gallery-modal-title' className='sr-only'>
+        <Heading level='h2' id='gallery-modal-title' className='sr-only'>
           Image gallery viewer
-        </h2>
+        </Heading>
         <div id='gallery-modal-description' className='sr-only'>
           Image {currentImageIndex + 1} of {images.length}: {currentImageAlt}
         </div>

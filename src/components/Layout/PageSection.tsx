@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext } from 'react';
-import Heading from '../Typography/Heading';
+import Heading from '../Typography/Heading/Heading';
 import Divider from '../UI/Divider';
 import { stegaClean } from 'next-sanity';
 import {
@@ -59,7 +59,12 @@ const PageSection = ({
           <div className='container max-w-[60rem] mx-auto px-8'>
             {/* Title is now always present since it's required */}
             <div className='text-center'>
-              <Heading level='h2' className='mb-6' showMargin={false} {...titleDataAttribute}>
+              <Heading
+                level='h2'
+                showUnderline
+                className='mb-6'
+                showMargin={false}
+                {...titleDataAttribute}>
                 {stegaClean(title)}
               </Heading>
               {subtitle && (

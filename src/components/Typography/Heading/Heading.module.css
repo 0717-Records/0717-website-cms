@@ -1,0 +1,134 @@
+/* Gradient Underline Utilities for Headings */
+.underlineH1 {
+  position: relative;
+  display: inline-block;
+}
+
+.underlineH1::after {
+  content: '';
+  position: absolute;
+  bottom: -0.375rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5rem;
+  height: 5px;
+  background: var(--background-image-brand-gradient);
+  border-radius: 3px;
+}
+
+@media (min-width: 768px) {
+  .underlineH1::after {
+    bottom: -0.5rem;
+    height: 6px;
+    width: 5.5rem;
+  }
+}
+
+.underlineH2 {
+  position: relative;
+  display: inline-block;
+}
+
+.underlineH2::after {
+  content: '';
+  position: absolute;
+  bottom: -0.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4rem;
+  height: 4px;
+  background: var(--background-image-brand-gradient);
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .underlineH2::after {
+    bottom: -0.375rem;
+    height: 5px;
+    width: 4rem;
+  }
+}
+
+.underlineH3 {
+  position: relative;
+  display: inline-block;
+}
+
+.underlineH3::after {
+  content: '';
+  position: absolute;
+  bottom: -0.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3.5rem;
+  height: 3px;
+  background: var(--background-image-brand-gradient);
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .underlineH3::after {
+    bottom: -0.25rem;
+    height: 4px;
+    width: 3.5rem;
+  }
+}
+
+.underlineH4 {
+  position: relative;
+  display: inline-block;
+}
+
+.underlineH4::after {
+  content: '';
+  position: absolute;
+  bottom: -0.125rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 3px;
+  background: var(--background-image-brand-gradient);
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .underlineH4::after {
+    bottom: -0.25rem;
+    height: 3px;
+    width: 3rem;
+  }
+}
+
+.underlineH5 {
+  position: relative;
+  display: inline-block;
+}
+
+.underlineH5::after {
+  content: '';
+  position: absolute;
+  bottom: -0.125rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.5rem;
+  height: 2px;
+  background: var(--background-image-brand-gradient);
+  border-radius: 1px;
+}
+
+.underlineH6 {
+  position: relative;
+  display: inline-block;
+}
+
+.underlineH6::after {
+  content: '';
+  position: absolute;
+  bottom: -0.125rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rem;
+  height: 2px;
+  background: var(--background-image-brand-gradient);
+  border-radius: 1px;
+}

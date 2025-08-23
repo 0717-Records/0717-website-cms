@@ -2,6 +2,7 @@ import React from 'react';
 import PageBuilder from '@/components/PageBuilder';
 import { stegaClean } from 'next-sanity';
 import type { PAGE_QUERYResult } from '@/sanity/types';
+import Heading from '../Typography/Heading/Heading';
 
 // Type definitions
 interface CollabPageSection {
@@ -33,7 +34,7 @@ export default function CollabMainContent({
       {/* Bio Section */}
       {bio && (
         <section className='bg-white border border-gray-200 rounded-lg p-6 md:p-8'>
-          <h2 className='text-h2 font-bold text-gray-900 mb-6'>Biography</h2>
+          <Heading level='h2' className='text-h2 font-bold text-gray-900 mb-6' showUnderline={true}>Biography</Heading>
           <p className='text-body-lg text-gray-700 leading-relaxed whitespace-pre-line'>
             {stegaClean(bio)}
           </p>
@@ -48,9 +49,9 @@ export default function CollabMainContent({
               key={section._key || index}
               className='bg-white border border-gray-200 rounded-lg p-6 md:p-8'>
               {section.title && (
-                <h2 className='text-h2 font-bold text-gray-900 mb-6'>
+                <Heading level='h2' className='text-h2 font-bold text-gray-900 mb-6' showUnderline={true}>
                   {stegaClean(section.title)}
-                </h2>
+                </Heading>
               )}
               {!!(section.content && Array.isArray(section.content)) && (
                 <PageBuilder

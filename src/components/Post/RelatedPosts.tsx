@@ -5,6 +5,7 @@ import Link from 'next/link';
 import type { POST_QUERYResult } from '@/sanity/types';
 import { useOptimistic } from 'react';
 import { createSanityDataAttribute } from '../../utils/sectionHelpers';
+import Heading from '../Typography/Heading/Heading';
 
 
 const RelatedPosts = ({
@@ -39,7 +40,7 @@ const RelatedPosts = ({
   }
   return (
     <aside className='border-t'>
-      <h2>Related Posts</h2>
+      <Heading level='h2' showUnderline={true}>Related Posts</Heading>
       <div className='not-prose text-balance'>
         <ul
           className='flex flex-col sm:flex-row gap-0.5'
