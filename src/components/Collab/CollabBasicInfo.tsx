@@ -20,7 +20,7 @@ export default function CollabBasicInfo({ genre, location, previewImage }: Colla
     <aside className='bg-white border border-gray-200 rounded-lg p-6'>
       {/* Profile Image */}
       <div className='flex justify-center mb-6'>
-        <div className='relative w-full h-full aspect-square rounded-full overflow-hidden'>
+        <div className='relative w-[75%] h-[75%] aspect-square rounded-full overflow-hidden'>
           {imageUrl ? (
             <Image
               src={imageUrl}
@@ -37,12 +37,14 @@ export default function CollabBasicInfo({ genre, location, previewImage }: Colla
         </div>
       </div>
 
-      <Heading level='h3' className='sr-only'>General Info</Heading>
+      <Heading level='h3' className='sr-only'>
+        General Info
+      </Heading>
       <div className='space-y-3'>
         {genre && (
           <div>
-            <dt className='text-body-sm font-medium text-gray-500'>Genre</dt>
-            <dd className='text-body-base text-gray-900 flex items-center space-x-3'>
+            <dt className='text-body-base font-medium text-gray-500'>Genre</dt>
+            <dd className='text-body-lg text-gray-900 flex items-center space-x-3'>
               <FaMusic className='text-brand-secondary text-lg flex-shrink-0' />
               <span>{stegaClean(genre)}</span>
             </dd>
@@ -50,8 +52,8 @@ export default function CollabBasicInfo({ genre, location, previewImage }: Colla
         )}
         {location && (
           <div>
-            <dt className='text-body-sm font-medium text-gray-500'>Location</dt>
-            <dd className='text-body-base text-gray-900 flex items-center space-x-3'>
+            <dt className='text-body-base font-medium text-gray-500'>Location</dt>
+            <dd className='text-body-lg text-gray-900 flex items-center space-x-3'>
               <FaMapMarkerAlt className='text-brand-secondary text-lg flex-shrink-0' />
               <span>{stegaClean(location)}</span>
             </dd>
