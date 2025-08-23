@@ -38,10 +38,14 @@ const CTAEmailButton = ({ email, className = '' }: CTAEmailButtonProps) => {
       className={`
         bg-brand-gradient 
         inline-flex 
+        flex-wrap 
+        justify-center 
         items-center 
-        justify-between
+        max-w-full 
         px-6 
         py-3 
+        gap-y-2 
+        gap-x-4 
         font-medium 
         rounded-lg 
         transition-all 
@@ -58,7 +62,7 @@ const CTAEmailButton = ({ email, className = '' }: CTAEmailButtonProps) => {
       `.trim()}
       title={`Copy email: ${email}`}>
       <span>{email}</span>
-      <div className='flex-shrink-0 ml-4 w-10 h-10 bg-black rounded-full flex items-center justify-center group-hover:bg-brand-primary transition-colors duration-200'>
+      <div className='flex-shrink-0 w-10 h-10 bg-black rounded-full flex items-center justify-center group-hover:bg-brand-primary transition-colors duration-200'>
         <Icon className='w-5 h-5 text-white group-hover:text-black transition-colors duration-200' />
       </div>
     </button>

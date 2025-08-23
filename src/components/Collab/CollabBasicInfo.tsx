@@ -20,7 +20,7 @@ export default function CollabBasicInfo({ genre, location, previewImage }: Colla
     <aside className='bg-white border border-gray-200 rounded-lg p-6'>
       {/* Profile Image */}
       <div className='flex justify-center mb-6'>
-        <div className='relative w-[75%] h-[75%] aspect-square rounded-full overflow-hidden'>
+        <div className='relative w-[75%] h-[75%] max-w-[280px] max-h-[280px] lg:max-w-none lg:max-h-none aspect-square rounded-full overflow-hidden'>
           {imageUrl ? (
             <Image
               src={imageUrl}
