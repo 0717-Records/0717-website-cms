@@ -33,8 +33,10 @@ export default function CollabMainContent({
     <div className='space-y-8'>
       {/* Bio Section */}
       {bio && (
-        <section className='bg-white border border-gray-200 rounded-lg p-6 md:p-8'>
-          <Heading level='h2' className='text-h2 font-bold text-gray-900 mb-6' showUnderline={true}>Biography</Heading>
+        <section className='p-6 md:p-8'>
+          <Heading level='h2' className='text-h2 font-bold text-gray-900 mb-6' showUnderline={true}>
+            Biography
+          </Heading>
           <p className='text-body-lg text-gray-700 leading-relaxed whitespace-pre-line'>
             {stegaClean(bio)}
           </p>
@@ -45,11 +47,12 @@ export default function CollabMainContent({
       {mainContent && mainContent.length > 0 && (
         <>
           {(mainContent as CollabPageSection[]).map((section: CollabPageSection, index: number) => (
-            <section
-              key={section._key || index}
-              className='bg-white border border-gray-200 rounded-lg p-6 md:p-8'>
+            <section key={section._key || index} className='p-6 md:p-8'>
               {section.title && (
-                <Heading level='h2' className='text-h2 font-bold text-gray-900 mb-6' showUnderline={true}>
+                <Heading
+                  level='h2'
+                  className='text-h2 font-bold text-gray-900 mb-6'
+                  showUnderline={true}>
                   {stegaClean(section.title)}
                 </Heading>
               )}
