@@ -8,13 +8,29 @@
   content: '';
   position: absolute;
   bottom: -0.375rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 5rem;
   height: 5px;
   background: var(--background-image-brand-gradient);
   border-radius: 3px;
 }
+
+/* Center alignment - center the underline */
+.underlineH1:is([class*="text-center"], [style*="text-align: center"])::after,
+.underlineH1:is([class*="text-center"] *, [style*="text-align: center"] *)::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Right alignment - align underline to the right */
+.underlineH1:is([class*="text-right"], [style*="text-align: right"])::after,
+.underlineH1:is([class*="text-right"] *, [style*="text-align: right"] *)::after {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+/* Left alignment is default (left: 0, no transform) */
 
 @media (min-width: 768px) {
   .underlineH1::after {
@@ -33,12 +49,26 @@
   content: '';
   position: absolute;
   bottom: -0.25rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 4rem;
   height: 4px;
   background: var(--background-image-brand-gradient);
   border-radius: 2px;
+}
+
+/* Center alignment - center the underline */
+.underlineH2:is([class*="text-center"], [style*="text-align: center"])::after,
+.underlineH2:is([class*="text-center"] *, [style*="text-align: center"] *)::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Right alignment - align underline to the right */
+.underlineH2:is([class*="text-right"], [style*="text-align: right"])::after,
+.underlineH2:is([class*="text-right"] *, [style*="text-align: right"] *)::after {
+  left: auto;
+  right: 0;
+  transform: none;
 }
 
 @media (min-width: 768px) {
@@ -58,12 +88,26 @@
   content: '';
   position: absolute;
   bottom: -0.25rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 3.5rem;
   height: 3px;
   background: var(--background-image-brand-gradient);
   border-radius: 2px;
+}
+
+/* Center alignment - center the underline */
+.underlineH3:is([class*="text-center"], [style*="text-align: center"])::after,
+.underlineH3:is([class*="text-center"] *, [style*="text-align: center"] *)::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Right alignment - align underline to the right */
+.underlineH3:is([class*="text-right"], [style*="text-align: right"])::after,
+.underlineH3:is([class*="text-right"] *, [style*="text-align: right"] *)::after {
+  left: auto;
+  right: 0;
+  transform: none;
 }
 
 @media (min-width: 768px) {
@@ -83,12 +127,26 @@
   content: '';
   position: absolute;
   bottom: -0.125rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 3rem;
   height: 3px;
   background: var(--background-image-brand-gradient);
   border-radius: 2px;
+}
+
+/* Center alignment - center the underline */
+.underlineH4:is([class*="text-center"], [style*="text-align: center"])::after,
+.underlineH4:is([class*="text-center"] *, [style*="text-align: center"] *)::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Right alignment - align underline to the right */
+.underlineH4:is([class*="text-right"], [style*="text-align: right"])::after,
+.underlineH4:is([class*="text-right"] *, [style*="text-align: right"] *)::after {
+  left: auto;
+  right: 0;
+  transform: none;
 }
 
 @media (min-width: 768px) {
@@ -108,12 +166,26 @@
   content: '';
   position: absolute;
   bottom: -0.125rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 2.5rem;
   height: 2px;
   background: var(--background-image-brand-gradient);
   border-radius: 1px;
+}
+
+/* Center alignment - center the underline */
+.underlineH5:is([class*="text-center"], [style*="text-align: center"])::after,
+.underlineH5:is([class*="text-center"] *, [style*="text-align: center"] *)::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Right alignment - align underline to the right */
+.underlineH5:is([class*="text-right"], [style*="text-align: right"])::after,
+.underlineH5:is([class*="text-right"] *, [style*="text-align: right"] *)::after {
+  left: auto;
+  right: 0;
+  transform: none;
 }
 
 .underlineH6 {
@@ -125,10 +197,24 @@
   content: '';
   position: absolute;
   bottom: -0.125rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 2rem;
   height: 2px;
   background: var(--background-image-brand-gradient);
   border-radius: 1px;
+}
+
+/* Center alignment - center the underline */
+.underlineH6:is([class*="text-center"], [style*="text-align: center"])::after,
+.underlineH6:is([class*="text-center"] *, [style*="text-align: center"] *)::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Right alignment - align underline to the right */
+.underlineH6:is([class*="text-right"], [style*="text-align: right"])::after,
+.underlineH6:is([class*="text-right"] *, [style*="text-align: right"] *)::after {
+  left: auto;
+  right: 0;
+  transform: none;
 }
