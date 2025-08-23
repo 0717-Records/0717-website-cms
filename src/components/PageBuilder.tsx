@@ -61,7 +61,16 @@ export const createDataAttributeConfig = {
 };
 
 // Universal block renderer that can handle any block type at any nesting level
-const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLevel = 1, siteSettings, events, alignment = 'center' }: BlockRendererProps) => {
+const BlockRenderer = ({
+  blocks,
+  documentId,
+  documentType,
+  pathPrefix,
+  nestingLevel = 1,
+  siteSettings,
+  events,
+  alignment = 'center',
+}: BlockRendererProps) => {
   if (!Array.isArray(blocks)) {
     return null;
   }
@@ -75,36 +84,26 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
         const BlockWrapper = ({ children }: { children: React.ReactNode }) => {
           // Check if the next block is a section type that needs extra spacing
           const nextBlock = blocks[index + 1];
-          const nextBlockIsSection = nextBlock && (
-            nextBlock._type === 'pageSection' || 
-            nextBlock._type === 'subSection' || 
-            nextBlock._type === 'subSubSection'
-          );
-          
+          const nextBlockIsSection =
+            nextBlock &&
+            (nextBlock._type === 'pageSection' ||
+              nextBlock._type === 'subSection' ||
+              nextBlock._type === 'subSubSection');
+
           // Apply spacing logic:
           // - Regular blocks get mb-6 unless they're the last block
           // - If the next block is a section, add extra margin (mb-12 instead of mb-6)
-          // - If this is the first block and NOT a PageSection at top level, add top padding
           let marginClass = '';
           if (!isLastBlock) {
             marginClass = nextBlockIsSection ? 'mb-12' : 'mb-6';
           }
-          
-          // Add top padding for first non-PageSection block at top level (main content)
-          const isFirstBlock = index === 0;
-          const isTopLevel = nestingLevel === 1;
-          const isNotPageSection = block._type !== 'pageSection';
-          const needsTopPadding = isFirstBlock && isTopLevel && isNotPageSection;
-          
-          if (needsTopPadding) {
-            marginClass = `pt-16 md:pt-24 ${marginClass}`.trim();
-          }
 
           // Apply alignment for non-section components
-          const isSectionType = block._type === 'pageSection' || 
-                               block._type === 'subSection' || 
-                               block._type === 'subSubSection';
-          
+          const isSectionType =
+            block._type === 'pageSection' ||
+            block._type === 'subSection' ||
+            block._type === 'subSubSection';
+
           let alignmentClass = '';
           if (!isSectionType) {
             const alignmentMap = {
@@ -114,9 +113,9 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
             };
             alignmentClass = alignmentMap[alignment] || 'text-center';
           }
-          
+
           const combinedClasses = [marginClass, alignmentClass].filter(Boolean).join(' ');
-          
+
           return (
             <div
               className={combinedClasses}
@@ -156,7 +155,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
         switch (block._type) {
           case 'pageSection':
             // Check if this is the first PageSection in the entire blocks array
-            const isFirstPageSection = blocks.findIndex(b => b._type === 'pageSection') === index;
+            const isFirstPageSection = blocks.findIndex((b) => b._type === 'pageSection') === index;
             return (
               <BlockWrapper key={block._key}>
                 <PageSection
@@ -201,7 +200,6 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
               </BlockWrapper>
             );
 
-
           case 'divider':
             return (
               <BlockWrapper key={block._key}>
@@ -215,7 +213,6 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
                 <ItemList {...block} />
               </BlockWrapper>
             );
-
 
           case 'richText':
             return (
@@ -234,8 +231,8 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           case 'textImage':
             return (
               <BlockWrapper key={block._key}>
-                <TextImage 
-                  {...block} 
+                <TextImage
+                  {...block}
                   documentId={documentId}
                   documentType={documentType}
                   pathPrefix={blockPath}
@@ -267,9 +264,9 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           case 'ctaEmailButton':
             return (
               <BlockWrapper key={block._key}>
-                <CTAEmailButtonComponent 
-                  {...block} 
-                  email={siteSettings?.companyEmail || 'noemailexists@noemail.com'} 
+                <CTAEmailButtonComponent
+                  {...block}
+                  email={siteSettings?.companyEmail || 'noemailexists@noemail.com'}
                 />
               </BlockWrapper>
             );
@@ -298,8 +295,8 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           case 'imageBlock':
             return (
               <BlockWrapper key={block._key}>
-                <ImageBlock 
-                  {...block} 
+                <ImageBlock
+                  {...block}
                   documentId={documentId}
                   documentType={documentType}
                   pathPrefix={blockPath}
@@ -310,8 +307,8 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           case 'imageGallery':
             return (
               <BlockWrapper key={block._key}>
-                <ImageGallery 
-                  {...block} 
+                <ImageGallery
+                  {...block}
                   documentId={documentId}
                   documentType={documentType}
                   pathPrefix={blockPath}
@@ -322,17 +319,15 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           case 'youTubeVideo':
             return (
               <BlockWrapper key={block._key}>
-                <YouTubeVideo 
-                  {...block} 
-                />
+                <YouTubeVideo {...block} />
               </BlockWrapper>
             );
 
           case 'spotifyWidget':
             return (
               <BlockWrapper key={block._key}>
-                <SpotifyWidget 
-                  {...block} 
+                <SpotifyWidget
+                  {...block}
                   documentId={documentId}
                   documentType={documentType}
                   pathPrefix={blockPath}
@@ -343,8 +338,8 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           case 'bandcampWidget':
             return (
               <BlockWrapper key={block._key}>
-                <BandcampWidget 
-                  {...block} 
+                <BandcampWidget
+                  {...block}
                   documentId={documentId}
                   documentType={documentType}
                   pathPrefix={blockPath}
@@ -355,10 +350,7 @@ const BlockRenderer = ({ blocks, documentId, documentType, pathPrefix, nestingLe
           case 'eventBlock':
             return (
               <BlockWrapper key={block._key}>
-                <EventBlock 
-                  maxEvents={block.maxEvents}
-                  events={events || []}
-                />
+                <EventBlock maxEvents={block.maxEvents} events={events || []} />
               </BlockWrapper>
             );
 
