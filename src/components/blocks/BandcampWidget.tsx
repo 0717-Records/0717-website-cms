@@ -59,7 +59,7 @@ const BandcampWidget: React.FC<BandcampWidgetProps> = ({
       className={`mx-auto ${className}`}
       style={{
         width: '100%',
-        maxWidth: `min(${embedWidth}px, 500px)`, // Use embed width but don't exceed 500px or container width
+        maxWidth: `${embedWidth}px`,
       }}
       {...widgetDataAttribute}>
       <iframe
