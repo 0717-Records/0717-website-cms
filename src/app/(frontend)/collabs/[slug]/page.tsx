@@ -6,6 +6,7 @@ import CollabHero from '@/components/Collab/CollabHero';
 import CollabShortDescription from '@/components/Collab/CollabShortDescription';
 import CollabMainContent from '@/components/Collab/CollabMainContent';
 import CollabBasicInfo from '@/components/Collab/CollabBasicInfo';
+import CollabLinks from '@/components/Collab/CollabLinks';
 import CollabSideContent from '@/components/Collab/CollabSideContent';
 
 interface CollabSlug {
@@ -40,11 +41,18 @@ export default async function CollabPage({ params }: CollabPageProps) {
       <CollabShortDescription shortDescription={collab.shortDescription} />
 
       {/* Mobile Basic Info - Only visible on mobile, positioned between subtitle and bio */}
-      <div className='lg:hidden container mx-auto px-4 md:px-8 pb-8'>
+      <div className='lg:hidden container mx-auto px-4 md:px-8 pb-8 space-y-6'>
         <CollabBasicInfo
           genre={collab.genre}
           location={collab.location}
           previewImage={collab.previewImage}
+          documentId={collab._id}
+          documentType={collab._type}
+        />
+        
+        {/* Mobile Links - Only visible on mobile */}
+        <CollabLinks
+          links={collab.links}
           documentId={collab._id}
           documentType={collab._type}
         />
@@ -72,6 +80,15 @@ export default async function CollabPage({ params }: CollabPageProps) {
                 genre={collab.genre}
                 location={collab.location}
                 previewImage={collab.previewImage}
+                documentId={collab._id}
+                documentType={collab._type}
+              />
+            </div>
+
+            {/* Links - Only visible on desktop */}
+            <div className='hidden lg:block'>
+              <CollabLinks
+                links={collab.links}
                 documentId={collab._id}
                 documentType={collab._type}
               />
