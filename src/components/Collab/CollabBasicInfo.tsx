@@ -13,20 +13,27 @@ interface CollabBasicInfoProps {
   documentType?: string;
 }
 
-export default function CollabBasicInfo({ genre, location, previewImage, documentId, documentType }: CollabBasicInfoProps) {
+export default function CollabBasicInfo({
+  genre,
+  location,
+  previewImage,
+  documentId,
+  documentType,
+}: CollabBasicInfoProps) {
   // Process image data
   const imageData = previewImage as { asset?: { _ref: string; _type: string }; alt?: string };
   // Request 3x size for crisp display on high-DPI screens (max container is 280px, so request 840px)
-  const imageUrl = imageData?.asset ? urlFor(imageData.asset).width(840).height(840).quality(90).url() : null;
+  const imageUrl = imageData?.asset
+    ? urlFor(imageData.asset).width(840).height(840).quality(90).url()
+    : null;
 
   return (
     <aside className='bg-white border border-gray-200 rounded-lg p-6'>
       {/* Profile Image */}
       <div className='flex justify-center mb-6'>
-        <div 
+        <div
           className='relative w-[75%] h-[75%] max-w-[280px] max-h-[280px] lg:max-w-none lg:max-h-none aspect-square rounded-full overflow-hidden'
-          {...createSanityDataAttribute(documentId, documentType, 'previewImage')}
-        >
+          {...createSanityDataAttribute(documentId, documentType, 'previewImage')}>
           {imageUrl ? (
             <Image
               src={imageUrl}
@@ -46,11 +53,11 @@ export default function CollabBasicInfo({ genre, location, previewImage, documen
       <Heading level='h3' className='sr-only'>
         General Info
       </Heading>
-      <div className='space-y-3'>
+      <div className='space-y-3 text-center'>
         {genre && (
           <div>
             <dt className='text-body-base font-medium text-gray-500'>Genre</dt>
-            <dd className='text-body-lg text-gray-900 flex items-center space-x-3'>
+            <dd className='text-body-lg text-gray-900 flex justify-center items-center space-x-3'>
               <FaMusic className='text-brand-secondary text-lg flex-shrink-0' />
               <span>{genre}</span>
             </dd>
@@ -59,7 +66,7 @@ export default function CollabBasicInfo({ genre, location, previewImage, documen
         {location && (
           <div>
             <dt className='text-body-base font-medium text-gray-500'>Location</dt>
-            <dd className='text-body-lg text-gray-900 flex items-center space-x-3'>
+            <dd className='text-body-lg text-gray-900 flex justify-center items-center space-x-3'>
               <FaMapMarkerAlt className='text-brand-secondary text-lg flex-shrink-0' />
               <span>{location}</span>
             </dd>
