@@ -16,8 +16,8 @@ interface SocialLinksData {
   officialWebsite?: string | null;
   genericLinks?: Array<{
     _key: string;
-    title: string;
-    url: string;
+    title: string | null;
+    url: string | null;
   }> | null;
 }
 
@@ -72,12 +72,12 @@ const CollabLinks: React.FC<CollabLinksProps> = ({ links, documentId, documentTy
         ))}
         
         {/* Generic links */}
-        {genericLinks.map((link, index) => (
+        {genericLinks.filter(link => link.url && link.title).map((link, index) => (
           <SocialLink
             key={link._key || index}
             platform="genericLink"
-            url={link.url}
-            label={link.title}
+            url={link.url!}
+            label={link.title!}
             dataAttributes={createSanityDataAttribute(documentId, documentType, `links.genericLinks[_key=="${link._key}"]`)}
           />
         ))}

@@ -261,15 +261,20 @@ export const COLLAB_QUERY = defineQuery(`*[_type == "collab" && slug.current == 
   ${sideContentProjection},
   links{
     _type,
-    instagram,
-    twitter,
     facebook,
+    instagram,
     youtube,
-    spotify,
-    appleMusic,
-    bandcamp,
+    twitter,
     soundcloud,
-    website
+    bandcamp,
+    spotify,
+    itunes,
+    officialWebsite,
+    genericLinks[]{
+      _key,
+      title,
+      url
+    }
   }
 }`);
 
