@@ -12,6 +12,22 @@ interface CollabPageSection {
   content?: unknown;
 }
 
+// Helper function to check if content contains a Bandcamp widget
+function containsBandcampWidget(content: unknown): boolean {
+  if (!Array.isArray(content)) return false;
+  
+  return content.some((item: { _type?: string; content?: unknown }) => {
+    if (item._type === 'bandcampWidget') return true;
+    
+    // Check nested content for sections that might contain bandcamp widgets
+    if (item.content && Array.isArray(item.content)) {
+      return containsBandcampWidget(item.content);
+    }
+    
+    return false;
+  });
+}
+
 interface CollabMainContentProps {
   bio?: string | null;
   mainContent?: CollabPageSection[] | null;
@@ -46,16 +62,22 @@ export default function CollabMainContent({
       {/* Main Content Sections */}
       {mainContent && mainContent.length > 0 && (
         <>
-          {(mainContent as CollabPageSection[]).map((section: CollabPageSection, index: number) => (
-            <section key={section._key || index} className='p-6 md:p-8'>
+          {(mainContent as CollabPageSection[]).map((section: CollabPageSection, index: number) => {
+            const hasBandcampWidget = containsBandcampWidget(section.content);
+            const sectionPadding = hasBandcampWidget ? '' : 'p-6 md:p-8';
+            
+            return (
+            <section key={section._key || index} className={sectionPadding}>
               {section.title && (
-                <Heading
-                  level='h2'
-                  className='text-h2 font-bold text-gray-900 mb-6'
-                  showUnderline={true}
-                  {...createSanityDataAttribute(collabId, collabType, `mainContent[_key=="${section._key}"].title`)}>
-                  {section.title}
-                </Heading>
+                <div className={hasBandcampWidget ? 'p-6 md:p-8 pb-0 md:pb-0' : ''}>
+                  <Heading
+                    level='h2'
+                    className='text-h2 font-bold text-gray-900 mb-6'
+                    showUnderline={true}
+                    {...createSanityDataAttribute(collabId, collabType, `mainContent[_key=="${section._key}"].title`)}>
+                    {section.title}
+                  </Heading>
+                </div>
               )}
               {!!(section.content && Array.isArray(section.content)) && (
                 <PageBuilder
@@ -67,7 +89,8 @@ export default function CollabMainContent({
                 />
               )}
             </section>
-          ))}
+            );
+          })}
         </>
       )}
     </div>
