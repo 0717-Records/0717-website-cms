@@ -3,13 +3,15 @@ import PageBuilder from '@/components/PageBuilder';
 import PageHero from '@/components/Page/PageHero';
 import { getPageBySlug, getSiteSettings } from '@/actions';
 import { getAllEvents } from '@/actions/events';
+import { getCollabs } from '@/actions/collabs';
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const [page, siteSettings, events] = await Promise.all([
+  const [page, siteSettings, events, collabs] = await Promise.all([
     getPageBySlug(slug),
     getSiteSettings(),
     getAllEvents(),
+    getCollabs(),
   ]);
 
   if (!page) {
@@ -44,6 +46,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           documentType={page._type} 
           siteSettings={siteSettings ? { companyEmail: siteSettings.companyEmail || undefined } : undefined}
           events={events}
+          collabs={collabs}
           alignment={page.alignment || 'center'}
         />
       )}

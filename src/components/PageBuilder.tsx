@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import type { PAGE_QUERYResult, EVENTS_QUERYResult } from '@/sanity/types';
+import type { PAGE_QUERYResult, EVENTS_QUERYResult, COLLABS_ALL_QUERYResult } from '@/sanity/types';
 import type { NestedBlock } from '@/types/blocks';
 import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
@@ -26,6 +26,7 @@ import YouTubeVideo from './blocks/YouTubeVideo';
 import SpotifyWidget from './blocks/SpotifyWidget';
 import BandcampWidget from './blocks/BandcampWidget';
 import EventBlock from './Events/EventBlock';
+import CollabAllBlock from './Collab/CollabAllBlock';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -37,6 +38,7 @@ type PageBuilderProps = {
     companyEmail?: string;
   };
   events?: EVENTS_QUERYResult;
+  collabs?: COLLABS_ALL_QUERYResult;
   alignment?: 'left' | 'center' | 'right';
 };
 
@@ -50,6 +52,7 @@ type BlockRendererProps = {
     companyEmail?: string;
   };
   events?: EVENTS_QUERYResult;
+  collabs?: COLLABS_ALL_QUERYResult;
   alignment?: 'left' | 'center' | 'right';
 };
 
@@ -69,6 +72,7 @@ const BlockRenderer = ({
   nestingLevel = 1,
   siteSettings,
   events,
+  collabs,
   alignment = 'center',
 }: BlockRendererProps) => {
   if (!Array.isArray(blocks)) {
@@ -144,6 +148,7 @@ const BlockRenderer = ({
               nestingLevel={nestingLevel + 1}
               siteSettings={siteSettings}
               events={events}
+              collabs={collabs}
               alignment={alignment}
             />
           );
@@ -354,6 +359,17 @@ const BlockRenderer = ({
               </BlockWrapper>
             );
 
+          case 'collabAllBlock':
+            return (
+              <BlockWrapper key={block._key}>
+                <CollabAllBlock 
+                  ctaText={block.ctaText || 'View Details'} 
+                  noCollabsMessage={block.noCollabsMessage || 'No collaborations available at the moment. Check back soon!'}
+                  collabs={collabs || []} 
+                />
+              </BlockWrapper>
+            );
+
           default: {
             // Handle unknown block types gracefully
             const unknownBlock = block as { _key: string; _type: string };
@@ -376,6 +392,7 @@ const PageBuilder = ({
   pathPrefix = 'content',
   siteSettings,
   events,
+  collabs,
   alignment = 'center',
 }: PageBuilderProps) => {
   const [sections] = useOptimistic<NonNullable<PAGE_QUERYResult>['content']>(content);
@@ -399,6 +416,7 @@ const PageBuilder = ({
         pathPrefix={pathPrefix}
         siteSettings={siteSettings}
         events={events}
+        collabs={collabs}
         alignment={alignment}
       />
     </div>

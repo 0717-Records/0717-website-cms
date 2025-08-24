@@ -1,6 +1,6 @@
 import React from 'react';
 import PageBuilder from '@/components/PageBuilder';
-import type { PAGE_QUERYResult } from '@/sanity/types';
+import type { PAGE_QUERYResult, COLLABS_ALL_QUERYResult } from '@/sanity/types';
 import Heading from '../Typography/Heading/Heading';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 
@@ -36,6 +36,7 @@ interface CollabMainContentProps {
   siteSettings?: {
     companyEmail?: string;
   };
+  collabs?: COLLABS_ALL_QUERYResult;
 }
 
 export default function CollabMainContent({
@@ -44,6 +45,7 @@ export default function CollabMainContent({
   collabId,
   collabType,
   siteSettings,
+  collabs,
 }: CollabMainContentProps) {
   return (
     <div className='space-y-8'>
@@ -85,6 +87,7 @@ export default function CollabMainContent({
                   documentId={collabId}
                   documentType={collabType}
                   siteSettings={siteSettings}
+                  collabs={collabs}
                   alignment='left'
                 />
               )}

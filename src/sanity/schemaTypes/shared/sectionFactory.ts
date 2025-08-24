@@ -21,6 +21,7 @@ export const commonContentBlocks = [
   defineArrayMember({ type: 'spotifyWidget' }),
   defineArrayMember({ type: 'bandcampWidget' }),
   defineArrayMember({ type: 'eventBlock' }),
+  defineArrayMember({ type: 'collabAllBlock' }),
 ];
 
 interface SectionFactoryConfig {

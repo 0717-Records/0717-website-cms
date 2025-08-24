@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { getCollab, getCollabSlugsForGeneration } from '@/actions/collabs';
+import { getCollab, getCollabSlugsForGeneration, getCollabs } from '@/actions/collabs';
 import { getSiteSettings } from '@/actions';
 import CollabHero from '@/components/Collab/CollabHero';
 import CollabShortDescription from '@/components/Collab/CollabShortDescription';
@@ -19,7 +19,7 @@ interface CollabPageProps {
 
 export default async function CollabPage({ params }: CollabPageProps) {
   const { slug } = await params;
-  const [collab, siteSettings] = await Promise.all([getCollab(slug), getSiteSettings()]);
+  const [collab, siteSettings, collabs] = await Promise.all([getCollab(slug), getSiteSettings(), getCollabs()]);
 
   if (!collab) {
     notFound();
@@ -69,6 +69,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
               collabId={collab._id}
               collabType={collab._type}
               siteSettings={siteSettings ? { companyEmail } : undefined}
+              collabs={collabs}
             />
           </div>
 

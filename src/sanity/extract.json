@@ -387,6 +387,36 @@
     }
   },
   {
+    "name": "collabAllBlock",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "collabAllBlock"
+          }
+        },
+        "ctaText": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "noCollabsMessage": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
     "name": "eventBlock",
     "type": "type",
     "value": {
@@ -3137,6 +3167,21 @@
                     "type": "inline",
                     "name": "eventBlock"
                   }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "collabAllBlock"
+                  }
                 }
               ]
             }
@@ -3482,6 +3527,21 @@
                     "type": "inline",
                     "name": "eventBlock"
                   }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "collabAllBlock"
+                  }
                 }
               ]
             }
@@ -3801,6 +3861,21 @@
                   "rest": {
                     "type": "inline",
                     "name": "eventBlock"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "collabAllBlock"
                   }
                 }
               ]
@@ -4154,6 +4229,21 @@
                     "type": "inline",
                     "name": "eventBlock"
                   }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "collabAllBlock"
+                  }
                 }
               ]
             }
@@ -4454,6 +4544,21 @@
             "rest": {
               "type": "inline",
               "name": "eventBlock"
+            }
+          },
+          {
+            "type": "object",
+            "attributes": {
+              "_key": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              }
+            },
+            "rest": {
+              "type": "inline",
+              "name": "collabAllBlock"
             }
           }
         ]

@@ -31,6 +31,7 @@ import { embeddedCtaButtonType } from './blocks/embeddedCtaButtonType';
 import { homeHeroCtaButtonType } from './blocks/homeHeroCtaButtonType';
 import { ctaEventType } from './blocks/ctaEventType';
 import { eventBlockType } from './blocks/eventBlockType';
+import { collabAllBlockType } from './blocks/collabAllBlockType';
 import { siteSettingsType } from './siteSettingsType';
 import { eventType } from './eventType';
 import { eventsIndexPageType } from './eventsIndexPageType';
@@ -78,6 +79,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     homeHeroCtaButtonType,
     ctaEventType,
     eventBlockType,
+    collabAllBlockType,
     // Shared Components
     socialLinksType,
     sideContentBlockType,

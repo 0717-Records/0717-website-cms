@@ -281,3 +281,20 @@ export const COLLAB_QUERY = defineQuery(`*[_type == "collab" && slug.current == 
 export const COLLABS_SLUGS_QUERY = defineQuery(`*[_type == "collab" && defined(slug.current)]{ 
   "slug": slug.current
 }`);
+
+export const COLLABS_ALL_QUERY = defineQuery(`*[_type == "collab" && defined(slug.current)]|order(name asc){
+  _id,
+  name,
+  slug,
+  genre,
+  location,
+  previewImage{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
+  shortDescription,
+  useShortDescriptionForCards,
+  cardDescription
+}`);
