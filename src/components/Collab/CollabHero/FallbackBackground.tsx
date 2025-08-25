@@ -5,7 +5,7 @@ const FallbackBackground = () => {
   return (
     <div className='absolute inset-0 z-10'>
       {/* Left logo */}
-      <div className='absolute top-0 left-0'>
+      <div className='absolute top-0 left-1/8'>
         <Image
           src='/images/logo-dark.jpg'
           alt=''
@@ -16,7 +16,7 @@ const FallbackBackground = () => {
       </div>
 
       {/* Right logo */}
-      <div className='absolute top-0 right-0'>
+      <div className='absolute top-0 right-1/8'>
         <Image
           src='/images/logo-dark.jpg'
           alt=''
