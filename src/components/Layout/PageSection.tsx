@@ -56,7 +56,7 @@ const PageSection = ({
       <TextAlignmentContext.Provider value={{ textAlign: cleanTextAlign }}>
         <section
           className={`${paddingClasses} ${getTextAlignClass(cleanTextAlign)} ${className}`.trim()}>
-          <div className='container max-w-[60rem] mx-auto px-8'>
+          <div className='container max-w-[60rem] mx-auto px-4 md:px-8'>
             {/* Title is now always present since it's required */}
             <div className='text-center'>
               <Heading
