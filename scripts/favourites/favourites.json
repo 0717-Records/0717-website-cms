@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Gang Violins",
+    "genre": "Ambient Electronic",
+    "order": 10,
+    "description": "Ambient / cinematic electronic duo from Aotearoa New Zealand, creating atmospheric soundscapes that blend electronic elements with cinematic compositions.",
+    "link": "https://gangviolins.bandcamp.com/"
+  },
+  {
+    "name": "Sora Shima",
+    "genre": "Instrumental Post-Rock",
+    "order": 20,
+    "description": "Instrumental post-rock from New Zealand. Inspired by Japanese anime, they fuse elements of heavy indie, cinematic ambient and atmospheric electronic to create emotionally driven soundscapes.",
+    "link": "https://sorashima.bandcamp.com/"
+  },
+  {
+    "name": "Shepherds Of Cassini",
+    "genre": "Post Metal",
+    "order": 30,
+    "description": "New Zealand post metal / progressive rock band from Auckland, crafting powerful and dynamic compositions that push the boundaries of heavy music.",
+    "link": "https://shepherdsofcassini.bandcamp.com/"
+  },
+  {
+    "name": "Stray Theories",
+    "genre": "Ambient",
+    "order": 40,
+    "description": "Stray Theories is the ambient music project of New Zealand based, Australian musician/composer, Micah Templeton-Wolfe, creating immersive ambient soundscapes.",
+    "link": "https://shop.straytheoriesmusic.com/"
+  },
+  {
+    "name": "Outside In",
+    "genre": "Progressive Rock",
+    "order": 50,
+    "description": "Five piece Auckland prog-rockers who produce an exhilarating sound that plays with complex time signatures and non-traditional song structures, delivering innovative progressive rock compositions.",
+    "link": "https://outsideinnz.bandcamp.com/album/karmatrain"
+  },
+  {
+    "name": "Mikey Videotape",
+    "genre": "Progressive Pop",
+    "order": 60,
+    "description": "A unique fusion of progressive rock, pop sensibilities, and a distinctive 80s-inspired aesthetic, creating nostalgic yet forward-thinking musical experiences.",
+    "link": "https://mikeyvideotape.bandcamp.com/track/the-strangest-dream"
+  }
+]
