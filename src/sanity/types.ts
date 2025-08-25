@@ -765,6 +765,32 @@ export type BlockContent = Array<{
   _key: string;
 }>;
 
+export type Favourites = {
+  _id: string;
+  _type: "favourites";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  genre?: string;
+  profileImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  order?: number;
+  description?: string;
+  link?: string;
+};
+
 export type Collab = {
   _id: string;
   _type: "collab";
@@ -1165,7 +1191,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SideContent | SideContentBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SideContent | SideContentBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -3029,6 +3055,16 @@ export type HOME_PAGE_QUERYResult = {
 } | {
   _id: string;
   _type: "eventsIndexPage";
+  heroImage: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  enableHeroCallToAction: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "favourites";
   heroImage: null;
   heroTitle: null;
   heroSubtitle: null;
@@ -6681,6 +6717,10 @@ export type HEADER_QUERYResult = {
   logo: null;
 } | {
   _id: string;
+  _type: "favourites";
+  logo: null;
+} | {
+  _id: string;
   _type: "footer";
   logo: null;
 } | {
@@ -6737,6 +6777,12 @@ export type SITE_SETTINGS_QUERYResult = {
 } | {
   _id: string;
   _type: "eventsIndexPage";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+} | {
+  _id: string;
+  _type: "favourites";
   siteTitle: null;
   companyEmail: null;
   siteDescription: null;
@@ -6853,6 +6899,14 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: string | null;
   noUpcomingEventsMessage: string | null;
   noPastEventsMessage: string | null;
+} | {
+  _id: string;
+  _type: "favourites";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
 } | {
   _id: string;
   _type: "footer";

@@ -117,4 +117,12 @@ export const structure: StructureResolver = (S) =>
         .child(
           S.documentTypeList('collab').title('Collaborations')
         ),
+
+      // === FAVOURITES ===
+      S.listItem()
+        .id('favourites')
+        .title('❤️ Favourites')
+        .child(
+          S.documentTypeList('favourites').title('Favourites')
+        ),
     ]);

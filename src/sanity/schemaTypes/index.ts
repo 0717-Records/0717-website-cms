@@ -37,6 +37,7 @@ import { eventType } from './eventType';
 import { eventsIndexPageType } from './eventsIndexPageType';
 import { collabType } from './collabType';
 import { collabPageSectionType } from './collabPageSectionType';
+import { favouritesType } from './favouritesType';
 import { socialLinksType } from './shared/socialLinksType';
 import { sideContentBlockType, sideContentType } from './shared/sideContentBlockType';
 
@@ -50,6 +51,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     eventType,
     eventsIndexPageType,
     collabType,
+    favouritesType,
     blockContentType,
     // Objects
     headerType,
