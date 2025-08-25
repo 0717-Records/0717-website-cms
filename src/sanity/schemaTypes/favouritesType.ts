@@ -17,20 +17,15 @@ export const favouritesType = defineType({
       title: 'Name',
       type: 'string',
       description: 'The name of this favourite band or artist',
-      validation: (Rule) => 
-        Rule.required()
-          .min(1)
-          .max(100)
-          .error('Name is required and must be under 100 characters'),
+      validation: (Rule) =>
+        Rule.required().min(1).max(100).error('Name is required and must be under 100 characters'),
     }),
     defineField({
       name: 'genre',
       title: 'Genre',
       type: 'string',
       description: 'Musical genre or style (optional)',
-      validation: (Rule) => 
-        Rule.max(50)
-          .error('Genre must be under 50 characters'),
+      validation: (Rule) => Rule.max(50).error('Genre must be under 50 characters'),
     }),
     defineField({
       name: 'profileImage',
@@ -56,7 +51,7 @@ export const favouritesType = defineType({
       type: 'number',
       description: 'Order in which this favourite appears (lower numbers appear first)',
       initialValue: 100,
-      validation: (Rule) => 
+      validation: (Rule) =>
         Rule.required()
           .integer()
           .min(0)
@@ -69,38 +64,38 @@ export const favouritesType = defineType({
       type: 'text',
       description: 'A brief description of this favourite band or artist (optional)',
       rows: 3,
-      validation: (Rule) => 
-        Rule.max(500)
-          .error('Description must be under 500 characters'),
+      validation: (Rule) => Rule.max(500).error('Description must be under 500 characters'),
     }),
     defineField({
       name: 'link',
       title: 'Link',
       type: 'url',
       description: 'External link (website, social media, etc.) - optional',
-      validation: (Rule) => 
+      validation: (Rule) =>
         Rule.uri({
           allowRelative: false,
-          scheme: ['http', 'https']
+          scheme: ['http', 'https'],
         }),
     }),
     defineField({
       name: 'linkLabel',
       title: 'Link Label',
       type: 'string',
-      description: 'Text to display on the link button (optional)',
+      description:
+        'Text to display on the link button (will default to "More Info" if not provided)',
       initialValue: 'More Info',
-      validation: (Rule) => 
-        Rule.max(50)
-          .error('Link label must be under 50 characters'),
+      validation: (Rule) => Rule.max(50).error('Link label must be under 50 characters'),
     }),
   ],
-  
+
   orderings: [
     {
       title: 'Display Order',
       name: 'displayOrder',
-      by: [{ field: 'order', direction: 'asc' }, { field: 'name', direction: 'asc' }],
+      by: [
+        { field: 'order', direction: 'asc' },
+        { field: 'name', direction: 'asc' },
+      ],
     },
     {
       title: 'Name A-Z',
@@ -108,7 +103,7 @@ export const favouritesType = defineType({
       by: [{ field: 'name', direction: 'asc' }],
     },
     {
-      title: 'Name Z-A', 
+      title: 'Name Z-A',
       name: 'nameDesc',
       by: [{ field: 'name', direction: 'desc' }],
     },
@@ -133,7 +128,7 @@ export const favouritesType = defineType({
     },
     prepare({ title, subtitle, media, order }) {
       const orderText = order !== undefined ? ` (#${order})` : '';
-      
+
       return {
         title: title || 'Untitled Favourite',
         subtitle: `${subtitle || 'No genre'}${orderText}`,
