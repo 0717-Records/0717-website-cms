@@ -26,7 +26,7 @@ import YouTubeVideo from './blocks/YouTubeVideo';
 import SpotifyWidget from './blocks/SpotifyWidget';
 import BandcampWidget from './blocks/BandcampWidget';
 import EventBlock from './Events/EventBlock';
-import CollabAllBlock from './Collab/CollabAllBlock';
+import CollabAllBlock from './blocks/CollabAllBlock';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -362,10 +362,13 @@ const BlockRenderer = ({
           case 'collabAllBlock':
             return (
               <BlockWrapper key={block._key}>
-                <CollabAllBlock 
-                  ctaText={block.ctaText || 'View Details'} 
-                  noCollabsMessage={block.noCollabsMessage || 'No collaborations available at the moment. Check back soon!'}
-                  collabs={collabs || []} 
+                <CollabAllBlock
+                  ctaText={block.ctaText || 'View Details'}
+                  noCollabsMessage={
+                    block.noCollabsMessage ||
+                    'No collaborations available at the moment. Check back soon!'
+                  }
+                  collabs={collabs || []}
                 />
               </BlockWrapper>
             );
