@@ -11,11 +11,11 @@ interface CollabHeroProps {
 }
 
 export default function CollabHero({ name, heroImage, documentId, documentType }: CollabHeroProps) {
-  // Get background image or use black background
+  // Get background image or use fallback image
   const heroImageData = heroImage as { asset?: { _ref: string; _type: string } };
-  const backgroundImage = heroImageData?.asset 
+  const backgroundImage = heroImageData?.asset
     ? urlFor(heroImageData.asset).url()
-    : null;
+    : '/images/hero-fallback.png';
 
   return (
     <div {...createSanityDataAttribute(documentId, documentType, 'heroImage')}>
@@ -25,8 +25,7 @@ export default function CollabHero({ name, heroImage, documentId, documentType }
         showBackLink={true}
         backLinkText='Back to Home'
         backLinkHref='/'
-        backgroundImage={backgroundImage || undefined}
-        className={!backgroundImage ? 'bg-black' : ''}
+        backgroundImage={backgroundImage}
       />
     </div>
   );

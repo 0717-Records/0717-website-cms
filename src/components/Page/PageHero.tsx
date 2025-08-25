@@ -18,7 +18,6 @@ const PageHero = ({
   title,
   backgroundImage,
   height = 'medium',
-  overlay = true,
   className = '',
   showBackLink = false,
   backLinkText = 'Back to Home',
@@ -44,11 +43,6 @@ const PageHero = ({
       className={`relative ${getHeightClass()} bg-black flex items-center justify-center ${className}`}>
       {/* Background Image */}
       <Image src={finalBackgroundImage} alt='' fill className='object-cover z-10' priority />
-
-      {/* Overlay */}
-      {overlay && (
-        <div className='absolute inset-0 bg-gradient-to-t from-black from-20% to-transparent opacity-90 z-20' />
-      )}
 
       {/* Back Link */}
       {showBackLink && (
