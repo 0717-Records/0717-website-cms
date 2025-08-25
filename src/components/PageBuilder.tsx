@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import type { PAGE_QUERYResult, EVENTS_QUERYResult, COLLABS_ALL_QUERYResult } from '@/sanity/types';
+import type { PAGE_QUERYResult, EVENTS_QUERYResult, COLLABS_ALL_QUERYResult, FAVOURITES_ALL_QUERYResult } from '@/sanity/types';
 import type { NestedBlock } from '@/types/blocks';
 import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
@@ -27,6 +27,7 @@ import SpotifyWidget from './blocks/SpotifyWidget';
 import BandcampWidget from './blocks/BandcampWidget';
 import EventBlock from './blocks/EventBlock';
 import CollabAllBlock from './blocks/CollabAllBlock';
+import FavouriteBlock from './blocks/FavouriteBlock';
 import Divider from './UI/Divider';
 
 type PageBuilderProps = {
@@ -39,6 +40,7 @@ type PageBuilderProps = {
   };
   events?: EVENTS_QUERYResult;
   collabs?: COLLABS_ALL_QUERYResult;
+  favourites?: FAVOURITES_ALL_QUERYResult;
   alignment?: 'left' | 'center' | 'right';
 };
 
@@ -53,6 +55,7 @@ type BlockRendererProps = {
   };
   events?: EVENTS_QUERYResult;
   collabs?: COLLABS_ALL_QUERYResult;
+  favourites?: FAVOURITES_ALL_QUERYResult;
   alignment?: 'left' | 'center' | 'right';
 };
 
@@ -73,6 +76,7 @@ const BlockRenderer = ({
   siteSettings,
   events,
   collabs,
+  favourites,
   alignment = 'center',
 }: BlockRendererProps) => {
   if (!Array.isArray(blocks)) {
@@ -149,6 +153,7 @@ const BlockRenderer = ({
               siteSettings={siteSettings}
               events={events}
               collabs={collabs}
+              favourites={favourites}
               alignment={alignment}
             />
           );
@@ -373,6 +378,15 @@ const BlockRenderer = ({
               </BlockWrapper>
             );
 
+          case 'favouriteBlock':
+            return (
+              <BlockWrapper key={block._key}>
+                <FavouriteBlock
+                  favourites={favourites || []}
+                />
+              </BlockWrapper>
+            );
+
           default: {
             // Handle unknown block types gracefully
             const unknownBlock = block as { _key: string; _type: string };
@@ -396,6 +410,7 @@ const PageBuilder = ({
   siteSettings,
   events,
   collabs,
+  favourites,
   alignment = 'center',
 }: PageBuilderProps) => {
   const [sections] = useOptimistic<NonNullable<PAGE_QUERYResult>['content']>(content);
@@ -420,6 +435,7 @@ const PageBuilder = ({
         siteSettings={siteSettings}
         events={events}
         collabs={collabs}
+        favourites={favourites}
         alignment={alignment}
       />
     </div>

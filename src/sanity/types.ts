@@ -61,6 +61,11 @@ export type SideContentBlock = {
   } & CtaEmailButton>;
 };
 
+export type FavouriteBlock = {
+  _type: "favouriteBlock";
+  blockAdded?: string;
+};
+
 export type CollabAllBlock = {
   _type: "collabAllBlock";
   ctaText?: string;
@@ -475,7 +480,9 @@ export type SubSubSection = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock>;
+  } & CollabAllBlock | {
+    _key: string;
+  } & FavouriteBlock>;
 };
 
 export type SubSection = {
@@ -522,7 +529,9 @@ export type SubSection = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock>;
+  } & CollabAllBlock | {
+    _key: string;
+  } & FavouriteBlock>;
 };
 
 export type CollabPageSection = {
@@ -568,7 +577,9 @@ export type CollabPageSection = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock>;
+  } & CollabAllBlock | {
+    _key: string;
+  } & FavouriteBlock>;
 };
 
 export type PageSection = {
@@ -616,7 +627,9 @@ export type PageSection = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock>;
+  } & CollabAllBlock | {
+    _key: string;
+  } & FavouriteBlock>;
 };
 
 export type PageBuilder = Array<{
@@ -659,7 +672,9 @@ export type PageBuilder = Array<{
   _key: string;
 } & EventBlock | {
   _key: string;
-} & CollabAllBlock>;
+} & CollabAllBlock | {
+  _key: string;
+} & FavouriteBlock>;
 
 export type Footer = {
   _id: string;
@@ -789,6 +804,7 @@ export type Favourites = {
   order?: number;
   description?: string;
   link?: string;
+  linkLabel?: string;
 };
 
 export type Collab = {
@@ -1191,7 +1207,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SideContent | SideContentBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SideContent | SideContentBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -1500,6 +1516,12 @@ export type PAGE_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
     image: null;
     content: null;
   } | {
@@ -1830,6 +1852,12 @@ export type PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
       image: null;
       content: null;
     } | {
@@ -2221,6 +2249,12 @@ export type PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "icon";
         image: {
           asset: {
@@ -2593,6 +2627,11 @@ export type PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
           image: null;
         } | {
           _key: string;
@@ -3389,6 +3428,12 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "icon";
     image: {
       asset: {
@@ -3715,6 +3760,12 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
       image: null;
       content: null;
     } | {
@@ -4106,6 +4157,12 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "icon";
         image: {
           asset: {
@@ -4478,6 +4535,11 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
           image: null;
         } | {
           _key: string;
@@ -5152,6 +5214,12 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "icon";
     image: {
       asset: {
@@ -5478,6 +5546,12 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
       image: null;
       content: null;
     } | {
@@ -5869,6 +5943,12 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "icon";
         image: {
           asset: {
@@ -6241,6 +6321,11 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
           image: null;
         } | {
           _key: string;
@@ -7255,6 +7340,12 @@ export type COLLAB_QUERYResult = {
       content: null;
     } | {
       _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
       _type: "icon";
       image: {
         asset: {
@@ -7642,6 +7733,12 @@ export type COLLAB_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "icon";
         image: {
           asset: {
@@ -8025,6 +8122,12 @@ export type COLLAB_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           maxEvents?: number;
+          image: null;
+          content: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
           image: null;
           content: null;
         } | {
@@ -8435,6 +8538,28 @@ export type COLLABS_ALL_QUERYResult = Array<{
   useShortDescriptionForCards: boolean | null;
   cardDescription: string | null;
 }>;
+// Variable: FAVOURITES_ALL_QUERY
+// Query: *[_type == "favourites"]|order(order asc, name asc){  _id,  name,  genre,  order,  profileImage{    asset,    alt,    hotspot,    crop  },  description,  link,  linkLabel}
+export type FAVOURITES_ALL_QUERYResult = Array<{
+  _id: string;
+  name: string | null;
+  genre: string | null;
+  order: number | null;
+  profileImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    } | null;
+    alt: string | null;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
+  } | null;
+  description: string | null;
+  link: string | null;
+  linkLabel: string | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -8452,5 +8577,6 @@ declare module "@sanity/client" {
     "*[_type == \"collab\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  name,\n  slug,\n  genre,\n  location,\n  heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  previewImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  shortDescription,\n  bio,\n  mainContent[]{\n  _type,\n  _key,\n  title,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"ctaButton\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCalloutLink\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"ctaCard\" => {\n    ...,\n    internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n\n      }\n    }\n  }\n}\n},\n  sideContent[]{\n  _type,\n  _key,\n  style,\n  title,\n  richText,\n  ctaBlocks[]{\n    _type,\n    _key,\n    _type == \"ctaCalloutLink\" => {\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n    },\n    _type == \"ctaEmailButton\" => {\n      ...\n    }\n  }\n},\n  links{\n    _type,\n    facebook,\n    instagram,\n    youtube,\n    twitter,\n    soundcloud,\n    bandcamp,\n    spotify,\n    itunes,\n    officialWebsite,\n    genericLinks[]{\n      _key,\n      title,\n      url\n    }\n  }\n}": COLLAB_QUERYResult;
     "*[_type == \"collab\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": COLLABS_SLUGS_QUERYResult;
     "*[_type == \"collab\" && defined(slug.current)]|order(order asc, name asc){\n  _id,\n  name,\n  slug,\n  genre,\n  location,\n  order,\n  previewImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  shortDescription,\n  useShortDescriptionForCards,\n  cardDescription\n}": COLLABS_ALL_QUERYResult;
+    "*[_type == \"favourites\"]|order(order asc, name asc){\n  _id,\n  name,\n  genre,\n  order,\n  profileImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  description,\n  link,\n  linkLabel\n}": FAVOURITES_ALL_QUERYResult;
   }
 }

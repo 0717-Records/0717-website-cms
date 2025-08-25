@@ -4,14 +4,16 @@ import Hero from '@/components/HomeHero/Hero';
 import { getHomePage, getSiteSettings } from '@/actions';
 import { getAllEvents } from '@/actions/events';
 import { getCollabs } from '@/actions/collabs';
+import { getFavourites } from '@/actions/favourites';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 
 const Page = async () => {
-  const [page, siteSettings, events, collabs] = await Promise.all([
+  const [page, siteSettings, events, collabs, favourites] = await Promise.all([
     getHomePage(),
     getSiteSettings(),
     getAllEvents(),
     getCollabs(),
+    getFavourites(),
   ]);
 
   if (!page) {
@@ -41,6 +43,7 @@ const Page = async () => {
           siteSettings={siteSettings ? { companyEmail: siteSettings.companyEmail || undefined } : undefined}
           events={events}
           collabs={collabs}
+          favourites={favourites}
           alignment='center'
         />
       )}

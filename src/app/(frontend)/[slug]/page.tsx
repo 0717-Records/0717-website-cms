@@ -4,14 +4,16 @@ import PageHero from '@/components/Page/PageHero';
 import { getPageBySlug, getSiteSettings } from '@/actions';
 import { getAllEvents } from '@/actions/events';
 import { getCollabs } from '@/actions/collabs';
+import { getFavourites } from '@/actions/favourites';
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const [page, siteSettings, events, collabs] = await Promise.all([
+  const [page, siteSettings, events, collabs, favourites] = await Promise.all([
     getPageBySlug(slug),
     getSiteSettings(),
     getAllEvents(),
     getCollabs(),
+    getFavourites(),
   ]);
 
   if (!page) {
@@ -43,6 +45,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           }
           events={events}
           collabs={collabs}
+          favourites={favourites}
           alignment={page.alignment || 'center'}
         />
       )}

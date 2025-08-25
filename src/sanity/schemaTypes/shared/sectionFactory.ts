@@ -22,6 +22,7 @@ export const commonContentBlocks = [
   defineArrayMember({ type: 'bandcampWidget' }),
   defineArrayMember({ type: 'eventBlock' }),
   defineArrayMember({ type: 'collabAllBlock' }),
+  defineArrayMember({ type: 'favouriteBlock' }),
 ];
 
 interface SectionFactoryConfig {

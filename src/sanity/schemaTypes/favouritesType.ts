@@ -84,6 +84,16 @@ export const favouritesType = defineType({
           scheme: ['http', 'https']
         }),
     }),
+    defineField({
+      name: 'linkLabel',
+      title: 'Link Label',
+      type: 'string',
+      description: 'Text to display on the link button (optional)',
+      initialValue: 'More Info',
+      validation: (Rule) => 
+        Rule.max(50)
+          .error('Link label must be under 50 characters'),
+    }),
   ],
   
   orderings: [

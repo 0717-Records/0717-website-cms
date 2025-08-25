@@ -299,3 +299,19 @@ export const COLLABS_ALL_QUERY = defineQuery(`*[_type == "collab" && defined(slu
   useShortDescriptionForCards,
   cardDescription
 }`);
+
+export const FAVOURITES_ALL_QUERY = defineQuery(`*[_type == "favourites"]|order(order asc, name asc){
+  _id,
+  name,
+  genre,
+  order,
+  profileImage{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
+  description,
+  link,
+  linkLabel
+}`);
