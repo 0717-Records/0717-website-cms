@@ -282,12 +282,13 @@ export const COLLABS_SLUGS_QUERY = defineQuery(`*[_type == "collab" && defined(s
   "slug": slug.current
 }`);
 
-export const COLLABS_ALL_QUERY = defineQuery(`*[_type == "collab" && defined(slug.current)]|order(name asc){
+export const COLLABS_ALL_QUERY = defineQuery(`*[_type == "collab" && defined(slug.current)]|order(order asc, name asc){
   _id,
   name,
   slug,
   genre,
   location,
+  order,
   previewImage{
     asset,
     alt,

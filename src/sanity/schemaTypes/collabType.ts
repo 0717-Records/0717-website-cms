@@ -79,6 +79,20 @@ export const collabType = defineType({
       description: 'Geographic location (city, country, etc.)',
       validation: (Rule) => Rule.max(100),
     }),
+    defineField({
+      name: 'order',
+      title: 'Display Order',
+      type: 'number',
+      group: 'basic',
+      description: 'Order in which this collaboration appears (lower numbers appear first)',
+      initialValue: 100,
+      validation: (Rule) => 
+        Rule.required()
+          .integer()
+          .min(0)
+          .max(9999)
+          .error('Display order must be a whole number between 0 and 9999'),
+    }),
 
     // Images Group
     defineField({
@@ -201,6 +215,11 @@ export const collabType = defineType({
   ],
   
   orderings: [
+    {
+      title: 'Display Order',
+      name: 'displayOrder',
+      by: [{ field: 'order', direction: 'asc' }, { field: 'name', direction: 'asc' }],
+    },
     {
       title: 'Name A-Z',
       name: 'nameAsc',

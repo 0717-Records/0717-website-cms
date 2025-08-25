@@ -5362,6 +5362,13 @@
         },
         "optional": true
       },
+      "order": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "number"
+        },
+        "optional": true
+      },
       "heroImage": {
         "type": "objectAttribute",
         "value": {
