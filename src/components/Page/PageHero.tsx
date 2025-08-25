@@ -52,7 +52,7 @@ const PageHero = ({
               href={backLinkHref}
               className='inline-flex items-center gap-2 text-white hover:bg-black active:scale-90 transition-all duration-200 text-body-sm md:text-body-base bg-black/30 backdrop-blur-sm rounded-lg px-3 py-2 border border-white/20'>
               <span>←</span>
-              <span>{backLinkText}</span>
+              {/* <span>{backLinkText}</span> */}
             </Link>
           </div>
         )}
