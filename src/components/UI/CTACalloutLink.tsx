@@ -57,7 +57,7 @@ const CTACalloutLink = ({
         group
         ${className}
       `.trim()}>
-      <div className='flex flex-col md:flex-row justify-around items-center gap-6 md:gap-10'>
+      <div className='flex flex-col sm:flex-row justify-around items-center gap-6 md:gap-10'>
         {/* Image */}
         {image && (
           <div className='flex-shrink-0'>
@@ -74,8 +74,10 @@ const CTACalloutLink = ({
         )}
 
         {/* Content */}
-        <div className='flex-grow min-w-0'>
-          {heading && <div className='font-semibold text-body-lg text-gray-900 mb-1'>{heading}</div>}
+        <div className='flex-grow min-w-0 text-center sm:text-left'>
+          {heading && (
+            <div className='font-semibold text-body-lg text-gray-900 mb-1'>{heading}</div>
+          )}
           <p className='text-gray-700 leading-relaxed whitespace-pre-line'>{text}</p>
         </div>
 
