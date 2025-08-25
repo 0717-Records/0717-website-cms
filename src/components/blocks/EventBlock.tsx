@@ -1,5 +1,5 @@
 import React from 'react';
-import EventList from './EventList';
+import EventList from '../Events/EventList';
 import CTA from '../UI/CTA';
 import type { EVENTS_QUERYResult } from '@/sanity/types';
 import { transformEvents } from '@/utils/transformEvents';

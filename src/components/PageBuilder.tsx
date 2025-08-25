@@ -25,7 +25,7 @@ import ImageGallery from './blocks/ImageGallery';
 import YouTubeVideo from './blocks/YouTubeVideo';
 import SpotifyWidget from './blocks/SpotifyWidget';
 import BandcampWidget from './blocks/BandcampWidget';
-import EventBlock from './Events/EventBlock';
+import EventBlock from './blocks/EventBlock';
 import CollabAllBlock from './blocks/CollabAllBlock';
 import Divider from './UI/Divider';
 

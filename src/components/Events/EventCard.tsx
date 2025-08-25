@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { FaLocationDot } from 'react-icons/fa6';
 
 interface EventCardProps {
   title: string;
@@ -168,9 +169,7 @@ const EventCard = (props: EventCardProps) => {
 
         {/* Venue and Location */}
         <div className='flex items-center text-text-subtle text-body-sm md:text-body-base mb-2 md:mb-3'>
-          <span className='mr-1 md:mr-2' aria-label='Location' title='Location'>
-            📍
-          </span>
+          <FaLocationDot className='mr-1 md:mr-2 text-brand-secondary' />
           <span className='font-medium'>{venue ? `${venue}, ${location}` : location}</span>
         </div>
 

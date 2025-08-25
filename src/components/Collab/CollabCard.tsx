@@ -78,7 +78,7 @@ const CollabCard = ({
           {location && (
             <div className='text-center flex items-center justify-center gap-2'>
               <FaLocationDot className='text-brand-secondary' />
-              <p className='text-body-sm text-gray-500'>{location}</p>
+              <p className='text-body-base text-gray-500'>{location}</p>
             </div>
           )}
 
