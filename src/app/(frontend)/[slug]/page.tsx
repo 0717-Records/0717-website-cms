@@ -21,13 +21,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   return (
     <>
       {/* Page Hero */}
-      <PageHero
-        title={page.title || 'Untitled Page'}
-        height='medium'
-        showBackLink={true}
-        backLinkText='Back to Home'
-        backLinkHref='/'
-      />
+      <PageHero title={page.title || 'Untitled Page'} />
 
       {/* Page Subtitle */}
       {page.subtitle && (
@@ -40,11 +34,13 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
       {/* Page Content */}
       {page.content && (
-        <PageBuilder 
-          content={page.content} 
-          documentId={page._id} 
-          documentType={page._type} 
-          siteSettings={siteSettings ? { companyEmail: siteSettings.companyEmail || undefined } : undefined}
+        <PageBuilder
+          content={page.content}
+          documentId={page._id}
+          documentType={page._type}
+          siteSettings={
+            siteSettings ? { companyEmail: siteSettings.companyEmail || undefined } : undefined
+          }
           events={events}
           collabs={collabs}
           alignment={page.alignment || 'center'}

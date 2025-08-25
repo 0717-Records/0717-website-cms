@@ -2,12 +2,12 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import { getCollab, getCollabSlugsForGeneration, getCollabs } from '@/actions/collabs';
 import { getSiteSettings } from '@/actions';
-import CollabHero from '@/components/Collab/CollabHero/CollabHero';
 import CollabShortDescription from '@/components/Collab/CollabShortDescription';
 import CollabMainContent from '@/components/Collab/CollabMainContent';
 import CollabBasicInfo from '@/components/Collab/CollabBasicInfo';
 import CollabLinks from '@/components/Collab/CollabLinks';
 import CollabSideContent from '@/components/Collab/CollabSideContent';
+import PageHero from '@/components/Page/PageHero';
 
 interface CollabSlug {
   slug: string;
@@ -34,8 +34,8 @@ export default async function CollabPage({ params }: CollabPageProps) {
   return (
     <>
       {/* Hero Section */}
-      <CollabHero
-        name={collab.name}
+      <PageHero
+        title={collab.name}
         heroImage={collab.heroImage}
         documentId={collab._id}
         documentType={collab._type}

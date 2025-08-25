@@ -13,23 +13,16 @@ export default async function EventsPage() {
   ]);
   const allEvents = transformEvents(rawEvents);
   // const allEvents = (await getEvents()) as TransformedEvent[]; // Test JSON data - uncomment for testing
-  
+
   // Get background image or fallback to placeholder
-  const backgroundImage = eventsIndexPage?.backgroundImage 
+  const backgroundImage = eventsIndexPage?.backgroundImage
     ? urlFor(eventsIndexPage.backgroundImage).url()
     : '/pagePlaceholderImg.webp';
 
   return (
     <>
       {/* Page Hero */}
-      <PageHero
-        title={eventsIndexPage?.title || 'All Events'}
-        height='medium'
-        showBackLink={true}
-        backLinkText='Back to Home'
-        backLinkHref='/'
-        backgroundImage={backgroundImage}
-      />
+      <PageHero title={eventsIndexPage?.title || 'All Events'} heroImage={backgroundImage} />
 
       {/* Page Subtitle */}
       {eventsIndexPage?.subtitle && (
@@ -45,16 +38,19 @@ export default async function EventsPage() {
         <EventList
           events={allEvents}
           filter='upcoming'
-          noEventsText={eventsIndexPage?.noUpcomingEventsMessage || 'No upcoming events at the moment. Check back soon!'}
+          noEventsText={
+            eventsIndexPage?.noUpcomingEventsMessage ||
+            'No upcoming events at the moment. Check back soon!'
+          }
         />
       </PageSection>
 
       {/* Past Events Section */}
       <PageSection title='Past Events'>
-        <EventList 
-          events={allEvents} 
-          filter='past' 
-          noEventsText={eventsIndexPage?.noPastEventsMessage || 'No past events to display yet.'} 
+        <EventList
+          events={allEvents}
+          filter='past'
+          noEventsText={eventsIndexPage?.noPastEventsMessage || 'No past events to display yet.'}
         />
       </PageSection>
     </>
