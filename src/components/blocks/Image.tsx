@@ -7,7 +7,6 @@ import { urlFor } from '@/sanity/lib/image';
 import type { ImageBlock } from '@/types/blocks';
 import ImageModal from '../Modals/ImageModal';
 import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
-import Modal from '../UI/Modal';
 
 interface ImageProps
   extends ImageBlock,
@@ -68,14 +67,13 @@ const Image: React.FC<ImageProps> = ({
           style={{ objectFit: 'cover' }}
         />
       </button>
-      <Modal 
-        isModalOpen={isModalOpen} 
+      <ImageModal 
+        imageUrl={imageUrl} 
+        imageAlt={imageAlt} 
+        caption={cleanCaption}
+        isModalOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
-        aria-labelledby="image-modal-title"
-        aria-describedby="image-modal-description"
-      >
-        <ImageModal imageUrl={imageUrl} imageAlt={imageAlt} caption={cleanCaption} />
-      </Modal>
+      />
       {cleanCaption && (
         <figcaption
           className='mt-2 text-body-sm text-gray-600 text-center italic'
