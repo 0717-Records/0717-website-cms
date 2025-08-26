@@ -56,8 +56,8 @@ const Image: React.FC<ImageProps> = ({
         modalContent={
           <ImageModal imageUrl={imageUrl} imageAlt={imageAlt} caption={cleanCaption} />
         }>
-        <button
-          className='relative cursor-pointer border-none bg-transparent p-0 w-full'
+        <div
+          className='relative border-none bg-transparent p-0 w-full'
           aria-label={`View full-screen image: ${imageAlt}`}>
           <NextImage
             src={imageUrl}
@@ -67,7 +67,7 @@ const Image: React.FC<ImageProps> = ({
             className='w-full h-auto rounded-lg'
             style={{ objectFit: 'cover' }}
           />
-        </button>
+        </div>
       </Modal>
       {cleanCaption && (
         <figcaption

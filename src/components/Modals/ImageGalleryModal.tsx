@@ -44,6 +44,8 @@ const ImageGalleryModal: React.FC<ImageGalleryModalProps> = ({
   const currentImageAlt = stegaClean(currentImage?.image?.alt) || `Image ${currentImageIndex + 1}`;
   const currentCaption = stegaClean(currentImage?.caption);
 
+  return <></>;
+
   return (
     <Modal
       isOpen={isOpen}
@@ -96,12 +98,7 @@ const ImageGalleryModal: React.FC<ImageGalleryModalProps> = ({
               fill='none'
               stroke='currentColor'
               viewBox='0 0 24 24'>
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M9 5l7 7-7 7'
-              />
+              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
             </svg>
           </button>
         </div>

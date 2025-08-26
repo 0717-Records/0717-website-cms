@@ -71,14 +71,6 @@ const EventList = ({ events, filter, limit, noEventsText }: EventListProps) => {
     }
   });
 
-  // Debug logging for upcoming events
-  if (filter === 'upcoming' && typeof window !== 'undefined') {
-    console.log(
-      'Upcoming events sorted:',
-      filteredEvents.map((e) => `${e.title}: ${e.startDate}`)
-    );
-  }
-
   // Apply limit if provided
   if (limit && limit > 0) {
     filteredEvents = filteredEvents.slice(0, limit);
