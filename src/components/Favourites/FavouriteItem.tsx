@@ -24,7 +24,7 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
     <>
       <button
         onClick={() => setIsModalOpen(true)}
-        className='group cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 rounded-lg px-1 sm:px-4'
+        className='group cursor-pointer w-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 rounded-lg px-1 sm:px-4'
         tabIndex={0}
         role='button'
         aria-label={`View details for ${favourite.name}`}>
