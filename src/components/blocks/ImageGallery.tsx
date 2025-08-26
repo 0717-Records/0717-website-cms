@@ -1,18 +1,17 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import { stegaClean } from 'next-sanity';
 import NextImage from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { ImageGalleryBlock } from '@/types/blocks';
-import ImageGalleryModal from '../Modals/ImageGalleryModal';
 import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
+import Modal from '../UI/Modal';
 
-interface ImageGalleryProps extends ImageGalleryBlock, Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
+interface ImageGalleryProps
+  extends ImageGalleryBlock,
+    Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
   className?: string;
   pathPrefix?: string;
 }
-
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({
   columns = '3',
@@ -22,11 +21,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
   documentType,
   pathPrefix,
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
   if (!images || !Array.isArray(images) || images.length === 0) {
     return null;
   }
@@ -49,65 +43,14 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
 
   const gridClasses = getGridClasses(validColumns);
 
-  const handleImageClick = (index: number) => {
-    setCurrentImageIndex(index);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handlePrevImage = () => {
-    setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
-  };
-
-  const handleNextImage = () => {
-    setCurrentImageIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
-  };
-
-  const handleImageIndexChange = (index: number) => {
-    setCurrentImageIndex(index);
-  };
-
-  const handleKeyNavigation = (event: React.KeyboardEvent) => {
-    if (event.key === 'ArrowLeft') {
-      handlePrevImage();
-    } else if (event.key === 'ArrowRight') {
-      handleNextImage();
-    }
-  };
-
-  // Mobile touch gesture handling
-  const minSwipeDistance = 50;
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe) {
-      handleNextImage();
-    } else if (isRightSwipe) {
-      handlePrevImage();
-    }
-  };
-
   // Create data attribute for individual image caption if Sanity props are provided
   const getCaptionDataAttribute = (imageIndex: number) => {
     return pathPrefix
-      ? createSanityDataAttribute(documentId, documentType, `${pathPrefix}.images[${imageIndex}].caption`)
+      ? createSanityDataAttribute(
+          documentId,
+          documentType,
+          `${pathPrefix}.images[${imageIndex}].caption`
+        )
       : {};
   };
 
@@ -124,17 +67,9 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
 
           return (
             <figure key={item._key || idx} className={gridClasses}>
-              <div
-                className='relative cursor-pointer aspect-[4/3]'
-                onClick={() => handleImageClick(idx)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleImageClick(idx);
-                  }
-                }}
+              <button
+                className='relative aspect-[16/9] block w-full h-full'
                 tabIndex={0}
-                role='button'
                 aria-label={`View gallery image ${idx + 1}: ${imageAlt}`}>
                 <NextImage
                   src={imageUrl}
@@ -143,7 +78,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                   sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
                   className='object-cover rounded-lg'
                 />
-              </div>
+              </button>
               {caption && (
                 <figcaption
                   className='mt-2 text-body-sm text-gray-600 text-center italic'
@@ -155,20 +90,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
           );
         })}
       </div>
-
-      <ImageGalleryModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        images={images}
-        currentImageIndex={currentImageIndex}
-        onImageIndexChange={handleImageIndexChange}
-        onPrevImage={handlePrevImage}
-        onNextImage={handleNextImage}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-        onKeyNavigation={handleKeyNavigation}
-      />
     </>
   );
 };

@@ -1,11 +1,13 @@
+'use client';
+
 import React from 'react';
 import { stegaClean } from 'next-sanity';
 import NextImage from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { ImageBlock } from '@/types/blocks';
 import ImageModal from '../Modals/ImageModal';
+import useModal from '@/hooks/useModal';
 import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
-import Modal from '../UI/Modal';
 
 interface ImageProps
   extends ImageBlock,
@@ -23,6 +25,8 @@ const Image: React.FC<ImageProps> = ({
   documentType,
   pathPrefix,
 }) => {
+  const { openModal, Modal } = useModal();
+
   if (!image?.asset) {
     return null;
   }
@@ -52,22 +56,27 @@ const Image: React.FC<ImageProps> = ({
 
   return (
     <figure className={`${sizeClasses} ${className}`}>
-      <Modal
+      {/* <Modal
         modalContent={
           <ImageModal imageUrl={imageUrl} imageAlt={imageAlt} caption={cleanCaption} />
         }>
-        <div
-          className='relative border-none bg-transparent p-0 w-full'
-          aria-label={`View full-screen image: ${imageAlt}`}>
-          <NextImage
-            src={imageUrl}
-            alt={imageAlt}
-            width={800}
-            height={600}
-            className='w-full h-auto rounded-lg'
-            style={{ objectFit: 'cover' }}
-          />
-        </div>
+        
+      </Modal> */}
+      <button
+        onClick={openModal}
+        className='cursor-pointer relative border-none bg-transparent p-0 w-full'
+        aria-label={`View full-screen image: ${imageAlt}`}>
+        <NextImage
+          src={imageUrl}
+          alt={imageAlt}
+          width={800}
+          height={600}
+          className='w-full h-auto rounded-lg'
+          style={{ objectFit: 'cover' }}
+        />
+      </button>
+      <Modal>
+        <ImageModal imageUrl={imageUrl} imageAlt={imageAlt} caption={cleanCaption} />
       </Modal>
       {cleanCaption && (
         <figcaption
