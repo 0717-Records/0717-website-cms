@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface ModalProps {
   children: React.ReactNode;
@@ -11,17 +12,22 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ children, modalContent }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useBodyScrollLock(isOpen);
 
   // Open the dialog programmatically
   const openDialog = () => {
     if (dialogRef.current && !dialogRef.current.open) {
       dialogRef.current.showModal();
+      setIsOpen(true);
     }
   };
 
   // Close handler
   const closeDialog = () => {
     dialogRef.current?.close();
+    setIsOpen(false);
   };
 
   // Escape key handling
@@ -48,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({ children, modalContent }) => {
         ref={dialogRef}
         aria-labelledby='image-modal-title'
         aria-describedby='image-modal-description'
-        className='backdrop:bg-black/70 flex-col items-center justify-center w-screen h-screen bg-transparent overflow-hidden hidden open:flex p-0 m-0 max-w-none max-h-none'
+        className='backdrop:bg-black/80 flex-col items-center justify-center w-screen h-screen bg-transparent overflow-hidden hidden open:flex p-0 m-0 max-w-none max-h-none'
         onClick={(e) => {
           // Close if clicking the dialog itself (backdrop), not its content
           if (e.target === e.currentTarget) {
@@ -58,13 +64,17 @@ const Modal: React.FC<ModalProps> = ({ children, modalContent }) => {
         {/* Close button */}
         <button
           onClick={closeDialog}
-          className=' cursor-pointer absolute top-4 right-4 z-50 p-2 bg-black/40 hover:bg-black/70 rounded-full transition-colors'
+          className='cursor-pointer absolute top-4 right-4 z-50 p-2 bg-black/70 hover:bg-white rounded-full transition-colors group'
           aria-label='Close modal'>
-          <svg className='w-6 h-6 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          <svg
+            className='w-6 h-6 text-white group-hover:text-black transition-colors'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'>
             <path
               strokeLinecap='round'
               strokeLinejoin='round'
-              strokeWidth={2}
+              strokeWidth={3}
               d='M6 18L18 6M6 6l12 12'
             />
           </svg>
