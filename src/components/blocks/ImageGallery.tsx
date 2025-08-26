@@ -1,12 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { stegaClean } from 'next-sanity';
 import NextImage from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { ImageGalleryBlock } from '@/types/blocks';
 import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
-import Modal from '../UI/Modal';
+import ImageGalleryModal from '../Modals/ImageGalleryModal';
 
 interface ImageGalleryProps
   extends ImageGalleryBlock,
@@ -23,6 +23,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
   documentType,
   pathPrefix,
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   if (!images || !Array.isArray(images) || images.length === 0) {
     return null;
   }
@@ -56,8 +58,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
       : {};
   };
 
-  const openModal = () => {};
-
   return (
     <>
       <div
@@ -72,7 +72,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
           return (
             <figure key={item._key || idx} className={gridClasses}>
               <button
-                onClick={() => openModal()}
+                onClick={() => setIsModalOpen(true)}
                 className='relative aspect-[16/9] block w-full h-full'
                 tabIndex={0}
                 aria-label={`View gallery image ${idx + 1}: ${imageAlt}`}>
@@ -95,6 +95,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
           );
         })}
       </div>
+      <ImageGalleryModal isModalOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
     </>
   );
 };

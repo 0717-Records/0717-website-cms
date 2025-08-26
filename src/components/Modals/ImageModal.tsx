@@ -11,15 +11,20 @@ interface ImageModalProps {
   closeModal: () => void;
 }
 
-const ImageModal: React.FC<ImageModalProps> = ({ imageUrl, imageAlt, caption, isModalOpen, closeModal }) => {
+const ImageModal: React.FC<ImageModalProps> = ({
+  imageUrl,
+  imageAlt,
+  caption,
+  isModalOpen,
+  closeModal,
+}) => {
   return (
-    <Modal 
-      isModalOpen={isModalOpen} 
+    <Modal
+      isModalOpen={isModalOpen}
       closeModal={closeModal}
-      aria-labelledby="image-modal-title"
-      aria-describedby="image-modal-description"
-    >
-      <div className=''>
+      aria-labelledby='image-modal-title'
+      aria-describedby='image-modal-description'>
+      <div>
         <Heading level='h2' id='image-modal-title' className='sr-only'>
           Full-screen image view
         </Heading>
