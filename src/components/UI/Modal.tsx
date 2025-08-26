@@ -48,7 +48,13 @@ const Modal: React.FC<ModalProps> = ({ children, modalContent }) => {
         ref={dialogRef}
         aria-labelledby='image-modal-title'
         aria-describedby='image-modal-description'
-        className='backdrop:bg-black/70 flex-col items-center justify-center w-screen h-screen bg-transparent overflow-hidden hidden open:flex p-0 m-0 max-w-none max-h-none'>
+        className='backdrop:bg-black/70 flex-col items-center justify-center w-screen h-screen bg-transparent overflow-hidden hidden open:flex p-0 m-0 max-w-none max-h-none'
+        onClick={(e) => {
+          // Close if clicking the dialog itself (backdrop), not its content
+          if (e.target === e.currentTarget) {
+            closeDialog();
+          }
+        }}>
         {modalContent}
       </dialog>
     </>
