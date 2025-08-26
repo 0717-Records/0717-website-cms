@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { stegaClean } from 'next-sanity';
 import NextImage from 'next/image';
@@ -54,6 +56,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
       : {};
   };
 
+  const openModal = () => {};
+
   return (
     <>
       <div
@@ -68,6 +72,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
           return (
             <figure key={item._key || idx} className={gridClasses}>
               <button
+                onClick={() => openModal()}
                 className='relative aspect-[16/9] block w-full h-full'
                 tabIndex={0}
                 aria-label={`View gallery image ${idx + 1}: ${imageAlt}`}>
