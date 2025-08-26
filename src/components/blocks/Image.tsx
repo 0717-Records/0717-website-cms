@@ -68,7 +68,12 @@ const Image: React.FC<ImageProps> = ({
           style={{ objectFit: 'cover' }}
         />
       </button>
-      <Modal isModalOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>
+      <Modal 
+        isModalOpen={isModalOpen} 
+        closeModal={() => setIsModalOpen(false)}
+        aria-labelledby="image-modal-title"
+        aria-describedby="image-modal-description"
+      >
         <ImageModal imageUrl={imageUrl} imageAlt={imageAlt} caption={cleanCaption} />
       </Modal>
       {cleanCaption && (
