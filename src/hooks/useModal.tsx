@@ -9,23 +9,17 @@ const useModal = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const openModal = () => {
-    console.log('openModal called');
-    // Clear any existing timeout
     if (timeoutRef.current) {
-      console.log('Clearing existing timeout');
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
     setIsOpen(true);
     setShouldRender(true);
   };
-  
+
   const closeModal = () => {
-    console.log('closeModal called');
     setIsOpen(false);
-    // Set shouldRender to false after fade out completes
     timeoutRef.current = setTimeout(() => {
-      console.log('Setting shouldRender to false after fadeout');
       setShouldRender(false);
       timeoutRef.current = null;
     }, 300);
@@ -37,45 +31,32 @@ const useModal = () => {
 
     useBodyScrollLock(shouldRender);
 
-    // Handle opening when isOpen changes
     useEffect(() => {
-      console.log('Open effect - isOpen:', isOpen, 'dialog exists:', !!dialogRef.current, 'dialog.open:', dialogRef.current?.open);
       if (isOpen && dialogRef.current) {
-        // Reset isVisible to false before opening
         setIsVisible(false);
         if (!dialogRef.current.open) {
-          console.log('Opening modal and starting fade in');
           dialogRef.current.showModal();
         }
-        // Small delay to ensure dialog is rendered, then start fade in
         setTimeout(() => {
-          console.log('Setting isVisible to true for fade in');
           setIsVisible(true);
         }, 10);
       }
     }, [isOpen]);
 
-    // Handle closing when closeModal is called
     useEffect(() => {
-      console.log('Close effect - isOpen:', isOpen, 'isVisible:', isVisible);
       if (!isOpen && isVisible) {
-        console.log('Starting fade out - setting isVisible to false');
         setIsVisible(false);
-        // Wait for fade out animation to complete before actually closing
         setTimeout(() => {
-          console.log('Closing dialog after fade out');
           dialogRef.current?.close();
-        }, 300); // Match the CSS transition duration
+        }, 300);
       }
     }, [isOpen]);
 
-    // Escape key handling
     useEffect(() => {
       const dialog = dialogRef.current;
       if (!dialog) return;
 
       const handleCancel = (e: Event) => {
-        // Prevent default so ESC doesn't just close without cleanup
         e.preventDefault();
         closeModal();
       };
@@ -84,8 +65,6 @@ const useModal = () => {
       return () => dialog.removeEventListener('cancel', handleCancel);
     }, [closeModal]);
 
-    console.log('Render - shouldRender:', shouldRender, 'isOpen:', isOpen, 'isVisible:', isVisible, 'opacity class:', isVisible ? 'opacity-100' : 'opacity-0');
-    
     return shouldRender ? (
       <dialog
         ref={dialogRef}
