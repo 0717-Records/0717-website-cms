@@ -13,6 +13,7 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ children, modalContent }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useBodyScrollLock(isOpen);
 
@@ -21,13 +22,21 @@ const Modal: React.FC<ModalProps> = ({ children, modalContent }) => {
     if (dialogRef.current && !dialogRef.current.open) {
       dialogRef.current.showModal();
       setIsOpen(true);
+      // Small delay to ensure dialog is rendered, then start fade in
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 10);
     }
   };
 
-  // Close handler
+  // Close handler with fade out
   const closeDialog = () => {
-    dialogRef.current?.close();
-    setIsOpen(false);
+    setIsVisible(false);
+    // Wait for fade out animation to complete before actually closing
+    setTimeout(() => {
+      dialogRef.current?.close();
+      setIsOpen(false);
+    }, 300); // Match the CSS transition duration
   };
 
   // Escape key handling
@@ -54,7 +63,9 @@ const Modal: React.FC<ModalProps> = ({ children, modalContent }) => {
         ref={dialogRef}
         aria-labelledby='image-modal-title'
         aria-describedby='image-modal-description'
-        className='backdrop:bg-black/80 flex-col items-center justify-center w-screen h-screen bg-transparent overflow-hidden hidden open:flex p-0 m-0 max-w-none max-h-none'
+        className={`backdrop:bg-black/80 flex-col items-center justify-center w-screen h-screen bg-transparent overflow-hidden hidden open:flex p-0 m-0 max-w-none max-h-none transition-opacity duration-300 ${
+          isVisible ? 'opacity-100' : 'opacity-0'
+        }`}
         onClick={(e) => {
           // Close if clicking the dialog itself (backdrop), not its content
           if (e.target === e.currentTarget) {
