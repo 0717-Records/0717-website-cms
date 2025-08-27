@@ -130,7 +130,7 @@ const Card = ({
               {...createSanityDataAttribute(documentId, documentType, getFieldPath('title'))}>
               {cleanTitle}
               {/* Subtle underline accent */}
-              <div className='absolute -bottom-1 left-0 lg:left-0 w-16 h-1 bg-brand-secondary opacity-30 rounded'></div>
+              <div className='absolute -bottom-1 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 w-16 h-1 bg-brand-secondary opacity-30 rounded'></div>
             </div>
           )}
 
