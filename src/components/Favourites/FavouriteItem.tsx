@@ -69,6 +69,27 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
           )}
         </div>
       </button>
+
+      {/* SEO-only content - visually hidden but accessible to search engines */}
+      {favourite.description && (
+        <div className='sr-only'>
+          <h3>{favourite.name} - Description</h3>
+          <p {...createSanityDataAttribute(favourite._id, 'favourites', 'description')}>
+            {favourite.description}
+          </p>
+          {favourite.link && favourite.linkLabel && (
+            <p>
+              <a 
+                href={favourite.link}
+                {...createSanityDataAttribute(favourite._id, 'favourites', 'link')}
+              >
+                {favourite.linkLabel}
+              </a>
+            </p>
+          )}
+        </div>
+      )}
+
       <FavouriteModal
         isModalOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
