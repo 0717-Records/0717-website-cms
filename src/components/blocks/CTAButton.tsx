@@ -1,28 +1,11 @@
 import React from 'react';
 import { stegaClean } from 'next-sanity';
 import type { CTAButtonBlock } from '@/types/blocks';
+import type { CTABlockProps } from '@/types/shared';
 import CTA from '../UI/CTA';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
-// Type for a dereferenced page object
-interface DereferencedPage {
-  _id: string;
-  _type?: string;
-  title?: string;
-  slug?: {
-    current: string;
-  };
-  pageType?: string;
-  href?: string | null;
-}
-
-// Type for internalLink that can be either a reference or dereferenced
-type InternalLinkType = { _ref: string; _type: 'reference' } | DereferencedPage;
-
-interface CTAButtonProps extends Omit<CTAButtonBlock, '_type' | '_key' | 'internalLink'> {
-  className?: string;
-  internalLink?: InternalLinkType;
-}
+type CTAButtonProps = CTABlockProps<CTAButtonBlock>;
 
 const CTAButton = ({
   text,

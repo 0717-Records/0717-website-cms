@@ -3,6 +3,7 @@
 import React from 'react';
 import type { PAGE_QUERYResult, EVENTS_QUERYResult, COLLABS_ALL_QUERYResult, FAVOURITES_ALL_QUERYResult } from '@/sanity/types';
 import type { NestedBlock } from '@/types/blocks';
+import type { SiteSettingsProps } from '@/types/shared';
 import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react';
@@ -35,24 +36,7 @@ import Divider from './UI/Divider';
 interface SharedPageBuilderProps {
   documentId: string;
   documentType: string;
-  siteSettings?: {
-    companyEmail?: string;
-    companyLinks?: {
-      facebook?: string | null;
-      instagram?: string | null;
-      youtube?: string | null;
-      twitter?: string | null;
-      soundcloud?: string | null;
-      bandcamp?: string | null;
-      spotify?: string | null;
-      itunes?: string | null;
-      genericLinks?: Array<{
-        _key: string;
-        title: string | null;
-        url: string | null;
-      }> | null;
-    } | null;
-  };
+  siteSettings?: SiteSettingsProps;
   events?: EVENTS_QUERYResult;
   collabs?: COLLABS_ALL_QUERYResult;
   favourites?: FAVOURITES_ALL_QUERYResult;

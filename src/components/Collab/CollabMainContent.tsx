@@ -1,6 +1,7 @@
 import React from 'react';
 import PageBuilder from '@/components/PageBuilder';
 import type { PAGE_QUERYResult, COLLABS_ALL_QUERYResult } from '@/sanity/types';
+import type { SiteSettingsProps } from '@/types/shared';
 import Heading from '../Typography/Heading/Heading';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 
@@ -33,9 +34,7 @@ interface CollabMainContentProps {
   mainContent?: CollabPageSection[] | null;
   collabId: string;
   collabType: string;
-  siteSettings?: {
-    companyEmail?: string;
-  };
+  siteSettings?: SiteSettingsProps;
   collabs?: COLLABS_ALL_QUERYResult;
 }
 

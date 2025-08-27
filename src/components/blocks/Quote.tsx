@@ -1,10 +1,10 @@
 import React from 'react';
 import { stegaClean } from 'next-sanity';
 import type { QuoteBlock } from '@/types/blocks';
+import type { BlockProps, TextAlignment } from '@/types/shared';
 
-interface QuoteProps extends Omit<QuoteBlock, '_type' | '_key'> {
-  className?: string;
-  alignment?: 'left' | 'center' | 'right';
+interface QuoteProps extends BlockProps<QuoteBlock> {
+  alignment?: TextAlignment;
 }
 
 const Quote = ({ text, attribution, textAlign = 'inherit', className = '', alignment = 'center' }: QuoteProps) => {

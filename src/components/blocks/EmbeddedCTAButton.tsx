@@ -1,29 +1,12 @@
 import React from 'react';
 import { stegaClean } from 'next-sanity';
+import type { InternalLinkType, ButtonVariant } from '@/types/shared';
 import CTA from '../UI/CTA';
-
-// Type for a dereferenced page object
-interface DereferencedPage {
-  _id: string;
-  _type?: string;
-  title: string | null;
-  slug?: {
-    current?: string;
-  } | null;
-  pageType?: string;
-  href?: string | null;
-}
-
-// Type for internalLink that can be either a reference, dereferenced, or null
-type InternalLinkType = 
-  | { _ref: string; _type: 'reference' }
-  | DereferencedPage
-  | null;
 
 interface EmbeddedCTAButtonProps {
   className?: string;
   text?: string | null;
-  variant?: "filled" | "outline" | null;
+  variant?: ButtonVariant | null;
   linkType?: "internal" | "external" | null;
   internalLink?: InternalLinkType;
   openInNewTab?: boolean | null;

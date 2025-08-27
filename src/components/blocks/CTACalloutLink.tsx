@@ -2,29 +2,10 @@ import React from 'react';
 import { stegaClean } from 'next-sanity';
 import { urlFor } from '@/sanity/lib/image';
 import type { CTACalloutLinkBlock } from '@/types/blocks';
+import type { CTABlockProps } from '@/types/shared';
 import CTACalloutLink from '../UI/CTACalloutLink';
 
-// Type for a dereferenced page object
-interface DereferencedPage {
-  _id: string;
-  _type?: string;
-  title?: string;
-  slug?: {
-    current: string;
-  };
-  pageType?: string;
-  href?: string | null;
-}
-
-// Type for internalLink that can be either a reference or dereferenced
-type InternalLinkType = 
-  | { _ref: string; _type: 'reference' }
-  | DereferencedPage;
-
-interface CTACalloutLinkProps extends Omit<CTACalloutLinkBlock, '_type' | '_key' | 'internalLink'> {
-  className?: string;
-  internalLink?: InternalLinkType;
-}
+type CTACalloutLinkProps = CTABlockProps<CTACalloutLinkBlock>;
 
 const CTACalloutLinkComponent = ({
   heading,

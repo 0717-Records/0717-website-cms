@@ -1,9 +1,9 @@
 import React from 'react';
 import type { CTAEmailButtonBlock } from '@/types/blocks';
+import type { BlockProps } from '@/types/shared';
 import CTAEmailButton from '../UI/CTAEmailButton';
 
-interface CTAEmailButtonProps extends Omit<CTAEmailButtonBlock, '_type' | '_key'> {
-  className?: string;
+interface CTAEmailButtonProps extends BlockProps<CTAEmailButtonBlock> {
   email?: string;
 }
 
