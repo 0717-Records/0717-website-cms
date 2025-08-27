@@ -178,15 +178,6 @@ const Card = ({
           )}
         </div>
       </div>
-
-      {/* Decorative background elements - more visible and using secondary brand color */}
-      <div className='absolute top-4 right-4 w-20 h-20 bg-brand-secondary opacity-15 rounded-full'></div>
-      <div className='absolute top-8 right-16 w-12 h-12 bg-brand-secondary opacity-10 rounded-full'></div>
-      <div className='absolute bottom-6 left-8 w-16 h-16 bg-brand-secondary opacity-12 rounded-full'></div>
-      <div className='absolute bottom-4 right-1/3 w-8 h-8 bg-brand-secondary opacity-20 rounded-full'></div>
-
-      {/* Subtle geometric accent */}
-      <div className='absolute top-1/2 -right-15 w-24 h-24 bg-brand-secondary opacity-15 rounded-full transform -translate-y-1/2'></div>
     </CardContainer>
   );
 };
