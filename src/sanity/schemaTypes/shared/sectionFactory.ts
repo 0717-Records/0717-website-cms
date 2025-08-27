@@ -23,6 +23,7 @@ export const commonContentBlocks = [
   defineArrayMember({ type: 'eventBlock' }),
   defineArrayMember({ type: 'collabAllBlock' }),
   defineArrayMember({ type: 'favouriteBlock' }),
+  defineArrayMember({ type: 'companyLinksBlock' }),
 ];
 
 interface SectionFactoryConfig {

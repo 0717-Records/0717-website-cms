@@ -61,6 +61,11 @@ export type SideContentBlock = {
   } & CtaEmailButton>;
 };
 
+export type CompanyLinksBlock = {
+  _type: "companyLinksBlock";
+  blockAdded?: string;
+};
+
 export type FavouriteBlock = {
   _type: "favouriteBlock";
   blockAdded?: string;
@@ -325,7 +330,7 @@ export type Card = {
   icon?: Icon;
   title?: string;
   bodyText?: string;
-  buttonType?: "link" | "email" | "none";
+  buttonType?: "none" | "link" | "email";
   text?: string;
   variant?: "filled" | "outline";
   linkType?: "internal" | "external";
@@ -482,7 +487,9 @@ export type SubSubSection = {
     _key: string;
   } & CollabAllBlock | {
     _key: string;
-  } & FavouriteBlock>;
+  } & FavouriteBlock | {
+    _key: string;
+  } & CompanyLinksBlock>;
 };
 
 export type SubSection = {
@@ -531,7 +538,9 @@ export type SubSection = {
     _key: string;
   } & CollabAllBlock | {
     _key: string;
-  } & FavouriteBlock>;
+  } & FavouriteBlock | {
+    _key: string;
+  } & CompanyLinksBlock>;
 };
 
 export type CollabPageSection = {
@@ -579,7 +588,9 @@ export type CollabPageSection = {
     _key: string;
   } & CollabAllBlock | {
     _key: string;
-  } & FavouriteBlock>;
+  } & FavouriteBlock | {
+    _key: string;
+  } & CompanyLinksBlock>;
 };
 
 export type PageSection = {
@@ -629,7 +640,9 @@ export type PageSection = {
     _key: string;
   } & CollabAllBlock | {
     _key: string;
-  } & FavouriteBlock>;
+  } & FavouriteBlock | {
+    _key: string;
+  } & CompanyLinksBlock>;
 };
 
 export type PageBuilder = Array<{
@@ -674,7 +687,9 @@ export type PageBuilder = Array<{
   _key: string;
 } & CollabAllBlock | {
   _key: string;
-} & FavouriteBlock>;
+} & FavouriteBlock | {
+  _key: string;
+} & CompanyLinksBlock>;
 
 export type Footer = {
   _id: string;
@@ -853,24 +868,6 @@ export type Collab = {
   } & CollabPageSection>;
   links?: SocialLinks;
   sideContent?: SideContent;
-};
-
-export type SocialLinks = {
-  _type: "socialLinks";
-  facebook?: string;
-  instagram?: string;
-  youtube?: string;
-  twitter?: string;
-  soundcloud?: string;
-  bandcamp?: string;
-  spotify?: string;
-  itunes?: string;
-  officialWebsite?: string;
-  genericLinks?: Array<{
-    title?: string;
-    url?: string;
-    _key: string;
-  }>;
 };
 
 export type EventsIndexPage = {
@@ -1054,6 +1051,25 @@ export type SiteSettings = {
   siteTitle?: string;
   companyEmail?: string;
   siteDescription?: string;
+  companyLinks?: SocialLinks;
+};
+
+export type SocialLinks = {
+  _type: "socialLinks";
+  facebook?: string;
+  instagram?: string;
+  youtube?: string;
+  twitter?: string;
+  soundcloud?: string;
+  bandcamp?: string;
+  spotify?: string;
+  itunes?: string;
+  officialWebsite?: string;
+  genericLinks?: Array<{
+    title?: string;
+    url?: string;
+    _key: string;
+  }>;
 };
 
 export type Color = {
@@ -1207,7 +1223,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SideContent | SideContentBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | SocialLinks | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -1370,6 +1386,12 @@ export type PAGE_QUERYResult = {
     _type: "collabAllBlock";
     ctaText?: string;
     noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
     image: null;
     content: null;
   } | {
@@ -1699,6 +1721,12 @@ export type PAGE_QUERYResult = {
       _type: "collabAllBlock";
       ctaText?: string;
       noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
       image: null;
       content: null;
     } | {
@@ -2089,6 +2117,12 @@ export type PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "ctaButton";
         text?: string;
         variant?: "filled" | "outline";
@@ -2466,6 +2500,11 @@ export type PAGE_QUERYResult = {
           _type: "collabAllBlock";
           ctaText?: string;
           noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
           image: null;
         } | {
           _key: string;
@@ -3254,6 +3293,12 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "ctaButton";
     text?: string;
     variant?: "filled" | "outline";
@@ -3579,6 +3624,12 @@ export type HOME_PAGE_QUERYResult = {
       _type: "collabAllBlock";
       ctaText?: string;
       noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
       image: null;
       content: null;
     } | {
@@ -3969,6 +4020,12 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "ctaButton";
         text?: string;
         variant?: "filled" | "outline";
@@ -4346,6 +4403,11 @@ export type HOME_PAGE_QUERYResult = {
           _type: "collabAllBlock";
           ctaText?: string;
           noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
           image: null;
         } | {
           _key: string;
@@ -5012,6 +5074,12 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "ctaButton";
     text?: string;
     variant?: "filled" | "outline";
@@ -5337,6 +5405,12 @@ export type HOME_PAGE_QUERYResult = {
       _type: "collabAllBlock";
       ctaText?: string;
       noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
       image: null;
       content: null;
     } | {
@@ -5727,6 +5801,12 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "ctaButton";
         text?: string;
         variant?: "filled" | "outline";
@@ -6104,6 +6184,11 @@ export type HOME_PAGE_QUERYResult = {
           _type: "collabAllBlock";
           ctaText?: string;
           noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
           image: null;
         } | {
           _key: string;
@@ -7110,6 +7195,12 @@ export type COLLAB_QUERYResult = {
       content: null;
     } | {
       _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
       _type: "ctaButton";
       text?: string;
       variant?: "filled" | "outline";
@@ -7496,6 +7587,12 @@ export type COLLAB_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "ctaButton";
         text?: string;
         variant?: "filled" | "outline";
@@ -7878,6 +7975,12 @@ export type COLLAB_QUERYResult = {
           _type: "collabAllBlock";
           ctaText?: string;
           noCollabsMessage?: string;
+          image: null;
+          content: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
           image: null;
           content: null;
         } | {

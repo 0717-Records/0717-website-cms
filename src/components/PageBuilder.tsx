@@ -28,35 +28,46 @@ import BandcampWidget from './blocks/BandcampWidget';
 import EventBlock from './blocks/EventBlock';
 import CollabAllBlock from './blocks/CollabAllBlock';
 import FavouriteBlock from './blocks/FavouriteBlock';
+import CompanyLinksBlock from './blocks/CompanyLinksBlock';
 import Divider from './UI/Divider';
 
-type PageBuilderProps = {
-  content: NonNullable<PAGE_QUERYResult>['content'];
+// Shared interface for common props used across PageBuilder components
+interface SharedPageBuilderProps {
   documentId: string;
   documentType: string;
-  pathPrefix?: string;
   siteSettings?: {
     companyEmail?: string;
+    companyLinks?: {
+      facebook?: string | null;
+      instagram?: string | null;
+      youtube?: string | null;
+      twitter?: string | null;
+      soundcloud?: string | null;
+      bandcamp?: string | null;
+      spotify?: string | null;
+      itunes?: string | null;
+      genericLinks?: Array<{
+        _key: string;
+        title: string | null;
+        url: string | null;
+      }> | null;
+    } | null;
   };
   events?: EVENTS_QUERYResult;
   collabs?: COLLABS_ALL_QUERYResult;
   favourites?: FAVOURITES_ALL_QUERYResult;
   alignment?: 'left' | 'center' | 'right';
+}
+
+type PageBuilderProps = SharedPageBuilderProps & {
+  content: NonNullable<PAGE_QUERYResult>['content'];
+  pathPrefix?: string;
 };
 
-type BlockRendererProps = {
+type BlockRendererProps = SharedPageBuilderProps & {
   blocks: NestedBlock[];
-  documentId: string;
-  documentType: string;
   pathPrefix: string;
   nestingLevel?: number;
-  siteSettings?: {
-    companyEmail?: string;
-  };
-  events?: EVENTS_QUERYResult;
-  collabs?: COLLABS_ALL_QUERYResult;
-  favourites?: FAVOURITES_ALL_QUERYResult;
-  alignment?: 'left' | 'center' | 'right';
 };
 
 const { projectId, dataset, stega } = client.config();
@@ -393,6 +404,15 @@ const BlockRenderer = ({
               <BlockWrapper key={block._key}>
                 <FavouriteBlock
                   favourites={favourites || []}
+                />
+              </BlockWrapper>
+            );
+
+          case 'companyLinksBlock':
+            return (
+              <BlockWrapper key={block._key}>
+                <CompanyLinksBlock
+                  companyLinks={siteSettings?.companyLinks}
                 />
               </BlockWrapper>
             );

@@ -33,6 +33,7 @@ import { ctaEventType } from './blocks/ctaEventType';
 import { eventBlockType } from './blocks/eventBlockType';
 import { collabAllBlockType } from './blocks/collabAllBlockType';
 import { favouriteBlockType } from './blocks/favouriteBlockType';
+import { companyLinksBlockType } from './blocks/companyLinksBlockType';
 import { siteSettingsType } from './siteSettingsType';
 import { eventType } from './eventType';
 import { eventsIndexPageType } from './eventsIndexPageType';
@@ -40,6 +41,7 @@ import { collabType } from './collabType';
 import { collabPageSectionType } from './collabPageSectionType';
 import { favouritesType } from './favouritesType';
 import { socialLinksType } from './shared/socialLinksType';
+import { companyLinksType } from './shared/companyLinksType';
 import { sideContentBlockType, sideContentType } from './shared/sideContentBlockType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -84,8 +86,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     eventBlockType,
     collabAllBlockType,
     favouriteBlockType,
+    companyLinksBlockType,
     // Shared Components
     socialLinksType,
+    companyLinksType,
     sideContentBlockType,
     sideContentType,
   ],

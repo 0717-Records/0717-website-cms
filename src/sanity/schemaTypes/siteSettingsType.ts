@@ -6,12 +6,24 @@ export const siteSettingsType = defineType({
   title: 'Site Settings',
   type: 'document',
   icon: ControlsIcon,
+  groups: [
+    {
+      name: 'general',
+      title: 'General',
+      default: true,
+    },
+    {
+      name: 'companyLinks',
+      title: 'Company Links',
+    },
+  ],
   fields: [
     defineField({
       name: 'siteTitle',
       type: 'string',
       title: 'Site Title',
       description: 'The main title of your website',
+      group: 'general',
     }),
     defineField({
       name: 'companyEmail',
@@ -19,6 +31,7 @@ export const siteSettingsType = defineType({
       title: 'Company Email',
       description: 'Primary contact email for your company',
       validation: (Rule) => Rule.email(),
+      group: 'general',
     }),
     defineField({
       name: 'siteDescription',
@@ -26,8 +39,15 @@ export const siteSettingsType = defineType({
       title: 'Site Description',
       description: 'A brief description of your website (used for SEO)',
       rows: 3,
+      group: 'general',
     }),
-    // Additional site settings can be added here as needed
+    defineField({
+      name: 'companyLinks',
+      type: 'companyLinks',
+      title: 'Company Social Links',
+      description: 'Manage your company\'s social media links. These can be displayed throughout your site.',
+      group: 'companyLinks',
+    }),
   ],
   preview: {
     prepare() {
