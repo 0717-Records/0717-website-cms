@@ -122,7 +122,7 @@ const Card = ({
     <CardContainer
       className={`${className} relative overflow-hidden bg-gradient-to-br from-gray-50 to-white border-2 border-gray-100`}
       isGridChild={isGridChild}>
-      <div className='relative z-10 flex flex-col lg:flex-row items-center gap-8 p-8'>
+      <div className='relative z-10 flex flex-col lg:flex-row items-center gap-8 p-3 lg:p-8'>
         {/* Left side - Icon */}
         {icon && icon.image && (
           <div className='flex-shrink-0 relative'>
@@ -152,7 +152,7 @@ const Card = ({
           {/* Body Text */}
           {cleanBodyText && (
             <p
-              className='text-body-2xl lg:text-body-2xl text-gray-600 leading-relaxed whitespace-pre-line font-medium italic'
+              className='text-body-lg lg:text-body-2xl text-gray-600 leading-relaxed whitespace-pre-line font-medium italic'
               {...createSanityDataAttribute(documentId, documentType, getFieldPath('bodyText'))}>
               {cleanBodyText}
             </p>
