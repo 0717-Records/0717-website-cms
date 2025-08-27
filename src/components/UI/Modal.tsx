@@ -11,12 +11,12 @@ interface ModalProps {
   'aria-describedby'?: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ 
-  children, 
-  isModalOpen = false, 
+const Modal: React.FC<ModalProps> = ({
+  children,
+  isModalOpen = false,
   closeModal = () => {},
   'aria-labelledby': ariaLabelledby = 'modal-title',
-  'aria-describedby': ariaDescribedby = 'modal-description'
+  'aria-describedby': ariaDescribedby = 'modal-description',
 }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -63,7 +63,7 @@ const Modal: React.FC<ModalProps> = ({
       ref={dialogRef}
       aria-labelledby={ariaLabelledby}
       aria-describedby={ariaDescribedby}
-      className={`backdrop:bg-black/80 flex-col items-center justify-center w-screen h-dvh bg-transparent overflow-hidden hidden open:flex p-0 m-0 max-w-none max-h-none transition-opacity duration-200 ${
+      className={`backdrop:bg-black/87 flex-col items-center justify-center w-screen h-dvh bg-transparent overflow-hidden hidden open:flex p-0 m-0 max-w-none max-h-none transition-opacity duration-200 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       onClick={(e) => {
