@@ -181,16 +181,16 @@ const ImageGalleryModal = ({
         </div>
 
         {/* Main Carousel Section - Take available space minus thumbnail section */}
-        <div className='flex flex-col flex-grow overflow-hidden border border-red-500'>
+        <div className='flex flex-col flex-grow overflow-hidden border-4 border-red-500'>
           {/* Carousel Container */}
           <div
-            className='flex flex-grow items-center justify-center relative px-2 sm:px-4 border border-blue-500'
+            className='flex justify-center flex-grow relative px-2 sm:px-4 h-full border-4 border-blue-500'
             ref={containerRef}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}>
-            {/* Previous Images (can show multiple on wide screens) */}
+            {/* Previous Image */}
             {totalImages > 1 && (
-              <div className='absolute left-0 top-1/2 -translate-y-1/2 flex items-center z-20 border border-gray-300 h-full'>
+              <div className='flex items-center z-20 border border-gray-300 h-full'>
                 <div className='relative w-12 sm:w-16 md:w-20 lg:w-24 h-32 sm:h-40 md:h-48 lg:h-56 -translate-x-4 sm:-translate-x-6 md:-translate-x-8'>
                   <button
                     onClick={navigateToPrevious}
@@ -217,28 +217,30 @@ const ImageGalleryModal = ({
             )}
 
             {/* Current Image - responsive with proper constraints */}
-            <div className='relative mx-16 sm:mx-20 md:mx-24 lg:mx-28 h-full max-w-2/3 border border-green-500'>
+            <div className='flex justify-center items-center relative mx-16 sm:mx-20 md:mx-24 lg:mx-28 h-full max-w-2/3 border-2 border-green-500'>
               {loadingImages.has(currentIndex) && (
                 <div className='absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg z-10'>
                   <FaSpinner className='text-gray-400 text-2xl animate-spin' />
                 </div>
               )}
-              <NextImage
-                src={getImageUrl(currentImage.image)}
-                alt={stegaClean(currentImage.image?.alt) || `Gallery image ${currentIndex + 1}`}
-                width={800}
-                height={600}
-                className='object-contain rounded-lg'
-                sizes='(max-width: 640px) calc(100vw - 8rem), (max-width: 1024px) calc(100vw - 10rem), calc(100vw - 12rem)'
-                priority
-                onLoadStart={() => handleImageLoadStart(currentIndex)}
-                onLoad={() => handleImageLoadComplete(currentIndex)}
-              />
+              <div className='border-4 border-yellow-300 h-full'>
+                <NextImage
+                  src={getImageUrl(currentImage.image)}
+                  alt={stegaClean(currentImage.image?.alt) || `Gallery image ${currentIndex + 1}`}
+                  width={800}
+                  height={600}
+                  className='object-contain rounded-lg h-full'
+                  sizes='(max-width: 640px) calc(100vw - 8rem), (max-width: 1024px) calc(100vw - 10rem), calc(100vw - 12rem)'
+                  priority
+                  onLoadStart={() => handleImageLoadStart(currentIndex)}
+                  onLoad={() => handleImageLoadComplete(currentIndex)}
+                />
+              </div>
             </div>
 
-            {/* Next Images (can show multiple on wide screens) */}
+            {/* Next Image */}
             {totalImages > 1 && (
-              <div className='absolute right-0 top-1/2 -translate-y-1/2 flex items-center z-20 border border-orange-400 h-full'>
+              <div className='flex items-center z-20 border border-orange-400 h-full'>
                 <div className='relative w-12 sm:w-16 md:w-20 lg:w-24 h-32 sm:h-40 md:h-48 lg:h-56 translate-x-4 sm:translate-x-6 md:translate-x-8'>
                   <button
                     onClick={navigateToNext}
