@@ -40,23 +40,6 @@ export const cardType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'alignment',
-      title: 'Text Alignment',
-      type: 'string',
-      group: 'style',
-      options: {
-        list: [
-          { title: 'Left', value: 'left' },
-          { title: 'Center', value: 'center' },
-          { title: 'Right', value: 'right' },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'center',
-      description: 'Text alignment within the card',
-      hidden: ({ parent }) => parent?.cardStyle === 'statement',
-    }),
-    defineField({
       name: 'icon',
       title: 'Icon',
       type: 'icon',
@@ -85,13 +68,13 @@ export const cardType = defineType({
       group: 'button',
       options: {
         list: [
+          { title: 'No Button', value: 'none' },
           { title: 'Link Button', value: 'link' },
           { title: 'Email Button', value: 'email' },
-          { title: 'No Button', value: 'none' },
         ],
         layout: 'radio',
       },
-      initialValue: 'link',
+      initialValue: 'none',
       description:
         'Choose the type of button to display, or select "No Button" if the call-to-action is in the text only',
       validation: (Rule) => Rule.required(),

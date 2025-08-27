@@ -18,7 +18,6 @@ interface CardProps extends Omit<CardBlock, '_type' | '_key'> {
 
 const Card = ({
   cardStyle = 'feature',
-  alignment = 'center',
   icon,
   title,
   bodyText,
@@ -39,7 +38,6 @@ const Card = ({
   const cleanBodyText = stegaClean(bodyText);
   const cleanButtonText = stegaClean(text);
   const cleanCardStyle = stegaClean(cardStyle) || 'feature';
-  const cleanAlignment = stegaClean(alignment) || 'center';
 
   // Don't render empty cards (but allow cards with just text content and no button)
   if (!icon?.image && !cleanTitle && !cleanBodyText) {
@@ -49,24 +47,11 @@ const Card = ({
   // Get field path prefix for live editing
   const getFieldPath = (field: string) => `${field}`;
 
-  // Get alignment classes
-  const getAlignmentClasses = () => {
-    switch (cleanAlignment) {
-      case 'left':
-        return 'text-left items-start';
-      case 'right':
-        return 'text-right items-end';
-      case 'center':
-      default:
-        return 'text-center items-center';
-    }
-  };
-
   // Feature Card (Style 1) - Current layout
   if (cleanCardStyle === 'feature') {
     return (
       <CardContainer
-        className={`${className} flex flex-col gap-6 ${getAlignmentClasses()}`}
+        className={`${className} flex flex-col gap-6 text-center items-center`}
         isGridChild={isGridChild}>
         {/* Icon */}
         {icon && icon.image && (

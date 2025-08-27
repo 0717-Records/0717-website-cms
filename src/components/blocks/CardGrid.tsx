@@ -38,7 +38,6 @@ const CardGrid = ({ columns = '2', cards, email, documentId, documentType }: Car
         <Card
           key={card._key || idx}
           cardStyle={card.cardStyle}
-          alignment={card.alignment}
           icon={card.icon}
           title={card.title}
           bodyText={card.bodyText}

@@ -322,7 +322,6 @@ export type CardGrid = {
 export type Card = {
   _type: "card";
   cardStyle?: "feature" | "statement";
-  alignment?: "left" | "center" | "right";
   icon?: Icon;
   title?: string;
   bodyText?: string;
@@ -370,7 +369,6 @@ export type Icon = {
     alt?: string;
     _type: "image";
   };
-  alignment?: "left" | "center" | "right";
 };
 
 export type RichText = {
@@ -1286,7 +1284,6 @@ export type PAGE_QUERYResult = {
     _key: string;
     _type: "card";
     cardStyle?: "feature" | "statement";
-    alignment?: "center" | "left" | "right";
     icon?: Icon;
     title?: string;
     bodyText?: string;
@@ -1327,7 +1324,6 @@ export type PAGE_QUERYResult = {
       _key: string;
       _type: "card";
       cardStyle?: "feature" | "statement";
-      alignment?: "center" | "left" | "right";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -1536,7 +1532,6 @@ export type PAGE_QUERYResult = {
       hotspot: SanityImageHotspot | null;
       crop: SanityImageCrop | null;
     } | null;
-    alignment?: "center" | "left" | "right";
     content: null;
   } | {
     _key: string;
@@ -1618,7 +1613,6 @@ export type PAGE_QUERYResult = {
       _key: string;
       _type: "card";
       cardStyle?: "feature" | "statement";
-      alignment?: "center" | "left" | "right";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -1659,7 +1653,6 @@ export type PAGE_QUERYResult = {
         _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
-        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -1868,7 +1861,6 @@ export type PAGE_QUERYResult = {
         hotspot: SanityImageHotspot | null;
         crop: SanityImageCrop | null;
       } | null;
-      alignment?: "center" | "left" | "right";
       content: null;
     } | {
       _key: string;
@@ -2007,7 +1999,6 @@ export type PAGE_QUERYResult = {
         _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
-        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -2048,7 +2039,6 @@ export type PAGE_QUERYResult = {
           _key: string;
           _type: "card";
           cardStyle?: "feature" | "statement";
-          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -2257,7 +2247,6 @@ export type PAGE_QUERYResult = {
           hotspot: SanityImageHotspot | null;
           crop: SanityImageCrop | null;
         } | null;
-        alignment?: "center" | "left" | "right";
         content: null;
       } | {
         _key: string;
@@ -2393,7 +2382,6 @@ export type PAGE_QUERYResult = {
           _key: string;
           _type: "card";
           cardStyle?: "feature" | "statement";
-          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -2433,7 +2421,6 @@ export type PAGE_QUERYResult = {
             _key: string;
             _type: "card";
             cardStyle?: "feature" | "statement";
-            alignment?: "center" | "left" | "right";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -2633,7 +2620,6 @@ export type PAGE_QUERYResult = {
             hotspot: SanityImageHotspot | null;
             crop: SanityImageCrop | null;
           } | null;
-          alignment?: "center" | "left" | "right";
         } | {
           _key: string;
           _type: "imageBlock";
@@ -3178,7 +3164,6 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "card";
     cardStyle?: "feature" | "statement";
-    alignment?: "center" | "left" | "right";
     icon?: Icon;
     title?: string;
     bodyText?: string;
@@ -3219,7 +3204,6 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "card";
       cardStyle?: "feature" | "statement";
-      alignment?: "center" | "left" | "right";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -3428,7 +3412,6 @@ export type HOME_PAGE_QUERYResult = {
       hotspot: SanityImageHotspot | null;
       crop: SanityImageCrop | null;
     } | null;
-    alignment?: "center" | "left" | "right";
     content: null;
   } | {
     _key: string;
@@ -3510,7 +3493,6 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "card";
       cardStyle?: "feature" | "statement";
-      alignment?: "center" | "left" | "right";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -3551,7 +3533,6 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
-        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -3760,7 +3741,6 @@ export type HOME_PAGE_QUERYResult = {
         hotspot: SanityImageHotspot | null;
         crop: SanityImageCrop | null;
       } | null;
-      alignment?: "center" | "left" | "right";
       content: null;
     } | {
       _key: string;
@@ -3899,7 +3879,6 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
-        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -3940,7 +3919,6 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "card";
           cardStyle?: "feature" | "statement";
-          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -4149,7 +4127,6 @@ export type HOME_PAGE_QUERYResult = {
           hotspot: SanityImageHotspot | null;
           crop: SanityImageCrop | null;
         } | null;
-        alignment?: "center" | "left" | "right";
         content: null;
       } | {
         _key: string;
@@ -4285,7 +4262,6 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "card";
           cardStyle?: "feature" | "statement";
-          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -4325,7 +4301,6 @@ export type HOME_PAGE_QUERYResult = {
             _key: string;
             _type: "card";
             cardStyle?: "feature" | "statement";
-            alignment?: "center" | "left" | "right";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -4525,7 +4500,6 @@ export type HOME_PAGE_QUERYResult = {
             hotspot: SanityImageHotspot | null;
             crop: SanityImageCrop | null;
           } | null;
-          alignment?: "center" | "left" | "right";
         } | {
           _key: string;
           _type: "imageBlock";
@@ -4948,7 +4922,6 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "card";
     cardStyle?: "feature" | "statement";
-    alignment?: "center" | "left" | "right";
     icon?: Icon;
     title?: string;
     bodyText?: string;
@@ -4989,7 +4962,6 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "card";
       cardStyle?: "feature" | "statement";
-      alignment?: "center" | "left" | "right";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -5198,7 +5170,6 @@ export type HOME_PAGE_QUERYResult = {
       hotspot: SanityImageHotspot | null;
       crop: SanityImageCrop | null;
     } | null;
-    alignment?: "center" | "left" | "right";
     content: null;
   } | {
     _key: string;
@@ -5280,7 +5251,6 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "card";
       cardStyle?: "feature" | "statement";
-      alignment?: "center" | "left" | "right";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -5321,7 +5291,6 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
-        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -5530,7 +5499,6 @@ export type HOME_PAGE_QUERYResult = {
         hotspot: SanityImageHotspot | null;
         crop: SanityImageCrop | null;
       } | null;
-      alignment?: "center" | "left" | "right";
       content: null;
     } | {
       _key: string;
@@ -5669,7 +5637,6 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
-        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -5710,7 +5677,6 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "card";
           cardStyle?: "feature" | "statement";
-          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -5919,7 +5885,6 @@ export type HOME_PAGE_QUERYResult = {
           hotspot: SanityImageHotspot | null;
           crop: SanityImageCrop | null;
         } | null;
-        alignment?: "center" | "left" | "right";
         content: null;
       } | {
         _key: string;
@@ -6055,7 +6020,6 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "card";
           cardStyle?: "feature" | "statement";
-          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -6095,7 +6059,6 @@ export type HOME_PAGE_QUERYResult = {
             _key: string;
             _type: "card";
             cardStyle?: "feature" | "statement";
-            alignment?: "center" | "left" | "right";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -6295,7 +6258,6 @@ export type HOME_PAGE_QUERYResult = {
             hotspot: SanityImageHotspot | null;
             crop: SanityImageCrop | null;
           } | null;
-          alignment?: "center" | "left" | "right";
         } | {
           _key: string;
           _type: "imageBlock";
@@ -7058,7 +7020,6 @@ export type COLLAB_QUERYResult = {
       _key: string;
       _type: "card";
       cardStyle?: "feature" | "statement";
-      alignment?: "center" | "left" | "right";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -7099,7 +7060,6 @@ export type COLLAB_QUERYResult = {
         _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
-        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -7308,7 +7268,6 @@ export type COLLAB_QUERYResult = {
         hotspot: SanityImageHotspot | null;
         crop: SanityImageCrop | null;
       } | null;
-      alignment?: "center" | "left" | "right";
       content: null;
     } | {
       _key: string;
@@ -7447,7 +7406,6 @@ export type COLLAB_QUERYResult = {
         _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
-        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -7488,7 +7446,6 @@ export type COLLAB_QUERYResult = {
           _key: string;
           _type: "card";
           cardStyle?: "feature" | "statement";
-          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -7697,7 +7654,6 @@ export type COLLAB_QUERYResult = {
           hotspot: SanityImageHotspot | null;
           crop: SanityImageCrop | null;
         } | null;
-        alignment?: "center" | "left" | "right";
         content: null;
       } | {
         _key: string;
@@ -7836,7 +7792,6 @@ export type COLLAB_QUERYResult = {
           _key: string;
           _type: "card";
           cardStyle?: "feature" | "statement";
-          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -7877,7 +7832,6 @@ export type COLLAB_QUERYResult = {
             _key: string;
             _type: "card";
             cardStyle?: "feature" | "statement";
-            alignment?: "center" | "left" | "right";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -8086,7 +8040,6 @@ export type COLLAB_QUERYResult = {
             hotspot: SanityImageHotspot | null;
             crop: SanityImageCrop | null;
           } | null;
-          alignment?: "center" | "left" | "right";
           content: null;
         } | {
           _key: string;

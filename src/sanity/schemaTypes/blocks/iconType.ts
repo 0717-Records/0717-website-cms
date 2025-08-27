@@ -24,32 +24,16 @@ export const iconType = defineType({
         },
       ],
     }),
-    defineField({
-      name: 'alignment',
-      title: 'Alignment',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Left', value: 'left' },
-          { title: 'Center', value: 'center' },
-          { title: 'Right', value: 'right' },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'center',
-      validation: (Rule) => Rule.required(),
-    }),
   ],
   preview: {
     select: {
       media: 'image',
-      alignment: 'alignment',
       alt: 'image.alt',
     },
-    prepare({ media, alignment, alt }) {
+    prepare({ media, alt }) {
       return {
         title: `Icon${alt ? ` - ${alt}` : ''}`,
-        subtitle: `Aligned ${alignment}`,
+        subtitle: 'Centered alignment',
         media: media || ImageIcon,
       };
     },
