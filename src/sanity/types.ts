@@ -316,11 +316,13 @@ export type CardGrid = {
   columns?: "2" | "3" | "4";
   cards?: Array<{
     _key: string;
-  } & CtaCard>;
+  } & Card>;
 };
 
-export type CtaCard = {
-  _type: "ctaCard";
+export type Card = {
+  _type: "card";
+  cardStyle?: "feature" | "statement";
+  alignment?: "left" | "center" | "right";
   icon?: Icon;
   title?: string;
   bodyText?: string;
@@ -454,7 +456,7 @@ export type SubSubSection = {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & CtaCard | {
+  } & Card | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -503,7 +505,7 @@ export type SubSection = {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & CtaCard | {
+  } & Card | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -551,7 +553,7 @@ export type CollabPageSection = {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & CtaCard | {
+  } & Card | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -601,7 +603,7 @@ export type PageSection = {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & CtaCard | {
+  } & Card | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -646,7 +648,7 @@ export type PageBuilder = Array<{
   _key: string;
 } & TextImage | {
   _key: string;
-} & CtaCard | {
+} & Card | {
   _key: string;
 } & CtaButton | {
   _key: string;
@@ -1207,7 +1209,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SideContent | SideContentBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | CtaCard | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SideContent | SideContentBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | SocialLinks | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -1282,11 +1284,50 @@ export type PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "statement";
+    alignment?: "center" | "left" | "right";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    buttonType?: "email" | "link" | "none";
+    text?: string;
+    variant?: "filled" | "outline";
+    linkType?: "external" | "internal";
+    internalLink?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "collab";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "homePage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "page";
+    };
+    externalUrl?: string;
+    openInNewTab?: boolean;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "cardGrid";
     columns?: "2" | "3" | "4";
     cards: Array<{
       _key: string;
-      _type: "ctaCard";
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      alignment?: "center" | "left" | "right";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -1425,49 +1466,6 @@ export type PAGE_QUERYResult = {
     } | null;
     externalUrl?: string;
     openInNewTab?: boolean;
-    content: null;
-  } | {
-    _key: string;
-    _type: "ctaCard";
-    icon?: Icon;
-    title?: string;
-    bodyText?: string;
-    buttonType?: "email" | "link" | "none";
-    text?: string;
-    variant?: "filled" | "outline";
-    linkType?: "external" | "internal";
-    internalLink: {
-      _id: string;
-      _type: "collab";
-      title: null;
-      slug: Slug | null;
-      pageType: "collab";
-      href: string | null;
-    } | {
-      _id: string;
-      _type: "eventsIndexPage";
-      title: string | null;
-      slug: null;
-      pageType: "eventsIndexPage";
-      href: "/events";
-    } | {
-      _id: string;
-      _type: "homePage";
-      title: null;
-      slug: null;
-      pageType: "homePage";
-      href: "/";
-    } | {
-      _id: string;
-      _type: "page";
-      title: string | null;
-      slug: Slug | null;
-      pageType: "page";
-      href: string | null;
-    } | null;
-    externalUrl?: string;
-    openInNewTab?: boolean;
-    image: null;
     content: null;
   } | {
     _key: string;
@@ -1618,11 +1616,50 @@ export type PAGE_QUERYResult = {
       content: null;
     } | {
       _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      alignment?: "center" | "left" | "right";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      buttonType?: "email" | "link" | "none";
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "collab";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "homePage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      externalUrl?: string;
+      openInNewTab?: boolean;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
       _type: "cardGrid";
       columns?: "2" | "3" | "4";
       cards: Array<{
         _key: string;
-        _type: "ctaCard";
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -1761,49 +1798,6 @@ export type PAGE_QUERYResult = {
       } | null;
       externalUrl?: string;
       openInNewTab?: boolean;
-      content: null;
-    } | {
-      _key: string;
-      _type: "ctaCard";
-      icon?: Icon;
-      title?: string;
-      bodyText?: string;
-      buttonType?: "email" | "link" | "none";
-      text?: string;
-      variant?: "filled" | "outline";
-      linkType?: "external" | "internal";
-      internalLink: {
-        _id: string;
-        _type: "collab";
-        title: null;
-        slug: Slug | null;
-        pageType: "collab";
-        href: string | null;
-      } | {
-        _id: string;
-        _type: "eventsIndexPage";
-        title: string | null;
-        slug: null;
-        pageType: "eventsIndexPage";
-        href: "/events";
-      } | {
-        _id: string;
-        _type: "homePage";
-        title: null;
-        slug: null;
-        pageType: "homePage";
-        href: "/";
-      } | {
-        _id: string;
-        _type: "page";
-        title: string | null;
-        slug: Slug | null;
-        pageType: "page";
-        href: string | null;
-      } | null;
-      externalUrl?: string;
-      openInNewTab?: boolean;
-      image: null;
       content: null;
     } | {
       _key: string;
@@ -2011,11 +2005,50 @@ export type PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        alignment?: "center" | "left" | "right";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        buttonType?: "email" | "link" | "none";
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        openInNewTab?: boolean;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "cardGrid";
         columns?: "2" | "3" | "4";
         cards: Array<{
           _key: string;
-          _type: "ctaCard";
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -2154,49 +2187,6 @@ export type PAGE_QUERYResult = {
         } | null;
         externalUrl?: string;
         openInNewTab?: boolean;
-        content: null;
-      } | {
-        _key: string;
-        _type: "ctaCard";
-        icon?: Icon;
-        title?: string;
-        bodyText?: string;
-        buttonType?: "email" | "link" | "none";
-        text?: string;
-        variant?: "filled" | "outline";
-        linkType?: "external" | "internal";
-        internalLink: {
-          _id: string;
-          _type: "collab";
-          title: null;
-          slug: Slug | null;
-          pageType: "collab";
-          href: string | null;
-        } | {
-          _id: string;
-          _type: "eventsIndexPage";
-          title: string | null;
-          slug: null;
-          pageType: "eventsIndexPage";
-          href: "/events";
-        } | {
-          _id: string;
-          _type: "homePage";
-          title: null;
-          slug: null;
-          pageType: "homePage";
-          href: "/";
-        } | {
-          _id: string;
-          _type: "page";
-          title: string | null;
-          slug: Slug | null;
-          pageType: "page";
-          href: string | null;
-        } | null;
-        externalUrl?: string;
-        openInNewTab?: boolean;
-        image: null;
         content: null;
       } | {
         _key: string;
@@ -2401,11 +2391,49 @@ export type PAGE_QUERYResult = {
           image: null;
         } | {
           _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          alignment?: "center" | "left" | "right";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          buttonType?: "email" | "link" | "none";
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          openInNewTab?: boolean;
+          image: null;
+        } | {
+          _key: string;
           _type: "cardGrid";
           columns?: "2" | "3" | "4";
           cards: Array<{
             _key: string;
-            _type: "ctaCard";
+            _type: "card";
+            cardStyle?: "feature" | "statement";
+            alignment?: "center" | "left" | "right";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -2541,48 +2569,6 @@ export type PAGE_QUERYResult = {
           } | null;
           externalUrl?: string;
           openInNewTab?: boolean;
-        } | {
-          _key: string;
-          _type: "ctaCard";
-          icon?: Icon;
-          title?: string;
-          bodyText?: string;
-          buttonType?: "email" | "link" | "none";
-          text?: string;
-          variant?: "filled" | "outline";
-          linkType?: "external" | "internal";
-          internalLink: {
-            _id: string;
-            _type: "collab";
-            title: null;
-            slug: Slug | null;
-            pageType: "collab";
-            href: string | null;
-          } | {
-            _id: string;
-            _type: "eventsIndexPage";
-            title: string | null;
-            slug: null;
-            pageType: "eventsIndexPage";
-            href: "/events";
-          } | {
-            _id: string;
-            _type: "homePage";
-            title: null;
-            slug: null;
-            pageType: "homePage";
-            href: "/";
-          } | {
-            _id: string;
-            _type: "page";
-            title: string | null;
-            slug: Slug | null;
-            pageType: "page";
-            href: string | null;
-          } | null;
-          externalUrl?: string;
-          openInNewTab?: boolean;
-          image: null;
         } | {
           _key: string;
           _type: "ctaEmailButton";
@@ -3190,11 +3176,50 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "statement";
+    alignment?: "center" | "left" | "right";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    buttonType?: "email" | "link" | "none";
+    text?: string;
+    variant?: "filled" | "outline";
+    linkType?: "external" | "internal";
+    internalLink?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "collab";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "homePage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "page";
+    };
+    externalUrl?: string;
+    openInNewTab?: boolean;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "cardGrid";
     columns?: "2" | "3" | "4";
     cards: Array<{
       _key: string;
-      _type: "ctaCard";
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      alignment?: "center" | "left" | "right";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -3333,49 +3358,6 @@ export type HOME_PAGE_QUERYResult = {
     } | null;
     externalUrl?: string;
     openInNewTab?: boolean;
-    content: null;
-  } | {
-    _key: string;
-    _type: "ctaCard";
-    icon?: Icon;
-    title?: string;
-    bodyText?: string;
-    buttonType?: "email" | "link" | "none";
-    text?: string;
-    variant?: "filled" | "outline";
-    linkType?: "external" | "internal";
-    internalLink: {
-      _id: string;
-      _type: "collab";
-      title: null;
-      slug: Slug | null;
-      pageType: "collab";
-      href: string | null;
-    } | {
-      _id: string;
-      _type: "eventsIndexPage";
-      title: string | null;
-      slug: null;
-      pageType: "eventsIndexPage";
-      href: "/events";
-    } | {
-      _id: string;
-      _type: "homePage";
-      title: null;
-      slug: null;
-      pageType: "homePage";
-      href: "/";
-    } | {
-      _id: string;
-      _type: "page";
-      title: string | null;
-      slug: Slug | null;
-      pageType: "page";
-      href: string | null;
-    } | null;
-    externalUrl?: string;
-    openInNewTab?: boolean;
-    image: null;
     content: null;
   } | {
     _key: string;
@@ -3526,11 +3508,50 @@ export type HOME_PAGE_QUERYResult = {
       content: null;
     } | {
       _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      alignment?: "center" | "left" | "right";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      buttonType?: "email" | "link" | "none";
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "collab";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "homePage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      externalUrl?: string;
+      openInNewTab?: boolean;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
       _type: "cardGrid";
       columns?: "2" | "3" | "4";
       cards: Array<{
         _key: string;
-        _type: "ctaCard";
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -3669,49 +3690,6 @@ export type HOME_PAGE_QUERYResult = {
       } | null;
       externalUrl?: string;
       openInNewTab?: boolean;
-      content: null;
-    } | {
-      _key: string;
-      _type: "ctaCard";
-      icon?: Icon;
-      title?: string;
-      bodyText?: string;
-      buttonType?: "email" | "link" | "none";
-      text?: string;
-      variant?: "filled" | "outline";
-      linkType?: "external" | "internal";
-      internalLink: {
-        _id: string;
-        _type: "collab";
-        title: null;
-        slug: Slug | null;
-        pageType: "collab";
-        href: string | null;
-      } | {
-        _id: string;
-        _type: "eventsIndexPage";
-        title: string | null;
-        slug: null;
-        pageType: "eventsIndexPage";
-        href: "/events";
-      } | {
-        _id: string;
-        _type: "homePage";
-        title: null;
-        slug: null;
-        pageType: "homePage";
-        href: "/";
-      } | {
-        _id: string;
-        _type: "page";
-        title: string | null;
-        slug: Slug | null;
-        pageType: "page";
-        href: string | null;
-      } | null;
-      externalUrl?: string;
-      openInNewTab?: boolean;
-      image: null;
       content: null;
     } | {
       _key: string;
@@ -3919,11 +3897,50 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        alignment?: "center" | "left" | "right";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        buttonType?: "email" | "link" | "none";
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        openInNewTab?: boolean;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "cardGrid";
         columns?: "2" | "3" | "4";
         cards: Array<{
           _key: string;
-          _type: "ctaCard";
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -4062,49 +4079,6 @@ export type HOME_PAGE_QUERYResult = {
         } | null;
         externalUrl?: string;
         openInNewTab?: boolean;
-        content: null;
-      } | {
-        _key: string;
-        _type: "ctaCard";
-        icon?: Icon;
-        title?: string;
-        bodyText?: string;
-        buttonType?: "email" | "link" | "none";
-        text?: string;
-        variant?: "filled" | "outline";
-        linkType?: "external" | "internal";
-        internalLink: {
-          _id: string;
-          _type: "collab";
-          title: null;
-          slug: Slug | null;
-          pageType: "collab";
-          href: string | null;
-        } | {
-          _id: string;
-          _type: "eventsIndexPage";
-          title: string | null;
-          slug: null;
-          pageType: "eventsIndexPage";
-          href: "/events";
-        } | {
-          _id: string;
-          _type: "homePage";
-          title: null;
-          slug: null;
-          pageType: "homePage";
-          href: "/";
-        } | {
-          _id: string;
-          _type: "page";
-          title: string | null;
-          slug: Slug | null;
-          pageType: "page";
-          href: string | null;
-        } | null;
-        externalUrl?: string;
-        openInNewTab?: boolean;
-        image: null;
         content: null;
       } | {
         _key: string;
@@ -4309,11 +4283,49 @@ export type HOME_PAGE_QUERYResult = {
           image: null;
         } | {
           _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          alignment?: "center" | "left" | "right";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          buttonType?: "email" | "link" | "none";
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          openInNewTab?: boolean;
+          image: null;
+        } | {
+          _key: string;
           _type: "cardGrid";
           columns?: "2" | "3" | "4";
           cards: Array<{
             _key: string;
-            _type: "ctaCard";
+            _type: "card";
+            cardStyle?: "feature" | "statement";
+            alignment?: "center" | "left" | "right";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -4449,48 +4461,6 @@ export type HOME_PAGE_QUERYResult = {
           } | null;
           externalUrl?: string;
           openInNewTab?: boolean;
-        } | {
-          _key: string;
-          _type: "ctaCard";
-          icon?: Icon;
-          title?: string;
-          bodyText?: string;
-          buttonType?: "email" | "link" | "none";
-          text?: string;
-          variant?: "filled" | "outline";
-          linkType?: "external" | "internal";
-          internalLink: {
-            _id: string;
-            _type: "collab";
-            title: null;
-            slug: Slug | null;
-            pageType: "collab";
-            href: string | null;
-          } | {
-            _id: string;
-            _type: "eventsIndexPage";
-            title: string | null;
-            slug: null;
-            pageType: "eventsIndexPage";
-            href: "/events";
-          } | {
-            _id: string;
-            _type: "homePage";
-            title: null;
-            slug: null;
-            pageType: "homePage";
-            href: "/";
-          } | {
-            _id: string;
-            _type: "page";
-            title: string | null;
-            slug: Slug | null;
-            pageType: "page";
-            href: string | null;
-          } | null;
-          externalUrl?: string;
-          openInNewTab?: boolean;
-          image: null;
         } | {
           _key: string;
           _type: "ctaEmailButton";
@@ -4976,11 +4946,50 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "statement";
+    alignment?: "center" | "left" | "right";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    buttonType?: "email" | "link" | "none";
+    text?: string;
+    variant?: "filled" | "outline";
+    linkType?: "external" | "internal";
+    internalLink?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "collab";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "homePage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "page";
+    };
+    externalUrl?: string;
+    openInNewTab?: boolean;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "cardGrid";
     columns?: "2" | "3" | "4";
     cards: Array<{
       _key: string;
-      _type: "ctaCard";
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      alignment?: "center" | "left" | "right";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -5119,49 +5128,6 @@ export type HOME_PAGE_QUERYResult = {
     } | null;
     externalUrl?: string;
     openInNewTab?: boolean;
-    content: null;
-  } | {
-    _key: string;
-    _type: "ctaCard";
-    icon?: Icon;
-    title?: string;
-    bodyText?: string;
-    buttonType?: "email" | "link" | "none";
-    text?: string;
-    variant?: "filled" | "outline";
-    linkType?: "external" | "internal";
-    internalLink: {
-      _id: string;
-      _type: "collab";
-      title: null;
-      slug: Slug | null;
-      pageType: "collab";
-      href: string | null;
-    } | {
-      _id: string;
-      _type: "eventsIndexPage";
-      title: string | null;
-      slug: null;
-      pageType: "eventsIndexPage";
-      href: "/events";
-    } | {
-      _id: string;
-      _type: "homePage";
-      title: null;
-      slug: null;
-      pageType: "homePage";
-      href: "/";
-    } | {
-      _id: string;
-      _type: "page";
-      title: string | null;
-      slug: Slug | null;
-      pageType: "page";
-      href: string | null;
-    } | null;
-    externalUrl?: string;
-    openInNewTab?: boolean;
-    image: null;
     content: null;
   } | {
     _key: string;
@@ -5312,11 +5278,50 @@ export type HOME_PAGE_QUERYResult = {
       content: null;
     } | {
       _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      alignment?: "center" | "left" | "right";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      buttonType?: "email" | "link" | "none";
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "collab";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "homePage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      externalUrl?: string;
+      openInNewTab?: boolean;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
       _type: "cardGrid";
       columns?: "2" | "3" | "4";
       cards: Array<{
         _key: string;
-        _type: "ctaCard";
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -5455,49 +5460,6 @@ export type HOME_PAGE_QUERYResult = {
       } | null;
       externalUrl?: string;
       openInNewTab?: boolean;
-      content: null;
-    } | {
-      _key: string;
-      _type: "ctaCard";
-      icon?: Icon;
-      title?: string;
-      bodyText?: string;
-      buttonType?: "email" | "link" | "none";
-      text?: string;
-      variant?: "filled" | "outline";
-      linkType?: "external" | "internal";
-      internalLink: {
-        _id: string;
-        _type: "collab";
-        title: null;
-        slug: Slug | null;
-        pageType: "collab";
-        href: string | null;
-      } | {
-        _id: string;
-        _type: "eventsIndexPage";
-        title: string | null;
-        slug: null;
-        pageType: "eventsIndexPage";
-        href: "/events";
-      } | {
-        _id: string;
-        _type: "homePage";
-        title: null;
-        slug: null;
-        pageType: "homePage";
-        href: "/";
-      } | {
-        _id: string;
-        _type: "page";
-        title: string | null;
-        slug: Slug | null;
-        pageType: "page";
-        href: string | null;
-      } | null;
-      externalUrl?: string;
-      openInNewTab?: boolean;
-      image: null;
       content: null;
     } | {
       _key: string;
@@ -5705,11 +5667,50 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        alignment?: "center" | "left" | "right";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        buttonType?: "email" | "link" | "none";
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        openInNewTab?: boolean;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "cardGrid";
         columns?: "2" | "3" | "4";
         cards: Array<{
           _key: string;
-          _type: "ctaCard";
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -5848,49 +5849,6 @@ export type HOME_PAGE_QUERYResult = {
         } | null;
         externalUrl?: string;
         openInNewTab?: boolean;
-        content: null;
-      } | {
-        _key: string;
-        _type: "ctaCard";
-        icon?: Icon;
-        title?: string;
-        bodyText?: string;
-        buttonType?: "email" | "link" | "none";
-        text?: string;
-        variant?: "filled" | "outline";
-        linkType?: "external" | "internal";
-        internalLink: {
-          _id: string;
-          _type: "collab";
-          title: null;
-          slug: Slug | null;
-          pageType: "collab";
-          href: string | null;
-        } | {
-          _id: string;
-          _type: "eventsIndexPage";
-          title: string | null;
-          slug: null;
-          pageType: "eventsIndexPage";
-          href: "/events";
-        } | {
-          _id: string;
-          _type: "homePage";
-          title: null;
-          slug: null;
-          pageType: "homePage";
-          href: "/";
-        } | {
-          _id: string;
-          _type: "page";
-          title: string | null;
-          slug: Slug | null;
-          pageType: "page";
-          href: string | null;
-        } | null;
-        externalUrl?: string;
-        openInNewTab?: boolean;
-        image: null;
         content: null;
       } | {
         _key: string;
@@ -6095,11 +6053,49 @@ export type HOME_PAGE_QUERYResult = {
           image: null;
         } | {
           _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          alignment?: "center" | "left" | "right";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          buttonType?: "email" | "link" | "none";
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          openInNewTab?: boolean;
+          image: null;
+        } | {
+          _key: string;
           _type: "cardGrid";
           columns?: "2" | "3" | "4";
           cards: Array<{
             _key: string;
-            _type: "ctaCard";
+            _type: "card";
+            cardStyle?: "feature" | "statement";
+            alignment?: "center" | "left" | "right";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -6235,48 +6231,6 @@ export type HOME_PAGE_QUERYResult = {
           } | null;
           externalUrl?: string;
           openInNewTab?: boolean;
-        } | {
-          _key: string;
-          _type: "ctaCard";
-          icon?: Icon;
-          title?: string;
-          bodyText?: string;
-          buttonType?: "email" | "link" | "none";
-          text?: string;
-          variant?: "filled" | "outline";
-          linkType?: "external" | "internal";
-          internalLink: {
-            _id: string;
-            _type: "collab";
-            title: null;
-            slug: Slug | null;
-            pageType: "collab";
-            href: string | null;
-          } | {
-            _id: string;
-            _type: "eventsIndexPage";
-            title: string | null;
-            slug: null;
-            pageType: "eventsIndexPage";
-            href: "/events";
-          } | {
-            _id: string;
-            _type: "homePage";
-            title: null;
-            slug: null;
-            pageType: "homePage";
-            href: "/";
-          } | {
-            _id: string;
-            _type: "page";
-            title: string | null;
-            slug: Slug | null;
-            pageType: "page";
-            href: string | null;
-          } | null;
-          externalUrl?: string;
-          openInNewTab?: boolean;
-          image: null;
         } | {
           _key: string;
           _type: "ctaEmailButton";
@@ -7102,11 +7056,50 @@ export type COLLAB_QUERYResult = {
       content: null;
     } | {
       _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      alignment?: "center" | "left" | "right";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      buttonType?: "email" | "link" | "none";
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "collab";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "homePage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      externalUrl?: string;
+      openInNewTab?: boolean;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
       _type: "cardGrid";
       columns?: "2" | "3" | "4";
       cards: Array<{
         _key: string;
-        _type: "ctaCard";
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        alignment?: "center" | "left" | "right";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -7245,49 +7238,6 @@ export type COLLAB_QUERYResult = {
       } | null;
       externalUrl?: string;
       openInNewTab?: boolean;
-      content: null;
-    } | {
-      _key: string;
-      _type: "ctaCard";
-      icon?: Icon;
-      title?: string;
-      bodyText?: string;
-      buttonType?: "email" | "link" | "none";
-      text?: string;
-      variant?: "filled" | "outline";
-      linkType?: "external" | "internal";
-      internalLink: {
-        _id: string;
-        _type: "collab";
-        title: null;
-        slug: Slug | null;
-        pageType: "collab";
-        href: string | null;
-      } | {
-        _id: string;
-        _type: "eventsIndexPage";
-        title: string | null;
-        slug: null;
-        pageType: "eventsIndexPage";
-        href: "/events";
-      } | {
-        _id: string;
-        _type: "homePage";
-        title: null;
-        slug: null;
-        pageType: "homePage";
-        href: "/";
-      } | {
-        _id: string;
-        _type: "page";
-        title: string | null;
-        slug: Slug | null;
-        pageType: "page";
-        href: string | null;
-      } | null;
-      externalUrl?: string;
-      openInNewTab?: boolean;
-      image: null;
       content: null;
     } | {
       _key: string;
@@ -7495,11 +7445,50 @@ export type COLLAB_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        alignment?: "center" | "left" | "right";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        buttonType?: "email" | "link" | "none";
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        openInNewTab?: boolean;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "cardGrid";
         columns?: "2" | "3" | "4";
         cards: Array<{
           _key: string;
-          _type: "ctaCard";
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          alignment?: "center" | "left" | "right";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -7638,49 +7627,6 @@ export type COLLAB_QUERYResult = {
         } | null;
         externalUrl?: string;
         openInNewTab?: boolean;
-        content: null;
-      } | {
-        _key: string;
-        _type: "ctaCard";
-        icon?: Icon;
-        title?: string;
-        bodyText?: string;
-        buttonType?: "email" | "link" | "none";
-        text?: string;
-        variant?: "filled" | "outline";
-        linkType?: "external" | "internal";
-        internalLink: {
-          _id: string;
-          _type: "collab";
-          title: null;
-          slug: Slug | null;
-          pageType: "collab";
-          href: string | null;
-        } | {
-          _id: string;
-          _type: "eventsIndexPage";
-          title: string | null;
-          slug: null;
-          pageType: "eventsIndexPage";
-          href: "/events";
-        } | {
-          _id: string;
-          _type: "homePage";
-          title: null;
-          slug: null;
-          pageType: "homePage";
-          href: "/";
-        } | {
-          _id: string;
-          _type: "page";
-          title: string | null;
-          slug: Slug | null;
-          pageType: "page";
-          href: string | null;
-        } | null;
-        externalUrl?: string;
-        openInNewTab?: boolean;
-        image: null;
         content: null;
       } | {
         _key: string;
@@ -7888,11 +7834,50 @@ export type COLLAB_QUERYResult = {
           content: null;
         } | {
           _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          alignment?: "center" | "left" | "right";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          buttonType?: "email" | "link" | "none";
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          openInNewTab?: boolean;
+          image: null;
+          content: null;
+        } | {
+          _key: string;
           _type: "cardGrid";
           columns?: "2" | "3" | "4";
           cards: Array<{
             _key: string;
-            _type: "ctaCard";
+            _type: "card";
+            cardStyle?: "feature" | "statement";
+            alignment?: "center" | "left" | "right";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -8031,49 +8016,6 @@ export type COLLAB_QUERYResult = {
           } | null;
           externalUrl?: string;
           openInNewTab?: boolean;
-          content: null;
-        } | {
-          _key: string;
-          _type: "ctaCard";
-          icon?: Icon;
-          title?: string;
-          bodyText?: string;
-          buttonType?: "email" | "link" | "none";
-          text?: string;
-          variant?: "filled" | "outline";
-          linkType?: "external" | "internal";
-          internalLink: {
-            _id: string;
-            _type: "collab";
-            title: null;
-            slug: Slug | null;
-            pageType: "collab";
-            href: string | null;
-          } | {
-            _id: string;
-            _type: "eventsIndexPage";
-            title: string | null;
-            slug: null;
-            pageType: "eventsIndexPage";
-            href: "/events";
-          } | {
-            _id: string;
-            _type: "homePage";
-            title: null;
-            slug: null;
-            pageType: "homePage";
-            href: "/";
-          } | {
-            _id: string;
-            _type: "page";
-            title: string | null;
-            slug: Slug | null;
-            pageType: "page";
-            href: string | null;
-          } | null;
-          externalUrl?: string;
-          openInNewTab?: boolean;
-          image: null;
           content: null;
         } | {
           _key: string;

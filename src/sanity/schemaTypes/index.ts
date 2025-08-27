@@ -14,7 +14,7 @@ import { subSubSectionType } from './subSubSectionType';
 import { dividerType } from './blocks/dividerType';
 import { itemListType } from './blocks/itemListType';
 import { richTextType } from './blocks/richTextType';
-import { ctaCardType } from './blocks/ctaCardType';
+import { cardType } from './blocks/cardType';
 import { cardGridType } from './blocks/cardGridType';
 import { iconType } from './blocks/iconType';
 import { imageType } from './blocks/imageType';
@@ -65,7 +65,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     dividerType,
     itemListType,
     richTextType,
-    ctaCardType,
+    cardType,
     cardGridType,
     iconType,
     imageType,

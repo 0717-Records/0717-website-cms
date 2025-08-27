@@ -13,7 +13,7 @@ import ItemList from './blocks/ItemList';
 import RichText from './blocks/RichText';
 import Quote from './blocks/Quote';
 import TextImage from './blocks/TextImage';
-import CTACard from './blocks/CTACard';
+import Card from './blocks/Card';
 import CTAButton from './blocks/CTAButton';
 import CTACalloutLinkComponent from './blocks/CTACalloutLink';
 import CTAEmailButtonComponent from './blocks/CTAEmailButton';
@@ -250,10 +250,15 @@ const BlockRenderer = ({
               </BlockWrapper>
             );
 
-          case 'ctaCard':
+          case 'card':
             return (
               <BlockWrapper key={block._key}>
-                <CTACard {...block} email={siteSettings?.companyEmail} />
+                <Card 
+                  {...block} 
+                  email={siteSettings?.companyEmail}
+                  documentId={documentId}
+                  documentType={documentType}
+                />
               </BlockWrapper>
             );
 
@@ -291,7 +296,12 @@ const BlockRenderer = ({
           case 'cardGrid':
             return (
               <BlockWrapper key={block._key}>
-                <CardGrid {...block} email={siteSettings?.companyEmail} />
+                <CardGrid 
+                  {...block} 
+                  email={siteSettings?.companyEmail}
+                  documentId={documentId}
+                  documentType={documentType}
+                />
               </BlockWrapper>
             );
 

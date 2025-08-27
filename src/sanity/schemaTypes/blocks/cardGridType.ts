@@ -28,7 +28,7 @@ export const cardGridType = defineType({
       type: 'array',
       of: [
         defineArrayMember({
-          type: 'ctaCard',
+          type: 'card',
           title: 'Card',
         }),
       ],

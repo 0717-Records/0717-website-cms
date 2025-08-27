@@ -2,7 +2,7 @@
 // This type represents any block that can contain other blocks
 
 
-import type { ItemList, Divider, RichText, Quote, TextImage, CtaCard, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, CtaEvent, SubSection, SubSubSection, EventBlock, CollabAllBlock, FavouriteBlock } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Quote, TextImage, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, CtaEvent, SubSection, SubSubSection, EventBlock, CollabAllBlock, FavouriteBlock } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -27,7 +27,7 @@ export type DividerBlock = Divider & { _key: string };
 export type RichTextBlock = RichText & { _key: string };
 export type QuoteBlock = Quote & { _key: string };
 export type TextImageBlock = TextImage & { _key: string };
-export type CTACardBlock = CtaCard & { _key: string };
+export type CardBlock = Card & { _key: string };
 export type CardGridBlock = CardGrid & { _key: string };
 export type IconBlock = Icon & { _key: string };
 export type ImageBlock = SanityImageBlock & { _key: string };
@@ -55,7 +55,7 @@ export type NestedBlock =
   | RichTextBlock
   | QuoteBlock
   | TextImageBlock
-  | CTACardBlock
+  | CardBlock
   | CardGridBlock
   | IconBlock
   | ImageBlock
@@ -72,11 +72,11 @@ export type NestedBlock =
   | FavouriteBlockType;
 
 // Union of blocks that can contain nested content
-export type BlockWithContent = PageSectionBlock | SubSectionBlock | SubSubSectionBlock | SectionBlock | CTACardBlock;
+export type BlockWithContent = PageSectionBlock | SubSectionBlock | SubSubSectionBlock | SectionBlock | CardBlock;
 
 // Type guard functions
 export const isBlockWithContent = (block: NestedBlock): block is BlockWithContent => {
-  return block._type === 'pageSection' || block._type === 'subSection' || block._type === 'subSubSection' || block._type === 'section' || block._type === 'ctaCard';
+  return block._type === 'pageSection' || block._type === 'subSection' || block._type === 'subSubSection' || block._type === 'section' || block._type === 'card';
 };
 
 export const isPageSectionBlock = (block: NestedBlock): block is PageSectionBlock => {
@@ -116,8 +116,8 @@ export const isTextImageBlock = (block: NestedBlock): block is TextImageBlock =>
   return block._type === 'textImage';
 };
 
-export const isCTACardBlock = (block: NestedBlock): block is CTACardBlock => {
-  return block._type === 'ctaCard';
+export const isCardBlock = (block: NestedBlock): block is CardBlock => {
+  return block._type === 'card';
 };
 
 export const isCardGridBlock = (block: NestedBlock): block is CardGridBlock => {

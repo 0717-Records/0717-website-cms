@@ -2016,7 +2016,7 @@
               },
               "rest": {
                 "type": "inline",
-                "name": "ctaCard"
+                "name": "card"
               }
             }
           },
@@ -2026,7 +2026,7 @@
     }
   },
   {
-    "name": "ctaCard",
+    "name": "card",
     "type": "type",
     "value": {
       "type": "object",
@@ -2035,8 +2035,46 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "ctaCard"
+            "value": "card"
           }
+        },
+        "cardStyle": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "feature"
+              },
+              {
+                "type": "string",
+                "value": "statement"
+              }
+            ]
+          },
+          "optional": true
+        },
+        "alignment": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "left"
+              },
+              {
+                "type": "string",
+                "value": "center"
+              },
+              {
+                "type": "string",
+                "value": "right"
+              }
+            ]
+          },
+          "optional": true
         },
         "icon": {
           "type": "objectAttribute",
@@ -3008,7 +3046,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "ctaCard"
+                    "name": "card"
                   }
                 },
                 {
@@ -3383,7 +3421,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "ctaCard"
+                    "name": "card"
                   }
                 },
                 {
@@ -3733,7 +3771,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "ctaCard"
+                    "name": "card"
                   }
                 },
                 {
@@ -4115,7 +4153,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "ctaCard"
+                    "name": "card"
                   }
                 },
                 {
@@ -4446,7 +4484,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "ctaCard"
+              "name": "card"
             }
           },
           {

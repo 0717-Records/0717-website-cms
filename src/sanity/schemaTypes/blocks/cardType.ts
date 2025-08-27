@@ -1,23 +1,67 @@
+// AI Helper: This is a Sanity CMS schema definition. It defines the structure and validation rules for content types.
+// When modifying, ensure all fields have appropriate validation, titles, and descriptions for content editors.
+// Follow the existing patterns in other schema files for consistency.
+
 import { defineField, defineType } from 'sanity';
 import { DocumentIcon } from '@sanity/icons';
 import { LINKABLE_PAGE_TYPES, LINK_TYPE_OPTIONS } from '../shared/linkSystem';
 
-export const ctaCardType = defineType({
-  name: 'ctaCard',
-  title: 'CTA Card',
+export const cardType = defineType({
+  name: 'card',
+  title: 'Card',
   type: 'object',
   icon: DocumentIcon,
   groups: [
+    { name: 'style', title: 'Style' },
     { name: 'content', title: 'Content' },
     { name: 'button', title: 'Button' },
   ],
   fields: [
     defineField({
+      name: 'cardStyle',
+      title: 'Card Style',
+      type: 'string',
+      group: 'style',
+      options: {
+        list: [
+          { 
+            title: 'Feature Card', 
+            value: 'feature',
+          },
+          { 
+            title: 'Statement Card', 
+            value: 'statement',
+          },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'feature',
+      description: 'Choose the card layout style:\n\n• Feature Card: Standard layout with icon, title, description, and button arranged vertically. Perfect for highlighting services, features, or benefits.\n\n• Statement Card: Decorative layout with larger text and creative arrangement. Ideal for showcasing core values, mission statements, or key principles.',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'alignment',
+      title: 'Text Alignment',
+      type: 'string',
+      group: 'style',
+      options: {
+        list: [
+          { title: 'Left', value: 'left' },
+          { title: 'Center', value: 'center' },
+          { title: 'Right', value: 'right' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'center',
+      description: 'Text alignment within the card',
+      hidden: ({ parent }) => parent?.cardStyle === 'statement',
+    }),
+    defineField({
       name: 'icon',
       title: 'Icon',
       type: 'icon',
       group: 'content',
-      description: 'Optional icon to display at the top of the card',
+      description: 'Optional icon to display in the card',
     }),
     defineField({
       name: 'title',
@@ -169,14 +213,16 @@ export const ctaCardType = defineType({
       title: 'title',
       icon: 'icon.name',
       bodyText: 'bodyText',
+      cardStyle: 'cardStyle',
     },
-    prepare({ title, icon, bodyText }) {
-      const displayTitle = title || 'Untitled CTA Card';
+    prepare({ title, icon, bodyText, cardStyle }) {
+      const displayTitle = title || 'Untitled Card';
+      const styleLabel = cardStyle === 'statement' ? 'Statement' : 'Feature';
       const subtitle = icon
-        ? `Icon: ${icon}`
+        ? `${styleLabel} • Icon: ${icon}`
         : bodyText
-          ? `${bodyText.slice(0, 50)}...`
-          : 'No content';
+          ? `${styleLabel} • ${bodyText.slice(0, 40)}...`
+          : `${styleLabel} • No content`;
 
       return {
         title: displayTitle,

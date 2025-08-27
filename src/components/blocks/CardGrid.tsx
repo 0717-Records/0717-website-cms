@@ -1,13 +1,15 @@
 import React from 'react';
 import { stegaClean } from 'next-sanity';
 import type { CardGridBlock } from '@/types/blocks';
-import CTACard from './CTACard';
+import Card from './Card';
 
 interface CardGridProps extends CardGridBlock {
   email?: string; // For passing company email from siteSettings
+  documentId?: string;
+  documentType?: string;
 }
 
-const CardGrid = ({ columns = '2', cards, email }: CardGridProps) => {
+const CardGrid = ({ columns = '2', cards, email, documentId, documentType }: CardGridProps) => {
   if (!cards || !Array.isArray(cards) || cards.length === 0) {
     return null;
   }
@@ -33,8 +35,10 @@ const CardGrid = ({ columns = '2', cards, email }: CardGridProps) => {
   return (
     <div className='w-full flex justify-center flex-wrap gap-8'>
       {cards.map((card, idx) => (
-        <CTACard
+        <Card
           key={card._key || idx}
+          cardStyle={card.cardStyle}
+          alignment={card.alignment}
           icon={card.icon}
           title={card.title}
           bodyText={card.bodyText}
@@ -48,6 +52,8 @@ const CardGrid = ({ columns = '2', cards, email }: CardGridProps) => {
           email={email}
           className={`${cardClasses}`}
           isGridChild
+          documentId={documentId}
+          documentType={documentType}
         />
       ))}
     </div>
