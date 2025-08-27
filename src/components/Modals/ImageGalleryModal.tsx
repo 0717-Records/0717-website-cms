@@ -161,18 +161,13 @@ const ImageGalleryModal = ({
       : {};
   };
 
-  const previousIndex = (currentIndex - 1 + totalImages) % totalImages;
-  const nextIndex = (currentIndex + 1) % totalImages;
-  const previousImage = images[previousIndex];
-  const nextImage = images[nextIndex];
-
   return (
     <Modal
       isModalOpen={isModalOpen}
       closeModal={closeModal}
       aria-labelledby='image-modal-title'
       aria-describedby='image-modal-description'>
-      <div className='w-full h-full flex flex-col justify-center relative z-10 border-4 border-purple-600 overflow-hidden'>
+      <div className='w-full h-full flex flex-col justify-center relative pt-6 z-10'>
         <Heading level='h2' id='gallery-modal-title' className='sr-only'>
           Image gallery viewer - Image {currentIndex + 1} of {totalImages}
         </Heading>
@@ -181,10 +176,10 @@ const ImageGalleryModal = ({
         </div>
 
         {/* Main Carousel Section - Take available space minus thumbnail section */}
-        <div className='flex flex-col flex-1 min-h-0 border-4 border-red-500'>
+        <div className='flex flex-col flex-1 min-h-0'>
           {/* Carousel Container */}
           <div
-            className='flex justify-center gap-4 md:gap-8 relative h-full border-4 border-blue-500'
+            className='flex justify-center gap-4 md:gap-8 relative h-full'
             ref={containerRef}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}>
@@ -202,14 +197,14 @@ const ImageGalleryModal = ({
 
             {/* Current Image - responsive with proper constraints */}
             <div
-              className='flex justify-center items-center relative h-full border-2 border-green-500'
+              className='flex justify-center items-center relative h-full'
               style={{ maxWidth: '66.666667%' }}>
               {loadingImages.has(currentIndex) && (
                 <div className='absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg z-10'>
                   <FaSpinner className='text-gray-400 text-2xl animate-spin' />
                 </div>
               )}
-              <div className='border-4 border-yellow-300 h-full max-w-full'>
+              <div className='h-full max-w-full'>
                 <NextImage
                   src={getImageUrl(currentImage.image)}
                   alt={stegaClean(currentImage.image?.alt) || `Gallery image ${currentIndex + 1}`}
@@ -240,7 +235,7 @@ const ImageGalleryModal = ({
 
         {/* Image Caption */}
         {currentImage.caption && (
-          <div className='text-center py-2 px-4 border-4 border-green-300'>
+          <div className='text-center py-2 px-4'>
             <p
               className='text-body-sm sm:text-body-base text-white italic max-w-2xl mx-auto'
               {...getCaptionDataAttribute(currentIndex)}>
@@ -250,7 +245,7 @@ const ImageGalleryModal = ({
         )}
 
         {/* Thumbnail Section - Fixed height */}
-        <div className='border border-orange-400'>
+        <div className=''>
           <div className='h-full flex flex-col justify-center pt-4'>
             {/* Thumbnails */}
             {totalImages > 1 && (
