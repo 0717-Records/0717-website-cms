@@ -48,11 +48,12 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
 
   const gridClasses = getGridClasses(validColumns);
 
-
   return (
     <>
       <div
-        className={`w-full flex justify-center flex-wrap gap-x-3 gap-y-3 md:gap-x-8 md:gap-y-4 ${className}`}>
+        className={`w-full flex justify-center flex-wrap gap-x-3 gap-y-3 md:gap-x-8 md:gap-y-4 ${className}`}
+        role='region'
+        aria-label={`Image gallery with ${images.length} images`}>
         {images.map((item, idx) => {
           if (!item.image?.asset) return null;
 
@@ -68,7 +69,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                 }}
                 className='relative cursor-pointer transition hover:scale-102 aspect-[4/3] block w-full h-full'
                 tabIndex={0}
-                aria-label={`View gallery image ${idx + 1}: ${imageAlt}`}>
+                aria-label={`Open image ${idx + 1} of ${images.length} in modal: ${imageAlt}`}
+                aria-describedby={`gallery-image-${idx}`}>
                 <NextImage
                   src={imageUrl}
                   alt={imageAlt}

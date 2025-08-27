@@ -172,7 +172,7 @@ const ImageGalleryModal = ({
           Image gallery viewer - Image {currentIndex + 1} of {totalImages}
         </Heading>
         <div id='gallery-modal-description' className='sr-only'>
-          Navigate with arrow keys, swipe, or click thumbnails
+          Image gallery viewer. Navigate with arrow keys, swipe gestures, or click thumbnails. Press Escape to close.
         </div>
 
         {/* Main Carousel Section - Take available space minus thumbnail section */}
@@ -182,14 +182,17 @@ const ImageGalleryModal = ({
             className='flex justify-center gap-4 md:gap-8 px-2 relative h-full'
             ref={containerRef}
             onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}>
+            onTouchEnd={handleTouchEnd}
+            role="img"
+            aria-label={`Image ${currentIndex + 1} of ${totalImages}: ${stegaClean(currentImage.image?.alt) || 'No description'}`}>
             {/* Previous Arrow Button */}
             {totalImages > 1 && (
               <div className='flex items-center z-20 h-full'>
                 <button
                   onClick={navigateToPrevious}
                   className='cursor-pointer flex items-center justify-center w-12 h-12 bg-black/50 hover:bg-black/90 rounded-full transition-colors group'
-                  aria-label='Previous image'>
+                  aria-label={`Previous image (${currentIndex} of ${totalImages})`}
+                  title='Previous image (Left arrow key)'>
                   <FaChevronLeft className='text-white text-lg' />
                 </button>
               </div>
@@ -225,7 +228,8 @@ const ImageGalleryModal = ({
                 <button
                   onClick={navigateToNext}
                   className='cursor-pointer flex items-center justify-center w-12 h-12 bg-black/50 hover:bg-black/90 rounded-full transition-colors group'
-                  aria-label='Next image'>
+                  aria-label={`Next image (${currentIndex + 2} of ${totalImages})`}
+                  title='Next image (Right arrow key)'>
                   <FaChevronRight className='text-white text-lg' />
                 </button>
               </div>
@@ -245,11 +249,11 @@ const ImageGalleryModal = ({
         )}
 
         {/* Thumbnail Section - Fixed height */}
-        <div className=''>
+        <nav className='' aria-label='Gallery thumbnails'>
           <div className='h-full flex flex-col justify-center pt-4'>
             {/* Thumbnails */}
             {totalImages > 1 && (
-              <div className='flex-1 flex items-center justify-center px-4'>
+              <div className='flex-1 flex items-center justify-center px-4' role='tablist'>
                 <div
                   ref={thumbnailsRef}
                   className='flex gap-2 overflow-x-auto scrollbar-hide max-w-full'>
@@ -271,7 +275,10 @@ const ImageGalleryModal = ({
                               : 'opacity-70 hover:opacity-100 hover:scale-105'
                           }
                         `}
-                        aria-label={`Go to image ${index + 1}`}>
+                        role='tab'
+                        aria-selected={isActive}
+                        aria-label={`Go to image ${index + 1}: ${imageAlt}`}
+                        title={`Image ${index + 1}${imageAlt ? `: ${imageAlt}` : ''}`}>
                         {loadingImages.has(index) && (
                           <div className='absolute inset-0 flex items-center justify-center bg-gray-100 z-10'>
                             <FaSpinner className='text-gray-400 text-sm animate-spin' />
@@ -295,12 +302,12 @@ const ImageGalleryModal = ({
 
             {/* Image Counter */}
             <div className='text-center py-2'>
-              <span className='text-body-sm text-white'>
+              <span className='text-body-sm text-white' role='status' aria-live='polite'>
                 {currentIndex + 1} of {totalImages}
               </span>
             </div>
           </div>
-        </div>
+        </nav>
       </div>
     </Modal>
   );
