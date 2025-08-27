@@ -6,6 +6,7 @@ import { urlFor } from '@/sanity/lib/image';
 import { HeartIcon } from '@sanity/icons';
 import type { FAVOURITES_ALL_QUERYResult } from '@/sanity/types';
 import FavouriteModal from '../Modals/FavouriteModal';
+import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 
 type FavouriteData = FAVOURITES_ALL_QUERYResult[0];
 
@@ -30,7 +31,10 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
         aria-label={`View details for ${favourite.name}`}>
         <div className='text-center space-y-3'>
           {/* Profile Image */}
-          <div className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'>
+          <div 
+            {...createSanityDataAttribute(favourite._id, 'favourites', 'profileImage')}
+            className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'
+          >
             {imageUrl ? (
               <NextImage
                 src={imageUrl}
@@ -47,13 +51,21 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
           </div>
 
           {/* Name */}
-          <div className='text-h6 font-bold text-gray-900 transition-colors duration-200 group-hover:underline'>
+          <div 
+            {...createSanityDataAttribute(favourite._id, 'favourites', 'name')}
+            className='text-h6 font-bold text-gray-900 transition-colors duration-200 group-hover:underline'
+          >
             {favourite.name}
           </div>
 
           {/* Genre */}
           {favourite.genre && (
-            <div className='text-body-base font-medium text-brand-secondary'>{favourite.genre}</div>
+            <div 
+              {...createSanityDataAttribute(favourite._id, 'favourites', 'genre')}
+              className='text-body-base font-medium text-brand-secondary'
+            >
+              {favourite.genre}
+            </div>
           )}
         </div>
       </button>
