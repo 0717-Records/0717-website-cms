@@ -184,7 +184,7 @@ const ImageGalleryModal = ({
         <div className='flex flex-col flex-grow overflow-hidden border-4 border-red-500'>
           {/* Carousel Container */}
           <div
-            className='flex justify-center flex-grow relative px-2 sm:px-4 h-full border-4 border-blue-500'
+            className='flex justify-center gap-4 md:gap-8 relative h-full border-4 border-blue-500'
             ref={containerRef}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}>
@@ -239,7 +239,7 @@ const ImageGalleryModal = ({
 
           {/* Image Caption */}
           {currentImage.caption && (
-            <div className='flex-shrink-0 text-center py-2 px-4'>
+            <div className='text-center py-2 px-4 border-4 border-green-300'>
               <p
                 className='text-body-sm sm:text-body-base text-white italic max-w-2xl mx-auto'
                 {...getCaptionDataAttribute(currentIndex)}>
