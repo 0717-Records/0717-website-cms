@@ -63,7 +63,7 @@ const Modal: React.FC<ModalProps> = ({
       ref={dialogRef}
       aria-labelledby={ariaLabelledby}
       aria-describedby={ariaDescribedby}
-      className={`backdrop:bg-black/80 flex-col items-center justify-center w-screen h-screen bg-transparent overflow-hidden hidden open:flex p-0 m-0 max-w-none max-h-none transition-opacity duration-200 ${
+      className={`backdrop:bg-black/80 flex-col items-center justify-center w-screen h-dvh bg-transparent overflow-hidden hidden open:flex p-0 m-0 max-w-none max-h-none transition-opacity duration-200 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       onClick={(e) => {
