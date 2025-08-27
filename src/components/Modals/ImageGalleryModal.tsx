@@ -172,7 +172,7 @@ const ImageGalleryModal = ({
       closeModal={closeModal}
       aria-labelledby='image-modal-title'
       aria-describedby='image-modal-description'>
-      <div className='w-full h-full flex flex-col justify-center relative z-10'>
+      <div className='w-full h-full flex flex-col justify-center relative z-10 border-4 border-purple-600 overflow-hidden'>
         <Heading level='h2' id='gallery-modal-title' className='sr-only'>
           Image gallery viewer - Image {currentIndex + 1} of {totalImages}
         </Heading>
@@ -181,7 +181,7 @@ const ImageGalleryModal = ({
         </div>
 
         {/* Main Carousel Section - Take available space minus thumbnail section */}
-        <div className='flex flex-col flex-grow overflow-hidden border-4 border-red-500'>
+        <div className='flex flex-col flex-1 min-h-0 border-4 border-red-500'>
           {/* Carousel Container */}
           <div
             className='flex justify-center gap-4 md:gap-8 relative h-full border-4 border-blue-500'
