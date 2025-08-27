@@ -65,7 +65,9 @@ const Card = ({
   // Feature Card (Style 1) - Current layout
   if (cleanCardStyle === 'feature') {
     return (
-      <CardContainer className={`${className} flex flex-col gap-6 ${getAlignmentClasses()}`} isGridChild={isGridChild}>
+      <CardContainer
+        className={`${className} flex flex-col gap-6 ${getAlignmentClasses()}`}
+        isGridChild={isGridChild}>
         {/* Icon */}
         {icon && icon.image && (
           <div className='flex justify-center'>
@@ -86,10 +88,9 @@ const Card = ({
 
         {/* Body Text */}
         {cleanBodyText && (
-          <p 
+          <p
             className='text-body-xl text-gray-600 leading-relaxed whitespace-pre-line'
-            {...createSanityDataAttribute(documentId, documentType, getFieldPath('bodyText'))}
-          >
+            {...createSanityDataAttribute(documentId, documentType, getFieldPath('bodyText'))}>
             {cleanBodyText}
           </p>
         )}
@@ -118,14 +119,18 @@ const Card = ({
 
   // Statement Card (Style 2) - Decorative layout for core values
   return (
-    <CardContainer className={`${className} relative overflow-hidden bg-gradient-to-br from-gray-50 to-white`} isGridChild={isGridChild}>
+    <CardContainer
+      className={`${className} relative overflow-hidden bg-gradient-to-br from-gray-50 to-white border-2 border-gray-100`}
+      isGridChild={isGridChild}>
       <div className='relative z-10 flex flex-col lg:flex-row items-center gap-8 p-8'>
         {/* Left side - Icon */}
         {icon && icon.image && (
-          <div className='flex-shrink-0'>
+          <div className='flex-shrink-0 relative'>
             <div {...createSanityDataAttribute(documentId, documentType, getFieldPath('icon'))}>
-              <div className='w-24 h-24 lg:w-32 lg:h-32'>
-                <Icon {...icon} className='w-full h-full' />
+              {/* Icon background circle */}
+              <div className='absolute inset-0 w-24 h-24 lg:w-32 lg:h-32 bg-brand-secondary/25 rounded-full blur-sm'></div>
+              <div className='relative w-24 h-24 lg:w-32 lg:h-32 flex items-center justify-center rounded-full'>
+                <Icon {...icon} className='w-16 h-16 lg:w-20 lg:h-20' />
               </div>
             </div>
           </div>
@@ -135,20 +140,20 @@ const Card = ({
         <div className='flex-1 text-center lg:text-left'>
           {/* Title */}
           {cleanTitle && (
-            <div 
-              className='text-h2 lg:text-h1 font-bold text-gray-900 mb-4 leading-tight'
-              {...createSanityDataAttribute(documentId, documentType, getFieldPath('title'))}
-            >
+            <div
+              className='text-h2 lg:text-h1 font-bold text-gray-900 mb-4 leading-tight relative'
+              {...createSanityDataAttribute(documentId, documentType, getFieldPath('title'))}>
               {cleanTitle}
+              {/* Subtle underline accent */}
+              <div className='absolute -bottom-1 left-0 lg:left-0 w-16 h-1 bg-brand-secondary opacity-30 rounded'></div>
             </div>
           )}
 
           {/* Body Text */}
           {cleanBodyText && (
-            <p 
-              className='text-body-2xl lg:text-body-3xl text-gray-700 leading-relaxed whitespace-pre-line font-medium italic'
-              {...createSanityDataAttribute(documentId, documentType, getFieldPath('bodyText'))}
-            >
+            <p
+              className='text-body-2xl lg:text-body-2xl text-gray-600 leading-relaxed whitespace-pre-line font-medium italic'
+              {...createSanityDataAttribute(documentId, documentType, getFieldPath('bodyText'))}>
               {cleanBodyText}
             </p>
           )}
@@ -174,9 +179,14 @@ const Card = ({
         </div>
       </div>
 
-      {/* Decorative background element */}
-      <div className='absolute top-0 right-0 w-32 h-32 bg-brand-primary opacity-5 rounded-full transform translate-x-16 -translate-y-16'></div>
-      <div className='absolute bottom-0 left-0 w-24 h-24 bg-brand-secondary opacity-5 rounded-full transform -translate-x-12 translate-y-12'></div>
+      {/* Decorative background elements - more visible and using secondary brand color */}
+      <div className='absolute top-4 right-4 w-20 h-20 bg-brand-secondary opacity-15 rounded-full'></div>
+      <div className='absolute top-8 right-16 w-12 h-12 bg-brand-secondary opacity-10 rounded-full'></div>
+      <div className='absolute bottom-6 left-8 w-16 h-16 bg-brand-secondary opacity-12 rounded-full'></div>
+      <div className='absolute bottom-4 right-1/3 w-8 h-8 bg-brand-secondary opacity-20 rounded-full'></div>
+
+      {/* Subtle geometric accent */}
+      <div className='absolute top-1/2 -right-15 w-24 h-24 bg-brand-secondary opacity-15 rounded-full transform -translate-y-1/2'></div>
     </CardContainer>
   );
 };
