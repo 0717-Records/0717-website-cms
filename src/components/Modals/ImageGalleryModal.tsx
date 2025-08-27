@@ -188,49 +188,35 @@ const ImageGalleryModal = ({
             ref={containerRef}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}>
-            {/* Previous Image */}
+            {/* Previous Arrow Button */}
             {totalImages > 1 && (
-              <div className='flex items-center z-20 border border-gray-300 h-full'>
-                <div className='relative w-12 sm:w-16 md:w-20 lg:w-24 h-32 sm:h-40 md:h-48 lg:h-56 -translate-x-4 sm:-translate-x-6 md:-translate-x-8'>
-                  <button
-                    onClick={navigateToPrevious}
-                    className='hidden relative w-full h-full group cursor-pointer'
-                    aria-label='Previous image'>
-                    <NextImage
-                      src={getImageUrl(previousImage.image)}
-                      alt={
-                        stegaClean(previousImage.image?.alt) || `Gallery image ${previousIndex + 1}`
-                      }
-                      fill
-                      className='object-cover rounded-lg opacity-60 group-hover:opacity-80 transition-opacity'
-                      sizes='(max-width: 640px) 48px, (max-width: 768px) 64px, (max-width: 1024px) 80px, 96px'
-                      onLoadStart={() => handleImageLoadStart(previousIndex)}
-                      onLoad={() => handleImageLoadComplete(previousIndex)}
-                    />
-                    {/* Arrow overlay */}
-                    <div className='absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 rounded-lg transition-colors'>
-                      <FaChevronLeft className='text-white text-sm sm:text-base md:text-lg' />
-                    </div>
-                  </button>
-                </div>
+              <div className='flex items-center z-20 h-full'>
+                <button
+                  onClick={navigateToPrevious}
+                  className='flex items-center justify-center w-12 h-12 bg-black/20 hover:bg-black/40 rounded-full transition-colors group'
+                  aria-label='Previous image'>
+                  <FaChevronLeft className='text-white text-lg' />
+                </button>
               </div>
             )}
 
             {/* Current Image - responsive with proper constraints */}
-            <div className='flex justify-center items-center relative mx-16 sm:mx-20 md:mx-24 lg:mx-28 h-full max-w-2/3 border-2 border-green-500'>
+            <div
+              className='flex justify-center items-center relative h-full border-2 border-green-500'
+              style={{ maxWidth: '66.666667%' }}>
               {loadingImages.has(currentIndex) && (
                 <div className='absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg z-10'>
                   <FaSpinner className='text-gray-400 text-2xl animate-spin' />
                 </div>
               )}
-              <div className='border-4 border-yellow-300 h-full'>
+              <div className='border-4 border-yellow-300 h-full max-w-full'>
                 <NextImage
                   src={getImageUrl(currentImage.image)}
                   alt={stegaClean(currentImage.image?.alt) || `Gallery image ${currentIndex + 1}`}
                   width={800}
                   height={600}
-                  className='object-contain rounded-lg h-full'
-                  sizes='(max-width: 640px) calc(100vw - 8rem), (max-width: 1024px) calc(100vw - 10rem), calc(100vw - 12rem)'
+                  className='object-contain rounded-lg h-full w-auto max-w-full'
+                  sizes='(max-width: 640px) calc(66vw - 8rem), (max-width: 1024px) calc(66vw - 10rem), calc(66vw - 12rem)'
                   priority
                   onLoadStart={() => handleImageLoadStart(currentIndex)}
                   onLoad={() => handleImageLoadComplete(currentIndex)}
@@ -238,29 +224,15 @@ const ImageGalleryModal = ({
               </div>
             </div>
 
-            {/* Next Image */}
+            {/* Next Arrow Button */}
             {totalImages > 1 && (
-              <div className='flex items-center z-20 border border-orange-400 h-full'>
-                <div className='relative w-12 sm:w-16 md:w-20 lg:w-24 h-32 sm:h-40 md:h-48 lg:h-56 translate-x-4 sm:translate-x-6 md:translate-x-8'>
-                  <button
-                    onClick={navigateToNext}
-                    className='hidden relative w-full h-full group cursor-pointer'
-                    aria-label='Next image'>
-                    <NextImage
-                      src={getImageUrl(nextImage.image)}
-                      alt={stegaClean(nextImage.image?.alt) || `Gallery image ${nextIndex + 1}`}
-                      fill
-                      className='object-cover rounded-lg opacity-60 group-hover:opacity-80 transition-opacity'
-                      sizes='(max-width: 640px) 48px, (max-width: 768px) 64px, (max-width: 1024px) 80px, 96px'
-                      onLoadStart={() => handleImageLoadStart(nextIndex)}
-                      onLoad={() => handleImageLoadComplete(nextIndex)}
-                    />
-                    {/* Arrow overlay */}
-                    <div className='absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 rounded-lg transition-colors'>
-                      <FaChevronRight className='text-white text-sm sm:text-base md:text-lg' />
-                    </div>
-                  </button>
-                </div>
+              <div className='flex items-center z-20 h-full'>
+                <button
+                  onClick={navigateToNext}
+                  className='flex items-center justify-center w-12 h-12 bg-black/20 hover:bg-black/40 rounded-full transition-colors group'
+                  aria-label='Next image'>
+                  <FaChevronRight className='text-white text-lg' />
+                </button>
               </div>
             )}
           </div>
