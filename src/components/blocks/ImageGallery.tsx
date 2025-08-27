@@ -5,7 +5,7 @@ import { stegaClean } from 'next-sanity';
 import NextImage from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { ImageGalleryBlock } from '@/types/blocks';
-import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
+import type { SanityLiveEditingProps } from '../../utils/sectionHelpers';
 import ImageGalleryModal from '../Modals/ImageGalleryModal';
 
 interface ImageGalleryProps
@@ -48,16 +48,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
 
   const gridClasses = getGridClasses(validColumns);
 
-  // Create data attribute for individual image caption if Sanity props are provided
-  const getCaptionDataAttribute = (imageIndex: number) => {
-    return pathPrefix
-      ? createSanityDataAttribute(
-          documentId,
-          documentType,
-          `${pathPrefix}.images[${imageIndex}].caption`
-        )
-      : {};
-  };
 
   return (
     <>
@@ -68,7 +58,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
 
           const imageUrl = urlFor(item.image).url();
           const imageAlt = stegaClean(item.image.alt) || `Gallery image ${idx + 1}`;
-          const caption = stegaClean(item.caption);
 
           return (
             <figure key={item._key || idx} className={gridClasses}>
