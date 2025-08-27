@@ -24,6 +24,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
   pathPrefix,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
   if (!images || !Array.isArray(images) || images.length === 0) {
     return null;
@@ -72,7 +73,10 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
           return (
             <figure key={item._key || idx} className={gridClasses}>
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  setSelectedImageIndex(idx);
+                  setIsModalOpen(true);
+                }}
                 className='relative aspect-[16/9] block w-full h-full'
                 tabIndex={0}
                 aria-label={`View gallery image ${idx + 1}: ${imageAlt}`}>
@@ -95,7 +99,15 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
           );
         })}
       </div>
-      <ImageGalleryModal isModalOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
+      <ImageGalleryModal 
+        isModalOpen={isModalOpen} 
+        closeModal={() => setIsModalOpen(false)}
+        images={images}
+        initialIndex={selectedImageIndex}
+        documentId={documentId}
+        documentType={documentType}
+        pathPrefix={pathPrefix}
+      />
     </>
   );
 };

@@ -116,8 +116,8 @@ const TextImage: React.FC<TextImageProps> = ({
       </div>
 
       <ImageModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
+        isModalOpen={isModalOpen}
+        closeModal={handleCloseModal}
         imageUrl={imageUrl}
         imageAlt={imageAlt}
       />
