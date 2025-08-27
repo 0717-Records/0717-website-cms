@@ -179,7 +179,7 @@ const ImageGalleryModal = ({
         <div className='flex flex-col flex-1 min-h-0'>
           {/* Carousel Container */}
           <div
-            className='flex justify-center gap-4 md:gap-8 relative h-full'
+            className='flex justify-center gap-4 md:gap-8 px-2 relative h-full'
             ref={containerRef}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}>
@@ -188,7 +188,7 @@ const ImageGalleryModal = ({
               <div className='flex items-center z-20 h-full'>
                 <button
                   onClick={navigateToPrevious}
-                  className='flex items-center justify-center w-12 h-12 bg-black/20 hover:bg-black/40 rounded-full transition-colors group'
+                  className='cursor-pointer flex items-center justify-center w-12 h-12 bg-black/50 hover:bg-black/90 rounded-full transition-colors group'
                   aria-label='Previous image'>
                   <FaChevronLeft className='text-white text-lg' />
                 </button>
@@ -224,7 +224,7 @@ const ImageGalleryModal = ({
               <div className='flex items-center z-20 h-full'>
                 <button
                   onClick={navigateToNext}
-                  className='flex items-center justify-center w-12 h-12 bg-black/20 hover:bg-black/40 rounded-full transition-colors group'
+                  className='cursor-pointer flex items-center justify-center w-12 h-12 bg-black/50 hover:bg-black/90 rounded-full transition-colors group'
                   aria-label='Next image'>
                   <FaChevronRight className='text-white text-lg' />
                 </button>
