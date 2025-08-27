@@ -40,9 +40,10 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           content={page.content}
           documentId={page._id}
           documentType={page._type}
-          siteSettings={
-            siteSettings ? { companyEmail: siteSettings.companyEmail || undefined } : undefined
-          }
+          siteSettings={siteSettings ? { 
+            companyEmail: siteSettings.companyEmail || undefined,
+            companyLinks: siteSettings.companyLinks || undefined
+          } : undefined}
           events={events}
           collabs={collabs}
           favourites={favourites}

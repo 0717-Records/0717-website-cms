@@ -168,7 +168,23 @@ export const SITE_SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
   _type,
   siteTitle,
   companyEmail,
-  siteDescription
+  siteDescription,
+  companyLinks{
+    _type,
+    facebook,
+    instagram,
+    youtube,
+    twitter,
+    soundcloud,
+    bandcamp,
+    spotify,
+    itunes,
+    genericLinks[]{
+      _key,
+      title,
+      url
+    }
+  }
 }`);
 
 export const EVENTS_QUERY = defineQuery(`*[_type == "event"]|order(startDate desc){

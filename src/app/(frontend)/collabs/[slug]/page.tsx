@@ -30,6 +30,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
   }
 
   const companyEmail = siteSettings?.companyEmail || undefined;
+  const companyLinks = siteSettings?.companyLinks || undefined;
 
   return (
     <>
@@ -68,7 +69,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
               mainContent={collab.mainContent}
               collabId={collab._id}
               collabType={collab._type}
-              siteSettings={siteSettings ? { companyEmail } : undefined}
+              siteSettings={siteSettings ? { companyEmail, companyLinks } : undefined}
               collabs={collabs}
             />
           </div>
