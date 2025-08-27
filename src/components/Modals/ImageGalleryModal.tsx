@@ -172,7 +172,8 @@ const ImageGalleryModal = ({
           Image gallery viewer - Image {currentIndex + 1} of {totalImages}
         </Heading>
         <div id='gallery-modal-description' className='sr-only'>
-          Image gallery viewer. Navigate with arrow keys, swipe gestures, or click thumbnails. Press Escape to close.
+          Image gallery viewer. Navigate with arrow keys, swipe gestures, or click thumbnails. Press
+          Escape to close.
         </div>
 
         {/* Main Carousel Section - Take available space minus thumbnail section */}
@@ -183,17 +184,17 @@ const ImageGalleryModal = ({
             ref={containerRef}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-            role="img"
+            role='img'
             aria-label={`Image ${currentIndex + 1} of ${totalImages}: ${stegaClean(currentImage.image?.alt) || 'No description'}`}>
             {/* Previous Arrow Button */}
             {totalImages > 1 && (
               <div className='flex items-center z-20 h-full'>
                 <button
                   onClick={navigateToPrevious}
-                  className='cursor-pointer flex items-center justify-center w-12 h-12 bg-black/50 hover:bg-black/90 rounded-full transition-colors group'
+                  className='cursor-pointer flex items-center justify-center w-8 md:w-12 h-8 md:h-12 bg-black/50 hover:bg-black/90 rounded-full transition-colors group'
                   aria-label={`Previous image (${currentIndex} of ${totalImages})`}
                   title='Previous image (Left arrow key)'>
-                  <FaChevronLeft className='text-white text-lg' />
+                  <FaChevronLeft className='text-white text-lg md:text-xl' />
                 </button>
               </div>
             )}
@@ -227,10 +228,10 @@ const ImageGalleryModal = ({
               <div className='flex items-center z-20 h-full'>
                 <button
                   onClick={navigateToNext}
-                  className='cursor-pointer flex items-center justify-center w-12 h-12 bg-black/50 hover:bg-black/90 rounded-full transition-colors group'
+                  className='cursor-pointer flex items-center justify-center w-8 md:w-12 h-8 md:h-12 bg-black/50 hover:bg-black/90 rounded-full transition-colors group'
                   aria-label={`Next image (${currentIndex + 2} of ${totalImages})`}
                   title='Next image (Right arrow key)'>
-                  <FaChevronRight className='text-white text-lg' />
+                  <FaChevronRight className='text-white text-lg md:text-xl' />
                 </button>
               </div>
             )}
