@@ -107,7 +107,18 @@ const ImageGalleryModal = ({
     }
   }, [currentIndex, images]);
 
+  // Get image URL helper
+  const getImageUrl = (image: GalleryImage['image']) => {
+    if (!image?.asset) return null;
+    const url = urlFor(image).url();
+    return url || null;
+  };
+
   if (!images || images.length === 0) return null;
+
+  // Don't render if current image has no valid URL
+  const currentImageUrl = getImageUrl(currentImage.image);
+  if (!currentImageUrl) return null;
 
   // Touch/swipe handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -143,11 +154,6 @@ const ImageGalleryModal = ({
       newSet.delete(index);
       return newSet;
     });
-  };
-
-  // Get image URL
-  const getImageUrl = (image: GalleryImage['image']) => {
-    return image?.asset ? urlFor(image).url() : '';
   };
 
   // Create data attribute for individual image caption
@@ -210,7 +216,7 @@ const ImageGalleryModal = ({
               )}
               <div className='h-full max-w-full'>
                 <NextImage
-                  src={getImageUrl(currentImage.image)}
+                  src={currentImageUrl}
                   alt={stegaClean(currentImage.image?.alt) || `Gallery image ${currentIndex + 1}`}
                   width={800}
                   height={600}
@@ -263,6 +269,9 @@ const ImageGalleryModal = ({
                     const imageUrl = getImageUrl(image.image);
                     const imageAlt =
                       stegaClean(image.image?.alt) || `Gallery thumbnail ${index + 1}`;
+
+                    // Skip rendering if no valid image URL
+                    if (!imageUrl) return null;
 
                     return (
                       <button

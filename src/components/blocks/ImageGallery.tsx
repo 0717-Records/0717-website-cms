@@ -58,6 +58,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
           if (!item.image?.asset) return null;
 
           const imageUrl = urlFor(item.image).url();
+          if (!imageUrl) return null; // Skip if no valid URL
+
           const imageAlt = stegaClean(item.image.alt) || `Gallery image ${idx + 1}`;
 
           return (
