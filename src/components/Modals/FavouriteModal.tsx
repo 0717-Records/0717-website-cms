@@ -7,6 +7,7 @@ import { HeartIcon } from '@sanity/icons';
 import CTA from '../UI/CTA';
 import type { FAVOURITES_ALL_QUERYResult } from '@/sanity/types';
 import Modal from '../UI/Modal';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 type FavouriteData = FAVOURITES_ALL_QUERYResult[0];
 
@@ -79,6 +80,7 @@ const FavouriteModal: React.FC<FavouriteModalProps> = ({ isModalOpen, closeModal
             <div className='flex justify-center pt-2'>
               <CTA href={favourite.link} variant='filled' target='_blank' rel='noopener noreferrer'>
                 {linkLabel}
+                <FaExternalLinkAlt className='ml-2' />
               </CTA>
             </div>
           )}
