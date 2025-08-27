@@ -14,20 +14,21 @@ type GalleryImage = {
   image?: {
     asset?: {
       _ref: string;
-      _type: "reference";
+      _type: 'reference';
       _weak?: boolean;
     };
     media?: unknown;
     hotspot?: unknown;
     crop?: unknown;
     alt?: string;
-    _type: "image";
+    _type: 'image';
   };
   caption?: string;
   _key: string;
 };
 
-interface ImageGalleryModalProps extends Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
+interface ImageGalleryModalProps
+  extends Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
   isModalOpen: boolean;
   closeModal: () => void;
   images: GalleryImage[];
@@ -35,14 +36,14 @@ interface ImageGalleryModalProps extends Omit<SanityLiveEditingProps, 'titlePath
   pathPrefix?: string;
 }
 
-const ImageGalleryModal = ({ 
-  isModalOpen, 
-  closeModal, 
-  images, 
+const ImageGalleryModal = ({
+  isModalOpen,
+  closeModal,
+  images,
   initialIndex,
   documentId,
   documentType,
-  pathPrefix 
+  pathPrefix,
 }: ImageGalleryModalProps) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [loadingImages, setLoadingImages] = useState<Set<number>>(new Set());
@@ -100,7 +101,7 @@ const ImageGalleryModal = ({
         thumbnailElement.scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
-          inline: 'center'
+          inline: 'center',
         });
       }
     }
@@ -115,7 +116,7 @@ const ImageGalleryModal = ({
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (swipeStart === null) return;
-    
+
     const swipeEnd = e.changedTouches[0].clientX;
     const swipeDistance = swipeStart - swipeEnd;
     const minSwipeDistance = 50;
@@ -127,17 +128,17 @@ const ImageGalleryModal = ({
         navigateToPrevious();
       }
     }
-    
+
     setSwipeStart(null);
   };
 
   // Image loading handlers
   const handleImageLoadStart = (index: number) => {
-    setLoadingImages(prev => new Set(prev).add(index));
+    setLoadingImages((prev) => new Set(prev).add(index));
   };
 
   const handleImageLoadComplete = (index: number) => {
-    setLoadingImages(prev => {
+    setLoadingImages((prev) => {
       const newSet = new Set(prev);
       newSet.delete(index);
       return newSet;
@@ -180,20 +181,18 @@ const ImageGalleryModal = ({
         </div>
 
         {/* Main Carousel Container */}
-        <div 
+        <div
           className='flex-1 flex items-center justify-center relative overflow-hidden'
           ref={containerRef}
           onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
+          onTouchEnd={handleTouchEnd}>
           {/* Previous Image (partially visible) */}
           {totalImages > 1 && (
             <div className='absolute left-0 top-1/2 -translate-y-1/2 w-16 sm:w-24 md:w-32 h-48 sm:h-64 md:h-80 -translate-x-8 sm:-translate-x-12 md:-translate-x-16 z-10'>
               <button
                 onClick={navigateToPrevious}
                 className='relative w-full h-full group cursor-pointer'
-                aria-label='Previous image'
-              >
+                aria-label='Previous image'>
                 <NextImage
                   src={getImageUrl(previousImage.image)}
                   alt={stegaClean(previousImage.image?.alt) || `Gallery image ${previousIndex + 1}`}
@@ -236,8 +235,7 @@ const ImageGalleryModal = ({
               <button
                 onClick={navigateToNext}
                 className='relative w-full h-full group cursor-pointer'
-                aria-label='Next image'
-              >
+                aria-label='Next image'>
                 <NextImage
                   src={getImageUrl(nextImage.image)}
                   alt={stegaClean(nextImage.image?.alt) || `Gallery image ${nextIndex + 1}`}
@@ -259,10 +257,9 @@ const ImageGalleryModal = ({
         {/* Image Caption */}
         {currentImage.caption && (
           <div className='text-center py-4 px-2'>
-            <p 
+            <p
               className='text-body-base text-gray-700 italic max-w-2xl mx-auto'
-              {...getCaptionDataAttribute(currentIndex)}
-            >
+              {...getCaptionDataAttribute(currentIndex)}>
               {stegaClean(currentImage.caption)}
             </p>
           </div>
@@ -270,11 +267,8 @@ const ImageGalleryModal = ({
 
         {/* Thumbnails */}
         {totalImages > 1 && (
-          <div className='py-4'>
-            <div 
-              ref={thumbnailsRef}
-              className='flex gap-2 overflow-x-auto scrollbar-hide px-4'
-            >
+          <div className='py-4 mx-auto'>
+            <div ref={thumbnailsRef} className='flex gap-2 overflow-x-auto scrollbar-hide px-4'>
               {images.map((image, index) => {
                 const isActive = index === currentIndex;
                 const imageUrl = getImageUrl(image.image);
@@ -286,13 +280,13 @@ const ImageGalleryModal = ({
                     onClick={() => navigateToIndex(index)}
                     className={`
                       relative flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden transition-all duration-200
-                      ${isActive 
-                        ? 'ring-2 ring-blue-500 ring-offset-2 scale-105' 
-                        : 'opacity-70 hover:opacity-100 hover:scale-105'
+                      ${
+                        isActive
+                          ? 'ring-2 ring-blue-500 ring-offset-2 scale-105'
+                          : 'opacity-70 hover:opacity-100 hover:scale-105'
                       }
                     `}
-                    aria-label={`Go to image ${index + 1}`}
-                  >
+                    aria-label={`Go to image ${index + 1}`}>
                     {loadingImages.has(index) && (
                       <div className='absolute inset-0 flex items-center justify-center bg-gray-100 z-10'>
                         <FaSpinner className='text-gray-400 text-sm animate-spin' />
