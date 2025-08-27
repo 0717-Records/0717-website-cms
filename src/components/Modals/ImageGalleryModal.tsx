@@ -236,18 +236,18 @@ const ImageGalleryModal = ({
               </div>
             )}
           </div>
-
-          {/* Image Caption */}
-          {currentImage.caption && (
-            <div className='text-center py-2 px-4 border-4 border-green-300'>
-              <p
-                className='text-body-sm sm:text-body-base text-white italic max-w-2xl mx-auto'
-                {...getCaptionDataAttribute(currentIndex)}>
-                {stegaClean(currentImage.caption)}
-              </p>
-            </div>
-          )}
         </div>
+
+        {/* Image Caption */}
+        {currentImage.caption && (
+          <div className='text-center py-2 px-4 border-4 border-green-300'>
+            <p
+              className='text-body-sm sm:text-body-base text-white italic max-w-2xl mx-auto'
+              {...getCaptionDataAttribute(currentIndex)}>
+              {stegaClean(currentImage.caption)}
+            </p>
+          </div>
+        )}
 
         {/* Thumbnail Section - Fixed height */}
         <div className='border border-orange-400'>
