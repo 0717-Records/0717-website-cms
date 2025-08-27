@@ -77,7 +77,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                   setSelectedImageIndex(idx);
                   setIsModalOpen(true);
                 }}
-                className='relative aspect-[16/9] block w-full h-full'
+                className='relative cursor-pointer transition hover:scale-102 aspect-[4/3] block w-full h-full'
                 tabIndex={0}
                 aria-label={`View gallery image ${idx + 1}: ${imageAlt}`}>
                 <NextImage
@@ -88,19 +88,19 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                   className='object-cover rounded-lg'
                 />
               </button>
-              {caption && (
+              {/* {caption && (
                 <figcaption
                   className='mt-2 text-body-sm text-gray-600 text-center italic'
                   {...getCaptionDataAttribute(idx)}>
                   {caption}
                 </figcaption>
-              )}
+              )} */}
             </figure>
           );
         })}
       </div>
-      <ImageGalleryModal 
-        isModalOpen={isModalOpen} 
+      <ImageGalleryModal
+        isModalOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
         images={images}
         initialIndex={selectedImageIndex}
