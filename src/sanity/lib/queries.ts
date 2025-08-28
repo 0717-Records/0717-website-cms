@@ -175,7 +175,8 @@ export const SITE_SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
       _key,
       platform,
       url,
-      customTitle
+      customTitle,
+      hideFromFooter
     }
   }
 }`);
@@ -320,6 +321,12 @@ export const FAVOURITES_ALL_QUERY = defineQuery(`*[_type == "favourites"]|order(
 export const FOOTER_QUERY = defineQuery(`*[_type == "footer" && _id == "footer"][0]{
   _id,
   _type,
+  logo{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
   footerMessages[]{
     _key,
     title,

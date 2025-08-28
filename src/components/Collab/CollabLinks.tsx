@@ -2,6 +2,7 @@ import React from 'react';
 import SocialLink from '@/components/UI/SocialLink';
 import Heading from '@/components/Typography/Heading/Heading';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
+import { cleanPlatform } from '@/utils/cleanPlatform';
 import { type SocialPlatform } from '@/utils/socialIcons';
 
 interface SocialLinkItem {
@@ -39,13 +40,7 @@ const CollabLinks: React.FC<CollabLinksProps> = ({ links, documentId, documentTy
 
   // Transform to display format with cleaned platform values
   const allLinks = socialLinks.map((link) => {
-    // Clean the platform value by removing invisible characters and trimming
-    const cleanPlatform = link.platform
-      ?.replace(/[\u200B-\u200D\uFEFF\u2060\u180E]/g, '') // Remove zero-width characters
-      ?.replace(/[\u202A-\u202E]/g, '') // Remove text direction marks
-      ?.trim() || 'genericLink';
-    
-    const platform = cleanPlatform as SocialPlatform;
+    const platform = cleanPlatform(link.platform) as SocialPlatform;
     
     return {
       _key: link._key,

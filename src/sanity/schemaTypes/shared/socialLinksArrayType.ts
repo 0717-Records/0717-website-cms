@@ -68,6 +68,13 @@ const createSocialLinksArrayField = (includeOfficialWebsite: boolean = false) =>
               return true;
             }),
           }),
+          defineField({
+            name: 'hideFromFooter',
+            title: 'Hide from Footer',
+            type: 'boolean',
+            description: 'Hide this link from appearing in the site footer',
+            initialValue: false,
+          }),
         ],
         preview: {
           select: {

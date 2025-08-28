@@ -12,6 +12,23 @@ export const footerType = defineType({
   icon: ComponentIcon,
   fields: [
     defineField({
+      name: 'logo',
+      type: 'image',
+      title: 'Footer Logo',
+      description: 'Logo image that appears in the footer (can be different from header logo). Company email and company links can be managed under Site Management → Site Settings.',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description: 'Important for accessibility and SEO',
+        }),
+      ],
+    }),
+    defineField({
       name: 'footerMessages',
       type: 'array',
       title: 'Footer Messages',

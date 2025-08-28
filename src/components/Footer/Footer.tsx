@@ -5,7 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { urlFor } from '@/sanity/lib/image';
 import { SocialIcon, type SocialPlatform, getPlatformLabel } from '@/utils/socialIcons';
+import { cleanPlatform } from '@/utils/cleanPlatform';
 import CTAEmailButton from '@/components/UI/CTAEmailButton';
+import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 import type { FOOTER_QUERYResult, HEADER_QUERYResult, SITE_SETTINGS_QUERYResult } from '@/sanity/types';
 
 interface FooterMessage {
@@ -21,21 +23,19 @@ interface FooterProps {
 }
 
 const Footer = ({ footerData, headerData, siteSettingsData }: FooterProps) => {
-  // Get company links from site settings
+  // Get company links from site settings, filtering out hidden ones and invalid entries
   const companyLinks = siteSettingsData?.companyLinks?.socialLinksArray?.filter(
     (link) =>
-      link.url && link.platform && typeof link.platform === 'string' && link.platform.trim() !== ''
+      link.url && 
+      link.platform && 
+      typeof link.platform === 'string' && 
+      link.platform.trim() !== '' &&
+      !link.hideFromFooter // Hide links marked as hideFromFooter
   ) || [];
 
   // Transform company links to display format
   const transformedLinks = companyLinks.map((link) => {
-    const cleanPlatform =
-      link.platform
-        ?.replace(/[\u200B-\u200D\uFEFF\u2060\u180E]/g, '')
-        ?.replace(/[\u202A-\u202E]/g, '')
-        ?.trim() || 'genericLink';
-
-    const platform = cleanPlatform as SocialPlatform;
+    const platform = cleanPlatform(link.platform) as SocialPlatform;
 
     return {
       _key: link._key,
@@ -45,8 +45,9 @@ const Footer = ({ footerData, headerData, siteSettingsData }: FooterProps) => {
     };
   });
 
-  // Cast footer data to include proper footerMessages array
+  // Cast footer data to include proper footerMessages array and logo
   const footerMessages = footerData?._type === 'footer' ? (footerData as unknown as { footerMessages?: FooterMessage[] })?.footerMessages : null;
+  const footerLogo = footerData?._type === 'footer' ? (footerData as unknown as { logo?: { asset?: object; alt?: string; hotspot?: object; crop?: object } })?.logo : null;
 
   return (
     <footer
@@ -56,13 +57,23 @@ const Footer = ({ footerData, headerData, siteSettingsData }: FooterProps) => {
       <div className='flex flex-col md:hidden items-center text-center space-y-8'>
         {/* Logo */}
         <Link href='/#home' className='flex items-center gap-2'>
-          {headerData?.logo ? (
+          {footerLogo ? (
+            <Image
+              src={urlFor(footerLogo).url()}
+              alt={footerLogo.alt || '07:17 Records'}
+              width={200}
+              height={125}
+              className='object-contain w-[160px] md:w-[200px] h-auto'
+              {...createSanityDataAttribute(footerData?._id, 'footer', 'logo')}
+            />
+          ) : headerData?.logo ? (
             <Image
               src={urlFor(headerData.logo).url()}
               alt={headerData.logo.alt || '07:17 Records'}
               width={200}
               height={125}
               className='object-contain w-[160px] md:w-[200px] h-auto'
+              {...createSanityDataAttribute(headerData._id, 'header', 'logo')}
             />
           ) : (
             <div className='flex items-center gap-2'>
@@ -100,7 +111,9 @@ const Footer = ({ footerData, headerData, siteSettingsData }: FooterProps) => {
 
         {/* Company Links */}
         {transformedLinks.length > 0 && (
-          <div className='flex flex-wrap justify-center gap-6'>
+          <div 
+            className='flex flex-wrap justify-center gap-6'
+            {...createSanityDataAttribute('siteSettings', 'siteSettings', 'companyLinks')}>
             {transformedLinks.map((link) => (
               <Link
                 key={link._key}
@@ -108,7 +121,9 @@ const Footer = ({ footerData, headerData, siteSettingsData }: FooterProps) => {
                 target='_blank'
                 rel='noopener noreferrer'
                 aria-label={link.label}
-                className='group transition-transform duration-200 hover:scale-105'>
+                title={link.label} // Hover text
+                className='group transition-transform duration-200 hover:scale-105'
+                {...createSanityDataAttribute('siteSettings', 'siteSettings', `companyLinks.socialLinksArray[_key=="${link._key}"]`)}>
                 <div className='w-16 h-16 rounded-full bg-brand-gradient flex items-center justify-center'>
                   <SocialIcon
                     platform={link.platform}
@@ -132,13 +147,23 @@ const Footer = ({ footerData, headerData, siteSettingsData }: FooterProps) => {
         <div className='flex-1 max-w-[50%] flex flex-col gap-8'>
           {/* Logo */}
           <Link href='/#home' className='flex items-center gap-2'>
-            {headerData?.logo ? (
+            {footerLogo ? (
+              <Image
+                src={urlFor(footerLogo).url()}
+                alt={footerLogo.alt || '07:17 Records'}
+                width={200}
+                height={125}
+                className='object-contain w-[160px] md:w-[200px] h-auto'
+                {...createSanityDataAttribute(footerData?._id, 'footer', 'logo')}
+              />
+            ) : headerData?.logo ? (
               <Image
                 src={urlFor(headerData.logo).url()}
                 alt={headerData.logo.alt || '07:17 Records'}
                 width={200}
                 height={125}
                 className='object-contain w-[160px] md:w-[200px] h-auto'
+                {...createSanityDataAttribute(headerData._id, 'header', 'logo')}
               />
             ) : (
               <div className='flex items-center gap-2'>
@@ -182,7 +207,9 @@ const Footer = ({ footerData, headerData, siteSettingsData }: FooterProps) => {
 
           {/* Company Links */}
           {transformedLinks.length > 0 && (
-            <div className='flex flex-wrap justify-end gap-6 max-w-full'>
+            <div 
+              className='flex flex-wrap justify-end gap-6 max-w-full'
+              {...createSanityDataAttribute('siteSettings', 'siteSettings', 'companyLinks')}>
               {transformedLinks.map((link) => (
                 <Link
                   key={link._key}
@@ -190,7 +217,9 @@ const Footer = ({ footerData, headerData, siteSettingsData }: FooterProps) => {
                   target='_blank'
                   rel='noopener noreferrer'
                   aria-label={link.label}
-                  className='group transition-transform duration-200 hover:scale-105'>
+                  title={link.label} // Hover text
+                  className='group transition-transform duration-200 hover:scale-105'
+                  {...createSanityDataAttribute('siteSettings', 'siteSettings', `companyLinks.socialLinksArray[_key=="${link._key}"]`)}>
                   <div className='w-20 h-20 rounded-full bg-brand-gradient flex items-center justify-center'>
                     <SocialIcon
                       platform={link.platform}

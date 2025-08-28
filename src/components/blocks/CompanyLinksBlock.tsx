@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { SocialIcon, type SocialPlatform, getPlatformLabel } from '@/utils/socialIcons';
+import { cleanPlatform } from '@/utils/cleanPlatform';
 import { createDataAttribute } from 'next-sanity';
 import { createDataAttributeConfig } from '@/components/PageBuilder';
 
@@ -35,14 +36,7 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
 
   // Transform to display format
   const allLinks = socialLinks.map((link) => {
-    // Clean the platform value by removing invisible characters and trimming
-    const cleanPlatform =
-      link.platform
-        ?.replace(/[\u200B-\u200D\uFEFF\u2060\u180E]/g, '') // Remove zero-width characters
-        ?.replace(/[\u202A-\u202E]/g, '') // Remove text direction marks
-        ?.trim() || 'genericLink';
-
-    const platform = cleanPlatform as SocialPlatform;
+    const platform = cleanPlatform(link.platform) as SocialPlatform;
 
     return {
       _key: link._key,
