@@ -1,10 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import {
-  SocialIcon,
-  type SocialPlatform,
-  getPlatformLabel,
-} from '@/utils/socialIcons';
+import { SocialIcon, type SocialPlatform, getPlatformLabel } from '@/utils/socialIcons';
 import { createDataAttribute } from 'next-sanity';
 import { createDataAttributeConfig } from '@/components/PageBuilder';
 
@@ -28,7 +24,7 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
   if (!companyLinks?.socialLinksArray) return null;
 
   const socialLinks = companyLinks.socialLinksArray.filter((link) => link.url && link.platform);
-  
+
   // If no links exist, don't render anything
   if (socialLinks.length === 0) {
     return null;
@@ -39,7 +35,10 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
     _key: link._key,
     platform: link.platform! as SocialPlatform,
     url: link.url!,
-    label: link.platform === 'genericLink' ? (link.customTitle || 'Link') : getPlatformLabel(link.platform! as SocialPlatform),
+    label:
+      link.platform === 'genericLink'
+        ? link.customTitle || 'Link'
+        : getPlatformLabel(link.platform! as SocialPlatform),
   }));
 
   return (
@@ -67,7 +66,8 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
               href={link.url}
               target='_blank'
               rel='noopener noreferrer'
-              className='group flex flex-col items-center gap-3 shadow-sm border border-gray-200 p-4 md:p-8 rounded-2xl bg-white transition-all duration-200 hover:scale-105'
+              className='group flex flex-col items-center gap-3 shadow-sm border border-gray-200 p-4 md:p-6 rounded-2xl bg-white transition-all duration-200 hover:scale-105 flex-shrink-0'
+              style={{ width: '110px' }} // Fixed width for consistency
               data-sanity={dataAttribute}>
               {/* Icon Circle */}
               <div className='w-16 h-16 md:w-18 md:h-18 rounded-full bg-brand-gradient flex items-center justify-center'>
@@ -78,7 +78,7 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
               </div>
 
               {/* Label */}
-              <span className='text-body-base font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-200 text-center'>
+              <span className='text-body-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-200 text-center leading-tight break-words hyphens-auto'>
                 {link.label}
               </span>
             </Link>
