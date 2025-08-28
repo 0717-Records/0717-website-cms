@@ -8,21 +8,21 @@ import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 import type { HEADER_QUERYResult } from '@/sanity/types';
 import MenuButton from '../MenuButton';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
-import styles from './MobileMenu.module.css';
+import styles from './VerticalNav.module.css';
 
 interface NavLink {
   href: string;
   label: string;
 }
 
-interface MobileMenuProps {
+interface VerticalNavProps {
   isMenuOpen: boolean;
   onClose: () => void;
   navLinks: NavLink[];
   headerData: HEADER_QUERYResult | null;
 }
 
-const MobileMenu = ({ isMenuOpen, onClose, navLinks, headerData }: MobileMenuProps) => {
+const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavProps) => {
   useBodyScrollLock(isMenuOpen);
 
   return (
@@ -86,4 +86,4 @@ const MobileMenu = ({ isMenuOpen, onClose, navLinks, headerData }: MobileMenuPro
   );
 };
 
-export default MobileMenu;
+export default VerticalNav;

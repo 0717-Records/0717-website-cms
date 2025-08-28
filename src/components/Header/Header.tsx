@@ -6,9 +6,9 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 import type { HEADER_QUERYResult } from '@/sanity/types';
-import Navbar from './Navbar';
+import HorizontalNav from './HorizontalNav';
 import MenuButton from './MenuButton';
-import MobileMenu from './MobileMenu';
+import VerticalNav from './VerticalNav/VerticalNav';
 
 const navLinks = [
   { href: '#news', label: 'NEWS' },
@@ -88,15 +88,15 @@ const Header = ({ headerData }: HeaderProps) => {
 
         {/* Desktop Navigation */}
         <div className='flex-grow flex justify-end'>
-          <Navbar navLinks={navLinks} />
+          <HorizontalNav navLinks={navLinks} />
         </div>
 
         {/* Hamburger Menu Button */}
         <MenuButton variant='hamburger' isMenuOpen={isMenuOpen} onClick={toggleMenu} />
       </header>
 
-      {/* Mobile Menu */}
-      <MobileMenu
+      {/* Vertical Menu */}
+      <VerticalNav
         isMenuOpen={isMenuOpen}
         onClose={closeMenu}
         navLinks={navLinks}

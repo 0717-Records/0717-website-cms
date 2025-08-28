@@ -8,11 +8,11 @@ interface NavLink {
   label: string;
 }
 
-interface NavbarProps {
+interface HorizontalNavProps {
   navLinks: NavLink[];
 }
 
-const Navbar = ({ navLinks }: NavbarProps) => {
+const HorizontalNav = ({ navLinks }: HorizontalNavProps) => {
   return (
     <nav className=''>
       <ul className='flex items-center gap-6'>
@@ -30,4 +30,4 @@ const Navbar = ({ navLinks }: NavbarProps) => {
   );
 };
 
-export default Navbar;
+export default HorizontalNav;
