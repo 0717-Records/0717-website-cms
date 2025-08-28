@@ -23,11 +23,9 @@ interface CompanyLinksBlockProps {
 const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) => {
   if (!companyLinks?.socialLinksArray) return null;
 
-  const socialLinks = companyLinks.socialLinksArray.filter((link) => 
-    link.url && 
-    link.platform && 
-    typeof link.platform === 'string' &&
-    link.platform.trim() !== ''
+  const socialLinks = companyLinks.socialLinksArray.filter(
+    (link) =>
+      link.url && link.platform && typeof link.platform === 'string' && link.platform.trim() !== ''
   );
 
   // If no links exist, don't render anything
@@ -38,20 +36,19 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
   // Transform to display format
   const allLinks = socialLinks.map((link) => {
     // Clean the platform value by removing invisible characters and trimming
-    const cleanPlatform = link.platform
-      ?.replace(/[\u200B-\u200D\uFEFF\u2060\u180E]/g, '') // Remove zero-width characters
-      ?.replace(/[\u202A-\u202E]/g, '') // Remove text direction marks
-      ?.trim() || 'genericLink';
-    
+    const cleanPlatform =
+      link.platform
+        ?.replace(/[\u200B-\u200D\uFEFF\u2060\u180E]/g, '') // Remove zero-width characters
+        ?.replace(/[\u202A-\u202E]/g, '') // Remove text direction marks
+        ?.trim() || 'genericLink';
+
     const platform = cleanPlatform as SocialPlatform;
-    
+
     return {
       _key: link._key,
       platform,
       url: link.url!,
-      label: platform === 'genericLink'
-        ? (link.customTitle || 'Link')
-        : getPlatformLabel(platform),
+      label: platform === 'genericLink' ? link.customTitle || 'Link' : getPlatformLabel(platform),
     };
   });
 
@@ -80,8 +77,7 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
               href={link.url}
               target='_blank'
               rel='noopener noreferrer'
-              className='group flex flex-col items-center gap-3 shadow-sm border border-gray-200 p-4 md:p-6 rounded-2xl bg-white transition-all duration-200 hover:scale-105 flex-shrink-0'
-              style={{ width: '110px' }} // Fixed width for consistency
+              className='group flex flex-col items-center gap-3 shadow-sm border border-gray-200 p-4 md:p-6 rounded-2xl bg-white transition-all duration-200 hover:scale-105 flex-shrink-0 w-[95px] md:w-[110px]'
               data-sanity={dataAttribute}>
               {/* Icon Circle */}
               <div className='w-16 h-16 md:w-18 md:h-18 rounded-full bg-brand-gradient flex items-center justify-center'>
