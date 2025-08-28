@@ -70,7 +70,7 @@ const Footer = ({ footerData, siteSettingsData }: FooterProps) => {
                 alt={footerLogo.alt || '07:17 Records'}
                 width={300}
                 height={190}
-                className='object-contain'
+                className='object-contain w-[200px] md:w-[300px] h-auto'
                 {...createSanityDataAttribute(footerData?._id, 'footer', 'logo')}
               />
             ) : (
