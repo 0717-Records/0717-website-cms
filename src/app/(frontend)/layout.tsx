@@ -26,7 +26,6 @@ const FrontendLayout = async ({
       <main className='flex-1'>{children}</main>
       <Footer 
         footerData={footerData} 
-        headerData={headerData} 
         siteSettingsData={siteSettingsData} 
       />
       <SanityLive />
