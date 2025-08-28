@@ -316,3 +316,14 @@ export const FAVOURITES_ALL_QUERY = defineQuery(`*[_type == "favourites"]|order(
   link,
   linkLabel
 }`);
+
+export const FOOTER_QUERY = defineQuery(`*[_type == "footer" && _id == "footer"][0]{
+  _id,
+  _type,
+  footerMessages[]{
+    _key,
+    title,
+    message
+  },
+  copyrightText
+}`);

@@ -1,6 +1,6 @@
 import { sanityFetch } from '@/sanity/lib/live';
-import { HEADER_QUERY, SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
-import type { Footer, SiteSettings, HEADER_QUERYResult, SITE_SETTINGS_QUERYResult } from '@/sanity/types';
+import { HEADER_QUERY, FOOTER_QUERY, SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
+import type { FOOTER_QUERYResult, HEADER_QUERYResult, SITE_SETTINGS_QUERYResult } from '@/sanity/types';
 
 // Header actions
 export async function getHeader(): Promise<HEADER_QUERYResult | null> {
@@ -12,9 +12,9 @@ export async function getHeader(): Promise<HEADER_QUERYResult | null> {
 }
 
 // Footer actions
-export async function getFooter(): Promise<Footer | null> {
+export async function getFooter(): Promise<FOOTER_QUERYResult | null> {
   const { data } = await sanityFetch({
-    query: `*[_id == "footer"][0]`,
+    query: FOOTER_QUERY,
   });
 
   return data;

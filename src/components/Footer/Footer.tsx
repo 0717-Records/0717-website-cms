@@ -1,26 +1,206 @@
-import React from 'react';
-import Link from 'next/link';
+'use client';
 
-const Footer = () => {
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { urlFor } from '@/sanity/lib/image';
+import { SocialIcon, type SocialPlatform, getPlatformLabel } from '@/utils/socialIcons';
+import CTAEmailButton from '@/components/UI/CTAEmailButton';
+import type { FOOTER_QUERYResult, HEADER_QUERYResult, SITE_SETTINGS_QUERYResult } from '@/sanity/types';
+
+interface FooterMessage {
+  _key: string;
+  title?: string | null;
+  message?: string | null;
+}
+
+interface FooterProps {
+  footerData: FOOTER_QUERYResult | null;
+  headerData: HEADER_QUERYResult | null;
+  siteSettingsData: SITE_SETTINGS_QUERYResult | null;
+}
+
+const Footer = ({ footerData, headerData, siteSettingsData }: FooterProps) => {
+  // Get company links from site settings
+  const companyLinks = siteSettingsData?.companyLinks?.socialLinksArray?.filter(
+    (link) =>
+      link.url && link.platform && typeof link.platform === 'string' && link.platform.trim() !== ''
+  ) || [];
+
+  // Transform company links to display format
+  const transformedLinks = companyLinks.map((link) => {
+    const cleanPlatform =
+      link.platform
+        ?.replace(/[\u200B-\u200D\uFEFF\u2060\u180E]/g, '')
+        ?.replace(/[\u202A-\u202E]/g, '')
+        ?.trim() || 'genericLink';
+
+    const platform = cleanPlatform as SocialPlatform;
+
+    return {
+      _key: link._key,
+      platform,
+      url: link.url!,
+      label: platform === 'genericLink' ? link.customTitle || 'Link' : getPlatformLabel(platform),
+    };
+  });
+
+  // Cast footer data to include proper footerMessages array
+  const footerMessages = footerData?._type === 'footer' ? (footerData as unknown as { footerMessages?: FooterMessage[] })?.footerMessages : null;
+
   return (
-    <footer className='bg-gray-50 border-t border-gray-200 mt-12'>
-      <div className='container mx-auto p-6'>
-        <div className='flex flex-col md:flex-row items-center justify-between gap-4'>
-          <p className='text-body-sm text-gray-600'>
-            © {new Date().getFullYear()} Layer Caker. All rights reserved.
-          </p>
-          <nav className='flex items-center gap-4'>
-            <Link
-              className='text-body-sm text-gray-600 hover:text-pink-500 transition-colors'
-              href='/posts'>
-              Posts
-            </Link>
-            <Link
-              className='text-body-sm text-gray-600 hover:text-pink-500 transition-colors'
-              href='/studio'>
-              Studio
-            </Link>
-          </nav>
+    <footer
+      className='bg-black text-white py-10 px-6 md:px-16 w-full'
+      aria-label='Site Footer'>
+      {/* Mobile Layout */}
+      <div className='flex flex-col md:hidden items-center text-center space-y-8'>
+        {/* Logo */}
+        <Link href='/#home' className='flex items-center gap-2'>
+          {headerData?.logo ? (
+            <Image
+              src={urlFor(headerData.logo).url()}
+              alt={headerData.logo.alt || '07:17 Records'}
+              width={200}
+              height={125}
+              className='object-contain w-[160px] md:w-[200px] h-auto'
+            />
+          ) : (
+            <div className='flex items-center gap-2'>
+              <span className='text-h6 font-bold'>07:17</span>
+              <span className='text-body-lg font-semibold'>Records</span>
+            </div>
+          )}
+        </Link>
+
+        {/* Messages */}
+        {footerMessages && footerMessages.length > 0 && (
+          <div className='space-y-4'>
+            {footerMessages.map((message) => (
+              <div key={message._key} className='space-y-1'>
+                {message.title && (
+                  <div className='font-bold text-brand-secondary text-body-lg'>{message.title}</div>
+                )}
+                {message.message && (
+                  <div className='text-white text-body-lg'>{message.message}</div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* CTA Email Button */}
+        {siteSettingsData?.companyEmail && (
+          <div className='flex justify-center'>
+            <CTAEmailButton 
+              email={siteSettingsData.companyEmail}
+              className='text-body-base font-medium'
+            />
+          </div>
+        )}
+
+        {/* Company Links */}
+        {transformedLinks.length > 0 && (
+          <div className='flex flex-wrap justify-center gap-6'>
+            {transformedLinks.map((link) => (
+              <Link
+                key={link._key}
+                href={link.url}
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label={link.label}
+                className='group transition-transform duration-200 hover:scale-105'>
+                <div className='w-16 h-16 rounded-full bg-brand-gradient flex items-center justify-center'>
+                  <SocialIcon
+                    platform={link.platform}
+                    className='text-black text-3xl transition-transform duration-200 group-hover:scale-110'
+                  />
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {/* Copyright */}
+        {footerData?._type === 'footer' && footerData.copyrightText && (
+          <div className='text-white text-body-sm'>{footerData.copyrightText}</div>
+        )}
+      </div>
+
+      {/* Desktop Layout */}
+      <div className='hidden md:flex justify-between'>
+        {/* Left Side - Logo, Messages, Copyright */}
+        <div className='flex-1 max-w-[50%] flex flex-col gap-8'>
+          {/* Logo */}
+          <Link href='/#home' className='flex items-center gap-2'>
+            {headerData?.logo ? (
+              <Image
+                src={urlFor(headerData.logo).url()}
+                alt={headerData.logo.alt || '07:17 Records'}
+                width={200}
+                height={125}
+                className='object-contain w-[160px] md:w-[200px] h-auto'
+              />
+            ) : (
+              <div className='flex items-center gap-2'>
+                <span className='text-h6 font-bold'>07:17</span>
+                <span className='text-body-lg font-semibold'>Records</span>
+              </div>
+            )}
+          </Link>
+
+          {/* Messages */}
+          {footerMessages && footerMessages.length > 0 && (
+            <div className='space-y-4'>
+              {footerMessages.map((message) => (
+                <div key={message._key} className='space-y-1'>
+                  {message.title && (
+                    <div className='font-bold text-brand-secondary text-body-lg'>{message.title}</div>
+                  )}
+                  {message.message && (
+                    <div className='text-white text-body-lg'>{message.message}</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Copyright */}
+          {footerData?._type === 'footer' && footerData.copyrightText && (
+            <div className='text-white text-body-sm mt-auto'>{footerData.copyrightText}</div>
+          )}
+        </div>
+
+        {/* Right Side - CTA Email Button, Company Links */}
+        <div className='flex-1 max-w-[50%] flex flex-col items-end gap-8'>
+          {/* CTA Email Button */}
+          {siteSettingsData?.companyEmail && (
+            <CTAEmailButton 
+              email={siteSettingsData.companyEmail}
+              className='text-body-base font-medium'
+            />
+          )}
+
+          {/* Company Links */}
+          {transformedLinks.length > 0 && (
+            <div className='flex flex-wrap justify-end gap-6 max-w-full'>
+              {transformedLinks.map((link) => (
+                <Link
+                  key={link._key}
+                  href={link.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label={link.label}
+                  className='group transition-transform duration-200 hover:scale-105'>
+                  <div className='w-20 h-20 rounded-full bg-brand-gradient flex items-center justify-center'>
+                    <SocialIcon
+                      platform={link.platform}
+                      className='text-black text-4xl transition-transform duration-200 group-hover:scale-110'
+                    />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </footer>

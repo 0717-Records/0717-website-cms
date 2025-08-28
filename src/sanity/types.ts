@@ -697,48 +697,12 @@ export type Footer = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  companyInfo?: {
-    companyName?: string;
-    description?: string;
-    logo?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      _type: "image";
-    };
-  };
-  contactInfo?: {
-    email?: string;
-    phone?: string;
-    address?: string;
-  };
-  footerColumns?: Array<{
-    columnTitle?: string;
-    links?: Array<{
-      label?: string;
-      url?: string;
-      _key: string;
-    }>;
-    _key: string;
-  }>;
-  socialMedia?: Array<{
-    platform?: "facebook" | "twitter" | "instagram" | "linkedin" | "youtube" | "tiktok" | "other";
-    url?: string;
-    customName?: string;
+  footerMessages?: Array<{
+    title?: string;
+    message?: string;
     _key: string;
   }>;
   copyrightText?: string;
-  bottomLinks?: Array<{
-    label?: string;
-    url?: string;
-    _key: string;
-  }>;
 };
 
 export type Header = {
@@ -8574,6 +8538,18 @@ export type FAVOURITES_ALL_QUERYResult = Array<{
   link: string | null;
   linkLabel: string | null;
 }>;
+// Variable: FOOTER_QUERY
+// Query: *[_type == "footer" && _id == "footer"][0]{  _id,  _type,  footerMessages[]{    _key,    title,    message  },  copyrightText}
+export type FOOTER_QUERYResult = {
+  _id: string;
+  _type: "footer";
+  footerMessages: Array<{
+    _key: string;
+    title: string | null;
+    message: string | null;
+  }> | null;
+  copyrightText: string | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -8592,5 +8568,6 @@ declare module "@sanity/client" {
     "*[_type == \"collab\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": COLLABS_SLUGS_QUERYResult;
     "*[_type == \"collab\" && defined(slug.current)]|order(order asc, name asc){\n  _id,\n  name,\n  slug,\n  genre,\n  location,\n  order,\n  previewImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  shortDescription,\n  useShortDescriptionForCards,\n  cardDescription\n}": COLLABS_ALL_QUERYResult;
     "*[_type == \"favourites\"]|order(order asc, name asc){\n  _id,\n  name,\n  genre,\n  order,\n  profileImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  description,\n  link,\n  linkLabel\n}": FAVOURITES_ALL_QUERYResult;
+    "*[_type == \"footer\" && _id == \"footer\"][0]{\n  _id,\n  _type,\n  footerMessages[]{\n    _key,\n    title,\n    message\n  },\n  copyrightText\n}": FOOTER_QUERYResult;
   }
 }

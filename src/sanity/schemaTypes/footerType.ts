@@ -1,3 +1,7 @@
+// AI Helper: This is a Sanity CMS schema definition. It defines the structure and validation rules for content types.
+// When modifying, ensure all fields have appropriate validation, titles, and descriptions for content editors.
+// Follow the existing patterns in other schema files for consistency.
+
 import { ComponentIcon } from '@sanity/icons';
 import { defineField, defineType } from 'sanity';
 
@@ -8,215 +12,64 @@ export const footerType = defineType({
   icon: ComponentIcon,
   fields: [
     defineField({
-      name: 'companyInfo',
-      type: 'object',
-      title: 'Company Information',
-      fields: [
-        defineField({
-          name: 'companyName',
-          type: 'string',
-          title: 'Company Name',
-        }),
-        defineField({
-          name: 'description',
-          type: 'text',
-          title: 'Company Description',
-          rows: 3,
-        }),
-        defineField({
-          name: 'logo',
-          type: 'image',
-          title: 'Footer Logo',
-          options: {
-            hotspot: true,
-          },
-        }),
-      ],
-    }),
-    defineField({
-      name: 'contactInfo',
-      type: 'object',
-      title: 'Contact Information',
-      fields: [
-        defineField({
-          name: 'email',
-          type: 'string',
-          title: 'Email Address',
-          validation: (Rule) => Rule.email(),
-        }),
-        defineField({
-          name: 'phone',
-          type: 'string',
-          title: 'Phone Number',
-        }),
-        defineField({
-          name: 'address',
-          type: 'text',
-          title: 'Physical Address',
-          rows: 3,
-        }),
-      ],
-    }),
-    defineField({
-      name: 'footerColumns',
+      name: 'footerMessages',
       type: 'array',
-      title: 'Footer Columns',
-      description: 'Add link columns to your footer',
+      title: 'Footer Messages',
+      description: 'Add messages that will appear below the logo in the footer',
       of: [
         {
           type: 'object',
+          title: 'Footer Message',
           fields: [
             defineField({
-              name: 'columnTitle',
+              name: 'title',
               type: 'string',
-              title: 'Column Title',
-              validation: (Rule) => Rule.required(),
+              title: 'Message Title',
+              description: 'Optional title for the message (e.g., "To All Artists:")',
+              validation: (Rule) => Rule.max(100).warning('Keep titles concise for better display'),
             }),
             defineField({
-              name: 'links',
-              type: 'array',
-              title: 'Links',
-              of: [
-                {
-                  type: 'object',
-                  fields: [
-                    defineField({
-                      name: 'label',
-                      type: 'string',
-                      title: 'Link Label',
-                      validation: (Rule) => Rule.required(),
-                    }),
-                    defineField({
-                      name: 'url',
-                      type: 'string',
-                      title: 'URL',
-                      validation: (Rule) => Rule.required(),
-                    }),
-                  ],
-                  preview: {
-                    select: {
-                      title: 'label',
-                      subtitle: 'url',
-                    },
-                  },
-                },
-              ],
+              name: 'message',
+              type: 'string',
+              title: 'Message Text',
+              description: 'The main message content (e.g., "Thank you for creating")',
+              validation: (Rule) => Rule.max(200).warning('Keep messages concise for better display'),
             }),
           ],
           preview: {
             select: {
-              title: 'columnTitle',
-              linksCount: 'links.length',
+              title: 'title',
+              message: 'message',
             },
-            prepare({ title, linksCount }) {
+            prepare({ title, message }) {
+              const displayTitle = title || 'Untitled Message';
+              const displaySubtitle = message ? message.substring(0, 50) + (message.length > 50 ? '...' : '') : 'No message';
               return {
-                title,
-                subtitle: `${linksCount || 0} links`,
+                title: displayTitle,
+                subtitle: displaySubtitle,
               };
             },
           },
         },
       ],
-    }),
-    defineField({
-      name: 'socialMedia',
-      type: 'array',
-      title: 'Social Media Links',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'platform',
-              type: 'string',
-              title: 'Platform',
-              options: {
-                list: [
-                  { title: 'Facebook', value: 'facebook' },
-                  { title: 'Twitter/X', value: 'twitter' },
-                  { title: 'Instagram', value: 'instagram' },
-                  { title: 'LinkedIn', value: 'linkedin' },
-                  { title: 'YouTube', value: 'youtube' },
-                  { title: 'TikTok', value: 'tiktok' },
-                  { title: 'Other', value: 'other' },
-                ],
-              },
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
-              name: 'url',
-              type: 'url',
-              title: 'Profile URL',
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
-              name: 'customName',
-              type: 'string',
-              title: 'Custom Platform Name',
-              description: 'Only used if "Other" is selected',
-              hidden: ({ parent }) => parent?.platform !== 'other',
-            }),
-          ],
-          preview: {
-            select: {
-              platform: 'platform',
-              customName: 'customName',
-              url: 'url',
-            },
-            prepare({ platform, customName, url }) {
-              const title = platform === 'other' ? customName : platform;
-              return {
-                title: title || 'Social Media Link',
-                subtitle: url,
-              };
-            },
-          },
-        },
-      ],
+      options: {
+        sortable: true,
+      },
     }),
     defineField({
       name: 'copyrightText',
       type: 'string',
       title: 'Copyright Text',
-      initialValue: '© 2025 Your Company Name. All rights reserved.',
-    }),
-    defineField({
-      name: 'bottomLinks',
-      type: 'array',
-      title: 'Bottom Links',
-      description: 'Links that appear at the bottom of the footer (e.g., Privacy Policy, Terms)',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'label',
-              type: 'string',
-              title: 'Link Label',
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
-              name: 'url',
-              type: 'string',
-              title: 'URL',
-              validation: (Rule) => Rule.required(),
-            }),
-          ],
-          preview: {
-            select: {
-              title: 'label',
-              subtitle: 'url',
-            },
-          },
-        },
-      ],
+      description: 'Copyright notice that appears at the bottom of the footer',
+      initialValue: '© 07:17 Records 2025',
+      validation: (Rule) => Rule.required().error('Copyright text is required'),
     }),
   ],
   preview: {
     prepare() {
       return {
         title: 'Footer',
-        subtitle: 'Site footer content and links',
+        subtitle: 'Site footer content and messages',
       };
     },
   },
