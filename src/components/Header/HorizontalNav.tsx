@@ -15,7 +15,7 @@ interface HorizontalNavProps {
 const HorizontalNav = ({ navLinks }: HorizontalNavProps) => {
   return (
     <nav className=''>
-      <ul className='flex items-center gap-6'>
+      <ul className='hidden lg:flex items-center gap-6'>
         {navLinks.map((link) => (
           <li key={link.href}>
             <Link
