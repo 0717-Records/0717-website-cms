@@ -19,7 +19,7 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const client = useClient();
 
   // Get the parent path by removing the last segment (which is 'pageSectionId')
@@ -98,36 +98,40 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
         }`;
 
         const result = await client.fetch(query, { pageId: internalPageRef });
-        
+
         // Flatten and filter sections that have anchor IDs
         const flattenSections = (content: unknown[]): SectionOption[] => {
           const options: SectionOption[] = [];
-          
+
           const processSections = (sections: unknown[]) => {
             for (const item of sections || []) {
-              const section = item as { anchorId?: string; title?: string; type?: string; content?: unknown[] };
+              const section = item as {
+                anchorId?: string;
+                title?: string;
+                type?: string;
+                content?: unknown[];
+              };
               if (section && section.anchorId && section.title && section.type) {
                 options.push({
                   value: section.anchorId,
                   label: `${section.title} (${section.type})`,
-                  type: section.type
+                  type: section.type,
                 });
               }
-              
+
               // Process nested content
               if (section?.content) {
                 processSections(section.content);
               }
             }
           };
-          
+
           processSections(content);
           return options;
         };
 
         const sectionOptions = flattenSections(result?.content || []);
         setSections(sectionOptions);
-        
       } catch (error) {
         console.error('Error fetching sections:', error);
         setSections([]);
@@ -142,9 +146,10 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
   // Filter sections based on search term
   const filteredSections = useMemo(() => {
     if (!searchTerm) return sections;
-    return sections.filter(section => 
-      section.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      section.value.toLowerCase().includes(searchTerm.toLowerCase())
+    return sections.filter(
+      (section) =>
+        section.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        section.value.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [sections, searchTerm]);
 
@@ -161,14 +166,15 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
   return (
     <div style={{ position: 'relative' }}>
       {!internalPageRef ? (
-        <div style={{ 
-          padding: '10px 12px',
-          border: '1px solid #d1d5db',
-          borderRadius: '6px',
-          backgroundColor: '#f9fafb',
-          color: '#6b7280',
-          fontSize: '14px'
-        }}>
+        <div
+          style={{
+            padding: '10px 12px',
+            border: '1px solid #d1d5db',
+            borderRadius: '6px',
+            backgroundColor: '#f9fafb',
+            color: '#6b7280',
+            fontSize: '14px',
+          }}>
           Please select an Internal Link first
         </div>
       ) : (
@@ -177,9 +183,11 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
             <div style={{ flex: 1, position: 'relative' }}>
               <input
                 {...elementProps}
-                type="text"
-                value={isOpen ? searchTerm : (value || '')}
-                placeholder={isLoading ? 'Loading sections...' : 'Search sections or type manually...'}
+                type='text'
+                value={isOpen ? searchTerm : value || ''}
+                placeholder={
+                  isLoading ? 'Loading sections...' : 'Search sections or type manually...'
+                }
                 onChange={(e) => {
                   if (isOpen) {
                     setSearchTerm(e.target.value);
@@ -196,24 +204,26 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
                   border: '1px solid #d1d5db',
                   borderRadius: '6px',
                   fontSize: '14px',
-                  fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+                  fontFamily:
+                    'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
                 }}
               />
-              
+
               {isOpen && sections.length > 0 && (
-                <div style={{
-                  position: 'absolute',
-                  top: '100%',
-                  left: 0,
-                  right: 0,
-                  backgroundColor: 'white',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '6px',
-                  maxHeight: '200px',
-                  overflowY: 'auto',
-                  zIndex: 1000,
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-                }}>
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: 0,
+                    right: 0,
+                    backgroundColor: 'white',
+                    border: '1px solid #d1d5db',
+                    borderRadius: '6px',
+                    maxHeight: '200px',
+                    overflowY: 'auto',
+                    zIndex: 1000,
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                  }}>
                   {filteredSections.length === 0 ? (
                     <div style={{ padding: '8px 12px', color: '#6b7280' }}>
                       No sections found matching &ldquo;{searchTerm}&rdquo;
@@ -222,7 +232,7 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
                     filteredSections.map((section) => (
                       <button
                         key={section.value}
-                        type="button"
+                        type='button'
                         onClick={() => handleSelect(section.value)}
                         style={{
                           display: 'block',
@@ -233,23 +243,24 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
                           backgroundColor: 'transparent',
                           cursor: 'pointer',
                           fontSize: '14px',
-                          borderBottom: '1px solid #f3f4f6'
+                          borderBottom: '1px solid #f3f4f6',
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#f3f4f6';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.backgroundColor = 'transparent';
-                        }}
-                      >
-                        <div style={{ fontWeight: '500', marginBottom: '2px' }}>
+                        }}>
+                        <div style={{ fontWeight: '500', marginBottom: '2px', color: '#111827' }}>
                           {section.label}
                         </div>
-                        <div style={{ 
-                          fontSize: '12px', 
-                          color: '#6b7280',
-                          fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
-                        }}>
+                        <div
+                          style={{
+                            fontSize: '12px',
+                            color: '#374151',
+                            fontFamily:
+                              'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+                          }}>
                           #{section.value}
                         </div>
                       </button>
@@ -258,45 +269,48 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
                 </div>
               )}
             </div>
-            
+
             {value && (
               <button
-                type="button"
+                type='button'
                 onClick={handleClear}
                 style={{
                   padding: '10px 12px',
-                  backgroundColor: '#ef4444',
+                  backgroundColor: '#4b72f4',
                   color: 'white',
                   border: 'none',
                   borderRadius: '6px',
                   cursor: 'pointer',
                   fontSize: '14px',
-                  whiteSpace: 'nowrap'
-                }}
-              >
+                  whiteSpace: 'nowrap',
+                }}>
                 Clear
               </button>
             )}
           </div>
-          
+
           {value && (
-            <div style={{ 
-              marginTop: '8px', 
-              fontSize: '12px', 
-              color: '#6b7280',
-              fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
-            }}>
+            <div
+              style={{
+                marginTop: '8px',
+                fontSize: '12px',
+                color: '#6b7280',
+                fontFamily:
+                  'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+              }}>
               Will link to: <strong>#{value}</strong>
             </div>
           )}
-          
+
           {sections.length === 0 && !isLoading && internalPageRef && (
-            <div style={{ 
-              marginTop: '8px', 
-              fontSize: '12px', 
-              color: '#f59e0b'
-            }}>
-              No linkable sections found on selected page. Make sure sections have titles and anchor IDs generated.
+            <div
+              style={{
+                marginTop: '8px',
+                fontSize: '12px',
+                color: '#f59e0b',
+              }}>
+              No linkable sections found on selected page. Make sure sections have titles and anchor
+              IDs generated.
             </div>
           )}
         </>
