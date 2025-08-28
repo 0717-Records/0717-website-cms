@@ -1,6 +1,7 @@
 import { defineQuery } from 'next-sanity';
 
-// Reusable internal link dereferencing with href computation
+
+// Reusable internal link dereferencing with href computation and section anchor support
 const internalLinkProjection = `{
   _id,
   _type,
@@ -15,6 +16,20 @@ const internalLinkProjection = `{
   )
 }`;
 
+// Enhanced link projection that includes section anchors
+const fullLinkProjection = `
+  ...,
+  internalLink->${internalLinkProjection},
+  "computedHref": select(
+    linkType == "external" => externalUrl,
+    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" => 
+      coalesce(internalLink->${internalLinkProjection}.href, "/") + "#" + pageSectionId,
+    linkType == "internal" => 
+      coalesce(internalLink->${internalLinkProjection}.href, "/"),
+    "/"
+  )
+`;
+
 // Single content block projection that recursively handles nested content
 // Add new block types here and they'll work at all nesting levels automatically
 const contentProjection = `
@@ -25,24 +40,24 @@ const contentProjection = `
     hotspot,
     crop
   },
-  _type == "ctaButton" => {
+  _type == "pageSection" => {
     ...,
-    internalLink->${internalLinkProjection}
+    anchorId
   },
-  _type == "ctaCalloutLink" => {
+  _type == "subSection" => {
     ...,
-    internalLink->${internalLinkProjection}
+    anchorId
   },
-  _type == "ctaCard" => {
+  _type == "subSubSection" => {
     ...,
-    internalLink->${internalLinkProjection}
+    anchorId
   },
+  _type == "ctaButton" => {${fullLinkProjection}},
+  _type == "ctaCalloutLink" => {${fullLinkProjection}},
+  _type == "ctaCard" => {${fullLinkProjection}},
   _type == "cardGrid" => {
     ...,
-    cards[]{
-      ...,
-      internalLink->${internalLinkProjection}
-    }
+    cards[]{${fullLinkProjection}}
   },
   _type == "ctaEvent" => {
     ...,
@@ -143,13 +158,7 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
   heroTitle,
   heroSubtitle,
   enableHeroCallToAction,
-  heroCallToAction{
-    text,
-    linkType,
-    internalLink->${internalLinkProjection},
-    externalUrl,
-    openInNewTab
-  },
+  heroCallToAction{${fullLinkProjection}},
   heroContentPosition,
   ${recursiveContent}
 }`);

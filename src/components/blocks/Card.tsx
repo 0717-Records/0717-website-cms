@@ -16,24 +16,26 @@ interface CardProps extends Omit<CardBlock, '_type' | '_key'> {
   documentType?: string;
 }
 
-const Card = ({
-  cardStyle = 'feature',
-  icon,
-  title,
-  bodyText,
-  buttonType,
-  text,
-  variant,
-  linkType,
-  internalLink,
-  openInNewTab,
-  externalUrl,
-  className = '',
-  isGridChild = false,
-  email,
-  documentId,
-  documentType,
-}: CardProps) => {
+const Card = (props: CardProps & { computedHref?: string }) => {
+  const {
+    cardStyle = 'feature',
+    icon,
+    title,
+    bodyText,
+    buttonType,
+    text,
+    variant,
+    linkType,
+    internalLink,
+    openInNewTab,
+    externalUrl,
+    className = '',
+    isGridChild = false,
+    email,
+    documentId,
+    documentType,
+    computedHref,
+  } = props;
   const cleanTitle = stegaClean(title);
   const cleanBodyText = stegaClean(bodyText);
   const cleanButtonText = stegaClean(text);
@@ -92,6 +94,7 @@ const Card = ({
                   internalLink={internalLink}
                   openInNewTab={openInNewTab}
                   externalUrl={externalUrl}
+                  computedHref={computedHref}
                 />
               </div>
             )}
@@ -155,6 +158,7 @@ const Card = ({
                     internalLink={internalLink}
                     openInNewTab={openInNewTab}
                     externalUrl={externalUrl}
+                    computedHref={computedHref}
                   />
                 </div>
               )}

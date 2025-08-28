@@ -168,6 +168,7 @@ const BlockRenderer = ({
                   subtitle={block.subtitle}
                   textAlign={block.textAlign}
                   isFirst={isFirstPageSection}
+                  anchorId={block.anchorId}
                   documentId={documentId}
                   documentType={documentType}
                   titlePath={`${blockPath}.title`}
@@ -183,6 +184,7 @@ const BlockRenderer = ({
                 <SubSection
                   title={block.title!} // Required field
                   textAlign={block.textAlign}
+                  anchorId={block.anchorId}
                   documentId={documentId}
                   documentType={documentType}
                   titlePath={`${blockPath}.title`}>
@@ -197,6 +199,7 @@ const BlockRenderer = ({
                 <SubSubSection
                   title={block.title!} // Required field
                   textAlign={block.textAlign}
+                  anchorId={block.anchorId}
                   documentId={documentId}
                   documentType={documentType}
                   titlePath={`${blockPath}.title`}>

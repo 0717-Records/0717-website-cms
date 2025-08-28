@@ -30,9 +30,12 @@ export type BlockProps<T> = Omit<T, '_type' | '_key'> & {
   className?: string;
 };
 
+// Enhanced CTA block props with section linking support
 export type CTABlockProps<T> = Omit<T, '_type' | '_key' | 'internalLink'> & {
   className?: string;
   internalLink?: InternalLinkType;
+  pageSectionId?: string;
+  computedHref?: string;
 };
 
 // Common UI types

@@ -17,6 +17,7 @@ interface SubSubSectionProps extends SanityLiveEditingProps {
   className?: string;
   title: string; // Required for SubSubSections
   textAlign?: 'inherit' | 'left' | 'center' | 'right';
+  anchorId?: string; // ID for anchor linking
 }
 
 const SubSubSection = ({
@@ -24,6 +25,7 @@ const SubSubSection = ({
   className = '',
   title,
   textAlign = 'inherit',
+  anchorId,
   documentId,
   documentType,
   titlePath,
@@ -39,6 +41,7 @@ const SubSubSection = ({
   return (
     <TextAlignmentContext.Provider value={{ textAlign: effectiveTextAlign }}>
       <section
+        id={anchorId ? stegaClean(anchorId) : undefined}
         className={`pb-6 md:pb-8 ${getTextAlignClass(effectiveTextAlign)} ${className}`.trim()}>
         <div className='mb-2 md:mb-3 text-center'>
           <Heading

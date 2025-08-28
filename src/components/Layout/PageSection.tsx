@@ -27,6 +27,7 @@ interface PageSectionProps extends SanityLiveEditingProps {
   subtitle?: string;
   textAlign?: 'inherit' | 'left' | 'center' | 'right';
   isFirst?: boolean;
+  anchorId?: string; // ID for anchor linking
 }
 
 const PageSection = ({
@@ -36,6 +37,7 @@ const PageSection = ({
   subtitle,
   textAlign = 'center',
   isFirst = false,
+  anchorId,
   documentId,
   documentType,
   titlePath,
@@ -55,6 +57,7 @@ const PageSection = ({
     <PageSectionContext.Provider value={{ hasTitle }}>
       <TextAlignmentContext.Provider value={{ textAlign: cleanTextAlign }}>
         <section
+          id={anchorId ? stegaClean(anchorId) : undefined}
           className={`${paddingClasses} ${getTextAlignClass(cleanTextAlign)} ${className}`.trim()}>
           <div className='container max-w-[60rem] mx-auto px-4 md:px-8'>
             {/* Title is now always present since it's required */}

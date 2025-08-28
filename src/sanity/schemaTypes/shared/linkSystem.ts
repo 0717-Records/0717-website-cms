@@ -3,6 +3,7 @@
 // Follow the existing patterns in other schema files for consistency.
 
 import { defineField } from 'sanity';
+import { SectionDropdown } from '../../components/SectionDropdown';
 
 /**
  * SINGLE SOURCE OF TRUTH FOR ALL LINK TYPES
@@ -27,7 +28,7 @@ export const LINK_TYPE_OPTIONS = [
 ] as const;
 
 /**
- * Create a complete link field set (linkType + internalLink + externalUrl + openInNewTab)
+ * Create a complete link field set (linkType + internalLink + externalUrl + openInNewTab + pageSection)
  * This is the most comprehensive link setup for buttons and similar components
  */
 export const createLinkFieldSet = (options: {
@@ -60,13 +61,20 @@ export const createLinkFieldSet = (options: {
     hidden?: (context: { parent?: Record<string, unknown> }) => boolean;
     initialValue?: boolean;
   };
+  pageSectionConfig?: {
+    name?: string;
+    title?: string;
+    description?: string;
+    hidden?: (context: { parent?: Record<string, unknown> }) => boolean;
+  };
 } = {}) => {
   const {
     group,
     linkTypeConfig = {},
     internalLinkConfig = {},
     externalUrlConfig = {},
-    openInNewTabConfig = {}
+    openInNewTabConfig = {},
+    pageSectionConfig = {}
   } = options;
 
   return [
@@ -131,6 +139,19 @@ export const createLinkFieldSet = (options: {
       description: openInNewTabConfig.description || 'Check this to open the link in a new tab/window',
       initialValue: openInNewTabConfig.initialValue ?? false,
       hidden: openInNewTabConfig.hidden || (({ parent }) => parent?.linkType !== 'internal'),
+    }),
+
+    // Page Section Dropdown (searchable dropdown with all available sections)
+    defineField({
+      name: pageSectionConfig.name || 'pageSectionId',
+      title: pageSectionConfig.title || 'Section Anchor ID (Optional)',
+      type: 'string',
+      group,
+      description: pageSectionConfig.description || 'Select a section from the chosen page to link directly to it, or type manually',
+      components: {
+        input: SectionDropdown,
+      },
+      hidden: pageSectionConfig.hidden || (({ parent }) => parent?.linkType !== 'internal'),
     }),
   ];
 };
