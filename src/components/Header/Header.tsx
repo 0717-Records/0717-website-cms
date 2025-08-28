@@ -11,11 +11,13 @@ import MenuButton from './MenuButton';
 import MobileMenu from './MobileMenu';
 
 const navLinks = [
-  { href: '#about', label: 'EXPLORE' },
-  { href: '#artists', label: 'CONNECT' },
-  { href: '#events', label: 'ENGAGE' },
-  { href: '#news', label: 'SHOP' },
-  { href: '#contact', label: 'DISCOVER' },
+  { href: '#news', label: 'NEWS' },
+  { href: '#events', label: 'EVENTS' },
+  { href: '#collabs', label: 'COLLABS' },
+  { href: '#favs', label: 'OUR FAVS' },
+  { href: '/blog', label: 'BLOG' },
+  { href: '#about', label: 'ABOUT US' },
+  { href: '#contact', label: 'CONTACT' },
 ];
 
 interface HeaderProps {
@@ -62,7 +64,7 @@ const Header = ({ headerData }: HeaderProps) => {
   */
   return (
     <>
-      <header className='w-full px-4 md:px-8 h-20 md:h-24 flex items-center justify-between sticky top-0 z-30 bg-white'>
+      <header className='w-full px-4 md:px-8 h-20 md:h-24 flex items-center justify-between gap-8 sticky top-0 z-30 bg-white'>
         {/* Logo */}
         <Link href='/#home' className='flex items-center gap-2'>
           {headerData?.logo ? (
@@ -77,13 +79,17 @@ const Header = ({ headerData }: HeaderProps) => {
           ) : (
             <>
               <span className='text-body-xl md:text-h6 font-bold'>07:17</span>
-              <span className='hidden md:inline text-body-sm md:text-body-lg font-semibold'>Records</span>
+              <span className='hidden md:inline text-body-sm md:text-body-lg font-semibold'>
+                Records
+              </span>
             </>
           )}
         </Link>
 
         {/* Desktop Navigation */}
-        <Navbar navLinks={navLinks} />
+        <div className='flex-grow flex justify-end'>
+          <Navbar navLinks={navLinks} />
+        </div>
 
         {/* Hamburger Menu Button */}
         <MenuButton variant='hamburger' isMenuOpen={isMenuOpen} onClick={toggleMenu} />

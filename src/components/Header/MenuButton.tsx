@@ -34,7 +34,7 @@ const MenuButton = ({ variant, isMenuOpen = false, onClick, className = '' }: Me
   return (
     <button
       onClick={onClick}
-      className={`lg:hidden flex flex-col justify-center items-center w-8 h-8 cursor-pointer focus:outline-none group ${className}`}
+      className={`flex flex-col justify-center items-center w-8 h-8 cursor-pointer focus:outline-none group ${className}`}
       aria-label='Toggle menu'>
       <span
         className={`block w-6 h-0.5 bg-black group-hover:bg-brand-secondary transition-all duration-300 ${

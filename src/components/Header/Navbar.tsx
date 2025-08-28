@@ -14,7 +14,7 @@ interface NavbarProps {
 
 const Navbar = ({ navLinks }: NavbarProps) => {
   return (
-    <nav className='hidden lg:block'>
+    <nav className=''>
       <ul className='flex items-center gap-6'>
         {navLinks.map((link) => (
           <li key={link.href}>
