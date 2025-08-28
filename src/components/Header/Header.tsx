@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
+import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 import type { HEADER_QUERYResult } from '@/sanity/types';
 import Navbar from './Navbar';
 import MenuButton from './MenuButton';
@@ -71,6 +72,7 @@ const Header = ({ headerData }: HeaderProps) => {
               width={200}
               height={125}
               className='object-contain w-[160px] md:w-[200px] h-auto'
+              {...createSanityDataAttribute(headerData._id, 'header', 'logo')}
             />
           ) : (
             <>
