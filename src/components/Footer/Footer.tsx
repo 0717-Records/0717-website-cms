@@ -127,10 +127,10 @@ const Footer = ({ footerData, siteSettingsData }: FooterProps) => {
                     'siteSettings',
                     `companyLinks.socialLinksArray[_key=="${link._key}"]`
                   )}>
-                  <div className='w-12 h-12 md:w-18 md:h-18 rounded-full bg-brand-gradient flex items-center justify-center'>
+                  <div className='w-16 h-16 md:w-18 md:h-18 rounded-full bg-brand-gradient flex items-center justify-center'>
                     <SocialIcon
                       platform={link.platform}
-                      className='text-black text-2xl md:text-4xl transition-transform duration-200 group-hover:scale-110'
+                      className='text-black text-3xl md:text-4xl transition-transform duration-200 group-hover:scale-110'
                     />
                   </div>
                 </Link>
