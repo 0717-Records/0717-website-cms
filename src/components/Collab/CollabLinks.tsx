@@ -25,12 +25,35 @@ interface CollabLinksProps {
 const CollabLinks: React.FC<CollabLinksProps> = ({ links, documentId, documentType }) => {
   if (!links?.socialLinksArray) return null;
 
-  const socialLinks = links.socialLinksArray.filter((link) => link.url && link.platform);
+  const socialLinks = links.socialLinksArray.filter((link) => 
+    link.url && 
+    link.platform && 
+    typeof link.platform === 'string' &&
+    link.platform.trim() !== ''
+  );
   
   // If no links exist, don't render anything
   if (socialLinks.length === 0) {
     return null;
   }
+
+  // Transform to display format with cleaned platform values
+  const allLinks = socialLinks.map((link) => {
+    // Clean the platform value by removing invisible characters and trimming
+    const cleanPlatform = link.platform
+      ?.replace(/[\u200B-\u200D\uFEFF\u2060\u180E]/g, '') // Remove zero-width characters
+      ?.replace(/[\u202A-\u202E]/g, '') // Remove text direction marks
+      ?.trim() || 'genericLink';
+    
+    const platform = cleanPlatform as SocialPlatform;
+    
+    return {
+      _key: link._key,
+      platform,
+      url: link.url!,
+      customTitle: link.customTitle,
+    };
+  });
 
   return (
     <aside className="bg-white border border-gray-200 rounded-lg p-6">
@@ -44,11 +67,11 @@ const CollabLinks: React.FC<CollabLinksProps> = ({ links, documentId, documentTy
       
       <div className="space-y-3">
         {/* Social links in the order they were arranged */}
-        {socialLinks.map((link) => (
+        {allLinks.map((link) => (
           <SocialLink
             key={link._key}
-            platform={link.platform! as SocialPlatform}
-            url={link.url!}
+            platform={link.platform}
+            url={link.url}
             label={link.platform === 'genericLink' ? link.customTitle || 'Link' : undefined}
             dataAttributes={createSanityDataAttribute(documentId, documentType, `links.socialLinksArray[_key=="${link._key}"]`)}
           />

@@ -23,7 +23,12 @@ interface CompanyLinksBlockProps {
 const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) => {
   if (!companyLinks?.socialLinksArray) return null;
 
-  const socialLinks = companyLinks.socialLinksArray.filter((link) => link.url && link.platform);
+  const socialLinks = companyLinks.socialLinksArray.filter((link) => 
+    link.url && 
+    link.platform && 
+    typeof link.platform === 'string' &&
+    link.platform.trim() !== ''
+  );
 
   // If no links exist, don't render anything
   if (socialLinks.length === 0) {
@@ -31,15 +36,24 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
   }
 
   // Transform to display format
-  const allLinks = socialLinks.map((link) => ({
-    _key: link._key,
-    platform: link.platform! as SocialPlatform,
-    url: link.url!,
-    label:
-      link.platform === 'genericLink'
-        ? link.customTitle || 'Link'
-        : getPlatformLabel(link.platform! as SocialPlatform),
-  }));
+  const allLinks = socialLinks.map((link) => {
+    // Clean the platform value by removing invisible characters and trimming
+    const cleanPlatform = link.platform
+      ?.replace(/[\u200B-\u200D\uFEFF\u2060\u180E]/g, '') // Remove zero-width characters
+      ?.replace(/[\u202A-\u202E]/g, '') // Remove text direction marks
+      ?.trim() || 'genericLink';
+    
+    const platform = cleanPlatform as SocialPlatform;
+    
+    return {
+      _key: link._key,
+      platform,
+      url: link.url!,
+      label: platform === 'genericLink'
+        ? (link.customTitle || 'Link')
+        : getPlatformLabel(platform),
+    };
+  });
 
   return (
     <div className='w-full'>

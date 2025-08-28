@@ -60,7 +60,8 @@ interface SocialIconProps {
 
 export const SocialIcon: React.FC<SocialIconProps> = ({ platform, className = '' }) => {
   const config = socialIconMap[platform];
-  const IconComponent = config.icon;
+  // Fallback to genericLink icon if platform config doesn't exist
+  const IconComponent = config?.icon || socialIconMap.genericLink.icon;
   
   return <IconComponent className={className} />;
 };
@@ -73,7 +74,7 @@ export const getPlatformFromField = (fieldName: string): SocialPlatform => {
 
 // Helper function to get platform label
 export const getPlatformLabel = (platform: SocialPlatform): string => {
-  return socialIconMap[platform].label;
+  return socialIconMap[platform]?.label || 'Link';
 };
 
 // Helper function to get all available platforms
