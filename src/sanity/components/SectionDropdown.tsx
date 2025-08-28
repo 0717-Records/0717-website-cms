@@ -307,10 +307,9 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
               style={{
                 marginTop: '8px',
                 fontSize: '12px',
-                color: '#f59e0b',
+                color: '#2d8cf1',
               }}>
-              No linkable sections found on selected page. Make sure sections have titles and anchor
-              IDs generated.
+              No linkable sections found on selected page.
             </div>
           )}
         </>
