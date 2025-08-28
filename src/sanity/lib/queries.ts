@@ -171,18 +171,11 @@ export const SITE_SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
   siteDescription,
   companyLinks{
     _type,
-    facebook,
-    instagram,
-    youtube,
-    twitter,
-    soundcloud,
-    bandcamp,
-    spotify,
-    itunes,
-    genericLinks[]{
+    socialLinksArray[]{
       _key,
-      title,
-      url
+      platform,
+      url,
+      customTitle
     }
   }
 }`);
@@ -277,19 +270,11 @@ export const COLLAB_QUERY = defineQuery(`*[_type == "collab" && slug.current == 
   ${sideContentProjection},
   links{
     _type,
-    facebook,
-    instagram,
-    youtube,
-    twitter,
-    soundcloud,
-    bandcamp,
-    spotify,
-    itunes,
-    officialWebsite,
-    genericLinks[]{
+    socialLinksArray[]{
       _key,
-      title,
-      url
+      platform,
+      url,
+      customTitle
     }
   }
 }`);

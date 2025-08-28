@@ -10,6 +10,7 @@ import {
   FaGlobe,
   FaLink
 } from 'react-icons/fa';
+import { SOCIAL_PLATFORMS, getPlatformByKey } from '@/sanity/schemaTypes/shared/platformsConfig';
 
 export type SocialPlatform = 
   | 'facebook'
@@ -29,48 +30,28 @@ interface SocialIconConfig {
   color?: string; // Optional for platform-specific colors if needed later
 }
 
-export const socialIconMap: Record<SocialPlatform, SocialIconConfig> = {
-  facebook: {
-    icon: FaFacebook,
-    label: 'Facebook',
-  },
-  instagram: {
-    icon: FaInstagram,
-    label: 'Instagram',
-  },
-  youtube: {
-    icon: FaYoutube,
-    label: 'YouTube',
-  },
-  twitter: {
-    icon: FaTwitter,
-    label: 'X/Twitter',
-  },
-  soundcloud: {
-    icon: FaSoundcloud,
-    label: 'SoundCloud',
-  },
-  bandcamp: {
-    icon: FaBandcamp,
-    label: 'Bandcamp',
-  },
-  spotify: {
-    icon: FaSpotify,
-    label: 'Spotify',
-  },
-  itunes: {
-    icon: FaApple,
-    label: 'Apple Music',
-  },
-  officialWebsite: {
-    icon: FaGlobe,
-    label: 'Official Website',
-  },
-  genericLink: {
-    icon: FaLink,
-    label: 'Link',
-  },
+const iconComponents = {
+  facebook: FaFacebook,
+  instagram: FaInstagram,
+  youtube: FaYoutube,
+  twitter: FaTwitter,
+  soundcloud: FaSoundcloud,
+  bandcamp: FaBandcamp,
+  spotify: FaSpotify,
+  itunes: FaApple,
+  officialWebsite: FaGlobe,
+  genericLink: FaLink,
 };
+
+// Generate socialIconMap from the shared configuration
+export const socialIconMap: Record<SocialPlatform, SocialIconConfig> = 
+  SOCIAL_PLATFORMS.reduce((acc, platform) => {
+    acc[platform.key as SocialPlatform] = {
+      icon: iconComponents[platform.key as keyof typeof iconComponents],
+      label: platform.label,
+    };
+    return acc;
+  }, {} as Record<SocialPlatform, SocialIconConfig>);
 
 interface SocialIconProps {
   platform: SocialPlatform;
@@ -86,21 +67,17 @@ export const SocialIcon: React.FC<SocialIconProps> = ({ platform, className = ''
 
 // Helper function to get the platform type from a URL or field name
 export const getPlatformFromField = (fieldName: string): SocialPlatform => {
-  switch (fieldName) {
-    case 'facebook': return 'facebook';
-    case 'instagram': return 'instagram';
-    case 'youtube': return 'youtube';
-    case 'twitter': return 'twitter';
-    case 'soundcloud': return 'soundcloud';
-    case 'bandcamp': return 'bandcamp';
-    case 'spotify': return 'spotify';
-    case 'itunes': return 'itunes';
-    case 'officialWebsite': return 'officialWebsite';
-    default: return 'genericLink';
-  }
+  const platform = getPlatformByKey(fieldName);
+  return (platform?.key as SocialPlatform) || 'genericLink';
 };
 
 // Helper function to get platform label
 export const getPlatformLabel = (platform: SocialPlatform): string => {
   return socialIconMap[platform].label;
 };
+
+// Helper function to get all available platforms
+export const getAllPlatforms = () => SOCIAL_PLATFORMS;
+
+// Helper function to get platform config
+export const getPlatformConfig = (platform: string) => getPlatformByKey(platform);

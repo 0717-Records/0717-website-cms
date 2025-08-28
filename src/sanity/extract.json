@@ -5922,7 +5922,7 @@
         "type": "objectAttribute",
         "value": {
           "type": "inline",
-          "name": "socialLinks"
+          "name": "collabLinksArray"
         },
         "optional": true
       },
@@ -5937,7 +5937,7 @@
     }
   },
   {
-    "name": "socialLinks",
+    "name": "collabLinksArray",
     "type": "type",
     "value": {
       "type": "object",
@@ -5946,83 +5946,62 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "socialLinks"
+            "value": "collabLinksArray"
           }
         },
-        "facebook": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "instagram": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "youtube": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "twitter": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "soundcloud": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "bandcamp": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "spotify": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "itunes": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "officialWebsite": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "genericLinks": {
+        "socialLinksArray": {
           "type": "objectAttribute",
           "value": {
             "type": "array",
             "of": {
               "type": "object",
               "attributes": {
-                "title": {
+                "platform": {
                   "type": "objectAttribute",
                   "value": {
-                    "type": "string"
+                    "type": "union",
+                    "of": [
+                      {
+                        "type": "string",
+                        "value": "facebook"
+                      },
+                      {
+                        "type": "string",
+                        "value": "instagram"
+                      },
+                      {
+                        "type": "string",
+                        "value": "youtube"
+                      },
+                      {
+                        "type": "string",
+                        "value": "twitter"
+                      },
+                      {
+                        "type": "string",
+                        "value": "soundcloud"
+                      },
+                      {
+                        "type": "string",
+                        "value": "bandcamp"
+                      },
+                      {
+                        "type": "string",
+                        "value": "spotify"
+                      },
+                      {
+                        "type": "string",
+                        "value": "itunes"
+                      },
+                      {
+                        "type": "string",
+                        "value": "officialWebsite"
+                      },
+                      {
+                        "type": "string",
+                        "value": "genericLink"
+                      }
+                    ]
                   },
                   "optional": true
                 },
@@ -6032,6 +6011,20 @@
                     "type": "string"
                   },
                   "optional": true
+                },
+                "customTitle": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  },
+                  "optional": true
+                },
+                "_type": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string",
+                    "value": "socialLinkItem"
+                  }
                 }
               },
               "rest": {
@@ -7180,14 +7173,14 @@
         "type": "objectAttribute",
         "value": {
           "type": "inline",
-          "name": "companyLinks"
+          "name": "companyLinksArray"
         },
         "optional": true
       }
     }
   },
   {
-    "name": "companyLinks",
+    "name": "companyLinksArray",
     "type": "type",
     "value": {
       "type": "object",
@@ -7196,76 +7189,58 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "companyLinks"
+            "value": "companyLinksArray"
           }
         },
-        "facebook": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "instagram": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "youtube": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "twitter": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "soundcloud": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "bandcamp": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "spotify": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "itunes": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "genericLinks": {
+        "socialLinksArray": {
           "type": "objectAttribute",
           "value": {
             "type": "array",
             "of": {
               "type": "object",
               "attributes": {
-                "title": {
+                "platform": {
                   "type": "objectAttribute",
                   "value": {
-                    "type": "string"
+                    "type": "union",
+                    "of": [
+                      {
+                        "type": "string",
+                        "value": "facebook"
+                      },
+                      {
+                        "type": "string",
+                        "value": "instagram"
+                      },
+                      {
+                        "type": "string",
+                        "value": "youtube"
+                      },
+                      {
+                        "type": "string",
+                        "value": "twitter"
+                      },
+                      {
+                        "type": "string",
+                        "value": "soundcloud"
+                      },
+                      {
+                        "type": "string",
+                        "value": "bandcamp"
+                      },
+                      {
+                        "type": "string",
+                        "value": "spotify"
+                      },
+                      {
+                        "type": "string",
+                        "value": "itunes"
+                      },
+                      {
+                        "type": "string",
+                        "value": "genericLink"
+                      }
+                    ]
                   },
                   "optional": true
                 },
@@ -7275,6 +7250,20 @@
                     "type": "string"
                   },
                   "optional": true
+                },
+                "customTitle": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  },
+                  "optional": true
+                },
+                "_type": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string",
+                    "value": "socialLinkItem"
+                  }
                 }
               },
               "rest": {

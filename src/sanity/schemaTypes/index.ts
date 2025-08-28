@@ -40,8 +40,7 @@ import { eventsIndexPageType } from './eventsIndexPageType';
 import { collabType } from './collabType';
 import { collabPageSectionType } from './collabPageSectionType';
 import { favouritesType } from './favouritesType';
-import { socialLinksType } from './shared/socialLinksType';
-import { companyLinksType } from './shared/companyLinksType';
+import { companyLinksArrayType, collabLinksArrayType } from './shared/socialLinksArrayType';
 import { sideContentBlockType, sideContentType } from './shared/sideContentBlockType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -88,8 +87,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     favouriteBlockType,
     companyLinksBlockType,
     // Shared Components
-    socialLinksType,
-    companyLinksType,
+    companyLinksArrayType,
+    collabLinksArrayType,
     sideContentBlockType,
     sideContentType,
   ],

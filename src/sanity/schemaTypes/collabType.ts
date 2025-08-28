@@ -198,9 +198,9 @@ export const collabType = defineType({
     defineField({
       name: 'links',
       title: 'Social Media & Links',
-      type: 'socialLinks',
+      type: 'collabLinksArray',
       group: 'social',
-      description: 'Social media profiles and website links',
+      description: 'Social media profiles and website links with drag-and-drop ordering',
     }),
 
     // Sidebar Content Group

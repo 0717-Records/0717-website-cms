@@ -43,9 +43,9 @@ export const siteSettingsType = defineType({
     }),
     defineField({
       name: 'companyLinks',
-      type: 'companyLinks',
+      type: 'companyLinksArray',
       title: 'Company Social Links',
-      description: 'Manage your company\'s social media links. These can be displayed throughout your site.',
+      description: 'Manage your company\'s social media links with drag-and-drop ordering. These can be displayed throughout your site.',
       group: 'companyLinks',
     }),
   ],

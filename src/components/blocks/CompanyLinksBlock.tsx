@@ -4,25 +4,20 @@ import {
   SocialIcon,
   type SocialPlatform,
   getPlatformLabel,
-  getPlatformFromField,
 } from '@/utils/socialIcons';
 import { createDataAttribute } from 'next-sanity';
 import { createDataAttributeConfig } from '@/components/PageBuilder';
 
+interface SocialLinkItem {
+  _key: string;
+  platform: string | null;
+  url: string | null;
+  customTitle?: string | null;
+}
+
 interface CompanyLinksData {
-  facebook?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
-  twitter?: string | null;
-  soundcloud?: string | null;
-  bandcamp?: string | null;
-  spotify?: string | null;
-  itunes?: string | null;
-  genericLinks?: Array<{
-    _key: string;
-    title: string | null;
-    url: string | null;
-  }> | null;
+  _type?: string;
+  socialLinksArray?: SocialLinkItem[] | null;
 }
 
 interface CompanyLinksBlockProps {
@@ -30,48 +25,22 @@ interface CompanyLinksBlockProps {
 }
 
 const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) => {
-  if (!companyLinks) return null;
+  if (!companyLinks?.socialLinksArray) return null;
 
-  // Extract all the social platform links
-  const platformLinks = [
-    { field: 'facebook', url: companyLinks.facebook, platform: getPlatformFromField('facebook') },
-    {
-      field: 'instagram',
-      url: companyLinks.instagram,
-      platform: getPlatformFromField('instagram'),
-    },
-    { field: 'youtube', url: companyLinks.youtube, platform: getPlatformFromField('youtube') },
-    { field: 'twitter', url: companyLinks.twitter, platform: getPlatformFromField('twitter') },
-    {
-      field: 'soundcloud',
-      url: companyLinks.soundcloud,
-      platform: getPlatformFromField('soundcloud'),
-    },
-    { field: 'bandcamp', url: companyLinks.bandcamp, platform: getPlatformFromField('bandcamp') },
-    { field: 'spotify', url: companyLinks.spotify, platform: getPlatformFromField('spotify') },
-    { field: 'itunes', url: companyLinks.itunes, platform: getPlatformFromField('itunes') },
-  ].filter((link) => link.url);
-
-  const genericLinks = (companyLinks.genericLinks || []).filter((link) => link.url && link.title);
-
+  const socialLinks = companyLinks.socialLinksArray.filter((link) => link.url && link.platform);
+  
   // If no links exist, don't render anything
-  if (platformLinks.length === 0 && genericLinks.length === 0) {
+  if (socialLinks.length === 0) {
     return null;
   }
 
-  // Combine all links for display
-  const allLinks = [
-    ...platformLinks.map(({ platform, url }) => ({
-      platform,
-      url: url!,
-      label: getPlatformLabel(platform),
-    })),
-    ...genericLinks.map((link) => ({
-      platform: 'genericLink' as SocialPlatform,
-      url: link.url!,
-      label: link.title!,
-    })),
-  ];
+  // Transform to display format
+  const allLinks = socialLinks.map((link) => ({
+    _key: link._key,
+    platform: link.platform! as SocialPlatform,
+    url: link.url!,
+    label: link.platform === 'genericLink' ? (link.customTitle || 'Link') : getPlatformLabel(link.platform! as SocialPlatform),
+  }));
 
   return (
     <div className='w-full'>
@@ -84,33 +53,17 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
           path: 'companyLinks',
         }).toString()}>
         {allLinks.map((link, index) => {
-          // Create data attribute for individual social platform field
-          const isGenericLink = link.platform === 'genericLink';
-          let dataAttribute = '';
-
-          if (isGenericLink) {
-            // For generic links, point to the specific array item
-            const genericIndex = genericLinks.findIndex((gl) => gl.url === link.url);
-            dataAttribute = createDataAttribute({
-              ...createDataAttributeConfig,
-              id: 'siteSettings',
-              type: 'siteSettings',
-              path: `companyLinks.genericLinks[${genericIndex}]`,
-            }).toString();
-          } else {
-            // For platform links, point to the specific field
-            const platformField = platformLinks.find((pl) => pl.platform === link.platform)?.field;
-            dataAttribute = createDataAttribute({
-              ...createDataAttributeConfig,
-              id: 'siteSettings',
-              type: 'siteSettings',
-              path: `companyLinks.${platformField}`,
-            }).toString();
-          }
+          // Create data attribute for individual social link item
+          const dataAttribute = createDataAttribute({
+            ...createDataAttributeConfig,
+            id: 'siteSettings',
+            type: 'siteSettings',
+            path: `companyLinks.socialLinksArray[_key=="${link._key}"]`,
+          }).toString();
 
           return (
             <Link
-              key={`${link.platform}-${index}`}
+              key={link._key || `${link.platform}-${index}`}
               href={link.url}
               target='_blank'
               rel='noopener noreferrer'

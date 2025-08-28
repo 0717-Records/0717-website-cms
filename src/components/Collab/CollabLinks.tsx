@@ -1,24 +1,19 @@
 import React from 'react';
 import SocialLink from '@/components/UI/SocialLink';
 import Heading from '@/components/Typography/Heading/Heading';
-import { getPlatformFromField } from '@/utils/socialIcons';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
+import { type SocialPlatform } from '@/utils/socialIcons';
+
+interface SocialLinkItem {
+  _key: string;
+  platform: string | null;
+  url: string | null;
+  customTitle?: string | null;
+}
 
 interface SocialLinksData {
-  facebook?: string | null;
-  instagram?: string | null;
-  youtube?: string | null;
-  twitter?: string | null;
-  soundcloud?: string | null;
-  bandcamp?: string | null;
-  spotify?: string | null;
-  itunes?: string | null;
-  officialWebsite?: string | null;
-  genericLinks?: Array<{
-    _key: string;
-    title: string | null;
-    url: string | null;
-  }> | null;
+  _type?: string;
+  socialLinksArray?: SocialLinkItem[] | null;
 }
 
 interface CollabLinksProps {
@@ -28,25 +23,12 @@ interface CollabLinksProps {
 }
 
 const CollabLinks: React.FC<CollabLinksProps> = ({ links, documentId, documentType }) => {
-  if (!links) return null;
+  if (!links?.socialLinksArray) return null;
 
-  // Extract all the social platform links
-  const platformLinks = [
-    { field: 'facebook', url: links.facebook },
-    { field: 'instagram', url: links.instagram },
-    { field: 'youtube', url: links.youtube },
-    { field: 'twitter', url: links.twitter },
-    { field: 'soundcloud', url: links.soundcloud },
-    { field: 'bandcamp', url: links.bandcamp },
-    { field: 'spotify', url: links.spotify },
-    { field: 'itunes', url: links.itunes },
-    { field: 'officialWebsite', url: links.officialWebsite },
-  ].filter(link => link.url);
-
-  const genericLinks = links.genericLinks || [];
+  const socialLinks = links.socialLinksArray.filter((link) => link.url && link.platform);
   
   // If no links exist, don't render anything
-  if (platformLinks.length === 0 && genericLinks.length === 0) {
+  if (socialLinks.length === 0) {
     return null;
   }
 
@@ -61,24 +43,14 @@ const CollabLinks: React.FC<CollabLinksProps> = ({ links, documentId, documentTy
       </Heading>
       
       <div className="space-y-3">
-        {/* Platform-specific links */}
-        {platformLinks.map(({ field, url }) => (
+        {/* Social links in the order they were arranged */}
+        {socialLinks.map((link) => (
           <SocialLink
-            key={field}
-            platform={getPlatformFromField(field)}
-            url={url!}
-            dataAttributes={createSanityDataAttribute(documentId, documentType, `links.${field}`)}
-          />
-        ))}
-        
-        {/* Generic links */}
-        {genericLinks.filter(link => link.url && link.title).map((link, index) => (
-          <SocialLink
-            key={link._key || index}
-            platform="genericLink"
+            key={link._key}
+            platform={link.platform! as SocialPlatform}
             url={link.url!}
-            label={link.title!}
-            dataAttributes={createSanityDataAttribute(documentId, documentType, `links.genericLinks[_key=="${link._key}"]`)}
+            label={link.platform === 'genericLink' ? link.customTitle || 'Link' : undefined}
+            dataAttributes={createSanityDataAttribute(documentId, documentType, `links.socialLinksArray[_key=="${link._key}"]`)}
           />
         ))}
       </div>
