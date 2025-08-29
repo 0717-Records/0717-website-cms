@@ -201,6 +201,7 @@ export const BLOG_POSTS_QUERY = defineQuery(`*[_type == "blogPost"]|order(coales
   _id,
   _createdAt,
   title,
+  slug,
   subtitle,
   author,
   heroImage{

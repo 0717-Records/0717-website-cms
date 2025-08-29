@@ -8,6 +8,7 @@ interface BlogCardProps {
   _id: string;
   _createdAt: string;
   title: string | null;
+  slug?: { current?: string | null } | null;
   subtitle?: string | null;
   author?: string | null;
   heroImage?: SanityImageSource | null;
@@ -31,7 +32,7 @@ function formatBlogDate(
 }
 
 const BlogCard = (props: BlogCardProps) => {
-  const { title, subtitle, author, heroImage, _createdAt, overrideDate, hasOverrideDate } = props;
+  const { title, slug, subtitle, author, heroImage, _createdAt, overrideDate, hasOverrideDate } = props;
 
   const formattedDate = formatBlogDate(_createdAt, overrideDate, hasOverrideDate);
   const imageUrl = heroImage ? urlFor(heroImage).url() : null;

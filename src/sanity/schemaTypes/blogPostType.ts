@@ -39,6 +39,17 @@ export const blogPostType = defineType({
       group: 'header',
     }),
     defineField({
+      name: 'slug',
+      type: 'slug',
+      title: 'URL Slug',
+      description: 'The URL path for this blog article',
+      options: {
+        source: 'title',
+      },
+      validation: (Rule) => Rule.required().error('URL slug is required'),
+      group: 'header',
+    }),
+    defineField({
       name: 'heroImage',
       type: 'image',
       title: 'Hero Image',
@@ -140,6 +151,7 @@ export const blogPostType = defineType({
   preview: {
     select: {
       title: 'title',
+      slug: 'slug.current',
       subtitle: 'subtitle',
       author: 'author',
       media: 'heroImage',
@@ -147,7 +159,7 @@ export const blogPostType = defineType({
       overrideDate: 'overrideDate',
       hasOverrideDate: 'hasOverrideDate',
     },
-    prepare({ title, subtitle, author, media, publishedAt, overrideDate, hasOverrideDate }) {
+    prepare({ title, slug, author, media, publishedAt, overrideDate, hasOverrideDate }) {
       const displayDate = hasOverrideDate && overrideDate 
         ? new Date(overrideDate).toLocaleDateString()
         : publishedAt 
@@ -155,7 +167,7 @@ export const blogPostType = defineType({
           : '';
 
       const subtitleParts = [
-        subtitle,
+        slug ? `/${slug}` : null,
         author ? `By ${author}` : null,
         displayDate,
       ].filter(Boolean);

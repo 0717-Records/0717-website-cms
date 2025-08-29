@@ -6,6 +6,7 @@ interface BlogPost {
   _id: string;
   _createdAt: string;
   title: string | null;
+  slug?: { current?: string | null } | null;
   subtitle?: string | null;
   author?: string | null;
   heroImage?: SanityImageSource | null;
