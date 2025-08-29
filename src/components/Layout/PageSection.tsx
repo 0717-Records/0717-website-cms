@@ -58,29 +58,27 @@ const PageSection = ({
       <TextAlignmentContext.Provider value={{ textAlign: cleanTextAlign }}>
         <section
           id={anchorId ? stegaClean(anchorId) : undefined}
-          className={`px-4 sm:px-12 ${paddingClasses} ${getTextAlignClass(cleanTextAlign)} ${className}`.trim()}>
-          <div className='container max-w-[60rem] mx-auto px-4 sm:px-12 py-12 rounded-3xl bg-white'>
-            {/* Title is now always present since it's required */}
-            <div className='text-center'>
-              <Heading
-                level='h2'
-                showUnderline
-                className='mb-6'
-                showMargin={false}
-                {...titleDataAttribute}>
-                {stegaClean(title)}
-              </Heading>
-              {subtitle && (
-                <p
-                  className='text-body-2xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line'
-                  {...subtitleDataAttribute}>
-                  {subtitle}
-                </p>
-              )}
-              <Divider />
-            </div>
-            {children}
+          className={`${paddingClasses} ${getTextAlignClass(cleanTextAlign)} ${className}`.trim()}>
+          {/* Title is now always present since it's required */}
+          <div className='text-center'>
+            <Heading
+              level='h2'
+              showUnderline
+              className='mb-6'
+              showMargin={false}
+              {...titleDataAttribute}>
+              {stegaClean(title)}
+            </Heading>
+            {subtitle && (
+              <p
+                className='text-body-2xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line'
+                {...subtitleDataAttribute}>
+                {subtitle}
+              </p>
+            )}
+            <Divider />
           </div>
+          {children}
         </section>
       </TextAlignmentContext.Provider>
     </PageSectionContext.Provider>

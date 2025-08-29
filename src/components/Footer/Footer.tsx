@@ -59,7 +59,7 @@ const Footer = ({ footerData, siteSettingsData }: FooterProps) => {
 
   return (
     <footer className='bg-black text-white py-10 px-6 md:px-16 w-full' aria-label='Site Footer'>
-      <div className='md:grid grid-cols-2 grid-rows-[auto_auto] max-w-[1200px] mx-auto'>
+      <div className='container md:grid grid-cols-2 grid-rows-[auto_auto] mx-auto'>
         {/* LEFT COLUMN */}
         <div className='flex flex-col items-center md:items-start col-start-1 row-start-1 text-center md:text-left'>
           {/* Logo */}

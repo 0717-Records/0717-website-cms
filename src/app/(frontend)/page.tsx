@@ -6,6 +6,7 @@ import { getAllEvents } from '@/actions/events';
 import { getCollabs } from '@/actions/collabs';
 import { getFavourites } from '@/actions/favourites';
 import type { PAGE_QUERYResult } from '@/sanity/types';
+import Container from '@/components/Layout/Container';
 
 const Page = async () => {
   const [page, siteSettings, events, collabs, favourites] = await Promise.all([
@@ -36,19 +37,25 @@ const Page = async () => {
 
       {/* Additional Page Builder Content */}
       {page.content && (
-        <PageBuilder
-          content={page.content as NonNullable<PAGE_QUERYResult>['content']}
-          documentId={page._id}
-          documentType={page._type}
-          siteSettings={siteSettings ? { 
-            companyEmail: siteSettings.companyEmail || undefined,
-            companyLinks: siteSettings.companyLinks || undefined
-          } : undefined}
-          events={events}
-          collabs={collabs}
-          favourites={favourites}
-          alignment='center'
-        />
+        <Container>
+          <PageBuilder
+            content={page.content as NonNullable<PAGE_QUERYResult>['content']}
+            documentId={page._id}
+            documentType={page._type}
+            siteSettings={
+              siteSettings
+                ? {
+                    companyEmail: siteSettings.companyEmail || undefined,
+                    companyLinks: siteSettings.companyLinks || undefined,
+                  }
+                : undefined
+            }
+            events={events}
+            collabs={collabs}
+            favourites={favourites}
+            alignment='center'
+          />
+        </Container>
       )}
     </>
   );
