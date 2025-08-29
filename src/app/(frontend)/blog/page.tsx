@@ -48,7 +48,7 @@ export default async function BlogPage() {
           <div className='pb-16 md:pb-24'>
             <div className='flex justify-center'>
               <div className='w-full max-w-md'>
-                <Card {...blogIndexPage.closingCard} email={siteSettings?.companyEmail} />
+                <Card {...blogIndexPage.closingCard} email={siteSettings?.companyEmail || undefined} />
               </div>
             </div>
           </div>
