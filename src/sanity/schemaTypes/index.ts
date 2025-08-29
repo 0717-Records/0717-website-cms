@@ -2,7 +2,6 @@ import { type SchemaTypeDefinition } from 'sanity';
 
 
 import { blockContentType } from './blockContentType';
-import { postType } from './postType';
 import { pageType } from './pageType';
 import { homePageType } from './homePageType';
 import { headerType } from './headerType';
@@ -43,6 +42,8 @@ import { favouritesType } from './favouritesType';
 import { companyLinksArrayType, collabLinksArrayType } from './shared/socialLinksArrayType';
 import { sideContentBlockType, sideContentType } from './shared/sideContentBlockType';
 import { navLinkType } from './navigation/navLinkType';
+import { blogIndexPageType } from './blogIndexPageType';
+import { blogPostType } from './blogPostType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -50,7 +51,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     siteSettingsType,
     homePageType,
     pageType,
-    postType,
+    blogIndexPageType,
+    blogPostType,
     eventType,
     eventsIndexPageType,
     collabType,

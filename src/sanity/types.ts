@@ -844,6 +844,198 @@ export type Favourites = {
   linkLabel?: string;
 };
 
+export type Event = {
+  _id: string;
+  _type: "event";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  shortDescription?: string;
+  venue?: string;
+  location?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  tags?: Array<string>;
+  link?: string;
+  startDate?: string;
+  endDate?: string;
+  timeDescription?: string;
+  pastEventText?: string;
+  pastEventLinkBehavior?: "keep" | "change" | "remove";
+  pastEventLink?: string;
+};
+
+export type BlogPost = {
+  _id: string;
+  _type: "blogPost";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  subtitle?: string;
+  author?: string;
+  hasOverrideDate?: boolean;
+  overrideDate?: string;
+  content?: Array<{
+    _key: string;
+  } & PageSection | {
+    _key: string;
+  } & Divider | {
+    _key: string;
+  } & ItemList | {
+    _key: string;
+  } & RichText | {
+    _key: string;
+  } & Quote | {
+    _key: string;
+  } & TextImage | {
+    _key: string;
+  } & Card | {
+    _key: string;
+  } & CtaButton | {
+    _key: string;
+  } & CtaCalloutLink | {
+    _key: string;
+  } & CtaEmailButton | {
+    _key: string;
+  } & CtaEvent | {
+    _key: string;
+  } & CardGrid | {
+    _key: string;
+  } & Icon | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
+    _key: string;
+  } & YouTubeVideo | {
+    _key: string;
+  } & SpotifyWidget | {
+    _key: string;
+  } & BandcampWidget | {
+    _key: string;
+  } & EventBlock | {
+    _key: string;
+  } & CollabAllBlock | {
+    _key: string;
+  } & FavouriteBlock | {
+    _key: string;
+  } & CompanyLinksBlock>;
+  hasClosingCard?: boolean;
+  closingCardTitle?: string;
+  closingCardMessage?: string;
+  closingCardCTA?: {
+    text?: string;
+    variant?: "filled" | "outline";
+    linkType?: "internal" | "external";
+    internalLink?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "page";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "homePage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "collab";
+    };
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+  };
+};
+
+export type BlogIndexPage = {
+  _id: string;
+  _type: "blogIndexPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  subtitle?: string;
+  noArticlesMessage?: string;
+  hasClosingCard?: boolean;
+  closingCardTitle?: string;
+  closingCardMessage?: string;
+  closingCardCTA?: {
+    text?: string;
+    variant?: "filled" | "outline";
+    linkType?: "internal" | "external";
+    internalLink?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "page";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "homePage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "collab";
+    };
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+  };
+};
+
 export type Collab = {
   _id: string;
   _type: "collab";
@@ -927,71 +1119,6 @@ export type EventsIndexPage = {
   subtitle?: string;
   noUpcomingEventsMessage?: string;
   noPastEventsMessage?: string;
-};
-
-export type Event = {
-  _id: string;
-  _type: "event";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  shortDescription?: string;
-  venue?: string;
-  location?: string;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  tags?: Array<string>;
-  link?: string;
-  startDate?: string;
-  endDate?: string;
-  timeDescription?: string;
-  pastEventText?: string;
-  pastEventLinkBehavior?: "keep" | "change" | "remove";
-  pastEventLink?: string;
-};
-
-export type Post = {
-  _id: string;
-  _type: "post";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  publishedAt?: string;
-  body?: BlockContent;
-  relatedPosts?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "post";
-  }>;
 };
 
 export type Page = {
@@ -1252,64 +1379,9 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = NavLink | SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | CollabLinksArray | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | CompanyLinksArray | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = NavLink | SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Event | BlogPost | BlogIndexPage | Collab | CollabLinksArray | EventsIndexPage | Page | HomePage | HomeHeroCtaButton | SiteSettings | CompanyLinksArray | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
-// Variable: POSTS_QUERY
-// Query: *[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{  _id,  title,  slug,  body,  mainImage{    asset,    alt  },  publishedAt}
-export type POSTS_QUERYResult = Array<{
-  _id: string;
-  title: string | null;
-  slug: Slug | null;
-  body: BlockContent | null;
-  mainImage: {
-    asset: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    } | null;
-    alt: string | null;
-  } | null;
-  publishedAt: string | null;
-}>;
-// Variable: POSTS_SLUGS_QUERY
-// Query: *[_type == "post" && defined(slug.current)]{   "slug": slug.current}
-export type POSTS_SLUGS_QUERYResult = Array<{
-  slug: string | null;
-}>;
-// Variable: POST_QUERY
-// Query: *[_type == "post" && slug.current == $slug][0]{  _id,  title,  body,  mainImage{    asset,    alt  },  publishedAt,  relatedPosts[]->{    _id,    title,    slug,    mainImage{      asset,      alt    },    publishedAt  }}
-export type POST_QUERYResult = {
-  _id: string;
-  title: string | null;
-  body: BlockContent | null;
-  mainImage: {
-    asset: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    } | null;
-    alt: string | null;
-  } | null;
-  publishedAt: string | null;
-  relatedPosts: Array<{
-    _id: string;
-    title: string | null;
-    slug: Slug | null;
-    mainImage: {
-      asset: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      } | null;
-      alt: string | null;
-    } | null;
-    publishedAt: string | null;
-  }> | null;
-} | null;
 // Variable: PAGE_QUERY
 // Query: *[_type == "page" && slug.current == $slug][0]{  _id,  _type,  title,  subtitle,  alignment,  slug,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  }      }    }  }},  mainImage{    asset,    alt  }}
 export type PAGE_QUERYResult = {
@@ -3127,6 +3199,1836 @@ export type PAGE_QUERYResult = {
 // Variable: HOME_PAGE_QUERY
 // Query: *[_id == "homePage"][0]{  _id,  _type,  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  enableHeroCallToAction,  heroCallToAction{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  heroContentPosition,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  }      }    }  }}}
 export type HOME_PAGE_QUERYResult = {
+  _id: string;
+  _type: "blogIndexPage";
+  heroImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    } | null;
+    alt: string | null;
+  } | null;
+  heroTitle: null;
+  heroSubtitle: null;
+  enableHeroCallToAction: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "blogPost";
+  heroImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    } | null;
+    alt: string | null;
+  } | null;
+  heroTitle: null;
+  heroSubtitle: null;
+  enableHeroCallToAction: null;
+  heroCallToAction: null;
+  heroContentPosition: null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    buttonType?: "email" | "link" | "none";
+    text?: string;
+    variant?: "filled" | "outline";
+    linkType?: "external" | "internal";
+    internalLink?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "collab";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "homePage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "page";
+    };
+    externalUrl?: string;
+    openInNewTab?: boolean;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "cardGrid";
+    columns?: "2" | "3" | "4";
+    cards: Array<{
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      buttonType?: "email" | "link" | "none";
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/events";
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    buttonText?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvent";
+    event: {
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "icon";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    title?: string;
+    anchorId: string | null;
+    subtitle?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      buttonType?: "email" | "link" | "none";
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "collab";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "homePage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      };
+      externalUrl?: string;
+      openInNewTab?: boolean;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "cardGrid";
+      columns?: "2" | "3" | "4";
+      cards: Array<{
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        buttonType?: "email" | "link" | "none";
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/events";
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      buttonText?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvent";
+      event: {
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "icon";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      } | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      url?: string;
+      height?: "compact" | "normal";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      title?: string;
+      anchorId: string | null;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        buttonType?: "email" | "link" | "none";
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        openInNewTab?: boolean;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "cardGrid";
+        columns?: "2" | "3" | "4";
+        cards: Array<{
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          buttonType?: "email" | "link" | "none";
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/events";
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        buttonText?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvent";
+        event: {
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "icon";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        } | {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+          image: null;
+        }> | null;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        url?: string;
+        height?: "compact" | "normal";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        title?: string;
+        anchorId: string | null;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          buttonType?: "email" | "link" | "none";
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          openInNewTab?: boolean;
+          image: null;
+        } | {
+          _key: string;
+          _type: "cardGrid";
+          columns?: "2" | "3" | "4";
+          cards: Array<{
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            buttonType?: "email" | "link" | "none";
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/events";
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          buttonText?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvent";
+          event: {
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "icon";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          } | {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+            _key: string;
+          }>;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          url?: string;
+          height?: "compact" | "normal";
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          } | {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        } | {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      } | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    url?: string;
+    height?: "compact" | "normal";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | {
   _id: string;
   _type: "collab";
   heroImage: {
@@ -6849,16 +8751,6 @@ export type HOME_PAGE_QUERYResult = {
   }> | null;
 } | {
   _id: string;
-  _type: "post";
-  heroImage: null;
-  heroTitle: null;
-  heroSubtitle: null;
-  enableHeroCallToAction: null;
-  heroCallToAction: null;
-  heroContentPosition: null;
-  content: null;
-} | {
-  _id: string;
   _type: "sanity.fileAsset";
   heroImage: null;
   heroTitle: null;
@@ -6891,6 +8783,18 @@ export type HOME_PAGE_QUERYResult = {
 // Variable: HEADER_QUERY
 // Query: *[_id == "header"][0]{  _id,  _type,  logo{    asset,    alt  },  horizontalNav[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  verticalNav[]{    _type,    _type == "navLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},    _type == "divider" => {...}  }}
 export type HEADER_QUERYResult = {
+  _id: string;
+  _type: "blogIndexPage";
+  logo: null;
+  horizontalNav: null;
+  verticalNav: null;
+} | {
+  _id: string;
+  _type: "blogPost";
+  logo: null;
+  horizontalNav: null;
+  verticalNav: null;
+} | {
   _id: string;
   _type: "collab";
   logo: null;
@@ -7036,12 +8940,6 @@ export type HEADER_QUERYResult = {
   verticalNav: null;
 } | {
   _id: string;
-  _type: "post";
-  logo: null;
-  horizontalNav: null;
-  verticalNav: null;
-} | {
-  _id: string;
   _type: "sanity.fileAsset";
   logo: null;
   horizontalNav: null;
@@ -7062,6 +8960,20 @@ export type HEADER_QUERYResult = {
 // Variable: SITE_SETTINGS_QUERY
 // Query: *[_id == "siteSettings"][0]{  _id,  _type,  siteTitle,  companyEmail,  siteDescription,  companyLinks{    _type,    socialLinksArray[]{      _key,      platform,      url,      customTitle,      hideFromFooter    }  }}
 export type SITE_SETTINGS_QUERYResult = {
+  _id: string;
+  _type: "blogIndexPage";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+  companyLinks: null;
+} | {
+  _id: string;
+  _type: "blogPost";
+  siteTitle: null;
+  companyEmail: null;
+  siteDescription: null;
+  companyLinks: null;
+} | {
   _id: string;
   _type: "collab";
   siteTitle: null;
@@ -7113,13 +9025,6 @@ export type SITE_SETTINGS_QUERYResult = {
 } | {
   _id: string;
   _type: "page";
-  siteTitle: null;
-  companyEmail: null;
-  siteDescription: null;
-  companyLinks: null;
-} | {
-  _id: string;
-  _type: "post";
   siteTitle: null;
   companyEmail: null;
   siteDescription: null;
@@ -7186,6 +9091,22 @@ export type EVENTS_QUERYResult = Array<{
 // Variable: EVENTS_INDEX_PAGE_QUERY
 // Query: *[_id == "eventsIndexPage"][0]{  _id,  _type,  title,  backgroundImage{    asset,    alt,    hotspot,    crop  },  subtitle,  noUpcomingEventsMessage,  noPastEventsMessage}
 export type EVENTS_INDEX_PAGE_QUERYResult = {
+  _id: string;
+  _type: "blogIndexPage";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: string | null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+} | {
+  _id: string;
+  _type: "blogPost";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: string | null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+} | {
   _id: string;
   _type: "collab";
   title: null;
@@ -7257,14 +9178,6 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   title: string | null;
   backgroundImage: null;
   subtitle: string | null;
-  noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
-} | {
-  _id: string;
-  _type: "post";
-  title: string | null;
-  backgroundImage: null;
-  subtitle: null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
 } | {
@@ -8829,9 +10742,6 @@ export type FOOTER_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"post\" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n  _id,\n  title,\n  slug,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt\n}": POSTS_QUERYResult;
-    "*[_type == \"post\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": POSTS_SLUGS_QUERYResult;
-    "*[_type == \"post\" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage{\n    asset,\n    alt\n  },\n  publishedAt,\n  relatedPosts[]->{\n    _id,\n    title,\n    slug,\n    mainImage{\n      asset,\n      alt\n    },\n    publishedAt\n  }\n}": POST_QUERYResult;
     "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  subtitle,\n  alignment,\n  slug,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n\n      }\n    }\n  }\n},\n  mainImage{\n    asset,\n    alt\n  }\n}": PAGE_QUERYResult;
     "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  enableHeroCallToAction,\n  heroCallToAction{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  heroContentPosition,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n\n      }\n    }\n  }\n}\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  },\n  horizontalNav[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  verticalNav[]{\n    _type,\n    _type == \"navLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n    _type == \"divider\" => {...}\n  }\n}": HEADER_QUERYResult;

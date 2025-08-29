@@ -4,7 +4,7 @@ import React from 'react';
 import BodyTextPreview, { type BlockStyleProps } from '../components/BodyTextPreview';
 
 /**
- * This is the schema type for block content used in the post document type
+ * This is the schema type for block content used across various document types
  * Importing this type into the studio configuration's `schema` property
  * lets you reuse it in other document types with:
  *  {

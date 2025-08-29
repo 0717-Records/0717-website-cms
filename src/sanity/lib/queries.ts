@@ -96,43 +96,6 @@ const recursiveContent = `content[]{${contentProjection},
   }
 }`;
 
-export const POSTS_QUERY =
-  defineQuery(`*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{
-  _id,
-  title,
-  slug,
-  body,
-  mainImage{
-    asset,
-    alt
-  },
-  publishedAt
-}`);
-
-export const POSTS_SLUGS_QUERY = defineQuery(`*[_type == "post" && defined(slug.current)]{ 
-  "slug": slug.current
-}`);
-
-export const POST_QUERY = defineQuery(`*[_type == "post" && slug.current == $slug][0]{
-  _id,
-  title,
-  body,
-  mainImage{
-    asset,
-    alt
-  },
-  publishedAt,
-  relatedPosts[]->{
-    _id,
-    title,
-    slug,
-    mainImage{
-      asset,
-      alt
-    },
-    publishedAt
-  }
-}`);
 
 export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slug][0]{
   _id,

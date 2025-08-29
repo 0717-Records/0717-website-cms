@@ -2,6 +2,4 @@
 export type {
   HOME_PAGE_QUERYResult,
   PAGE_QUERYResult,
-  POSTS_QUERYResult,
-  POST_QUERYResult,
 } from '@/sanity/types';

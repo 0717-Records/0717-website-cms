@@ -49,14 +49,14 @@ This is a Next.js website with Sanity CMS integration. The project uses TypeScri
 ### Data Fetching
 
 - Use action functions from `src/actions/` instead of direct sanityFetch calls
-- Actions should be organized by feature (pages, posts, etc.)
+- Actions should be organized by feature (pages, blog posts, events, collabs, etc.)
 - Always use proper TypeScript types from Sanity's generated types
 - Handle null/undefined cases gracefully
 
 ### Sanity Integration
 
 - Use generated types from `src/sanity/types.ts`
-- Prefer query result types (e.g., `POSTS_QUERYResult`) over base types
+- Prefer query result types (e.g., `PAGE_QUERYResult`) over base types
 - Keep queries in `src/sanity/lib/queries.ts`
 - Use `sanityFetch` from live.ts for real-time updates
 - **Implement live editing for all new components and blocks** by adding proper data attributes (see `docs/sanity-live-editing-guide.md` for detailed implementation patterns)
@@ -192,8 +192,8 @@ const NavigationComponent = () => {
   return (
     <nav>
       {/* Internal links - always use Next.js Link */}
-      <Link href="/posts" className="hover:text-pink-500">
-        Posts
+      <Link href="/blog-posts" className="hover:text-pink-500">
+        Blog Posts
       </Link>
 
       {/* External links - use regular anchor tags */}

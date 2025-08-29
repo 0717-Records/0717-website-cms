@@ -70,10 +70,32 @@ export const structure: StructureResolver = (S) =>
 
       // === BLOG ===
       S.listItem()
-        .id('posts')
+        .id('blog')
         .title('📝 Blog')
         .child(
-          S.documentTypeList('post').title('Posts')
+          S.list()
+            .title('Blog Management')
+            .items([
+              // Blog Index Page - Singleton
+              S.listItem()
+                .id('blogIndexPage')
+                .schemaType('blogIndexPage')
+                .title('Blog Index Page')
+                .child(
+                  S.editor()
+                    .id('blogIndexPage')
+                    .schemaType('blogIndexPage')
+                    .documentId('blogIndexPage')
+                    .title('Blog Index Page')
+                ),
+              // Individual Blog Posts
+              S.listItem()
+                .id('blogPosts')
+                .title('Blog Posts')
+                .child(
+                  S.documentTypeList('blogPost').title('Blog Posts')
+                ),
+            ])
         ),
 
       S.divider(),
