@@ -1,9 +1,11 @@
 import { defineType, defineField } from 'sanity';
+import { RemoveIcon } from '@sanity/icons';
 
 export const dividerType = defineType({
   name: 'divider',
   title: 'Divider',
   type: 'object',
+  icon: RemoveIcon,
   options: {
     columns: 1,
     collapsible: false,

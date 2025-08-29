@@ -40,17 +40,31 @@ export const navLinkType = defineType({
     select: {
       title: 'label',
       linkType: 'linkType',
-      internalLink: 'internalLink.title',
+      internalLinkTitle: 'internalLink.title',
+      internalLinkName: 'internalLink.name',
+      internalLinkType: 'internalLink._type',
       externalUrl: 'externalUrl',
     },
     prepare(selection) {
-      const { title, linkType, internalLink, externalUrl } = selection;
+      const { title, linkType, internalLinkTitle, internalLinkName, internalLinkType, externalUrl } = selection;
       let subtitle = '';
       
       if (linkType === 'internal') {
-        subtitle = internalLink ? `→ ${internalLink}` : '→ Home Page';
+        if (internalLinkTitle) {
+          subtitle = `→ ${internalLinkTitle}`;
+        } else if (internalLinkName) {
+          subtitle = `→ ${internalLinkName}`;
+        } else if (internalLinkType === 'homePage') {
+          subtitle = '→ Home Page';
+        } else if (internalLinkType) {
+          subtitle = `→ ${internalLinkType}`;
+        } else {
+          subtitle = '→ Home Page (default)';
+        }
       } else if (linkType === 'external') {
-        subtitle = externalUrl ? `→ ${externalUrl}` : '→ External URL';
+        subtitle = externalUrl ? `→ ${externalUrl}` : '→ No URL specified';
+      } else {
+        subtitle = '→ Link type not specified';
       }
       
       return {
