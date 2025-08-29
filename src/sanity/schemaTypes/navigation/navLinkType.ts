@@ -44,22 +44,31 @@ export const navLinkType = defineType({
       internalLinkName: 'internalLink.name',
       internalLinkType: 'internalLink._type',
       externalUrl: 'externalUrl',
+      pageSectionId: 'pageSectionId',
     },
     prepare(selection) {
-      const { title, linkType, internalLinkTitle, internalLinkName, internalLinkType, externalUrl } = selection;
+      const { title, linkType, internalLinkTitle, internalLinkName, internalLinkType, externalUrl, pageSectionId } = selection;
       let subtitle = '';
       
       if (linkType === 'internal') {
+        let pageName = '';
         if (internalLinkTitle) {
-          subtitle = `→ ${internalLinkTitle}`;
+          pageName = internalLinkTitle;
         } else if (internalLinkName) {
-          subtitle = `→ ${internalLinkName}`;
+          pageName = internalLinkName;
         } else if (internalLinkType === 'homePage') {
-          subtitle = '→ Home Page';
+          pageName = 'Home Page';
         } else if (internalLinkType) {
-          subtitle = `→ ${internalLinkType}`;
+          pageName = internalLinkType;
         } else {
-          subtitle = '→ Home Page (default)';
+          pageName = 'Home Page (default)';
+        }
+        
+        subtitle = `→ ${pageName}`;
+        
+        // Append anchor ID if specified
+        if (pageSectionId) {
+          subtitle += ` → #${pageSectionId}`;
         }
       } else if (linkType === 'external') {
         subtitle = externalUrl ? `→ ${externalUrl}` : '→ No URL specified';
