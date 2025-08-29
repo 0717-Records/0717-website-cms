@@ -42,6 +42,7 @@ import { collabPageSectionType } from './collabPageSectionType';
 import { favouritesType } from './favouritesType';
 import { companyLinksArrayType, collabLinksArrayType } from './shared/socialLinksArrayType';
 import { sideContentBlockType, sideContentType } from './shared/sideContentBlockType';
+import { navLinkType } from './navigation/navLinkType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -91,5 +92,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     collabLinksArrayType,
     sideContentBlockType,
     sideContentType,
+    // Navigation Components
+    navLinkType,
   ],
 };

@@ -1,5 +1,5 @@
 import { MenuIcon } from '@sanity/icons';
-import { defineField, defineType } from 'sanity';
+import { defineField, defineType, defineArrayMember } from 'sanity';
 
 export const headerType = defineType({
   name: 'header',
@@ -16,43 +16,38 @@ export const headerType = defineType({
       },
       description: 'Logo image for the header',
     }),
-    // defineField({
-    //   name: 'menuItems',
-    //   type: 'array',
-    //   title: 'Menu Items',
-    //   of: [
-    //     {
-    //       type: 'object',
-    //       fields: [
-    //         defineField({
-    //           name: 'label',
-    //           type: 'string',
-    //           title: 'Menu Label',
-    //           validation: (Rule) => Rule.required(),
-    //         }),
-    //         defineField({
-    //           name: 'url',
-    //           type: 'string',
-    //           title: 'URL',
-    //           description: 'Internal path (e.g., /about) or external URL',
-    //           validation: (Rule) => Rule.required(),
-    //         }),
-    //         defineField({
-    //           name: 'openInNewTab',
-    //           type: 'boolean',
-    //           title: 'Open in New Tab',
-    //           initialValue: false,
-    //         }),
-    //       ],
-    //       preview: {
-    //         select: {
-    //           title: 'label',
-    //           subtitle: 'url',
-    //         },
-    //       },
-    //     },
-    //   ],
-    // }),
+    defineField({
+      name: 'horizontalNav',
+      title: 'Horizontal Navigation',
+      type: 'array',
+      description: 'Links displayed in the horizontal navigation bar',
+      of: [
+        defineArrayMember({
+          type: 'navLink',
+        }),
+      ],
+      options: {
+        sortable: true,
+      },
+    }),
+    defineField({
+      name: 'verticalNav',
+      title: 'Vertical Navigation',
+      type: 'array',
+      description:
+        'Links displayed in the vertical navigation menu (when selecting the hamburger icon)',
+      of: [
+        defineArrayMember({
+          type: 'navLink',
+        }),
+        defineArrayMember({
+          type: 'divider',
+        }),
+      ],
+      options: {
+        sortable: true,
+      },
+    }),
   ],
   preview: {
     prepare() {
