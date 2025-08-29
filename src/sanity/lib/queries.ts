@@ -196,6 +196,41 @@ export const EVENTS_INDEX_PAGE_QUERY = defineQuery(`*[_id == "eventsIndexPage"][
   noPastEventsMessage
 }`);
 
+// Blog Post Queries
+export const BLOG_POSTS_QUERY = defineQuery(`*[_type == "blogPost"]|order(coalesce(overrideDate, _createdAt) desc){
+  _id,
+  _createdAt,
+  title,
+  subtitle,
+  author,
+  heroImage{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
+  hasOverrideDate,
+  overrideDate,
+  hasClosingCard,
+  closingCard
+}`);
+
+export const BLOG_INDEX_PAGE_QUERY = defineQuery(`*[_id == "blogIndexPage"][0]{
+  _id,
+  _type,
+  title,
+  heroImage{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
+  subtitle,
+  noArticlesMessage,
+  hasClosingCard,
+  closingCard
+}`);
+
 // Side content projection for sidebar sections
 const sideContentProjection = `sideContent[]{
   _type,
