@@ -70,19 +70,14 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
         </div>
 
         {/* Menu Navigation */}
-        <div 
-          className='overflow-y-scroll overflow-x-hidden'
+        <div
+          className='flex-1 overflow-y-auto overflow-x-hidden'
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#d1d5db transparent',
             WebkitOverflowScrolling: 'touch',
             overscrollBehavior: 'contain',
             touchAction: 'pan-y',
-            position: 'absolute',
-            top: '120px',
-            bottom: '0',
-            left: '0',
-            right: '0',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.scrollbarColor = '#9ca3af transparent';
@@ -92,35 +87,35 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
           }}>
           <nav className='px-10 py-12'>
             <div className='space-y-6'>
-            {navLinks && navLinks.length > 0 ? (
-              navLinks.map((item, index) => {
-                if (isNavigationLink(item)) {
-                  const linkProps = getNavLinkProps(item);
-                  const label = getNavLinkLabel(item);
-                  return (
-                    <div key={`nav-link-${index}`}>
-                      <Link
-                        {...linkProps}
-                        onClick={onClose}
-                        className='block text-body-xl uppercase font-medium text-black hover:text-brand-secondary transition-colors'>
-                        {label}
-                      </Link>
-                    </div>
-                  );
-                } else if (isNavigationDivider(item)) {
-                  return (
-                    <div key={`nav-divider-${index}`} className='py-2'>
-                      <Divider isSmall alignment='left' />
-                    </div>
-                  );
-                }
-                return null;
-              })
-            ) : (
-              <div className='text-body-base text-gray-500 text-center'>
-                No navigation links configured
-              </div>
-            )}
+              {navLinks && navLinks.length > 0 ? (
+                navLinks.map((item, index) => {
+                  if (isNavigationLink(item)) {
+                    const linkProps = getNavLinkProps(item);
+                    const label = getNavLinkLabel(item);
+                    return (
+                      <div key={`nav-link-${index}`}>
+                        <Link
+                          {...linkProps}
+                          onClick={onClose}
+                          className='block text-body-xl uppercase font-medium text-black hover:text-brand-secondary transition-colors'>
+                          {label}
+                        </Link>
+                      </div>
+                    );
+                  } else if (isNavigationDivider(item)) {
+                    return (
+                      <div key={`nav-divider-${index}`} className='py-2'>
+                        <Divider isSmall alignment='left' />
+                      </div>
+                    );
+                  }
+                  return null;
+                })
+              ) : (
+                <div className='text-body-base text-gray-500 text-center'>
+                  No navigation links configured
+                </div>
+              )}
             </div>
           </nav>
         </div>
