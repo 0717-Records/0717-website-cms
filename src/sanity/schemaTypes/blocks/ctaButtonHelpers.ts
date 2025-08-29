@@ -22,7 +22,7 @@ export const createCTAButtonFields = (options: CTAButtonOptions = {}) => {
       { name: 'content', title: 'Content' },
       { name: 'styling', title: 'Styling' },
       { name: 'link', title: 'Link' },
-    ]
+    ],
   } = options;
 
   const fields: ReturnType<typeof defineField>[] = [
@@ -32,7 +32,7 @@ export const createCTAButtonFields = (options: CTAButtonOptions = {}) => {
       type: 'string',
       group: groups.length > 0 ? 'content' : undefined,
       description: 'The text that will appear on the button',
-      validation: (Rule) => Rule.required().min(1).max(50),
+      validation: (Rule) => Rule.max(50),
     }),
   ];
 
@@ -96,7 +96,14 @@ export const createCTAButtonPreview = () => ({
     externalUrl: 'externalUrl',
     openInNewTab: 'openInNewTab',
   },
-  prepare({ text, variant, linkType, internalTitle, externalUrl, openInNewTab }: {
+  prepare({
+    text,
+    variant,
+    linkType,
+    internalTitle,
+    externalUrl,
+    openInNewTab,
+  }: {
     text?: string;
     variant?: string;
     linkType?: string;
@@ -106,7 +113,7 @@ export const createCTAButtonPreview = () => ({
   }) {
     const buttonText = text || 'Untitled Button';
     const style = variant === 'outline' ? 'Outline' : 'Filled';
-    
+
     let linkInfo = 'No link';
     if (linkType === 'internal' && internalTitle) {
       const newTabIndicator = openInNewTab ? ' ↗' : '';

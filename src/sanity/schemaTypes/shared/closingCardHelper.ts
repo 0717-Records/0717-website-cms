@@ -19,7 +19,7 @@ export const createClosingCardFields = (options: ClosingCardOptions = {}) => {
       title: 'Show Closing Card',
       type: 'boolean',
       group,
-      description: 'Display a closing card at the bottom of the page with a call-to-action',
+      description: 'Display a closing card at the bottom of the page with optional content and call-to-action',
       initialValue: enableByDefault,
     }),
     defineField({
@@ -41,6 +41,15 @@ export const createClosingCardFields = (options: ClosingCardOptions = {}) => {
       hidden: ({ parent }) => !parent?.hasClosingCard,
     }),
     defineField({
+      name: 'hasClosingCardCTA',
+      title: 'Include CTA Button',
+      type: 'boolean',
+      group,
+      description: 'Add an optional call-to-action button to the closing card',
+      initialValue: false,
+      hidden: ({ parent }) => !parent?.hasClosingCard,
+    }),
+    defineField({
       name: 'closingCardCTA',
       title: 'Closing Card CTA Button',
       type: 'object',
@@ -51,7 +60,7 @@ export const createClosingCardFields = (options: ClosingCardOptions = {}) => {
         includeVariant: true,
         groups: [], // No groups for nested fields
       }),
-      hidden: ({ parent }) => !parent?.hasClosingCard,
+      hidden: ({ parent }) => !parent?.hasClosingCard || !parent?.hasClosingCardCTA,
     }),
   ];
 };

@@ -949,6 +949,7 @@ export type BlogPost = {
   hasClosingCard?: boolean;
   closingCardTitle?: string;
   closingCardMessage?: string;
+  hasClosingCardCTA?: boolean;
   closingCardCTA?: {
     text?: string;
     variant?: "filled" | "outline";
@@ -1005,6 +1006,7 @@ export type BlogIndexPage = {
   hasClosingCard?: boolean;
   closingCardTitle?: string;
   closingCardMessage?: string;
+  hasClosingCardCTA?: boolean;
   closingCardCTA?: {
     text?: string;
     variant?: "filled" | "outline";

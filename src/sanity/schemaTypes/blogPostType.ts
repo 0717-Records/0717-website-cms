@@ -70,7 +70,7 @@ export const blogPostType = defineType({
       name: 'author',
       type: 'string',
       title: 'Author',
-      description: 'Author of the blog article',
+      description: 'Author of the blog article (optional)',
       validation: (Rule) => Rule.max(100),
       group: 'meta',
     }),
