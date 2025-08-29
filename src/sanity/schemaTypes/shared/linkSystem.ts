@@ -145,7 +145,7 @@ export const createLinkFieldSet = (
       group,
       description:
         pageSectionConfig.description ||
-        'Select a section from the chosen page to link directly to it, or type manually',
+        'Select a section from the chosen page to link directly to it. Use the dropdown to choose from available sections.',
       components: {
         input: SectionDropdown,
       },

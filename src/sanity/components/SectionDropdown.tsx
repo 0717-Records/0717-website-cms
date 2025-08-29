@@ -187,13 +187,12 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
                 type='text'
                 value={isOpen ? searchTerm : value || ''}
                 placeholder={
-                  isLoading ? 'Loading sections...' : 'Search sections or type manually...'
+                  isLoading ? 'Loading sections...' : 'Select from dropdown only'
                 }
+                readOnly={!isOpen}
                 onChange={(e) => {
                   if (isOpen) {
                     setSearchTerm(e.target.value);
-                  } else {
-                    onChange(e.target.value ? set(e.target.value) : unset());
                   }
                 }}
                 onFocus={() => setIsOpen(true)}
@@ -207,6 +206,10 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
                   fontSize: '14px',
                   fontFamily:
                     'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+                  backgroundColor: isOpen ? '#fff' : '#f8f9fa',
+                  cursor: isOpen ? 'text' : 'pointer',
+                  color: '#495057',
+                  borderStyle: isOpen ? 'solid' : 'dashed',
                 }}
               />
 
@@ -299,7 +302,7 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
                 fontFamily:
                   'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
               }}>
-              Will link to: <strong>#{value}</strong>
+              Selected anchor: <strong>#{value}</strong> • Click field to change selection
             </div>
           )}
 

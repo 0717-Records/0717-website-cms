@@ -32,7 +32,7 @@ export const navLinkType = defineType({
         description: 'Check this to open the link in a new tab/window',
       },
       pageSectionConfig: {
-        description: 'Select a section from the chosen page to link directly to it, or type manually',
+        description: 'Select a section from the chosen page to link directly to it. Use the dropdown to choose from available sections.',
       },
     }),
   ],

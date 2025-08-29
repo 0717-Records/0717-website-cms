@@ -50,8 +50,7 @@ export function createSectionSchema(config: SectionFactoryConfig) {
       name: 'anchorId',
       title: 'Anchor ID',
       type: 'string',
-      description: 'Auto-generated from title whenever the title changes. Updates automatically as you type the title. Use "Regenerate" to manually recreate the ID.',
-      placeholder: 'e.g., about-our-services',
+      description: 'Auto-generated from the section title. This field is read-only to prevent errors. Use the "Regenerate" button to recreate the ID if needed.',
       components: {
         input: AnchorIdInput,
       },

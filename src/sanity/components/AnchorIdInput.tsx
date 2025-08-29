@@ -105,34 +105,39 @@ export const AnchorIdInput = (props: ExtendedProps) => {
   );
 
   // Simple reference update function
-  const updateReferences = useCallback(async (oldAnchorId: string, newAnchorId: string) => {
-    if (!document?._id || !oldAnchorId || !newAnchorId || oldAnchorId === newAnchorId) {
-      return;
-    }
-
-    setIsUpdatingReferences(true);
-    setUpdateStatus('Searching for references...');
-
-    try {
-      const result = await referenceUpdater.current.updateAnchorReferences({
-        documentId: document._id,
-        oldAnchorId,
-        newAnchorId,
-        sectionKey: parent._key
-      });
-
-      if (result.success && result.updatedReferences > 0) {
-        setUpdateStatus(`✅ Updated ${result.updatedReferences} reference${result.updatedReferences !== 1 ? 's' : ''}`);
-      } else {
-        setUpdateStatus('ℹ️ No references found to update');
+  const updateReferences = useCallback(
+    async (oldAnchorId: string, newAnchorId: string) => {
+      if (!document?._id || !oldAnchorId || !newAnchorId || oldAnchorId === newAnchorId) {
+        return;
       }
-    } catch {
-      setUpdateStatus('❌ Failed to update references');
-    } finally {
-      setIsUpdatingReferences(false);
-      setTimeout(() => setUpdateStatus(''), 3000);
-    }
-  }, [document?._id, parent._key]);
+
+      setIsUpdatingReferences(true);
+      setUpdateStatus('Searching for references...');
+
+      try {
+        const result = await referenceUpdater.current.updateAnchorReferences({
+          documentId: document._id,
+          oldAnchorId,
+          newAnchorId,
+          sectionKey: parent._key,
+        });
+
+        if (result.success && result.updatedReferences > 0) {
+          setUpdateStatus(
+            `✅ Updated ${result.updatedReferences} reference${result.updatedReferences !== 1 ? 's' : ''}`
+          );
+        } else {
+          setUpdateStatus('ℹ️ No references found to update');
+        }
+      } catch {
+        setUpdateStatus('❌ Failed to update references');
+      } finally {
+        setIsUpdatingReferences(false);
+        setTimeout(() => setUpdateStatus(''), 3000);
+      }
+    },
+    [document?._id, parent._key]
+  );
 
   // Debounced auto-generate anchor ID when title changes
   useEffect(() => {
@@ -169,7 +174,7 @@ export const AnchorIdInput = (props: ExtendedProps) => {
             onChange(set(generated));
             // Only store the generated value AFTER successful onChange
             lastGeneratedRef.current = generated;
-            
+
             // Trigger reference update if we have a valid old value
             if (oldValue && oldValue !== generated && oldValue.length > 0) {
               setTimeout(() => {
@@ -243,8 +248,8 @@ export const AnchorIdInput = (props: ExtendedProps) => {
             {...elementProps}
             type='text'
             value={value || ''}
-            placeholder="e.g., about-our-services"
-            onChange={(e) => onChange(e.target.value ? set(e.target.value) : unset())}
+            placeholder='Auto-generated from section title'
+            readOnly
             style={{
               width: '100%',
               padding: '10px 12px',
@@ -256,7 +261,9 @@ export const AnchorIdInput = (props: ExtendedProps) => {
                 'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
               backgroundColor: isGenerating ? '#f9fafb' : '',
               opacity: isGenerating ? 0.7 : 1,
-              cursor: isGenerating ? 'wait' : 'text',
+              cursor: isGenerating ? 'wait' : 'not-allowed',
+              color: isGenerating ? '#495057' : '#ffffff',
+              borderStyle: 'dashed',
             }}
             disabled={isGenerating}
           />
@@ -318,7 +325,7 @@ export const AnchorIdInput = (props: ExtendedProps) => {
             fontFamily:
               'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
           }}>
-          Will create link: <strong>#{value}</strong>
+          Auto-generated anchor: <strong>#{value}</strong> • Use &ldquo;Regenerate&rdquo; to update
         </div>
       )}
       {isGenerating && (
@@ -350,7 +357,11 @@ export const AnchorIdInput = (props: ExtendedProps) => {
           style={{
             marginTop: '8px',
             fontSize: '12px',
-            color: updateStatus.includes('✅') ? '#10b981' : updateStatus.includes('❌') ? '#ef4444' : '#6b7280',
+            color: updateStatus.includes('✅')
+              ? '#10b981'
+              : updateStatus.includes('❌')
+                ? '#ef4444'
+                : '#6b7280',
             fontFamily:
               'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
           }}>
