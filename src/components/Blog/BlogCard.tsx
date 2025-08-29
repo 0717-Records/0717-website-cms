@@ -31,15 +31,7 @@ function formatBlogDate(
 }
 
 const BlogCard = (props: BlogCardProps) => {
-  const {
-    title,
-    subtitle,
-    author,
-    heroImage,
-    _createdAt,
-    overrideDate,
-    hasOverrideDate,
-  } = props;
+  const { title, subtitle, author, heroImage, _createdAt, overrideDate, hasOverrideDate } = props;
 
   const formattedDate = formatBlogDate(_createdAt, overrideDate, hasOverrideDate);
   const imageUrl = heroImage ? urlFor(heroImage).url() : null;
@@ -77,18 +69,20 @@ const BlogCard = (props: BlogCardProps) => {
           {title}
         </h3>
 
-        {/* Author */}
-        {author && (
-          <div className='flex items-center text-text-subtle text-body-sm mb-2'>
-            <FaUser className='mr-2 text-brand-secondary' />
-            <span>{author}</span>
-          </div>
-        )}
+        <div className='flex justify-between'>
+          {/* Author */}
+          {author && (
+            <div className='flex items-center text-text-subtle text-body-sm mb-2'>
+              <FaUser className='mr-2 text-brand-secondary' />
+              <span>{author}</span>
+            </div>
+          )}
 
-        {/* Date */}
-        <div className='flex items-center text-text-subtle text-body-sm mb-3'>
-          <FaCalendar className='mr-2 text-brand-secondary' />
-          <span>{formattedDate}</span>
+          {/* Date */}
+          <div className='flex items-center text-text-subtle text-body-sm mb-3'>
+            <FaCalendar className='mr-2 text-brand-secondary' />
+            <span>{formattedDate}</span>
+          </div>
         </div>
 
         {/* Subtitle */}

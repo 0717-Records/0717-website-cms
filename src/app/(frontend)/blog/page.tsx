@@ -1,14 +1,16 @@
 import BlogList from '@/components/Blog/BlogList';
 import { getAllBlogPosts, getBlogIndexPage } from '@/actions/blog';
+import { getSiteSettings } from '@/actions/siteData';
 import PageHero from '@/components/Page/PageHero';
 import { urlFor } from '@/sanity/lib/image';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 
 export default async function BlogPage() {
-  const [blogPosts, blogIndexPage] = await Promise.all([
+  const [blogPosts, blogIndexPage, siteSettings] = await Promise.all([
     getAllBlogPosts(),
     getBlogIndexPage(),
+    getSiteSettings(),
   ]);
 
   // Get background image or fallback to placeholder
@@ -46,7 +48,7 @@ export default async function BlogPage() {
           <div className='pb-16 md:pb-24'>
             <div className='flex justify-center'>
               <div className='w-full max-w-md'>
-                <Card {...blogIndexPage.closingCard} />
+                <Card {...blogIndexPage.closingCard} email={siteSettings?.companyEmail} />
               </div>
             </div>
           </div>
