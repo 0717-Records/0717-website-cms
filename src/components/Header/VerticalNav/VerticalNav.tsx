@@ -70,13 +70,19 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
         </div>
 
         {/* Menu Navigation */}
-        <nav
-          className='flex flex-col flex-1 px-10 py-12 overflow-y-auto overflow-x-hidden min-h-0'
+        <div 
+          className='overflow-y-scroll overflow-x-hidden'
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#d1d5db transparent',
             WebkitOverflowScrolling: 'touch',
             overscrollBehavior: 'contain',
+            touchAction: 'pan-y',
+            position: 'absolute',
+            top: '120px',
+            bottom: '0',
+            left: '0',
+            right: '0',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.scrollbarColor = '#9ca3af transparent';
@@ -84,7 +90,8 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
           onMouseLeave={(e) => {
             e.currentTarget.style.scrollbarColor = '#d1d5db transparent';
           }}>
-          <div className='space-y-6'>
+          <nav className='px-10 py-12'>
+            <div className='space-y-6'>
             {navLinks && navLinks.length > 0 ? (
               navLinks.map((item, index) => {
                 if (isNavigationLink(item)) {
@@ -114,8 +121,9 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
                 No navigation links configured
               </div>
             )}
-          </div>
-        </nav>
+            </div>
+          </nav>
+        </div>
       </div>
     </div>
   );
