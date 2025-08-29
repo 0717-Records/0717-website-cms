@@ -75,6 +75,8 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#d1d5db transparent',
+            WebkitOverflowScrolling: 'touch',
+            overscrollBehavior: 'contain',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.scrollbarColor = '#9ca3af transparent';
