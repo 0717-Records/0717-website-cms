@@ -41,7 +41,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
 
       {/* Menu Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-80 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl transition-transform duration-300 ease-in-out flex flex-col ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
         {/* Menu Header */}
@@ -71,7 +71,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
 
         {/* Menu Navigation */}
         <nav 
-          className='flex flex-col flex-1 px-10 py-12 overflow-y-auto overflow-x-hidden'
+          className='flex flex-col flex-1 px-10 py-12 overflow-y-auto overflow-x-hidden min-h-0'
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#d1d5db transparent',
@@ -82,7 +82,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
           onMouseLeave={(e) => {
             e.currentTarget.style.scrollbarColor = '#d1d5db transparent';
           }}>
-          <div className='space-y-6 min-h-0'>
+          <div className='space-y-6'>
             {navLinks && navLinks.length > 0 ? (
               navLinks.map((item, index) => {
                 if (isNavigationLink(item)) {
