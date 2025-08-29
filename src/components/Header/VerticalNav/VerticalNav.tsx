@@ -8,17 +8,14 @@ import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 import type { HEADER_QUERYResult } from '@/sanity/types';
 import MenuButton from '../MenuButton';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
+import Divider from '@/components/UI/Divider';
+import { VerticalNavData, isNavigationLink, isNavigationDivider, getNavLinkProps, getNavLinkLabel } from '@/utils/navigationHelpers';
 import styles from './VerticalNav.module.css';
-
-interface NavLink {
-  href: string;
-  label: string;
-}
 
 interface VerticalNavProps {
   isMenuOpen: boolean;
   onClose: () => void;
-  navLinks: NavLink[];
+  navLinks: VerticalNavData | null;
   headerData: HEADER_QUERYResult | null;
 }
 
@@ -67,19 +64,45 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
         </div>
 
         {/* Menu Navigation */}
-        <nav className='flex flex-col justify-center flex-1 px-10 py-12'>
-          <ul className='space-y-6'>
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={onClose}
-                  className='block text-body-xl font-medium text-black hover:text-brand-secondary transition-colors'>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <nav className='flex flex-col justify-center flex-1 px-10 py-12 overflow-y-auto overflow-x-hidden'>
+          <div className='space-y-6' style={{
+            scrollbarWidth: 'thin',
+            scrollbarColor: '#d1d5db transparent',
+          }} onMouseEnter={(e) => {
+            e.currentTarget.style.scrollbarColor = '#9ca3af transparent';
+          }} onMouseLeave={(e) => {
+            e.currentTarget.style.scrollbarColor = '#d1d5db transparent';
+          }}>
+            {navLinks && navLinks.length > 0 ? (
+              navLinks.map((item, index) => {
+                if (isNavigationLink(item)) {
+                  const linkProps = getNavLinkProps(item);
+                  const label = getNavLinkLabel(item);
+                  return (
+                    <div key={`nav-link-${index}`}>
+                      <Link
+                        {...linkProps}
+                        onClick={onClose}
+                        className='block text-body-xl font-medium text-black hover:text-brand-secondary transition-colors'>
+                        {label}
+                      </Link>
+                    </div>
+                  );
+                } else if (isNavigationDivider(item)) {
+                  return (
+                    <div key={`nav-divider-${index}`} className='py-2'>
+                      <Divider className='py-4' />
+                    </div>
+                  );
+                }
+                return null;
+              })
+            ) : (
+              <div className='text-body-base text-gray-500 text-center'>
+                No navigation links configured
+              </div>
+            )}
+          </div>
         </nav>
       </div>
     </div>

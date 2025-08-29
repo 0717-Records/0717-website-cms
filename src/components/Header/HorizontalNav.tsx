@@ -2,29 +2,33 @@
 
 import React from 'react';
 import Link from 'next/link';
-
-interface NavLink {
-  href: string;
-  label: string;
-}
+import { HorizontalNavData, getNavLinkProps, getNavLinkLabel } from '@/utils/navigationHelpers';
 
 interface HorizontalNavProps {
-  navLinks: NavLink[];
+  navLinks: HorizontalNavData | null;
 }
 
 const HorizontalNav = ({ navLinks }: HorizontalNavProps) => {
+  if (!navLinks || navLinks.length === 0) {
+    return null;
+  }
+
   return (
     <nav className=''>
       <ul className='hidden lg:flex items-center gap-6'>
-        {navLinks.map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              className='text-body-xl font-medium hover:text-brand-secondary transition-colors'>
-              {link.label}
-            </Link>
-          </li>
-        ))}
+        {navLinks.map((link, index) => {
+          const linkProps = getNavLinkProps(link);
+          const label = getNavLinkLabel(link);
+          return (
+            <li key={`${link.computedHref}-${index}`}>
+              <Link
+                {...linkProps}
+                className='text-body-xl font-medium hover:text-brand-secondary transition-colors'>
+                {label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

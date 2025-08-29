@@ -10,15 +10,6 @@ import HorizontalNav from './HorizontalNav';
 import MenuButton from './MenuButton';
 import VerticalNav from './VerticalNav/VerticalNav';
 
-const navLinks = [
-  { href: '#news', label: 'NEWS' },
-  { href: '#events', label: 'EVENTS' },
-  { href: '#collabs', label: 'COLLABS' },
-  { href: '#favs', label: 'OUR FAVS' },
-  { href: '/blog', label: 'BLOG' },
-  { href: '#about', label: 'ABOUT US' },
-  { href: '#contact', label: 'CONTACT' },
-];
 
 interface HeaderProps {
   headerData: HEADER_QUERYResult | null;
@@ -88,7 +79,7 @@ const Header = ({ headerData }: HeaderProps) => {
 
         {/* Desktop Navigation */}
         <div className='flex-grow flex justify-end'>
-          <HorizontalNav navLinks={navLinks} />
+          <HorizontalNav navLinks={headerData?.horizontalNav || null} />
         </div>
 
         {/* Hamburger Menu Button */}
@@ -99,7 +90,7 @@ const Header = ({ headerData }: HeaderProps) => {
       <VerticalNav
         isMenuOpen={isMenuOpen}
         onClose={closeMenu}
-        navLinks={navLinks}
+        navLinks={headerData?.verticalNav || null}
         headerData={headerData}
       />
     </>
