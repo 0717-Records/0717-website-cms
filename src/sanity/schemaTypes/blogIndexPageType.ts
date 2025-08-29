@@ -4,7 +4,6 @@
 
 import { DocumentTextIcon } from '@sanity/icons';
 import { defineField, defineType } from 'sanity';
-import { createClosingCardFields } from './shared/closingCardHelper';
 
 export const blogIndexPageType = defineType({
   name: 'blogIndexPage',
@@ -70,9 +69,21 @@ export const blogIndexPageType = defineType({
       validation: (Rule) => Rule.max(200),
       group: 'content',
     }),
-    ...createClosingCardFields({
+    defineField({
+      name: 'hasClosingCard',
+      title: 'Show Closing Card',
+      type: 'boolean',
       group: 'closingCard',
-      enableByDefault: false,
+      description: 'Display a closing card at the bottom of the page',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'closingCard',
+      title: 'Closing Card',
+      type: 'card',
+      group: 'closingCard',
+      description: 'Card displayed at the bottom of the page with optional call-to-action',
+      hidden: ({ parent }) => !parent?.hasClosingCard,
     }),
   ],
   preview: {

@@ -357,41 +357,6 @@ export type CardGrid = {
   } & Card>;
 };
 
-export type Card = {
-  _type: "card";
-  cardStyle?: "feature" | "statement";
-  icon?: Icon;
-  title?: string;
-  bodyText?: string;
-  buttonType?: "none" | "link" | "email";
-  text?: string;
-  variant?: "filled" | "outline";
-  linkType?: "internal" | "external";
-  internalLink?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "page";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "homePage";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "collab";
-  };
-  externalUrl?: string;
-  openInNewTab?: boolean;
-};
-
 export type Icon = {
   _type: "icon";
   image?: {
@@ -844,6 +809,91 @@ export type Favourites = {
   linkLabel?: string;
 };
 
+export type Collab = {
+  _id: string;
+  _type: "collab";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  genre?: string;
+  location?: string;
+  order?: number;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  previewImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  shortDescription?: string;
+  useShortDescriptionForCards?: boolean;
+  cardDescription?: string;
+  bio?: string;
+  mainContent?: Array<{
+    _key: string;
+  } & CollabPageSection>;
+  links?: CollabLinksArray;
+  sideContent?: SideContent;
+};
+
+export type CollabLinksArray = {
+  _type: "collabLinksArray";
+  socialLinksArray?: Array<{
+    platform?: "facebook" | "instagram" | "youtube" | "twitter" | "soundcloud" | "bandcamp" | "spotify" | "itunes" | "officialWebsite" | "genericLink";
+    url?: string;
+    customTitle?: string;
+    hideFromFooter?: boolean;
+    _type: "socialLinkItem";
+    _key: string;
+  }>;
+};
+
+export type EventsIndexPage = {
+  _id: string;
+  _type: "eventsIndexPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  backgroundImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  subtitle?: string;
+  noUpcomingEventsMessage?: string;
+  noPastEventsMessage?: string;
+};
+
 export type Event = {
   _id: string;
   _type: "event";
@@ -947,38 +997,7 @@ export type BlogPost = {
     _key: string;
   } & CompanyLinksBlock>;
   hasClosingCard?: boolean;
-  closingCardTitle?: string;
-  closingCardMessage?: string;
-  hasClosingCardCTA?: boolean;
-  closingCardCTA?: {
-    text?: string;
-    variant?: "filled" | "outline";
-    linkType?: "internal" | "external";
-    internalLink?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "page";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "homePage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "collab";
-    };
-    externalUrl?: string;
-    pageSectionId?: string;
-    openInNewTab?: boolean;
-  };
+  closingCard?: Card;
 };
 
 export type BlogIndexPage = {
@@ -1004,123 +1023,42 @@ export type BlogIndexPage = {
   subtitle?: string;
   noArticlesMessage?: string;
   hasClosingCard?: boolean;
-  closingCardTitle?: string;
-  closingCardMessage?: string;
-  hasClosingCardCTA?: boolean;
-  closingCardCTA?: {
-    text?: string;
-    variant?: "filled" | "outline";
-    linkType?: "internal" | "external";
-    internalLink?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "page";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "homePage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "collab";
-    };
-    externalUrl?: string;
-    pageSectionId?: string;
-    openInNewTab?: boolean;
-  };
+  closingCard?: Card;
 };
 
-export type Collab = {
-  _id: string;
-  _type: "collab";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  slug?: Slug;
-  genre?: string;
-  location?: string;
-  order?: number;
-  heroImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  previewImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  shortDescription?: string;
-  useShortDescriptionForCards?: boolean;
-  cardDescription?: string;
-  bio?: string;
-  mainContent?: Array<{
-    _key: string;
-  } & CollabPageSection>;
-  links?: CollabLinksArray;
-  sideContent?: SideContent;
-};
-
-export type CollabLinksArray = {
-  _type: "collabLinksArray";
-  socialLinksArray?: Array<{
-    platform?: "facebook" | "instagram" | "youtube" | "twitter" | "soundcloud" | "bandcamp" | "spotify" | "itunes" | "officialWebsite" | "genericLink";
-    url?: string;
-    customTitle?: string;
-    hideFromFooter?: boolean;
-    _type: "socialLinkItem";
-    _key: string;
-  }>;
-};
-
-export type EventsIndexPage = {
-  _id: string;
-  _type: "eventsIndexPage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
+export type Card = {
+  _type: "card";
+  cardStyle?: "feature" | "statement";
+  icon?: Icon;
   title?: string;
-  backgroundImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
+  bodyText?: string;
+  buttonType?: "none" | "link" | "email";
+  text?: string;
+  variant?: "filled" | "outline";
+  linkType?: "internal" | "external";
+  internalLink?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "page";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "homePage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "collab";
   };
-  subtitle?: string;
-  noUpcomingEventsMessage?: string;
-  noPastEventsMessage?: string;
+  externalUrl?: string;
+  openInNewTab?: boolean;
 };
 
 export type Page = {
@@ -1381,7 +1319,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = NavLink | SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Event | BlogPost | BlogIndexPage | Collab | CollabLinksArray | EventsIndexPage | Page | HomePage | HomeHeroCtaButton | SiteSettings | CompanyLinksArray | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = NavLink | SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | CollabLinksArray | EventsIndexPage | Event | BlogPost | BlogIndexPage | Card | Page | HomePage | HomeHeroCtaButton | SiteSettings | CompanyLinksArray | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY

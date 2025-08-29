@@ -4,7 +4,6 @@
 
 import { EditIcon } from '@sanity/icons';
 import { defineField, defineType, defineArrayMember } from 'sanity';
-import { createClosingCardFields } from './shared/closingCardHelper';
 import { commonContentBlocks } from './shared/sectionFactory';
 
 export const blogPostType = defineType({
@@ -121,9 +120,21 @@ export const blogPostType = defineType({
       },
       group: 'content',
     }),
-    ...createClosingCardFields({
+    defineField({
+      name: 'hasClosingCard',
+      title: 'Show Closing Card',
+      type: 'boolean',
       group: 'closingCard',
-      enableByDefault: false,
+      description: 'Display a closing card at the bottom of the article',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'closingCard',
+      title: 'Closing Card',
+      type: 'card',
+      group: 'closingCard',
+      description: 'Card displayed at the bottom of the article with optional call-to-action',
+      hidden: ({ parent }) => !parent?.hasClosingCard,
     }),
   ],
   preview: {
