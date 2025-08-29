@@ -24,8 +24,6 @@ export class AnchorReferenceUpdater {
    * Find all documents that reference a specific anchor ID
    */
   private async findReferencingDocuments(documentId: string, anchorId: string) {
-    console.log(`🔍 Searching for references to document: ${documentId} with anchor: ${anchorId}`);
-    
     // Query both published and draft documents
     const cleanDocId = documentId.replace('drafts.', '');
     const draftDocId = documentId.startsWith('drafts.') ? documentId : `drafts.${documentId}`;
@@ -42,29 +40,7 @@ export class AnchorReferenceUpdater {
       verticalNav
     }`;
 
-    console.log(`📋 Searching in all documents for anchor references. Target:`, { documentId, cleanDocId, draftDocId, anchorId });
     const allDocs = await this.client.fetch(query);
-    console.log(`📄 Found ${allDocs.length} total documents to check:`, allDocs.map((d: { _id: string; _type: string; title?: string }) => ({ id: d._id, type: d._type, title: d.title })));
-    
-    // Log the content structure of each document
-    allDocs.forEach((doc: { _id: string; content?: unknown; horizontalNav?: unknown; verticalNav?: unknown }) => {
-      console.log(`📝 Document ${doc._id}:`);
-      console.log(`   Content:`, doc.content ? 'exists' : 'null');
-      console.log(`   HorizontalNav:`, Array.isArray(doc.horizontalNav) ? `${doc.horizontalNav.length} items` : 'null');
-      console.log(`   VerticalNav:`, Array.isArray(doc.verticalNav) ? `${doc.verticalNav.length} items` : 'null');
-      
-      if (doc.content) {
-        console.log(`   Content structure:`, JSON.stringify(doc.content, null, 2));
-      }
-      
-      if (doc.horizontalNav) {
-        console.log(`   HorizontalNav structure:`, JSON.stringify(doc.horizontalNav, null, 2));
-      }
-      
-      if (doc.verticalNav) {
-        console.log(`   VerticalNav structure:`, JSON.stringify(doc.verticalNav, null, 2));
-      }
-    });
     
     // Filter documents that actually contain the anchor ID in their content
     const filteredDocs = allDocs.filter((doc: unknown) => {
@@ -80,14 +56,9 @@ export class AnchorReferenceUpdater {
         this.documentContainsAnchorReference(typedDoc.verticalNav, cleanDocId, anchorId) ||
         this.documentContainsAnchorReference(typedDoc.verticalNav, draftDocId, anchorId);
       
-      if (hasReference) {
-        console.log(`✅ Document ${typedDoc._id} contains reference to anchor ${anchorId}`);
-      }
-      
       return hasReference;
     });
     
-    console.log(`🎯 Filtered to ${filteredDocs.length} documents with actual anchor references`);
     return filteredDocs;
   }
 
@@ -111,24 +82,9 @@ export class AnchorReferenceUpdater {
         cards?: unknown[];
       };
       
-      // Debug: Log what we're checking
-      if (typedItem.internalLink?._ref) {
-        console.log(`🔗 Found reference:`, {
-          itemType: typedItem._type,
-          refId: typedItem.internalLink._ref,
-          pageSectionId: typedItem.pageSectionId,
-          targetDocId,
-          cleanTargetDocId,
-          anchorId,
-          refMatches: typedItem.internalLink._ref === targetDocId || typedItem.internalLink._ref === cleanTargetDocId,
-          anchorMatches: typedItem.pageSectionId === anchorId
-        });
-      }
-      
       // Check direct reference (check both draft and published versions)
       if ((typedItem.internalLink?._ref === targetDocId || typedItem.internalLink?._ref === cleanTargetDocId) && 
           typedItem.pageSectionId === anchorId) {
-        console.log(`✅ Found matching reference!`);
         return true;
       }
       
@@ -196,7 +152,6 @@ export class AnchorReferenceUpdater {
               path: `${itemPath}.pageSectionId`,
               value: newAnchorId
             });
-            console.log(`Found reference to update: ${itemPath} (${typedItem._type}) - ref: ${typedItem.internalLink?._ref}, anchor: ${oldAnchorId} -> ${newAnchorId}`);
           }
 
           // Recursively check nested content
@@ -225,7 +180,6 @@ export class AnchorReferenceUpdater {
         findAndUpdateReferences(document.verticalNav, 'verticalNav');
       }
 
-      console.log(`Found ${patches.length} patches to apply in document ${documentId}`);
 
       // Apply patches if any were found
       if (patches.length > 0) {
@@ -242,7 +196,6 @@ export class AnchorReferenceUpdater {
         });
         
         await transaction.commit();
-        console.log(`Successfully applied ${patches.length} patches`);
         return patches.length;
       }
 
@@ -259,8 +212,7 @@ export class AnchorReferenceUpdater {
   async updateAnchorReferences({
     documentId,
     oldAnchorId,
-    newAnchorId,
-    sectionKey
+    newAnchorId
   }: AnchorUpdateData): Promise<{
     success: boolean;
     updatedDocuments: number;
@@ -268,21 +220,16 @@ export class AnchorReferenceUpdater {
     error?: string;
   }> {
     try {
-      console.log(`Updating anchor references: ${oldAnchorId} -> ${newAnchorId} in document ${documentId}`);
-
       // Find all documents that reference the old anchor ID
       const referencingDocuments = await this.findReferencingDocuments(documentId, oldAnchorId);
       
       if (!referencingDocuments || referencingDocuments.length === 0) {
-        console.log('No referencing documents found');
         return {
           success: true,
           updatedDocuments: 0,
           updatedReferences: 0
         };
       }
-
-      console.log(`Found ${referencingDocuments.length} documents with potential references to update`);
 
       let totalUpdatedReferences = 0;
       let updatedDocumentsCount = 0;
@@ -300,10 +247,8 @@ export class AnchorReferenceUpdater {
           if (updatedCount && updatedCount > 0) {
             totalUpdatedReferences += updatedCount;
             updatedDocumentsCount++;
-            console.log(`Updated ${updatedCount} references in document: ${doc.title || doc._id}`);
           }
-        } catch (error) {
-          console.error(`Failed to update references in document ${doc._id}:`, error);
+        } catch {
           // Continue with other documents even if one fails
         }
       }
@@ -314,11 +259,9 @@ export class AnchorReferenceUpdater {
         updatedReferences: totalUpdatedReferences
       };
 
-      console.log('Reference update completed:', result);
       return result;
 
     } catch (error) {
-      console.error('Error in updateAnchorReferences:', error);
       return {
         success: false,
         updatedDocuments: 0,

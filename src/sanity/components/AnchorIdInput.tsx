@@ -21,7 +21,7 @@ interface ExtendedProps extends StringInputProps {
 }
 
 export const AnchorIdInput = (props: ExtendedProps) => {
-  const { value, onChange, schemaType, elementProps, path } = props;
+  const { value, onChange, elementProps, path } = props;
   const [isRegenerating, setIsRegenerating] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [isUpdatingReferences, setIsUpdatingReferences] = useState(false);
@@ -35,7 +35,7 @@ export const AnchorIdInput = (props: ExtendedProps) => {
   const referenceUpdater = useRef(new AnchorReferenceUpdater(client));
 
   // Use Sanity's useFormValue to get the parent section data
-  const document = useFormValue([]) as { content?: SectionData[] }; // Get the entire document
+  const document = useFormValue([]) as { _id?: string; content?: SectionData[] }; // Get the entire document
 
   // Get the parent path by removing the last segment (which is 'anchorId')
   const parentPath = path.slice(0, -1);
@@ -110,7 +110,6 @@ export const AnchorIdInput = (props: ExtendedProps) => {
       return;
     }
 
-    console.log('🔄 Starting reference update:', { oldAnchorId, newAnchorId });
     setIsUpdatingReferences(true);
     setUpdateStatus('Searching for references...');
 
@@ -127,8 +126,7 @@ export const AnchorIdInput = (props: ExtendedProps) => {
       } else {
         setUpdateStatus('ℹ️ No references found to update');
       }
-    } catch (error) {
-      console.error('Reference update failed:', error);
+    } catch {
       setUpdateStatus('❌ Failed to update references');
     } finally {
       setIsUpdatingReferences(false);
@@ -160,7 +158,6 @@ export const AnchorIdInput = (props: ExtendedProps) => {
           clearTimeout(safetyTimeoutRef.current);
         }
         safetyTimeoutRef.current = setTimeout(() => {
-          console.warn('Safety timeout: Forcing isGenerating to false');
           setIsGenerating(false);
         }, 2000);
 
@@ -179,8 +176,8 @@ export const AnchorIdInput = (props: ExtendedProps) => {
                 updateReferences(oldValue, generated);
               }, 500);
             }
-          } catch (error) {
-            console.error('Error setting anchor ID:', error);
+          } catch {
+            // Error setting anchor ID
           } finally {
             if (safetyTimeoutRef.current) {
               clearTimeout(safetyTimeoutRef.current);
@@ -246,7 +243,7 @@ export const AnchorIdInput = (props: ExtendedProps) => {
             {...elementProps}
             type='text'
             value={value || ''}
-            placeholder={schemaType?.placeholder || 'e.g., about-our-services'}
+            placeholder="e.g., about-our-services"
             onChange={(e) => onChange(e.target.value ? set(e.target.value) : unset())}
             style={{
               width: '100%',

@@ -64,7 +64,7 @@ export const UpdateAnchorReferencesAction: DocumentActionComponent = (props) => 
         return sections
       }
 
-      const sections = getAllSections(document.content)
+      const sections = getAllSections((document.content as unknown[]) || [])
       
       if (sections.length === 0) {
         alert('No sections with anchor IDs found in this document')
