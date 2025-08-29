@@ -8,6 +8,7 @@ import Footer from '@/components/Footer/Footer';
 import DisableDraftMode from '@/components/DisableDraftMode';
 import { Signika } from 'next/font/google';
 import { getHeader, getFooter, getSiteSettings } from '@/actions';
+import { SiteDataProvider } from '@/contexts/SiteDataContext';
 
 const signika = Signika({ subsets: ['latin'] });
 
@@ -21,21 +22,23 @@ const FrontendLayout = async ({
   const siteSettingsData = await getSiteSettings();
 
   return (
-    <div className={`min-h-screen flex flex-col ${signika.className} font-variant-small-caps`}>
-      <Header headerData={headerData} />
-      <main className='flex-1'>{children}</main>
-      <Footer 
-        footerData={footerData} 
-        siteSettingsData={siteSettingsData} 
-      />
-      <SanityLive />
-      {(await draftMode()).isEnabled && (
-        <>
-          <DisableDraftMode />
-          <VisualEditing />
-        </>
-      )}
-    </div>
+    <SiteDataProvider companyEmail={siteSettingsData?.companyEmail || undefined}>
+      <div className={`min-h-screen flex flex-col ${signika.className} font-variant-small-caps`}>
+        <Header headerData={headerData} />
+        <main className='flex-1'>{children}</main>
+        <Footer 
+          footerData={footerData} 
+          siteSettingsData={siteSettingsData} 
+        />
+        <SanityLive />
+        {(await draftMode()).isEnabled && (
+          <>
+            <DisableDraftMode />
+            <VisualEditing />
+          </>
+        )}
+      </div>
+    </SiteDataProvider>
   );
 };
 

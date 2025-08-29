@@ -4,12 +4,11 @@ import type { CardGridBlock } from '@/types/blocks';
 import Card from './Card';
 
 interface CardGridProps extends CardGridBlock {
-  email?: string; // For passing company email from siteSettings
   documentId?: string;
   documentType?: string;
 }
 
-const CardGrid = ({ columns = '2', cards, email, documentId, documentType }: CardGridProps) => {
+const CardGrid = ({ columns = '2', cards, documentId, documentType }: CardGridProps) => {
   if (!cards || !Array.isArray(cards) || cards.length === 0) {
     return null;
   }
@@ -48,7 +47,6 @@ const CardGrid = ({ columns = '2', cards, email, documentId, documentType }: Car
           internalLink={card.internalLink}
           openInNewTab={card.openInNewTab}
           externalUrl={card.externalUrl}
-          email={email}
           className={`${cardClasses}`}
           isGridChild
           documentId={documentId}

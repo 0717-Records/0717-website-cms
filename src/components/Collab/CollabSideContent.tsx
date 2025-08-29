@@ -28,12 +28,11 @@ interface CollabSideContentBlock {
 
 interface CollabSideContentProps {
   sideContent: CollabSideContentBlock[] | null;
-  companyEmail?: string;
   documentId?: string;
   documentType?: string;
 }
 
-export default function CollabSideContent({ sideContent, companyEmail, documentId, documentType }: CollabSideContentProps) {
+export default function CollabSideContent({ sideContent, documentId, documentType }: CollabSideContentProps) {
   if (!sideContent || sideContent.length === 0) {
     return null;
   }
@@ -97,7 +96,7 @@ export default function CollabSideContent({ sideContent, companyEmail, documentI
                       );
                     } else if (ctaBlock._type === 'ctaEmailButton') {
                       return (
-                        <CTAEmailButton key={ctaBlock._key || ctaIndex} email={companyEmail} />
+                        <CTAEmailButton key={ctaBlock._key || ctaIndex} />
                       );
                     }
                     return null;

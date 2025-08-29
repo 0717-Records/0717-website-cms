@@ -253,7 +253,6 @@ const BlockRenderer = ({
               <BlockWrapper key={block._key}>
                 <Card 
                   {...block} 
-                  email={siteSettings?.companyEmail}
                   documentId={documentId}
                   documentType={documentType}
                 />
@@ -279,7 +278,6 @@ const BlockRenderer = ({
               <BlockWrapper key={block._key}>
                 <CTAEmailButtonComponent
                   {...block}
-                  email={siteSettings?.companyEmail || 'noemailexists@noemail.com'}
                 />
               </BlockWrapper>
             );
@@ -296,7 +294,6 @@ const BlockRenderer = ({
               <BlockWrapper key={block._key}>
                 <CardGrid 
                   {...block} 
-                  email={siteSettings?.companyEmail}
                   documentId={documentId}
                   documentType={documentType}
                 />

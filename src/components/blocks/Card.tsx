@@ -11,7 +11,6 @@ import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 interface CardProps extends Omit<CardBlock, '_type' | '_key'> {
   className?: string;
   isGridChild?: boolean;
-  email?: string; // For passing company email from siteSettings
   documentId?: string;
   documentType?: string;
 }
@@ -31,7 +30,6 @@ const Card = (props: CardProps & { computedHref?: string }) => {
     externalUrl,
     className = '',
     isGridChild = false,
-    email,
     documentId,
     documentType,
     computedHref,
@@ -98,7 +96,7 @@ const Card = (props: CardProps & { computedHref?: string }) => {
                 />
               </div>
             )}
-            {buttonType === 'email' && <CTAEmailButtonComponent email={email} />}
+            {buttonType === 'email' && <CTAEmailButtonComponent />}
           </div>
         )}
       </CardContainer>
@@ -162,7 +160,7 @@ const Card = (props: CardProps & { computedHref?: string }) => {
                   />
                 </div>
               )}
-              {buttonType === 'email' && <CTAEmailButtonComponent email={email} />}
+              {buttonType === 'email' && <CTAEmailButtonComponent />}
             </div>
           )}
         </div>

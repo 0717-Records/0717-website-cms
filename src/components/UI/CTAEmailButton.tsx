@@ -2,13 +2,15 @@
 
 import React, { useState, useRef } from 'react';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
+import { useSiteData } from '@/contexts/SiteDataContext';
 
 interface CTAEmailButtonProps {
-  email: string;
   className?: string;
 }
 
-const CTAEmailButton = ({ email, className = '' }: CTAEmailButtonProps) => {
+const CTAEmailButton = ({ className = '' }: CTAEmailButtonProps) => {
+  const { companyEmail } = useSiteData();
+  const email = companyEmail || 'noemailexists@noemail.com';
   const [isCopied, setIsCopied] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 

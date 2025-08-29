@@ -103,7 +103,6 @@ const Footer = ({ footerData, siteSettingsData }: FooterProps) => {
           {/* CTA Email Button */}
           {siteSettingsData?.companyEmail && (
             <CTAEmailButton
-              email={siteSettingsData.companyEmail}
               className='text-body-base font-medium'
             />
           )}
