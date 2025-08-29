@@ -13,6 +13,36 @@
  */
 
 // Source: schema.json
+export type NavLink = {
+  _type: "navLink";
+  label?: string;
+  linkType?: "internal" | "external";
+  internalLink?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "page";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "homePage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "collab";
+  };
+  externalUrl?: string;
+  pageSectionId?: string;
+  openInNewTab?: boolean;
+};
+
 export type SideContent = Array<{
   _key: string;
 } & SideContentBlock>;
@@ -119,8 +149,8 @@ export type EmbeddedCtaButton = {
     [internalGroqTypeReferenceTo]?: "collab";
   };
   externalUrl?: string;
-  openInNewTab?: boolean;
   pageSectionId?: string;
+  openInNewTab?: boolean;
 };
 
 export type CtaEmailButton = {
@@ -168,8 +198,8 @@ export type CtaCalloutLink = {
     [internalGroqTypeReferenceTo]?: "collab";
   };
   externalUrl?: string;
-  openInNewTab?: boolean;
   pageSectionId?: string;
+  openInNewTab?: boolean;
 };
 
 export type CtaButton = {
@@ -200,8 +230,8 @@ export type CtaButton = {
     [internalGroqTypeReferenceTo]?: "collab";
   };
   externalUrl?: string;
-  openInNewTab?: boolean;
   pageSectionId?: string;
+  openInNewTab?: boolean;
 };
 
 export type TextImage = {
@@ -602,8 +632,8 @@ export type CollabPageSection = {
 export type PageSection = {
   _type: "pageSection";
   title?: string;
-  subtitle?: string;
   anchorId?: string;
+  subtitle?: string;
   textAlign?: "inherit" | "left" | "center" | "right";
   content?: Array<{
     _key: string;
@@ -743,6 +773,14 @@ export type Header = {
     crop?: SanityImageCrop;
     _type: "image";
   };
+  horizontalNav?: Array<{
+    _key: string;
+  } & NavLink>;
+  verticalNav?: Array<{
+    _key: string;
+  } & NavLink | {
+    _key: string;
+  } & Divider>;
 };
 
 export type BlockContent = Array<{
@@ -1035,8 +1073,8 @@ export type HomeHeroCtaButton = {
     [internalGroqTypeReferenceTo]?: "collab";
   };
   externalUrl?: string;
-  openInNewTab?: boolean;
   pageSectionId?: string;
+  openInNewTab?: boolean;
 };
 
 export type SiteSettings = {
@@ -1214,7 +1252,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | CollabLinksArray | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | CompanyLinksArray | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = NavLink | SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Card | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | CollabLinksArray | EventsIndexPage | Event | Post | Page | HomePage | HomeHeroCtaButton | SiteSettings | CompanyLinksArray | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -1423,8 +1461,8 @@ export type PAGE_QUERYResult = {
       href: string | null;
     } | null;
     externalUrl?: string;
-    openInNewTab?: boolean;
     pageSectionId?: string;
+    openInNewTab?: boolean;
     image: null;
     computedHref: string | "/" | null | "/events";
     content: null;
@@ -1477,8 +1515,8 @@ export type PAGE_QUERYResult = {
       href: string | null;
     } | null;
     externalUrl?: string;
-    openInNewTab?: boolean;
     pageSectionId?: string;
+    openInNewTab?: boolean;
     computedHref: string | "/" | null | "/events";
     content: null;
   } | {
@@ -1619,8 +1657,8 @@ export type PAGE_QUERYResult = {
     _key: string;
     _type: "pageSection";
     title?: string;
-    subtitle?: string;
     anchorId: string | null;
+    subtitle?: string;
     textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       _key: string;
@@ -1764,8 +1802,8 @@ export type PAGE_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
-      openInNewTab?: boolean;
       pageSectionId?: string;
+      openInNewTab?: boolean;
       image: null;
       computedHref: string | "/" | null | "/events";
       content: null;
@@ -1818,8 +1856,8 @@ export type PAGE_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
-      openInNewTab?: boolean;
       pageSectionId?: string;
+      openInNewTab?: boolean;
       computedHref: string | "/" | null | "/events";
       content: null;
     } | {
@@ -2162,8 +2200,8 @@ export type PAGE_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
-        openInNewTab?: boolean;
         pageSectionId?: string;
+        openInNewTab?: boolean;
         image: null;
         computedHref: string | "/" | null | "/events";
         content: null;
@@ -2216,8 +2254,8 @@ export type PAGE_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
-        openInNewTab?: boolean;
         pageSectionId?: string;
+        openInNewTab?: boolean;
         computedHref: string | "/" | null | "/events";
         content: null;
       } | {
@@ -2553,8 +2591,8 @@ export type PAGE_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
-          openInNewTab?: boolean;
           pageSectionId?: string;
+          openInNewTab?: boolean;
           image: null;
           computedHref: string | "/" | null | "/events";
         } | {
@@ -2606,8 +2644,8 @@ export type PAGE_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
-          openInNewTab?: boolean;
           pageSectionId?: string;
+          openInNewTab?: boolean;
           computedHref: string | "/" | null | "/events";
         } | {
           _key: string;
@@ -3205,8 +3243,8 @@ export type HOME_PAGE_QUERYResult = {
       href: string | null;
     } | null;
     externalUrl?: string;
-    openInNewTab?: boolean;
     pageSectionId?: string;
+    openInNewTab?: boolean;
     computedHref: string | "/" | null | "/events";
   } | null;
   heroContentPosition: "bottom-center" | "bottom-left" | "bottom-right" | "center-center" | "center-left" | "center-right" | "top-center" | "top-left" | "top-right" | null;
@@ -3352,8 +3390,8 @@ export type HOME_PAGE_QUERYResult = {
       href: string | null;
     } | null;
     externalUrl?: string;
-    openInNewTab?: boolean;
     pageSectionId?: string;
+    openInNewTab?: boolean;
     image: null;
     computedHref: string | "/" | null | "/events";
     content: null;
@@ -3406,8 +3444,8 @@ export type HOME_PAGE_QUERYResult = {
       href: string | null;
     } | null;
     externalUrl?: string;
-    openInNewTab?: boolean;
     pageSectionId?: string;
+    openInNewTab?: boolean;
     computedHref: string | "/" | null | "/events";
     content: null;
   } | {
@@ -3548,8 +3586,8 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "pageSection";
     title?: string;
-    subtitle?: string;
     anchorId: string | null;
+    subtitle?: string;
     textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       _key: string;
@@ -3693,8 +3731,8 @@ export type HOME_PAGE_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
-      openInNewTab?: boolean;
       pageSectionId?: string;
+      openInNewTab?: boolean;
       image: null;
       computedHref: string | "/" | null | "/events";
       content: null;
@@ -3747,8 +3785,8 @@ export type HOME_PAGE_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
-      openInNewTab?: boolean;
       pageSectionId?: string;
+      openInNewTab?: boolean;
       computedHref: string | "/" | null | "/events";
       content: null;
     } | {
@@ -4091,8 +4129,8 @@ export type HOME_PAGE_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
-        openInNewTab?: boolean;
         pageSectionId?: string;
+        openInNewTab?: boolean;
         image: null;
         computedHref: string | "/" | null | "/events";
         content: null;
@@ -4145,8 +4183,8 @@ export type HOME_PAGE_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
-        openInNewTab?: boolean;
         pageSectionId?: string;
+        openInNewTab?: boolean;
         computedHref: string | "/" | null | "/events";
         content: null;
       } | {
@@ -4482,8 +4520,8 @@ export type HOME_PAGE_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
-          openInNewTab?: boolean;
           pageSectionId?: string;
+          openInNewTab?: boolean;
           image: null;
           computedHref: string | "/" | null | "/events";
         } | {
@@ -4535,8 +4573,8 @@ export type HOME_PAGE_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
-          openInNewTab?: boolean;
           pageSectionId?: string;
+          openInNewTab?: boolean;
           computedHref: string | "/" | null | "/events";
         } | {
           _key: string;
@@ -5156,8 +5194,8 @@ export type HOME_PAGE_QUERYResult = {
       href: string | null;
     } | null;
     externalUrl?: string;
-    openInNewTab?: boolean;
     pageSectionId?: string;
+    openInNewTab?: boolean;
     image: null;
     computedHref: string | "/" | null | "/events";
     content: null;
@@ -5210,8 +5248,8 @@ export type HOME_PAGE_QUERYResult = {
       href: string | null;
     } | null;
     externalUrl?: string;
-    openInNewTab?: boolean;
     pageSectionId?: string;
+    openInNewTab?: boolean;
     computedHref: string | "/" | null | "/events";
     content: null;
   } | {
@@ -5352,8 +5390,8 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "pageSection";
     title?: string;
-    subtitle?: string;
     anchorId: string | null;
+    subtitle?: string;
     textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       _key: string;
@@ -5497,8 +5535,8 @@ export type HOME_PAGE_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
-      openInNewTab?: boolean;
       pageSectionId?: string;
+      openInNewTab?: boolean;
       image: null;
       computedHref: string | "/" | null | "/events";
       content: null;
@@ -5551,8 +5589,8 @@ export type HOME_PAGE_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
-      openInNewTab?: boolean;
       pageSectionId?: string;
+      openInNewTab?: boolean;
       computedHref: string | "/" | null | "/events";
       content: null;
     } | {
@@ -5895,8 +5933,8 @@ export type HOME_PAGE_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
-        openInNewTab?: boolean;
         pageSectionId?: string;
+        openInNewTab?: boolean;
         image: null;
         computedHref: string | "/" | null | "/events";
         content: null;
@@ -5949,8 +5987,8 @@ export type HOME_PAGE_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
-        openInNewTab?: boolean;
         pageSectionId?: string;
+        openInNewTab?: boolean;
         computedHref: string | "/" | null | "/events";
         content: null;
       } | {
@@ -6286,8 +6324,8 @@ export type HOME_PAGE_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
-          openInNewTab?: boolean;
           pageSectionId?: string;
+          openInNewTab?: boolean;
           image: null;
           computedHref: string | "/" | null | "/events";
         } | {
@@ -6339,8 +6377,8 @@ export type HOME_PAGE_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
-          openInNewTab?: boolean;
           pageSectionId?: string;
+          openInNewTab?: boolean;
           computedHref: string | "/" | null | "/events";
         } | {
           _key: string;
@@ -7329,8 +7367,8 @@ export type COLLAB_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
-      openInNewTab?: boolean;
       pageSectionId?: string;
+      openInNewTab?: boolean;
       image: null;
       computedHref: string | "/" | null | "/events";
       content: null;
@@ -7383,8 +7421,8 @@ export type COLLAB_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
-      openInNewTab?: boolean;
       pageSectionId?: string;
+      openInNewTab?: boolean;
       computedHref: string | "/" | null | "/events";
       content: null;
     } | {
@@ -7727,8 +7765,8 @@ export type COLLAB_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
-        openInNewTab?: boolean;
         pageSectionId?: string;
+        openInNewTab?: boolean;
         image: null;
         computedHref: string | "/" | null | "/events";
         content: null;
@@ -7781,8 +7819,8 @@ export type COLLAB_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
-        openInNewTab?: boolean;
         pageSectionId?: string;
+        openInNewTab?: boolean;
         computedHref: string | "/" | null | "/events";
         content: null;
       } | {
@@ -8125,8 +8163,8 @@ export type COLLAB_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
-          openInNewTab?: boolean;
           pageSectionId?: string;
+          openInNewTab?: boolean;
           image: null;
           computedHref: string | "/" | null | "/events";
           content: null;
@@ -8179,8 +8217,8 @@ export type COLLAB_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
-          openInNewTab?: boolean;
           pageSectionId?: string;
+          openInNewTab?: boolean;
           computedHref: string | "/" | null | "/events";
           content: null;
         } | {

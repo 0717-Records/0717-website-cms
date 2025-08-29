@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { StringInputProps, useClient, useFormValue, set, unset } from 'sanity';
+import { apiVersion } from '../env';
 
 interface SectionOption {
   value: string;
@@ -20,7 +21,7 @@ export const SectionDropdown = (props: SectionDropdownProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
-  const client = useClient();
+  const client = useClient({ apiVersion });
 
   // Get the parent path by removing the last segment (which is 'pageSectionId')
   const parentPath = path.slice(0, -1);

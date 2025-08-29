@@ -15,6 +15,9 @@ import { apiVersion, dataset, projectId } from './src/sanity/env';
 import { schema } from './src/sanity/schemaTypes';
 import { structure } from './src/sanity/structure';
 import { resolve } from '@/sanity/presentation/resolve';
+// Document actions temporarily removed to fix build
+// import { UpdateAnchorReferencesAction } from './src/sanity/actions/UpdateAnchorReferencesAction';
+// import { DebugAnchorReferencesAction } from './src/sanity/actions/DebugAnchorReferencesAction';
 
 export default defineConfig({
   basePath: '/studio',
@@ -41,6 +44,14 @@ export default defineConfig({
     newDocumentOptions: (prev) => prev.filter((item) => 
       !['siteSettings', 'header', 'footer', 'homePage'].includes(item.templateId)
     ),
+    // Document actions temporarily removed to fix build
+    // actions: (prev, { schemaType }) => {
+    //   const pageTypes = ['page', 'homePage', 'eventsIndexPage', 'collab'];
+    //   if (pageTypes.includes(schemaType)) {
+    //     return [...prev, UpdateAnchorReferencesAction, DebugAnchorReferencesAction];
+    //   }
+    //   return prev;
+    // },
   },
   studio: {
     components: {

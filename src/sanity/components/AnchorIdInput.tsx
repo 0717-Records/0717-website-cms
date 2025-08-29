@@ -1,7 +1,9 @@
 // AI Helper: This is a custom Sanity input component for anchor ID fields with a working Generate button.
 
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { StringInputProps, set, unset, useFormValue } from 'sanity';
+import { StringInputProps, set, unset, useFormValue, useClient } from 'sanity';
+import { AnchorReferenceUpdater } from '../lib/anchorReferenceUpdater';
+import { apiVersion } from '../env';
 
 interface SectionData {
   _type: string;
@@ -22,9 +24,15 @@ export const AnchorIdInput = (props: ExtendedProps) => {
   const { value, onChange, schemaType, elementProps, path } = props;
   const [isRegenerating, setIsRegenerating] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isUpdatingReferences, setIsUpdatingReferences] = useState(false);
+  const [updateStatus, setUpdateStatus] = useState<string>('');
   const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const safetyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lastGeneratedRef = useRef<string>('');
+  const originalAnchorIdRef = useRef<string>('');
+
+  const client = useClient({ apiVersion });
+  const referenceUpdater = useRef(new AnchorReferenceUpdater(client));
 
   // Use Sanity's useFormValue to get the parent section data
   const document = useFormValue([]) as { content?: SectionData[] }; // Get the entire document
@@ -32,6 +40,13 @@ export const AnchorIdInput = (props: ExtendedProps) => {
   // Get the parent path by removing the last segment (which is 'anchorId')
   const parentPath = path.slice(0, -1);
   const parent = useFormValue(parentPath) as SectionData; // Get the parent section
+
+  // Track original anchor ID before any changes
+  useEffect(() => {
+    if (value && !originalAnchorIdRef.current) {
+      originalAnchorIdRef.current = value;
+    }
+  }, [value]);
 
   // Generate anchor ID from title with uniqueness checking
   const generateAnchorId = useCallback(
@@ -89,6 +104,38 @@ export const AnchorIdInput = (props: ExtendedProps) => {
     [document, parent]
   );
 
+  // Simple reference update function
+  const updateReferences = useCallback(async (oldAnchorId: string, newAnchorId: string) => {
+    if (!document?._id || !oldAnchorId || !newAnchorId || oldAnchorId === newAnchorId) {
+      return;
+    }
+
+    console.log('🔄 Starting reference update:', { oldAnchorId, newAnchorId });
+    setIsUpdatingReferences(true);
+    setUpdateStatus('Searching for references...');
+
+    try {
+      const result = await referenceUpdater.current.updateAnchorReferences({
+        documentId: document._id,
+        oldAnchorId,
+        newAnchorId,
+        sectionKey: parent._key
+      });
+
+      if (result.success && result.updatedReferences > 0) {
+        setUpdateStatus(`✅ Updated ${result.updatedReferences} reference${result.updatedReferences !== 1 ? 's' : ''}`);
+      } else {
+        setUpdateStatus('ℹ️ No references found to update');
+      }
+    } catch (error) {
+      console.error('Reference update failed:', error);
+      setUpdateStatus('❌ Failed to update references');
+    } finally {
+      setIsUpdatingReferences(false);
+      setTimeout(() => setUpdateStatus(''), 3000);
+    }
+  }, [document?._id, parent._key]);
+
   // Debounced auto-generate anchor ID when title changes
   useEffect(() => {
     const title = parent?.title;
@@ -120,9 +167,18 @@ export const AnchorIdInput = (props: ExtendedProps) => {
         // Debounce the generation by 500ms
         debounceTimeoutRef.current = setTimeout(() => {
           try {
+            // Capture the current value before changing it
+            const oldValue = value || originalAnchorIdRef.current;
             onChange(set(generated));
             // Only store the generated value AFTER successful onChange
             lastGeneratedRef.current = generated;
+            
+            // Trigger reference update if we have a valid old value
+            if (oldValue && oldValue !== generated && oldValue.length > 0) {
+              setTimeout(() => {
+                updateReferences(oldValue, generated);
+              }, 500);
+            }
           } catch (error) {
             console.error('Error setting anchor ID:', error);
           } finally {
@@ -155,7 +211,7 @@ export const AnchorIdInput = (props: ExtendedProps) => {
       }
       setIsGenerating(false);
     };
-  }, [parent?.title, value, generateAnchorId, onChange]);
+  }, [parent?.title, value, generateAnchorId, onChange, updateReferences]);
 
   const handleRegenerate = useCallback(() => {
     setIsRegenerating(true);
@@ -180,7 +236,7 @@ export const AnchorIdInput = (props: ExtendedProps) => {
     setIsRegenerating(false);
   }, [parent, generateAnchorId, onChange]);
 
-  const isLoading = isGenerating || isRegenerating;
+  const isLoading = isGenerating || isRegenerating || isUpdatingReferences;
 
   return (
     <div>
@@ -278,6 +334,30 @@ export const AnchorIdInput = (props: ExtendedProps) => {
               'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
           }}>
           Generating anchor ID from title...
+        </div>
+      )}
+      {isUpdatingReferences && (
+        <div
+          style={{
+            marginTop: '8px',
+            fontSize: '12px',
+            color: '#f59e0b',
+            fontFamily:
+              'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+          }}>
+          🔄 Updating references...
+        </div>
+      )}
+      {updateStatus && !isUpdatingReferences && (
+        <div
+          style={{
+            marginTop: '8px',
+            fontSize: '12px',
+            color: updateStatus.includes('✅') ? '#10b981' : updateStatus.includes('❌') ? '#ef4444' : '#6b7280',
+            fontFamily:
+              'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+          }}>
+          {updateStatus}
         </div>
       )}
     </div>
