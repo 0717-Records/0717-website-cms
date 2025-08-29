@@ -22,7 +22,7 @@ export const dividerType = defineType({
   preview: {
     prepare() {
       return {
-        title: 'Divider',
+        title: ' --- Divider ---',
         subtitle: 'Decorative section divider',
       };
     },
