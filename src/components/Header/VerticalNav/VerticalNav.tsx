@@ -70,7 +70,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
         </div>
 
         {/* Menu Navigation */}
-        <nav 
+        <nav
           className='flex flex-col flex-1 px-10 py-12 overflow-y-auto overflow-x-hidden min-h-0'
           style={{
             scrollbarWidth: 'thin',
@@ -101,7 +101,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
                 } else if (isNavigationDivider(item)) {
                   return (
                     <div key={`nav-divider-${index}`} className='py-2'>
-                      <Divider isSmall />
+                      <Divider isSmall alignment='left' />
                     </div>
                   );
                 }
