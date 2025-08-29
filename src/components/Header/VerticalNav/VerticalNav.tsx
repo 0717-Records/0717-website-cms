@@ -9,7 +9,13 @@ import type { HEADER_QUERYResult } from '@/sanity/types';
 import MenuButton from '../MenuButton';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 import Divider from '@/components/UI/Divider';
-import { VerticalNavData, isNavigationLink, isNavigationDivider, getNavLinkProps, getNavLinkLabel } from '@/utils/navigationHelpers';
+import {
+  VerticalNavData,
+  isNavigationLink,
+  isNavigationDivider,
+  getNavLinkProps,
+  getNavLinkLabel,
+} from '@/utils/navigationHelpers';
 import styles from './VerticalNav.module.css';
 
 interface VerticalNavProps {
@@ -64,15 +70,19 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
         </div>
 
         {/* Menu Navigation */}
-        <nav className='flex flex-col justify-center flex-1 px-10 py-12 overflow-y-auto overflow-x-hidden'>
-          <div className='space-y-6' style={{
+        <nav 
+          className='flex flex-col flex-1 px-10 py-12 overflow-y-auto overflow-x-hidden'
+          style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#d1d5db transparent',
-          }} onMouseEnter={(e) => {
+          }}
+          onMouseEnter={(e) => {
             e.currentTarget.style.scrollbarColor = '#9ca3af transparent';
-          }} onMouseLeave={(e) => {
+          }}
+          onMouseLeave={(e) => {
             e.currentTarget.style.scrollbarColor = '#d1d5db transparent';
           }}>
+          <div className='space-y-6 min-h-0'>
             {navLinks && navLinks.length > 0 ? (
               navLinks.map((item, index) => {
                 if (isNavigationLink(item)) {
@@ -83,7 +93,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
                       <Link
                         {...linkProps}
                         onClick={onClose}
-                        className='block text-body-xl font-medium text-black hover:text-brand-secondary transition-colors'>
+                        className='block text-body-xl uppercase font-medium text-black hover:text-brand-secondary transition-colors'>
                         {label}
                       </Link>
                     </div>
@@ -91,7 +101,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
                 } else if (isNavigationDivider(item)) {
                   return (
                     <div key={`nav-divider-${index}`} className='py-2'>
-                      <Divider className='py-4' />
+                      <Divider isSmall />
                     </div>
                   );
                 }

@@ -23,7 +23,7 @@ const HorizontalNav = ({ navLinks }: HorizontalNavProps) => {
             <li key={`${link.computedHref}-${index}`}>
               <Link
                 {...linkProps}
-                className='text-body-xl font-medium hover:text-brand-secondary transition-colors'>
+                className='text-body-xl uppercase font-medium hover:text-brand-secondary transition-colors'>
                 {label}
               </Link>
             </li>
