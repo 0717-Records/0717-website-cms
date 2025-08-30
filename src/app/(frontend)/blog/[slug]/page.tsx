@@ -40,29 +40,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     ? urlFor(post.heroImage).url()
     : '/pagePlaceholderImg.webp';
 
-  const formattedDate = formatBlogDate(
-    post._createdAt,
-    post.overrideDate,
-    post.hasOverrideDate
-  );
+  const formattedDate = formatBlogDate(post._createdAt, post.overrideDate, post.hasOverrideDate);
 
   return (
     <>
       {/* Page Hero - No title, back to blog */}
-      <PageHero 
+      <PageHero
         title={null}
         heroImage={backgroundImage}
-        backLinkHref="/blog"
-        backLinkText="Back to Blog"
+        backLinkHref='/blog'
+        backLinkText='Back to Blog'
       />
-      
+
       <Container>
         {/* Article Header */}
         <div className='pt-16 md:pt-24 text-left'>
           {/* Title */}
-          <h1 className='text-h1 font-bold text-gray-900 mb-4 leading-tight'>
-            {post.title}
-          </h1>
+          <h1 className='text-h1 font-bold text-gray-900 mb-4 leading-tight'>{post.title}</h1>
 
           {/* Subtitle */}
           {post.subtitle && (
@@ -96,10 +90,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {post.content && (
           <div className='bg-white rounded-lg shadow-sm p-6 md:p-8 mb-16 md:mb-24'>
             <div className='text-left'>
-              <PageBuilder 
+              <PageBuilder
                 content={post.content as NonNullable<PAGE_QUERYResult>['content']}
                 documentId={post._id}
-                documentType="blogPost"
+                documentType='blogPost'
               />
             </div>
           </div>
@@ -108,11 +102,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Closing Card */}
         {post.hasClosingCard && post.closingCard && (
           <div className='pb-16 md:pb-24'>
-            <div className='flex justify-center'>
-              <div className='w-full max-w-md'>
-                <Card {...post.closingCard} />
-              </div>
-            </div>
+            <Card {...post.closingCard} />
           </div>
         )}
       </Container>

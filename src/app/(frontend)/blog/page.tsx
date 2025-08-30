@@ -6,10 +6,7 @@ import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 
 export default async function BlogPage() {
-  const [blogPosts, blogIndexPage] = await Promise.all([
-    getAllBlogPosts(),
-    getBlogIndexPage(),
-  ]);
+  const [blogPosts, blogIndexPage] = await Promise.all([getAllBlogPosts(), getBlogIndexPage()]);
 
   // Get background image or fallback to placeholder
   const backgroundImage = blogIndexPage?.heroImage
@@ -29,7 +26,7 @@ export default async function BlogPage() {
             </p>
           </div>
         )}
-        
+
         {/* List of Blog Posts */}
         <div className={`${!blogIndexPage?.subtitle ? 'pt-16 md:pt-24' : ''} pb-16 md:pb-24`}>
           <BlogList
@@ -44,14 +41,10 @@ export default async function BlogPage() {
         {/* Closing Card */}
         {blogIndexPage?.hasClosingCard && blogIndexPage?.closingCard && (
           <div className='pb-16 md:pb-24'>
-            <div className='flex justify-center'>
-              <div className='w-full max-w-md'>
-                <Card {...blogIndexPage.closingCard} />
-              </div>
-            </div>
+            <Card {...blogIndexPage.closingCard} />
           </div>
         )}
       </Container>
     </>
   );
-};
+}
