@@ -7,7 +7,7 @@ import { urlFor } from '@/sanity/lib/image';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 
 interface PageHeroProps {
-  title: string | null;
+  title?: string;
   heroImage?: unknown;
   height?: 'small' | 'medium' | 'large';
   overlay?: boolean;
@@ -25,7 +25,7 @@ const PageHero = ({
   documentId,
   documentType,
   hideBackLink = false,
-  backLinkText = 'Back to Home',
+  backLinkText,
   backLinkHref = '/',
 }: PageHeroProps) => {
   // Check if we have a custom hero image
@@ -52,21 +52,23 @@ const PageHero = ({
               href={backLinkHref}
               className='inline-flex items-center gap-2 text-white hover:bg-black active:scale-90 transition-all duration-200 text-body-sm md:text-body-base bg-black/30 backdrop-blur-sm rounded-lg px-3 py-2 border border-white/20'>
               <span>←</span>
-              {/* <span>{backLinkText}</span> */}
+              {backLinkText && <span>{backLinkText}</span>}
             </Link>
           </div>
         )}
 
         {/* Text Content with Dark Overlay */}
-        <div className='relative z-[25] text-white text-center px-4'>
-          {/* Dark overlay behind text */}
-          <div className='absolute inset-0 bg-black/20 backdrop-blur-sm rounded-lg -m-2'></div>
-          <div className='relative z-10'>
-            <Heading level='h1' showUnderline className='text-h5 md:text-h3 font-bold mb-2'>
-              {title}
-            </Heading>
+        {title && (
+          <div className='relative z-[25] text-white text-center px-4'>
+            {/* Dark overlay behind text */}
+            <div className='absolute inset-0 bg-black/20 backdrop-blur-sm rounded-lg -m-2'></div>
+            <div className='relative z-10'>
+              <Heading level='h1' showUnderline className='text-h5 md:text-h3 font-bold mb-2'>
+                {title}
+              </Heading>
+            </div>
           </div>
-        </div>
+        )}
       </section>
     </div>
   );

@@ -45,12 +45,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <>
       {/* Page Hero - No title, back to blog */}
-      <PageHero
-        title={null}
-        heroImage={backgroundImage}
-        backLinkHref='/blog'
-        backLinkText='Back to Blog'
-      />
+      <PageHero heroImage={backgroundImage} backLinkHref='/blog' backLinkText='Back to Blog' />
 
       <Container>
         {/* Article Header */}
