@@ -37,8 +37,6 @@ const BandcampWidget: React.FC<BandcampWidgetProps> = ({
   const embedWidth = widthAttrMatch?.[1] || widthStyleMatch?.[1];
   const embedHeight = heightAttrMatch?.[1] || heightStyleMatch?.[1];
 
-  console.log({ embedUrl, embedWidth, embedHeight });
-
   if (!embedUrl) {
     return (
       <div className={`p-4 border border-red-200 rounded-lg bg-red-50`}>
@@ -66,51 +64,34 @@ const BandcampWidget: React.FC<BandcampWidgetProps> = ({
   const artwork = artworkMatch ? artworkMatch[1] : null;
   const minimal = minimalMatch ? minimalMatch[1] : null;
 
-  console.log({ size, tracklist, artwork, minimal });
+  // Helper function to get height with fallback
+  const getHeight = (fallback: number) => (embedHeight ? parseInt(embedHeight) : fallback);
 
   // Determine max width - use embedWidth if available, otherwise default to 700px
   const maxWidth = embedWidth ? parseInt(embedWidth) : 700;
+  const baseClasses = `w-full max-w-[${maxWidth}px]`;
 
-  let className = 'w-full';
+  let sizeClasses = '';
 
-  // Determine which widget type based on URL parameters
+  // Determine widget type and size classes
   if (size === 'small') {
-    // SLIM
-    console.log('SLIM');
-    className += ` max-w-[${maxWidth}px] h-[42px]`;
+    // SLIM: Small size with no artwork
+    sizeClasses = 'h-[42px]';
   } else if (minimal === 'true') {
-    // ARTWORK ONLY
-    console.log('ARTWORK ONLY');
-    className += ` max-w-[${maxWidth}px] aspect-square`;
-  } else if (artwork === 'none' && tracklist === 'false') {
-    // Show artwork FALSE && Show tracklist FALSE
-    console.log('Show artwork FALSE && Show tracklist FALSE');
-    className += ` max-w-[${maxWidth}px] h-[120px]`;
-  } else if (artwork === 'none' && tracklist !== 'false') {
-    // Show artwork FALSE && Show tracklist TRUE
-    console.log('Show artwork FALSE && Show tracklist TRUE');
-    const height = embedHeight ? parseInt(embedHeight) : 406;
-    className += ` max-w-[${maxWidth}px] h-[${height}px]`;
-  } else if (artwork === 'small' && tracklist === 'false') {
-    // Show artwork TRUE (SMALL) && Show tracklist FALSE
-    console.log('Show artwork TRUE (SMALL) && Show tracklist FALSE');
-    className += ` max-w-[${maxWidth}px] h-[120px]`;
-  } else if (artwork === 'small' && tracklist !== 'false') {
-    // Show artwork TRUE (SMALL) && Show tracklist TRUE
-    console.log('Show artwork TRUE (SMALL) && Show tracklist TRUE');
-    const height = embedHeight ? parseInt(embedHeight) : 406;
-    className += ` max-w-[${maxWidth}px] h-[${height}px]`;
-  } else if (tracklist === 'false') {
-    // Show artwork TRUE (BIG) && Show tracklist FALSE
-    console.log('Show artwork TRUE (BIG) && Show tracklist FALSE');
-    const height = embedHeight ? parseInt(embedHeight) : 500;
-    className += ` max-w-[${maxWidth}px] aspect-[calc(${maxWidth}/${height})]`;
+    // ARTWORK ONLY: Square aspect ratio
+    sizeClasses = 'aspect-square';
+  } else if ((artwork === 'none' || artwork === 'small') && tracklist === 'false') {
+    // SMALL PLAYER: Small/no artwork with no tracklist
+    sizeClasses = 'h-[120px]';
+  } else if (artwork === 'none' || artwork === 'small') {
+    // SMALL PLAYER WITH TRACKLIST: Small/no artwork with tracklist
+    sizeClasses = `h-[${getHeight(406)}px]`;
   } else {
-    // Show artwork TRUE (BIG) && Show tracklist TRUE
-    console.log('Show artwork TRUE (BIG) && Show tracklist TRUE');
-    const height = embedHeight ? parseInt(embedHeight) : 500;
-    className += ` max-w-[${maxWidth}px] aspect-[calc(${maxWidth}/${height})]`;
+    // BIG ARTWORK: Use aspect ratio based on dimensions
+    sizeClasses = `aspect-[calc(${maxWidth}/${getHeight(500)})]`;
   }
+
+  const className = `${baseClasses} ${sizeClasses}`;
 
   return (
     <iframe
