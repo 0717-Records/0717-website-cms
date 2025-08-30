@@ -17,7 +17,7 @@ export default async function BlogPage() {
     <>
       {/* Page Hero */}
       <PageHero title={blogIndexPage?.title || 'Blog'} heroImage={backgroundImage} />
-      <Container>
+      <Container textAlign='left'>
         {/* Page Subtitle */}
         {blogIndexPage?.subtitle && (
           <div className='container mx-auto px-4 md:px-8 py-8'>

@@ -47,7 +47,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Page Hero - No title, back to blog */}
       <PageHero heroImage={backgroundImage} backLinkHref='/blog' backLinkText='Back to Blog' />
 
-      <Container>
+      <Container textAlign='left'>
         {/* Article Header */}
         <div className='pt-16 md:pt-24 text-left'>
           {/* Title */}
