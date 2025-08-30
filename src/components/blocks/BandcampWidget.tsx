@@ -72,6 +72,7 @@ const BandcampWidget: React.FC<BandcampWidgetProps> = ({
   const baseClasses = `w-full max-w-[${maxWidth}px]`;
 
   let sizeClasses = '';
+  let style = undefined;
 
   // Determine widget type and size classes
   if (size === 'small') {
@@ -84,19 +85,14 @@ const BandcampWidget: React.FC<BandcampWidgetProps> = ({
     // SMALL PLAYER: Small/no artwork with no tracklist
     sizeClasses = 'h-[120px]';
   } else if (artwork === 'none' || artwork === 'small') {
-    // SMALL PLAYER WITH TRACKLIST: Small/no artwork with tracklist
-    sizeClasses = `h-[${getHeight(406)}px]`;
+    // SMALL PLAYER WITH TRACKLIST: Small/no artwork with tracklist (use inline style for mobile)
+    style = { height: `${getHeight(406)}px` };
   } else {
-    // BIG ARTWORK: Use aspect ratio based on dimensions (will use inline style)
-    sizeClasses = '';
+    // BIG ARTWORK: Use aspect ratio based on dimensions (use inline style for mobile)
+    style = { aspectRatio: `${maxWidth} / ${getHeight(500)}` };
   }
 
-  const className = `${baseClasses} ${sizeClasses}`;
-  
-  // For BIG ARTWORK case, use inline style for better mobile compatibility
-  const style = sizeClasses === '' ? {
-    aspectRatio: `${maxWidth} / ${getHeight(500)}`
-  } : undefined;
+  const className = sizeClasses ? `${baseClasses} ${sizeClasses}` : baseClasses;
 
   return (
     <iframe
