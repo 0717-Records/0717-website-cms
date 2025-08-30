@@ -2,12 +2,12 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import { getCollab, getCollabSlugsForGeneration, getCollabs } from '@/actions/collabs';
 import { getSiteSettings } from '@/actions';
-import CollabShortDescription from '@/components/Collab/CollabShortDescription';
 import CollabMainContent from '@/components/Collab/CollabMainContent';
 import CollabBasicInfo from '@/components/Collab/CollabBasicInfo';
 import CollabLinks from '@/components/Collab/CollabLinks';
 import CollabSideContent from '@/components/Collab/CollabSideContent';
 import PageHero from '@/components/Page/PageHero';
+import Container from '@/components/Layout/Container';
 
 interface CollabSlug {
   slug: string;
@@ -41,29 +41,38 @@ export default async function CollabPage({ params }: CollabPageProps) {
         documentId={collab._id}
         documentType={collab._type}
       />
+      <Container>
+        {/* Short Description */}
+        <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line text-center mb-8'>
+          {collab.shortDescription}
+        </p>
 
-      {/* Short Description */}
-      <CollabShortDescription shortDescription={collab.shortDescription} />
+        <div className='grid grid-cols-1 lg:grid-cols-[3fr_2fr] auto-rows-min gap-8'>
+          {/* Basic Info & Links */}
+          <div className='col-start-1 lg:col-start-2 self-start'>
+            <div className='mb-4'>
+              <CollabBasicInfo
+                genre={collab.genre}
+                location={collab.location}
+                previewImage={collab.previewImage}
+                documentId={collab._id}
+                documentType={collab._type}
+              />
+            </div>
+            <CollabLinks links={collab.links} documentId={collab._id} documentType={collab._type} />
 
-      {/* Mobile Basic Info - Only visible on mobile, positioned between subtitle and bio */}
-      <div className='lg:hidden container mx-auto px-4 md:px-8 pb-8 space-y-6'>
-        <CollabBasicInfo
-          genre={collab.genre}
-          location={collab.location}
-          previewImage={collab.previewImage}
-          documentId={collab._id}
-          documentType={collab._type}
-        />
+            {/* Side Content Blocks - Desktop */}
+            <div className='hidden lg:block col-start-1 lg:col-start-2 row-start-3 lg:row-start-2 self-start mt-8'>
+              <CollabSideContent
+                sideContent={collab.sideContent}
+                documentId={collab._id}
+                documentType={collab._type}
+              />
+            </div>
+          </div>
 
-        {/* Mobile Links - Only visible on mobile */}
-        <CollabLinks links={collab.links} documentId={collab._id} documentType={collab._type} />
-      </div>
-
-      {/* Two Column Layout */}
-      <div className='container mx-auto px-4 md:px-8 pb-16'>
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12'>
-          {/* Left Column - Main Content (2/3 width) */}
-          <div className='lg:col-span-2'>
+          {/* Main Content */}
+          <div className='col-start-1 row-start-2 lg:row-start-1 lg:row-span-2 self-start'>
             <CollabMainContent
               bio={collab.bio}
               mainContent={collab.mainContent}
@@ -74,29 +83,8 @@ export default async function CollabPage({ params }: CollabPageProps) {
             />
           </div>
 
-          {/* Right Column - Sidebar Content (1/3 width) */}
-          <div className='space-y-6'>
-            {/* Basic Info - Only visible on desktop */}
-            <div className='hidden lg:block'>
-              <CollabBasicInfo
-                genre={collab.genre}
-                location={collab.location}
-                previewImage={collab.previewImage}
-                documentId={collab._id}
-                documentType={collab._type}
-              />
-            </div>
-
-            {/* Links - Only visible on desktop */}
-            <div className='hidden lg:block'>
-              <CollabLinks
-                links={collab.links}
-                documentId={collab._id}
-                documentType={collab._type}
-              />
-            </div>
-
-            {/* Side Content Blocks */}
+          {/* Side Content Blocks - Mobile */}
+          <div className='block lg:hidden col-start-1 lg:col-start-2 row-start-3 lg:row-start-2 self-start'>
             <CollabSideContent
               sideContent={collab.sideContent}
               documentId={collab._id}
@@ -104,7 +92,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
             />
           </div>
         </div>
-      </div>
+      </Container>
     </>
   );
 }

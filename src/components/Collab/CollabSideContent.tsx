@@ -32,7 +32,11 @@ interface CollabSideContentProps {
   documentType?: string;
 }
 
-export default function CollabSideContent({ sideContent, documentId, documentType }: CollabSideContentProps) {
+export default function CollabSideContent({
+  sideContent,
+  documentId,
+  documentType,
+}: CollabSideContentProps) {
   if (!sideContent || sideContent.length === 0) {
     return null;
   }
@@ -47,7 +51,7 @@ export default function CollabSideContent({ sideContent, documentId, documentTyp
             <aside
               key={sideBlock._key || index}
               className={`
-              rounded-lg p-6 text-left
+              rounded-lg p-6 mb-4 text-left
               ${
                 isHighlighted
                   ? 'bg-card-gradient border border-gray-200'
@@ -55,11 +59,14 @@ export default function CollabSideContent({ sideContent, documentId, documentTyp
               }
             `.trim()}>
               {sideBlock.title && (
-                <Heading 
-                  level='h3' 
+                <Heading
+                  level='h3'
                   className='text-h4 font-bold text-gray-900 mb-4'
-                  {...createSanityDataAttribute(documentId, documentType, `sideContent[_key=="${sideBlock._key}"].title`)}
-                >
+                  {...createSanityDataAttribute(
+                    documentId,
+                    documentType,
+                    `sideContent[_key=="${sideBlock._key}"].title`
+                  )}>
                   {sideBlock.title}
                 </Heading>
               )}
@@ -95,9 +102,7 @@ export default function CollabSideContent({ sideContent, documentId, documentTyp
                         />
                       );
                     } else if (ctaBlock._type === 'ctaEmailButton') {
-                      return (
-                        <CTAEmailButton key={ctaBlock._key || ctaIndex} />
-                      );
+                      return <CTAEmailButton key={ctaBlock._key || ctaIndex} />;
                     }
                     return null;
                   })}
