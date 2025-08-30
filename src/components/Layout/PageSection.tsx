@@ -7,18 +7,11 @@ import { stegaClean } from 'next-sanity';
 import {
   createSanityDataAttribute,
   getTextAlignClass,
-  resolveTextAlignment,
-  type TextAlignment,
   type SanityLiveEditingProps,
 } from '../../utils/sectionHelpers';
 
 // Context to track if PageSection has a title (affects nested section heading levels)
 const PageSectionContext = createContext<{ hasTitle: boolean }>({ hasTitle: false });
-
-// Context to cascade text alignment through the component tree
-export const TextAlignmentContext = createContext<{ textAlign: TextAlignment }>({
-  textAlign: 'center',
-});
 
 interface PageSectionProps extends SanityLiveEditingProps {
   children: React.ReactNode;
@@ -50,15 +43,17 @@ const PageSection = ({
   const hasTitle = Boolean(title);
   const paddingClasses = isFirst ? 'pt-16 md:pt-24 pb-16 md:pb-24' : 'pb-16 md:pb-24';
 
-  // For PageSection, 'inherit' doesn't make sense, so default to 'center'
-  const cleanTextAlign = resolveTextAlignment(textAlign || 'center', 'center', 'center');
+  // Clean and use the textAlign value directly
+  const cleanTextAlign = stegaClean(textAlign) || 'center';
+  
+  // Default to center if inherit is passed (since we're not doing inheritance)
+  const effectiveTextAlign = cleanTextAlign === 'inherit' ? 'center' : cleanTextAlign;
 
   return (
     <PageSectionContext.Provider value={{ hasTitle }}>
-      <TextAlignmentContext.Provider value={{ textAlign: cleanTextAlign }}>
-        <section
-          id={anchorId ? stegaClean(anchorId) : undefined}
-          className={`${paddingClasses} ${getTextAlignClass(cleanTextAlign)} ${className}`.trim()}>
+      <section
+        id={anchorId ? stegaClean(anchorId) : undefined}
+        className={`${paddingClasses} ${getTextAlignClass(effectiveTextAlign)} ${className}`.trim()}>
           {/* Title is now always present since it's required */}
           <div className='text-center'>
             <Heading
@@ -80,7 +75,6 @@ const PageSection = ({
           </div>
           {children}
         </section>
-      </TextAlignmentContext.Provider>
     </PageSectionContext.Provider>
   );
 };
@@ -88,7 +82,5 @@ const PageSection = ({
 // Hook to access PageSection context
 export const usePageSectionContext = () => useContext(PageSectionContext);
 
-// Hook to access text alignment context
-export const useTextAlignmentContext = () => useContext(TextAlignmentContext);
 
 export default PageSection;

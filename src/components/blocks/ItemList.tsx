@@ -9,14 +9,16 @@ interface ItemListProps extends Omit<ItemListBlock, '_type' | '_key'> {
 }
 
 const ItemList = ({ items = [], alignment, className = '' }: ItemListProps) => {
-  // Clean the alignment value to remove Sanity's stega encoding characters
+  // Clean the alignment value to remove Sanity's stega encoding characters  
   const cleanAlignment = stegaClean(alignment);
 
-  // Ensure we always have a valid alignment value, fallback to 'center'
+  // Default to center if inherit is passed or undefined
   const validAlignment =
-    cleanAlignment && ['left', 'center', 'right'].includes(cleanAlignment)
-      ? cleanAlignment
-      : 'center';
+    cleanAlignment === 'inherit' || !cleanAlignment
+      ? 'center'
+      : cleanAlignment && ['left', 'center', 'right'].includes(cleanAlignment)
+        ? cleanAlignment
+        : 'center';
 
   const getAlignmentClass = () => {
     switch (validAlignment) {

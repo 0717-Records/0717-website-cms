@@ -117,7 +117,7 @@ export function createSectionSchema(config: SectionFactoryConfig) {
         ],
         layout: 'radio',
       },
-      initialValue: config.name === 'pageSection' ? 'center' : 'inherit',
+      initialValue: 'inherit',
     }));
   }
 

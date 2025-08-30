@@ -77,7 +77,7 @@ export default function CollabSideContent({
                     _type='richText'
                     _key={`richtext-${index}`}
                     content={sideBlock.richText as SanityRichText['content']}
-                    alignment='left'
+                    textAlign='left'
                   />
                 </div>
               )}

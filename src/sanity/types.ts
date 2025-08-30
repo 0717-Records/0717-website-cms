@@ -415,7 +415,7 @@ export type RichText = {
 
 export type ItemList = {
   _type: "itemList";
-  alignment?: "left" | "center" | "right";
+  alignment?: "inherit" | "left" | "center" | "right";
   items?: Array<{
     text?: string;
     icon?: {
@@ -1645,7 +1645,7 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "itemList";
-    alignment?: "center" | "left" | "right";
+    alignment?: "center" | "inherit" | "left" | "right";
     items?: Array<{
       text?: string;
       icon?: {
@@ -1986,7 +1986,7 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "itemList";
-      alignment?: "center" | "left" | "right";
+      alignment?: "center" | "inherit" | "left" | "right";
       items?: Array<{
         text?: string;
         icon?: {
@@ -2384,7 +2384,7 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "itemList";
-        alignment?: "center" | "left" | "right";
+        alignment?: "center" | "inherit" | "left" | "right";
         items?: Array<{
           text?: string;
           icon?: {
@@ -2765,7 +2765,7 @@ export type PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "itemList";
-          alignment?: "center" | "left" | "right";
+          alignment?: "center" | "inherit" | "left" | "right";
           items?: Array<{
             text?: string;
             icon?: {
@@ -3487,7 +3487,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "itemList";
-    alignment?: "center" | "left" | "right";
+    alignment?: "center" | "inherit" | "left" | "right";
     items?: Array<{
       text?: string;
       icon?: {
@@ -3828,7 +3828,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "itemList";
-      alignment?: "center" | "left" | "right";
+      alignment?: "center" | "inherit" | "left" | "right";
       items?: Array<{
         text?: string;
         icon?: {
@@ -4226,7 +4226,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "itemList";
-        alignment?: "center" | "left" | "right";
+        alignment?: "center" | "inherit" | "left" | "right";
         items?: Array<{
           text?: string;
           icon?: {
@@ -4607,7 +4607,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "itemList";
-          alignment?: "center" | "left" | "right";
+          alignment?: "center" | "inherit" | "left" | "right";
           items?: Array<{
             text?: string;
             icon?: {
@@ -5404,7 +5404,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "itemList";
-    alignment?: "center" | "left" | "right";
+    alignment?: "center" | "inherit" | "left" | "right";
     items?: Array<{
       text?: string;
       icon?: {
@@ -5745,7 +5745,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "itemList";
-      alignment?: "center" | "left" | "right";
+      alignment?: "center" | "inherit" | "left" | "right";
       items?: Array<{
         text?: string;
         icon?: {
@@ -6143,7 +6143,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "itemList";
-        alignment?: "center" | "left" | "right";
+        alignment?: "center" | "inherit" | "left" | "right";
         items?: Array<{
           text?: string;
           icon?: {
@@ -6524,7 +6524,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "itemList";
-          alignment?: "center" | "left" | "right";
+          alignment?: "center" | "inherit" | "left" | "right";
           items?: Array<{
             text?: string;
             icon?: {
@@ -7208,7 +7208,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "itemList";
-    alignment?: "center" | "left" | "right";
+    alignment?: "center" | "inherit" | "left" | "right";
     items?: Array<{
       text?: string;
       icon?: {
@@ -7549,7 +7549,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "itemList";
-      alignment?: "center" | "left" | "right";
+      alignment?: "center" | "inherit" | "left" | "right";
       items?: Array<{
         text?: string;
         icon?: {
@@ -7947,7 +7947,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "itemList";
-        alignment?: "center" | "left" | "right";
+        alignment?: "center" | "inherit" | "left" | "right";
         items?: Array<{
           text?: string;
           icon?: {
@@ -8328,7 +8328,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "itemList";
-          alignment?: "center" | "left" | "right";
+          alignment?: "center" | "inherit" | "left" | "right";
           items?: Array<{
             text?: string;
             icon?: {
@@ -9751,7 +9751,7 @@ export type COLLAB_QUERYResult = {
     } | {
       _key: string;
       _type: "itemList";
-      alignment?: "center" | "left" | "right";
+      alignment?: "center" | "inherit" | "left" | "right";
       items?: Array<{
         text?: string;
         icon?: {
@@ -10149,7 +10149,7 @@ export type COLLAB_QUERYResult = {
       } | {
         _key: string;
         _type: "itemList";
-        alignment?: "center" | "left" | "right";
+        alignment?: "center" | "inherit" | "left" | "right";
         items?: Array<{
           text?: string;
           icon?: {
@@ -10547,7 +10547,7 @@ export type COLLAB_QUERYResult = {
         } | {
           _key: string;
           _type: "itemList";
-          alignment?: "center" | "left" | "right";
+          alignment?: "center" | "inherit" | "left" | "right";
           items?: Array<{
             text?: string;
             icon?: {

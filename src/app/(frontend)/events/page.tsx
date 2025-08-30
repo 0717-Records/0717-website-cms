@@ -24,7 +24,7 @@ export default async function EventsPage() {
     <>
       {/* Page Hero */}
       <PageHero title={eventsIndexPage?.title || 'All Events'} heroImage={backgroundImage} />
-      <Container>
+      <Container textAlign='center'>
         {/* Page Subtitle */}
         {eventsIndexPage?.subtitle && (
           <div className='container mx-auto px-4 md:px-8 py-8'>

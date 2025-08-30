@@ -1,20 +1,20 @@
 import React from 'react';
 import { stegaClean } from 'next-sanity';
 import type { QuoteBlock } from '@/types/blocks';
-import type { BlockProps, TextAlignment } from '@/types/shared';
+import type { BlockProps } from '@/types/shared';
 
 interface QuoteProps extends BlockProps<QuoteBlock> {
-  alignment?: TextAlignment;
+  className?: string;
 }
 
-const Quote = ({ text, attribution, textAlign = 'inherit', className = '', alignment = 'center' }: QuoteProps) => {
+const Quote = ({ text, attribution, textAlign = 'center', className = '' }: QuoteProps) => {
   // Clean the values to remove Sanity's stega encoding
   const cleanText = stegaClean(text);
   const cleanAttribution = stegaClean(attribution);
-  const cleanTextAlign = stegaClean(textAlign) || 'inherit';
+  const cleanTextAlign = stegaClean(textAlign) || 'center';
 
-  // Determine the effective text alignment
-  const effectiveTextAlign = cleanTextAlign === 'inherit' ? alignment : cleanTextAlign;
+  // Default to center if inherit is passed (since we're not doing inheritance)
+  const effectiveTextAlign = cleanTextAlign === 'inherit' ? 'center' : cleanTextAlign;
 
   const getTextAlignClass = (align: 'left' | 'center' | 'right') => {
     switch (align) {

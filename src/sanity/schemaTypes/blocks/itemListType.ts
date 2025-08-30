@@ -11,13 +11,14 @@ export const itemListType = defineType({
       type: 'string',
       options: {
         list: [
+          { title: 'Inherit from parent', value: 'inherit' },
           { title: 'Left', value: 'left' },
           { title: 'Center', value: 'center' },
           { title: 'Right', value: 'right' },
         ],
         layout: 'radio',
       },
-      initialValue: 'center',
+      initialValue: 'inherit',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -72,11 +73,13 @@ export const itemListType = defineType({
     prepare({ items, alignment }) {
       const itemCount = items?.length || 0;
       const alignmentText =
-        alignment === 'center'
-          ? 'centered'
-          : alignment === 'right'
-            ? 'right-aligned'
-            : 'left-aligned';
+        alignment === 'inherit'
+          ? 'inherit alignment'
+          : alignment === 'center'
+            ? 'centered'
+            : alignment === 'right'
+              ? 'right-aligned'
+              : 'left-aligned';
       return {
         title: `Item List (${itemCount} items)`,
         subtitle: `${alignmentText}`,

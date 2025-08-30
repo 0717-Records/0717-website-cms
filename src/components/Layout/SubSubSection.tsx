@@ -1,16 +1,11 @@
 import React from 'react';
 import Heading from '../Typography/Heading/Heading';
 import { stegaClean } from 'next-sanity';
-import { useTextAlignmentContext } from './PageSection';
 import {
   createSanityDataAttribute,
   getTextAlignClass,
-  resolveTextAlignment,
   type SanityLiveEditingProps,
 } from '../../utils/sectionHelpers';
-
-// Import the TextAlignmentContext to provide it to children
-import { TextAlignmentContext } from './PageSection';
 
 interface SubSubSectionProps extends SanityLiveEditingProps {
   children: React.ReactNode;
@@ -24,25 +19,25 @@ const SubSubSection = ({
   children,
   className = '',
   title,
-  textAlign = 'inherit',
+  textAlign = 'center',
   anchorId,
   documentId,
   documentType,
   titlePath,
 }: SubSubSectionProps) => {
-  const { textAlign: parentTextAlign } = useTextAlignmentContext();
-
   // Create data attribute for Sanity live editing
   const titleDataAttribute = createSanityDataAttribute(documentId, documentType, titlePath);
 
-  // Determine the effective text alignment
-  const effectiveTextAlign = resolveTextAlignment(textAlign || 'inherit', parentTextAlign);
+  // Clean and use the textAlign value directly
+  const cleanTextAlign = stegaClean(textAlign) || 'center';
+  
+  // Default to center if inherit is passed (since we're not doing inheritance)
+  const effectiveTextAlign = cleanTextAlign === 'inherit' ? 'center' : cleanTextAlign;
 
   return (
-    <TextAlignmentContext.Provider value={{ textAlign: effectiveTextAlign }}>
-      <section
-        id={anchorId ? stegaClean(anchorId) : undefined}
-        className={`pb-6 md:pb-8 ${getTextAlignClass(effectiveTextAlign)} ${className}`.trim()}>
+    <section
+      id={anchorId ? stegaClean(anchorId) : undefined}
+      className={`pb-6 md:pb-8 ${getTextAlignClass(effectiveTextAlign)} ${className}`.trim()}>
         <div className='mb-2 md:mb-3 text-center'>
           <Heading
             level='h4' // Fixed h4 level for SubSubSections
@@ -55,7 +50,6 @@ const SubSubSection = ({
         </div>
         {children}
       </section>
-    </TextAlignmentContext.Provider>
   );
 };
 

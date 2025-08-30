@@ -2686,6 +2686,10 @@
             "of": [
               {
                 "type": "string",
+                "value": "inherit"
+              },
+              {
+                "type": "string",
                 "value": "left"
               },
               {

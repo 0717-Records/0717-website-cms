@@ -37,7 +37,7 @@ const Page = async () => {
 
       {/* Additional Page Builder Content */}
       {page.content && (
-        <Container>
+        <Container textAlign='center'>
           <PageBuilder
             content={page.content as NonNullable<PAGE_QUERYResult>['content']}
             documentId={page._id}

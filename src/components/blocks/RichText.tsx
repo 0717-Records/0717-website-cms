@@ -4,33 +4,25 @@ import { components } from '@/sanity/portableTextComponents';
 import type { RichTextBlock } from '@/types/blocks';
 import {
   getTextAlignClass,
-  resolveTextAlignment,
   type TextAlignment,
 } from '../../utils/sectionHelpers';
 
-interface RichTextProps extends RichTextBlock {
-  alignment?: 'left' | 'center' | 'right';
-}
+type RichTextProps = RichTextBlock;
 
 const RichText = ({
   content,
-  textAlign = 'inherit',
+  textAlign = 'center',
   isCallout = false,
-  alignment = 'center',
 }: RichTextProps) => {
 
   // Clean the values to remove Sanity's stega encoding
-  const cleanTextAlign = stegaClean(textAlign) || 'inherit';
+  const cleanTextAlign = stegaClean(textAlign) || 'center';
   const cleanIsCallout = stegaClean(isCallout) || false;
 
   // Determine the effective text alignment
   // For callouts, default to center alignment unless explicitly set
-  const fallbackAlignment: TextAlignment = cleanIsCallout ? 'center' : alignment;
-  const effectiveTextAlign = resolveTextAlignment(
-    cleanTextAlign as 'inherit' | 'left' | 'center' | 'right',
-    alignment,
-    fallbackAlignment
-  );
+  const fallbackAlignment: TextAlignment = cleanIsCallout ? 'center' : 'center';
+  const effectiveTextAlign = cleanTextAlign === 'inherit' ? fallbackAlignment : cleanTextAlign as TextAlignment;
   if (!content) {
     return null;
   }

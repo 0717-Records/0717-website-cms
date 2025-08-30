@@ -1,4 +1,4 @@
-import { createDataAttribute, stegaClean } from 'next-sanity';
+import { createDataAttribute } from 'next-sanity';
 
 export type TextAlignment = 'left' | 'center' | 'right';
 export type TextAlignmentWithInherit = 'inherit' | TextAlignment;
@@ -52,19 +52,3 @@ export const getTextAlignClass = (align: TextAlignment): string => {
   }
 };
 
-/**
- * Cleans and resolves text alignment value, handling inheritance
- */
-export const resolveTextAlignment = (
-  textAlign: TextAlignmentWithInherit,
-  parentTextAlign: TextAlignment,
-  fallback: TextAlignment = 'center'
-): TextAlignment => {
-  const cleanTextAlign = stegaClean(textAlign);
-  
-  if (cleanTextAlign === 'inherit' || !cleanTextAlign) {
-    return parentTextAlign || fallback;
-  }
-  
-  return cleanTextAlign as TextAlignment;
-};

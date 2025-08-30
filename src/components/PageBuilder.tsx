@@ -225,14 +225,14 @@ const BlockRenderer = ({
           case 'richText':
             return (
               <BlockWrapper key={block._key}>
-                <RichText {...block} alignment={alignment} />
+                <RichText {...block} />
               </BlockWrapper>
             );
 
           case 'quote':
             return (
               <BlockWrapper key={block._key}>
-                <Quote {...block} alignment={alignment} />
+                <Quote {...block} />
               </BlockWrapper>
             );
 

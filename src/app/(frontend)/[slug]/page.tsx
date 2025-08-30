@@ -26,7 +26,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
       {/* Page Hero */}
       <PageHero title={page.title || 'Untitled Page'} />
 
-      <Container textAlign='center'>
+      <Container textAlign={page.alignment || 'center'}>
         {/* Page Subtitle */}
         {page.subtitle && (
           <div className='container mx-auto px-4 md:px-8 py-8'>
