@@ -41,7 +41,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
         documentId={collab._id}
         documentType={collab._type}
       />
-      <Container>
+      <Container textAlign='left'>
         {/* Short Description */}
         <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line text-center mb-8'>
           {collab.shortDescription}
