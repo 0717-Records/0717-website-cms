@@ -7,7 +7,7 @@ import { urlFor } from '@/sanity/lib/image';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 
 interface PageHeroProps {
-  title?: string;
+  title?: string | null;
   heroImage?: unknown;
   height?: 'small' | 'medium' | 'large';
   overlay?: boolean;
@@ -20,7 +20,7 @@ interface PageHeroProps {
 }
 
 const PageHero = ({
-  title,
+  title = null,
   heroImage,
   documentId,
   documentType,
