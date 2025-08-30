@@ -232,6 +232,26 @@ export const BLOG_INDEX_PAGE_QUERY = defineQuery(`*[_id == "blogIndexPage"][0]{
   closingCard
 }`);
 
+export const BLOG_POST_QUERY = defineQuery(`*[_type == "blogPost" && slug.current == $slug][0]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  subtitle,
+  author,
+  heroImage{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
+  hasOverrideDate,
+  overrideDate,
+  content,
+  hasClosingCard,
+  closingCard
+}`);
+
 // Side content projection for sidebar sections
 const sideContentProjection = `sideContent[]{
   _type,

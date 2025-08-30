@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaUser, FaCalendar } from 'react-icons/fa6';
 import { urlFor } from '@/sanity/lib/image';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
@@ -41,8 +42,11 @@ const BlogCard = (props: BlogCardProps) => {
   // Don't render if no title (should be filtered out at parent level)
   if (!title) return null;
 
+  const blogPostUrl = slug?.current ? `/blog/${slug.current}` : '#';
+
   return (
-    <div className='w-full h-full bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:scale-103 cursor-pointer group'>
+    <Link href={blogPostUrl} className='block w-full h-full'>
+      <div className='w-full h-full bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:scale-103 cursor-pointer group'>
       {/* Blog Post Image */}
       <div className='relative w-full aspect-[4/3] bg-gray-900 overflow-hidden flex-shrink-0'>
         {imageUrl ? (
@@ -94,6 +98,7 @@ const BlogCard = (props: BlogCardProps) => {
         )}
       </div>
     </div>
+    </Link>
   );
 };
 
