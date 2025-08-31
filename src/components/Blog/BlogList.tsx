@@ -23,7 +23,7 @@ interface BlogListProps {
 
 const BlogList = ({ posts, noPostsText }: BlogListProps) => {
   // Filter out posts without titles (shouldn't happen but for safety)
-  const validPosts = posts.filter(post => post.title);
+  const validPosts = posts.filter((post) => post.title);
 
   if (validPosts.length === 0) {
     return (
@@ -35,7 +35,7 @@ const BlogList = ({ posts, noPostsText }: BlogListProps) => {
   }
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8'>
+    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8'>
       {validPosts.map((post) => (
         <div key={post._id} className='flex'>
           <BlogCard {...post} />
