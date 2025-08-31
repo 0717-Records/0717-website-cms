@@ -57,16 +57,8 @@ const CTABlogPost = ({ blogPost, className = '' }: CTABlogPostProps) => {
     return null;
   }
 
-  const {
-    title,
-    slug,
-    subtitle,
-    author,
-    mainImage,
-    _createdAt,
-    overrideDate,
-    hasOverrideDate,
-  } = blogPost;
+  const { title, slug, subtitle, author, mainImage, _createdAt, overrideDate, hasOverrideDate } =
+    blogPost;
 
   // Don't render if essential data is missing
   if (!title) {
@@ -79,7 +71,7 @@ const CTABlogPost = ({ blogPost, className = '' }: CTABlogPostProps) => {
   const blogPostUrl = slug?.current ? `/blog/${slug.current}` : '#';
 
   const cardContent = (
-    <div className='w-full bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group'>
+    <div className='w-full bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group text-left'>
       {/* Blog Post Image - Mobile: full width on top, Desktop: left side with 4:3 aspect ratio */}
       <div className='relative w-full md:w-1/3 aspect-[4/3] bg-gray-900 overflow-hidden flex-shrink-0'>
         {imageUrl ? (
@@ -101,14 +93,14 @@ const CTABlogPost = ({ blogPost, className = '' }: CTABlogPostProps) => {
       </div>
 
       {/* Blog Post Details - Mobile: below image, Desktop: right side */}
-      <div className='p-4 md:p-6 flex flex-col justify-between flex-grow'>
+      <div className='p-4 md:p-6 flex flex-col items-start'>
         {/* Title */}
-        <h3 className='text-body-lg md:text-body-xl font-bold mb-3 text-gray-800 transition-all duration-300 leading-tight group-hover:underline line-clamp-2'>
+        <p className='text-body-xl font-bold mb-3 text-gray-800 transition-all duration-300 leading-tight group-hover:underline line-clamp-2'>
           {title}
-        </h3>
+        </p>
 
         {/* Author and Date */}
-        <div className='flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3'>
+        <div className='flex justify-between items-center w-full sm:w-auto gap-4 mb-3'>
           {/* Author */}
           {author && (
             <div className='flex items-center text-text-subtle text-body-sm'>
@@ -126,7 +118,7 @@ const CTABlogPost = ({ blogPost, className = '' }: CTABlogPostProps) => {
 
         {/* Subtitle */}
         {subtitle && (
-          <div className='text-text-subtle text-body-sm leading-snug line-clamp-3 mb-4'>
+          <div className='text-text-subtle text-body leading-snug line-clamp-3 mb-4'>
             {subtitle}
           </div>
         )}
@@ -142,11 +134,10 @@ const CTABlogPost = ({ blogPost, className = '' }: CTABlogPostProps) => {
   // Wrap the entire card in a Next.js Link
   return (
     <div className={className}>
-      <Link 
-        href={blogPostUrl} 
+      <Link
+        href={blogPostUrl}
         className='block w-full h-full text-inherit no-underline'
-        aria-label={`Read blog post: ${title}`}
-      >
+        aria-label={`Read blog post: ${title}`}>
         {cardContent}
       </Link>
     </div>
