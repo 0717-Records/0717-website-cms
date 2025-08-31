@@ -71,8 +71,10 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
 
         {/* Menu Navigation */}
         <div
-          className='flex-1 overflow-y-auto overflow-x-hidden'
+          className='flex-1'
           style={{
+            overflowY: 'auto',
+            overflowX: 'hidden',
             scrollbarWidth: 'thin',
             scrollbarColor: '#d1d5db transparent',
             WebkitOverflowScrolling: 'touch',
