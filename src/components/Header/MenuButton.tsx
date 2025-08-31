@@ -9,9 +9,10 @@ interface MenuButtonProps {
   isMenuOpen?: boolean;
   onClick: () => void;
   className?: string;
+  ariaControls?: string;
 }
 
-const MenuButton = ({ variant, isMenuOpen = false, onClick, className = '' }: MenuButtonProps) => {
+const MenuButton = ({ variant, isMenuOpen = false, onClick, className = '', ariaControls }: MenuButtonProps) => {
   if (variant === 'close') {
     return (
       <button
@@ -35,7 +36,9 @@ const MenuButton = ({ variant, isMenuOpen = false, onClick, className = '' }: Me
     <button
       onClick={onClick}
       className={`flex flex-col justify-center items-center w-8 h-8 cursor-pointer focus:outline-none group ${className}`}
-      aria-label='Toggle menu'>
+      aria-label={`${isMenuOpen ? 'Close' : 'Open'} navigation menu`}
+      aria-expanded={isMenuOpen}
+      aria-controls={ariaControls}>
       <span
         className={`block w-6 h-0.5 bg-black group-hover:bg-brand-secondary transition-all duration-300 ${
           isMenuOpen ? 'rotate-45 translate-y-1.5' : ''

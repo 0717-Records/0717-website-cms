@@ -8,6 +8,7 @@ import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 import type { HEADER_QUERYResult } from '@/sanity/types';
 import MenuButton from '../MenuButton';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
+import { useFocusTrap } from '@/hooks/useFocusTrap';
 import Divider from '@/components/UI/Divider';
 import {
   VerticalNavData,
@@ -27,6 +28,7 @@ interface VerticalNavProps {
 
 const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavProps) => {
   useBodyScrollLock(isMenuOpen);
+  const focusTrapRef = useFocusTrap(isMenuOpen);
 
   return (
     <div
@@ -41,6 +43,11 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
 
       {/* Menu Sidebar */}
       <div
+        ref={focusTrapRef}
+        id="mobile-navigation-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Main navigation menu"
         className={`fixed top-0 right-0 h-full w-80 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl transition-transform duration-300 ease-in-out flex flex-col ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>

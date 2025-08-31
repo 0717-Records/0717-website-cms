@@ -9,6 +9,7 @@ import type { HEADER_QUERYResult } from '@/sanity/types';
 import HorizontalNav from './HorizontalNav';
 import MenuButton from './MenuButton';
 import VerticalNav from './VerticalNav/VerticalNav';
+import SkipLink from '@/components/UI/SkipLink';
 
 
 interface HeaderProps {
@@ -55,6 +56,7 @@ const Header = ({ headerData }: HeaderProps) => {
   */
   return (
     <>
+      <SkipLink href="#main-content">Skip to main content</SkipLink>
       <header className='w-full px-4 md:px-8 h-20 md:h-24 flex items-center justify-between gap-8 sticky top-0 z-30 bg-white'>
         {/* Logo */}
         <Link href='/#home' className='flex items-center gap-2'>
@@ -83,7 +85,12 @@ const Header = ({ headerData }: HeaderProps) => {
         </div>
 
         {/* Hamburger Menu Button */}
-        <MenuButton variant='hamburger' isMenuOpen={isMenuOpen} onClick={toggleMenu} />
+        <MenuButton 
+          variant='hamburger' 
+          isMenuOpen={isMenuOpen} 
+          onClick={toggleMenu}
+          ariaControls="mobile-navigation-menu"
+        />
       </header>
 
       {/* Vertical Menu */}

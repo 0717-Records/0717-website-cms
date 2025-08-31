@@ -12,11 +12,3 @@
 .overlayClosed {
   opacity: 0;
 }
-
-.overlayOpen {
-  opacity: 1;
-}
-
-.overlayClosed {
-  opacity: 0;
-}

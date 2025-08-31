@@ -1,6 +1,7 @@
 'use client';
 
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
+import { useFocusTrap } from '@/hooks/useFocusTrap';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 interface ModalProps {
@@ -20,6 +21,7 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const focusTrapRef = useFocusTrap(isModalOpen && isVisible);
 
   useBodyScrollLock(isModalOpen);
 
@@ -60,7 +62,12 @@ const Modal: React.FC<ModalProps> = ({
 
   return (
     <dialog
-      ref={dialogRef}
+      ref={(el) => {
+        dialogRef.current = el;
+        if (focusTrapRef.current !== el) {
+          focusTrapRef.current = el;
+        }
+      }}
       aria-labelledby={ariaLabelledby}
       aria-describedby={ariaDescribedby}
       className={`backdrop:bg-black/87 flex-col items-center justify-center w-screen h-dvh bg-transparent overflow-hidden hidden open:flex p-0 m-0 max-w-none max-h-none transition-opacity duration-200 ${
