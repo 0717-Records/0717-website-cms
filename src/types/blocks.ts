@@ -2,7 +2,7 @@
 // This type represents any block that can contain other blocks
 
 
-import type { ItemList, Divider, RichText, Quote, TextImage, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, CtaEvent, SubSection, SubSubSection, EventBlock, CollabAllBlock, FavouriteBlock, CompanyLinksBlock } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Quote, TextImage, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, CtaEvent, CtaBlogPost, SubSection, SubSubSection, EventBlock, CollabAllBlock, FavouriteBlock, CompanyLinksBlock } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -40,6 +40,7 @@ export type CTACalloutLinkBlock = CtaCalloutLink & { _key: string };
 export type CTAEmailButtonBlock = CtaEmailButton & { _key: string };
 export type EmbeddedCTAButtonBlock = EmbeddedCtaButton & { _key: string };
 export type CTAEventBlock = CtaEvent & { _key: string };
+export type CTABlogPostBlock = CtaBlogPost & { _key: string };
 export type EventBlockType = EventBlock & { _key: string };
 export type CollabAllBlockType = CollabAllBlock & { _key: string };
 export type FavouriteBlockType = FavouriteBlock & { _key: string };
@@ -68,6 +69,7 @@ export type NestedBlock =
   | CTACalloutLinkBlock
   | CTAEmailButtonBlock
   | CTAEventBlock
+  | CTABlogPostBlock
   | EventBlockType
   | CollabAllBlockType
   | FavouriteBlockType
@@ -164,6 +166,10 @@ export const isCTAEmailButtonBlock = (block: NestedBlock): block is CTAEmailButt
 
 export const isCTAEventBlock = (block: NestedBlock): block is CTAEventBlock => {
   return block._type === 'ctaEvent';
+};
+
+export const isCTABlogPostBlock = (block: NestedBlock): block is CTABlogPostBlock => {
+  return block._type === 'ctaBlogPost';
 };
 
 export const isEventBlock = (block: NestedBlock): block is EventBlockType => {

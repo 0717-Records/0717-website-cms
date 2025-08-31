@@ -84,6 +84,25 @@ const contentProjection = `
       pastEventLinkBehavior,
       pastEventLink
     }
+  },
+  _type == "ctaBlogPost" => {
+    ...,
+    blogPost->{
+      _id,
+      _createdAt,
+      title,
+      slug,
+      subtitle,
+      author,
+      mainImage{
+        asset,
+        alt,
+        hotspot,
+        crop
+      },
+      hasOverrideDate,
+      overrideDate
+    }
   }
 `;
 

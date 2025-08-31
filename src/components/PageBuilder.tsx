@@ -19,6 +19,7 @@ import CTAButton from './blocks/CTAButton';
 import CTACalloutLinkComponent from './blocks/CTACalloutLink';
 import CTAEmailButtonComponent from './blocks/CTAEmailButton';
 import CTAEvent from './blocks/CTAEvent';
+import CTABlogPost from './blocks/CTABlogPost';
 import CardGrid from './blocks/CardGrid';
 import Icon from './blocks/Icon';
 import ImageBlock from './blocks/Image';
@@ -286,6 +287,13 @@ const BlockRenderer = ({
             return (
               <BlockWrapper key={block._key}>
                 <CTAEvent {...block} />
+              </BlockWrapper>
+            );
+
+          case 'ctaBlogPost':
+            return (
+              <BlockWrapper key={block._key}>
+                <CTABlogPost {...block} />
               </BlockWrapper>
             );
 
