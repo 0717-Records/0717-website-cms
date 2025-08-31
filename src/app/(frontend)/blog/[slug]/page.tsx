@@ -6,6 +6,8 @@ import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import PageBuilder from '@/components/PageBuilder';
 import { FaUser, FaCalendar } from 'react-icons/fa6';
+import Image from 'next/image';
+import { urlFor } from '@/sanity/lib/image';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 
 interface BlogPostPageProps {
@@ -41,7 +43,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <>
       {/* Page Hero - No title, back to blog */}
       <PageHero
-        heroImage={post.heroImage}
+        heroImage={post.blogIndexHeroImage}
         backLinkHref='/blog'
         backLinkText='Back to Blog'
         documentId={post._id}
@@ -81,6 +83,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Horizontal line */}
           <hr className='border-t border-gray-200 mb-8' />
         </div>
+
+        {/* Main Image - displayed between horizontal line and content */}
+        {post.mainImage && (
+          <div className='w-full mb-8'>
+            <div className='relative w-full aspect-[16/9] overflow-hidden rounded-lg'>
+              <Image
+                src={urlFor(post.mainImage).url()}
+                alt={(post.mainImage as { alt?: string })?.alt || post.title || 'Blog post image'}
+                fill
+                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw'
+                className='object-cover'
+                priority
+              />
+            </div>
+          </div>
+        )}
 
         {/* Article Content Container */}
         {post.content && (

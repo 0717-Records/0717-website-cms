@@ -37,7 +37,7 @@ export const blogIndexPageType = defineType({
       name: 'heroImage',
       type: 'image',
       title: 'Hero Image',
-      description: 'Optional hero image for the blog index page header',
+      description: 'Hero image for the blog index page header. Note: This image will also be used as the hero image for all individual blog posts.',
       options: {
         hotspot: true,
       },

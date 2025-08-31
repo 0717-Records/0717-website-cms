@@ -12,7 +12,7 @@ interface BlogCardProps {
   slug?: { current?: string | null } | null;
   subtitle?: string | null;
   author?: string | null;
-  heroImage?: SanityImageSource | null;
+  mainImage?: SanityImageSource | null;
   hasOverrideDate?: boolean | null;
   overrideDate?: string | null;
 }
@@ -33,11 +33,11 @@ function formatBlogDate(
 }
 
 const BlogCard = (props: BlogCardProps) => {
-  const { title, slug, subtitle, author, heroImage, _createdAt, overrideDate, hasOverrideDate } = props;
+  const { title, slug, subtitle, author, mainImage, _createdAt, overrideDate, hasOverrideDate } = props;
 
   const formattedDate = formatBlogDate(_createdAt, overrideDate, hasOverrideDate);
-  const imageUrl = heroImage ? urlFor(heroImage).url() : null;
-  const imageAlt = (heroImage as { alt?: string })?.alt || `${title || 'Blog post'} image`;
+  const imageUrl = mainImage ? urlFor(mainImage).url() : null;
+  const imageAlt = (mainImage as { alt?: string })?.alt || `${title || 'Blog post'} image`;
 
   // Don't render if no title (should be filtered out at parent level)
   if (!title) return null;

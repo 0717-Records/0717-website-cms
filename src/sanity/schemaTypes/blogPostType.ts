@@ -50,10 +50,10 @@ export const blogPostType = defineType({
       group: 'header',
     }),
     defineField({
-      name: 'heroImage',
+      name: 'mainImage',
       type: 'image',
-      title: 'Hero Image',
-      description: 'Optional hero image for the blog article header',
+      title: 'Main Image',
+      description: 'Optional main image for the blog article. This image will be used on the blog index page as the card image and will also be displayed on the blog post page between the author/date section and the main content.',
       options: {
         hotspot: true,
       },
@@ -157,7 +157,7 @@ export const blogPostType = defineType({
       slug: 'slug.current',
       subtitle: 'subtitle',
       author: 'author',
-      media: 'heroImage',
+      media: 'mainImage',
       publishedAt: '_createdAt',
       overrideDate: 'overrideDate',
       hasOverrideDate: 'hasOverrideDate',

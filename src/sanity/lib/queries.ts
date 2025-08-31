@@ -206,7 +206,7 @@ export const BLOG_POSTS_QUERY = defineQuery(`*[_type == "blogPost"]|order(coales
   slug,
   subtitle,
   author,
-  heroImage{
+  mainImage{
     asset,
     alt,
     hotspot,
@@ -242,7 +242,7 @@ export const BLOG_POST_QUERY = defineQuery(`*[_type == "blogPost" && slug.curren
   slug,
   subtitle,
   author,
-  heroImage{
+  mainImage{
     asset,
     alt,
     hotspot,
@@ -252,7 +252,13 @@ export const BLOG_POST_QUERY = defineQuery(`*[_type == "blogPost" && slug.curren
   overrideDate,
   content,
   hasClosingCard,
-  closingCard
+  closingCard,
+  "blogIndexHeroImage": *[_id == "blogIndexPage"][0].heroImage{
+    asset,
+    alt,
+    hotspot,
+    crop
+  }
 }`);
 
 // Side content projection for sidebar sections
