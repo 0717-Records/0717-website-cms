@@ -123,13 +123,16 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
   _type,
   title,
   subtitle,
-  alignment,
   slug,
   ${recursiveContent},
-  mainImage{
+  heroImage{
     asset,
-    alt
-  }
+    alt,
+    hotspot,
+    crop
+  },
+  hasClosingCard,
+  closingCard
 }`);
 
 export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{

@@ -6,6 +6,7 @@ import { getAllEvents } from '@/actions/events';
 import { getCollabs } from '@/actions/collabs';
 import { getFavourites } from '@/actions/favourites';
 import Container from '@/components/Layout/Container';
+import Card from '@/components/blocks/Card';
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
@@ -24,12 +25,17 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   return (
     <>
       {/* Page Hero */}
-      <PageHero title={page.title || 'Untitled Page'} />
+      <PageHero 
+        title={page.title || 'Untitled Page'} 
+        heroImage={page.heroImage}
+        documentId={page._id}
+        documentType={page._type}
+      />
 
-      <Container textAlign={page.alignment || 'center'}>
+      <Container>
         {/* Page Subtitle */}
         {page.subtitle && (
-          <div className='container mx-auto px-4 md:px-8 py-8'>
+          <div className='pt-16 md:pt-24 pb-8 md:pb-16'>
             <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line text-center'>
               {page.subtitle}
             </p>
@@ -53,8 +59,18 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             events={events}
             collabs={collabs}
             favourites={favourites}
-            alignment={page.alignment || 'center'}
           />
+        )}
+
+        {/* Closing Card */}
+        {page.hasClosingCard && page.closingCard && (
+          <div className='pt-16 md:pt-24 pb-16 md:pb-24'>
+            <Card 
+              {...(page.closingCard as NonNullable<typeof page.closingCard>)} 
+              documentId={page._id} 
+              documentType={page._type} 
+            />
+          </div>
         )}
       </Container>
     </>
