@@ -31,7 +31,6 @@ export const textImageType = defineType({
             Rule.required().error('Alternative text is required for accessibility'),
         },
       ],
-      validation: (Rule) => Rule.required().error('Image is required'),
     }),
     defineField({
       name: 'layout',

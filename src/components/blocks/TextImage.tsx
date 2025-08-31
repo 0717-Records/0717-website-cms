@@ -9,6 +9,7 @@ import { components } from '@/sanity/portableTextComponents';
 import type { TextImageBlock } from '@/types/blocks';
 import ImageModal from '../Modals/ImageModal';
 import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
+import ImgPlaceHolder from '../UI/ImgPlaceHolder';
 
 interface TextImageProps extends TextImageBlock, Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
   className?: string;
@@ -27,17 +28,20 @@ const TextImage: React.FC<TextImageProps> = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Don't render if either content or image is missing
-  if (!content || !image?.asset) {
+  // Don't render if content is missing
+  if (!content) {
     return null;
   }
 
   const cleanLayout = stegaClean(layout) || 'text-left';
-  const imageUrl = urlFor(image).url();
-  const imageAlt = stegaClean(image.alt) || 'Image';
+  const hasImage = image?.asset;
+  const imageUrl = hasImage ? urlFor(image).url() : null;
+  const imageAlt = hasImage ? stegaClean(image.alt) || 'Image' : 'No image available';
 
   const handleImageClick = () => {
-    setIsModalOpen(true);
+    if (hasImage) {
+      setIsModalOpen(true);
+    }
   };
 
   const handleCloseModal = () => {
@@ -90,37 +94,43 @@ const TextImage: React.FC<TextImageProps> = ({
 
         {/* Image */}
         <div className={`w-full lg:w-1/2 ${layoutClasses.imageOrder}`} {...imageDataAttribute}>
-          <div
-            className="relative cursor-pointer"
-            onClick={handleImageClick}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                handleImageClick();
-              }
-            }}
-            tabIndex={0}
-            role="button"
-            aria-label={`View full-screen image: ${imageAlt}`}
-          >
-            <NextImage
-              src={imageUrl}
-              alt={imageAlt}
-              width={600}
-              height={400}
-              className="w-full h-auto rounded-lg"
-              style={{ objectFit: 'cover' }}
-            />
-          </div>
+          {hasImage ? (
+            <div
+              className="relative cursor-pointer"
+              onClick={handleImageClick}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleImageClick();
+                }
+              }}
+              tabIndex={0}
+              role="button"
+              aria-label={`View full-screen image: ${imageAlt}`}
+            >
+              <NextImage
+                src={imageUrl!}
+                alt={imageAlt}
+                width={600}
+                height={400}
+                className="w-full h-auto rounded-lg"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+          ) : (
+            <ImgPlaceHolder />
+          )}
         </div>
       </div>
 
-      <ImageModal
-        isModalOpen={isModalOpen}
-        closeModal={handleCloseModal}
-        imageUrl={imageUrl}
-        imageAlt={imageAlt}
-      />
+      {hasImage && (
+        <ImageModal
+          isModalOpen={isModalOpen}
+          closeModal={handleCloseModal}
+          imageUrl={imageUrl!}
+          imageAlt={imageAlt}
+        />
+      )}
     </>
   );
 };

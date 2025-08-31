@@ -46,7 +46,6 @@ export const imageGalleryType = defineType({
                     Rule.required().error('Alternative text is required for accessibility'),
                 },
               ],
-              validation: (Rule) => Rule.required().error('Image is required'),
             }),
             defineField({
               name: 'caption',
@@ -76,8 +75,6 @@ export const imageGalleryType = defineType({
           },
         }),
       ],
-      validation: (Rule) =>
-        Rule.required().min(1).error('Gallery must contain at least one image'),
     }),
   ],
   preview: {

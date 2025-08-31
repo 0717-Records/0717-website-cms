@@ -7,6 +7,7 @@ import { urlFor } from '@/sanity/lib/image';
 import type { ImageGalleryBlock } from '@/types/blocks';
 import type { SanityLiveEditingProps } from '../../utils/sectionHelpers';
 import ImageGalleryModal from '../Modals/ImageGalleryModal';
+import ImgPlaceHolder from '../UI/ImgPlaceHolder';
 
 interface ImageGalleryProps
   extends ImageGalleryBlock,
@@ -26,7 +27,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
-  if (!images || !Array.isArray(images) || images.length === 0) {
+  if (!images || !Array.isArray(images)) {
     return null;
   }
 
@@ -55,39 +56,40 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
         role='region'
         aria-label={`Image gallery with ${images.length} images`}>
         {images.map((item, idx) => {
-          if (!item.image?.asset) return null;
+          const hasImage = item.image?.asset;
+          const imageUrl = hasImage && item.image ? urlFor(item.image).url() : null;
+          const imageAlt = hasImage && item.image 
+            ? stegaClean(item.image.alt) || `Gallery image ${idx + 1}`
+            : `Gallery placeholder ${idx + 1}`;
 
-          const imageUrl = urlFor(item.image).url();
-          if (!imageUrl) return null; // Skip if no valid URL
-
-          const imageAlt = stegaClean(item.image.alt) || `Gallery image ${idx + 1}`;
+          // Calculate the actual index in the filtered images array (only images with assets)
+          const filteredImageIndex = images.slice(0, idx).filter(item => item.image?.asset).length;
 
           return (
             <figure key={item._key || idx} className={gridClasses}>
-              <button
-                onClick={() => {
-                  setSelectedImageIndex(idx);
-                  setIsModalOpen(true);
-                }}
-                className='relative cursor-pointer transition hover:scale-102 aspect-[4/3] block w-full h-full'
-                tabIndex={0}
-                aria-label={`Open image ${idx + 1} of ${images.length} in modal: ${imageAlt}`}
-                aria-describedby={`gallery-image-${idx}`}>
-                <NextImage
-                  src={imageUrl}
-                  alt={imageAlt}
-                  fill
-                  sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
-                  className='object-cover rounded-lg'
-                />
-              </button>
-              {/* {caption && (
-                <figcaption
-                  className='mt-2 text-body-sm text-gray-600 text-center italic'
-                  {...getCaptionDataAttribute(idx)}>
-                  {caption}
-                </figcaption>
-              )} */}
+              {hasImage ? (
+                <button
+                  onClick={() => {
+                    setSelectedImageIndex(filteredImageIndex);
+                    setIsModalOpen(true);
+                  }}
+                  className='relative cursor-pointer transition hover:scale-102 aspect-[4/3] block w-full h-full'
+                  tabIndex={0}
+                  aria-label={`Open image ${idx + 1} of ${images.length} in modal: ${imageAlt}`}
+                  aria-describedby={`gallery-image-${idx}`}>
+                  <NextImage
+                    src={imageUrl!}
+                    alt={imageAlt}
+                    fill
+                    sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
+                    className='object-cover rounded-lg'
+                  />
+                </button>
+              ) : (
+                <div className='aspect-[4/3] flex items-center justify-center'>
+                  <ImgPlaceHolder />
+                </div>
+              )}
             </figure>
           );
         })}
@@ -95,7 +97,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
       <ImageGalleryModal
         isModalOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
-        images={images}
+        images={images.filter(item => item.image?.asset)}
         initialIndex={selectedImageIndex}
         documentId={documentId}
         documentType={documentType}
