@@ -36,16 +36,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const backgroundImage = post.heroImage
-    ? urlFor(post.heroImage).url()
-    : '/pagePlaceholderImg.webp';
-
   const formattedDate = formatBlogDate(post._createdAt, post.overrideDate, post.hasOverrideDate);
 
   return (
     <>
       {/* Page Hero - No title, back to blog */}
-      <PageHero heroImage={backgroundImage} backLinkHref='/blog' backLinkText='Back to Blog' />
+      <PageHero heroImage={post.heroImage} backLinkHref='/blog' backLinkText='Back to Blog' />
 
       <Container textAlign='left'>
         {/* Article Header */}
