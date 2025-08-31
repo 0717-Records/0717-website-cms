@@ -88,7 +88,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
           onTouchMove={(e) => {
             // Allow touch scrolling within this container by stopping event propagation
             // This prevents the global touchmove prevention from useBodyScrollLock
-            e.stopPropagation();
+            // e.stopPropagation();
           }}>
           <nav className='px-10 py-12'>
             <div className='space-y-6'>
