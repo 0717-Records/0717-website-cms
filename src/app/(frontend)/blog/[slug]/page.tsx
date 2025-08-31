@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Article Content Container */}
         {post.content && (
-          <div className='bg-white rounded-lg shadow-sm p-6 md:p-8 mb-16 md:mb-24'>
+          <div className='bg-white rounded-lg shadow-sm px-6 md:px-16 py-6 md:py-8 mb-16 md:mb-24'>
             <div className='text-left'>
               <PageBuilder
                 content={post.content as NonNullable<PAGE_QUERYResult>['content']}
