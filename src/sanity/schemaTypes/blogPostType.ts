@@ -88,7 +88,8 @@ export const blogPostType = defineType({
       name: 'hasOverrideDate',
       title: 'Override Publication Date',
       type: 'boolean',
-      description: 'Enable to set a custom publication date instead of using the document creation/publishing date',
+      description:
+        'Enable to set a custom publication date instead of using the document creation/publishing date',
       initialValue: false,
       group: 'meta',
     }),
@@ -96,14 +97,16 @@ export const blogPostType = defineType({
       name: 'overrideDate',
       type: 'datetime',
       title: 'Custom Publication Date',
-      description: 'Custom publication date for the article. By default, the document publishing date is used on the frontend. Use this field to override it with a different date of your choice.',
-      validation: (Rule) => Rule.custom((value, context) => {
-        const parent = context.parent as { hasOverrideDate?: boolean };
-        if (parent?.hasOverrideDate && !value) {
-          return 'Custom publication date is required when override is enabled';
-        }
-        return true;
-      }),
+      description:
+        'Custom publication date for the article. By default, the document publishing date is used on the frontend. Use this field to override it with a different date of your choice.',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as { hasOverrideDate?: boolean };
+          if (parent?.hasOverrideDate && !value) {
+            return 'Custom publication date is required when override is enabled';
+          }
+          return true;
+        }),
       hidden: ({ parent }) => !parent?.hasOverrideDate,
       group: 'meta',
     }),
@@ -160,17 +163,14 @@ export const blogPostType = defineType({
       hasOverrideDate: 'hasOverrideDate',
     },
     prepare({ title, slug, author, media, publishedAt, overrideDate, hasOverrideDate }) {
-      const displayDate = hasOverrideDate && overrideDate 
-        ? new Date(overrideDate).toLocaleDateString()
-        : publishedAt 
-          ? new Date(publishedAt).toLocaleDateString()
-          : '';
+      const displayDate =
+        hasOverrideDate && overrideDate
+          ? new Date(overrideDate).toLocaleDateString()
+          : publishedAt
+            ? new Date(publishedAt).toLocaleDateString()
+            : '';
 
-      const subtitleParts = [
-        slug ? `/${slug}` : null,
-        author ? `By ${author}` : null,
-        displayDate,
-      ].filter(Boolean);
+      const subtitleParts = [author ? `By ${author}` : null, displayDate].filter(Boolean);
 
       return {
         title: title || 'Untitled Blog Post',
@@ -185,26 +185,26 @@ export const blogPostType = defineType({
       name: 'publicationDateDesc',
       by: [
         { field: 'overrideDate', direction: 'desc' },
-        { field: '_createdAt', direction: 'desc' }
-      ]
+        { field: '_createdAt', direction: 'desc' },
+      ],
     },
     {
       title: 'Publication Date, Old',
       name: 'publicationDateAsc',
       by: [
         { field: 'overrideDate', direction: 'asc' },
-        { field: '_createdAt', direction: 'asc' }
-      ]
+        { field: '_createdAt', direction: 'asc' },
+      ],
     },
     {
       title: 'Title A-Z',
       name: 'titleAsc',
-      by: [{ field: 'title', direction: 'asc' }]
+      by: [{ field: 'title', direction: 'asc' }],
     },
     {
       title: 'Title Z-A',
       name: 'titleDesc',
-      by: [{ field: 'title', direction: 'desc' }]
-    }
+      by: [{ field: 'title', direction: 'desc' }],
+    },
   ],
 });
