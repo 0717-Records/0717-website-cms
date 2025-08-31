@@ -14,6 +14,8 @@ export const LINKABLE_PAGE_TYPES = [
   { type: 'homePage' },
   { type: 'eventsIndexPage' },
   { type: 'collab' },
+  { type: 'blogIndexPage' },
+  { type: 'blogPost' },
   // Add new page types here as the website grows
   // { type: 'artist' },
   // { type: 'company' },
