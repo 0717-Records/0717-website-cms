@@ -98,7 +98,7 @@ export const createLinkFieldSet = (
     // Internal Link Reference
     defineField({
       name: internalLinkConfig.name || 'internalLink',
-      title: internalLinkConfig.title || 'Internal Page (Optional)',
+      title: internalLinkConfig.title || 'Internal Page',
       type: 'reference',
       group,
       to: [...LINKABLE_PAGE_TYPES],
