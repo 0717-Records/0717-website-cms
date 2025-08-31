@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 export const useFocusTrap = (isActive: boolean) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   const previousActiveElementRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -22,7 +22,6 @@ export const useFocusTrap = (isActive: boolean) => {
 
     const focusableElements = getFocusableElements();
     const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
 
     // Focus the first element when the trap becomes active
     if (firstElement) {

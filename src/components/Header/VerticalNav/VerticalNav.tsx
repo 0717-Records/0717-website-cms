@@ -43,7 +43,10 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
 
       {/* Menu Sidebar */}
       <div
-        ref={focusTrapRef}
+        ref={(el) => {
+          // Type assertion is safe here since div element extends HTMLElement
+          focusTrapRef.current = el as HTMLElement;
+        }}
         id="mobile-navigation-menu"
         role="dialog"
         aria-modal="true"

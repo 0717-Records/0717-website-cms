@@ -64,8 +64,9 @@ const Modal: React.FC<ModalProps> = ({
     <dialog
       ref={(el) => {
         dialogRef.current = el;
+        // Type assertion is safe here since dialog element extends HTMLElement
         if (focusTrapRef.current !== el) {
-          focusTrapRef.current = el;
+          focusTrapRef.current = el as HTMLElement;
         }
       }}
       aria-labelledby={ariaLabelledby}
