@@ -5,55 +5,17 @@ export const structure: StructureResolver = (S) =>
   S.list()
     .title('Content Management')
     .items([
-      // === SITE MANAGEMENT ===
+      // === HOME PAGE ===
       S.listItem()
-        .title('🏠 Site Management')
+        .id('homePage')
+        .schemaType('homePage')
+        .title('🏠 Home Page')
         .child(
-          S.list()
-            .title('Site Management')
-            .items([
-              // Header - Singleton
-              S.listItem()
-                .id('header')
-                .schemaType('header')
-                .title('Header')
-                .child(
-                  S.editor().id('header').schemaType('header').documentId('header').title('Header')
-                ),
-              // Home Page - Singleton that can't be deleted
-              S.listItem()
-                .id('homePage')
-                .schemaType('homePage')
-                .title('Home Page')
-                .child(
-                  S.editor()
-                    .id('homePage')
-                    .schemaType('homePage')
-                    .documentId('homePage')
-                    .title('Home Page')
-                ),
-              // Footer - Singleton
-              S.listItem()
-                .id('footer')
-                .schemaType('footer')
-                .title('Footer')
-                .child(
-                  S.editor().id('footer').schemaType('footer').documentId('footer').title('Footer')
-                ),
-
-              // Site Settings - Singleton
-              S.listItem()
-                .id('siteSettings')
-                .schemaType('siteSettings')
-                .title('Site Settings')
-                .child(
-                  S.editor()
-                    .id('siteSettings')
-                    .schemaType('siteSettings')
-                    .documentId('siteSettings')
-                    .title('Site Settings')
-                ),
-            ])
+          S.editor()
+            .id('homePage')
+            .schemaType('homePage')
+            .documentId('homePage')
+            .title('Home Page')
         ),
 
       S.divider(),
@@ -106,7 +68,7 @@ export const structure: StructureResolver = (S) =>
         .title('📅 Events')
         .child(
           S.list()
-            .title('Events Management')
+            .title('Event Management')
             .items([
               // Events Index Page - Singleton
               S.listItem()
@@ -146,5 +108,57 @@ export const structure: StructureResolver = (S) =>
         .title('❤️ Favourites')
         .child(
           S.documentTypeList('favourites').title('Favourites')
+        ),
+
+      S.divider(),
+
+      // === SITE MANAGEMENT ===
+      S.listItem()
+        .title('⚙️ Site Management')
+        .child(
+          S.list()
+            .title('Site Management')
+            .items([
+              // Header - Singleton
+              S.listItem()
+                .id('header')
+                .schemaType('header')
+                .title('Header')
+                .child(
+                  S.editor().id('header').schemaType('header').documentId('header').title('Header')
+                ),
+              // Footer - Singleton
+              S.listItem()
+                .id('footer')
+                .schemaType('footer')
+                .title('Footer')
+                .child(
+                  S.editor().id('footer').schemaType('footer').documentId('footer').title('Footer')
+                ),
+              // Company Links - Singleton
+              S.listItem()
+                .id('companyLinks')
+                .schemaType('companyLinks')
+                .title('Company Links')
+                .child(
+                  S.editor()
+                    .id('companyLinks')
+                    .schemaType('companyLinks')
+                    .documentId('companyLinks')
+                    .title('Company Links')
+                ),
+              // Site Settings - Singleton
+              S.listItem()
+                .id('siteSettings')
+                .schemaType('siteSettings')
+                .title('Site Settings')
+                .child(
+                  S.editor()
+                    .id('siteSettings')
+                    .schemaType('siteSettings')
+                    .documentId('siteSettings')
+                    .title('Site Settings')
+                ),
+            ])
         ),
     ]);

@@ -6,7 +6,7 @@ import { SocialIcon, type SocialPlatform, getPlatformLabel } from '@/utils/socia
 import { cleanPlatform } from '@/utils/cleanPlatform';
 import CTAEmailButton from '@/components/UI/CTAEmailButton';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
-import type { FOOTER_QUERYResult, SITE_SETTINGS_QUERYResult } from '@/sanity/types';
+import type { FOOTER_QUERYResult, SITE_SETTINGS_QUERYResult, COMPANY_LINKS_QUERYResult } from '@/sanity/types';
 
 interface FooterMessage {
   _key: string;
@@ -17,12 +17,13 @@ interface FooterMessage {
 interface FooterProps {
   footerData: FOOTER_QUERYResult | null;
   siteSettingsData: SITE_SETTINGS_QUERYResult | null;
+  companyLinksData: COMPANY_LINKS_QUERYResult | null;
 }
 
-const Footer = ({ footerData, siteSettingsData }: FooterProps) => {
-  // Get company links from site settings, filtering out hidden ones and invalid entries
+const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps) => {
+  // Get company links from company links data, filtering out hidden ones and invalid entries
   const companyLinks =
-    siteSettingsData?.companyLinks?.socialLinksArray?.filter(
+    companyLinksData?.companyLinks?.socialLinksArray?.filter(
       (link) =>
         link.url &&
         link.platform &&
@@ -111,7 +112,7 @@ const Footer = ({ footerData, siteSettingsData }: FooterProps) => {
           {transformedLinks.length > 0 && (
             <div
               className='flex flex-wrap justify-center md:justify-end gap-6 max-w-full mt-8'
-              {...createSanityDataAttribute('siteSettings', 'siteSettings', 'companyLinks')}>
+              {...createSanityDataAttribute('companyLinks', 'companyLinks', 'companyLinks')}>
               {transformedLinks.map((link) => (
                 <Link
                   key={link._key}
@@ -122,8 +123,8 @@ const Footer = ({ footerData, siteSettingsData }: FooterProps) => {
                   title={link.label} // Hover text
                   className='group transition-transform duration-200 hover:scale-105'
                   {...createSanityDataAttribute(
-                    'siteSettings',
-                    'siteSettings',
+                    'companyLinks',
+                    'companyLinks',
                     `companyLinks.socialLinksArray[_key=="${link._key}"]`
                   )}>
                   <div className='w-16 h-16 md:w-18 md:h-18 rounded-full bg-brand-gradient flex items-center justify-center'>

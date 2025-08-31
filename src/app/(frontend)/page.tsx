@@ -46,7 +46,6 @@ const Page = async () => {
               siteSettings
                 ? {
                     companyEmail: siteSettings.companyEmail || undefined,
-                    companyLinks: siteSettings.companyLinks || undefined,
                   }
                 : undefined
             }

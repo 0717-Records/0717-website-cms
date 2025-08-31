@@ -52,7 +52,6 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
               siteSettings
                 ? {
                     companyEmail: siteSettings.companyEmail || undefined,
-                    companyLinks: siteSettings.companyLinks || undefined,
                   }
                 : undefined
             }

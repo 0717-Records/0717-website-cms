@@ -170,7 +170,12 @@ export const SITE_SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
   _type,
   siteTitle,
   companyEmail,
-  siteDescription,
+  siteDescription
+}`);
+
+export const COMPANY_LINKS_QUERY = defineQuery(`*[_id == "companyLinks"][0]{
+  _id,
+  _type,
   companyLinks{
     _type,
     socialLinksArray[]{

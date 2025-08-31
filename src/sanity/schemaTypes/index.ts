@@ -35,6 +35,7 @@ import { collabAllBlockType } from './blocks/collabAllBlockType';
 import { favouriteBlockType } from './blocks/favouriteBlockType';
 import { companyLinksBlockType } from './blocks/companyLinksBlockType';
 import { siteSettingsType } from './siteSettingsType';
+import { companyLinksType } from './companyLinksType';
 import { eventType } from './eventType';
 import { eventsIndexPageType } from './eventsIndexPageType';
 import { collabType } from './collabType';
@@ -50,6 +51,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // Documents
     siteSettingsType,
+    companyLinksType,
     homePageType,
     pageType,
     blogIndexPageType,

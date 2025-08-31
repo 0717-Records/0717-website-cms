@@ -30,7 +30,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
   }
 
   const companyEmail = siteSettings?.companyEmail || undefined;
-  const companyLinks = siteSettings?.companyLinks || undefined;
+  // Company links are now handled separately in the layout
 
   return (
     <>
@@ -78,7 +78,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
               mainContent={collab.mainContent}
               collabId={collab._id}
               collabType={collab._type}
-              siteSettings={siteSettings ? { companyEmail, companyLinks } : undefined}
+              siteSettings={siteSettings ? { companyEmail } : undefined}
               collabs={collabs}
             />
           </div>

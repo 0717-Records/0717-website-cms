@@ -3,7 +3,7 @@ export { getHomePage, getPageBySlug } from './pages';
 
 
 // Site data actions
-export { getHeader, getFooter, getSiteSettings } from './siteData';
+export { getHeader, getFooter, getSiteSettings, getCompanyLinks } from './siteData';
 
 // Types
 export type {

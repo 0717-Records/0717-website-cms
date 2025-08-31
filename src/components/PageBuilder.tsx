@@ -404,7 +404,7 @@ const BlockRenderer = ({
             return (
               <BlockWrapper key={block._key}>
                 <CompanyLinksBlock
-                  companyLinks={siteSettings?.companyLinks}
+                  companyLinks={null}
                 />
               </BlockWrapper>
             );

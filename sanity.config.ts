@@ -42,7 +42,7 @@ export default defineConfig({
   ],
   document: {
     newDocumentOptions: (prev) => prev.filter((item) => 
-      !['siteSettings', 'header', 'footer', 'homePage'].includes(item.templateId)
+      !['siteSettings', 'header', 'footer', 'homePage', 'blogIndexPage', 'eventsIndexPage', 'companyLinks'].includes(item.templateId)
     ),
     // Document actions temporarily removed to fix build
     // actions: (prev, { schemaType }) => {

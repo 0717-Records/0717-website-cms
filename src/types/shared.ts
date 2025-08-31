@@ -1,9 +1,6 @@
-import type { SITE_SETTINGS_QUERYResult } from '@/sanity/types';
-
 // Shared type definitions for components that use site settings
 export interface SiteSettingsProps {
   companyEmail?: string;
-  companyLinks?: NonNullable<SITE_SETTINGS_QUERYResult>['companyLinks'];
 }
 
 // Link system types - shared across CTA components
