@@ -41,7 +41,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
 
       {/* Menu Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl transition-transform duration-300 ease-in-out flex flex-col overflow-y-auto overscroll-contain touch-pan-y ${
+        className={`fixed top-0 right-0 h-full w-80 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl transition-transform duration-300 ease-in-out flex flex-col ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
         {/* Menu Header */}
@@ -71,10 +71,8 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
 
         {/* Menu Navigation */}
         <div
-          className='flex-1'
+          className='flex-1 overflow-y-auto overflow-x-hidden'
           style={{
-            overflowY: 'auto',
-            overflowX: 'hidden',
             scrollbarWidth: 'thin',
             scrollbarColor: '#d1d5db transparent',
             WebkitOverflowScrolling: 'touch',
@@ -86,6 +84,11 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.scrollbarColor = '#d1d5db transparent';
+          }}
+          onTouchMove={(e) => {
+            // Allow touch scrolling within this container by stopping event propagation
+            // This prevents the global touchmove prevention from useBodyScrollLock
+            e.stopPropagation();
           }}>
           <nav className='px-10 py-12'>
             <div className='space-y-6'>
