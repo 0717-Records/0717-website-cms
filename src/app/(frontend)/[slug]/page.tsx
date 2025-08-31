@@ -25,8 +25,8 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   return (
     <>
       {/* Page Hero */}
-      <PageHero 
-        title={page.title || 'Untitled Page'} 
+      <PageHero
+        title={page.title || 'Untitled Page'}
         heroImage={page.heroImage}
         documentId={page._id}
         documentType={page._type}
@@ -65,10 +65,10 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         {/* Closing Card */}
         {page.hasClosingCard && page.closingCard && (
           <div className='pt-16 md:pt-24 pb-16 md:pb-24'>
-            <Card 
-              {...(page.closingCard as NonNullable<typeof page.closingCard>)} 
-              documentId={page._id} 
-              documentType={page._type} 
+            <Card
+              {...(page.closingCard as NonNullable<typeof page.closingCard>)}
+              documentId={page._id}
+              documentType={page._type}
             />
           </div>
         )}
