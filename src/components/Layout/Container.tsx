@@ -7,7 +7,8 @@ interface ContainerProps {
 
 const Container = ({ children, textAlign = 'center' }: ContainerProps) => {
   return (
-    <div className={`container mx-auto px-4 mb-20 md:mb-32 sm:px-12 mt-12 text-${textAlign}`}>
+    <div
+      className={`container max-w-[70rem] mx-auto px-4 mb-20 md:mb-32 sm:px-12 mt-12 text-${textAlign}`}>
       {children}
     </div>
   );
