@@ -1,22 +1,21 @@
 import BlogList from '@/components/Blog/BlogList';
 import { getAllBlogPosts, getBlogIndexPage } from '@/actions/blog';
 import PageHero from '@/components/Page/PageHero';
-import { urlFor } from '@/sanity/lib/image';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 
 export default async function BlogPage() {
   const [blogPosts, blogIndexPage] = await Promise.all([getAllBlogPosts(), getBlogIndexPage()]);
 
-  // Get background image or fallback to placeholder
-  const backgroundImage = blogIndexPage?.heroImage
-    ? urlFor(blogIndexPage.heroImage).url()
-    : '/pagePlaceholderImg.webp';
-
   return (
     <>
       {/* Page Hero */}
-      <PageHero title={blogIndexPage?.title || 'Blog'} heroImage={backgroundImage} />
+      <PageHero
+        title={blogIndexPage?.title || 'Blog'}
+        heroImage={blogIndexPage?.heroImage}
+        documentId={blogIndexPage?._id}
+        documentType={blogIndexPage?._type}
+      />
       <Container textAlign='left'>
         {/* Page Subtitle */}
         {blogIndexPage?.subtitle && (
@@ -41,7 +40,11 @@ export default async function BlogPage() {
         {/* Closing Card */}
         {blogIndexPage?.hasClosingCard && blogIndexPage?.closingCard && (
           <div className='pb-16 md:pb-24'>
-            <Card {...blogIndexPage.closingCard} />
+            <Card
+              {...blogIndexPage.closingCard}
+              documentId={blogIndexPage._id}
+              documentType={blogIndexPage._type}
+            />
           </div>
         )}
       </Container>

@@ -4,7 +4,6 @@ import { getAllEvents, getEventsIndexPage } from '@/actions/events'; // CMS data
 import PageHero from '@/components/Page/PageHero';
 import PageSection from '@/components/Layout/PageSection';
 import { transformEvents } from '@/utils/transformEvents';
-import { urlFor } from '@/sanity/lib/image';
 import Container from '@/components/Layout/Container';
 
 export default async function EventsPage() {
@@ -15,15 +14,15 @@ export default async function EventsPage() {
   const allEvents = transformEvents(rawEvents);
   // const allEvents = (await getEvents()) as TransformedEvent[]; // Test JSON data - uncomment for testing
 
-  // Get background image or fallback to placeholder
-  const backgroundImage = eventsIndexPage?.backgroundImage
-    ? urlFor(eventsIndexPage.backgroundImage).url()
-    : '/pagePlaceholderImg.webp';
-
   return (
     <>
       {/* Page Hero */}
-      <PageHero title={eventsIndexPage?.title || 'All Events'} heroImage={backgroundImage} />
+      <PageHero
+        title={eventsIndexPage?.title || 'All Events'}
+        heroImage={eventsIndexPage?.backgroundImage}
+        documentId={eventsIndexPage?._id}
+        documentType={eventsIndexPage?._type}
+      />
       <Container textAlign='center'>
         {/* Page Subtitle */}
         {eventsIndexPage?.subtitle && (
@@ -34,7 +33,11 @@ export default async function EventsPage() {
           </div>
         )}
         {/* Upcoming Events Section */}
-        <PageSection title='Upcoming Events' isFirst>
+        <PageSection
+          title='Upcoming Events'
+          isFirst
+          documentId={eventsIndexPage?._id}
+          documentType={eventsIndexPage?._type}>
           <EventList
             events={allEvents}
             filter='upcoming'
@@ -45,7 +48,10 @@ export default async function EventsPage() {
           />
         </PageSection>
         {/* Past Events Section */}
-        <PageSection title='Past Events'>
+        <PageSection
+          title='Past Events'
+          documentId={eventsIndexPage?._id}
+          documentType={eventsIndexPage?._type}>
           <EventList
             events={allEvents}
             filter='past'

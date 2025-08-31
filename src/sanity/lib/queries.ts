@@ -236,6 +236,7 @@ export const BLOG_INDEX_PAGE_QUERY = defineQuery(`*[_id == "blogIndexPage"][0]{
 
 export const BLOG_POST_QUERY = defineQuery(`*[_type == "blogPost" && slug.current == $slug][0]{
   _id,
+  _type,
   _createdAt,
   title,
   slug,

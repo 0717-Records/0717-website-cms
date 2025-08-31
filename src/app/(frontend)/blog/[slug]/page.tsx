@@ -5,7 +5,6 @@ import PageHero from '@/components/Page/PageHero';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import PageBuilder from '@/components/PageBuilder';
-import { urlFor } from '@/sanity/lib/image';
 import { FaUser, FaCalendar } from 'react-icons/fa6';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 
@@ -41,7 +40,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <>
       {/* Page Hero - No title, back to blog */}
-      <PageHero heroImage={post.heroImage} backLinkHref='/blog' backLinkText='Back to Blog' />
+      <PageHero
+        heroImage={post.heroImage}
+        backLinkHref='/blog'
+        backLinkText='Back to Blog'
+        documentId={post._id}
+        documentType={post._type}
+      />
 
       <Container textAlign='left'>
         {/* Article Header */}
@@ -93,7 +98,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Closing Card */}
         {post.hasClosingCard && post.closingCard && (
           <div className='pb-16 md:pb-24'>
-            <Card {...post.closingCard} />
+            <Card {...post.closingCard} documentId={post._id} documentType={post._type} />
           </div>
         )}
       </Container>
