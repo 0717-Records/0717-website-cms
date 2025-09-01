@@ -126,19 +126,18 @@ const Card = (props: CardProps & { computedHref?: string }) => {
         <div className='flex-1 text-center lg:text-left'>
           {/* Title */}
           {cleanTitle && (
-            <div
-              className='text-h2 lg:text-h1 font-bold text-gray-900 mb-4 leading-tight relative'
-              {...createSanityDataAttribute(documentId, documentType, getFieldPath('title'))}>
-              {cleanTitle}
+            <div {...createSanityDataAttribute(documentId, documentType, getFieldPath('title'))}>
+              <Heading level='h2' showUnderline asDiv>
+                {cleanTitle}
+              </Heading>
               {/* Subtle underline accent */}
-              <div className='absolute -bottom-1 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 w-16 h-1 bg-brand-secondary opacity-30 rounded'></div>
             </div>
           )}
 
           {/* Body Text */}
           {cleanBodyText && (
             <p
-              className='text-body-lg lg:text-body-2xl text-gray-600 leading-relaxed whitespace-pre-line font-medium italic'
+              className='text-body-2xl text-gray-600 leading-relaxed whitespace-pre-line font-medium italic'
               {...createSanityDataAttribute(documentId, documentType, getFieldPath('bodyText'))}>
               {cleanBodyText}
             </p>
