@@ -44,8 +44,9 @@ const CTACalloutLink = ({
         border border-brand-secondary/20 
         rounded-lg 
         p-6 
-        md:p-10 
-        max-w-[800px] 
+        px-8 
+        max-w-[250px] 
+        sm:max-w-none 
         w-full 
         m-auto  
         hover:bg-brand-secondary/15 
@@ -61,7 +62,7 @@ const CTACalloutLink = ({
         {/* Image */}
         {image && (
           <div className='flex-shrink-0'>
-            <div className='w-24 h-24 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center'>
+            <div className='w-18 h-18 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center'>
               <Image
                 src={image.src}
                 alt={image.alt}
@@ -82,7 +83,7 @@ const CTACalloutLink = ({
         </div>
 
         {/* Link Icon */}
-        <div className='flex-shrink-0 bg-brand-secondary group-hover:bg-brand-primary p-6 rounded-full transition-colors duration-200'>
+        <div className='flex-shrink-0 bg-brand-secondary group-hover:bg-brand-primary p-4 sm:p-6 rounded-full transition-colors duration-200'>
           <LinkIcon className='w-6 h-6 text-black' />
         </div>
       </div>
