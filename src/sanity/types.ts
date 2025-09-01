@@ -495,7 +495,6 @@ export type SubSubSection = {
   _type: "subSubSection";
   title?: string;
   anchorId?: string;
-  textAlign?: "inherit" | "left" | "center" | "right";
   content?: Array<{
     _key: string;
   } & Divider | {
@@ -547,7 +546,6 @@ export type SubSection = {
   _type: "subSection";
   title?: string;
   anchorId?: string;
-  textAlign?: "inherit" | "left" | "center" | "right";
   content?: Array<{
     _key: string;
   } & SubSubSection | {
@@ -655,7 +653,6 @@ export type PageSection = {
   title?: string;
   anchorId?: string;
   subtitle?: string;
-  textAlign?: "inherit" | "left" | "center" | "right";
   content?: Array<{
     _key: string;
   } & SubSection | {
@@ -1886,7 +1883,6 @@ export type PAGE_QUERYResult = {
     title?: string;
     anchorId: string | null;
     subtitle?: string;
-    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       _key: string;
       _type: "bandcampWidget";
@@ -2362,7 +2358,6 @@ export type PAGE_QUERYResult = {
       _type: "subSection";
       title?: string;
       anchorId: string | null;
-      textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
         _key: string;
         _type: "bandcampWidget";
@@ -2836,7 +2831,6 @@ export type PAGE_QUERYResult = {
         _type: "subSubSection";
         title?: string;
         anchorId: string | null;
-        textAlign?: "center" | "inherit" | "left" | "right";
         content: Array<{
           _key: string;
           _type: "bandcampWidget";
@@ -4035,7 +4029,6 @@ export type HOME_PAGE_QUERYResult = {
     title?: string;
     anchorId: string | null;
     subtitle?: string;
-    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       _key: string;
       _type: "bandcampWidget";
@@ -4511,7 +4504,6 @@ export type HOME_PAGE_QUERYResult = {
       _type: "subSection";
       title?: string;
       anchorId: string | null;
-      textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
         _key: string;
         _type: "bandcampWidget";
@@ -4985,7 +4977,6 @@ export type HOME_PAGE_QUERYResult = {
         _type: "subSubSection";
         title?: string;
         anchorId: string | null;
-        textAlign?: "center" | "inherit" | "left" | "right";
         content: Array<{
           _key: string;
           _type: "bandcampWidget";
@@ -6287,7 +6278,6 @@ export type HOME_PAGE_QUERYResult = {
     title?: string;
     anchorId: string | null;
     subtitle?: string;
-    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       _key: string;
       _type: "bandcampWidget";
@@ -6763,7 +6753,6 @@ export type HOME_PAGE_QUERYResult = {
       _type: "subSection";
       title?: string;
       anchorId: string | null;
-      textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
         _key: string;
         _type: "bandcampWidget";
@@ -7237,7 +7226,6 @@ export type HOME_PAGE_QUERYResult = {
         _type: "subSubSection";
         title?: string;
         anchorId: string | null;
-        textAlign?: "center" | "inherit" | "left" | "right";
         content: Array<{
           _key: string;
           _type: "bandcampWidget";
@@ -8410,7 +8398,6 @@ export type HOME_PAGE_QUERYResult = {
     title?: string;
     anchorId: string | null;
     subtitle?: string;
-    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       _key: string;
       _type: "bandcampWidget";
@@ -8886,7 +8873,6 @@ export type HOME_PAGE_QUERYResult = {
       _type: "subSection";
       title?: string;
       anchorId: string | null;
-      textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
         _key: string;
         _type: "bandcampWidget";
@@ -9360,7 +9346,6 @@ export type HOME_PAGE_QUERYResult = {
         _type: "subSubSection";
         title?: string;
         anchorId: string | null;
-        textAlign?: "center" | "inherit" | "left" | "right";
         content: Array<{
           _key: string;
           _type: "bandcampWidget";
@@ -11438,7 +11423,6 @@ export type COLLAB_QUERYResult = {
       _type: "subSection";
       title?: string;
       anchorId: string | null;
-      textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
         _key: string;
         _type: "bandcampWidget";
@@ -11914,7 +11898,6 @@ export type COLLAB_QUERYResult = {
         _type: "subSubSection";
         title?: string;
         anchorId: string | null;
-        textAlign?: "center" | "inherit" | "left" | "right";
         content: Array<{
           _key: string;
           _type: "bandcampWidget";

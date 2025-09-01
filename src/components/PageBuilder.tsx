@@ -170,7 +170,6 @@ const BlockRenderer = ({
                 <PageSection
                   title={block.title!} // Required field
                   subtitle={block.subtitle}
-                  textAlign={block.textAlign}
                   isFirst={isFirstPageSection}
                   anchorId={block.anchorId}
                   documentId={documentId}
@@ -187,7 +186,6 @@ const BlockRenderer = ({
               <BlockWrapper key={block._key}>
                 <SubSection
                   title={block.title!} // Required field
-                  textAlign={block.textAlign}
                   anchorId={block.anchorId}
                   documentId={documentId}
                   documentType={documentType}
@@ -202,7 +200,6 @@ const BlockRenderer = ({
               <BlockWrapper key={block._key}>
                 <SubSubSection
                   title={block.title!} // Required field
-                  textAlign={block.textAlign}
                   anchorId={block.anchorId}
                   documentId={documentId}
                   documentType={documentType}

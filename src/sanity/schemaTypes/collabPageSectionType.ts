@@ -10,6 +10,5 @@ export const collabPageSectionType = createSectionSchema({
   description: 'A page-level section for collaboration pages with title and content blocks (will render as h2)',
   icon: '🤝',
   hasSubtitle: false, // No subtitle for collab sections
-  hasTextAlign: false, // No text alignment - handled in frontend
   allowedChildSections: ['subSection'],
 });

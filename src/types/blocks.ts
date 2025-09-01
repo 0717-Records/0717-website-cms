@@ -13,7 +13,6 @@ export interface SectionBlock extends BaseBlock {
   _type: 'section';
   title?: string;
   subtitle?: string;
-  textAlign?: 'inherit' | 'left' | 'center' | 'right';
   content?: NestedBlock[];
 }
 

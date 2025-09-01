@@ -34,7 +34,6 @@ interface SectionFactoryConfig {
   description: string;
   icon: string;
   hasSubtitle?: boolean;
-  hasTextAlign?: boolean;
   allowedChildSections?: string[];
 }
 
@@ -102,25 +101,6 @@ export function createSectionSchema(config: SectionFactoryConfig) {
     }),
   ];
 
-  // Add text alignment field if enabled (default: true for backward compatibility)
-  if (config.hasTextAlign !== false) {
-    fields.push(defineField({
-      name: 'textAlign',
-      title: 'Text Alignment',
-      type: 'string',
-      description: 'Text alignment for this section and its content',
-      options: {
-        list: [
-          { title: 'Inherit from Parent', value: 'inherit' },
-          { title: 'Left', value: 'left' },
-          { title: 'Center', value: 'center' },
-          { title: 'Right', value: 'right' },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'inherit',
-    }));
-  }
 
   // Add subtitle field for PageSection only - insert after anchor ID (position 2)
   if (config.hasSubtitle) {

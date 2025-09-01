@@ -6,7 +6,6 @@ import Divider from '../UI/Divider';
 import { stegaClean } from 'next-sanity';
 import {
   createSanityDataAttribute,
-  getTextAlignClass,
   type SanityLiveEditingProps,
 } from '../../utils/sectionHelpers';
 
@@ -18,7 +17,6 @@ interface PageSectionProps extends SanityLiveEditingProps {
   className?: string;
   title: string; // Now required since titles are mandatory
   subtitle?: string;
-  textAlign?: 'inherit' | 'left' | 'center' | 'right';
   isFirst?: boolean;
   anchorId?: string; // ID for anchor linking
 }
@@ -28,7 +26,6 @@ const PageSection = ({
   className = '',
   title,
   subtitle,
-  textAlign = 'center',
   isFirst = false,
   anchorId,
   documentId,
@@ -43,17 +40,12 @@ const PageSection = ({
   const hasTitle = Boolean(title);
   const paddingClasses = isFirst ? 'pt-16 md:pt-24 pb-16 md:pb-24' : 'pb-16 md:pb-24';
 
-  // Clean and use the textAlign value directly
-  const cleanTextAlign = stegaClean(textAlign) || 'center';
-  
-  // Default to center if inherit is passed (since we're not doing inheritance)
-  const effectiveTextAlign = cleanTextAlign === 'inherit' ? 'center' : cleanTextAlign;
 
   return (
     <PageSectionContext.Provider value={{ hasTitle }}>
       <section
         id={anchorId ? stegaClean(anchorId) : undefined}
-        className={`${paddingClasses} ${getTextAlignClass(effectiveTextAlign)} ${className}`.trim()}>
+        className={`${paddingClasses} ${className}`.trim()}>
           {/* Title is now always present since it's required */}
           <div className='text-center'>
             <Heading
