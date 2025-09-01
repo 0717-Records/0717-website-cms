@@ -20,7 +20,8 @@ export const iconType = defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative Text',
-          description: 'Important for accessibility and SEO. Required when an icon image is provided.',
+          description:
+            'Important for accessibility and SEO. Required when an icon image is provided.',
         },
       ],
     }),
@@ -32,8 +33,8 @@ export const iconType = defineType({
     },
     prepare({ media, alt }) {
       return {
-        title: `Icon${alt ? ` - ${alt}` : ''}`,
-        subtitle: 'Centered alignment',
+        title: 'Icon',
+        subtitle: `${alt ? alt : ''}`,
         media: media || ImageIcon,
       };
     },
