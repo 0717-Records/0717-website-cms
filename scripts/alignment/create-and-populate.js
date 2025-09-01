@@ -93,8 +93,8 @@ async function createAndPopulateAlignmentTest() {
     pageContent.push({
       _type: 'quote',
       _key: uuidv4(),
-      quote: 'This is a root level quote with inherit alignment. Lorem ipsum dolor sit amet consectetur.',
-      author: 'Test Author',
+      text: 'This is a root level quote with inherit alignment. Lorem ipsum dolor sit amet consectetur.',
+      attribution: 'Test Author',
       textAlign: 'inherit'
     });
 
@@ -129,15 +129,19 @@ async function createAndPopulateAlignmentTest() {
           _type: 'textImage',
           _key: uuidv4(),
           layout: 'text-left',
-          title: 'Text Left Layout',
-          text: createRichText('This is a text and image block with text on the left. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.')
+          content: createRichText('This is a text and image block with text on the left. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.'),
+          image: {
+            alt: 'Text Left Layout Example'
+          }
         },
         {
           _type: 'textImage',
           _key: uuidv4(),
           layout: 'text-right',
-          title: 'Text Right Layout',
-          text: createRichText('This is a text and image block with text on the right. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.')
+          content: createRichText('This is a text and image block with text on the right. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.'),
+          image: {
+            alt: 'Text Right Layout Example'
+          }
         }
       ]
     });
@@ -221,8 +225,7 @@ async function createAndPopulateAlignmentTest() {
       _type: 'ctaCalloutLink',
       _key: uuidv4(),
       heading: 'CTA Callout Link',
-      description: 'This is a CTA callout link component for highlighting important actions.',
-      buttonText: 'Take Action',
+      text: 'This is a CTA callout link component for highlighting important actions.',
       linkType: 'external',
       externalUrl: 'https://example.com',
       openInNewTab: true
@@ -317,19 +320,19 @@ async function createAndPopulateAlignmentTest() {
         {
           _type: 'cardGrid',
           _key: uuidv4(),
-          columns: 2,
+          columns: '2',
           cards: [...cardData]
         },
         {
           _type: 'cardGrid',
           _key: uuidv4(),
-          columns: 3,
+          columns: '3',
           cards: [...cardData]
         },
         {
           _type: 'cardGrid',
           _key: uuidv4(),
-          columns: 4,
+          columns: '4',
           cards: [...cardData]
         }
       ]
@@ -380,20 +383,86 @@ async function createAndPopulateAlignmentTest() {
             {
               _type: 'imageGallery',
               _key: uuidv4(),
-              columns: 2,
-              images: []
+              columns: '2',
+              images: [
+                {
+                  _key: uuidv4(),
+                  image: {
+                    alt: 'Gallery Image 1'
+                  },
+                  caption: 'Sample gallery image 1'
+                },
+                {
+                  _key: uuidv4(),
+                  image: {
+                    alt: 'Gallery Image 2'
+                  },
+                  caption: 'Sample gallery image 2'
+                }
+              ]
             },
             {
               _type: 'imageGallery',
               _key: uuidv4(),
-              columns: 3,
-              images: []
+              columns: '3',
+              images: [
+                {
+                  _key: uuidv4(),
+                  image: {
+                    alt: 'Gallery Image 1'
+                  },
+                  caption: 'Sample gallery image 1'
+                },
+                {
+                  _key: uuidv4(),
+                  image: {
+                    alt: 'Gallery Image 2'
+                  },
+                  caption: 'Sample gallery image 2'
+                },
+                {
+                  _key: uuidv4(),
+                  image: {
+                    alt: 'Gallery Image 3'
+                  },
+                  caption: 'Sample gallery image 3'
+                }
+              ]
             },
             {
               _type: 'imageGallery',
               _key: uuidv4(),
-              columns: 4,
-              images: []
+              columns: '4',
+              images: [
+                {
+                  _key: uuidv4(),
+                  image: {
+                    alt: 'Gallery Image 1'
+                  },
+                  caption: 'Sample gallery image 1'
+                },
+                {
+                  _key: uuidv4(),
+                  image: {
+                    alt: 'Gallery Image 2'
+                  },
+                  caption: 'Sample gallery image 2'
+                },
+                {
+                  _key: uuidv4(),
+                  image: {
+                    alt: 'Gallery Image 3'
+                  },
+                  caption: 'Sample gallery image 3'
+                },
+                {
+                  _key: uuidv4(),
+                  image: {
+                    alt: 'Gallery Image 4'
+                  },
+                  caption: 'Sample gallery image 4'
+                }
+              ]
             }
           ]
         }
@@ -447,8 +516,8 @@ async function createAndPopulateAlignmentTest() {
       {
         _type: 'quote',
         _key: uuidv4(),
-        quote: 'Quote with inherit alignment. Lorem ipsum dolor sit amet consectetur.',
-        author: 'Test Author',
+        text: 'Quote with inherit alignment. Lorem ipsum dolor sit amet consectetur.',
+        attribution: 'Test Author',
         textAlign: 'inherit'
       },
       {
@@ -476,8 +545,8 @@ async function createAndPopulateAlignmentTest() {
       {
         _type: 'quote',
         _key: uuidv4(),
-        quote: 'Quote with left alignment. Lorem ipsum dolor sit amet consectetur.',
-        author: 'Test Author',
+        text: 'Quote with left alignment. Lorem ipsum dolor sit amet consectetur.',
+        attribution: 'Test Author',
         textAlign: 'left'
       },
       {
@@ -505,8 +574,8 @@ async function createAndPopulateAlignmentTest() {
       {
         _type: 'quote',
         _key: uuidv4(),
-        quote: 'Quote with center alignment. Lorem ipsum dolor sit amet consectetur.',
-        author: 'Test Author',
+        text: 'Quote with center alignment. Lorem ipsum dolor sit amet consectetur.',
+        attribution: 'Test Author',
         textAlign: 'center'
       },
       {
@@ -534,8 +603,8 @@ async function createAndPopulateAlignmentTest() {
       {
         _type: 'quote',
         _key: uuidv4(),
-        quote: 'Quote with right alignment. Lorem ipsum dolor sit amet consectetur.',
-        author: 'Test Author',
+        text: 'Quote with right alignment. Lorem ipsum dolor sit amet consectetur.',
+        attribution: 'Test Author',
         textAlign: 'right'
       },
       {
@@ -579,8 +648,8 @@ async function createAndPopulateAlignmentTest() {
         {
           _type: 'quote',
           _key: uuidv4(),
-          quote: 'Sub section quote with inherit alignment.',
-          author: 'Sub Author',
+          text: 'Sub section quote with inherit alignment.',
+          attribution: 'Sub Author',
           textAlign: 'inherit'
         },
         {
@@ -608,8 +677,8 @@ async function createAndPopulateAlignmentTest() {
         {
           _type: 'quote',
           _key: uuidv4(),
-          quote: 'Sub section quote with left alignment.',
-          author: 'Sub Author',
+          text: 'Sub section quote with left alignment.',
+          attribution: 'Sub Author',
           textAlign: 'left'
         },
         {
@@ -637,8 +706,8 @@ async function createAndPopulateAlignmentTest() {
         {
           _type: 'quote',
           _key: uuidv4(),
-          quote: 'Sub section quote with center alignment.',
-          author: 'Sub Author',
+          text: 'Sub section quote with center alignment.',
+          attribution: 'Sub Author',
           textAlign: 'center'
         },
         {
@@ -666,8 +735,8 @@ async function createAndPopulateAlignmentTest() {
         {
           _type: 'quote',
           _key: uuidv4(),
-          quote: 'Sub section quote with right alignment.',
-          author: 'Sub Author',
+          text: 'Sub section quote with right alignment.',
+          attribution: 'Sub Author',
           textAlign: 'right'
         },
         {
@@ -699,8 +768,8 @@ async function createAndPopulateAlignmentTest() {
             {
               _type: 'quote',
               _key: uuidv4(),
-              quote: 'Sub sub section quote with inherit alignment.',
-              author: 'Sub Sub Author',
+              text: 'Sub sub section quote with inherit alignment.',
+              attribution: 'Sub Sub Author',
               textAlign: 'inherit'
             },
             {
@@ -732,8 +801,8 @@ async function createAndPopulateAlignmentTest() {
             {
               _type: 'quote',
               _key: uuidv4(),
-              quote: 'Sub sub section quote with left alignment.',
-              author: 'Sub Sub Author',
+              text: 'Sub sub section quote with left alignment.',
+              attribution: 'Sub Sub Author',
               textAlign: 'left'
             },
             {
@@ -765,8 +834,8 @@ async function createAndPopulateAlignmentTest() {
             {
               _type: 'quote',
               _key: uuidv4(),
-              quote: 'Sub sub section quote with center alignment.',
-              author: 'Sub Sub Author',
+              text: 'Sub sub section quote with center alignment.',
+              attribution: 'Sub Sub Author',
               textAlign: 'center'
             },
             {
@@ -798,8 +867,8 @@ async function createAndPopulateAlignmentTest() {
             {
               _type: 'quote',
               _key: uuidv4(),
-              quote: 'Sub sub section quote with right alignment.',
-              author: 'Sub Sub Author',
+              text: 'Sub sub section quote with right alignment.',
+              attribution: 'Sub Sub Author',
               textAlign: 'right'
             },
             {
