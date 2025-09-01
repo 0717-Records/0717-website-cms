@@ -43,10 +43,10 @@ const CTACalloutLink = ({
         bg-brand-secondary/10 
         border border-brand-secondary/20 
         rounded-lg 
-        p-6 
-        px-8 
-        max-w-[250px] 
-        sm:max-w-none 
+        py-4 
+        px-6 
+        sm:py-6 
+        sm:px-8 
         w-full 
         m-auto  
         hover:bg-brand-secondary/15 
@@ -58,7 +58,7 @@ const CTACalloutLink = ({
         group
         ${className}
       `.trim()}>
-      <div className='flex flex-col sm:flex-row justify-around items-center gap-6 md:gap-10'>
+      <div className='flex flex-col sm:flex-row justify-center items-center gap-6 md:gap-10'>
         {/* Image */}
         {image && (
           <div className='flex-shrink-0'>
@@ -75,7 +75,7 @@ const CTACalloutLink = ({
         )}
 
         {/* Content */}
-        <div className='flex-grow min-w-0 text-center sm:text-left'>
+        <div className='flex-grow text-center sm:text-left'>
           {heading && (
             <div className='font-semibold text-body-lg text-gray-900 mb-1'>{heading}</div>
           )}
