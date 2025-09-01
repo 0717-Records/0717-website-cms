@@ -48,7 +48,6 @@ function isDereferencedEvent(
   return event !== null && event !== undefined && '_id' in event && 'title' in event;
 }
 
-
 const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
   // Don't render if no event is selected or if it's not dereferenced
   if (!event || !isDereferencedEvent(event)) {
@@ -89,11 +88,11 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
 
   const cardContent = (
     <div
-      className={`max-w-[800px] mx-auto bg-white rounded-lg shadow-lg overflow-hidden flex flex-row transition-all duration-300 ${
+      className={`mx-auto bg-white rounded-lg shadow-lg overflow-hidden flex flex-row gap-2 sm:gap-4 transition-all duration-300 ${
         hasLink ? 'group hover:shadow-xl hover:scale-103 cursor-pointer' : ''
       }`}>
       {/* Event Poster - Mobile layout always (1/3 width) */}
-      <div className='relative w-1/3 aspect-[3/4] bg-gray-900 overflow-hidden flex-shrink-0'>
+      <div className='relative w-1/4 aspect-[3/4] bg-gray-900 overflow-hidden flex-shrink-0'>
         {processedImage ? (
           <>
             <Image
@@ -130,7 +129,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
       {/* Event Details - Mobile layout (2/3 width) */}
       <div className='p-3 flex flex-col items-start text-left flex-grow w-2/3'>
         {/* Date / Time */}
-        <div className='text-brand-secondary font-semibold mb-2 text-body-xs md:text-body-base'>
+        <div className='text-brand-secondary font-semibold mb-2 text-body-base md:text-body-lg'>
           <span>{dateDisplay}</span>
           {timeDisplay && (
             <>
@@ -142,7 +141,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
 
         {/* Title */}
         <p
-          className={`text-body-sm md:text-body-xl font-bold md:font-bold mb-2 text-gray-800 transition-all duration-300 leading-tight ${
+          className={`text-body-lg md:text-body-2xl font-bold md:font-bold mb-2 text-gray-800 transition-all duration-300 leading-tight ${
             hasLink ? 'group-hover:underline' : ''
           }`}>
           {title}
@@ -151,12 +150,12 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
         {/* Short Description */}
         {shortDescription && (
           <div className='text-text-subtle mb-2'>
-            <div className='text-body-xs md:text-body-sm leading-snug'>{shortDescription}</div>
+            <div className='text-body-sm md:text-body-base leading-snug'>{shortDescription}</div>
           </div>
         )}
 
         {/* Venue and Location */}
-        <div className='flex items-center text-text-subtle text-body-xs md:text-body-sm mb-2'>
+        <div className='flex items-center text-text-subtle text-body-sm md:text-body-base mb-2'>
           <span className='mr-1' aria-label='Location' title='Location'>
             📍
           </span>
@@ -169,7 +168,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className='px-1 py-0.5 bg-gray-100 text-text-subtle text-body-xs md:text-body-sm rounded'>
+                className='px-1 py-0.5 bg-gray-100 text-text-subtle text-body-sm md:text-body-base rounded'>
                 {tag}
               </span>
             ))}
