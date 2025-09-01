@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import type { PAGE_QUERYResult, EVENTS_QUERYResult, COLLABS_ALL_QUERYResult, FAVOURITES_ALL_QUERYResult } from '@/sanity/types';
+import type { PAGE_QUERYResult, EVENTS_QUERYResult, COLLABS_ALL_QUERYResult, FAVOURITES_ALL_QUERYResult, COMPANY_LINKS_QUERYResult } from '@/sanity/types';
 import type { NestedBlock } from '@/types/blocks';
 import type { SiteSettingsProps } from '@/types/shared';
 import { client } from '@/sanity/lib/client';
@@ -41,6 +41,7 @@ interface SharedPageBuilderProps {
   events?: EVENTS_QUERYResult;
   collabs?: COLLABS_ALL_QUERYResult;
   favourites?: FAVOURITES_ALL_QUERYResult;
+  companyLinks?: COMPANY_LINKS_QUERYResult;
   alignment?: 'left' | 'center' | 'right';
 }
 
@@ -73,6 +74,7 @@ const BlockRenderer = ({
   events,
   collabs,
   favourites,
+  companyLinks,
   alignment = 'center',
 }: BlockRendererProps) => {
   if (!Array.isArray(blocks)) {
@@ -150,6 +152,7 @@ const BlockRenderer = ({
               events={events}
               collabs={collabs}
               favourites={favourites}
+              companyLinks={companyLinks}
               alignment={alignment}
             />
           );
@@ -404,7 +407,7 @@ const BlockRenderer = ({
             return (
               <BlockWrapper key={block._key}>
                 <CompanyLinksBlock
-                  companyLinks={null}
+                  companyLinks={companyLinks?.companyLinks || null}
                 />
               </BlockWrapper>
             );
@@ -433,6 +436,7 @@ const PageBuilder = ({
   events,
   collabs,
   favourites,
+  companyLinks,
   alignment = 'center',
 }: PageBuilderProps) => {
   const [sections] = useOptimistic<NonNullable<PAGE_QUERYResult>['content']>(content);
@@ -458,6 +462,7 @@ const PageBuilder = ({
         events={events}
         collabs={collabs}
         favourites={favourites}
+        companyLinks={companyLinks}
         alignment={alignment}
       />
     </div>

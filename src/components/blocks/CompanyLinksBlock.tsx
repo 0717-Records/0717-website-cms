@@ -52,16 +52,16 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
         className='flex flex-wrap justify-center gap-6 md:gap-8'
         data-sanity={createDataAttribute({
           ...createDataAttributeConfig,
-          id: 'siteSettings',
-          type: 'siteSettings',
+          id: 'companyLinks',
+          type: 'companyLinks',
           path: 'companyLinks',
         }).toString()}>
         {allLinks.map((link, index) => {
           // Create data attribute for individual social link item
           const dataAttribute = createDataAttribute({
             ...createDataAttributeConfig,
-            id: 'siteSettings',
-            type: 'siteSettings',
+            id: 'companyLinks',
+            type: 'companyLinks',
             path: `companyLinks.socialLinksArray[_key=="${link._key}"]`,
           }).toString();
 

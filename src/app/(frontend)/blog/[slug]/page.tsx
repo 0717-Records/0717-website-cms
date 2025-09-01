@@ -1,6 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { getBlogPostBySlug } from '@/actions/blog';
+import { getCompanyLinks } from '@/actions';
 import PageHero from '@/components/Page/PageHero';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
@@ -31,7 +32,10 @@ function formatBlogDate(
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = await getBlogPostBySlug(slug);
+  const [post, companyLinks] = await Promise.all([
+    getBlogPostBySlug(slug),
+    getCompanyLinks(),
+  ]);
 
   if (!post) {
     notFound();
@@ -108,6 +112,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 content={post.content as NonNullable<PAGE_QUERYResult>['content']}
                 documentId={post._id}
                 documentType='blogPost'
+                companyLinks={companyLinks}
               />
             </div>
           </div>

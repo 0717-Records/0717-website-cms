@@ -1,7 +1,7 @@
 import React from 'react';
 import PageBuilder from '@/components/PageBuilder';
 import PageHero from '@/components/Page/PageHero';
-import { getPageBySlug, getSiteSettings } from '@/actions';
+import { getPageBySlug, getSiteSettings, getCompanyLinks } from '@/actions';
 import { getAllEvents } from '@/actions/events';
 import { getCollabs } from '@/actions/collabs';
 import { getFavourites } from '@/actions/favourites';
@@ -10,12 +10,13 @@ import Card from '@/components/blocks/Card';
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const [page, siteSettings, events, collabs, favourites] = await Promise.all([
+  const [page, siteSettings, events, collabs, favourites, companyLinks] = await Promise.all([
     getPageBySlug(slug),
     getSiteSettings(),
     getAllEvents(),
     getCollabs(),
     getFavourites(),
+    getCompanyLinks(),
   ]);
 
   if (!page) {
@@ -58,6 +59,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             events={events}
             collabs={collabs}
             favourites={favourites}
+            companyLinks={companyLinks}
           />
         )}
 
