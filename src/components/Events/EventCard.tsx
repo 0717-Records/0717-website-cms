@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { FaLocationDot } from 'react-icons/fa6';
+import { formatEventDate, getEventLink } from '@/components/Events/eventUtils';
+import PastEventOverlay from '@/components/Events/PastEventOverlay';
 
 interface EventCardProps {
   title: string;
@@ -19,70 +21,6 @@ interface EventCardProps {
   isPast: boolean;
 }
 
-function formatEventDate(
-  startDate: string,
-  endDate?: string | null,
-  timeDescription?: string | null
-): { dateDisplay: string; timeDisplay: string } {
-  const start = new Date(startDate);
-  const startFormatted = start
-    .toLocaleDateString('en-AU', {
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-    })
-    .toUpperCase();
-
-  let dateDisplay = startFormatted;
-
-  if (endDate) {
-    const end = new Date(endDate);
-    const endFormatted = end
-      .toLocaleDateString('en-AU', {
-        weekday: 'short',
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric',
-      })
-      .toUpperCase();
-
-    if (startFormatted !== endFormatted) {
-      dateDisplay = `${startFormatted} - ${endFormatted}`;
-    }
-  }
-
-  const timeDisplay = timeDescription || '';
-
-  return { dateDisplay, timeDisplay };
-}
-
-function getEventLink(event: EventCardProps): string | null {
-  if (event.isPast) {
-    switch (event.pastEventLinkBehavior) {
-      case 'remove':
-        return null;
-      case 'change':
-        return event.pastEventLink || null;
-      case 'keep':
-      default:
-        return event.link || null;
-    }
-  }
-  return event.link || null;
-}
-
-const PastEventOverlay = ({ text }: { text: string }) => (
-  <div className='absolute inset-0 flex items-center justify-center z-10'>
-    <div className='text-center text-white font-bold text-body-lg leading-tight px-4'>
-      {text.split('\n').map((line, index) => (
-        <div key={index} className='drop-shadow-lg'>
-          {line}
-        </div>
-      ))}
-    </div>
-  </div>
-);
 
 const EventCard = (props: EventCardProps) => {
   const {
@@ -100,7 +38,12 @@ const EventCard = (props: EventCardProps) => {
   } = props;
 
   const { dateDisplay, timeDisplay } = formatEventDate(startDate, endDate, timeDescription);
-  const eventLink = getEventLink(props);
+  const eventLink = getEventLink({ 
+    link: props.link, 
+    isPast, 
+    pastEventLinkBehavior: props.pastEventLinkBehavior, 
+    pastEventLink: props.pastEventLink 
+  });
   const hasLink = Boolean(eventLink);
 
   const cardContent = (

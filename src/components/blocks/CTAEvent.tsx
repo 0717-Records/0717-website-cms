@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
+import { formatEventDate, getEventLink, isEventPast } from '@/components/Events/eventUtils';
+import PastEventOverlay from '@/components/Events/PastEventOverlay';
 
 // Interface that matches the dereferenced event data from GROQ queries
 interface DereferencedEvent {
@@ -46,87 +48,6 @@ function isDereferencedEvent(
   return event !== null && event !== undefined && '_id' in event && 'title' in event;
 }
 
-function formatEventDate(
-  startDate: string,
-  endDate?: string | null,
-  timeDescription?: string | null
-): { dateDisplay: string; timeDisplay: string } {
-  const start = new Date(startDate);
-  const startFormatted = start
-    .toLocaleDateString('en-AU', {
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-    })
-    .toUpperCase();
-
-  let dateDisplay = startFormatted;
-
-  if (endDate) {
-    const end = new Date(endDate);
-    const endFormatted = end
-      .toLocaleDateString('en-AU', {
-        weekday: 'short',
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric',
-      })
-      .toUpperCase();
-
-    if (startFormatted !== endFormatted) {
-      dateDisplay = `${startFormatted} - ${endFormatted}`;
-    }
-  }
-
-  const timeDisplay = timeDescription || '';
-
-  return { dateDisplay, timeDisplay };
-}
-
-function getEventLink(
-  link?: string | null,
-  isPast?: boolean,
-  pastEventLinkBehavior?: 'keep' | 'change' | 'remove',
-  pastEventLink?: string | null
-): string | null {
-  if (isPast) {
-    switch (pastEventLinkBehavior) {
-      case 'remove':
-        return null;
-      case 'change':
-        return pastEventLink || null;
-      case 'keep':
-      default:
-        return link || null;
-    }
-  }
-  return link || null;
-}
-
-function isEventPast(startDate: string, endDate?: string | null): boolean {
-  const now = new Date();
-  const eventEndDate = endDate ? new Date(endDate) : new Date(startDate);
-
-  // Add one day to the end date to check if it's past midnight the day after
-  const dayAfterEvent = new Date(eventEndDate);
-  dayAfterEvent.setDate(dayAfterEvent.getDate() + 1);
-  dayAfterEvent.setHours(0, 0, 0, 0);
-
-  return now >= dayAfterEvent;
-}
-
-const PastEventOverlay = ({ text }: { text: string }) => (
-  <div className='absolute inset-0 flex items-center justify-center z-10'>
-    <div className='text-center text-white font-bold text-body-lg leading-tight px-4'>
-      {text.split('\n').map((line, index) => (
-        <div key={index} className='drop-shadow-lg'>
-          {line}
-        </div>
-      ))}
-    </div>
-  </div>
-);
 
 const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
   // Don't render if no event is selected or if it's not dereferenced
@@ -157,7 +78,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
 
   const { dateDisplay, timeDisplay } = formatEventDate(startDate, endDate, timeDescription);
   const isPast = isEventPast(startDate, endDate);
-  const eventLink = getEventLink(link, isPast, pastEventLinkBehavior, pastEventLink);
+  const eventLink = getEventLink({ link, isPast, pastEventLinkBehavior, pastEventLink });
   const hasLink = Boolean(eventLink);
 
   // Process image if provided
