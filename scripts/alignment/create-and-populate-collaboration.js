@@ -51,30 +51,35 @@ async function createAndPopulateAlignmentTestCollaboration() {
       '*[_type == "collab" && name == "Alignment Test Collaboration"][0]'
     );
 
-    if (!alignmentTestCollab) {
-      console.log('Creating new Alignment Test collaboration...');
-      
-      // Create the collaboration
-      alignmentTestCollab = await client.create({
-        _type: 'collab',
-        name: 'Alignment Test Collaboration',
-        slug: {
-          _type: 'slug',
-          current: 'alignment-test-collaboration'
-        },
-        genre: 'Test Genre',
-        location: 'Test Location',
-        order: 999,
-        shortDescription: 'This collaboration is used to test component alignment and layout functionality across all available components in collaboration context.',
-        useShortDescriptionForCards: true,
-        bio: 'This is a comprehensive test collaboration created to verify that all component alignment and layout features work correctly within the collaboration page structure.',
-        mainContent: [] // Start with empty main content
-      });
-      
-      console.log('Created Alignment Test collaboration:', alignmentTestCollab._id);
-    } else {
+    if (alignmentTestCollab) {
       console.log('Found existing Alignment Test collaboration:', alignmentTestCollab._id);
+      console.log('Deleting existing collaboration...');
+      
+      // Delete the existing collaboration
+      await client.delete(alignmentTestCollab._id);
+      console.log('Existing collaboration deleted successfully');
     }
+
+    console.log('Creating new Alignment Test collaboration...');
+    
+    // Create the collaboration
+    alignmentTestCollab = await client.create({
+      _type: 'collab',
+      name: 'Alignment Test Collaboration',
+      slug: {
+        _type: 'slug',
+        current: 'alignment-test-collaboration'
+      },
+      genre: 'Test Genre',
+      location: 'Test Location',
+      order: 999,
+      shortDescription: 'This collaboration is used to test component alignment and layout functionality across all available components in collaboration context.',
+      useShortDescriptionForCards: true,
+      bio: 'This is a comprehensive test collaboration created to verify that all component alignment and layout features work correctly within the collaboration page structure.',
+      mainContent: [] // Start with empty main content
+    });
+    
+    console.log('Created Alignment Test collaboration:', alignmentTestCollab._id);
 
     // Find some existing events and blog posts for CTAs
     const events = await client.fetch('*[_type == "event"][0...2]');

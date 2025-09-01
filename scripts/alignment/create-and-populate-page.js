@@ -51,25 +51,30 @@ async function createAndPopulateAlignmentTest() {
       '*[_type == "page" && title == "Alignment Test"][0]'
     );
 
-    if (!alignmentTestPage) {
-      console.log('Creating new Alignment Test page...');
-      
-      // Create the page
-      alignmentTestPage = await client.create({
-        _type: 'page',
-        title: 'Alignment Test',
-        slug: {
-          _type: 'slug',
-          current: 'alignment-test'
-        },
-        subtitle: 'This page is used to test component alignment and layout functionality across all available components.',
-        content: [] // Start with empty content
-      });
-      
-      console.log('Created Alignment Test page:', alignmentTestPage._id);
-    } else {
+    if (alignmentTestPage) {
       console.log('Found existing Alignment Test page:', alignmentTestPage._id);
+      console.log('Deleting existing page...');
+      
+      // Delete the existing page
+      await client.delete(alignmentTestPage._id);
+      console.log('Existing page deleted successfully');
     }
+
+    console.log('Creating new Alignment Test page...');
+    
+    // Create the page
+    alignmentTestPage = await client.create({
+      _type: 'page',
+      title: 'Alignment Test',
+      slug: {
+        _type: 'slug',
+        current: 'alignment-test'
+      },
+      subtitle: 'This page is used to test component alignment and layout functionality across all available components.',
+      content: [] // Start with empty content
+    });
+    
+    console.log('Created Alignment Test page:', alignmentTestPage._id);
 
     // Find some existing events and blog posts for CTAs
     const events = await client.fetch('*[_type == "event"][0...2]');

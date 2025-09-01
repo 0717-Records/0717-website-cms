@@ -51,27 +51,32 @@ async function createAndPopulateAlignmentTestBlogPost() {
       '*[_type == "blogPost" && title == "Alignment Test Blog Post"][0]'
     );
 
-    if (!alignmentTestBlogPost) {
-      console.log('Creating new Alignment Test blog post...');
-      
-      // Create the blog post
-      alignmentTestBlogPost = await client.create({
-        _type: 'blogPost',
-        title: 'Alignment Test Blog Post',
-        slug: {
-          _type: 'slug',
-          current: 'alignment-test-blog-post'
-        },
-        subtitle: 'This blog post is used to test component alignment and layout functionality across all available components in blog post context.',
-        author: 'Test Author',
-        hasOverrideDate: false,
-        content: [] // Start with empty content
-      });
-      
-      console.log('Created Alignment Test blog post:', alignmentTestBlogPost._id);
-    } else {
+    if (alignmentTestBlogPost) {
       console.log('Found existing Alignment Test blog post:', alignmentTestBlogPost._id);
+      console.log('Deleting existing blog post...');
+      
+      // Delete the existing blog post
+      await client.delete(alignmentTestBlogPost._id);
+      console.log('Existing blog post deleted successfully');
     }
+
+    console.log('Creating new Alignment Test blog post...');
+    
+    // Create the blog post
+    alignmentTestBlogPost = await client.create({
+      _type: 'blogPost',
+      title: 'Alignment Test Blog Post',
+      slug: {
+        _type: 'slug',
+        current: 'alignment-test-blog-post'
+      },
+      subtitle: 'This blog post is used to test component alignment and layout functionality across all available components in blog post context.',
+      author: 'Test Author',
+      hasOverrideDate: false,
+      content: [] // Start with empty content
+    });
+    
+    console.log('Created Alignment Test blog post:', alignmentTestBlogPost._id);
 
     // Find some existing events and blog posts for CTAs
     const events = await client.fetch('*[_type == "event"][0...2]');
