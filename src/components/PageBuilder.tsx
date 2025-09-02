@@ -206,7 +206,7 @@ const BlockRenderer = ({
           case 'divider':
             return (
               <BlockWrapper key={block._key}>
-                <Divider />
+                <Divider alignment={alignment} />
               </BlockWrapper>
             );
 

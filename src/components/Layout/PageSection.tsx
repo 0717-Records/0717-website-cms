@@ -86,7 +86,7 @@ const PageSection = ({
               {subtitle}
             </p>
           )}
-          <Divider />
+          <Divider alignment={effectiveTextAlign} />
         </div>
         {children}
       </section>
