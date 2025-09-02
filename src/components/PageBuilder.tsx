@@ -221,7 +221,7 @@ const BlockRenderer = ({
           case 'quote':
             return (
               <BlockWrapper key={block._key}>
-                <Quote {...block} />
+                <Quote {...block} inheritAlignment={alignment} />
               </BlockWrapper>
             );
 

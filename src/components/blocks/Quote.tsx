@@ -2,34 +2,25 @@ import React from 'react';
 import { stegaClean } from 'next-sanity';
 import type { QuoteBlock } from '@/types/blocks';
 import type { BlockProps } from '@/types/shared';
+import { resolveAlignment } from './shared/alignmentUtils';
+import { getTextAlignClass, type TextAlignment } from '../../utils/sectionHelpers';
 
 interface QuoteProps extends BlockProps<QuoteBlock> {
   className?: string;
+  inheritAlignment?: 'left' | 'center' | 'right';
 }
 
-const Quote = ({ text, attribution, textAlign = 'center', className = '' }: QuoteProps) => {
+const Quote = ({ text, attribution, textAlign = 'inherit', className = '', inheritAlignment }: QuoteProps) => {
   // Clean the values to remove Sanity's stega encoding
   const cleanText = stegaClean(text);
   const cleanAttribution = stegaClean(attribution);
-  const cleanTextAlign = stegaClean(textAlign) || 'center';
+  const cleanTextAlign = stegaClean(textAlign) || 'inherit';
 
-  // Default to center if inherit is passed (since we're not doing inheritance)
-  const effectiveTextAlign = cleanTextAlign === 'inherit' ? 'center' : cleanTextAlign;
+  // Resolve alignment using the shared utility (same as CTAButton and RichText)
+  const resolved = resolveAlignment(cleanTextAlign, inheritAlignment);
+  const effectiveTextAlign = (resolved || 'center') as TextAlignment;
 
-  const getTextAlignClass = (align: 'left' | 'center' | 'right') => {
-    switch (align) {
-      case 'left':
-        return 'text-left';
-      case 'center':
-        return 'text-center';
-      case 'right':
-        return 'text-right';
-      default:
-        return 'text-center';
-    }
-  };
-
-  const getAlignmentClasses = (align: 'left' | 'center' | 'right') => {
+  const getAlignmentClasses = (align: TextAlignment) => {
     switch (align) {
       case 'left':
         return {
