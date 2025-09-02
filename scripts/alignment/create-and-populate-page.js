@@ -48,21 +48,25 @@ async function createAndPopulateAlignmentTest() {
   try {
     // Search for existing Alignment Test page
     let alignmentTestPage = await client.fetch(
-      '*[_type == "page" && title == "Alignment Test Updated"][0]'
+      '*[_type == "page" && title == "Alignment Test"][0]'
     );
 
     if (alignmentTestPage) {
       console.log('Found existing Alignment Test page:', alignmentTestPage._id);
-      console.log('Force deleting existing page (ignoring header references)...');
       
-      try {
-        // Force delete the existing page
-        await client.delete(alignmentTestPage._id);
-        console.log('Existing page deleted successfully');
-      } catch (error) {
-        console.log('Delete failed (likely due to references), but continuing...');
-        console.log('Error:', error.message);
+      // Check for references to this page
+      const references = await client.fetch('*[references($id)]', { id: alignmentTestPage._id });
+      
+      if (references.length > 0) {
+        console.error(`Cannot delete page: it is referenced by ${references.length} other document(s)`);
+        console.error('Referenced by:', references.map(ref => `${ref._type}: ${ref.title || ref.name || ref._id}`));
+        console.error('Please remove these references first, then run the script again.');
+        process.exit(1);
       }
+      
+      console.log('Deleting existing page...');
+      await client.delete(alignmentTestPage._id);
+      console.log('Existing page deleted successfully');
     }
 
     console.log('Creating new Alignment Test page...');
@@ -70,10 +74,10 @@ async function createAndPopulateAlignmentTest() {
     // Create the page
     alignmentTestPage = await client.create({
       _type: 'page',
-      title: 'Alignment Test Updated',
+      title: 'Alignment Test',
       slug: {
         _type: 'slug',
-        current: 'alignment-test-updated'
+        current: 'alignment-test'
       },
       subtitle: 'This page is used to test component alignment and layout functionality across all available components.',
       content: [] // Start with empty content
@@ -121,7 +125,8 @@ async function createAndPopulateAlignmentTest() {
 
     pageContent.push({
       _type: 'ctaEmailButton',
-      _key: uuidv4()
+      _key: uuidv4(),
+      alignment: 'inherit'
     });
 
     // First Page Section with Text & Image components
@@ -539,6 +544,11 @@ async function createAndPopulateAlignmentTest() {
         alignment: 'inherit'
       },
       {
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
+        alignment: 'inherit'
+      },
+      {
         _type: 'divider',
         _key: uuidv4()
       },
@@ -565,6 +575,11 @@ async function createAndPopulateAlignmentTest() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
+        alignment: 'left'
+      },
+      {
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
         alignment: 'left'
       },
       {
@@ -597,6 +612,11 @@ async function createAndPopulateAlignmentTest() {
         alignment: 'center'
       },
       {
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
+        alignment: 'center'
+      },
+      {
         _type: 'divider',
         _key: uuidv4()
       },
@@ -626,11 +646,12 @@ async function createAndPopulateAlignmentTest() {
         alignment: 'right'
       },
       {
-        _type: 'divider',
-        _key: uuidv4()
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
+        alignment: 'right'
       },
       {
-        _type: 'ctaEmailButton',
+        _type: 'divider',
         _key: uuidv4()
       }
     ];
@@ -669,6 +690,11 @@ async function createAndPopulateAlignmentTest() {
           alignment: 'inherit'
         },
         {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
+          alignment: 'inherit'
+        },
+        {
           _type: 'divider',
           _key: uuidv4()
         },
@@ -695,6 +721,11 @@ async function createAndPopulateAlignmentTest() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
+          alignment: 'left'
+        },
+        {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
           alignment: 'left'
         },
         {
@@ -727,6 +758,11 @@ async function createAndPopulateAlignmentTest() {
           alignment: 'center'
         },
         {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
+          alignment: 'center'
+        },
+        {
           _type: 'divider',
           _key: uuidv4()
         },
@@ -753,6 +789,11 @@ async function createAndPopulateAlignmentTest() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
+          alignment: 'right'
+        },
+        {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
           alignment: 'right'
         },
 
@@ -787,6 +828,11 @@ async function createAndPopulateAlignmentTest() {
               externalUrl: 'https://example.com',
               openInNewTab: true,
               alignment: 'inherit'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
+              alignment: 'inherit'
             }
           ]
         },
@@ -819,6 +865,11 @@ async function createAndPopulateAlignmentTest() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
+              alignment: 'left'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
               alignment: 'left'
             }
           ]
@@ -853,6 +904,11 @@ async function createAndPopulateAlignmentTest() {
               externalUrl: 'https://example.com',
               openInNewTab: true,
               alignment: 'center'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
+              alignment: 'center'
             }
           ]
         },
@@ -885,6 +941,11 @@ async function createAndPopulateAlignmentTest() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
+              alignment: 'right'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
               alignment: 'right'
             }
           ]

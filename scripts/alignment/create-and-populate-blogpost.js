@@ -48,21 +48,25 @@ async function createAndPopulateAlignmentTestBlogPost() {
   try {
     // Search for existing Alignment Test blog post
     let alignmentTestBlogPost = await client.fetch(
-      '*[_type == "blogPost" && title == "Alignment Test Blog Post Updated"][0]'
+      '*[_type == "blogPost" && title == "Alignment Test Blog Post"][0]'
     );
 
     if (alignmentTestBlogPost) {
       console.log('Found existing Alignment Test blog post:', alignmentTestBlogPost._id);
-      console.log('Force deleting existing blog post (ignoring header references)...');
       
-      try {
-        // Force delete the existing blog post
-        await client.delete(alignmentTestBlogPost._id);
-        console.log('Existing blog post deleted successfully');
-      } catch (error) {
-        console.log('Delete failed (likely due to references), but continuing...');
-        console.log('Error:', error.message);
+      // Check for references to this blog post
+      const references = await client.fetch('*[references($id)]', { id: alignmentTestBlogPost._id });
+      
+      if (references.length > 0) {
+        console.error(`Cannot delete blog post: it is referenced by ${references.length} other document(s)`);
+        console.error('Referenced by:', references.map(ref => `${ref._type}: ${ref.title || ref.name || ref._id}`));
+        console.error('Please remove these references first, then run the script again.');
+        process.exit(1);
       }
+      
+      console.log('Deleting existing blog post...');
+      await client.delete(alignmentTestBlogPost._id);
+      console.log('Existing blog post deleted successfully');
     }
 
     console.log('Creating new Alignment Test blog post...');
@@ -70,10 +74,10 @@ async function createAndPopulateAlignmentTestBlogPost() {
     // Create the blog post
     alignmentTestBlogPost = await client.create({
       _type: 'blogPost',
-      title: 'Alignment Test Blog Post Updated',
+      title: 'Alignment Test Blog Post',
       slug: {
         _type: 'slug',
-        current: 'alignment-test-blog-post-updated'
+        current: 'alignment-test-blog-post'
       },
       subtitle: 'This blog post is used to test component alignment and layout functionality across all available components in blog post context.',
       author: 'Test Author',
@@ -123,7 +127,8 @@ async function createAndPopulateAlignmentTestBlogPost() {
 
     blogContent.push({
       _type: 'ctaEmailButton',
-      _key: uuidv4()
+      _key: uuidv4(),
+      alignment: 'inherit'
     });
 
     // First Page Section with Text & Image components
@@ -541,6 +546,11 @@ async function createAndPopulateAlignmentTestBlogPost() {
         alignment: 'inherit'
       },
       {
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
+        alignment: 'inherit'
+      },
+      {
         _type: 'divider',
         _key: uuidv4()
       },
@@ -567,6 +577,11 @@ async function createAndPopulateAlignmentTestBlogPost() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
+        alignment: 'left'
+      },
+      {
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
         alignment: 'left'
       },
       {
@@ -599,6 +614,11 @@ async function createAndPopulateAlignmentTestBlogPost() {
         alignment: 'center'
       },
       {
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
+        alignment: 'center'
+      },
+      {
         _type: 'divider',
         _key: uuidv4()
       },
@@ -628,11 +648,12 @@ async function createAndPopulateAlignmentTestBlogPost() {
         alignment: 'right'
       },
       {
-        _type: 'divider',
-        _key: uuidv4()
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
+        alignment: 'right'
       },
       {
-        _type: 'ctaEmailButton',
+        _type: 'divider',
         _key: uuidv4()
       }
     ];
@@ -671,6 +692,11 @@ async function createAndPopulateAlignmentTestBlogPost() {
           alignment: 'inherit'
         },
         {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
+          alignment: 'inherit'
+        },
+        {
           _type: 'divider',
           _key: uuidv4()
         },
@@ -697,6 +723,11 @@ async function createAndPopulateAlignmentTestBlogPost() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
+          alignment: 'left'
+        },
+        {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
           alignment: 'left'
         },
         {
@@ -729,6 +760,11 @@ async function createAndPopulateAlignmentTestBlogPost() {
           alignment: 'center'
         },
         {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
+          alignment: 'center'
+        },
+        {
           _type: 'divider',
           _key: uuidv4()
         },
@@ -755,6 +791,11 @@ async function createAndPopulateAlignmentTestBlogPost() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
+          alignment: 'right'
+        },
+        {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
           alignment: 'right'
         },
 
@@ -789,6 +830,11 @@ async function createAndPopulateAlignmentTestBlogPost() {
               externalUrl: 'https://example.com',
               openInNewTab: true,
               alignment: 'inherit'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
+              alignment: 'inherit'
             }
           ]
         },
@@ -821,6 +867,11 @@ async function createAndPopulateAlignmentTestBlogPost() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
+              alignment: 'left'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
               alignment: 'left'
             }
           ]
@@ -855,6 +906,11 @@ async function createAndPopulateAlignmentTestBlogPost() {
               externalUrl: 'https://example.com',
               openInNewTab: true,
               alignment: 'center'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
+              alignment: 'center'
             }
           ]
         },
@@ -887,6 +943,11 @@ async function createAndPopulateAlignmentTestBlogPost() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
+              alignment: 'right'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
               alignment: 'right'
             }
           ]

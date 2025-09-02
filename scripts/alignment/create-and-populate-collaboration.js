@@ -48,21 +48,25 @@ async function createAndPopulateAlignmentTestCollaboration() {
   try {
     // Search for existing Alignment Test collaboration
     let alignmentTestCollab = await client.fetch(
-      '*[_type == "collab" && name == "Alignment Test Collaboration Updated"][0]'
+      '*[_type == "collab" && name == "Alignment Test Collaboration"][0]'
     );
 
     if (alignmentTestCollab) {
       console.log('Found existing Alignment Test collaboration:', alignmentTestCollab._id);
-      console.log('Force deleting existing collaboration (ignoring header references)...');
       
-      try {
-        // Force delete the existing collaboration
-        await client.delete(alignmentTestCollab._id);
-        console.log('Existing collaboration deleted successfully');
-      } catch (error) {
-        console.log('Delete failed (likely due to references), but continuing...');
-        console.log('Error:', error.message);
+      // Check for references to this collaboration
+      const references = await client.fetch('*[references($id)]', { id: alignmentTestCollab._id });
+      
+      if (references.length > 0) {
+        console.error(`Cannot delete collaboration: it is referenced by ${references.length} other document(s)`);
+        console.error('Referenced by:', references.map(ref => `${ref._type}: ${ref.title || ref.name || ref._id}`));
+        console.error('Please remove these references first, then run the script again.');
+        process.exit(1);
       }
+      
+      console.log('Deleting existing collaboration...');
+      await client.delete(alignmentTestCollab._id);
+      console.log('Existing collaboration deleted successfully');
     }
 
     console.log('Creating new Alignment Test collaboration...');
@@ -70,10 +74,10 @@ async function createAndPopulateAlignmentTestCollaboration() {
     // Create the collaboration
     alignmentTestCollab = await client.create({
       _type: 'collab',
-      name: 'Alignment Test Collaboration Updated',
+      name: 'Alignment Test Collaboration',
       slug: {
         _type: 'slug',
-        current: 'alignment-test-collaboration-updated'
+        current: 'alignment-test-collaboration'
       },
       genre: 'Test Genre',
       location: 'Test Location',
@@ -500,6 +504,11 @@ async function createAndPopulateAlignmentTestCollaboration() {
         alignment: 'inherit'
       },
       {
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
+        alignment: 'inherit'
+      },
+      {
         _type: 'divider',
         _key: uuidv4()
       },
@@ -526,6 +535,11 @@ async function createAndPopulateAlignmentTestCollaboration() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
+        alignment: 'left'
+      },
+      {
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
         alignment: 'left'
       },
       {
@@ -558,6 +572,11 @@ async function createAndPopulateAlignmentTestCollaboration() {
         alignment: 'center'
       },
       {
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
+        alignment: 'center'
+      },
+      {
         _type: 'divider',
         _key: uuidv4()
       },
@@ -587,11 +606,12 @@ async function createAndPopulateAlignmentTestCollaboration() {
         alignment: 'right'
       },
       {
-        _type: 'divider',
-        _key: uuidv4()
+        _type: 'ctaEmailButton',
+        _key: uuidv4(),
+        alignment: 'right'
       },
       {
-        _type: 'ctaEmailButton',
+        _type: 'divider',
         _key: uuidv4()
       }
     ];
@@ -630,6 +650,11 @@ async function createAndPopulateAlignmentTestCollaboration() {
           alignment: 'inherit'
         },
         {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
+          alignment: 'inherit'
+        },
+        {
           _type: 'divider',
           _key: uuidv4()
         },
@@ -656,6 +681,11 @@ async function createAndPopulateAlignmentTestCollaboration() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
+          alignment: 'left'
+        },
+        {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
           alignment: 'left'
         },
         {
@@ -688,6 +718,11 @@ async function createAndPopulateAlignmentTestCollaboration() {
           alignment: 'center'
         },
         {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
+          alignment: 'center'
+        },
+        {
           _type: 'divider',
           _key: uuidv4()
         },
@@ -714,6 +749,11 @@ async function createAndPopulateAlignmentTestCollaboration() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
+          alignment: 'right'
+        },
+        {
+          _type: 'ctaEmailButton',
+          _key: uuidv4(),
           alignment: 'right'
         },
 
@@ -748,6 +788,11 @@ async function createAndPopulateAlignmentTestCollaboration() {
               externalUrl: 'https://example.com',
               openInNewTab: true,
               alignment: 'inherit'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
+              alignment: 'inherit'
             }
           ]
         },
@@ -780,6 +825,11 @@ async function createAndPopulateAlignmentTestCollaboration() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
+              alignment: 'left'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
               alignment: 'left'
             }
           ]
@@ -814,6 +864,11 @@ async function createAndPopulateAlignmentTestCollaboration() {
               externalUrl: 'https://example.com',
               openInNewTab: true,
               alignment: 'center'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
+              alignment: 'center'
             }
           ]
         },
@@ -846,6 +901,11 @@ async function createAndPopulateAlignmentTestCollaboration() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
+              alignment: 'right'
+            },
+            {
+              _type: 'ctaEmailButton',
+              _key: uuidv4(),
               alignment: 'right'
             }
           ]
