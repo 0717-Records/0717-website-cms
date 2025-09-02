@@ -110,27 +110,9 @@ const BlockRenderer = ({
             marginClass = nextBlockIsSection ? 'mb-12' : 'mb-6';
           }
 
-          // Apply alignment for non-section components
-          // const isSectionType =
-          //   block._type === 'pageSection' ||
-          //   block._type === 'subSection' ||
-          //   block._type === 'subSubSection';
-
-          const alignmentClass = '';
-          // if (!isSectionType) {
-          //   const alignmentMap = {
-          //     left: 'text-left',
-          //     center: 'text-center',
-          //     right: 'text-right',
-          //   };
-          //   alignmentClass = alignmentMap[alignment] || 'text-center';
-          // }
-
-          const combinedClasses = [marginClass, alignmentClass].filter(Boolean).join(' ');
-
           return (
             <div
-              className={combinedClasses}
+              className={marginClass}
               data-sanity={createDataAttribute({
                 ...createDataAttributeConfig,
                 id: documentId,
@@ -265,7 +247,7 @@ const BlockRenderer = ({
           case 'ctaButton':
             return (
               <BlockWrapper key={block._key}>
-                <CTAButton {...block} alignment={alignment} />
+                <CTAButton {...block} inheritAlignment={alignment} />
               </BlockWrapper>
             );
 

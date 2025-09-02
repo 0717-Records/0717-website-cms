@@ -32,10 +32,7 @@ function formatBlogDate(
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const [post, companyLinks] = await Promise.all([
-    getBlogPostBySlug(slug),
-    getCompanyLinks(),
-  ]);
+  const [post, companyLinks] = await Promise.all([getBlogPostBySlug(slug), getCompanyLinks()]);
 
   if (!post) {
     notFound();
@@ -113,6 +110,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 documentId={post._id}
                 documentType='blogPost'
                 companyLinks={companyLinks}
+                alignment='left'
               />
             </div>
           </div>

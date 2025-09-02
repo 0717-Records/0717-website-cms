@@ -33,6 +33,7 @@ export type CTABlockProps<T> = Omit<T, '_type' | '_key' | 'internalLink'> & {
   internalLink?: InternalLinkType;
   pageSectionId?: string;
   computedHref?: string;
+  inheritAlignment?: 'left' | 'center' | 'right';
 };
 
 // Common UI types
