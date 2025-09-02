@@ -8,13 +8,22 @@ type CTAEmailButtonProps = CTABlockProps<CTAEmailButtonBlock>;
 
 const CTAEmailButtonComponent = (props: CTAEmailButtonProps) => {
   const {
-    alignment = 'inherit',
+    alignment,
     inheritAlignment,
     className = '',
   } = props;
 
-  const alignmentClasses = getAlignmentClasses(alignment, inheritAlignment);
+  // Only apply alignment if alignment field exists (for non-embedded versions)
+  const alignmentClasses = alignment !== undefined 
+    ? getAlignmentClasses(alignment, inheritAlignment)
+    : '';
 
+  // For embedded versions (no alignment field), render without wrapper
+  if (alignment === undefined) {
+    return <CTAEmailButton className={className} />;
+  }
+
+  // For non-embedded versions (with alignment field), render with alignment wrapper
   return (
     <div className={`flex ${alignmentClasses} ${className}`.trim()}>
       <CTAEmailButton />

@@ -190,7 +190,6 @@ export type EmbeddedCtaButton = {
 
 export type CtaEmailButton = {
   _type: "ctaEmailButton";
-  buttonText?: string;
   alignment?: "inherit" | "left" | "center" | "right";
 };
 
@@ -1754,7 +1753,6 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "ctaEmailButton";
-    buttonText?: string;
     alignment?: "center" | "inherit" | "left" | "right";
     image: null;
     content: null;
@@ -2173,7 +2171,6 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "ctaEmailButton";
-      buttonText?: string;
       alignment?: "center" | "inherit" | "left" | "right";
       image: null;
       content: null;
@@ -2649,7 +2646,6 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "ctaEmailButton";
-        buttonText?: string;
         alignment?: "center" | "inherit" | "left" | "right";
         image: null;
         content: null;
@@ -3115,7 +3111,6 @@ export type PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "ctaEmailButton";
-          buttonText?: string;
           alignment?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
@@ -3904,7 +3899,6 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "ctaEmailButton";
-    buttonText?: string;
     alignment?: "center" | "inherit" | "left" | "right";
     image: null;
     content: null;
@@ -4323,7 +4317,6 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "ctaEmailButton";
-      buttonText?: string;
       alignment?: "center" | "inherit" | "left" | "right";
       image: null;
       content: null;
@@ -4799,7 +4792,6 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "ctaEmailButton";
-        buttonText?: string;
         alignment?: "center" | "inherit" | "left" | "right";
         image: null;
         content: null;
@@ -5265,7 +5257,6 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "ctaEmailButton";
-          buttonText?: string;
           alignment?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
@@ -6157,7 +6148,6 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "ctaEmailButton";
-    buttonText?: string;
     alignment?: "center" | "inherit" | "left" | "right";
     image: null;
     content: null;
@@ -6576,7 +6566,6 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "ctaEmailButton";
-      buttonText?: string;
       alignment?: "center" | "inherit" | "left" | "right";
       image: null;
       content: null;
@@ -7052,7 +7041,6 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "ctaEmailButton";
-        buttonText?: string;
         alignment?: "center" | "inherit" | "left" | "right";
         image: null;
         content: null;
@@ -7518,7 +7506,6 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "ctaEmailButton";
-          buttonText?: string;
           alignment?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
@@ -8281,7 +8268,6 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "ctaEmailButton";
-    buttonText?: string;
     alignment?: "center" | "inherit" | "left" | "right";
     image: null;
     content: null;
@@ -8700,7 +8686,6 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "ctaEmailButton";
-      buttonText?: string;
       alignment?: "center" | "inherit" | "left" | "right";
       image: null;
       content: null;
@@ -9176,7 +9161,6 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "ctaEmailButton";
-        buttonText?: string;
         alignment?: "center" | "inherit" | "left" | "right";
         image: null;
         content: null;
@@ -9642,7 +9626,6 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "ctaEmailButton";
-          buttonText?: string;
           alignment?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
@@ -11281,7 +11264,6 @@ export type COLLAB_QUERYResult = {
     } | {
       _key: string;
       _type: "ctaEmailButton";
-      buttonText?: string;
       alignment?: "center" | "inherit" | "left" | "right";
       image: null;
       content: null;
@@ -11757,7 +11739,6 @@ export type COLLAB_QUERYResult = {
       } | {
         _key: string;
         _type: "ctaEmailButton";
-        buttonText?: string;
         alignment?: "center" | "inherit" | "left" | "right";
         image: null;
         content: null;
@@ -12233,7 +12214,6 @@ export type COLLAB_QUERYResult = {
         } | {
           _key: string;
           _type: "ctaEmailButton";
-          buttonText?: string;
           alignment?: "center" | "inherit" | "left" | "right";
           image: null;
           content: null;
