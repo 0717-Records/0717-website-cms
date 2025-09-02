@@ -48,16 +48,21 @@ async function createAndPopulateAlignmentTestCollaboration() {
   try {
     // Search for existing Alignment Test collaboration
     let alignmentTestCollab = await client.fetch(
-      '*[_type == "collab" && name == "Alignment Test Collaboration"][0]'
+      '*[_type == "collab" && name == "Alignment Test Collaboration Updated"][0]'
     );
 
     if (alignmentTestCollab) {
       console.log('Found existing Alignment Test collaboration:', alignmentTestCollab._id);
-      console.log('Deleting existing collaboration...');
+      console.log('Force deleting existing collaboration (ignoring header references)...');
       
-      // Delete the existing collaboration
-      await client.delete(alignmentTestCollab._id);
-      console.log('Existing collaboration deleted successfully');
+      try {
+        // Force delete the existing collaboration
+        await client.delete(alignmentTestCollab._id);
+        console.log('Existing collaboration deleted successfully');
+      } catch (error) {
+        console.log('Delete failed (likely due to references), but continuing...');
+        console.log('Error:', error.message);
+      }
     }
 
     console.log('Creating new Alignment Test collaboration...');
@@ -65,10 +70,10 @@ async function createAndPopulateAlignmentTestCollaboration() {
     // Create the collaboration
     alignmentTestCollab = await client.create({
       _type: 'collab',
-      name: 'Alignment Test Collaboration',
+      name: 'Alignment Test Collaboration Updated',
       slug: {
         _type: 'slug',
-        current: 'alignment-test-collaboration'
+        current: 'alignment-test-collaboration-updated'
       },
       genre: 'Test Genre',
       location: 'Test Location',
@@ -131,7 +136,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           _key: uuidv4(),
           title: 'Feature Cards Subsection',
           anchorId: createAnchorId('Feature Cards Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'card',
@@ -161,7 +166,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           _key: uuidv4(),
           title: 'Statement Cards Subsection',
           anchorId: createAnchorId('Statement Cards Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'card',
@@ -322,7 +327,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           _key: uuidv4(),
           title: 'Image Blocks Subsection',
           anchorId: createAnchorId('Image Blocks Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'imageBlock',
@@ -343,7 +348,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           _key: uuidv4(),
           title: 'Image Galleries Subsection',
           anchorId: createAnchorId('Image Galleries Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'imageGallery',
@@ -492,7 +497,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'inherit'
+        alignment: 'inherit'
       },
       {
         _type: 'divider',
@@ -521,7 +526,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'left'
+        alignment: 'left'
       },
       {
         _type: 'divider',
@@ -550,7 +555,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'center'
+        alignment: 'center'
       },
       {
         _type: 'divider',
@@ -579,7 +584,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'right'
+        alignment: 'right'
       },
       {
         _type: 'divider',
@@ -587,9 +592,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
       },
       {
         _type: 'ctaEmailButton',
-        _key: uuidv4(),
-        text: 'Collab Email Button in Alignment Test',
-        variant: 'filled'
+        _key: uuidv4()
       }
     ];
 
@@ -624,7 +627,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'inherit'
+          alignment: 'inherit'
         },
         {
           _type: 'divider',
@@ -653,7 +656,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'left'
+          alignment: 'left'
         },
         {
           _type: 'divider',
@@ -682,7 +685,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'center'
+          alignment: 'center'
         },
         {
           _type: 'divider',
@@ -711,7 +714,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'right'
+          alignment: 'right'
         },
 
         // Sub Sub Sections for deeper nesting
@@ -720,7 +723,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           _key: uuidv4(),
           title: 'Collab Sub Sub Section Inherit',
           anchorId: createAnchorId('Collab Sub Sub Section Inherit'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -744,7 +747,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'inherit'
+              alignment: 'inherit'
             }
           ]
         },
@@ -753,7 +756,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           _key: uuidv4(),
           title: 'Collab Sub Sub Section Left',
           anchorId: createAnchorId('Collab Sub Sub Section Left'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -777,7 +780,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'left'
+              alignment: 'left'
             }
           ]
         },
@@ -786,7 +789,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           _key: uuidv4(),
           title: 'Collab Sub Sub Section Center',
           anchorId: createAnchorId('Collab Sub Sub Section Center'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -810,7 +813,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'center'
+              alignment: 'center'
             }
           ]
         },
@@ -819,7 +822,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
           _key: uuidv4(),
           title: 'Collab Sub Sub Section Right',
           anchorId: createAnchorId('Collab Sub Sub Section Right'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -843,7 +846,7 @@ async function createAndPopulateAlignmentTestCollaboration() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'right'
+              alignment: 'right'
             }
           ]
         }

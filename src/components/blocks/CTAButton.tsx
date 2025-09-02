@@ -19,7 +19,9 @@ const CTAButton = (props: CTAButtonProps) => {
     computedHref,
     className = '',
   } = props;
-  
+
+  console.log(props);
+
   const cleanText = stegaClean(text);
   const cleanExternalUrl = stegaClean(externalUrl);
   const cleanAlignment = stegaClean(alignment);
@@ -32,7 +34,7 @@ const CTAButton = (props: CTAButtonProps) => {
 
   // Use computed href from enhanced GROQ query if available, otherwise fallback to legacy logic
   let href = '';
-  
+
   if (computedHref) {
     href = stegaClean(computedHref);
   } else {
@@ -70,13 +72,13 @@ const CTAButton = (props: CTAButtonProps) => {
   let alignmentClasses = '';
   switch (cleanAlignment) {
     case 'left':
-      alignmentClasses = 'text-left';
+      alignmentClasses = 'justify-start';
       break;
     case 'center':
-      alignmentClasses = 'text-center';
+      alignmentClasses = 'justify-center';
       break;
     case 'right':
-      alignmentClasses = 'text-right';
+      alignmentClasses = 'justify-end';
       break;
     case 'inherit':
     default:
@@ -85,7 +87,7 @@ const CTAButton = (props: CTAButtonProps) => {
   }
 
   return (
-    <div className={`${alignmentClasses} ${className}`.trim()}>
+    <div className={`flex ${alignmentClasses} ${className}`.trim()}>
       <CTA
         href={href}
         variant={cleanVariant}

@@ -48,16 +48,21 @@ async function createAndPopulateAlignmentTest() {
   try {
     // Search for existing Alignment Test page
     let alignmentTestPage = await client.fetch(
-      '*[_type == "page" && title == "Alignment Test"][0]'
+      '*[_type == "page" && title == "Alignment Test Updated"][0]'
     );
 
     if (alignmentTestPage) {
       console.log('Found existing Alignment Test page:', alignmentTestPage._id);
-      console.log('Deleting existing page...');
+      console.log('Force deleting existing page (ignoring header references)...');
       
-      // Delete the existing page
-      await client.delete(alignmentTestPage._id);
-      console.log('Existing page deleted successfully');
+      try {
+        // Force delete the existing page
+        await client.delete(alignmentTestPage._id);
+        console.log('Existing page deleted successfully');
+      } catch (error) {
+        console.log('Delete failed (likely due to references), but continuing...');
+        console.log('Error:', error.message);
+      }
     }
 
     console.log('Creating new Alignment Test page...');
@@ -65,10 +70,10 @@ async function createAndPopulateAlignmentTest() {
     // Create the page
     alignmentTestPage = await client.create({
       _type: 'page',
-      title: 'Alignment Test',
+      title: 'Alignment Test Updated',
       slug: {
         _type: 'slug',
-        current: 'alignment-test'
+        current: 'alignment-test-updated'
       },
       subtitle: 'This page is used to test component alignment and layout functionality across all available components.',
       content: [] // Start with empty content
@@ -111,14 +116,12 @@ async function createAndPopulateAlignmentTest() {
       linkType: 'external',
       externalUrl: 'https://example.com',
       openInNewTab: true,
-      textAlign: 'inherit'
+      alignment: 'inherit'
     });
 
     pageContent.push({
       _type: 'ctaEmailButton',
-      _key: uuidv4(),
-      text: 'Root Level Email Button',
-      variant: 'filled'
+      _key: uuidv4()
     });
 
     // First Page Section with Text & Image components
@@ -165,7 +168,7 @@ async function createAndPopulateAlignmentTest() {
           _key: uuidv4(),
           title: 'Feature Cards Subsection',
           anchorId: createAnchorId('Feature Cards Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'card',
@@ -195,7 +198,7 @@ async function createAndPopulateAlignmentTest() {
           _key: uuidv4(),
           title: 'Statement Cards Subsection',
           anchorId: createAnchorId('Statement Cards Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'card',
@@ -362,7 +365,7 @@ async function createAndPopulateAlignmentTest() {
           _key: uuidv4(),
           title: 'Image Blocks Subsection',
           anchorId: createAnchorId('Image Blocks Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'imageBlock',
@@ -383,7 +386,7 @@ async function createAndPopulateAlignmentTest() {
           _key: uuidv4(),
           title: 'Image Galleries Subsection',
           anchorId: createAnchorId('Image Galleries Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'imageGallery',
@@ -533,7 +536,7 @@ async function createAndPopulateAlignmentTest() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'inherit'
+        alignment: 'inherit'
       },
       {
         _type: 'divider',
@@ -562,7 +565,7 @@ async function createAndPopulateAlignmentTest() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'left'
+        alignment: 'left'
       },
       {
         _type: 'divider',
@@ -591,7 +594,7 @@ async function createAndPopulateAlignmentTest() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'center'
+        alignment: 'center'
       },
       {
         _type: 'divider',
@@ -620,7 +623,7 @@ async function createAndPopulateAlignmentTest() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'right'
+        alignment: 'right'
       },
       {
         _type: 'divider',
@@ -628,9 +631,7 @@ async function createAndPopulateAlignmentTest() {
       },
       {
         _type: 'ctaEmailButton',
-        _key: uuidv4(),
-        text: 'Email Button in Alignment Test',
-        variant: 'filled'
+        _key: uuidv4()
       }
     ];
 
@@ -665,7 +666,7 @@ async function createAndPopulateAlignmentTest() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'inherit'
+          alignment: 'inherit'
         },
         {
           _type: 'divider',
@@ -694,7 +695,7 @@ async function createAndPopulateAlignmentTest() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'left'
+          alignment: 'left'
         },
         {
           _type: 'divider',
@@ -723,7 +724,7 @@ async function createAndPopulateAlignmentTest() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'center'
+          alignment: 'center'
         },
         {
           _type: 'divider',
@@ -752,7 +753,7 @@ async function createAndPopulateAlignmentTest() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'right'
+          alignment: 'right'
         },
 
         // Sub Sub Sections for deeper nesting
@@ -761,7 +762,7 @@ async function createAndPopulateAlignmentTest() {
           _key: uuidv4(),
           title: 'Sub Sub Section Inherit',
           anchorId: createAnchorId('Sub Sub Section Inherit'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -785,7 +786,7 @@ async function createAndPopulateAlignmentTest() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'inherit'
+              alignment: 'inherit'
             }
           ]
         },
@@ -794,7 +795,7 @@ async function createAndPopulateAlignmentTest() {
           _key: uuidv4(),
           title: 'Sub Sub Section Left',
           anchorId: createAnchorId('Sub Sub Section Left'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -818,7 +819,7 @@ async function createAndPopulateAlignmentTest() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'left'
+              alignment: 'left'
             }
           ]
         },
@@ -827,7 +828,7 @@ async function createAndPopulateAlignmentTest() {
           _key: uuidv4(),
           title: 'Sub Sub Section Center',
           anchorId: createAnchorId('Sub Sub Section Center'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -851,7 +852,7 @@ async function createAndPopulateAlignmentTest() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'center'
+              alignment: 'center'
             }
           ]
         },
@@ -860,7 +861,7 @@ async function createAndPopulateAlignmentTest() {
           _key: uuidv4(),
           title: 'Sub Sub Section Right',
           anchorId: createAnchorId('Sub Sub Section Right'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -884,7 +885,7 @@ async function createAndPopulateAlignmentTest() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'right'
+              alignment: 'right'
             }
           ]
         }

@@ -1,7 +1,13 @@
 'use client';
 
 import React from 'react';
-import type { PAGE_QUERYResult, EVENTS_QUERYResult, COLLABS_ALL_QUERYResult, FAVOURITES_ALL_QUERYResult, COMPANY_LINKS_QUERYResult } from '@/sanity/types';
+import type {
+  PAGE_QUERYResult,
+  EVENTS_QUERYResult,
+  COLLABS_ALL_QUERYResult,
+  FAVOURITES_ALL_QUERYResult,
+  COMPANY_LINKS_QUERYResult,
+} from '@/sanity/types';
 import type { NestedBlock } from '@/types/blocks';
 import type { SiteSettingsProps } from '@/types/shared';
 import { client } from '@/sanity/lib/client';
@@ -105,20 +111,20 @@ const BlockRenderer = ({
           }
 
           // Apply alignment for non-section components
-          const isSectionType =
-            block._type === 'pageSection' ||
-            block._type === 'subSection' ||
-            block._type === 'subSubSection';
+          // const isSectionType =
+          //   block._type === 'pageSection' ||
+          //   block._type === 'subSection' ||
+          //   block._type === 'subSubSection';
 
-          let alignmentClass = '';
-          if (!isSectionType) {
-            const alignmentMap = {
-              left: 'text-left',
-              center: 'text-center',
-              right: 'text-right',
-            };
-            alignmentClass = alignmentMap[alignment] || 'text-center';
-          }
+          const alignmentClass = '';
+          // if (!isSectionType) {
+          //   const alignmentMap = {
+          //     left: 'text-left',
+          //     center: 'text-center',
+          //     right: 'text-right',
+          //   };
+          //   alignmentClass = alignmentMap[alignment] || 'text-center';
+          // }
 
           const combinedClasses = [marginClass, alignmentClass].filter(Boolean).join(' ');
 
@@ -252,18 +258,14 @@ const BlockRenderer = ({
           case 'card':
             return (
               <BlockWrapper key={block._key}>
-                <Card 
-                  {...block} 
-                  documentId={documentId}
-                  documentType={documentType}
-                />
+                <Card {...block} documentId={documentId} documentType={documentType} />
               </BlockWrapper>
             );
 
           case 'ctaButton':
             return (
               <BlockWrapper key={block._key}>
-                <CTAButton {...block} />
+                <CTAButton {...block} alignment={alignment} />
               </BlockWrapper>
             );
 
@@ -277,9 +279,7 @@ const BlockRenderer = ({
           case 'ctaEmailButton':
             return (
               <BlockWrapper key={block._key}>
-                <CTAEmailButtonComponent
-                  {...block}
-                />
+                <CTAEmailButtonComponent {...block} />
               </BlockWrapper>
             );
 
@@ -300,11 +300,7 @@ const BlockRenderer = ({
           case 'cardGrid':
             return (
               <BlockWrapper key={block._key}>
-                <CardGrid 
-                  {...block} 
-                  documentId={documentId}
-                  documentType={documentType}
-                />
+                <CardGrid {...block} documentId={documentId} documentType={documentType} />
               </BlockWrapper>
             );
 
@@ -394,18 +390,14 @@ const BlockRenderer = ({
           case 'favouriteBlock':
             return (
               <BlockWrapper key={block._key}>
-                <FavouriteBlock
-                  favourites={favourites || []}
-                />
+                <FavouriteBlock favourites={favourites || []} />
               </BlockWrapper>
             );
 
           case 'companyLinksBlock':
             return (
               <BlockWrapper key={block._key}>
-                <CompanyLinksBlock
-                  companyLinks={companyLinks?.companyLinks || null}
-                />
+                <CompanyLinksBlock companyLinks={companyLinks?.companyLinks || null} />
               </BlockWrapper>
             );
 

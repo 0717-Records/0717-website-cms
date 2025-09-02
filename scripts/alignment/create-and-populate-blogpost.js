@@ -48,16 +48,21 @@ async function createAndPopulateAlignmentTestBlogPost() {
   try {
     // Search for existing Alignment Test blog post
     let alignmentTestBlogPost = await client.fetch(
-      '*[_type == "blogPost" && title == "Alignment Test Blog Post"][0]'
+      '*[_type == "blogPost" && title == "Alignment Test Blog Post Updated"][0]'
     );
 
     if (alignmentTestBlogPost) {
       console.log('Found existing Alignment Test blog post:', alignmentTestBlogPost._id);
-      console.log('Deleting existing blog post...');
+      console.log('Force deleting existing blog post (ignoring header references)...');
       
-      // Delete the existing blog post
-      await client.delete(alignmentTestBlogPost._id);
-      console.log('Existing blog post deleted successfully');
+      try {
+        // Force delete the existing blog post
+        await client.delete(alignmentTestBlogPost._id);
+        console.log('Existing blog post deleted successfully');
+      } catch (error) {
+        console.log('Delete failed (likely due to references), but continuing...');
+        console.log('Error:', error.message);
+      }
     }
 
     console.log('Creating new Alignment Test blog post...');
@@ -65,10 +70,10 @@ async function createAndPopulateAlignmentTestBlogPost() {
     // Create the blog post
     alignmentTestBlogPost = await client.create({
       _type: 'blogPost',
-      title: 'Alignment Test Blog Post',
+      title: 'Alignment Test Blog Post Updated',
       slug: {
         _type: 'slug',
-        current: 'alignment-test-blog-post'
+        current: 'alignment-test-blog-post-updated'
       },
       subtitle: 'This blog post is used to test component alignment and layout functionality across all available components in blog post context.',
       author: 'Test Author',
@@ -113,14 +118,12 @@ async function createAndPopulateAlignmentTestBlogPost() {
       linkType: 'external',
       externalUrl: 'https://example.com',
       openInNewTab: true,
-      textAlign: 'inherit'
+      alignment: 'inherit'
     });
 
     blogContent.push({
       _type: 'ctaEmailButton',
-      _key: uuidv4(),
-      text: 'Root Level Email Button',
-      variant: 'filled'
+      _key: uuidv4()
     });
 
     // First Page Section with Text & Image components
@@ -167,7 +170,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           _key: uuidv4(),
           title: 'Feature Cards Subsection',
           anchorId: createAnchorId('Feature Cards Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'card',
@@ -197,7 +200,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           _key: uuidv4(),
           title: 'Statement Cards Subsection',
           anchorId: createAnchorId('Statement Cards Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'card',
@@ -364,7 +367,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           _key: uuidv4(),
           title: 'Image Blocks Subsection',
           anchorId: createAnchorId('Image Blocks Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'imageBlock',
@@ -385,7 +388,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           _key: uuidv4(),
           title: 'Image Galleries Subsection',
           anchorId: createAnchorId('Image Galleries Subsection'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'imageGallery',
@@ -535,7 +538,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'inherit'
+        alignment: 'inherit'
       },
       {
         _type: 'divider',
@@ -564,7 +567,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'left'
+        alignment: 'left'
       },
       {
         _type: 'divider',
@@ -593,7 +596,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'center'
+        alignment: 'center'
       },
       {
         _type: 'divider',
@@ -622,7 +625,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
         linkType: 'external',
         externalUrl: 'https://example.com',
         openInNewTab: true,
-        textAlign: 'right'
+        alignment: 'right'
       },
       {
         _type: 'divider',
@@ -630,9 +633,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
       },
       {
         _type: 'ctaEmailButton',
-        _key: uuidv4(),
-        text: 'Blog Email Button in Alignment Test',
-        variant: 'filled'
+        _key: uuidv4()
       }
     ];
 
@@ -667,7 +668,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'inherit'
+          alignment: 'inherit'
         },
         {
           _type: 'divider',
@@ -696,7 +697,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'left'
+          alignment: 'left'
         },
         {
           _type: 'divider',
@@ -725,7 +726,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'center'
+          alignment: 'center'
         },
         {
           _type: 'divider',
@@ -754,7 +755,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           linkType: 'external',
           externalUrl: 'https://example.com',
           openInNewTab: true,
-          textAlign: 'right'
+          alignment: 'right'
         },
 
         // Sub Sub Sections for deeper nesting
@@ -763,7 +764,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           _key: uuidv4(),
           title: 'Blog Sub Sub Section Inherit',
           anchorId: createAnchorId('Blog Sub Sub Section Inherit'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -787,7 +788,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'inherit'
+              alignment: 'inherit'
             }
           ]
         },
@@ -796,7 +797,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           _key: uuidv4(),
           title: 'Blog Sub Sub Section Left',
           anchorId: createAnchorId('Blog Sub Sub Section Left'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -820,7 +821,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'left'
+              alignment: 'left'
             }
           ]
         },
@@ -829,7 +830,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           _key: uuidv4(),
           title: 'Blog Sub Sub Section Center',
           anchorId: createAnchorId('Blog Sub Sub Section Center'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -853,7 +854,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'center'
+              alignment: 'center'
             }
           ]
         },
@@ -862,7 +863,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
           _key: uuidv4(),
           title: 'Blog Sub Sub Section Right',
           anchorId: createAnchorId('Blog Sub Sub Section Right'),
-          textAlign: 'inherit',
+          alignment: 'inherit',
           content: [
             {
               _type: 'richText',
@@ -886,7 +887,7 @@ async function createAndPopulateAlignmentTestBlogPost() {
               linkType: 'external',
               externalUrl: 'https://example.com',
               openInNewTab: true,
-              textAlign: 'right'
+              alignment: 'right'
             }
           ]
         }

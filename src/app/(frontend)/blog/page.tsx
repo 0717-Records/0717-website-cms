@@ -16,7 +16,7 @@ export default async function BlogPage() {
         documentId={blogIndexPage?._id}
         documentType={blogIndexPage?._type}
       />
-      <Container textAlign='left'>
+      <Container>
         {/* Page Subtitle */}
         {blogIndexPage?.subtitle && (
           <div className='container mx-auto px-4 md:px-8 py-8'>
