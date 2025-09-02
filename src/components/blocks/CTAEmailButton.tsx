@@ -21,7 +21,7 @@ const CTAEmailButtonComponent = (props: CTAEmailButtonProps) => {
   // For non-embedded versions (with alignment field), render with alignment wrapper
   return (
     <div className={`flex ${alignmentClasses} ${className}`.trim()}>
-      <CTAEmailButton />
+      <CTAEmailButton className='w-full sm:w-auto' />
     </div>
   );
 };

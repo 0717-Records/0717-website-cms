@@ -72,6 +72,7 @@ const CTAButton = (props: CTAButtonProps) => {
   return (
     <div className={`flex ${alignmentClasses} ${className}`.trim()}>
       <CTA
+        className='w-full sm:w-auto'
         href={href}
         variant={cleanVariant}
         target={shouldOpenInNewTab ? '_blank' : undefined}
