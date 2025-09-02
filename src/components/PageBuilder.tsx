@@ -214,7 +214,7 @@ const BlockRenderer = ({
           case 'richText':
             return (
               <BlockWrapper key={block._key}>
-                <RichText {...block} />
+                <RichText {...block} inheritAlignment={alignment} />
               </BlockWrapper>
             );
 

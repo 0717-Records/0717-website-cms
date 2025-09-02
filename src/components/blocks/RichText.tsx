@@ -6,23 +6,33 @@ import {
   getTextAlignClass,
   type TextAlignment,
 } from '../../utils/sectionHelpers';
+import { resolveAlignment } from './shared/alignmentUtils';
 
-type RichTextProps = RichTextBlock;
+type RichTextProps = RichTextBlock & {
+  inheritAlignment?: 'left' | 'center' | 'right';
+};
 
 const RichText = ({
   content,
-  textAlign = 'center',
+  textAlign = 'inherit',
   isCallout = false,
+  inheritAlignment,
 }: RichTextProps) => {
 
   // Clean the values to remove Sanity's stega encoding
-  const cleanTextAlign = stegaClean(textAlign) || 'center';
+  const cleanTextAlign = stegaClean(textAlign) || 'inherit';
   const cleanIsCallout = stegaClean(isCallout) || false;
 
   // Determine the effective text alignment
-  // For callouts, default to center alignment unless explicitly set
-  const fallbackAlignment: TextAlignment = cleanIsCallout ? 'center' : 'center';
-  const effectiveTextAlign = cleanTextAlign === 'inherit' ? fallbackAlignment : cleanTextAlign as TextAlignment;
+  // For callouts, always center (overrides inherited alignment)
+  // For regular text, resolve alignment like CTAButton does
+  let effectiveTextAlign: TextAlignment;
+  if (cleanIsCallout) {
+    effectiveTextAlign = 'center';
+  } else {
+    const resolved = resolveAlignment(cleanTextAlign, inheritAlignment);
+    effectiveTextAlign = resolved || 'center';
+  }
   if (!content) {
     return null;
   }

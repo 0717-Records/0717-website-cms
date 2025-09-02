@@ -25,7 +25,7 @@ export const richTextType = defineType({
       name: 'textAlign',
       title: 'Text Alignment',
       type: 'string',
-      description: 'Text alignment for this rich text block (overrides section/page alignment)',
+      description: 'Text alignment for this rich text block (overrides section/page alignment). Note: Callout style always uses center alignment.',
       options: {
         list: [
           { title: 'Inherit', value: 'inherit' },
@@ -36,6 +36,7 @@ export const richTextType = defineType({
         layout: 'radio',
       },
       initialValue: 'inherit',
+      hidden: ({ parent }) => Boolean(parent?.isCallout),
     }),
   ],
   preview: {
