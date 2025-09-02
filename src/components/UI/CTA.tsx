@@ -24,8 +24,9 @@ type ButtonCTAProps = BaseCTAProps & {
 type CTAProps = LinkCTAProps | ButtonCTAProps;
 
 const getVariantStyles = (variant: 'filled' | 'outline' = 'filled') => {
+  // Note that the min-h-[56px] is so that regular buttons become the same height as the CTA Email Button, which needs more internal space because of the icon.
   const baseStyles =
-    'inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer active:scale-95 hover:scale-95';
+    'inline-flex items-center justify-center px-6 py-3 min-h-[56px] font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer active:scale-95 hover:scale-95';
 
   if (variant === 'outline') {
     return `${baseStyles} border-2 border-brand-secondary text-brand-secondary bg-transparent hover:bg-brand-secondary hover:text-white hover:border-transparent focus:ring-brand-secondary`;

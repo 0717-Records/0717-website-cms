@@ -33,7 +33,7 @@ const CTAEmailButton = ({ className = '' }: CTAEmailButtonProps) => {
   };
 
   const Icon = isCopied ? FaCheck : FaRegCopy;
-
+  // Note that the Icon in the email button, together with the py padding, gives the email button a height of 56px. Hence min-h-[56px] has been added to CTA buttons so all buttons are the same height.
   return (
     <button
       onClick={copyToClipboard}
@@ -64,8 +64,8 @@ const CTAEmailButton = ({ className = '' }: CTAEmailButtonProps) => {
       `.trim()}
       title={`Copy email: ${email}`}>
       <span>{email}</span>
-      <div className='flex-shrink-0 w-10 h-10 bg-black rounded-full flex items-center justify-center group-hover:bg-brand-primary transition-colors duration-200'>
-        <Icon className='w-5 h-5 text-white group-hover:text-black transition-colors duration-200' />
+      <div className='flex-shrink-0 w-8 h-8 bg-black rounded-full flex items-center justify-center group-hover:bg-brand-primary transition-colors duration-200'>
+        <Icon className='w-4 h-4 text-white group-hover:text-black transition-colors duration-200' />
       </div>
     </button>
   );
