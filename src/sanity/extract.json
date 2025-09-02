@@ -586,7 +586,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "ctaButton"
+                    "name": "embeddedCtaButton"
                   }
                 },
                 {

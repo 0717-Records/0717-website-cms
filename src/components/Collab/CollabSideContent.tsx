@@ -2,10 +2,10 @@
 
 import React from 'react';
 import RichText from '@/components/blocks/RichText';
-import CTACalloutLink from '@/components/blocks/CTACalloutLink';
+import CTAButton from '@/components/blocks/CTAButton';
 import CTAEmailButton from '@/components/blocks/CTAEmailButton';
 import { stegaClean } from 'next-sanity';
-import type { CTACalloutLinkBlock } from '@/types/blocks';
+import type { CTAButtonBlock } from '@/types/blocks';
 import type { RichText as SanityRichText } from '@/sanity/types';
 import Heading from '../Typography/Heading/Heading';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
@@ -86,22 +86,20 @@ export default function CollabSideContent({
               {sideBlock.ctaBlocks && sideBlock.ctaBlocks.length > 0 && (
                 <div className='space-y-4 text-left'>
                   {sideBlock.ctaBlocks.map((ctaBlock: CollabCTABlock, ctaIndex: number) => {
-                    if (ctaBlock._type === 'ctaCalloutLink') {
+                    if (ctaBlock._type === 'embeddedCtaButton') {
                       return (
-                        <CTACalloutLink
+                        <CTAButton
                           key={ctaBlock._key || ctaIndex}
-                          heading={ctaBlock.heading as string}
                           text={ctaBlock.text as string}
-                          image={ctaBlock.image as CTACalloutLinkBlock['image']}
-                          linkType={ctaBlock.linkType as CTACalloutLinkBlock['linkType']}
-                          internalLink={
-                            ctaBlock.internalLink as CTACalloutLinkBlock['internalLink']
-                          }
+                          variant={ctaBlock.variant as CTAButtonBlock['variant']}
+                          linkType={ctaBlock.linkType as CTAButtonBlock['linkType']}
+                          internalLink={ctaBlock.internalLink as CTAButtonBlock['internalLink']}
                           externalUrl={ctaBlock.externalUrl as string}
                           openInNewTab={ctaBlock.openInNewTab as boolean}
+                          computedHref={ctaBlock.computedHref as string}
                         />
                       );
-                    } else if (ctaBlock._type === 'ctaEmailButton' || ctaBlock._type === 'embeddedCtaEmailButton') {
+                    } else if (ctaBlock._type === 'embeddedCtaEmailButton') {
                       return <CTAEmailButton key={ctaBlock._key || ctaIndex} />;
                     }
                     return null;

@@ -96,7 +96,7 @@ export type SideContentBlock = {
   }>;
   ctaBlocks?: Array<{
     _key: string;
-  } & CtaButton | {
+  } & EmbeddedCtaButton | {
     _key: string;
   } & EmbeddedCtaEmailButton>;
 };
@@ -12618,7 +12618,7 @@ export type COLLAB_QUERYResult = {
       _key: string;
     }> | null;
     ctaBlocks: Array<{
-      _type: "ctaButton";
+      _type: "embeddedCtaButton";
       _key: string;
     } | {
       _type: "embeddedCtaEmailButton";

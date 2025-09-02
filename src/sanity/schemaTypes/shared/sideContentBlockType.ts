@@ -60,7 +60,7 @@ export const sideContentBlockType = defineType({
       description: 'Optional call to action - can add a link button or email button',
       of: [
         defineArrayMember({
-          type: 'ctaButton',
+          type: 'embeddedCtaButton',
           title: 'CTA Button',
         }),
         defineArrayMember({
@@ -94,10 +94,10 @@ export const sideContentBlockType = defineType({
       let ctaText = '';
       if (Array.isArray(ctaBlocks) && ctaBlocks.length > 0) {
         const firstCta = ctaBlocks[0];
-        if (firstCta._type === 'ctaCalloutLink') {
-          const ctaTitle = firstCta.heading || firstCta.text?.slice(0, 20) + '...' || 'Link';
-          ctaText = ` • CTA: ${ctaTitle}`;
-        } else if (firstCta._type === 'ctaEmailButton' || firstCta._type === 'embeddedCtaEmailButton') {
+        if (firstCta._type === 'embeddedCtaButton') {
+          const buttonText = firstCta.text?.slice(0, 20) + '...' || 'Button';
+          ctaText = ` • CTA: ${buttonText}`;
+        } else if (firstCta._type === 'embeddedCtaEmailButton') {
           ctaText = ' • Email Button';
         }
       }
