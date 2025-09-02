@@ -4,13 +4,18 @@ import { stegaClean } from 'next-sanity';
 import {
   createSanityDataAttribute,
   type SanityLiveEditingProps,
+  getTextAlignClass,
+  type TextAlignment,
 } from '../../utils/sectionHelpers';
+import { resolveAlignment } from '../blocks/shared/alignmentUtils';
 
 interface SubSectionProps extends SanityLiveEditingProps {
   children: React.ReactNode;
   className?: string;
   title: string; // Required for SubSections
   anchorId?: string; // ID for anchor linking
+  inheritAlignment?: 'left' | 'center' | 'right';
+  textAlign?: string;
 }
 
 const SubSection = ({
@@ -21,16 +26,23 @@ const SubSection = ({
   documentId,
   documentType,
   titlePath,
+  inheritAlignment,
+  textAlign = 'inherit',
 }: SubSectionProps) => {
   // Create data attribute for Sanity live editing
   const titleDataAttribute = createSanityDataAttribute(documentId, documentType, titlePath);
+
+  // Resolve alignment using shared utility (same as other components)
+  const cleanTextAlign = stegaClean(textAlign) || 'inherit';
+  const resolved = resolveAlignment(cleanTextAlign, inheritAlignment);
+  const effectiveTextAlign = (resolved || 'center') as TextAlignment;
 
 
   return (
     <section
       id={anchorId ? stegaClean(anchorId) : undefined}
       className={`pb-8 md:pb-12 ${className}`.trim()}>
-        <div className='mb-3 md:mb-4 text-center'>
+        <div className={`mb-3 md:mb-4 ${getTextAlignClass(effectiveTextAlign)}`}>
           <Heading
             level='h3' // Fixed h3 level for SubSections
             className='mb-4'

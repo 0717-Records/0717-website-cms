@@ -163,7 +163,9 @@ const BlockRenderer = ({
                   documentId={documentId}
                   documentType={documentType}
                   titlePath={`${blockPath}.title`}
-                  subtitlePath={`${blockPath}.subtitle`}>
+                  subtitlePath={`${blockPath}.subtitle`}
+                  inheritAlignment={alignment}
+                  textAlign={block.textAlign}>
                   {renderNestedContent(block.content)}
                 </PageSection>
               </BlockWrapper>
@@ -177,7 +179,9 @@ const BlockRenderer = ({
                   anchorId={block.anchorId}
                   documentId={documentId}
                   documentType={documentType}
-                  titlePath={`${blockPath}.title`}>
+                  titlePath={`${blockPath}.title`}
+                  inheritAlignment={alignment}
+                  textAlign={block.textAlign}>
                   {renderNestedContent(block.content)}
                 </SubSection>
               </BlockWrapper>
@@ -191,7 +195,9 @@ const BlockRenderer = ({
                   anchorId={block.anchorId}
                   documentId={documentId}
                   documentType={documentType}
-                  titlePath={`${blockPath}.title`}>
+                  titlePath={`${blockPath}.title`}
+                  inheritAlignment={alignment}
+                  textAlign={block.textAlign}>
                   {renderNestedContent(block.content)}
                 </SubSubSection>
               </BlockWrapper>
