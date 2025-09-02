@@ -26,10 +26,10 @@ export const quoteType = defineType({
       name: 'textAlign',
       title: 'Text Alignment',
       type: 'string',
-      description: 'Text alignment for this quote (overrides section alignment)',
+      description: 'Text alignment for this quote (overrides section/page alignment)',
       options: {
         list: [
-          { title: 'Inherit from Section', value: 'inherit' },
+          { title: 'Inherit', value: 'inherit' },
           { title: 'Left', value: 'left' },
           { title: 'Center', value: 'center' },
           { title: 'Right', value: 'right' },
@@ -46,8 +46,9 @@ export const quoteType = defineType({
     },
     prepare({ text, attribution }) {
       const previewText = text || 'Quote';
-      const truncatedText = previewText.length > 50 ? `${previewText.substring(0, 50)}...` : previewText;
-      
+      const truncatedText =
+        previewText.length > 50 ? `${previewText.substring(0, 50)}...` : previewText;
+
       return {
         title: `"${truncatedText}"`,
         subtitle: attribution ? `— ${attribution}` : 'Quote Block',

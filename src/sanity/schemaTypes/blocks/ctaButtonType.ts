@@ -51,7 +51,7 @@ export const ctaButtonType = defineType({
       group: 'styling',
       options: {
         list: [
-          { title: 'Inherit from parent (Default)', value: 'inherit' },
+          { title: 'Inherit (Default)', value: 'inherit' },
           { title: 'Left', value: 'left' },
           { title: 'Center', value: 'center' },
           { title: 'Right', value: 'right' },
@@ -75,7 +75,7 @@ export const ctaButtonType = defineType({
     prepare({ text, variant, linkType, internalTitle, externalUrl, openInNewTab }) {
       const buttonText = text || 'Untitled Button';
       const style = variant === 'outline' ? 'Outline' : 'Filled';
-      
+
       let linkInfo = 'No link';
       if (linkType === 'internal' && internalTitle) {
         const newTabIndicator = openInNewTab ? ' ↗' : '';

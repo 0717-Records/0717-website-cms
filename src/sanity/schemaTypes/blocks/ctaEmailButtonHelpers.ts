@@ -30,7 +30,7 @@ export const createCTAEmailButtonFields = (options: CTAEmailButtonOptions = {}) 
         type: 'string',
         options: {
           list: [
-            { title: 'Inherit from parent (Default)', value: 'inherit' },
+            { title: 'Inherit (Default)', value: 'inherit' },
             { title: 'Left', value: 'left' },
             { title: 'Center', value: 'center' },
             { title: 'Right', value: 'right' },

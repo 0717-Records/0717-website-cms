@@ -25,10 +25,10 @@ export const richTextType = defineType({
       name: 'textAlign',
       title: 'Text Alignment',
       type: 'string',
-      description: 'Text alignment for this rich text block (overrides section alignment)',
+      description: 'Text alignment for this rich text block (overrides section/page alignment)',
       options: {
         list: [
-          { title: 'Inherit from Section', value: 'inherit' },
+          { title: 'Inherit', value: 'inherit' },
           { title: 'Left', value: 'left' },
           { title: 'Center', value: 'center' },
           { title: 'Right', value: 'right' },

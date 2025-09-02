@@ -66,7 +66,7 @@ export const createCTAButtonFields = (options: CTAButtonOptions = {}) => {
         group: groups.length > 0 ? 'styling' : undefined,
         options: {
           list: [
-            { title: 'Inherit from parent (Default)', value: 'inherit' },
+            { title: 'Inherit (Default)', value: 'inherit' },
             { title: 'Left', value: 'left' },
             { title: 'Center', value: 'center' },
             { title: 'Right', value: 'right' },

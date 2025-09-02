@@ -11,7 +11,7 @@ export const itemListType = defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Inherit from parent', value: 'inherit' },
+          { title: 'Inherit', value: 'inherit' },
           { title: 'Left', value: 'left' },
           { title: 'Center', value: 'center' },
           { title: 'Right', value: 'right' },
