@@ -6,28 +6,15 @@ import { defineType } from 'sanity';
 import { EnvelopeIcon } from '@sanity/icons';
 import { createCTAEmailButtonFields, createCTAEmailButtonPreview } from './ctaEmailButtonHelpers';
 
-export const ctaEmailButtonType = defineType({
-  name: 'ctaEmailButton',
+export const embeddedCtaEmailButtonType = defineType({
+  name: 'embeddedCtaEmailButton',
   title: 'CTA Email Button',
   type: 'object',
   icon: EnvelopeIcon,
   description: 'A button that displays the company email and copies it to clipboard when clicked',
-  options: {
-    columns: 1,
-    collapsible: false,
-  },
-  groups: [
-    {
-      name: 'content',
-      title: 'Content',
-    },
-    {
-      name: 'styling',
-      title: 'Styling',
-    },
-  ],
   fields: createCTAEmailButtonFields({
-    includeAlignment: true,
+    includeAlignment: false,
+    groups: [], // No groups for embedded use
   }),
   preview: createCTAEmailButtonPreview(),
 });

@@ -98,7 +98,7 @@ export type SideContentBlock = {
     _key: string;
   } & CtaButton | {
     _key: string;
-  } & CtaEmailButton>;
+  } & EmbeddedCtaEmailButton>;
 };
 
 export type CompanyLinksBlock = {
@@ -140,6 +140,11 @@ export type CtaEvent = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "event";
   };
+};
+
+export type EmbeddedCtaEmailButton = {
+  _type: "embeddedCtaEmailButton";
+  buttonText?: string;
 };
 
 export type EmbeddedCtaButton = {
@@ -186,6 +191,7 @@ export type EmbeddedCtaButton = {
 export type CtaEmailButton = {
   _type: "ctaEmailButton";
   buttonText?: string;
+  alignment?: "inherit" | "left" | "center" | "right";
 };
 
 export type CtaCalloutLink = {
@@ -1456,7 +1462,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = NavLink | SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaBlogPost | CtaEvent | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | CollabLinksArray | EventsIndexPage | Event | BlogPost | BlogIndexPage | Page | Card | HomePage | HomeHeroCtaButton | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = NavLink | SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaBlogPost | CtaEvent | EmbeddedCtaEmailButton | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Collab | CollabLinksArray | EventsIndexPage | Event | BlogPost | BlogIndexPage | Page | Card | HomePage | HomeHeroCtaButton | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY
@@ -1749,6 +1755,7 @@ export type PAGE_QUERYResult = {
     _key: string;
     _type: "ctaEmailButton";
     buttonText?: string;
+    alignment?: "center" | "inherit" | "left" | "right";
     image: null;
     content: null;
   } | {
@@ -2167,6 +2174,7 @@ export type PAGE_QUERYResult = {
       _key: string;
       _type: "ctaEmailButton";
       buttonText?: string;
+      alignment?: "center" | "inherit" | "left" | "right";
       image: null;
       content: null;
     } | {
@@ -2642,6 +2650,7 @@ export type PAGE_QUERYResult = {
         _key: string;
         _type: "ctaEmailButton";
         buttonText?: string;
+        alignment?: "center" | "inherit" | "left" | "right";
         image: null;
         content: null;
       } | {
@@ -3107,6 +3116,7 @@ export type PAGE_QUERYResult = {
           _key: string;
           _type: "ctaEmailButton";
           buttonText?: string;
+          alignment?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
           _key: string;
@@ -3895,6 +3905,7 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "ctaEmailButton";
     buttonText?: string;
+    alignment?: "center" | "inherit" | "left" | "right";
     image: null;
     content: null;
   } | {
@@ -4313,6 +4324,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "ctaEmailButton";
       buttonText?: string;
+      alignment?: "center" | "inherit" | "left" | "right";
       image: null;
       content: null;
     } | {
@@ -4788,6 +4800,7 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "ctaEmailButton";
         buttonText?: string;
+        alignment?: "center" | "inherit" | "left" | "right";
         image: null;
         content: null;
       } | {
@@ -5253,6 +5266,7 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "ctaEmailButton";
           buttonText?: string;
+          alignment?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
           _key: string;
@@ -6144,6 +6158,7 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "ctaEmailButton";
     buttonText?: string;
+    alignment?: "center" | "inherit" | "left" | "right";
     image: null;
     content: null;
   } | {
@@ -6562,6 +6577,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "ctaEmailButton";
       buttonText?: string;
+      alignment?: "center" | "inherit" | "left" | "right";
       image: null;
       content: null;
     } | {
@@ -7037,6 +7053,7 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "ctaEmailButton";
         buttonText?: string;
+        alignment?: "center" | "inherit" | "left" | "right";
         image: null;
         content: null;
       } | {
@@ -7502,6 +7519,7 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "ctaEmailButton";
           buttonText?: string;
+          alignment?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
           _key: string;
@@ -8264,6 +8282,7 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "ctaEmailButton";
     buttonText?: string;
+    alignment?: "center" | "inherit" | "left" | "right";
     image: null;
     content: null;
   } | {
@@ -8682,6 +8701,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "ctaEmailButton";
       buttonText?: string;
+      alignment?: "center" | "inherit" | "left" | "right";
       image: null;
       content: null;
     } | {
@@ -9157,6 +9177,7 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "ctaEmailButton";
         buttonText?: string;
+        alignment?: "center" | "inherit" | "left" | "right";
         image: null;
         content: null;
       } | {
@@ -9622,6 +9643,7 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "ctaEmailButton";
           buttonText?: string;
+          alignment?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
           _key: string;
@@ -11260,6 +11282,7 @@ export type COLLAB_QUERYResult = {
       _key: string;
       _type: "ctaEmailButton";
       buttonText?: string;
+      alignment?: "center" | "inherit" | "left" | "right";
       image: null;
       content: null;
     } | {
@@ -11735,6 +11758,7 @@ export type COLLAB_QUERYResult = {
         _key: string;
         _type: "ctaEmailButton";
         buttonText?: string;
+        alignment?: "center" | "inherit" | "left" | "right";
         image: null;
         content: null;
       } | {
@@ -12210,6 +12234,7 @@ export type COLLAB_QUERYResult = {
           _key: string;
           _type: "ctaEmailButton";
           buttonText?: string;
+          alignment?: "center" | "inherit" | "left" | "right";
           image: null;
           content: null;
         } | {
@@ -12616,9 +12641,8 @@ export type COLLAB_QUERYResult = {
       _type: "ctaButton";
       _key: string;
     } | {
-      _type: "ctaEmailButton";
+      _type: "embeddedCtaEmailButton";
       _key: string;
-      buttonText?: string;
     }> | null;
   }> | null;
   links: {

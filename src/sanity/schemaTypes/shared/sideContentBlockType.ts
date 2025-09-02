@@ -64,7 +64,7 @@ export const sideContentBlockType = defineType({
           title: 'CTA Button',
         }),
         defineArrayMember({
-          type: 'ctaEmailButton',
+          type: 'embeddedCtaEmailButton',
           title: 'CTA Email Button',
         }),
       ],
@@ -97,7 +97,7 @@ export const sideContentBlockType = defineType({
         if (firstCta._type === 'ctaCalloutLink') {
           const ctaTitle = firstCta.heading || firstCta.text?.slice(0, 20) + '...' || 'Link';
           ctaText = ` • CTA: ${ctaTitle}`;
-        } else if (firstCta._type === 'ctaEmailButton') {
+        } else if (firstCta._type === 'ctaEmailButton' || firstCta._type === 'embeddedCtaEmailButton') {
           ctaText = ' • Email Button';
         }
       }

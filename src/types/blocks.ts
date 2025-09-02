@@ -2,7 +2,7 @@
 // This type represents any block that can contain other blocks
 
 
-import type { ItemList, Divider, RichText, Quote, TextImage, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, CtaEvent, CtaBlogPost, SubSection, SubSubSection, EventBlock, CollabAllBlock, FavouriteBlock, CompanyLinksBlock } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Quote, TextImage, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, EmbeddedCtaEmailButton, CtaEvent, CtaBlogPost, SubSection, SubSubSection, EventBlock, CollabAllBlock, FavouriteBlock, CompanyLinksBlock } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -38,6 +38,7 @@ export type CTAButtonBlock = CtaButton & { _key: string };
 export type CTACalloutLinkBlock = CtaCalloutLink & { _key: string };
 export type CTAEmailButtonBlock = CtaEmailButton & { _key: string };
 export type EmbeddedCTAButtonBlock = EmbeddedCtaButton & { _key: string };
+export type EmbeddedCTAEmailButtonBlock = EmbeddedCtaEmailButton & { _key: string };
 export type CTAEventBlock = CtaEvent & { _key: string };
 export type CTABlogPostBlock = CtaBlogPost & { _key: string };
 export type EventBlockType = EventBlock & { _key: string };
@@ -67,6 +68,7 @@ export type NestedBlock =
   | CTAButtonBlock
   | CTACalloutLinkBlock
   | CTAEmailButtonBlock
+  | EmbeddedCTAEmailButtonBlock
   | CTAEventBlock
   | CTABlogPostBlock
   | EventBlockType
@@ -161,6 +163,10 @@ export const isCTACalloutLinkBlock = (block: NestedBlock): block is CTACalloutLi
 
 export const isCTAEmailButtonBlock = (block: NestedBlock): block is CTAEmailButtonBlock => {
   return block._type === 'ctaEmailButton';
+};
+
+export const isEmbeddedCTAEmailButtonBlock = (block: NestedBlock): block is EmbeddedCTAEmailButtonBlock => {
+  return block._type === 'embeddedCtaEmailButton';
 };
 
 export const isCTAEventBlock = (block: NestedBlock): block is CTAEventBlock => {

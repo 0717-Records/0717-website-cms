@@ -601,7 +601,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "ctaEmailButton"
+                    "name": "embeddedCtaEmailButton"
                   }
                 }
               ]
@@ -797,6 +797,29 @@
               }
             },
             "dereferencesTo": "event"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "embeddedCtaEmailButton",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "embeddedCtaEmailButton"
+          }
+        },
+        "buttonText": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
           },
           "optional": true
         }
@@ -1063,6 +1086,31 @@
           "type": "objectAttribute",
           "value": {
             "type": "string"
+          },
+          "optional": true
+        },
+        "alignment": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "inherit"
+              },
+              {
+                "type": "string",
+                "value": "left"
+              },
+              {
+                "type": "string",
+                "value": "center"
+              },
+              {
+                "type": "string",
+                "value": "right"
+              }
+            ]
           },
           "optional": true
         }

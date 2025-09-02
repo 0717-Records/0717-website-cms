@@ -4,6 +4,7 @@ import type { CTAButtonBlock } from '@/types/blocks';
 import type { CTABlockProps } from '@/types/shared';
 import CTA from '../UI/CTA';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import { getAlignmentClasses } from './shared/alignmentUtils';
 
 type CTAButtonProps = CTABlockProps<CTAButtonBlock>;
 
@@ -23,7 +24,6 @@ const CTAButton = (props: CTAButtonProps) => {
 
   const cleanText = stegaClean(text);
   const cleanExternalUrl = stegaClean(externalUrl);
-  const cleanAlignment = stegaClean(alignment);
   const cleanVariant = stegaClean(variant) as 'filled' | 'outline';
 
   // Don't render if no text or invalid link
@@ -67,22 +67,7 @@ const CTAButton = (props: CTAButtonProps) => {
   // Determine if this should open in a new tab
   const shouldOpenInNewTab = linkType === 'external' || (linkType === 'internal' && openInNewTab);
 
-  const deriveAlignmentClasses = (alignment: 'left' | 'center' | 'right' | undefined) => {
-    switch (alignment) {
-      case 'left':
-        return 'justify-start';
-      case 'center':
-        return 'justify-center';
-      case 'right':
-        return 'justify-end';
-      default:
-        return '';
-    }
-  };
-
-  const alignmentClasses = deriveAlignmentClasses(
-    cleanAlignment === 'inherit' ? inheritAlignment : cleanAlignment
-  );
+  const alignmentClasses = getAlignmentClasses(alignment, inheritAlignment);
 
   // Determine alignment classes
   // let alignmentClasses = '';

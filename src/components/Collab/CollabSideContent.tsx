@@ -101,7 +101,7 @@ export default function CollabSideContent({
                           openInNewTab={ctaBlock.openInNewTab as boolean}
                         />
                       );
-                    } else if (ctaBlock._type === 'ctaEmailButton') {
+                    } else if (ctaBlock._type === 'ctaEmailButton' || ctaBlock._type === 'embeddedCtaEmailButton') {
                       return <CTAEmailButton key={ctaBlock._key || ctaIndex} />;
                     }
                     return null;

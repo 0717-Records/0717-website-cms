@@ -27,6 +27,7 @@ import { ctaButtonType } from './blocks/ctaButtonType';
 import { ctaCalloutLinkType } from './blocks/ctaCalloutLinkType';
 import { ctaEmailButtonType } from './blocks/ctaEmailButtonType';
 import { embeddedCtaButtonType } from './blocks/embeddedCtaButtonType';
+import { embeddedCtaEmailButtonType } from './blocks/embeddedCtaEmailButtonType';
 import { homeHeroCtaButtonType } from './blocks/homeHeroCtaButtonType';
 import { ctaEventType } from './blocks/ctaEventType';
 import { ctaBlogPostType } from './blocks/ctaBlogPostType';
@@ -86,6 +87,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     ctaCalloutLinkType,
     ctaEmailButtonType,
     embeddedCtaButtonType,
+    embeddedCtaEmailButtonType,
     homeHeroCtaButtonType,
     ctaEventType,
     ctaBlogPostType,
