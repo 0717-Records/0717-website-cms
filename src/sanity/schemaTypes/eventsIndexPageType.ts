@@ -33,7 +33,8 @@ export const eventsIndexPageType = defineType({
       name: 'backgroundImage',
       type: 'image',
       title: 'Background Image',
-      description: 'Optional background image for the page header. If not provided, a default placeholder image will be used.',
+      description:
+        'Optional background image for the page header. If not provided, a default placeholder image will be used.',
       options: {
         hotspot: true,
       },
@@ -59,17 +60,36 @@ export const eventsIndexPageType = defineType({
       name: 'noUpcomingEventsMessage',
       type: 'text',
       title: 'No Upcoming Events Message',
-      description: 'Message displayed when there are no upcoming events to show. This appears in the "Upcoming Events" section when the events list is empty.',
+      description:
+        'Message displayed when there are no upcoming events to show. This appears in the "Upcoming Events" section when the events list is empty.',
       rows: 2,
       initialValue: 'No upcoming events at the moment. Check back soon!',
       validation: (Rule) => Rule.required().error('No upcoming events message is required'),
       group: 'content',
     }),
     defineField({
+      name: 'hasEventsMessage',
+      title: 'Show Events Message Card',
+      type: 'boolean',
+      group: 'content',
+      description: 'Display a message card at the bottom of the Upcoming Events section',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'eventsMessage',
+      title: 'Events Message Card',
+      type: 'card',
+      group: 'content',
+      description:
+        'Card displayed at the bottom of the Upcoming Events section with optional call-to-action',
+      hidden: ({ parent }) => !parent?.hasEventsMessage,
+    }),
+    defineField({
       name: 'noPastEventsMessage',
       type: 'text',
       title: 'No Past Events Message',
-      description: 'Message displayed when there are no past events to show. This appears in the "Past Events" section when the events list is empty.',
+      description:
+        'Message displayed when there are no past events to show. This appears in the "Past Events" section when the events list is empty.',
       rows: 2,
       initialValue: 'No past events to display yet.',
       validation: (Rule) => Rule.required().error('No past events message is required'),

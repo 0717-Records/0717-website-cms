@@ -5,6 +5,7 @@ import PageHero from '@/components/Page/PageHero';
 import PageSection from '@/components/Layout/PageSection';
 import { transformEvents } from '@/utils/transformEvents';
 import Container from '@/components/Layout/Container';
+import Card from '@/components/blocks/Card';
 
 export default async function EventsPage() {
   const [rawEvents, eventsIndexPage] = await Promise.all([
@@ -46,6 +47,17 @@ export default async function EventsPage() {
               'No upcoming events at the moment. Check back soon!'
             }
           />
+          
+          {/* Events Message Card */}
+          {eventsIndexPage?.hasEventsMessage && eventsIndexPage?.eventsMessage && (
+            <div className='pt-16 md:pt-24'>
+              <Card
+                {...eventsIndexPage.eventsMessage}
+                documentId={eventsIndexPage._id}
+                documentType={eventsIndexPage._type}
+              />
+            </div>
+          )}
         </PageSection>
         {/* Past Events Section */}
         <PageSection

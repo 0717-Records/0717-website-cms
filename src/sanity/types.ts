@@ -948,6 +948,8 @@ export type EventsIndexPage = {
   };
   subtitle?: string;
   noUpcomingEventsMessage?: string;
+  hasEventsMessage?: boolean;
+  eventsMessage?: Card;
   noPastEventsMessage?: string;
 };
 
@@ -10509,7 +10511,7 @@ export type EVENTS_QUERYResult = Array<{
   pastEventLink: string | null;
 }>;
 // Variable: EVENTS_INDEX_PAGE_QUERY
-// Query: *[_id == "eventsIndexPage"][0]{  _id,  _type,  title,  backgroundImage{    asset,    alt,    hotspot,    crop  },  subtitle,  noUpcomingEventsMessage,  noPastEventsMessage}
+// Query: *[_id == "eventsIndexPage"][0]{  _id,  _type,  title,  backgroundImage{    asset,    alt,    hotspot,    crop  },  subtitle,  noUpcomingEventsMessage,  noPastEventsMessage,  hasEventsMessage,  eventsMessage}
 export type EVENTS_INDEX_PAGE_QUERYResult = {
   _id: string;
   _type: "blogIndexPage";
@@ -10518,6 +10520,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: string | null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "blogPost";
@@ -10526,6 +10530,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: string | null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "collab";
@@ -10534,6 +10540,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "companyLinks";
@@ -10542,6 +10550,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "event";
@@ -10550,6 +10560,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "eventsIndexPage";
@@ -10568,6 +10580,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: string | null;
   noUpcomingEventsMessage: string | null;
   noPastEventsMessage: string | null;
+  hasEventsMessage: boolean | null;
+  eventsMessage: Card | null;
 } | {
   _id: string;
   _type: "favourites";
@@ -10576,6 +10590,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "footer";
@@ -10584,6 +10600,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "header";
@@ -10592,6 +10610,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "homePage";
@@ -10600,6 +10620,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "page";
@@ -10608,6 +10630,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: string | null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "sanity.fileAsset";
@@ -10616,6 +10640,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "sanity.imageAsset";
@@ -10624,6 +10650,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | {
   _id: string;
   _type: "siteSettings";
@@ -10632,6 +10660,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   subtitle: null;
   noUpcomingEventsMessage: null;
   noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
 } | null;
 // Variable: BLOG_POSTS_QUERY
 // Query: *[_type == "blogPost"]|order(coalesce(overrideDate, _createdAt) desc){  _id,  _createdAt,  title,  slug,  subtitle,  author,  mainImage{    asset,    alt,    hotspot,    crop  },  hasOverrideDate,  overrideDate,  hasClosingCard,  closingCard}
@@ -12686,7 +12716,7 @@ declare module "@sanity/client" {
     "*[_id == \"siteSettings\"][0]{\n  _id,\n  _type,\n  siteTitle,\n  companyEmail,\n  siteDescription\n}": SITE_SETTINGS_QUERYResult;
     "*[_id == \"companyLinks\"][0]{\n  _id,\n  _type,\n  companyLinks{\n    _type,\n    socialLinksArray[]{\n      _key,\n      platform,\n      url,\n      customTitle,\n      hideFromFooter\n    }\n  }\n}": COMPANY_LINKS_QUERYResult;
     "*[_type == \"event\"]|order(startDate desc){\n  _id,\n  title,\n  shortDescription,\n  venue,\n  location,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  tags,\n  link,\n  startDate,\n  endDate,\n  timeDescription,\n  pastEventText,\n  pastEventLinkBehavior,\n  pastEventLink\n}": EVENTS_QUERYResult;
-    "*[_id == \"eventsIndexPage\"][0]{\n  _id,\n  _type,\n  title,\n  backgroundImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  subtitle,\n  noUpcomingEventsMessage,\n  noPastEventsMessage\n}": EVENTS_INDEX_PAGE_QUERYResult;
+    "*[_id == \"eventsIndexPage\"][0]{\n  _id,\n  _type,\n  title,\n  backgroundImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  subtitle,\n  noUpcomingEventsMessage,\n  noPastEventsMessage,\n  hasEventsMessage,\n  eventsMessage\n}": EVENTS_INDEX_PAGE_QUERYResult;
     "*[_type == \"blogPost\"]|order(coalesce(overrideDate, _createdAt) desc){\n  _id,\n  _createdAt,\n  title,\n  slug,\n  subtitle,\n  author,\n  mainImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  hasOverrideDate,\n  overrideDate,\n  hasClosingCard,\n  closingCard\n}": BLOG_POSTS_QUERYResult;
     "*[_id == \"blogIndexPage\"][0]{\n  _id,\n  _type,\n  title,\n  heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  subtitle,\n  noArticlesMessage,\n  hasClosingCard,\n  closingCard\n}": BLOG_INDEX_PAGE_QUERYResult;
     "*[_type == \"blogPost\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  _createdAt,\n  title,\n  slug,\n  subtitle,\n  author,\n  mainImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  hasOverrideDate,\n  overrideDate,\n  content,\n  hasClosingCard,\n  closingCard,\n  \"blogIndexHeroImage\": *[_id == \"blogIndexPage\"][0].heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  }\n}": BLOG_POST_QUERYResult;

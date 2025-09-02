@@ -6298,6 +6298,21 @@
         },
         "optional": true
       },
+      "hasEventsMessage": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
+      "eventsMessage": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "card"
+        },
+        "optional": true
+      },
       "noPastEventsMessage": {
         "type": "objectAttribute",
         "value": {
