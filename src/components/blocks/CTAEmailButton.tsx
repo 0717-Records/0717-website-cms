@@ -7,16 +7,11 @@ import { getAlignmentClasses } from './shared/alignmentUtils';
 type CTAEmailButtonProps = CTABlockProps<CTAEmailButtonBlock>;
 
 const CTAEmailButtonComponent = (props: CTAEmailButtonProps) => {
-  const {
-    alignment,
-    inheritAlignment,
-    className = '',
-  } = props;
+  const { alignment, inheritAlignment, className = '' } = props;
 
   // Only apply alignment if alignment field exists (for non-embedded versions)
-  const alignmentClasses = alignment !== undefined 
-    ? getAlignmentClasses(alignment, inheritAlignment)
-    : '';
+  const alignmentClasses =
+    alignment !== undefined ? getAlignmentClasses(alignment, inheritAlignment) : '';
 
   // For embedded versions (no alignment field), render without wrapper
   if (alignment === undefined) {

@@ -69,26 +69,6 @@ const CTAButton = (props: CTAButtonProps) => {
 
   const alignmentClasses = getAlignmentClasses(alignment, inheritAlignment);
 
-  // Determine alignment classes
-  // let alignmentClasses = '';
-  // switch (cleanAlignment) {
-  //   case 'left':
-  //     alignmentClasses = 'justify-start';
-  //     break;
-  //   case 'center':
-  //     alignmentClasses = 'justify-center';
-  //     break;
-  //   case 'right':
-  //     alignmentClasses = 'justify-end';
-  //     break;
-  //   case 'inherit':
-  //     alignmentClasses = deriveAlignmentClasses(inheritAlignment);
-  //     break;
-  //   default:
-  //     alignmentClasses = '';
-  //     break;
-  // }
-
   return (
     <div className={`flex ${alignmentClasses} ${className}`.trim()}>
       <CTA

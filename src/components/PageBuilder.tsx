@@ -261,7 +261,7 @@ const BlockRenderer = ({
           case 'ctaEmailButton':
             return (
               <BlockWrapper key={block._key}>
-                <CTAEmailButtonComponent {...block} />
+                <CTAEmailButtonComponent {...block} inheritAlignment={alignment} />
               </BlockWrapper>
             );
 
