@@ -15,7 +15,7 @@ interface SubSectionProps extends SanityLiveEditingProps {
   title: string; // Required for SubSections
   anchorId?: string; // ID for anchor linking
   inheritAlignment?: 'left' | 'center' | 'right';
-  textAlign?: string;
+  textAlign?: string; // NOTE: This field is currently not set in the CMS, but has been left here for the future in case we want to allow for section level text alignment control in the CMS
 }
 
 const SubSection = ({

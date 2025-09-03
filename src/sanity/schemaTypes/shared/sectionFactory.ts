@@ -112,23 +112,6 @@ export function createSectionSchema(config: SectionFactoryConfig) {
     }));
   }
 
-  // Add text alignment field for all sections
-  fields.push(defineField({
-    name: 'textAlign',
-    title: 'Text Alignment',
-    type: 'string',
-    description: 'Text alignment for this section title (overrides page alignment)',
-    options: {
-      list: [
-        { title: 'Inherit', value: 'inherit' },
-        { title: 'Left', value: 'left' },
-        { title: 'Center', value: 'center' },
-        { title: 'Right', value: 'right' },
-      ],
-      layout: 'radio',
-    },
-    initialValue: 'inherit',
-  }));
 
 
   // Build content array with allowed child sections and common blocks
