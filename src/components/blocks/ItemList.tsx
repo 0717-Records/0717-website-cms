@@ -3,33 +3,16 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { stegaClean } from 'next-sanity';
 import type { ItemListBlock } from '@/types/blocks';
+import { getAlignmentClasses } from './shared/alignmentUtils';
 
 interface ItemListProps extends Omit<ItemListBlock, '_type' | '_key'> {
   className?: string;
+  inheritAlignment?: 'left' | 'center' | 'right';
 }
 
-const ItemList = ({ items = [], alignment, className = '' }: ItemListProps) => {
-  // Clean the alignment value to remove Sanity's stega encoding characters  
-  const cleanAlignment = stegaClean(alignment);
-
-  // Default to center if inherit is passed or undefined
-  const validAlignment =
-    cleanAlignment === 'inherit' || !cleanAlignment
-      ? 'center'
-      : cleanAlignment && ['left', 'center', 'right'].includes(cleanAlignment)
-        ? cleanAlignment
-        : 'center';
-
-  const getAlignmentClass = () => {
-    switch (validAlignment) {
-      case 'center':
-        return 'justify-center';
-      case 'right':
-        return 'justify-end';
-      default:
-        return 'justify-start';
-    }
-  };
+const ItemList = ({ items = [], alignment, className = '', inheritAlignment }: ItemListProps) => {
+  // Use the shared alignment utilities that properly handle inherit
+  const alignmentClasses = getAlignmentClasses(alignment, inheritAlignment);
 
   if (!items || items.length === 0) {
     return null;
@@ -38,8 +21,7 @@ const ItemList = ({ items = [], alignment, className = '' }: ItemListProps) => {
   return (
     <div className={`${className}`.trim()}>
       <div
-        className={`flex flex-wrap gap-4 md:gap-6 ${getAlignmentClass()}`}
-        data-alignment={validAlignment}>
+        className={`flex flex-wrap gap-4 md:gap-6 ${alignmentClasses}`}>
         {items.map((item) => (
           <div
             key={item._key}

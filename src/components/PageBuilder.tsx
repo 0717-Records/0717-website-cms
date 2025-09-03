@@ -225,7 +225,7 @@ const BlockRenderer = ({
           case 'itemList':
             return (
               <BlockWrapper key={block._key}>
-                <ItemList {...block} />
+                <ItemList {...block} inheritAlignment={alignment} />
               </BlockWrapper>
             );
 

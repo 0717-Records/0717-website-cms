@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity';
+import { UlistIcon } from '@sanity/icons';
 
 export const itemListType = defineType({
   name: 'itemList',
   title: 'Item List',
   type: 'object',
+  icon: UlistIcon,
   fields: [
     defineField({
       name: 'alignment',
