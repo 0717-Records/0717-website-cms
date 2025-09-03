@@ -51,3 +51,8 @@ export const subSectionTopSpacing = 'mt-10 md:mt-14';
  * Space after SubSection and SubSubSection titles
  */
 export const subSectionTitleBottomSpacing = 'mb-4 md:mb-6';
+
+/**
+ * Space above and below closing cards on all pages
+ */
+export const closingCardSpacing = 'mt-16 md:mt-24';

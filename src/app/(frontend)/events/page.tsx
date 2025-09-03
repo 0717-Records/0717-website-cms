@@ -47,13 +47,14 @@ export default async function EventsPage() {
               'No upcoming events at the moment. Check back soon!'
             }
           />
-          
+
           {/* Events Message Card */}
           {eventsIndexPage?.hasEventsMessage && eventsIndexPage?.eventsMessage && (
             <Card
               {...eventsIndexPage.eventsMessage}
               documentId={eventsIndexPage._id}
               documentType={eventsIndexPage._type}
+              className={'mt-12 md:mt-16'}
             />
           )}
         </PageSection>

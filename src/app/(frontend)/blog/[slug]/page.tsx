@@ -10,7 +10,7 @@ import { FaUser, FaCalendar } from 'react-icons/fa6';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { PAGE_QUERYResult } from '@/sanity/types';
-import { blogHeaderBottomSpacing } from '@/utils/spacingConstants';
+import { blogHeaderBottomSpacing, closingCardSpacing } from '@/utils/spacingConstants';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -88,7 +88,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Main Image - displayed between horizontal line and content */}
         {post.mainImage && (
-          <div className='w-full'>
+          <div className={`'w-full ${blogHeaderBottomSpacing}`}>
             <div className='relative w-full aspect-[16/9] overflow-hidden rounded-lg'>
               <Image
                 src={urlFor(post.mainImage).url()}
@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Closing Card */}
         {post.hasClosingCard && post.closingCard && (
-          <div>
+          <div className={closingCardSpacing}>
             <Card {...post.closingCard} documentId={post._id} documentType={post._type} />
           </div>
         )}

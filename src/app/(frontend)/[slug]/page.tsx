@@ -7,7 +7,7 @@ import { getCollabs } from '@/actions/collabs';
 import { getFavourites } from '@/actions/favourites';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
-import { pageSubtitleBottomSpacing } from '@/utils/spacingConstants';
+import { pageSubtitleBottomSpacing, closingCardSpacing } from '@/utils/spacingConstants';
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
@@ -66,7 +66,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
 
         {/* Closing Card */}
         {page.hasClosingCard && page.closingCard && (
-          <div className='pt-16 md:pt-24 pb-16 md:pb-24'>
+          <div className={closingCardSpacing}>
             <Card
               {...(page.closingCard as NonNullable<typeof page.closingCard>)}
               documentId={page._id}
