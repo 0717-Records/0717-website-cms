@@ -45,6 +45,30 @@ This comment should be referenced and applied consistently across all schema fil
 
 **These custom classes include responsive behavior and proper line heights. Never use native Tailwind font size classes like `text-xs`, `text-sm`, `text-lg`, `text-xl`, `text-2xl`, etc.**
 
+## TypeScript Guidelines
+**IMPORTANT: Never use `any` type - the ESLint configuration prohibits this.**
+
+### Schema Field Removal Protocol
+When removing fields from Sanity schemas that are referenced in frontend components:
+
+1. **Remove field from schema** (e.g., `sectionFactory.ts`)
+2. **Regenerate types** using `npm run typegen`
+3. **Update PageBuilder references** using proper typing:
+   ```typescript
+   // ❌ Wrong - ESLint error
+   textAlign={(block as any).textAlign}
+   
+   // ✅ Correct - Use specific type assertion
+   textAlign={(block as { textAlign?: string }).textAlign}
+   ```
+
+### Type-Safe Field Access
+When accessing potentially undefined fields from removed schema properties:
+- Use type assertions with specific interface definitions
+- Avoid `any` type at all costs
+- Consider making the field optional (`?:`) in component interfaces
+- Add explanatory comments about field availability
+
 ## General Development Guidelines
 - Follow existing code patterns and conventions
 - Ensure proper TypeScript types are maintained

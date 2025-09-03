@@ -165,7 +165,7 @@ const BlockRenderer = ({
                   titlePath={`${blockPath}.title`}
                   subtitlePath={`${blockPath}.subtitle`}
                   inheritAlignment={alignment}
-                  textAlign={block.textAlign}>
+                  textAlign={(block as { textAlign?: string }).textAlign}>
                   {renderNestedContent(block.content)}
                 </PageSection>
               </BlockWrapper>
@@ -181,7 +181,7 @@ const BlockRenderer = ({
                   documentType={documentType}
                   titlePath={`${blockPath}.title`}
                   inheritAlignment={alignment}
-                  textAlign={block.textAlign}>
+                  textAlign={(block as { textAlign?: string }).textAlign}>
                   {renderNestedContent(block.content)}
                 </SubSection>
               </BlockWrapper>
@@ -197,7 +197,7 @@ const BlockRenderer = ({
                   documentType={documentType}
                   titlePath={`${blockPath}.title`}
                   inheritAlignment={alignment}
-                  textAlign={block.textAlign}>
+                  textAlign={(block as { textAlign?: string }).textAlign}>
                   {renderNestedContent(block.content)}
                 </SubSubSection>
               </BlockWrapper>
