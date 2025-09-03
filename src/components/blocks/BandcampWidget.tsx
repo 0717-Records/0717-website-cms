@@ -95,14 +95,16 @@ const BandcampWidget: React.FC<BandcampWidgetProps> = ({
   const className = sizeClasses ? `${baseClasses} ${sizeClasses}` : baseClasses;
 
   return (
-    <iframe
-      {...widgetDataAttribute}
-      className={className}
-      style={style}
-      src={embedUrl}
-      title='Bandcamp Player'
-      seamless
-    />
+    <div className='w-full p-8 rounded-2xl flex justify-center bg-gradient-to-br from-gray-200 to-gray-100'>
+      <iframe
+        {...widgetDataAttribute}
+        className={className}
+        style={style}
+        src={embedUrl}
+        title='Bandcamp Player'
+        seamless
+      />
+    </div>
   );
 };
 
