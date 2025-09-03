@@ -113,9 +113,24 @@ const BlockRenderer = ({
               marginClass = pageSectionTopSpacing;
             }
           } else if (block._type === 'subSection' || block._type === 'subSubSection') {
-            // SPACE_H: SubSection/SubSubSection with sibling before it
+            // SPACE_H: SubSection/SubSubSection with sibling before it (top spacing)
             if (hasSiblingBefore) {
               marginClass = subSectionTopSpacing;
+            }
+            
+            // Add bottom spacing if the next block is a content block (not a section)
+            if (!isLastBlock) {
+              const nextBlock = blocks[index + 1];
+              const nextBlockIsContentBlock = nextBlock && 
+                nextBlock._type !== 'pageSection' && 
+                nextBlock._type !== 'subSection' && 
+                nextBlock._type !== 'subSubSection';
+              
+              if (nextBlockIsContentBlock) {
+                marginClass = marginClass 
+                  ? `${marginClass} ${contentBlockBottomSpacing}`
+                  : contentBlockBottomSpacing;
+              }
             }
           } else {
             // SPACE_G: Content blocks that aren't sections
