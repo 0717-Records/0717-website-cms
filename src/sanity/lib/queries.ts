@@ -279,7 +279,7 @@ export const BLOG_POST_QUERY = defineQuery(`*[_type == "blogPost" && slug.curren
   },
   hasOverrideDate,
   overrideDate,
-  content,
+  ${recursiveContent},
   hasClosingCard,
   closingCard,
   "blogIndexHeroImage": *[_id == "blogIndexPage"][0].heroImage{
