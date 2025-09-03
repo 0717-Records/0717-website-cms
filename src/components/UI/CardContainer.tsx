@@ -13,7 +13,7 @@ const CardContainer = ({ children, className = '', isGridChild = false }: CardCo
         bg-card-gradient 
         border border-gray-200 
         rounded-lg 
-        p-6 md:p-10 
+        p-6 md:p-8 
         flex 
         flex-col 
         items-center 
@@ -21,9 +21,7 @@ const CardContainer = ({ children, className = '', isGridChild = false }: CardCo
         ${!isGridChild ? 'max-w-[800px] mx-auto' : ''}
         ${className}
       `.trim()}>
-      <div className='w-full space-y-4'>
-        {children}
-      </div>
+      <div className='w-full space-y-4'>{children}</div>
     </div>
   );
 };
