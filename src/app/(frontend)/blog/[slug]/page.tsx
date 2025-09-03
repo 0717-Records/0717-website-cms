@@ -10,6 +10,7 @@ import { FaUser, FaCalendar } from 'react-icons/fa6';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { PAGE_QUERYResult } from '@/sanity/types';
+import { blogHeaderBottomSpacing } from '@/utils/spacingConstants';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -53,19 +54,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       <Container textAlign='left'>
         {/* Article Header */}
-        <div className='pt-16 md:pt-24 text-left'>
+        <div className={`text-left ${blogHeaderBottomSpacing}`}>
           {/* Title */}
-          <h1 className='text-h1 font-bold text-gray-900 mb-4 leading-tight'>{post.title}</h1>
+          <h1 className='text-h1 font-bold text-gray-900 leading-tight'>{post.title}</h1>
 
           {/* Subtitle */}
           {post.subtitle && (
-            <p className='text-body-2xl text-text-subtle mb-6 leading-relaxed whitespace-pre-line'>
+            <p className='text-body-2xl text-text-subtle leading-relaxed whitespace-pre-line'>
               {post.subtitle}
             </p>
           )}
 
           {/* Author and Date */}
-          <div className='flex flex-wrap items-center gap-4 mb-8'>
+          <div className='flex flex-wrap items-center gap-4'>
             {/* Author */}
             {post.author && (
               <div className='flex items-center text-text-subtle text-body-base'>
@@ -82,12 +83,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
 
           {/* Horizontal line */}
-          <hr className='border-t border-gray-200 mb-8' />
+          <hr className='border-t border-gray-200' />
         </div>
 
         {/* Main Image - displayed between horizontal line and content */}
         {post.mainImage && (
-          <div className='w-full mb-8'>
+          <div className='w-full'>
             <div className='relative w-full aspect-[16/9] overflow-hidden rounded-lg'>
               <Image
                 src={urlFor(post.mainImage).url()}
@@ -103,7 +104,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Article Content Container */}
         {post.content && (
-          <div className='bg-white rounded-lg shadow-sm px-6 md:px-16 py-6 md:py-8 mb-16 md:mb-24'>
+          <div className='bg-white rounded-lg shadow-sm px-6 md:px-16 py-6 md:py-8'>
             <div className='text-left'>
               <PageBuilder
                 content={post.content as NonNullable<PAGE_QUERYResult>['content']}
@@ -118,7 +119,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Closing Card */}
         {post.hasClosingCard && post.closingCard && (
-          <div className='pb-16 md:pb-24'>
+          <div>
             <Card {...post.closingCard} documentId={post._id} documentType={post._type} />
           </div>
         )}

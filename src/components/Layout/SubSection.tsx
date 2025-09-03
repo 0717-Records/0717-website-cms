@@ -8,6 +8,7 @@ import {
   type TextAlignment,
 } from '../../utils/sectionHelpers';
 import { resolveAlignment } from '../blocks/shared/alignmentUtils';
+import { subSectionTitleBottomSpacing } from '@/utils/spacingConstants';
 
 interface SubSectionProps extends SanityLiveEditingProps {
   children: React.ReactNode;
@@ -41,12 +42,12 @@ const SubSection = ({
   return (
     <section
       id={anchorId ? stegaClean(anchorId) : undefined}
-      className={`pb-8 md:pb-12 ${className}`.trim()}>
-        <div className={`mb-3 md:mb-4 ${getTextAlignClass(effectiveTextAlign)}`}>
+      className={className}>
+        <div className={getTextAlignClass(effectiveTextAlign)}>
           <Heading
             level='h3' // Fixed h3 level for SubSections
-            className='mb-4'
             showMargin={false}
+            className={subSectionTitleBottomSpacing}
             {...titleDataAttribute}>
             {stegaClean(title)}
           </Heading>

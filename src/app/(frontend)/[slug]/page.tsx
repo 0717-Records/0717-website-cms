@@ -7,6 +7,7 @@ import { getCollabs } from '@/actions/collabs';
 import { getFavourites } from '@/actions/favourites';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
+import { pageSubtitleBottomSpacing } from '@/utils/spacingConstants';
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
@@ -36,7 +37,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
       <Container>
         {/* Page Subtitle */}
         {page.subtitle && (
-          <div className='pt-16 md:pt-24 pb-8 md:pb-16'>
+          <div className={pageSubtitleBottomSpacing}>
             <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line text-center'>
               {page.subtitle}
             </p>

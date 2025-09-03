@@ -13,6 +13,7 @@ import type { SiteSettingsProps } from '@/types/shared';
 import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
 import { useOptimistic } from 'react';
+import { pageSectionTopSpacing, contentBlockBottomSpacing, subSectionTopSpacing } from '@/utils/spacingConstants';
 import PageSection from './Layout/PageSection';
 import SubSection from './Layout/SubSection';
 import SubSubSection from './Layout/SubSubSection';
@@ -91,23 +92,37 @@ const BlockRenderer = ({
     <>
       {blocks.map((block, index) => {
         const blockPath = `${pathPrefix}[_key=="${block._key}"]`;
-        const isLastBlock = index === blocks.length - 1;
 
         const BlockWrapper = ({ children }: { children: React.ReactNode }) => {
-          // Check if the next block is a section type that needs extra spacing
-          const nextBlock = blocks[index + 1];
-          const nextBlockIsSection =
-            nextBlock &&
-            (nextBlock._type === 'pageSection' ||
-              nextBlock._type === 'subSection' ||
-              nextBlock._type === 'subSubSection');
-
-          // Apply spacing logic:
-          // - Regular blocks get mb-6 unless they're the last block
-          // - If the next block is a section, add extra margin (mb-12 instead of mb-6)
+          const isLastBlock = index === blocks.length - 1;
+          const hasSiblingBefore = index > 0;
+          
           let marginClass = '';
-          if (!isLastBlock) {
-            marginClass = nextBlockIsSection ? 'mb-12' : 'mb-6';
+          
+          if (block._type === 'pageSection') {
+            // SPACE_B: PageSection that comes after orphaned content blocks
+            const hasOrphanedContentBefore = blocks
+              .slice(0, index)
+              .some(prevBlock => 
+                prevBlock._type !== 'pageSection' && 
+                prevBlock._type !== 'subSection' && 
+                prevBlock._type !== 'subSubSection'
+              );
+            
+            if (hasOrphanedContentBefore) {
+              marginClass = pageSectionTopSpacing;
+            }
+          } else if (block._type === 'subSection' || block._type === 'subSubSection') {
+            // SPACE_H: SubSection/SubSubSection with sibling before it
+            if (hasSiblingBefore) {
+              marginClass = subSectionTopSpacing;
+            }
+          } else {
+            // SPACE_G: Content blocks that aren't sections
+            // Don't add spacing if this is the last block (PageSection bottom padding handles it)
+            if (!isLastBlock) {
+              marginClass = contentBlockBottomSpacing;
+            }
           }
 
           return (
@@ -151,14 +166,11 @@ const BlockRenderer = ({
         // Only skip BlockWrapper if the block component handles its own Sanity data attributes internally.
         switch (block._type) {
           case 'pageSection':
-            // Check if this is the first PageSection in the entire blocks array
-            const isFirstPageSection = blocks.findIndex((b) => b._type === 'pageSection') === index;
             return (
               <BlockWrapper key={block._key}>
                 <PageSection
                   title={block.title!} // Required field
                   subtitle={block.subtitle}
-                  isFirst={isFirstPageSection}
                   anchorId={block.anchorId}
                   documentId={documentId}
                   documentType={documentType}

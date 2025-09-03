@@ -11,6 +11,7 @@ import {
   type TextAlignment,
 } from '../../utils/sectionHelpers';
 import { resolveAlignment } from '../blocks/shared/alignmentUtils';
+import { sectionTitleBottomSpacing, sectionDividerBottomSpacing, sectionBottomPadding } from '@/utils/spacingConstants';
 
 // Context to track if PageSection has a title (affects nested section heading levels)
 const PageSectionContext = createContext<{ hasTitle: boolean }>({ hasTitle: false });
@@ -20,7 +21,6 @@ interface PageSectionProps extends SanityLiveEditingProps {
   className?: string;
   title: string; // Now required since titles are mandatory
   subtitle?: string;
-  isFirst?: boolean;
   anchorId?: string; // ID for anchor linking
   inheritAlignment?: 'left' | 'center' | 'right';
   textAlign?: string; // NOTE: This field is currently not set in the CMS, but has been left here for the future in case we want to allow for section level text alignment control in the CMS
@@ -31,7 +31,6 @@ const PageSection = ({
   className = '',
   title,
   subtitle,
-  isFirst = false,
   anchorId,
   documentId,
   documentType,
@@ -62,31 +61,32 @@ const PageSection = ({
   };
 
   const hasTitle = Boolean(title);
-  const paddingClasses = isFirst ? 'pt-16 md:pt-24 pb-16 md:pb-24' : 'pb-16 md:pb-24';
 
   return (
     <PageSectionContext.Provider value={{ hasTitle }}>
       <section
         id={anchorId ? stegaClean(anchorId) : undefined}
-        className={`${paddingClasses} ${className}`.trim()}>
+        className={`${sectionBottomPadding} ${className}`.trim()}>
         {/* Title is now always present since it's required */}
         <div className={getTextAlignClass(effectiveTextAlign)}>
           <Heading
             level='h2'
             showUnderline
-            className='mb-6'
             showMargin={false}
+            className={sectionTitleBottomSpacing}
             {...titleDataAttribute}>
             {stegaClean(title)}
           </Heading>
           {subtitle && (
             <p
-              className={`text-body-2xl text-text-subtle max-w-3xl whitespace-pre-line ${getSubtitleMarginClass(effectiveTextAlign)}`}
+              className={`text-body-2xl text-text-subtle max-w-3xl whitespace-pre-line ${sectionTitleBottomSpacing} ${getSubtitleMarginClass(effectiveTextAlign)}`}
               {...subtitleDataAttribute}>
               {subtitle}
             </p>
           )}
-          <Divider alignment={effectiveTextAlign} />
+          <div className={sectionDividerBottomSpacing}>
+            <Divider alignment={effectiveTextAlign} />
+          </div>
         </div>
         {children}
       </section>

@@ -6,6 +6,7 @@ import PageSection from '@/components/Layout/PageSection';
 import { transformEvents } from '@/utils/transformEvents';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
+import { pageSubtitleBottomSpacing } from '@/utils/spacingConstants';
 
 export default async function EventsPage() {
   const [rawEvents, eventsIndexPage] = await Promise.all([
@@ -27,7 +28,7 @@ export default async function EventsPage() {
       <Container textAlign='center'>
         {/* Page Subtitle */}
         {eventsIndexPage?.subtitle && (
-          <div className='container mx-auto px-4 md:px-8 py-8'>
+          <div className={`container mx-auto px-4 md:px-8 ${pageSubtitleBottomSpacing}`}>
             <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line text-center'>
               {eventsIndexPage.subtitle}
             </p>
@@ -36,7 +37,6 @@ export default async function EventsPage() {
         {/* Upcoming Events Section */}
         <PageSection
           title='Upcoming Events'
-          isFirst
           documentId={eventsIndexPage?._id}
           documentType={eventsIndexPage?._type}>
           <EventList
@@ -50,13 +50,11 @@ export default async function EventsPage() {
           
           {/* Events Message Card */}
           {eventsIndexPage?.hasEventsMessage && eventsIndexPage?.eventsMessage && (
-            <div className='pt-16 md:pt-24'>
-              <Card
-                {...eventsIndexPage.eventsMessage}
-                documentId={eventsIndexPage._id}
-                documentType={eventsIndexPage._type}
-              />
-            </div>
+            <Card
+              {...eventsIndexPage.eventsMessage}
+              documentId={eventsIndexPage._id}
+              documentType={eventsIndexPage._type}
+            />
           )}
         </PageSection>
         {/* Past Events Section */}

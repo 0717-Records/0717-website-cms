@@ -5,6 +5,7 @@ import Heading from '../Typography/Heading/Heading';
 import FallbackBackground from './FallbackBackground';
 import { urlFor } from '@/sanity/lib/image';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
+import { heroBottomSpacing } from '@/utils/spacingConstants';
 
 interface PageHeroProps {
   title?: string | null;
@@ -37,7 +38,7 @@ const PageHero = ({
   return (
     <div {...createSanityDataAttribute(documentId, documentType, 'heroImage')}>
       <section
-        className={`relative h-48 md:h-64 bg-black flex items-center justify-center overflow-hidden`}>
+        className={`relative h-48 md:h-64 bg-black flex items-center justify-center overflow-hidden ${heroBottomSpacing}`}>
         {/* Background */}
         {hasCustomImage ? (
           <Image src={customBackgroundImage!} alt='' fill className='object-cover z-10' priority />
