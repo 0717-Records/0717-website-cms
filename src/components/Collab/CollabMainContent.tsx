@@ -4,6 +4,7 @@ import type { PAGE_QUERYResult, COLLABS_ALL_QUERYResult } from '@/sanity/types';
 import type { SiteSettingsProps } from '@/types/shared';
 import Heading from '../Typography/Heading/Heading';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
+import { sectionTitleBottomSpacing, sectionBottomPadding } from '@/utils/spacingConstants';
 
 // Type definitions
 interface CollabPageSection {
@@ -31,11 +32,11 @@ export default function CollabMainContent({
   collabs,
 }: CollabMainContentProps) {
   return (
-    <div className='space-y-8'>
+    <>
       {/* Bio Section */}
       {bio && (
-        <section>
-          <Heading level='h2' className='text-h2 font-bold text-gray-900 mb-6' showUnderline={true}>
+        <section className={sectionBottomPadding}>
+          <Heading level='h2' className={sectionTitleBottomSpacing} showUnderline={true}>
             Biography
           </Heading>
           <p className='text-gray-700 leading-relaxed whitespace-pre-line'>{bio}</p>
@@ -47,19 +48,21 @@ export default function CollabMainContent({
         <>
           {(mainContent as CollabPageSection[]).map((section: CollabPageSection, index: number) => {
             return (
-              <section key={section._key || index}>
+              <section key={section._key || index} className={sectionBottomPadding}>
                 {section.title && (
-                  <Heading
-                    level='h2'
-                    className='text-h2 font-bold text-gray-900 mb-6'
-                    showUnderline={true}
-                    {...createSanityDataAttribute(
-                      collabId,
-                      collabType,
-                      `mainContent[_key=="${section._key}"].title`
-                    )}>
-                    {section.title}
-                  </Heading>
+                  <>
+                    <Heading
+                      level='h2'
+                      className={sectionTitleBottomSpacing}
+                      showUnderline={true}
+                      {...createSanityDataAttribute(
+                        collabId,
+                        collabType,
+                        `mainContent[_key=="${section._key}"].title`
+                      )}>
+                      {section.title}
+                    </Heading>
+                  </>
                 )}
                 {!!(section.content && Array.isArray(section.content)) && (
                   <PageBuilder
@@ -76,6 +79,6 @@ export default function CollabMainContent({
           })}
         </>
       )}
-    </div>
+    </>
   );
 }
