@@ -47,7 +47,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
           {collab.shortDescription}
         </p>
 
-        <div className='grid grid-cols-1 lg:grid-cols-[3fr_2fr] auto-rows-min gap-8'>
+        <div className='grid grid-cols-1 lg:grid-cols-[3fr_2fr] auto-rows-min gap-12'>
           {/* Basic Info & Links */}
           <div className='col-start-1 lg:col-start-2 self-start'>
             <div className='mb-4'>
