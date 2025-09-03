@@ -83,10 +83,11 @@ const BandcampWidget: React.FC<BandcampWidgetProps> = ({
     sizeClasses = 'aspect-square';
   } else if ((artwork === 'none' || artwork === 'small') && tracklist === 'false') {
     // SMALL PLAYER: Small/no artwork with no tracklist
-    sizeClasses = 'h-[120px]';
+    sizeClasses = 'h-[120px] md:my-8';
   } else if (artwork === 'none' || artwork === 'small') {
     // SMALL PLAYER WITH TRACKLIST: Small/no artwork with tracklist (use inline style for mobile)
     style = { height: `${getHeight(406)}px` };
+    sizeClasses = 'md:my-8';
   } else {
     // BIG ARTWORK: Use aspect ratio based on dimensions (use inline style for mobile)
     style = { aspectRatio: `${maxWidth} / ${getHeight(500)}` };
@@ -95,7 +96,7 @@ const BandcampWidget: React.FC<BandcampWidgetProps> = ({
   const className = sizeClasses ? `${baseClasses} ${sizeClasses}` : baseClasses;
 
   return (
-    <div className='w-full p-8 rounded-2xl flex justify-center bg-gradient-to-br from-gray-200 to-gray-100'>
+    <div className='w-full rounded-2xl flex justify-center bg-gradient-to-br from-gray-200 to-gray-100'>
       <iframe
         {...widgetDataAttribute}
         className={className}
