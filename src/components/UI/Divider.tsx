@@ -23,10 +23,10 @@ const Divider = ({ className = '', isSmall = false, alignment = 'center' }: Divi
   // For left/right alignment, use full-width design with dots on the edges
   if (alignment === 'left' || alignment === 'right') {
     const dotsOnLeft = alignment === 'left';
-    
+
     if (isSmall) {
       return (
-        <div className={`flex items-center w-full py-4 ${className}`.trim()}>
+        <div className={`flex items-center w-full ${className}`.trim()}>
           {dotsOnLeft ? (
             <>
               {/* Left side: dot, line, dot */}
@@ -51,7 +51,7 @@ const Divider = ({ className = '', isSmall = false, alignment = 'center' }: Divi
     }
 
     return (
-      <div className={`flex items-center w-full py-8 ${className}`.trim()}>
+      <div className={`flex items-center w-full ${className}`.trim()}>
         {dotsOnLeft ? (
           <>
             {/* Left side: dot, line, dot */}
@@ -78,7 +78,7 @@ const Divider = ({ className = '', isSmall = false, alignment = 'center' }: Divi
   // Center alignment: use original design
   if (isSmall) {
     return (
-      <div className={`flex items-center ${justifyClass} py-4 ${className}`.trim()}>
+      <div className={`flex items-center ${justifyClass} ${className}`.trim()}>
         <div className='flex items-center space-x-2'>
           {/* Left line */}
           <div className='w-8 h-0.5 bg-brand-gradient'></div>
@@ -96,7 +96,7 @@ const Divider = ({ className = '', isSmall = false, alignment = 'center' }: Divi
   }
 
   return (
-    <div className={`flex items-center ${justifyClass} py-8 ${className}`.trim()}>
+    <div className={`flex items-center ${justifyClass} ${className}`.trim()}>
       <div className='flex items-center space-x-4'>
         {/* Left line */}
         <div className='w-16 md:w-24 h-0.5 bg-brand-gradient'></div>
