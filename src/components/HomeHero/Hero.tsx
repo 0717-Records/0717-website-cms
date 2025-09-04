@@ -12,6 +12,7 @@ import { heroBottomSpacing } from '@/utils/spacingConstants';
 interface HeroProps {
   heroStyle: NonNullable<HOME_PAGE_QUERYResult>['heroStyle'];
   heroTextColor: NonNullable<HOME_PAGE_QUERYResult>['heroTextColor'];
+  showHeroLogo: NonNullable<HOME_PAGE_QUERYResult>['showHeroLogo'];
   heroImage: NonNullable<HOME_PAGE_QUERYResult>['heroImage'];
   heroTitle: NonNullable<HOME_PAGE_QUERYResult>['heroTitle'];
   heroSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroSubtitle'];
@@ -25,6 +26,7 @@ interface HeroProps {
 const Hero = ({
   heroStyle,
   heroTextColor,
+  showHeroLogo,
   heroImage,
   heroTitle,
   heroSubtitle,
@@ -47,11 +49,9 @@ const Hero = ({
   // Map content position to Tailwind classes
   const getPositionClasses = (position: string) => {
     // Clean the position string to remove any invisible Unicode characters
-    // const cleanPosition =
-    //   position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
-    //   'center-center';
-
-    const cleanPosition = 'bottom-right';
+    const cleanPosition =
+      position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
+      'center-center';
 
     // Base mobile classes - always centered with consistent spacing
     const mobileBase = 'left-1/2 transform -translate-x-1/2 w-[85%] text-center px-4 py-4';
@@ -97,18 +97,18 @@ const Hero = ({
       'center-center';
     const [vertical, horizontal] = cleanPosition.split('-');
 
-    const isTop = vertical === 'top';
     const isCenter = vertical === 'center';
 
     return {
-      order: isTop ? 2 : 1, // Logo after content if top, before content if bottom/center
-      size: isCenter ? 'w-16 md:w-20 lg:w-24' : 'w-20 md:w-24 lg:w-28', // Smaller for center
-      spacing: isCenter ? 'gap-2 md:gap-3' : 'gap-4 md:gap-6', // Tighter spacing for center
+      order: 1, // Logo always above content
+      size: isCenter ? 'w-32 md:w-40 lg:w-48' : 'w-40 md:w-48 lg:w-56', // 100% bigger, smaller for center
+      spacing: isCenter ? 'gap-4 md:gap-6' : 'gap-6 md:gap-8', // Adjusted for bigger logo
+      // Mobile-first alignment: always center on mobile, respect desktop positioning
       alignment:
         horizontal === 'left'
-          ? 'items-start'
+          ? 'items-center md:items-start'
           : horizontal === 'right'
-            ? 'items-end'
+            ? 'items-center md:items-end'
             : 'items-center',
     };
   };
@@ -129,6 +129,12 @@ const Hero = ({
       id='home'
       className={`relative ${styles['hero-height']} flex flex-col justify-center ${heroBottomSpacing}`}>
       {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
+      
+      {/* Hero Style Click-to-Edit Wrapper */}
+      <div {...createSanityDataAttribute(documentId, documentType, 'heroStyle')} className="absolute inset-0 pointer-events-none z-0" />
+      
+      {/* Text Color Click-to-Edit Wrapper */}
+      <div {...createSanityDataAttribute(documentId, documentType, 'heroTextColor')} className="absolute inset-0 pointer-events-none z-0" />
 
       {/* Background Images Hero Style */}
       {currentHeroStyle === 'background-images' && (
@@ -139,87 +145,74 @@ const Hero = ({
       )}
 
       {/* Default Hero Style */}
-      {currentHeroStyle === 'default' && <DefaultHeroBackground />}
+      {currentHeroStyle === 'default' && (
+        <div className="z-10">
+          <DefaultHeroBackground />
+        </div>
+      )}
 
       {/* Content */}
       <div
         className={`absolute z-[25] ${getTextColorClasses()} ${getPositionClasses(heroContentPosition || 'center-center')}`}
         {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
-        {currentHeroStyle === 'default' ? (
-          // Default style with logo positioned relative to content
-          (() => {
-            const logoConfig = getLogoConfig(heroContentPosition || 'center-center');
-            const LogoComponent = (
-              <div className='flex justify-center'>
-                <Image
-                  src='/images/logo-black-on-transparent.png'
-                  alt='07:17 Records Logo'
-                  width={500}
-                  height={500}
-                  className={`${logoConfig.size} h-auto object-contain`}
-                />
-              </div>
-            );
-
-            const ContentComponent = (
-              <div className='space-y-4'>
-                {heroTitle && (
-                  <Heading
-                    level='h1'
-                    className={`text-h4 sm:text-h2 font-bold ${getTextColorClasses()}`}
-                    {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
-                    {heroTitle}
-                  </Heading>
-                )}
-                {heroSubtitle && (
-                  <div
-                    className={`text-body-lg sm:text-body-xl ${getTextColorClasses()}`}
-                    style={{ whiteSpace: 'pre-line' }}
-                    {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
-                    {typeof heroSubtitle === 'string'
-                      ? heroSubtitle
-                      : 'Please update subtitle in Sanity Studio'}
-                  </div>
-                )}
-                <div {...createSanityDataAttribute(documentId, documentType, 'heroCallToAction')}>
-                  {renderCTA()}
-                </div>
-              </div>
-            );
-
-            return (
-              <div className={`flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}`}>
-                {logoConfig.order === 1 ? LogoComponent : ContentComponent}
-                {logoConfig.order === 1 ? ContentComponent : LogoComponent}
-              </div>
-            );
-          })()
-        ) : (
-          // Background images style - original layout
-          <div className='space-y-4'>
-            {heroTitle && (
-              <Heading
-                level='h1'
-                className={`text-h4 sm:text-h2 font-bold ${getTextColorClasses()}`}
-                {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
-                {heroTitle}
-              </Heading>
-            )}
-            {heroSubtitle && (
-              <div
-                className={`text-body-lg sm:text-body-xl ${getTextColorClasses()}`}
-                style={{ whiteSpace: 'pre-line' }}
-                {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
-                {typeof heroSubtitle === 'string'
-                  ? heroSubtitle
-                  : 'Please update subtitle in Sanity Studio'}
-              </div>
-            )}
-            <div {...createSanityDataAttribute(documentId, documentType, 'heroCallToAction')}>
-              {renderCTA()}
+        
+        {(() => {
+          const logoConfig = getLogoConfig(heroContentPosition || 'center-center');
+          const shouldShowLogo = showHeroLogo !== false; // Show by default if not specified
+          
+          const LogoComponent = shouldShowLogo ? (
+            <div 
+              className='flex justify-center'
+              {...createSanityDataAttribute(documentId, documentType, 'showHeroLogo')}>
+              <Image
+                src='/images/logo-black-on-transparent.png'
+                alt='07:17 Records Logo'
+                width={500}
+                height={500}
+                className={`${logoConfig.size} h-auto object-contain`}
+              />
             </div>
-          </div>
-        )}
+          ) : null;
+
+          const ContentComponent = (
+            <div className='space-y-4'>
+              {heroTitle && (
+                <Heading
+                  level='h1'
+                  className={`text-h4 sm:text-h2 font-bold ${getTextColorClasses()}`}
+                  {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
+                  {heroTitle}
+                </Heading>
+              )}
+              {heroSubtitle && (
+                <div
+                  className={`text-body-lg sm:text-body-xl ${getTextColorClasses()}`}
+                  style={{ whiteSpace: 'pre-line' }}
+                  {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
+                  {typeof heroSubtitle === 'string'
+                    ? heroSubtitle
+                    : 'Please update subtitle in Sanity Studio'}
+                </div>
+              )}
+              <div {...createSanityDataAttribute(documentId, documentType, 'heroCallToAction')}>
+                {renderCTA()}
+              </div>
+            </div>
+          );
+
+          if (!shouldShowLogo) {
+            // No logo - just show content
+            return ContentComponent;
+          }
+
+          // Show logo above content
+          return (
+            <div className={`flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}`}>
+              {LogoComponent}
+              {ContentComponent}
+            </div>
+          );
+        })()}
       </div>
     </section>
   );

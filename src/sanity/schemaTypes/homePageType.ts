@@ -34,21 +34,6 @@ export const homePageType = defineType({
       initialValue: 'default',
     }),
     defineField({
-      name: 'heroTextColor',
-      type: 'string',
-      title: 'Text Color',
-      description: 'Choose the color for the hero title and subtitle text',
-      group: 'hero',
-      options: {
-        list: [
-          { title: 'Black', value: 'black' },
-          { title: 'White', value: 'white' },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'black',
-    }),
-    defineField({
       name: 'heroImage',
       type: 'image',
       title: 'Hero Image',
@@ -66,6 +51,52 @@ export const homePageType = defineType({
       ],
       group: 'hero',
       hidden: ({ document }) => document?.heroStyle !== 'background-images',
+    }),
+    defineField({
+      name: 'heroTextColor',
+      type: 'string',
+      title: 'Text Color',
+      description: 'Choose the color for the hero title and subtitle text',
+      group: 'hero',
+      options: {
+        list: [
+          { title: 'Black', value: 'black' },
+          { title: 'White', value: 'white' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'black',
+    }),
+    defineField({
+      name: 'heroContentPosition',
+      type: 'string',
+      title: 'Content Position',
+      description:
+        'Choose where to position the hero content over the image. Note: On mobile devices, content is always centered horizontally - only the vertical positioning (top/center/bottom) is applied. Full positioning applies on desktop and larger screens.',
+      group: 'hero',
+      options: {
+        list: [
+          { title: 'Top Left', value: 'top-left' },
+          { title: 'Top Center', value: 'top-center' },
+          { title: 'Top Right', value: 'top-right' },
+          { title: 'Center Left', value: 'center-left' },
+          { title: 'Center Center', value: 'center-center' },
+          { title: 'Center Right', value: 'center-right' },
+          { title: 'Bottom Left', value: 'bottom-left' },
+          { title: 'Bottom Center', value: 'bottom-center' },
+          { title: 'Bottom Right', value: 'bottom-right' },
+        ],
+        layout: 'dropdown',
+      },
+      initialValue: 'center-center',
+    }),
+    defineField({
+      name: 'showHeroLogo',
+      type: 'boolean',
+      title: 'Show Logo',
+      description: 'Display the 07:17 Records logo above the hero content',
+      group: 'hero',
+      initialValue: true,
     }),
     defineField({
       name: 'heroTitle',
@@ -96,29 +127,6 @@ export const homePageType = defineType({
       description: 'Button or link for the hero section',
       group: 'hero',
       hidden: ({ document }) => !document?.enableHeroCallToAction,
-    }),
-    defineField({
-      name: 'heroContentPosition',
-      type: 'string',
-      title: 'Content Position',
-      description:
-        'Choose where to position the hero content over the image. Note: On mobile devices, content is always centered horizontally - only the vertical positioning (top/center/bottom) is applied. Full positioning applies on desktop and larger screens.',
-      group: 'hero',
-      options: {
-        list: [
-          { title: 'Top Left', value: 'top-left' },
-          { title: 'Top Center', value: 'top-center' },
-          { title: 'Top Right', value: 'top-right' },
-          { title: 'Center Left', value: 'center-left' },
-          { title: 'Center Center', value: 'center-center' },
-          { title: 'Center Right', value: 'center-right' },
-          { title: 'Bottom Left', value: 'bottom-left' },
-          { title: 'Bottom Center', value: 'bottom-center' },
-          { title: 'Bottom Right', value: 'bottom-right' },
-        ],
-        layout: 'dropdown',
-      },
-      initialValue: 'center-center',
     }),
 
     // Page Content Fields

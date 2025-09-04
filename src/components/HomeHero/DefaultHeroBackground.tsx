@@ -3,8 +3,7 @@ import React from 'react';
 const DefaultHeroBackground = () => {
   return (
     <div className='absolute inset-0 overflow-hidden'>
-      {/* Clean white background */}
-      <div className='absolute inset-0' />
+      {/* Transparent background - allows body color to show through */}
 
       {/* Key decorative circles - minimal and strategic */}
       {/* Large left circle - positioned to peek from bottom-left */}

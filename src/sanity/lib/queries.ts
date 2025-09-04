@@ -140,6 +140,7 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
   _type,
   heroStyle,
   heroTextColor,
+  showHeroLogo,
   heroImage{
     asset,
     alt
