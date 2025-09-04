@@ -1,13 +1,17 @@
 import styles from './styles.module.css';
 import HeroImages from './HeroImages';
+import DefaultHeroBackground from './DefaultHeroBackground';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import EmbeddedCTAButton from '../blocks/EmbeddedCTAButton';
 import { createSanityDataAttribute } from '../../utils/sectionHelpers';
 import Heading from '../Typography/Heading/Heading';
+import Image from 'next/image';
 import { heroBottomSpacing } from '@/utils/spacingConstants';
 
 interface HeroProps {
+  heroStyle: NonNullable<HOME_PAGE_QUERYResult>['heroStyle'];
+  heroTextColor: NonNullable<HOME_PAGE_QUERYResult>['heroTextColor'];
   heroImage: NonNullable<HOME_PAGE_QUERYResult>['heroImage'];
   heroTitle: NonNullable<HOME_PAGE_QUERYResult>['heroTitle'];
   heroSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroSubtitle'];
@@ -19,6 +23,8 @@ interface HeroProps {
 }
 
 const Hero = ({
+  heroStyle,
+  heroTextColor,
   heroImage,
   heroTitle,
   heroSubtitle,
@@ -71,6 +77,15 @@ const Hero = ({
     return positionMap[cleanPosition] || positionMap['center-center'];
   };
 
+  // Determine hero style - default to 'default' if not provided
+  const currentHeroStyle = heroStyle || 'default';
+
+  // Determine text color classes
+  const getTextColorClasses = () => {
+    const textColor = heroTextColor || 'black';
+    return textColor === 'white' ? 'text-white' : 'text-black';
+  };
+
   const renderCTA = () => {
     // First check if CTA is enabled
     if (!enableHeroCallToAction) return null;
@@ -85,24 +100,51 @@ const Hero = ({
   return (
     <section
       id='home'
-      className={`relative ${styles['hero-height']} bg-black flex flex-col justify-center ${heroBottomSpacing}`}>
-      {/* Z-index hierarchy: Images (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
-      {images.length > 0 && <HeroImages images={images} />}
-      <div className='absolute inset-0 bg-gradient-to-t from-black from-20% to-transparent opacity-90 z-20' />
+      className={`relative ${styles['hero-height']} flex flex-col justify-center ${heroBottomSpacing} ${
+        currentHeroStyle === 'default' ? 'bg-white' : 'bg-black'
+      }`}>
+      {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
+      
+      {/* Background Images Hero Style */}
+      {currentHeroStyle === 'background-images' && (
+        <>
+          {images.length > 0 && <HeroImages images={images} />}
+          <div className='absolute inset-0 bg-gradient-to-t from-black from-20% to-transparent opacity-90 z-20' />
+        </>
+      )}
+      
+      {/* Default Hero Style */}
+      {currentHeroStyle === 'default' && (
+        <>
+          <DefaultHeroBackground />
+          {/* Logo for default style */}
+          <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20">
+            <Image
+              src="/images/logo-black-on-transparent.png"
+              alt="07:17 Records Logo"
+              width={120}
+              height={120}
+              className="w-20 h-20 md:w-24 md:h-24"
+            />
+          </div>
+        </>
+      )}
+
+      {/* Content */}
       <div
-        className={`absolute z-[25] text-white space-y-4 ${getPositionClasses(heroContentPosition || 'center-center')}`}
+        className={`absolute z-[25] space-y-4 ${getTextColorClasses()} ${getPositionClasses(heroContentPosition || 'center-center')}`}
         {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
         {heroTitle && (
           <Heading
             level='h1'
-            className='text-h4 sm:text-h2 font-bold'
+            className={`text-h4 sm:text-h2 font-bold ${getTextColorClasses()}`}
             {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
             {heroTitle}
           </Heading>
         )}
         {heroSubtitle && (
           <div
-            className='text-body-lg sm:text-body-xl text-white'
+            className={`text-body-lg sm:text-body-xl ${getTextColorClasses()}`}
             style={{ whiteSpace: 'pre-line' }}
             {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
             {typeof heroSubtitle === 'string'

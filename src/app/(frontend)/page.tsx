@@ -26,6 +26,8 @@ const Page = async () => {
     <>
       {/* Hero Section */}
       <Hero
+        heroStyle={page.heroStyle}
+        heroTextColor={page.heroTextColor}
         heroImage={page.heroImage}
         heroTitle={page.heroTitle}
         heroSubtitle={page.heroSubtitle}

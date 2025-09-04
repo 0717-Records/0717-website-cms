@@ -19,6 +19,36 @@ export const homePageType = defineType({
   fields: [
     // Hero Section Fields
     defineField({
+      name: 'heroStyle',
+      type: 'string',
+      title: 'Hero Style',
+      description: 'Choose the hero section style',
+      group: 'hero',
+      options: {
+        list: [
+          { title: 'Default', value: 'default' },
+          { title: 'Background Images', value: 'background-images' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'default',
+    }),
+    defineField({
+      name: 'heroTextColor',
+      type: 'string',
+      title: 'Text Color',
+      description: 'Choose the color for the hero title and subtitle text',
+      group: 'hero',
+      options: {
+        list: [
+          { title: 'Black', value: 'black' },
+          { title: 'White', value: 'white' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'black',
+    }),
+    defineField({
       name: 'heroImage',
       type: 'image',
       title: 'Hero Image',
@@ -35,6 +65,7 @@ export const homePageType = defineType({
         }),
       ],
       group: 'hero',
+      hidden: ({ document }) => document?.heroStyle !== 'background-images',
     }),
     defineField({
       name: 'heroTitle',

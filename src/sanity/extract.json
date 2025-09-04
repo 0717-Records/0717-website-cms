@@ -8092,6 +8092,40 @@
           "type": "string"
         }
       },
+      "heroStyle": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "default"
+            },
+            {
+              "type": "string",
+              "value": "background-images"
+            }
+          ]
+        },
+        "optional": true
+      },
+      "heroTextColor": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "black"
+            },
+            {
+              "type": "string",
+              "value": "white"
+            }
+          ]
+        },
+        "optional": true
+      },
       "heroImage": {
         "type": "objectAttribute",
         "value": {

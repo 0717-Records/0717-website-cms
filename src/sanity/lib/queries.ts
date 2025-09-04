@@ -138,6 +138,8 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
 export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
   _id,
   _type,
+  heroStyle,
+  heroTextColor,
   heroImage{
     asset,
     alt
