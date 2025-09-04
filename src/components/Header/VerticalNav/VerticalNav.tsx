@@ -47,10 +47,10 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
           // Type assertion is safe here since div element extends HTMLElement
           focusTrapRef.current = el as HTMLElement;
         }}
-        id="mobile-navigation-menu"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Main navigation menu"
+        id='mobile-navigation-menu'
+        role='dialog'
+        aria-modal='true'
+        aria-label='Main navigation menu'
         className={`fixed top-0 right-0 h-full w-80 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl transition-transform duration-300 ease-in-out flex flex-col ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
@@ -107,7 +107,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
                         <Link
                           {...linkProps}
                           onClick={onClose}
-                          className='block text-body-xl uppercase font-medium text-black hover:text-brand-secondary transition-colors'>
+                          className='block uppercase font-medium text-black hover:text-brand-secondary transition-colors'>
                           {label}
                         </Link>
                       </div>
