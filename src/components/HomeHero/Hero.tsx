@@ -8,6 +8,7 @@ import { createSanityDataAttribute } from '../../utils/sectionHelpers';
 import Heading from '../Typography/Heading/Heading';
 import Image from 'next/image';
 import { heroBottomSpacing } from '@/utils/spacingConstants';
+import { stegaClean } from '@sanity/client/stega';
 
 interface HeroProps {
   heroStyle: NonNullable<HOME_PAGE_QUERYResult>['heroStyle'];
@@ -81,8 +82,8 @@ const Hero = ({
     return positionMap[cleanPosition] || positionMap['center-center'];
   };
 
-  // Determine hero style - default to 'default' if not provided
-  const currentHeroStyle = heroStyle || 'default';
+  // Determine hero style - default to 'default' if not provided, clean any stega characters
+  const currentHeroStyle = stegaClean(heroStyle) || 'default';
 
   // Determine text color classes
   const getTextColorClasses = () => {
@@ -129,12 +130,18 @@ const Hero = ({
       id='home'
       className={`relative ${styles['hero-height']} flex flex-col justify-center ${heroBottomSpacing}`}>
       {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
-      
+
       {/* Hero Style Click-to-Edit Wrapper */}
-      <div {...createSanityDataAttribute(documentId, documentType, 'heroStyle')} className="absolute inset-0 pointer-events-none z-0" />
-      
+      <div
+        {...createSanityDataAttribute(documentId, documentType, 'heroStyle')}
+        className='absolute inset-0 pointer-events-none z-0'
+      />
+
       {/* Text Color Click-to-Edit Wrapper */}
-      <div {...createSanityDataAttribute(documentId, documentType, 'heroTextColor')} className="absolute inset-0 pointer-events-none z-0" />
+      <div
+        {...createSanityDataAttribute(documentId, documentType, 'heroTextColor')}
+        className='absolute inset-0 pointer-events-none z-0'
+      />
 
       {/* Background Images Hero Style */}
       {currentHeroStyle === 'background-images' && (
@@ -146,7 +153,7 @@ const Hero = ({
 
       {/* Default Hero Style */}
       {currentHeroStyle === 'default' && (
-        <div className="z-10">
+        <div className='z-10'>
           <DefaultHeroBackground />
         </div>
       )}
@@ -155,13 +162,12 @@ const Hero = ({
       <div
         className={`absolute z-[25] ${getTextColorClasses()} ${getPositionClasses(heroContentPosition || 'center-center')}`}
         {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
-        
         {(() => {
           const logoConfig = getLogoConfig(heroContentPosition || 'center-center');
           const shouldShowLogo = showHeroLogo !== false; // Show by default if not specified
-          
+
           const LogoComponent = shouldShowLogo ? (
-            <div 
+            <div
               className='flex justify-center'
               {...createSanityDataAttribute(documentId, documentType, 'showHeroLogo')}>
               <Image
