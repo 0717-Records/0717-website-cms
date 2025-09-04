@@ -7,7 +7,6 @@ import { createSanityDataAttribute } from '../../utils/sectionHelpers';
 import Heading from '../Typography/Heading/Heading';
 import { heroBottomSpacing } from '@/utils/spacingConstants';
 
-
 interface HeroProps {
   heroImage: NonNullable<HOME_PAGE_QUERYResult>['heroImage'];
   heroTitle: NonNullable<HOME_PAGE_QUERYResult>['heroTitle'];
@@ -46,27 +45,27 @@ const Hero = ({
       position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
       'center-center';
 
+    // Base mobile classes - always centered with consistent spacing
+    const mobileBase = 'left-1/2 transform -translate-x-1/2 w-[85%] text-center px-4 py-4';
+    const mobileCenterClasses = 'left-1/2 transform -translate-x-1/2 w-[85%] text-center';
+
+    // Desktop positioning variants
+    const desktopVariants = {
+      left: 'md:left-10 lg:left-20 md:right-auto md:text-left md:transform-none md:translate-x-0 md:w-auto md:px-0',
+      center: 'md:left-1/2 md:right-auto md:text-center md:transform md:-translate-x-1/2 md:w-[85%] md:px-0',
+      right: 'md:right-10 lg:right-20 md:left-auto md:text-right md:transform-none md:translate-x-0 md:w-auto md:px-0',
+    };
+
     const positionMap: Record<string, string> = {
-      // Mobile: Always centered horizontally with responsive width, only vertical positioning applies
-      // Desktop: Full positioning as specified
-      'top-left':
-        'top-4 left-4 right-4 text-center px-4 py-4 md:top-10 md:left-10 lg:left-20 md:right-auto md:text-left md:p-0 md:transform-none md:translate-x-0',
-      'top-center':
-        'top-4 left-4 right-4 text-center px-4 py-4 md:top-10 md:left-1/2 md:right-auto md:transform md:-translate-x-1/2 md:p-0',
-      'top-right':
-        'top-4 left-4 right-4 text-center px-4 py-4 md:top-10 md:right-10 lg:right-20 md:left-auto md:text-right md:p-0',
-      'center-left':
-        'top-1/2 left-4 right-4 transform -translate-y-1/2 text-center px-4 py-4 md:left-10 lg:left-20 md:right-auto md:text-left md:p-0 md:translate-x-0',
-      'center-center':
-        'top-1/2 left-4 right-4 transform -translate-y-1/2 text-center px-4 py-4 md:left-1/2 md:right-auto md:transform md:-translate-x-1/2 md:-translate-y-1/2 md:p-0',
-      'center-right':
-        'top-1/2 left-4 right-4 transform -translate-y-1/2 text-center px-4 py-4 md:right-10 lg:right-20 md:left-auto md:text-right md:p-0 md:translate-x-0',
-      'bottom-left':
-        'bottom-4 left-4 right-4 text-center px-4 py-4 md:bottom-10 md:left-10 lg:left-20 md:right-auto md:text-left md:p-0',
-      'bottom-center':
-        'bottom-4 left-4 right-4 text-center px-4 py-4 md:bottom-10 md:left-1/2 md:right-auto md:transform md:-translate-x-1/2 md:p-0',
-      'bottom-right':
-        'bottom-4 left-4 right-4 text-center px-4 py-4 md:bottom-10 md:right-10 lg:right-20 md:left-auto md:text-right md:p-0',
+      'top-left': `top-4 ${mobileBase} md:top-10 ${desktopVariants.left}`,
+      'top-center': `top-4 ${mobileCenterClasses} md:top-10 ${desktopVariants.center}`,
+      'top-right': `top-4 ${mobileBase} md:top-10 ${desktopVariants.right}`,
+      'center-left': `top-1/2 ${mobileBase} -translate-y-1/2 md:left-10 lg:left-20 md:right-auto md:text-left md:translate-x-0 md:w-auto md:px-0`,
+      'center-center': `top-1/2 ${mobileCenterClasses} -translate-y-1/2 md:left-1/2 md:right-auto md:text-center md:-translate-x-1/2 md:-translate-y-1/2 md:w-[85%] md:px-0`,
+      'center-right': `top-1/2 ${mobileBase} -translate-y-1/2 md:right-10 lg:right-20 md:left-auto md:text-right md:translate-x-0 md:w-auto md:px-0`,
+      'bottom-left': `bottom-4 ${mobileBase} md:bottom-10 ${desktopVariants.left}`,
+      'bottom-center': `bottom-4 ${mobileCenterClasses} md:bottom-10 ${desktopVariants.center}`,
+      'bottom-right': `bottom-4 ${mobileBase} md:bottom-10 ${desktopVariants.right}`,
     };
 
     return positionMap[cleanPosition] || positionMap['center-center'];
@@ -106,11 +105,12 @@ const Hero = ({
             className='text-body-lg sm:text-body-xl text-white'
             style={{ whiteSpace: 'pre-line' }}
             {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
-            {typeof heroSubtitle === 'string' ? heroSubtitle : 'Please update subtitle in Sanity Studio'}
+            {typeof heroSubtitle === 'string'
+              ? heroSubtitle
+              : 'Please update subtitle in Sanity Studio'}
           </div>
         )}
-        <div
-          {...createSanityDataAttribute(documentId, documentType, 'heroCallToAction')}>
+        <div {...createSanityDataAttribute(documentId, documentType, 'heroCallToAction')}>
           {renderCTA()}
         </div>
       </div>
