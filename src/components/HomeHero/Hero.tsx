@@ -47,9 +47,11 @@ const Hero = ({
   // Map content position to Tailwind classes
   const getPositionClasses = (position: string) => {
     // Clean the position string to remove any invisible Unicode characters
-    const cleanPosition =
-      position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
-      'center-center';
+    // const cleanPosition =
+    //   position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
+    //   'center-center';
+
+    const cleanPosition = 'bottom-right';
 
     // Base mobile classes - always centered with consistent spacing
     const mobileBase = 'left-1/2 transform -translate-x-1/2 w-[85%] text-center px-4 py-4';
@@ -88,6 +90,29 @@ const Hero = ({
     return textColor === 'white' ? 'text-white' : 'text-black';
   };
 
+  // Get logo positioning and sizing based on content position
+  const getLogoConfig = (position: string) => {
+    const cleanPosition =
+      position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
+      'center-center';
+    const [vertical, horizontal] = cleanPosition.split('-');
+
+    const isTop = vertical === 'top';
+    const isCenter = vertical === 'center';
+
+    return {
+      order: isTop ? 2 : 1, // Logo after content if top, before content if bottom/center
+      size: isCenter ? 'w-16 md:w-20 lg:w-24' : 'w-20 md:w-24 lg:w-28', // Smaller for center
+      spacing: isCenter ? 'gap-2 md:gap-3' : 'gap-4 md:gap-6', // Tighter spacing for center
+      alignment:
+        horizontal === 'left'
+          ? 'items-start'
+          : horizontal === 'right'
+            ? 'items-end'
+            : 'items-center',
+    };
+  };
+
   const renderCTA = () => {
     // First check if CTA is enabled
     if (!enableHeroCallToAction) return null;
@@ -114,47 +139,87 @@ const Hero = ({
       )}
 
       {/* Default Hero Style */}
-      {currentHeroStyle === 'default' && (
-        <>
-          <DefaultHeroBackground />
-          {/* Logo for default style */}
-          <div className='absolute top-6 left-1/2 transform -translate-x-1/2 z-20'>
-            <Image
-              src='/images/logo-black-on-transparent.png'
-              alt='07:17 Records Logo'
-              width={500}
-              height={500}
-              className='w-[200px] md:w-[350px] h-auto object-contain'
-            />
-          </div>
-        </>
-      )}
+      {currentHeroStyle === 'default' && <DefaultHeroBackground />}
 
       {/* Content */}
       <div
-        className={`absolute z-[25] space-y-4 ${getTextColorClasses()} ${getPositionClasses(heroContentPosition || 'center-center')}`}
+        className={`absolute z-[25] ${getTextColorClasses()} ${getPositionClasses(heroContentPosition || 'center-center')}`}
         {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
-        {heroTitle && (
-          <Heading
-            level='h1'
-            className={`text-h4 sm:text-h2 font-bold ${getTextColorClasses()}`}
-            {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
-            {heroTitle}
-          </Heading>
-        )}
-        {heroSubtitle && (
-          <div
-            className={`text-body-lg sm:text-body-xl ${getTextColorClasses()}`}
-            style={{ whiteSpace: 'pre-line' }}
-            {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
-            {typeof heroSubtitle === 'string'
-              ? heroSubtitle
-              : 'Please update subtitle in Sanity Studio'}
+        {currentHeroStyle === 'default' ? (
+          // Default style with logo positioned relative to content
+          (() => {
+            const logoConfig = getLogoConfig(heroContentPosition || 'center-center');
+            const LogoComponent = (
+              <div className='flex justify-center'>
+                <Image
+                  src='/images/logo-black-on-transparent.png'
+                  alt='07:17 Records Logo'
+                  width={500}
+                  height={500}
+                  className={`${logoConfig.size} h-auto object-contain`}
+                />
+              </div>
+            );
+
+            const ContentComponent = (
+              <div className='space-y-4'>
+                {heroTitle && (
+                  <Heading
+                    level='h1'
+                    className={`text-h4 sm:text-h2 font-bold ${getTextColorClasses()}`}
+                    {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
+                    {heroTitle}
+                  </Heading>
+                )}
+                {heroSubtitle && (
+                  <div
+                    className={`text-body-lg sm:text-body-xl ${getTextColorClasses()}`}
+                    style={{ whiteSpace: 'pre-line' }}
+                    {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
+                    {typeof heroSubtitle === 'string'
+                      ? heroSubtitle
+                      : 'Please update subtitle in Sanity Studio'}
+                  </div>
+                )}
+                <div {...createSanityDataAttribute(documentId, documentType, 'heroCallToAction')}>
+                  {renderCTA()}
+                </div>
+              </div>
+            );
+
+            return (
+              <div className={`flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}`}>
+                {logoConfig.order === 1 ? LogoComponent : ContentComponent}
+                {logoConfig.order === 1 ? ContentComponent : LogoComponent}
+              </div>
+            );
+          })()
+        ) : (
+          // Background images style - original layout
+          <div className='space-y-4'>
+            {heroTitle && (
+              <Heading
+                level='h1'
+                className={`text-h4 sm:text-h2 font-bold ${getTextColorClasses()}`}
+                {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
+                {heroTitle}
+              </Heading>
+            )}
+            {heroSubtitle && (
+              <div
+                className={`text-body-lg sm:text-body-xl ${getTextColorClasses()}`}
+                style={{ whiteSpace: 'pre-line' }}
+                {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
+                {typeof heroSubtitle === 'string'
+                  ? heroSubtitle
+                  : 'Please update subtitle in Sanity Studio'}
+              </div>
+            )}
+            <div {...createSanityDataAttribute(documentId, documentType, 'heroCallToAction')}>
+              {renderCTA()}
+            </div>
           </div>
         )}
-        <div {...createSanityDataAttribute(documentId, documentType, 'heroCallToAction')}>
-          {renderCTA()}
-        </div>
       </div>
     </section>
   );
