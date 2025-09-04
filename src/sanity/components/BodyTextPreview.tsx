@@ -5,14 +5,14 @@ import React from 'react';
  *
  * ⚠️  IMPORTANT: KEEP IN SYNC WITH GLOBALS.CSS ⚠️
  * These style values must match the corresponding @utility definitions in:
- * src/app/globals.css (lines ~95-171)
+ * src/app/globals.css
  *
  * When updating typography styles:
  * 1. Update the @utility definitions in globals.css (for frontend rendering)
- * 2. Update the corresponding values in this file (for Sanity Studio previews)
+ * 2. Update the FONT_SCALE_BASE and multipliers in this file (for Sanity Studio previews)
  *
- * Both files must have identical font-size, line-height, font-weight, and letter-spacing values
- * to ensure consistency between Sanity Studio previews and frontend display.
+ * Both files must use identical base scale and multipliers to ensure consistency
+ * between Sanity Studio previews and frontend display.
  */
 
 interface BlockStyleProps {
@@ -24,57 +24,63 @@ interface BodyTextPreviewProps extends BlockStyleProps {
 }
 
 const BodyTextPreview = ({ children, value }: BodyTextPreviewProps) => {
-  // ⚠️ These values must match the @utility definitions in src/app/globals.css
+  // ⚠️ This base scale must match --font-scale-base in src/app/globals.css
+  // Currently set to 1.1rem in globals.css
+  const FONT_SCALE_BASE = 1.2; // rem equivalent (1.1rem = 1.1 * 16px = 17.6px)
+  const BASE_PX = 16; // Default browser font size
+  const SCALE_PX = FONT_SCALE_BASE * BASE_PX;
+
+  // ⚠️ These multipliers and line heights must match the @utility definitions in src/app/globals.css
   const getStyles = (styleType: string) => {
     switch (styleType) {
       case 'body-3xl':
         return {
-          fontSize: '2.0625rem',
-          lineHeight: '2.25rem',
-          fontWeight: '400',
+          fontSize: `${SCALE_PX * 2.0625}px`, // Desktop: calc(var(--font-scale-base) * 2.0625)
+          lineHeight: 1.25, // Unitless line height matches CSS
+          fontWeight: 400,
           letterSpacing: '0',
         };
       case 'body-2xl':
         return {
-          fontSize: '1.625rem',
-          lineHeight: '2rem',
-          fontWeight: '400',
+          fontSize: `${SCALE_PX * 1.625}px`, // Desktop: calc(var(--font-scale-base) * 1.625)
+          lineHeight: 1.5,
+          fontWeight: 400,
           letterSpacing: '0',
         };
       case 'body-xl':
         return {
-          fontSize: '1.375rem',
-          lineHeight: '1.75rem',
-          fontWeight: '400',
+          fontSize: `${SCALE_PX * 1.375}px`, // Desktop: calc(var(--font-scale-base) * 1.375)
+          lineHeight: 1.625,
+          fontWeight: 400,
           letterSpacing: '0',
         };
       case 'body-lg':
         return {
-          fontSize: '1.25rem',
-          lineHeight: '1.75rem',
-          fontWeight: '400',
+          fontSize: `${SCALE_PX * 1.25}px`, // Desktop: calc(var(--font-scale-base) * 1.25)
+          lineHeight: 1.625,
+          fontWeight: 400,
           letterSpacing: '0',
         };
       case 'body-base':
         return {
-          fontSize: '1.125rem',
-          lineHeight: '1.75rem',
-          fontWeight: '400',
+          fontSize: `${SCALE_PX * 1.125}px`, // Desktop: calc(var(--font-scale-base) * 1.125)
+          lineHeight: 1.625,
+          fontWeight: 400,
           letterSpacing: '0',
         };
       case 'body-sm':
         return {
-          fontSize: '0.9375rem',
-          lineHeight: '1.25rem',
-          fontWeight: '400',
-          letterSpacing: '0em',
+          fontSize: `${SCALE_PX * 0.9375}px`, // Desktop: calc(var(--font-scale-base) * 0.9375)
+          lineHeight: 1.5,
+          fontWeight: 400,
+          letterSpacing: '0',
         };
       case 'body-xs':
         return {
-          fontSize: '0.8125rem',
-          lineHeight: '1rem',
-          fontWeight: '400',
-          letterSpacing: '0em',
+          fontSize: `${SCALE_PX * 0.8125}px`, // Desktop: calc(var(--font-scale-base) * 0.8125)
+          lineHeight: 1.5,
+          fontWeight: 400,
+          letterSpacing: '0',
         };
       default:
         return {};
