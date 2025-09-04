@@ -54,7 +54,7 @@ const CollabCard = ({
                 />
               ) : (
                 <div className='w-full h-full flex items-center justify-center'>
-                  <FaUser className='text-white text-4xl' />
+                  <FaUser className='text-white text-body-4xl' />
                 </div>
               )}
             </div>

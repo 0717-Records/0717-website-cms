@@ -200,7 +200,7 @@ const ImageGalleryModal = ({
                   className='cursor-pointer flex items-center justify-center w-8 md:w-12 h-8 md:h-12 bg-black/50 hover:bg-black/90 rounded-full transition-colors group'
                   aria-label={`Previous image (${currentIndex} of ${totalImages})`}
                   title='Previous image (Left arrow key)'>
-                  <FaChevronLeft className='text-white text-lg md:text-xl' />
+                  <FaChevronLeft className='text-white text-body-lg md:text-body-xl' />
                 </button>
               </div>
             )}
@@ -211,7 +211,7 @@ const ImageGalleryModal = ({
               style={{ maxWidth: '66.666667%' }}>
               {loadingImages.has(currentIndex) && (
                 <div className='absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg z-10'>
-                  <FaSpinner className='text-gray-400 text-2xl animate-spin' />
+                  <FaSpinner className='text-gray-400 text-body-2xl animate-spin' />
                 </div>
               )}
               <div className='h-full max-w-full'>
@@ -237,7 +237,7 @@ const ImageGalleryModal = ({
                   className='cursor-pointer flex items-center justify-center w-8 md:w-12 h-8 md:h-12 bg-black/50 hover:bg-black/90 rounded-full transition-colors group'
                   aria-label={`Next image (${currentIndex + 2} of ${totalImages})`}
                   title='Next image (Right arrow key)'>
-                  <FaChevronRight className='text-white text-lg md:text-xl' />
+                  <FaChevronRight className='text-white text-body-lg md:text-body-xl' />
                 </button>
               </div>
             )}
@@ -291,7 +291,7 @@ const ImageGalleryModal = ({
                         title={`Image ${index + 1}${imageAlt ? `: ${imageAlt}` : ''}`}>
                         {loadingImages.has(index) && (
                           <div className='absolute inset-0 flex items-center justify-center bg-gray-100 z-10'>
-                            <FaSpinner className='text-gray-400 text-sm animate-spin' />
+                            <FaSpinner className='text-gray-400 text-body-sm animate-spin' />
                           </div>
                         )}
                         <NextImage

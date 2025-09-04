@@ -46,7 +46,7 @@ const FavouriteModal: React.FC<FavouriteModalProps> = ({ isModalOpen, closeModal
                 />
               ) : (
                 <div className='w-full h-full flex items-center justify-center'>
-                  <HeartIcon className='text-white text-4xl' />
+                  <HeartIcon className='text-white text-body-4xl' />
                 </div>
               )}
             </div>

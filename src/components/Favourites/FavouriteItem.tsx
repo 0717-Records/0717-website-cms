@@ -45,7 +45,7 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
               />
             ) : (
               <div className='w-full h-full flex items-center justify-center'>
-                <HeartIcon className='text-white text-3xl md:text-4xl' />
+                <HeartIcon className='text-white text-body-3xl md:text-body-4xl' />
               </div>
             )}
           </div>

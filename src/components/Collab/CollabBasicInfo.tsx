@@ -44,7 +44,7 @@ export default function CollabBasicInfo({
             />
           ) : (
             <div className='w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-secondary to-brand-primary'>
-              <FaUser className='text-white text-8xl' />
+              <FaUser className='text-white text-body-8xl' />
             </div>
           )}
         </div>
@@ -58,7 +58,7 @@ export default function CollabBasicInfo({
           <div>
             <dt className='text-body-base font-medium text-gray-500'>Genre</dt>
             <dd className='text-body-lg text-gray-900 flex justify-center items-center space-x-3'>
-              <FaMusic className='text-brand-secondary text-lg flex-shrink-0' />
+              <FaMusic className='text-brand-secondary text-body-lg flex-shrink-0' />
               <span>{genre}</span>
             </dd>
           </div>
@@ -67,7 +67,7 @@ export default function CollabBasicInfo({
           <div>
             <dt className='text-body-base font-medium text-gray-500'>Location</dt>
             <dd className='text-body-lg text-gray-900 flex justify-center items-center space-x-3'>
-              <FaMapMarkerAlt className='text-brand-secondary text-lg flex-shrink-0' />
+              <FaMapMarkerAlt className='text-brand-secondary text-body-lg flex-shrink-0' />
               <span>{location}</span>
             </dd>
           </div>

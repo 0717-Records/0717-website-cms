@@ -61,7 +61,7 @@ const Quote = ({ text, attribution, textAlign = 'inherit', className = '', inher
           className={`
             absolute
             -top-2 md:-top-2
-            text-8xl md:text-9xl
+            text-body-8xl md:text-body-9xl
             font-bold
             text-brand-primary/40
             leading-none
@@ -83,7 +83,7 @@ const Quote = ({ text, attribution, textAlign = 'inherit', className = '', inher
             absolute
             -bottom-4 md:-bottom-6
             right-2 md:right-4
-            text-8xl md:text-9xl
+            text-body-8xl md:text-body-9xl
             font-bold
             text-brand-primary/40 
             leading-none
