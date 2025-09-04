@@ -2,10 +2,7 @@ import React from 'react';
 import { PortableText, stegaClean } from 'next-sanity';
 import { components } from '@/sanity/portableTextComponents';
 import type { RichTextBlock } from '@/types/blocks';
-import {
-  getTextAlignClass,
-  type TextAlignment,
-} from '../../utils/sectionHelpers';
+import { getTextAlignClass, type TextAlignment } from '../../utils/sectionHelpers';
 import { resolveAlignment } from './shared/alignmentUtils';
 
 type RichTextProps = RichTextBlock & {
@@ -18,7 +15,6 @@ const RichText = ({
   isCallout = false,
   inheritAlignment,
 }: RichTextProps) => {
-
   // Clean the values to remove Sanity's stega encoding
   const cleanTextAlign = stegaClean(textAlign) || 'inherit';
   const cleanIsCallout = stegaClean(isCallout) || false;
@@ -55,7 +51,7 @@ const RichText = ({
 
   const proseContent = (
     <div
-      className={`prose prose-slate max-w-none ${getTextAlignClass(effectiveTextAlign)} ${getListStyleClass(effectiveTextAlign)}`}
+      className={`prose prose-slate max-w-none text-text-subtle ${getTextAlignClass(effectiveTextAlign)} ${getListStyleClass(effectiveTextAlign)}`}
       style={getCustomStyles(effectiveTextAlign)}>
       <PortableText value={content} components={components} />
     </div>
@@ -64,7 +60,7 @@ const RichText = ({
   // If it's a callout, wrap in Card-style container
   if (cleanIsCallout) {
     return (
-      <div className='bg-card-gradient border border-gray-200 rounded-lg p-6 md:p-10 max-w-none'>
+      <div className='bg-card-gradient border border-gray-200 rounded-lg p-6 md:p-10 max-w-none text-text-subtle'>
         {proseContent}
       </div>
     );

@@ -85,7 +85,7 @@ const CollabCard = ({
           {/* Description */}
           {displayDescription && (
             <div className='text-center'>
-              <p className='text-body-base line-clamp-3'>{displayDescription}</p>
+              <p className='text-body-base text-text-subtle line-clamp-3'>{displayDescription}</p>
             </div>
           )}
         </div>

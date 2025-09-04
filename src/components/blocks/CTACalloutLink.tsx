@@ -29,7 +29,7 @@ const CTACalloutLinkComponent = ({
 
   // Use computed href from enhanced GROQ query if available, otherwise fallback to legacy logic
   let href = '';
-  
+
   if (computedHref) {
     href = stegaClean(computedHref);
   } else {
@@ -67,7 +67,7 @@ const CTACalloutLinkComponent = ({
   if (image?.asset) {
     const imageUrl = urlFor(image.asset).width(96).height(96).url();
     const altText = stegaClean(image.alt) || '';
-    
+
     processedImage = {
       src: imageUrl,
       alt: altText,

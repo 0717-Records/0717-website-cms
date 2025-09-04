@@ -69,7 +69,7 @@ const FavouriteModal: React.FC<FavouriteModalProps> = ({ isModalOpen, closeModal
           {/* Description */}
           {favourite.description && (
             <div id='favourite-modal-description' className='text-center'>
-              <p className='text-body-base text-gray-700 leading-relaxed'>
+              <p className='text-body-base text-text-subtle leading-relaxed'>
                 {favourite.description}
               </p>
             </div>

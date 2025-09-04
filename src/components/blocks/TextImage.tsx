@@ -11,11 +11,12 @@ import ImageModal from '../Modals/ImageModal';
 import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
 import ImgPlaceHolder from '../UI/ImgPlaceHolder';
 
-interface TextImageProps extends TextImageBlock, Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
+interface TextImageProps
+  extends TextImageBlock,
+    Omit<SanityLiveEditingProps, 'titlePath' | 'subtitlePath'> {
   className?: string;
   pathPrefix?: string;
 }
-
 
 const TextImage: React.FC<TextImageProps> = ({
   content,
@@ -56,11 +57,10 @@ const TextImage: React.FC<TextImageProps> = ({
     ? createSanityDataAttribute(documentId, documentType, `${pathPrefix}.image`)
     : {};
 
-
   // Layout classes based on the selected layout
   const getLayoutClasses = () => {
     const baseClasses = 'flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12';
-    
+
     if (cleanLayout === 'text-right') {
       // Image on left, text on right on desktop
       // Image on top, text on bottom on mobile
@@ -87,7 +87,7 @@ const TextImage: React.FC<TextImageProps> = ({
       <div className={`${layoutClasses.container} ${className}`.trim()}>
         {/* Text Content */}
         <div className={`w-full lg:w-1/2 ${layoutClasses.textOrder}`} {...contentDataAttribute}>
-          <div className="prose prose-slate max-w-none">
+          <div className='prose prose-slate max-w-none text-text-subtle'>
             <PortableText value={content} components={components} />
           </div>
         </div>
@@ -96,7 +96,7 @@ const TextImage: React.FC<TextImageProps> = ({
         <div className={`w-full lg:w-1/2 ${layoutClasses.imageOrder}`} {...imageDataAttribute}>
           {hasImage ? (
             <div
-              className="relative cursor-pointer"
+              className='relative cursor-pointer'
               onClick={handleImageClick}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -105,15 +105,14 @@ const TextImage: React.FC<TextImageProps> = ({
                 }
               }}
               tabIndex={0}
-              role="button"
-              aria-label={`View full-screen image: ${imageAlt}`}
-            >
+              role='button'
+              aria-label={`View full-screen image: ${imageAlt}`}>
               <NextImage
                 src={imageUrl!}
                 alt={imageAlt}
                 width={600}
                 height={400}
-                className="w-full h-auto rounded-lg"
+                className='w-full h-auto rounded-lg'
                 style={{ objectFit: 'cover' }}
               />
             </div>
