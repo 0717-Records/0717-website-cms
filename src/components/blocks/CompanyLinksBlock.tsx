@@ -77,7 +77,7 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
               <div className='w-16 h-16 md:w-18 md:h-18 rounded-full bg-brand-gradient flex items-center justify-center'>
                 <SocialIcon
                   platform={link.platform}
-                  className='text-black text-body-3xl md:text-body-4xl transition-transform duration-200 group-hover:scale-110'
+                  className='text-black text-body-3xl transition-transform duration-200 group-hover:scale-110'
                 />
               </div>
 

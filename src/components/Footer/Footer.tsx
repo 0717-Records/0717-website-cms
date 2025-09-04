@@ -6,7 +6,11 @@ import { SocialIcon, type SocialPlatform, getPlatformLabel } from '@/utils/socia
 import { cleanPlatform } from '@/utils/cleanPlatform';
 import CTAEmailButton from '@/components/UI/CTAEmailButton';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
-import type { FOOTER_QUERYResult, SITE_SETTINGS_QUERYResult, COMPANY_LINKS_QUERYResult } from '@/sanity/types';
+import type {
+  FOOTER_QUERYResult,
+  SITE_SETTINGS_QUERYResult,
+  COMPANY_LINKS_QUERYResult,
+} from '@/sanity/types';
 
 interface FooterMessage {
   _key: string;
@@ -103,9 +107,7 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
         <div className='flex flex-col justify-start items-center md:items-end col-start-2 row-start-1 mt-10 md:mt-0'>
           {/* CTA Email Button */}
           {siteSettingsData?.companyEmail && (
-            <CTAEmailButton
-              className='text-body-base font-medium'
-            />
+            <CTAEmailButton className='text-body-base font-medium' />
           )}
 
           {/* Company Links */}
@@ -130,7 +132,7 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
                   <div className='w-16 h-16 md:w-18 md:h-18 rounded-full bg-brand-gradient flex items-center justify-center'>
                     <SocialIcon
                       platform={link.platform}
-                      className='text-black text-body-3xl md:text-body-4xl transition-transform duration-200 group-hover:scale-110'
+                      className='text-black text-body-3xl transition-transform duration-200 group-hover:scale-110'
                     />
                   </div>
                 </Link>
