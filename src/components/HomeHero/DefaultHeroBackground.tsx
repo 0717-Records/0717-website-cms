@@ -7,7 +7,10 @@ const DefaultHeroBackground = () => {
   const [opacity, setOpacity] = useState(1);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let animationFrameId: number | null = null;
+    let isScrolling = false;
+
+    const calculateOpacity = () => {
       if (!backgroundRef.current) return;
 
       const heroSection = backgroundRef.current.closest('section');
@@ -31,12 +34,25 @@ const DefaultHeroBackground = () => {
       }
 
       setOpacity(Math.max(0, Math.min(1, newOpacity)));
+      isScrolling = false;
+    };
+
+    const handleScroll = () => {
+      if (!isScrolling) {
+        isScrolling = true;
+        animationFrameId = requestAnimationFrame(calculateOpacity);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial call
+    calculateOpacity(); // Initial call
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
   }, []);
 
   return (
