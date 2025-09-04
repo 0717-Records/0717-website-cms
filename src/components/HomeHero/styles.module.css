@@ -10,7 +10,7 @@
   min-height: calc(100vh - 5rem);
   height: calc(100vh - 5rem);
 
-  @media (max-width: 640px) {
+  @media (max-width: 767px) {
     /* Mobile: Full viewport minus header height + use svh for browser toolbars */
     min-height: calc(100svh - 4.5rem);
     height: calc(100svh - 4.5rem);
