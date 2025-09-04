@@ -1,8 +1,49 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useRef, useState } from 'react';
 
 const DefaultHeroBackground = () => {
+  const backgroundRef = useRef<HTMLDivElement>(null);
+  const [opacity, setOpacity] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!backgroundRef.current) return;
+
+      const heroSection = backgroundRef.current.closest('section');
+      if (!heroSection) return;
+
+      const heroRect = heroSection.getBoundingClientRect();
+      const heroHeight = heroRect.height;
+      const heroTop = heroRect.top;
+
+      // Calculate opacity based on scroll position
+      let newOpacity = 1;
+
+      if (heroTop <= 0) {
+        // Scrolling down - hero top has passed viewport top, start fading immediately
+        const fadeRange = heroHeight; // Fade over the entire hero height
+        const fadeProgress = Math.abs(heroTop) / fadeRange;
+        newOpacity = Math.max(0, 1 - fadeProgress);
+      } else {
+        // Hero is fully visible - opacity should be 1
+        newOpacity = 1;
+      }
+
+      setOpacity(Math.max(0, Math.min(1, newOpacity)));
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className='absolute inset-0 overflow-hidden'>
+    <div
+      ref={backgroundRef}
+      className='fixed inset-0 overflow-hidden transition-opacity duration-100 ease-linear'
+      style={{ opacity }}>
       {/* Transparent background - allows body color to show through */}
 
       {/* Key decorative circles - minimal and strategic */}
