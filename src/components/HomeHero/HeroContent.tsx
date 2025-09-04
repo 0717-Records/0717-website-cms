@@ -1,11 +1,14 @@
 import React from 'react';
-import Image from 'next/image';
 import { stegaClean } from '@sanity/client/stega';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
-import EmbeddedCTAButton from '../blocks/EmbeddedCTAButton';
 import { createSanityDataAttribute } from '../../utils/sectionHelpers';
-import Heading from '../Typography/Heading/Heading';
 import FeaturedItems from './FeaturedItems';
+import HeroTitle from './HeroTitle';
+import HeroSubtitle from './HeroSubtitle';
+import HeroLogo from './HeroLogo';
+import HeroCTA from './HeroCTA';
+import { getTextColorClasses } from './heroUtils';
+import styles from './styles.module.css';
 
 interface HeroContentProps {
   heroTextColor: NonNullable<HOME_PAGE_QUERYResult>['heroTextColor'];
@@ -21,38 +24,106 @@ interface HeroContentProps {
   documentType: string;
 }
 
-const HeroContent = ({
-  heroTextColor,
-  showHeroLogo,
-  heroTitle,
-  heroSubtitle,
-  enableHeroCallToAction,
-  heroCallToAction,
-  heroContentPosition,
-  enableFeaturedItems,
-  featuredImages,
-  documentId,
-  documentType,
-}: HeroContentProps) => {
-  // Determine text color classes
-  const getTextColorClasses = () => {
-    const textColor = stegaClean(heroTextColor) || 'black';
-    return textColor === 'white' ? 'text-white' : 'text-black';
+const HeroContent = (props: HeroContentProps) => {
+  const { enableFeaturedItems } = props;
+
+  if (enableFeaturedItems) {
+    return <FeaturedItemsLayout {...props} />;
+  }
+
+  return <RegularPositionedLayout {...props} />;
+};
+
+// Featured items layout: 3-section vertical layout
+const FeaturedItemsLayout = (props: HeroContentProps) => {
+  const {
+    heroTextColor,
+    heroTitle,
+    heroSubtitle,
+    enableFeaturedItems,
+    showHeroLogo,
+    enableHeroCallToAction,
+    heroCallToAction,
+    featuredImages,
+    documentId,
+    documentType,
+  } = props;
+
+  const componentProps = {
+    heroTitle,
+    heroSubtitle,
+    heroTextColor,
+    enableFeaturedItems,
+    showHeroLogo,
+    enableHeroCallToAction,
+    heroCallToAction,
+    documentId,
+    documentType,
+  };
+
+  return (
+    <div className={`relative ${styles['hero-height']} z-[25] flex flex-col justify-between py-8`}>
+      {/* Top Section: Logo and Title */}
+      <div
+        className={`flex flex-col items-center text-center px-4 ${getTextColorClasses(heroTextColor)}`}>
+        <HeroLogo {...componentProps} />
+        <HeroTitle {...componentProps} />
+      </div>
+
+      {/* Center Section: Featured Images */}
+      <div
+        className='flex-1 flex border border-blue-500'
+        {...createSanityDataAttribute(documentId, documentType, 'featuredImages')}>
+        <FeaturedItems featuredImages={featuredImages} />
+      </div>
+
+      {/* Bottom Section: Subtitle and CTA */}
+      <div
+        className={`flex flex-col items-center text-center px-4 space-y-4 ${getTextColorClasses(heroTextColor)}`}>
+        <HeroSubtitle {...componentProps} />
+        <HeroCTA {...componentProps} />
+      </div>
+    </div>
+  );
+};
+
+// Regular positioned layout: absolute positioning with content position settings
+const RegularPositionedLayout = (props: HeroContentProps) => {
+  const {
+    heroContentPosition,
+    heroTextColor,
+    heroTitle,
+    heroSubtitle,
+    enableFeaturedItems,
+    showHeroLogo,
+    enableHeroCallToAction,
+    heroCallToAction,
+    documentId,
+    documentType,
+  } = props;
+
+  const componentProps = {
+    heroTitle,
+    heroSubtitle,
+    heroTextColor,
+    enableFeaturedItems,
+    showHeroLogo,
+    enableHeroCallToAction,
+    heroCallToAction,
+    documentId,
+    documentType,
   };
 
   // Map content position to Tailwind classes
   const getPositionClasses = (position: string) => {
-    // Clean the position string to remove any invisible Unicode characters and stega
     const cleanPosition = stegaClean(
       position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
         'center-center'
     );
 
-    // Base mobile classes - always centered with consistent spacing
     const mobileBase = 'left-1/2 transform -translate-x-1/2 w-[85%] text-center px-4 py-4';
     const mobileCenterClasses = 'left-1/2 transform -translate-x-1/2 w-[85%] text-center';
 
-    // Desktop positioning variants
     const desktopVariants = {
       left: 'md:left-10 lg:left-20 md:right-auto md:text-left md:transform-none md:translate-x-0 md:w-auto md:px-0',
       center:
@@ -76,22 +147,16 @@ const HeroContent = ({
     return positionMap[cleanPosition] || positionMap['center-center'];
   };
 
-  // Get logo positioning and sizing based on content position and featured items
-  const getLogoConfig = (position: string) => {
+  const getLogoAlignment = (position: string) => {
     const cleanPosition = stegaClean(
       position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
         'center-center'
     );
     const [vertical, horizontal] = cleanPosition.split('-');
-
     const isCenter = vertical === 'center';
-    const isFeaturedItemsEnabled = enableFeaturedItems;
 
     return {
-      order: 1, // Logo always above content
-      size: isFeaturedItemsEnabled ? 'w-24 md:w-28 lg:w-32' : 'w-48 md:w-56 lg:w-64', // 50% smaller when featured items enabled
       spacing: isCenter ? 'gap-4 md:gap-6' : 'gap-6 md:gap-8',
-      // Mobile-first alignment: always center on mobile, respect desktop positioning
       alignment:
         horizontal === 'left'
           ? 'items-center md:items-start'
@@ -101,144 +166,17 @@ const HeroContent = ({
     };
   };
 
-  const renderCTA = () => {
-    // First check if CTA is enabled
-    if (!enableHeroCallToAction) return null;
+  const logoConfig = getLogoAlignment(heroContentPosition || 'center-center');
 
-    // If CTA is enabled but no heroCallToAction object, return null
-    if (!heroCallToAction) return null;
-
-    // Use EmbeddedCTAButton component
-    return <EmbeddedCTAButton {...heroCallToAction} />;
-  };
-
-  const shouldShowLogo = showHeroLogo !== false; // Show by default if not specified
-  const logoConfig = getLogoConfig(heroContentPosition || 'center-center');
-
-  // Featured items layout: logo/title top, images center, subtitle/CTA bottom
-  if (enableFeaturedItems) {
-    return (
-      <div className="absolute inset-0 z-[25] flex flex-col justify-between h-full">
-        {/* Top Section: Logo and Title */}
-        <div className={`flex flex-col items-center text-center pt-8 px-4 ${getTextColorClasses()}`}>
-          {shouldShowLogo && (
-            <div
-              className="flex justify-center mb-4"
-              {...createSanityDataAttribute(documentId, documentType, 'showHeroLogo')}>
-              <Image
-                src={
-                  stegaClean(heroTextColor) === 'white'
-                    ? '/images/logo-white-on-transparent.png'
-                    : '/images/logo-black-on-transparent.png'
-                }
-                alt="07:17 Records Logo"
-                width={500}
-                height={500}
-                className={`${logoConfig.size} h-auto object-contain`}
-              />
-            </div>
-          )}
-          {heroTitle && (
-            <Heading
-              level="h1"
-              className={`text-h3 sm:text-h1 font-bold ${getTextColorClasses()}`}
-              {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
-              {stegaClean(heroTitle)}
-            </Heading>
-          )}
-        </div>
-
-        {/* Center Section: Featured Images */}
-        <div 
-          className="flex-1 flex items-center justify-center px-4"
-          {...createSanityDataAttribute(documentId, documentType, 'featuredImages')}>
-          <FeaturedItems featuredImages={featuredImages} />
-        </div>
-
-        {/* Bottom Section: Subtitle and CTA */}
-        <div className={`flex flex-col items-center text-center pb-8 px-4 space-y-4 ${getTextColorClasses()}`}>
-          {heroSubtitle && (
-            <div
-              className={`text-body-lg sm:text-body-2xl ${getTextColorClasses()}`}
-              style={{ whiteSpace: 'pre-line' }}
-              {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
-              {typeof heroSubtitle === 'string'
-                ? stegaClean(heroSubtitle)
-                : 'Please update subtitle in Sanity Studio'}
-            </div>
-          )}
-          <div {...createSanityDataAttribute(documentId, documentType, 'heroCallToAction')}>
-            {renderCTA()}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Regular positioning layout (existing behavior)
-  const LogoComponent = shouldShowLogo ? (
-    <div
-      className="flex justify-center"
-      {...createSanityDataAttribute(documentId, documentType, 'showHeroLogo')}>
-      <Image
-        src={
-          stegaClean(heroTextColor) === 'white'
-            ? '/images/logo-white-on-transparent.png'
-            : '/images/logo-black-on-transparent.png'
-        }
-        alt="07:17 Records Logo"
-        width={500}
-        height={500}
-        className={`${logoConfig.size} h-auto object-contain`}
-      />
-    </div>
-  ) : null;
-
-  const ContentComponent = (
-    <div className="space-y-4">
-      {heroTitle && (
-        <Heading
-          level="h1"
-          className={`text-h3 sm:text-h1 font-bold ${getTextColorClasses()}`}
-          {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
-          {stegaClean(heroTitle)}
-        </Heading>
-      )}
-      {heroSubtitle && (
-        <div
-          className={`text-body-lg sm:text-body-2xl ${getTextColorClasses()}`}
-          style={{ whiteSpace: 'pre-line' }}
-          {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
-          {typeof heroSubtitle === 'string'
-            ? stegaClean(heroSubtitle)
-            : 'Please update subtitle in Sanity Studio'}
-        </div>
-      )}
-      <div {...createSanityDataAttribute(documentId, documentType, 'heroCallToAction')}>
-        {renderCTA()}
-      </div>
-    </div>
-  );
-
-  if (!shouldShowLogo) {
-    // No logo - just show content with positioning
-    return (
-      <div
-        className={`absolute z-[25] ${getTextColorClasses()} ${getPositionClasses(heroContentPosition || 'center-center')}`}
-        {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
-        {ContentComponent}
-      </div>
-    );
-  }
-
-  // Show logo above content with positioning
   return (
     <div
-      className={`absolute z-[25] ${getTextColorClasses()} ${getPositionClasses(heroContentPosition || 'center-center')}`}
+      className={`absolute z-[25] ${getTextColorClasses(heroTextColor)} ${getPositionClasses(heroContentPosition || 'center-center')}`}
       {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
-      <div className={`flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}`}>
-        {LogoComponent}
-        {ContentComponent}
+      <div className={`flex flex-col ${logoConfig.alignment} ${logoConfig.spacing} space-y-4`}>
+        <HeroLogo {...componentProps} />
+        <HeroTitle {...componentProps} />
+        <HeroSubtitle {...componentProps} />
+        <HeroCTA {...componentProps} />
       </div>
     </div>
   );

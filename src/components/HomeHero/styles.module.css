@@ -6,13 +6,11 @@
 */
 
 .hero-height {
-  /* Desktop: Full viewport minus header height */
+  /* Desktop: Minimum height for viewport minus header, can grow with content */
   min-height: calc(100vh - 5rem);
-  height: calc(100vh - 5rem);
 
   @media (max-width: 767px) {
-    /* Mobile: Full viewport minus header height + use svh for browser toolbars */
+    /* Mobile: Minimum height for viewport minus header, can grow with content */
     min-height: calc(100svh - 4.5rem);
-    height: calc(100svh - 4.5rem);
   }
 }
