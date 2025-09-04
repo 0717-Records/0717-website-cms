@@ -35,6 +35,8 @@ const Page = async () => {
         enableHeroCallToAction={page.enableHeroCallToAction}
         heroCallToAction={page.heroCallToAction}
         heroContentPosition={page.heroContentPosition}
+        enableFeaturedItems={page.enableFeaturedItems}
+        featuredImages={page.featuredImages}
         documentId={page._id}
         documentType={page._type}
       />

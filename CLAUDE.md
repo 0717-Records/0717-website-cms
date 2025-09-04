@@ -76,6 +76,39 @@ When accessing potentially undefined fields from removed schema properties:
 - Consider making the field optional (`?:`) in component interfaces
 - Add explanatory comments about field availability
 
+## Sanity Image Array Handling
+**CRITICAL: Always filter null/undefined images when working with Sanity image arrays.**
+
+### Common Error Prevention
+When working with Sanity image arrays (like `featuredImages`, `gallery`, etc.), always filter out invalid entries to prevent `Cannot read properties of null (reading '_ref')` errors:
+
+```typescript
+// ❌ Wrong - Will crash if array contains null/undefined entries
+{featuredImages.map((image, index) => (
+  <Image src={urlFor(image).url()} ... />
+))}
+
+// ✅ Correct - Filter out invalid entries first
+const validImages = featuredImages?.filter((image) => image && image.asset && image.asset._ref) || [];
+
+{validImages.map((image, index) => (
+  <Image src={urlFor(image).url()} ... />
+))}
+```
+
+### Why This Happens
+- Sanity Studio allows adding array items that aren't fully saved
+- Draft content can contain null/undefined entries
+- Image uploads can fail leaving empty references
+- Always validate `image.asset._ref` exists before using `urlFor()`
+
+### Standard Pattern
+Apply this pattern to ALL Sanity image array components:
+1. Check if array exists and has length
+2. Filter for valid images with proper asset references  
+3. Check filtered array length before rendering
+4. Use filtered array for mapping
+
 ## General Development Guidelines
 - Follow existing code patterns and conventions
 - Ensure proper TypeScript types are maintained
