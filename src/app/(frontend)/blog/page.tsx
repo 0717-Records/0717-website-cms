@@ -3,7 +3,6 @@ import { getAllBlogPosts, getBlogIndexPage } from '@/actions/blog';
 import PageHero from '@/components/Page/PageHero';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
-import { pageSubtitleBottomSpacing } from '@/utils/spacingConstants';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
 
 export default async function BlogPage() {

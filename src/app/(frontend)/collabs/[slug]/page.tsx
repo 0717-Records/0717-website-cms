@@ -8,8 +8,6 @@ import CollabLinks from '@/components/Collab/CollabLinks';
 import CollabSideContent from '@/components/Collab/CollabSideContent';
 import PageHero from '@/components/Page/PageHero';
 import Container from '@/components/Layout/Container';
-import { pageSubtitleBottomSpacing } from '@/utils/spacingConstants';
-import Page from '../../page';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
 
 interface CollabSlug {
