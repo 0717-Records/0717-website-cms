@@ -102,9 +102,7 @@ const Hero = ({
   return (
     <section
       id='home'
-      className={`relative ${styles['hero-height']} flex flex-col justify-center ${heroBottomSpacing} ${
-        currentHeroStyle === 'default' ? 'bg-white' : 'bg-black'
-      }`}>
+      className={`relative ${styles['hero-height']} flex flex-col justify-center ${heroBottomSpacing}`}>
       {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
 
       {/* Background Images Hero Style */}
