@@ -47,6 +47,9 @@ export const eventType = defineType({
         'Optional short description. Can be used to describe the event or list artists (e.g., "Star Control, Brother Sister, JJ Mist" or "An eclectic festival of the finest music and art from the underground!")',
       validation: (Rule) =>
         Rule.max(200).warning('Keep description concise - under 200 characters works best'),
+      // NOTE: Hidden from editor as field is not currently used in frontend rendering
+      // Keeping field in schema for potential future use
+      hidden: true,
     }),
     defineField({
       name: 'venue',

@@ -24,7 +24,7 @@ interface EventCardProps {
 const EventCard = (props: EventCardProps) => {
   const {
     title,
-    shortDescription,
+    // shortDescription,
     venue,
     location,
     image,
@@ -121,7 +121,7 @@ const EventCard = (props: EventCardProps) => {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className='px-1 py-0.5 md:px-2 md:py-1 bg-gray-100 text-text-subtle text-body-sm rounded'>
+                className='px-1 py-0.5 md:px-2 md:py-1 bg-gray-100 text-text-subtle text-body-xs rounded'>
                 {tag}
               </span>
             ))}

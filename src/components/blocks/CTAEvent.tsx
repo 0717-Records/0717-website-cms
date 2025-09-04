@@ -57,7 +57,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
 
   const {
     title,
-    shortDescription,
+    // shortDescription,
     venue,
     location,
     image,
