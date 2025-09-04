@@ -129,7 +129,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
       {/* Event Details - Mobile layout (2/3 width) */}
       <div className='p-3 flex flex-col items-start text-left flex-grow w-2/3'>
         {/* Date / Time */}
-        <div className='text-brand-secondary font-semibold mb-2 text-body-base md:text-body-lg'>
+        <div className='text-brand-secondary mb-2'>
           <span>{dateDisplay}</span>
           {timeDisplay && (
             <>
@@ -141,7 +141,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
 
         {/* Title */}
         <p
-          className={`text-body-lg md:text-body-2xl font-bold md:font-bold mb-2 text-gray-800 transition-all duration-300 leading-tight ${
+          className={`text-h6 font-medium mb-2 text-gray-800 transition-all duration-300 leading-tight ${
             hasLink ? 'group-hover:underline' : ''
           }`}>
           {title}
@@ -150,16 +150,16 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
         {/* Short Description */}
         {shortDescription && (
           <div className='text-text-subtle mb-2'>
-            <div className='text-body-sm md:text-body-base leading-snug'>{shortDescription}</div>
+            <div className='leading-snug'>{shortDescription}</div>
           </div>
         )}
 
         {/* Venue and Location */}
-        <div className='flex items-center text-text-subtle text-body-sm md:text-body-base mb-2'>
+        <div className='flex items-center text-text-subtle mb-2'>
           <span className='mr-1' aria-label='Location' title='Location'>
             📍
           </span>
-          <span className='font-medium'>{venue ? `${venue}, ${location}` : location}</span>
+          <span>{venue ? `${venue}, ${location}` : location}</span>
         </div>
 
         {/* Tags */}
@@ -168,7 +168,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className='px-1 py-0.5 bg-gray-100 text-text-subtle text-body-sm md:text-body-base rounded'>
+                className='px-1 py-0.5 bg-gray-100 text-text-subtle text-body-sm rounded'>
                 {tag}
               </span>
             ))}

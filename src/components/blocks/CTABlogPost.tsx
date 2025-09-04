@@ -95,7 +95,7 @@ const CTABlogPost = ({ blogPost, className = '' }: CTABlogPostProps) => {
       {/* Blog Post Details - Mobile: below image, Desktop: right side */}
       <div className='p-4 md:p-6 flex flex-col items-start'>
         {/* Title */}
-        <p className='text-body-xl font-bold mb-3 text-gray-800 transition-all duration-300 leading-tight group-hover:underline line-clamp-2'>
+        <p className='text-h6 font-medium mb-3 text-gray-800 transition-all duration-300 leading-tight group-hover:underline line-clamp-2'>
           {title}
         </p>
 
@@ -118,9 +118,7 @@ const CTABlogPost = ({ blogPost, className = '' }: CTABlogPostProps) => {
 
         {/* Subtitle */}
         {subtitle && (
-          <div className='text-text-subtle text-body leading-snug line-clamp-3 mb-4'>
-            {subtitle}
-          </div>
+          <div className='text-text-subtle leading-snug line-clamp-3 mb-4'>{subtitle}</div>
         )}
 
         {/* Read More Link */}

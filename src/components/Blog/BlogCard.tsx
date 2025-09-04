@@ -69,23 +69,23 @@ const BlogCard = (props: BlogCardProps) => {
         </div>
 
         {/* Blog Post Details */}
-        <div className='p-4 flex flex-col flex-grow text-left'>
+        <div className='p-6 flex flex-col flex-grow text-left'>
           {/* Title */}
-          <h3 className='text-body-lg font-bold mb-3 text-gray-800 transition-all duration-300 leading-tight group-hover:underline line-clamp-2'>
+          <h2 className='text-body-lg font-medium mb-3 text-gray-800 transition-all duration-300 leading-tight group-hover:underline line-clamp-2'>
             {title}
-          </h3>
+          </h2>
 
-          <div className='flex justify-between'>
+          <div className='flex justify-between mb-4'>
             {/* Author */}
             {author && (
-              <div className='flex items-center text-text-subtle text-body-sm mb-2'>
+              <div className='flex items-center text-text-subtle text-body-sm'>
                 <FaUser className='mr-2 text-brand-secondary' />
                 <span>{author}</span>
               </div>
             )}
 
             {/* Date */}
-            <div className='flex items-center text-text-subtle text-body-sm mb-3'>
+            <div className='flex items-center text-text-subtle text-body-sm'>
               <FaCalendar className='mr-2 text-brand-secondary' />
               <span>{formattedDate}</span>
             </div>
@@ -93,7 +93,7 @@ const BlogCard = (props: BlogCardProps) => {
 
           {/* Subtitle */}
           {subtitle && (
-            <div className='text-text-subtle text-body-sm leading-snug line-clamp-3 flex-grow'>
+            <div className='text-text-subtle text-body-base leading-snug line-clamp-3 flex-grow'>
               {subtitle}
             </div>
           )}

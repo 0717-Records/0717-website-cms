@@ -21,7 +21,6 @@ interface EventCardProps {
   isPast: boolean;
 }
 
-
 const EventCard = (props: EventCardProps) => {
   const {
     title,
@@ -38,11 +37,11 @@ const EventCard = (props: EventCardProps) => {
   } = props;
 
   const { dateDisplay, timeDisplay } = formatEventDate(startDate, endDate, timeDescription);
-  const eventLink = getEventLink({ 
-    link: props.link, 
-    isPast, 
-    pastEventLinkBehavior: props.pastEventLinkBehavior, 
-    pastEventLink: props.pastEventLink 
+  const eventLink = getEventLink({
+    link: props.link,
+    isPast,
+    pastEventLinkBehavior: props.pastEventLinkBehavior,
+    pastEventLink: props.pastEventLink,
   });
   const hasLink = Boolean(eventLink);
 
@@ -80,7 +79,7 @@ const EventCard = (props: EventCardProps) => {
       {/* Event Details */}
       <div className='p-3 md:p-4 flex flex-col items-start md:items-center text-left md:text-center flex-grow w-2/3 md:w-full'>
         {/* Date / Time */}
-        <div className='text-brand-secondary font-semibold mb-2 md:mb-1 text-body-sm md:text-body-base'>
+        <div className='text-brand-secondary mb-2 md:mb-1'>
           <span>{dateDisplay}</span>
           {timeDisplay && (
             <>
@@ -97,7 +96,7 @@ const EventCard = (props: EventCardProps) => {
 
         {/* Title */}
         <p
-          className={`text-body-base md:text-h5 font-bold mb-2 md:mb-3 text-gray-800 transition-all duration-300 leading-tight ${
+          className={`text-h6 font-medium mb-2 md:mb-3 text-gray-800 transition-all duration-300 leading-tight ${
             hasLink ? 'group-hover:underline' : ''
           }`}>
           {title}
@@ -106,14 +105,14 @@ const EventCard = (props: EventCardProps) => {
         {/* Short Description */}
         {shortDescription && (
           <div className=' text-text-subtle mb-2 md:mb-3'>
-            <div className='text-body-sm md:text-body-base leading-snug'>{shortDescription}</div>
+            <div className='leading-snug'>{shortDescription}</div>
           </div>
         )}
 
         {/* Venue and Location */}
-        <div className='flex items-center text-text-subtle text-body-sm md:text-body-base mb-2 md:mb-3'>
+        <div className='flex items-center text-text-subtle mb-2 md:mb-3'>
           <FaLocationDot className='mr-1 md:mr-2 text-brand-secondary' />
-          <span className='font-medium'>{venue ? `${venue}, ${location}` : location}</span>
+          <span>{venue ? `${venue}, ${location}` : location}</span>
         </div>
 
         {/* Tags */}
