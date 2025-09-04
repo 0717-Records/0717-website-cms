@@ -102,7 +102,7 @@ const Hero = ({
 
     return {
       order: 1, // Logo always above content
-      size: isCenter ? 'w-32 md:w-40 lg:w-48' : 'w-40 md:w-48 lg:w-56', // 100% bigger, smaller for center
+      size: isCenter ? 'w-40 md:w-48 lg:w-56' : 'w-48 md:w-56 lg:w-64', // 100% bigger, smaller for center
       spacing: isCenter ? 'gap-4 md:gap-6' : 'gap-6 md:gap-8', // Adjusted for bigger logo
       // Mobile-first alignment: always center on mobile, respect desktop positioning
       alignment:
@@ -185,14 +185,14 @@ const Hero = ({
               {heroTitle && (
                 <Heading
                   level='h1'
-                  className={`text-h4 sm:text-h2 font-bold ${getTextColorClasses()}`}
+                  className={`text-h3 sm:text-h1 font-bold ${getTextColorClasses()}`}
                   {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
                   {heroTitle}
                 </Heading>
               )}
               {heroSubtitle && (
                 <div
-                  className={`text-body-lg sm:text-body-xl ${getTextColorClasses()}`}
+                  className={`text-body-lg sm:text-body-2xl ${getTextColorClasses()}`}
                   style={{ whiteSpace: 'pre-line' }}
                   {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
                   {typeof heroSubtitle === 'string'
