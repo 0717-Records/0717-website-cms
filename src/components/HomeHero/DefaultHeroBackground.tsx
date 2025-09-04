@@ -6,29 +6,18 @@ const DefaultHeroBackground = () => {
       {/* Clean white background */}
       <div className="absolute inset-0 bg-white" />
       
-      {/* Decorative circles with brand colors - inspired by the design */}
-      {/* Large background circles */}
-      <div className="absolute top-1/4 left-0 w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-[#ffea00]/25 to-[#f4a300]/20 blur-xl transform -translate-x-1/2" />
-      <div className="absolute top-1/2 right-0 w-80 h-80 md:w-[28rem] md:h-[28rem] rounded-full bg-gradient-to-bl from-[#f4a300]/20 to-[#ffea00]/25 blur-2xl transform translate-x-1/3" />
-      <div className="absolute bottom-1/4 left-1/4 w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-[#ffea00]/30 to-[#f4a300]/25 blur-xl" />
+      {/* Key decorative circles - minimal and strategic */}
+      {/* Large left circle - primary accent */}
+      <div className="absolute top-1/3 -left-32 w-80 h-80 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] rounded-full bg-gradient-to-br from-[#ffea00]/20 to-[#f4a300]/15 blur-2xl" />
       
-      {/* Medium accent circles */}
-      <div className="absolute top-1/3 right-1/4 w-32 h-32 md:w-48 md:h-48 rounded-full bg-[#ffea00]/35 blur-lg" />
-      <div className="absolute bottom-1/3 left-1/6 w-28 h-28 md:w-40 md:h-40 rounded-full bg-[#f4a300]/30 blur-md" />
-      <div className="absolute top-2/3 right-1/3 w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-[#ffea00]/40 to-[#f4a300]/35 blur-md" />
+      {/* Large right circle - secondary accent */}
+      <div className="absolute bottom-1/4 -right-32 w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full bg-gradient-to-bl from-[#f4a300]/18 to-[#ffea00]/22 blur-2xl" />
       
-      {/* Small detail circles */}
-      <div className="absolute top-1/5 left-1/2 w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#f4a300]/45 blur-sm" />
-      <div className="absolute bottom-1/5 right-1/5 w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#ffea00]/50 blur-sm" />
-      <div className="absolute top-3/5 left-1/4 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-tl from-[#ffea00]/45 to-[#f4a300]/40 blur-sm" />
+      {/* Single focal accent circle - positioned strategically */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-r from-[#ffea00]/25 to-[#f4a300]/20 blur-xl opacity-60" />
       
-      {/* Mobile-optimized circles */}
-      <div className="md:hidden absolute top-16 right-8 w-10 h-10 rounded-full bg-[#ffea00]/40 blur-sm" />
-      <div className="md:hidden absolute bottom-24 left-8 w-12 h-12 rounded-full bg-[#f4a300]/35 blur-sm" />
-      <div className="md:hidden absolute top-1/2 left-3/4 w-8 h-8 rounded-full bg-[#ffea00]/50 blur-sm" />
-      
-      {/* Very subtle overall overlay for cohesion */}
-      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#ffea00]/5 to-[#f4a300]/5" />
+      {/* Subtle background gradient for warmth */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#ffea00]/3 via-transparent to-[#f4a300]/2" />
     </div>
   );
 };

@@ -58,8 +58,10 @@ const Hero = ({
     // Desktop positioning variants
     const desktopVariants = {
       left: 'md:left-10 lg:left-20 md:right-auto md:text-left md:transform-none md:translate-x-0 md:w-auto md:px-0',
-      center: 'md:left-1/2 md:right-auto md:text-center md:transform md:-translate-x-1/2 md:w-[85%] md:px-0',
-      right: 'md:right-10 lg:right-20 md:left-auto md:text-right md:transform-none md:translate-x-0 md:w-auto md:px-0',
+      center:
+        'md:left-1/2 md:right-auto md:text-center md:transform md:-translate-x-1/2 md:w-[85%] md:px-0',
+      right:
+        'md:right-10 lg:right-20 md:left-auto md:text-right md:transform-none md:translate-x-0 md:w-auto md:px-0',
     };
 
     const positionMap: Record<string, string> = {
@@ -104,7 +106,7 @@ const Hero = ({
         currentHeroStyle === 'default' ? 'bg-white' : 'bg-black'
       }`}>
       {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
-      
+
       {/* Background Images Hero Style */}
       {currentHeroStyle === 'background-images' && (
         <>
@@ -112,19 +114,19 @@ const Hero = ({
           <div className='absolute inset-0 bg-gradient-to-t from-black from-20% to-transparent opacity-90 z-20' />
         </>
       )}
-      
+
       {/* Default Hero Style */}
       {currentHeroStyle === 'default' && (
         <>
           <DefaultHeroBackground />
           {/* Logo for default style */}
-          <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20">
+          <div className='absolute top-6 left-1/2 transform -translate-x-1/2 z-20'>
             <Image
-              src="/images/logo-black-on-transparent.png"
-              alt="07:17 Records Logo"
-              width={120}
-              height={120}
-              className="w-20 h-20 md:w-24 md:h-24"
+              src='/images/logo-black-on-transparent.png'
+              alt='07:17 Records Logo'
+              width={500}
+              height={500}
+              className='w-[200px] md:w-[350px] h-auto object-contain'
             />
           </div>
         </>
