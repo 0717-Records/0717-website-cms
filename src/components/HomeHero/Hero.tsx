@@ -49,10 +49,11 @@ const Hero = ({
 
   // Map content position to Tailwind classes
   const getPositionClasses = (position: string) => {
-    // Clean the position string to remove any invisible Unicode characters
-    const cleanPosition =
+    // Clean the position string to remove any invisible Unicode characters and stega
+    const cleanPosition = stegaClean(
       position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
-      'center-center';
+        'center-center'
+    );
 
     // Base mobile classes - always centered with consistent spacing
     const mobileBase = 'left-1/2 transform -translate-x-1/2 w-[85%] text-center px-4 py-4';
@@ -87,22 +88,23 @@ const Hero = ({
 
   // Determine text color classes
   const getTextColorClasses = () => {
-    const textColor = heroTextColor || 'black';
+    const textColor = stegaClean(heroTextColor) || 'black';
     return textColor === 'white' ? 'text-white' : 'text-black';
   };
 
   // Get logo positioning and sizing based on content position
   const getLogoConfig = (position: string) => {
-    const cleanPosition =
+    const cleanPosition = stegaClean(
       position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
-      'center-center';
+        'center-center'
+    );
     const [vertical, horizontal] = cleanPosition.split('-');
 
     const isCenter = vertical === 'center';
 
     return {
       order: 1, // Logo always above content
-      size: isCenter ? 'w-40 md:w-48 lg:w-56' : 'w-48 md:w-56 lg:w-64', // 100% bigger, smaller for center
+      size: 'w-48 md:w-56 lg:w-64',
       spacing: isCenter ? 'gap-4 md:gap-6' : 'gap-6 md:gap-8', // Adjusted for bigger logo
       // Mobile-first alignment: always center on mobile, respect desktop positioning
       alignment:
@@ -171,7 +173,11 @@ const Hero = ({
               className='flex justify-center'
               {...createSanityDataAttribute(documentId, documentType, 'showHeroLogo')}>
               <Image
-                src='/images/logo-black-on-transparent.png'
+                src={
+                  stegaClean(heroTextColor) === 'white'
+                    ? '/images/logo-white-on-transparent.png'
+                    : '/images/logo-black-on-transparent.png'
+                }
                 alt='07:17 Records Logo'
                 width={500}
                 height={500}
@@ -187,7 +193,7 @@ const Hero = ({
                   level='h1'
                   className={`text-h3 sm:text-h1 font-bold ${getTextColorClasses()}`}
                   {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
-                  {heroTitle}
+                  {stegaClean(heroTitle)}
                 </Heading>
               )}
               {heroSubtitle && (
@@ -196,7 +202,7 @@ const Hero = ({
                   style={{ whiteSpace: 'pre-line' }}
                   {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
                   {typeof heroSubtitle === 'string'
-                    ? heroSubtitle
+                    ? stegaClean(heroSubtitle)
                     : 'Please update subtitle in Sanity Studio'}
                 </div>
               )}
