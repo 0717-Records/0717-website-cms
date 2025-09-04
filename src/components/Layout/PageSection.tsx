@@ -11,7 +11,11 @@ import {
   type TextAlignment,
 } from '../../utils/sectionHelpers';
 import { resolveAlignment } from '../blocks/shared/alignmentUtils';
-import { sectionTitleBottomSpacing, sectionDividerBottomSpacing, sectionBottomPadding } from '@/utils/spacingConstants';
+import {
+  sectionTitleBottomSpacing,
+  sectionDividerBottomSpacing,
+  sectionBottomPadding,
+} from '@/utils/spacingConstants';
 
 // Context to track if PageSection has a title (affects nested section heading levels)
 const PageSectionContext = createContext<{ hasTitle: boolean }>({ hasTitle: false });
@@ -79,7 +83,7 @@ const PageSection = ({
           </Heading>
           {subtitle && (
             <p
-              className={`text-body-2xl text-text-subtle max-w-3xl whitespace-pre-line ${sectionTitleBottomSpacing} ${getSubtitleMarginClass(effectiveTextAlign)}`}
+              className={`text-body-xl text-text-subtle max-w-3xl whitespace-pre-line ${sectionTitleBottomSpacing} ${getSubtitleMarginClass(effectiveTextAlign)}`}
               {...subtitleDataAttribute}>
               {subtitle}
             </p>

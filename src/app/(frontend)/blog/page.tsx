@@ -4,6 +4,7 @@ import PageHero from '@/components/Page/PageHero';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import { pageSubtitleBottomSpacing } from '@/utils/spacingConstants';
+import PageSubtitle from '@/components/Typography/PageSubtitle';
 
 export default async function BlogPage() {
   const [blogPosts, blogIndexPage] = await Promise.all([getAllBlogPosts(), getBlogIndexPage()]);
@@ -19,13 +20,7 @@ export default async function BlogPage() {
       />
       <Container>
         {/* Page Subtitle */}
-        {blogIndexPage?.subtitle && (
-          <div className={pageSubtitleBottomSpacing}>
-            <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line text-center'>
-              {blogIndexPage.subtitle}
-            </p>
-          </div>
-        )}
+        {blogIndexPage?.subtitle && <PageSubtitle>{blogIndexPage.subtitle}</PageSubtitle>}
 
         {/* List of Blog Posts */}
         <div className={`${!blogIndexPage?.subtitle ? 'pt-16 md:pt-24' : ''} pb-16 md:pb-24`}>

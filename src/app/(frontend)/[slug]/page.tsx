@@ -8,6 +8,7 @@ import { getFavourites } from '@/actions/favourites';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import { pageSubtitleBottomSpacing, closingCardSpacing } from '@/utils/spacingConstants';
+import PageSubtitle from '@/components/Typography/PageSubtitle';
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
@@ -38,9 +39,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         {/* Page Subtitle */}
         {page.subtitle && (
           <div className={pageSubtitleBottomSpacing}>
-            <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line text-center'>
-              {page.subtitle}
-            </p>
+            <PageSubtitle>{page.subtitle}</PageSubtitle>
           </div>
         )}
 

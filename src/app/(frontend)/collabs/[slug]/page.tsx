@@ -8,6 +8,9 @@ import CollabLinks from '@/components/Collab/CollabLinks';
 import CollabSideContent from '@/components/Collab/CollabSideContent';
 import PageHero from '@/components/Page/PageHero';
 import Container from '@/components/Layout/Container';
+import { pageSubtitleBottomSpacing } from '@/utils/spacingConstants';
+import Page from '../../page';
+import PageSubtitle from '@/components/Typography/PageSubtitle';
 
 interface CollabSlug {
   slug: string;
@@ -43,9 +46,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
       />
       <Container textAlign='left'>
         {/* Short Description */}
-        <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line text-center mb-8'>
-          {collab.shortDescription}
-        </p>
+        {collab.shortDescription && <PageSubtitle>{collab.shortDescription}</PageSubtitle>}
 
         <div className='grid grid-cols-1 lg:grid-cols-[3fr_2fr] auto-rows-min gap-12'>
           {/* Basic Info & Links */}
