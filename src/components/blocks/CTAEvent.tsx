@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { formatEventDate, getEventLink, isEventPast } from '@/components/Events/eventUtils';
 import PastEventOverlay from '@/components/Events/PastEventOverlay';
+import { FaLocationDot } from 'react-icons/fa6';
 
 // Interface that matches the dereferenced event data from GROQ queries
 interface DereferencedEvent {
@@ -129,7 +130,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
       {/* Event Details - Mobile layout (2/3 width) */}
       <div className='p-3 flex flex-col items-start text-left flex-grow w-2/3'>
         {/* Date / Time */}
-        <div className='text-brand-secondary mb-2'>
+        <div className='text-brand-secondary mb-2 text-body-xs sm:text-body-sm'>
           <span>{dateDisplay}</span>
           {timeDisplay && (
             <>
@@ -141,24 +142,22 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
 
         {/* Title */}
         <p
-          className={`text-h6 font-medium mb-2 text-gray-800 transition-all duration-300 leading-tight ${
+          className={`text-h7 sm:text-h6 font-medium mb-2 text-gray-800 transition-all duration-300 leading-tight ${
             hasLink ? 'group-hover:underline' : ''
           }`}>
           {title}
         </p>
 
-        {/* Short Description */}
-        {shortDescription && (
+        {/* Short Description - keeping for future if needed */}
+        {/* {shortDescription && (
           <div className='text-text-subtle mb-2'>
             <div className='leading-snug'>{shortDescription}</div>
           </div>
-        )}
+        )} */}
 
         {/* Venue and Location */}
-        <div className='flex items-center text-text-subtle mb-2'>
-          <span className='mr-1' aria-label='Location' title='Location'>
-            📍
-          </span>
+        <div className='flex items-center text-text-subtle mb-2 text-body-sm sm:text-body-base'>
+          <FaLocationDot className='mr-1 md:mr-2 text-brand-secondary' />
           <span>{venue ? `${venue}, ${location}` : location}</span>
         </div>
 
@@ -168,7 +167,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className='px-1 py-0.5 bg-gray-100 text-text-subtle text-body-sm rounded'>
+                className='px-1 py-0.5 bg-gray-100 text-text-subtle text-body-xs sm:text-body-base rounded'>
                 {tag}
               </span>
             ))}

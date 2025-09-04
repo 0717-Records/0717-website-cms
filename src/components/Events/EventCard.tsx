@@ -79,7 +79,7 @@ const EventCard = (props: EventCardProps) => {
       {/* Event Details */}
       <div className='p-3 md:p-4 flex flex-col items-start md:items-center text-left md:text-center flex-grow w-2/3 md:w-full'>
         {/* Date / Time */}
-        <div className='text-brand-secondary mb-2 md:mb-1'>
+        <div className='text-brand-secondary text-body-xs mb-2 md:mb-1'>
           <span>{dateDisplay}</span>
           {timeDisplay && (
             <>
@@ -89,28 +89,28 @@ const EventCard = (props: EventCardProps) => {
           )}
         </div>
         {timeDisplay && (
-          <div className='hidden md:block text-brand-secondary mb-3 text-body-base'>
+          <div className='hidden md:block text-body-xs text-brand-secondary mb-3'>
             {timeDisplay}
           </div>
         )}
 
         {/* Title */}
         <p
-          className={`text-h6 font-medium mb-2 md:mb-3 text-gray-800 transition-all duration-300 leading-tight ${
+          className={`text-h7 font-medium mb-2 md:mb-3 text-gray-800 transition-all duration-300 leading-tight ${
             hasLink ? 'group-hover:underline' : ''
           }`}>
           {title}
         </p>
 
-        {/* Short Description */}
-        {shortDescription && (
-          <div className=' text-text-subtle mb-2 md:mb-3'>
+        {/* Short Description - keeping for future if needed */}
+        {/* {shortDescription && (
+          <div className=' text-text-subtle text-body-sm mb-2 md:mb-3'>
             <div className='leading-snug'>{shortDescription}</div>
           </div>
-        )}
+        )} */}
 
         {/* Venue and Location */}
-        <div className='flex items-center text-text-subtle mb-2 md:mb-3'>
+        <div className='flex items-center text-body-sm text-text-subtle mb-2 md:mb-3'>
           <FaLocationDot className='mr-1 md:mr-2 text-brand-secondary' />
           <span>{venue ? `${venue}, ${location}` : location}</span>
         </div>
