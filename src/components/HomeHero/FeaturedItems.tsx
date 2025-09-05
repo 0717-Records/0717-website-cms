@@ -68,16 +68,14 @@ const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
 
   // Size containers to content width, not equal width - for A4 images to be close together
   return (
-    <div 
-      className={`flex flex-col md:flex-row border border-red-500 flex-1 items-center justify-center gap-2 md:gap-4 p-4 transition-opacity duration-700 ease-in-out ${
+    <div
+      className={`flex flex-col md:flex-row border border-red-500 flex-1 items-center justify-center gap-2 md:gap-4 transition-opacity duration-700 ease-in-out ${
         isLoading ? 'opacity-0' : 'opacity-100'
-      }`}
-    >
+      }`}>
       {validImages.map((image, index) => {
         // Only use calculated dimensions if they're loaded, otherwise use reasonable fallback
-        const width = !isLoading && imageDimensions[index] 
-          ? imageDimensions[index].aspectRatio 
-          : 0.707; // A4 fallback while loading
+        const width =
+          !isLoading && imageDimensions[index] ? imageDimensions[index].aspectRatio : 0.707; // A4 fallback while loading
 
         return (
           <div
