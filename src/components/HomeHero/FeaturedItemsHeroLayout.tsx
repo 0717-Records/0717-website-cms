@@ -48,16 +48,8 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
     documentType,
   };
 
-  // Check if current images would cause wrapping
-  const validImages =
-    featuredImages?.filter((image) => image && image.asset && image.asset._ref) || [];
-
-  // Better heuristic: single image never wraps, 2 images rarely wrap, 3+ likely wrap
-  const mightNeedWrapping = validImages.length >= 3;
-
   return (
-    <div
-      className={`${mightNeedWrapping ? 'min-h-[calc(100vh-5rem)]' : 'h-[calc(100vh-5rem)]'} flex flex-col px-8 border border-purple-600`}>
+    <div className={`flex flex-col px-8 border border-purple-600`}>
       {/* Top Section: Logo and Title */}
       <div
         className={`flex flex-col items-center text-center px-4 py-4 ${getTextColorClasses(heroTextColor)}`}>
