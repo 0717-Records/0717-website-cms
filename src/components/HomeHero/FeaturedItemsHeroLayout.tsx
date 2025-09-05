@@ -50,7 +50,7 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
   };
 
   return (
-    <div className={`relative ${styles['hero-height']} z-[25] flex flex-col justify-between py-8`}>
+    <div className={`${styles['hero-height']} flex flex-col border border-purple-600`}>
       {/* Top Section: Logo and Title */}
       <div
         className={`flex flex-col items-center text-center px-4 ${getTextColorClasses(heroTextColor)}`}>
@@ -60,7 +60,7 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
 
       {/* Center Section: Featured Images */}
       <div
-        className='flex-1 flex border border-blue-500'
+        className='flex flex-grow border border-amber-500'
         {...createSanityDataAttribute(documentId, documentType, 'featuredImages')}>
         <FeaturedItems featuredImages={featuredImages} />
       </div>
