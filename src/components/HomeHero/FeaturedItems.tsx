@@ -19,18 +19,32 @@ const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
     return null;
   }
 
+  // Calculate responsive scaling based on number of images
+  const getImageClasses = (imageCount: number) => {
+    if (imageCount === 1) {
+      return 'flex-1'; // Single image: no max-width constraint, fill available space
+    } else if (imageCount === 2) {
+      return 'flex-1 max-w-sm'; // Two images: medium width each
+    } else if (imageCount === 3) {
+      return 'flex-1 max-w-xs'; // Three images: smaller width each  
+    } else {
+      return 'flex-1 max-w-[200px]'; // Four or more: very small width each
+    }
+  };
+
+  const imageClasses = getImageClasses(validImages.length);
+
   return (
-    <div className='flex border border-red-500 flex-1 items-center justify-center gap-4'>
+    <div className='flex flex-col md:flex-row border border-red-500 flex-1 items-center justify-center gap-2 md:gap-4 p-4'>
       {validImages.map((image, index) => (
-        <div key={index} className='relative h-full border border-blue-700 flex-shrink-0'>
+        <div key={index} className={`relative h-48 md:h-full border border-blue-700 ${imageClasses}`}>
           <Image
             src={urlFor(image).width(1200).url()}
             alt={image.alt || 'Featured item'}
-            width={0}
-            height={0}
-            className='h-full w-auto object-contain'
-            sizes='(max-width: 768px) 50vw, 33vw'
-            style={{ height: '100%', width: 'auto' }}
+            fill
+            className='object-contain'
+            sizes='(max-width: 768px) 90vw, 25vw'
+            priority={index === 0}
           />
         </div>
       ))}
