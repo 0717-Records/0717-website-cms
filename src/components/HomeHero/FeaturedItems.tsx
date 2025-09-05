@@ -63,54 +63,136 @@ const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
     loadImageDimensions();
   }, [hasValidImages, validImages]);
 
-  // Calculate optimal sizing to fit all images within container width
-  const calculateImageSizes = () => {
-    if (isLoading || imageDimensions.length === 0 || imageDimensions.length !== validImages.length) {
-      return validImages.map(() => ({ width: 200, height: 280 })); // A4 fallback
+  // Determine if images should wrap based on total width demand
+  const shouldWrap = () => {
+    if (
+      isLoading ||
+      imageDimensions.length === 0 ||
+      imageDimensions.length !== validImages.length
+    ) {
+      return false;
     }
 
-    // Ensure all dimensions are properly loaded
-    const hasInvalidDimensions = imageDimensions.some(dim => !dim || typeof dim.aspectRatio !== 'number');
+    const hasInvalidDimensions = imageDimensions.some(
+      (dim) => !dim || typeof dim.aspectRatio !== 'number'
+    );
     if (hasInvalidDimensions) {
-      return validImages.map(() => ({ width: 200, height: 280 })); // A4 fallback
+      return false;
     }
 
-    // Assume available height from the container (you can adjust this)
-    const availableHeight = 400; // This should match your container height
-    const gap = 16; // 4 * 4px (gap-4)
+    // Test height and calculate total width demand
+    const testHeight = 400;
+    const gap = 16;
     const totalGaps = (imageDimensions.length - 1) * gap;
-    
-    // Calculate what width each image would need at this height
-    const naturalWidths = imageDimensions.map(dim => availableHeight * dim.aspectRatio);
+
+    const naturalWidths = imageDimensions.map((dim) => testHeight * dim.aspectRatio);
     const totalNaturalWidth = naturalWidths.reduce((sum, w) => sum + w, 0) + totalGaps;
-    
-    // Assume max container width (you can make this dynamic)
-    const maxContainerWidth = 1200; // Adjust based on your layout
-    
-    // If natural widths exceed container, scale everything down proportionally
-    const scaleFactor = totalNaturalWidth > maxContainerWidth ? maxContainerWidth / totalNaturalWidth : 1;
-    
-    return imageDimensions.map(dim => ({
-      width: (availableHeight * dim.aspectRatio) * scaleFactor,
-      height: availableHeight * scaleFactor
-    }));
+
+    // Wrapping threshold - if total width would exceed this, wrap
+    const wrapThreshold = 1200;
+
+    return totalNaturalWidth > wrapThreshold;
   };
 
-  const imageSizes = calculateImageSizes();
+  // Calculate optimal sizing - different logic for wrapping vs non-wrapping
+  const calculateImageSizes = () => {
+    if (
+      isLoading ||
+      imageDimensions.length === 0 ||
+      imageDimensions.length !== validImages.length
+    ) {
+      return { sizes: validImages.map(() => ({ width: 200, height: 280 })), shouldWrap: false };
+    }
+
+    const hasInvalidDimensions = imageDimensions.some(
+      (dim) => !dim || typeof dim.aspectRatio !== 'number'
+    );
+    if (hasInvalidDimensions) {
+      return { sizes: validImages.map(() => ({ width: 200, height: 280 })), shouldWrap: false };
+    }
+
+    const willWrap = shouldWrap();
+
+    if (!willWrap) {
+      // No wrapping: use relative sizing that fits within container
+      // For single image, make it larger; for multiple images, scale to fit
+      const isSingleImage = imageDimensions.length === 1;
+      const baseHeight = isSingleImage ? 350 : 300; // Single image gets more height
+
+      const gap = 16;
+      const totalGaps = (imageDimensions.length - 1) * gap;
+
+      const naturalWidths = imageDimensions.map((dim) => baseHeight * dim.aspectRatio);
+      const totalNaturalWidth = naturalWidths.reduce((sum, w) => sum + w, 0) + totalGaps;
+
+      const maxContainerWidth = 1200;
+      const scaleFactor =
+        totalNaturalWidth > maxContainerWidth ? maxContainerWidth / totalNaturalWidth : 1;
+
+      const sizes = imageDimensions.map((dim) => ({
+        width: baseHeight * dim.aspectRatio * scaleFactor,
+        height: baseHeight * scaleFactor,
+      }));
+
+      return { sizes, shouldWrap: false };
+    } else {
+      // Wrapping: size for optimal wrapping layout
+      const wrappingHeight = 250; // Smaller for wrapping to fit more rows
+      const sizes = imageDimensions.map((dim) => ({
+        width: wrappingHeight * dim.aspectRatio,
+        height: wrappingHeight,
+      }));
+
+      return { sizes, shouldWrap: true };
+    }
+  };
+
+  const { sizes: imageSizes, shouldWrap: isWrapping } = calculateImageSizes();
 
   if (!hasValidImages) {
     return null;
   }
 
+  // For single image, use flex-based sizing instead of fixed pixels
+  const isSingleImage = validImages.length === 1;
+
+  if (isSingleImage && !isLoading && imageDimensions.length > 0) {
+    const aspectRatio = imageDimensions[0].aspectRatio;
+    return (
+      <div
+        ref={containerRef}
+        className={`flex flex-row border border-red-500 h-full items-center justify-center transition-opacity duration-700 ease-in-out max-w-full ${
+          isLoading ? 'opacity-0' : 'opacity-100'
+        }`}>
+        <div
+          className='relative border border-blue-700 h-full max-w-full'
+          style={{
+            aspectRatio: aspectRatio.toString(),
+            flexShrink: 0,
+          }}>
+          <Image
+            src={urlFor(validImages[0]).width(800).url()}
+            alt={validImages[0].alt || 'Featured item'}
+            fill
+            className='object-contain'
+            sizes='50vw'
+            priority={true}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  // For multiple images, use the calculated sizing
   return (
     <div
       ref={containerRef}
-      className={`flex flex-row border border-red-500 flex-grow items-center justify-center gap-4 transition-opacity duration-700 ease-in-out ${
+      className={`flex ${isWrapping ? 'flex-wrap' : 'flex-row'} border border-red-500 ${isWrapping ? 'min-h-full' : 'flex-grow'} items-center justify-center gap-4 transition-opacity duration-700 ease-in-out ${
         isLoading ? 'opacity-0' : 'opacity-100'
       }`}>
       {validImages.map((image, index) => {
         const size = imageSizes[index];
-        
+
         return (
           <div
             key={index}

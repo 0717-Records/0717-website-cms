@@ -53,10 +53,14 @@ const Hero = ({
   // Determine hero style - default to 'default' if not provided, clean any stega characters
   const currentHeroStyle = stegaClean(heroStyle) || 'default';
 
+  // Check if featured items might need wrapping (only allow height growth if likely)
+  const validFeaturedImages = featuredImages?.filter((image) => image && image.asset && image.asset._ref) || [];
+  const mightNeedWrapping = enableFeaturedItems && validFeaturedImages.length >= 3;
+
   return (
     <section
       id='home'
-      className={`relative ${styles['hero-height']} flex flex-col ${enableFeaturedItems ? 'justify-start' : 'justify-center'} ${heroBottomSpacing} border border-green-500`}>
+      className={`relative ${enableFeaturedItems ? (mightNeedWrapping ? 'min-h-[calc(100vh-5rem)]' : styles['hero-height']) : styles['hero-height']} flex flex-col ${enableFeaturedItems ? 'justify-start' : 'justify-center'} ${heroBottomSpacing} border border-green-500`}>
       {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
 
       {/* Hero Style Click-to-Edit Wrapper */}
