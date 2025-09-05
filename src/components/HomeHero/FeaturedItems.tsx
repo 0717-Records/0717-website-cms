@@ -9,14 +9,8 @@ interface FeaturedItemsProps {
   featuredImages: NonNullable<HOME_PAGE_QUERYResult>['featuredImages'];
 }
 
-interface ImageDimensions {
-  width: number;
-  height: number;
-  aspectRatio: number;
-}
-
 const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
-  const [imageDimensions, setImageDimensions] = useState<ImageDimensions[]>([]);
+  const [imageAspectRatios, setImageAspectRatios] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   // Memoize validImages to prevent useEffect dependency changes
@@ -31,35 +25,27 @@ const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
   useEffect(() => {
     if (!hasValidImages) return;
 
-    const loadImageDimensions = async () => {
-      const dimensions = await Promise.all(
+    const loadImageAspectRatios = async () => {
+      const aspectRatios = await Promise.all(
         validImages.map(async (image) => {
-          return new Promise<ImageDimensions>((resolve) => {
+          return new Promise<number>((resolve) => {
             const img = new globalThis.Image();
             img.onload = () => {
-              resolve({
-                width: img.width,
-                height: img.height,
-                aspectRatio: img.width / img.height,
-              });
+              resolve(img.width / img.height);
             };
             img.onerror = () => {
               // Fallback for failed loads - assume A4 portrait ratio
-              resolve({
-                width: 210,
-                height: 297,
-                aspectRatio: 210 / 297,
-              });
+              resolve(210 / 297);
             };
             img.src = urlFor(image).width(400).url(); // Small version for dimension detection
           });
         })
       );
-      setImageDimensions(dimensions);
-      setIsLoading(false); // All dimensions loaded, ready to show
+      setImageAspectRatios(aspectRatios);
+      setIsLoading(false); // All aspect ratios loaded, ready to show
     };
 
-    loadImageDimensions();
+    loadImageAspectRatios();
   }, [hasValidImages, validImages]);
 
   if (!hasValidImages) {
@@ -73,16 +59,16 @@ const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
         isLoading ? 'opacity-0' : 'opacity-100'
       }`}>
       {validImages.map((image, index) => {
-        // Only use calculated dimensions if they're loaded, otherwise use reasonable fallback
-        const width =
-          !isLoading && imageDimensions[index] ? imageDimensions[index].aspectRatio : 0.707; // A4 fallback while loading
+        // Only use calculated aspect ratios if they're loaded, otherwise use reasonable fallback
+        const aspectRatio =
+          !isLoading && imageAspectRatios[index] ? imageAspectRatios[index] : 0.707; // A4 fallback while loading
 
         return (
           <div
             key={index}
             className='relative border border-blue-700 h-48 md:h-full'
             style={{
-              aspectRatio: width.toString(),
+              aspectRatio: aspectRatio.toString(),
               flexShrink: 0,
             }}>
             <Image
