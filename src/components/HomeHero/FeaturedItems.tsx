@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
@@ -7,71 +9,97 @@ interface FeaturedItemsProps {
   featuredImages: NonNullable<HOME_PAGE_QUERYResult>['featuredImages'];
 }
 
+interface ImageDimensions {
+  width: number;
+  height: number;
+  aspectRatio: number;
+}
+
 const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
-  if (!featuredImages || featuredImages.length === 0) {
-    return null;
-  }
+  const [imageDimensions, setImageDimensions] = useState<ImageDimensions[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Filter out null/undefined images and images without proper asset reference
-  const validImages = featuredImages.filter((image) => image && image.asset && image.asset._ref);
-
-  if (validImages.length === 0) {
-    return null;
-  }
-
-  // Calculate responsive scaling based on number of images
-  const getImageClasses = (imageCount: number) => {
-    if (imageCount === 1) {
-      return 'flex-1'; // Single image: no max-width constraint, fill available space
-    } else if (imageCount === 2) {
-      return 'flex-1 max-w-sm'; // Two images: medium width each
-    } else if (imageCount === 3) {
-      return 'flex-1 max-w-xs'; // Three images: smaller width each  
-    } else {
-      return 'flex-1 max-w-[200px]'; // Four or more: very small width each
-    }
-  };
-
-  const imageClasses = getImageClasses(validImages.length);
-
-  return (
-    <div className='flex flex-col md:flex-row border border-red-500 flex-1 items-center justify-center gap-2 md:gap-4 p-4'>
-      {validImages.map((image, index) => (
-        <div key={index} className={`relative h-48 md:h-full border border-blue-700 ${imageClasses}`}>
-          <Image
-            src={urlFor(image).width(1200).url()}
-            alt={image.alt || 'Featured item'}
-            fill
-            className='object-contain'
-            sizes='(max-width: 768px) 90vw, 25vw'
-            priority={index === 0}
-          />
-        </div>
-      ))}
-    </div>
+  // Memoize validImages to prevent useEffect dependency changes
+  const validImages = useMemo(
+    () => featuredImages?.filter((image) => image && image.asset && image.asset._ref) || [],
+    [featuredImages]
   );
 
-  // return (
-  //   <div className='flex flex-col md:flex-row gap-4 md:gap-6 lg:gap-8 justify-center items-center w-full flex-1 border border-red-500'>
-  //     {validImages.map((image, index) => (
-  //       <div
-  //         key={index}
-  //         className='relative flex-shrink-0 md:w-auto md:flex-1 md:max-w-sm lg:max-w-md'>
-  //         {/* Image container with minimum height on mobile */}
-  //         <div className='relative min-h-[300px] border border-orange-500 rounded-lg overflow-hidden'>
-  //           <Image
-  //             src={urlFor(image).width(600).height(800).url()}
-  //             alt={image.alt || `Featured item ${index + 1}`}
-  //             fill
-  //             className='object-contain rounded-lg'
-  //             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-  //             priority={index === 0} // Prioritize first image for loading
-  //           />
-  //         </div>
-  //       </div>
-  //     ))}
-  //   </div>
-  // );
+  const hasValidImages = featuredImages && featuredImages.length > 0 && validImages.length > 0;
+
+  // Load image dimensions
+  useEffect(() => {
+    if (!hasValidImages) return;
+
+    const loadImageDimensions = async () => {
+      const dimensions = await Promise.all(
+        validImages.map(async (image) => {
+          return new Promise<ImageDimensions>((resolve) => {
+            const img = new globalThis.Image();
+            img.onload = () => {
+              resolve({
+                width: img.width,
+                height: img.height,
+                aspectRatio: img.width / img.height,
+              });
+            };
+            img.onerror = () => {
+              // Fallback for failed loads - assume A4 portrait ratio
+              resolve({
+                width: 210,
+                height: 297,
+                aspectRatio: 210 / 297,
+              });
+            };
+            img.src = urlFor(image).width(400).url(); // Small version for dimension detection
+          });
+        })
+      );
+      setImageDimensions(dimensions);
+      setIsLoading(false); // All dimensions loaded, ready to show
+    };
+
+    loadImageDimensions();
+  }, [hasValidImages, validImages]);
+
+  if (!hasValidImages) {
+    return null;
+  }
+
+  // Size containers to content width, not equal width - for A4 images to be close together
+  return (
+    <div 
+      className={`flex flex-col md:flex-row border border-red-500 flex-1 items-center justify-center gap-2 md:gap-4 p-4 transition-opacity duration-700 ease-in-out ${
+        isLoading ? 'opacity-0' : 'opacity-100'
+      }`}
+    >
+      {validImages.map((image, index) => {
+        // Only use calculated dimensions if they're loaded, otherwise use reasonable fallback
+        const width = !isLoading && imageDimensions[index] 
+          ? imageDimensions[index].aspectRatio 
+          : 0.707; // A4 fallback while loading
+
+        return (
+          <div
+            key={index}
+            className='relative border border-blue-700 h-48 md:h-full'
+            style={{
+              aspectRatio: width.toString(),
+              flexShrink: 0,
+            }}>
+            <Image
+              src={urlFor(image).width(800).url()}
+              alt={image.alt || 'Featured item'}
+              fill
+              className='object-contain'
+              sizes='(max-width: 768px) 90vw, 25vw'
+              priority={index === 0}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default FeaturedItems;
