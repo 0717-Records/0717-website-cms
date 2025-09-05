@@ -1,7 +1,8 @@
 import styles from './styles.module.css';
 import HeroImages from './HeroImages';
 import DefaultHeroBackground from './DefaultHeroBackground';
-import HeroContent from './HeroContent';
+import RegularHeroLayout from './RegularHeroLayout';
+import FeaturedItemsHeroLayout from './FeaturedItemsHeroLayout';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import { createSanityDataAttribute } from '../../utils/sectionHelpers';
@@ -86,19 +87,33 @@ const Hero = ({
       )}
 
       {/* Content */}
-      <HeroContent
-        heroTextColor={heroTextColor}
-        showHeroLogo={showHeroLogo}
-        heroTitle={heroTitle}
-        heroSubtitle={heroSubtitle}
-        enableHeroCallToAction={enableHeroCallToAction}
-        heroCallToAction={heroCallToAction}
-        heroContentPosition={heroContentPosition}
-        enableFeaturedItems={enableFeaturedItems}
-        featuredImages={featuredImages}
-        documentId={documentId}
-        documentType={documentType}
-      />
+      {enableFeaturedItems ? (
+        <FeaturedItemsHeroLayout
+          heroTextColor={heroTextColor}
+          showHeroLogo={showHeroLogo}
+          heroTitle={heroTitle}
+          heroSubtitle={heroSubtitle}
+          enableHeroCallToAction={enableHeroCallToAction}
+          heroCallToAction={heroCallToAction}
+          enableFeaturedItems={enableFeaturedItems}
+          featuredImages={featuredImages}
+          documentId={documentId}
+          documentType={documentType}
+        />
+      ) : (
+        <RegularHeroLayout
+          heroTextColor={heroTextColor}
+          showHeroLogo={showHeroLogo}
+          heroTitle={heroTitle}
+          heroSubtitle={heroSubtitle}
+          enableHeroCallToAction={enableHeroCallToAction}
+          heroCallToAction={heroCallToAction}
+          heroContentPosition={heroContentPosition}
+          enableFeaturedItems={enableFeaturedItems}
+          documentId={documentId}
+          documentType={documentType}
+        />
+      )}
     </section>
   );
 };
