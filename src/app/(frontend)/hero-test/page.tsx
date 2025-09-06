@@ -1,18 +1,18 @@
 import React from 'react';
 import { getHomePage } from '@/actions';
-import { urlFor } from '@/sanity/lib/image';
+import { urlFor, getImageDimensions } from '@/sanity/lib/image';
 import Image from 'next/image';
 
 const page = async () => {
   const [page] = await Promise.all([getHomePage()]);
-
-  console.log(page);
 
   const validImages = page?.featuredImages?.filter(
     (image) => image && image.asset && image.asset._ref
   );
 
   if (!validImages) return null;
+
+  console.log(validImages);
 
   return (
     <div>
@@ -22,8 +22,14 @@ const page = async () => {
         <h1 className='text-h1'>{page?.heroTitle}</h1>
         <div className='border border-green-400 flex-grow w-full flex justify-center gap-4'>
           {validImages.map((image, index) => {
+            const dimensions = getImageDimensions(image as { asset: { _ref: string } });
+            const aspectRatio = dimensions ? dimensions.width / dimensions.height : 1;
+
             return (
-              <div key={index} className='relative border border-blue-500 h-full aspect-square'>
+              <div
+                key={index}
+                className='relative border border-blue-500 h-full'
+                style={{ aspectRatio: aspectRatio }}>
                 <Image
                   src={urlFor(image).width(1200).url()}
                   alt={image.alt || 'Featured item'}
