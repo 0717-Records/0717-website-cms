@@ -1,11 +1,9 @@
 .hero-height {
-  @media (orientation: landscape) {
-    /* Desktop: Minimum height for viewport minus header, can grow with content */
-    min-height: calc(100svh - 5rem);
+  /* Desktop: Minimum height for viewport minus header, can grow with content */
+  min-height: calc(100svh - 5rem);
 
-    @media (max-width: 767px) {
-      /* Mobile: Minimum height for viewport minus header, can grow with content */
-      min-height: calc(100svh - 4.5rem);
-    }
+  @media (max-width: 767px) {
+    /* Mobile: Minimum height for viewport minus header, can grow with content */
+    min-height: calc(100svh - 4.5rem);
   }
 }
