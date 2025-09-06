@@ -25,10 +25,12 @@ const FrontendLayout = async ({
   return (
     <SiteDataProvider companyEmail={siteSettingsData?.companyEmail || undefined}>
       <div className={`min-h-screen flex flex-col ${signika.className} font-variant-small-caps`}>
-        <Header headerData={headerData} />
-        <main id="main-content" className='flex-1'>{children}</main>
-        <Footer 
-          footerData={footerData} 
+        {/* <Header headerData={headerData} /> */}
+        <main id='main-content' className='flex-1'>
+          {children}
+        </main>
+        <Footer
+          footerData={footerData}
           siteSettingsData={siteSettingsData}
           companyLinksData={companyLinksData}
         />
