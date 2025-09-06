@@ -17,26 +17,26 @@ const page = async () => {
   return (
     <div>
       <div
-        id='hero-section'
-        className='min-h-[100svh] flex flex-col items-center justify-between text-center py-8'>
+        id='hero'
+        className='h-[100svh] min-h-[100svh] flex flex-col items-center text-center py-8'>
         <h1 className='text-h1'>{page?.heroTitle}</h1>
-        <div className='border border-green-400 flex-grow w-full flex gap-4'>
+        <div className='border border-green-400 flex-grow w-full flex justify-center gap-4'>
           {validImages.map((image, index) => {
             return (
-              <div key={index} className='relative flex-1 min-h-0 border border-blue-500'>
+              <div key={index} className='relative border border-blue-500 h-full aspect-square'>
                 <Image
                   src={urlFor(image).width(1200).url()}
                   alt={image.alt || 'Featured item'}
                   fill
                   className='object-contain'
-                  sizes='(max-width: 768px) 90vw, 25vw'
+                  sizes='(max-width: 768px) 90vw, 400px'
                   priority={index === 0}
                 />
               </div>
             );
           })}
         </div>
-        <div className='text-body-3xl'>
+        <div className='text-body-3xl mt-8'>
           <p>A New Zealand based record label supporting local and international artists.</p>
           <p>Thank you for creating.</p>
         </div>
