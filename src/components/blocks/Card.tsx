@@ -2,8 +2,7 @@ import React from 'react';
 import { stegaClean } from 'next-sanity';
 import type { CardBlock } from '@/types/blocks';
 import Icon from './Icon';
-import EmbeddedCTAButton from './EmbeddedCTAButton';
-import CTAEmailButtonComponent from './CTAEmailButton';
+import CTAList from '../UI/CTAList';
 import CardContainer from '../UI/CardContainer';
 import Heading from '../Typography/Heading/Heading';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
@@ -15,28 +14,20 @@ interface CardProps extends Omit<CardBlock, '_type' | '_key'> {
   documentType?: string;
 }
 
-const Card = (props: CardProps & { computedHref?: string }) => {
+const Card = (props: CardProps) => {
   const {
     cardStyle = 'feature',
     icon,
     title,
     bodyText,
-    buttonType,
-    text,
-    variant,
-    linkType,
-    internalLink,
-    openInNewTab,
-    externalUrl,
+    ctaList,
     className = '',
     isGridChild = false,
     documentId,
     documentType,
-    computedHref,
   } = props;
   const cleanTitle = stegaClean(title);
   const cleanBodyText = stegaClean(bodyText);
-  const cleanButtonText = stegaClean(text);
   const cleanCardStyle = stegaClean(cardStyle) || 'feature';
 
   // Don't render empty cards (but allow cards with just text content and no button)
@@ -80,23 +71,10 @@ const Card = (props: CardProps & { computedHref?: string }) => {
           </p>
         )}
 
-        {/* Button */}
-        {buttonType && buttonType !== 'none' && (
-          <div className='pt-2'>
-            {buttonType === 'link' && cleanButtonText && (
-              <div {...createSanityDataAttribute(documentId, documentType, getFieldPath('text'))}>
-                <EmbeddedCTAButton
-                  text={text}
-                  variant={variant}
-                  linkType={linkType}
-                  internalLink={internalLink}
-                  openInNewTab={openInNewTab}
-                  externalUrl={externalUrl}
-                  computedHref={computedHref}
-                />
-              </div>
-            )}
-            {buttonType === 'email' && <CTAEmailButtonComponent />}
+        {/* CTA Buttons */}
+        {ctaList && ctaList.length > 0 && (
+          <div className='pt-2' {...createSanityDataAttribute(documentId, documentType, getFieldPath('ctaList'))}>
+            <CTAList ctaList={ctaList} alignment='flex-col' />
           </div>
         )}
       </CardContainer>
@@ -143,23 +121,10 @@ const Card = (props: CardProps & { computedHref?: string }) => {
             </p>
           )}
 
-          {/* Button */}
-          {buttonType && buttonType !== 'none' && (
-            <div className='mt-6'>
-              {buttonType === 'link' && cleanButtonText && (
-                <div {...createSanityDataAttribute(documentId, documentType, getFieldPath('text'))}>
-                  <EmbeddedCTAButton
-                    text={text}
-                    variant={variant}
-                    linkType={linkType}
-                    internalLink={internalLink}
-                    openInNewTab={openInNewTab}
-                    externalUrl={externalUrl}
-                    computedHref={computedHref}
-                  />
-                </div>
-              )}
-              {buttonType === 'email' && <CTAEmailButtonComponent />}
+          {/* CTA Buttons */}
+          {ctaList && ctaList.length > 0 && (
+            <div className='mt-6' {...createSanityDataAttribute(documentId, documentType, getFieldPath('ctaList'))}>
+              <CTAList ctaList={ctaList} alignment='flex-col' />
             </div>
           )}
         </div>

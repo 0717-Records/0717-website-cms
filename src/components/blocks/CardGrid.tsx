@@ -36,17 +36,7 @@ const CardGrid = ({ columns = '2', cards, documentId, documentType }: CardGridPr
       {cards.map((card, idx) => (
         <Card
           key={card._key || idx}
-          cardStyle={card.cardStyle}
-          icon={card.icon}
-          title={card.title}
-          bodyText={card.bodyText}
-          buttonType={card.buttonType}
-          text={card.text}
-          variant={card.variant}
-          linkType={card.linkType}
-          internalLink={card.internalLink}
-          openInNewTab={card.openInNewTab}
-          externalUrl={card.externalUrl}
+          {...card}
           className={`${cardClasses}`}
           isGridChild
           documentId={documentId}

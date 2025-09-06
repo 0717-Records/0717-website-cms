@@ -1297,43 +1297,7 @@ export type Card = {
   icon?: Icon;
   title?: string;
   bodyText?: string;
-  buttonType?: "none" | "link" | "email";
-  text?: string;
-  variant?: "filled" | "outline";
-  linkType?: "internal" | "external";
-  internalLink?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "page";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "homePage";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "collab";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "blogIndexPage";
-  } | {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "blogPost";
-  };
-  externalUrl?: string;
-  openInNewTab?: boolean;
+  ctaList?: CtaList;
 };
 
 export type CompanyLinks = {
@@ -1523,7 +1487,7 @@ export type AllSanitySchemaTypes = NavLink | CtaList | SideContent | SideContent
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{  _id,  _type,  title,  subtitle,  slug,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  }      }    }  }},  heroImage{    asset,    alt,    hotspot,    crop  },  hasClosingCard,  closingCard}
+// Query: *[_type == "page" && slug.current == $slug][0]{  _id,  _type,  title,  subtitle,  slug,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  }      }    }  }},  heroImage{    asset,    alt,    hotspot,    crop  },  hasClosingCard,  closingCard}
 export type PAGE_QUERYResult = {
   _id: string;
   _type: "page";
@@ -1543,57 +1507,9 @@ export type PAGE_QUERYResult = {
     icon?: Icon;
     title?: string;
     bodyText?: string;
-    buttonType?: "email" | "link" | "none";
-    text?: string;
-    variant?: "filled" | "outline";
-    linkType?: "external" | "internal";
-    internalLink?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "blogIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "blogPost";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "collab";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "homePage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "page";
-    };
-    externalUrl?: string;
-    openInNewTab?: boolean;
-    image: null;
-    content: null;
-  } | {
-    _key: string;
-    _type: "cardGrid";
-    columns?: "2" | "3" | "4";
-    cards: Array<{
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
       _key: string;
-      _type: "card";
-      cardStyle?: "feature" | "statement";
-      icon?: Icon;
-      title?: string;
-      bodyText?: string;
-      buttonType?: "email" | "link" | "none";
       text?: string;
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
@@ -1641,8 +1557,85 @@ export type PAGE_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
+      pageSectionId?: string;
       openInNewTab?: boolean;
       computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "cardGrid";
+    columns?: "2" | "3" | "4";
+    cards: Array<{
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
     }> | null;
     image: null;
     content: null;
@@ -1961,57 +1954,9 @@ export type PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link" | "none";
-      text?: string;
-      variant?: "filled" | "outline";
-      linkType?: "external" | "internal";
-      internalLink?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogPost";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "collab";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "homePage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      };
-      externalUrl?: string;
-      openInNewTab?: boolean;
-      image: null;
-      content: null;
-    } | {
-      _key: string;
-      _type: "cardGrid";
-      columns?: "2" | "3" | "4";
-      cards: Array<{
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
         _key: string;
-        _type: "card";
-        cardStyle?: "feature" | "statement";
-        icon?: Icon;
-        title?: string;
-        bodyText?: string;
-        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -2059,8 +2004,85 @@ export type PAGE_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
+        pageSectionId?: string;
         openInNewTab?: boolean;
         computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "cardGrid";
+      columns?: "2" | "3" | "4";
+      cards: Array<{
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
       }> | null;
       image: null;
       content: null;
@@ -2436,57 +2458,9 @@ export type PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link" | "none";
-        text?: string;
-        variant?: "filled" | "outline";
-        linkType?: "external" | "internal";
-        internalLink?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogPost";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "collab";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "homePage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "page";
-        };
-        externalUrl?: string;
-        openInNewTab?: boolean;
-        image: null;
-        content: null;
-      } | {
-        _key: string;
-        _type: "cardGrid";
-        columns?: "2" | "3" | "4";
-        cards: Array<{
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
           _key: string;
-          _type: "card";
-          cardStyle?: "feature" | "statement";
-          icon?: Icon;
-          title?: string;
-          bodyText?: string;
-          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
@@ -2534,8 +2508,85 @@ export type PAGE_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
+          pageSectionId?: string;
           openInNewTab?: boolean;
           computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "cardGrid";
+        columns?: "2" | "3" | "4";
+        cards: Array<{
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
         }> | null;
         image: null;
         content: null;
@@ -2908,56 +2959,9 @@ export type PAGE_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link" | "none";
-          text?: string;
-          variant?: "filled" | "outline";
-          linkType?: "external" | "internal";
-          internalLink?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogPost";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "collab";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "homePage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "page";
-          };
-          externalUrl?: string;
-          openInNewTab?: boolean;
-          image: null;
-        } | {
-          _key: string;
-          _type: "cardGrid";
-          columns?: "2" | "3" | "4";
-          cards: Array<{
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
             _key: string;
-            _type: "card";
-            cardStyle?: "feature" | "statement";
-            icon?: Icon;
-            title?: string;
-            bodyText?: string;
-            buttonType?: "email" | "link" | "none";
             text?: string;
             variant?: "filled" | "outline";
             linkType?: "external" | "internal";
@@ -3005,8 +3009,84 @@ export type PAGE_QUERYResult = {
               href: string | null;
             } | null;
             externalUrl?: string;
+            pageSectionId?: string;
             openInNewTab?: boolean;
             computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "cardGrid";
+          columns?: "2" | "3" | "4";
+          cards: Array<{
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
           }> | null;
           image: null;
         } | {
@@ -3648,7 +3728,7 @@ export type PAGE_QUERYResult = {
   closingCard: Card | null;
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{  _id,  _type,  heroStyle,  heroTextColor,  showHeroLogo,  enableFeaturedItems,  featuredImages[]{    asset,    alt,      ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )  },  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  heroCallToActionList[]{    _type,    _key,    _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},    _type == "embeddedCtaEmailButton" => {...}  },  heroContentPosition,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  }      }    }  }}}
+// Query: *[_id == "homePage"][0]{  _id,  _type,  heroStyle,  heroTextColor,  showHeroLogo,  enableFeaturedItems,  featuredImages[]{    asset,    alt,      ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )  },  heroImage{    asset,    alt  },  heroTitle,  heroSubtitle,  heroCallToActionList[]{    _type,    _key,    _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},    _type == "embeddedCtaEmailButton" => {...}  },  heroContentPosition,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  }      }    }  }}}
 export type HOME_PAGE_QUERYResult = {
   _id: string;
   _type: "blogIndexPage";
@@ -3697,57 +3777,9 @@ export type HOME_PAGE_QUERYResult = {
     icon?: Icon;
     title?: string;
     bodyText?: string;
-    buttonType?: "email" | "link" | "none";
-    text?: string;
-    variant?: "filled" | "outline";
-    linkType?: "external" | "internal";
-    internalLink?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "blogIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "blogPost";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "collab";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "homePage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "page";
-    };
-    externalUrl?: string;
-    openInNewTab?: boolean;
-    image: null;
-    content: null;
-  } | {
-    _key: string;
-    _type: "cardGrid";
-    columns?: "2" | "3" | "4";
-    cards: Array<{
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
       _key: string;
-      _type: "card";
-      cardStyle?: "feature" | "statement";
-      icon?: Icon;
-      title?: string;
-      bodyText?: string;
-      buttonType?: "email" | "link" | "none";
       text?: string;
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
@@ -3795,8 +3827,85 @@ export type HOME_PAGE_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
+      pageSectionId?: string;
       openInNewTab?: boolean;
       computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "cardGrid";
+    columns?: "2" | "3" | "4";
+    cards: Array<{
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
     }> | null;
     image: null;
     content: null;
@@ -4115,57 +4224,9 @@ export type HOME_PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link" | "none";
-      text?: string;
-      variant?: "filled" | "outline";
-      linkType?: "external" | "internal";
-      internalLink?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogPost";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "collab";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "homePage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      };
-      externalUrl?: string;
-      openInNewTab?: boolean;
-      image: null;
-      content: null;
-    } | {
-      _key: string;
-      _type: "cardGrid";
-      columns?: "2" | "3" | "4";
-      cards: Array<{
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
         _key: string;
-        _type: "card";
-        cardStyle?: "feature" | "statement";
-        icon?: Icon;
-        title?: string;
-        bodyText?: string;
-        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -4213,8 +4274,85 @@ export type HOME_PAGE_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
+        pageSectionId?: string;
         openInNewTab?: boolean;
         computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "cardGrid";
+      columns?: "2" | "3" | "4";
+      cards: Array<{
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
       }> | null;
       image: null;
       content: null;
@@ -4590,57 +4728,9 @@ export type HOME_PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link" | "none";
-        text?: string;
-        variant?: "filled" | "outline";
-        linkType?: "external" | "internal";
-        internalLink?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogPost";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "collab";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "homePage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "page";
-        };
-        externalUrl?: string;
-        openInNewTab?: boolean;
-        image: null;
-        content: null;
-      } | {
-        _key: string;
-        _type: "cardGrid";
-        columns?: "2" | "3" | "4";
-        cards: Array<{
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
           _key: string;
-          _type: "card";
-          cardStyle?: "feature" | "statement";
-          icon?: Icon;
-          title?: string;
-          bodyText?: string;
-          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
@@ -4688,8 +4778,85 @@ export type HOME_PAGE_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
+          pageSectionId?: string;
           openInNewTab?: boolean;
           computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "cardGrid";
+        columns?: "2" | "3" | "4";
+        cards: Array<{
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
         }> | null;
         image: null;
         content: null;
@@ -5062,56 +5229,9 @@ export type HOME_PAGE_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link" | "none";
-          text?: string;
-          variant?: "filled" | "outline";
-          linkType?: "external" | "internal";
-          internalLink?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogPost";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "collab";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "homePage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "page";
-          };
-          externalUrl?: string;
-          openInNewTab?: boolean;
-          image: null;
-        } | {
-          _key: string;
-          _type: "cardGrid";
-          columns?: "2" | "3" | "4";
-          cards: Array<{
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
             _key: string;
-            _type: "card";
-            cardStyle?: "feature" | "statement";
-            icon?: Icon;
-            title?: string;
-            bodyText?: string;
-            buttonType?: "email" | "link" | "none";
             text?: string;
             variant?: "filled" | "outline";
             linkType?: "external" | "internal";
@@ -5159,8 +5279,84 @@ export type HOME_PAGE_QUERYResult = {
               href: string | null;
             } | null;
             externalUrl?: string;
+            pageSectionId?: string;
             openInNewTab?: boolean;
             computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "cardGrid";
+          columns?: "2" | "3" | "4";
+          cards: Array<{
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
           }> | null;
           image: null;
         } | {
@@ -6045,57 +6241,9 @@ export type HOME_PAGE_QUERYResult = {
     icon?: Icon;
     title?: string;
     bodyText?: string;
-    buttonType?: "email" | "link" | "none";
-    text?: string;
-    variant?: "filled" | "outline";
-    linkType?: "external" | "internal";
-    internalLink?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "blogIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "blogPost";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "collab";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "homePage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "page";
-    };
-    externalUrl?: string;
-    openInNewTab?: boolean;
-    image: null;
-    content: null;
-  } | {
-    _key: string;
-    _type: "cardGrid";
-    columns?: "2" | "3" | "4";
-    cards: Array<{
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
       _key: string;
-      _type: "card";
-      cardStyle?: "feature" | "statement";
-      icon?: Icon;
-      title?: string;
-      bodyText?: string;
-      buttonType?: "email" | "link" | "none";
       text?: string;
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
@@ -6143,8 +6291,85 @@ export type HOME_PAGE_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
+      pageSectionId?: string;
       openInNewTab?: boolean;
       computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "cardGrid";
+    columns?: "2" | "3" | "4";
+    cards: Array<{
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
     }> | null;
     image: null;
     content: null;
@@ -6463,57 +6688,9 @@ export type HOME_PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link" | "none";
-      text?: string;
-      variant?: "filled" | "outline";
-      linkType?: "external" | "internal";
-      internalLink?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogPost";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "collab";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "homePage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      };
-      externalUrl?: string;
-      openInNewTab?: boolean;
-      image: null;
-      content: null;
-    } | {
-      _key: string;
-      _type: "cardGrid";
-      columns?: "2" | "3" | "4";
-      cards: Array<{
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
         _key: string;
-        _type: "card";
-        cardStyle?: "feature" | "statement";
-        icon?: Icon;
-        title?: string;
-        bodyText?: string;
-        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -6561,8 +6738,85 @@ export type HOME_PAGE_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
+        pageSectionId?: string;
         openInNewTab?: boolean;
         computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "cardGrid";
+      columns?: "2" | "3" | "4";
+      cards: Array<{
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
       }> | null;
       image: null;
       content: null;
@@ -6938,57 +7192,9 @@ export type HOME_PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link" | "none";
-        text?: string;
-        variant?: "filled" | "outline";
-        linkType?: "external" | "internal";
-        internalLink?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogPost";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "collab";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "homePage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "page";
-        };
-        externalUrl?: string;
-        openInNewTab?: boolean;
-        image: null;
-        content: null;
-      } | {
-        _key: string;
-        _type: "cardGrid";
-        columns?: "2" | "3" | "4";
-        cards: Array<{
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
           _key: string;
-          _type: "card";
-          cardStyle?: "feature" | "statement";
-          icon?: Icon;
-          title?: string;
-          bodyText?: string;
-          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
@@ -7036,8 +7242,85 @@ export type HOME_PAGE_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
+          pageSectionId?: string;
           openInNewTab?: boolean;
           computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "cardGrid";
+        columns?: "2" | "3" | "4";
+        cards: Array<{
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
         }> | null;
         image: null;
         content: null;
@@ -7410,56 +7693,9 @@ export type HOME_PAGE_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link" | "none";
-          text?: string;
-          variant?: "filled" | "outline";
-          linkType?: "external" | "internal";
-          internalLink?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogPost";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "collab";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "homePage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "page";
-          };
-          externalUrl?: string;
-          openInNewTab?: boolean;
-          image: null;
-        } | {
-          _key: string;
-          _type: "cardGrid";
-          columns?: "2" | "3" | "4";
-          cards: Array<{
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
             _key: string;
-            _type: "card";
-            cardStyle?: "feature" | "statement";
-            icon?: Icon;
-            title?: string;
-            bodyText?: string;
-            buttonType?: "email" | "link" | "none";
             text?: string;
             variant?: "filled" | "outline";
             linkType?: "external" | "internal";
@@ -7507,8 +7743,84 @@ export type HOME_PAGE_QUERYResult = {
               href: string | null;
             } | null;
             externalUrl?: string;
+            pageSectionId?: string;
             openInNewTab?: boolean;
             computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "cardGrid";
+          columns?: "2" | "3" | "4";
+          cards: Array<{
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
           }> | null;
           image: null;
         } | {
@@ -8169,57 +8481,9 @@ export type HOME_PAGE_QUERYResult = {
     icon?: Icon;
     title?: string;
     bodyText?: string;
-    buttonType?: "email" | "link" | "none";
-    text?: string;
-    variant?: "filled" | "outline";
-    linkType?: "external" | "internal";
-    internalLink?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "blogIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "blogPost";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "collab";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "homePage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "page";
-    };
-    externalUrl?: string;
-    openInNewTab?: boolean;
-    image: null;
-    content: null;
-  } | {
-    _key: string;
-    _type: "cardGrid";
-    columns?: "2" | "3" | "4";
-    cards: Array<{
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
       _key: string;
-      _type: "card";
-      cardStyle?: "feature" | "statement";
-      icon?: Icon;
-      title?: string;
-      bodyText?: string;
-      buttonType?: "email" | "link" | "none";
       text?: string;
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
@@ -8267,8 +8531,85 @@ export type HOME_PAGE_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
+      pageSectionId?: string;
       openInNewTab?: boolean;
       computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "cardGrid";
+    columns?: "2" | "3" | "4";
+    cards: Array<{
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
     }> | null;
     image: null;
     content: null;
@@ -8587,57 +8928,9 @@ export type HOME_PAGE_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link" | "none";
-      text?: string;
-      variant?: "filled" | "outline";
-      linkType?: "external" | "internal";
-      internalLink?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogPost";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "collab";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "homePage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      };
-      externalUrl?: string;
-      openInNewTab?: boolean;
-      image: null;
-      content: null;
-    } | {
-      _key: string;
-      _type: "cardGrid";
-      columns?: "2" | "3" | "4";
-      cards: Array<{
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
         _key: string;
-        _type: "card";
-        cardStyle?: "feature" | "statement";
-        icon?: Icon;
-        title?: string;
-        bodyText?: string;
-        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -8685,8 +8978,85 @@ export type HOME_PAGE_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
+        pageSectionId?: string;
         openInNewTab?: boolean;
         computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "cardGrid";
+      columns?: "2" | "3" | "4";
+      cards: Array<{
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
       }> | null;
       image: null;
       content: null;
@@ -9062,57 +9432,9 @@ export type HOME_PAGE_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link" | "none";
-        text?: string;
-        variant?: "filled" | "outline";
-        linkType?: "external" | "internal";
-        internalLink?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogPost";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "collab";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "homePage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "page";
-        };
-        externalUrl?: string;
-        openInNewTab?: boolean;
-        image: null;
-        content: null;
-      } | {
-        _key: string;
-        _type: "cardGrid";
-        columns?: "2" | "3" | "4";
-        cards: Array<{
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
           _key: string;
-          _type: "card";
-          cardStyle?: "feature" | "statement";
-          icon?: Icon;
-          title?: string;
-          bodyText?: string;
-          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
@@ -9160,8 +9482,85 @@ export type HOME_PAGE_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
+          pageSectionId?: string;
           openInNewTab?: boolean;
           computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "cardGrid";
+        columns?: "2" | "3" | "4";
+        cards: Array<{
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
         }> | null;
         image: null;
         content: null;
@@ -9534,56 +9933,9 @@ export type HOME_PAGE_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link" | "none";
-          text?: string;
-          variant?: "filled" | "outline";
-          linkType?: "external" | "internal";
-          internalLink?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogPost";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "collab";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "homePage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "page";
-          };
-          externalUrl?: string;
-          openInNewTab?: boolean;
-          image: null;
-        } | {
-          _key: string;
-          _type: "cardGrid";
-          columns?: "2" | "3" | "4";
-          cards: Array<{
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
             _key: string;
-            _type: "card";
-            cardStyle?: "feature" | "statement";
-            icon?: Icon;
-            title?: string;
-            bodyText?: string;
-            buttonType?: "email" | "link" | "none";
             text?: string;
             variant?: "filled" | "outline";
             linkType?: "external" | "internal";
@@ -9631,8 +9983,84 @@ export type HOME_PAGE_QUERYResult = {
               href: string | null;
             } | null;
             externalUrl?: string;
+            pageSectionId?: string;
             openInNewTab?: boolean;
             computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "cardGrid";
+          columns?: "2" | "3" | "4";
+          cards: Array<{
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
           }> | null;
           image: null;
         } | {
@@ -11044,7 +11472,7 @@ export type BLOG_INDEX_PAGE_QUERYResult = {
   closingCard: null;
 } | null;
 // Variable: BLOG_POST_QUERY
-// Query: *[_type == "blogPost" && slug.current == $slug][0]{  _id,  _type,  _createdAt,  title,  slug,  subtitle,  author,  mainImage{    asset,    alt,    hotspot,    crop  },  hasOverrideDate,  overrideDate,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  }      }    }  }},  hasClosingCard,  closingCard,  "blogIndexHeroImage": *[_id == "blogIndexPage"][0].heroImage{    asset,    alt,    hotspot,    crop  }}
+// Query: *[_type == "blogPost" && slug.current == $slug][0]{  _id,  _type,  _createdAt,  title,  slug,  subtitle,  author,  mainImage{    asset,    alt,    hotspot,    crop  },  hasOverrideDate,  overrideDate,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  }      }    }  }},  hasClosingCard,  closingCard,  "blogIndexHeroImage": *[_id == "blogIndexPage"][0].heroImage{    asset,    alt,    hotspot,    crop  }}
 export type BLOG_POST_QUERYResult = {
   _id: string;
   _type: "blogPost";
@@ -11079,57 +11507,9 @@ export type BLOG_POST_QUERYResult = {
     icon?: Icon;
     title?: string;
     bodyText?: string;
-    buttonType?: "email" | "link" | "none";
-    text?: string;
-    variant?: "filled" | "outline";
-    linkType?: "external" | "internal";
-    internalLink?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "blogIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "blogPost";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "collab";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "homePage";
-    } | {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "page";
-    };
-    externalUrl?: string;
-    openInNewTab?: boolean;
-    image: null;
-    content: null;
-  } | {
-    _key: string;
-    _type: "cardGrid";
-    columns?: "2" | "3" | "4";
-    cards: Array<{
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
       _key: string;
-      _type: "card";
-      cardStyle?: "feature" | "statement";
-      icon?: Icon;
-      title?: string;
-      bodyText?: string;
-      buttonType?: "email" | "link" | "none";
       text?: string;
       variant?: "filled" | "outline";
       linkType?: "external" | "internal";
@@ -11177,8 +11557,85 @@ export type BLOG_POST_QUERYResult = {
         href: string | null;
       } | null;
       externalUrl?: string;
+      pageSectionId?: string;
       openInNewTab?: boolean;
       computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "cardGrid";
+    columns?: "2" | "3" | "4";
+    cards: Array<{
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
     }> | null;
     image: null;
     content: null;
@@ -11497,57 +11954,9 @@ export type BLOG_POST_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link" | "none";
-      text?: string;
-      variant?: "filled" | "outline";
-      linkType?: "external" | "internal";
-      internalLink?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogPost";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "collab";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "homePage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      };
-      externalUrl?: string;
-      openInNewTab?: boolean;
-      image: null;
-      content: null;
-    } | {
-      _key: string;
-      _type: "cardGrid";
-      columns?: "2" | "3" | "4";
-      cards: Array<{
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
         _key: string;
-        _type: "card";
-        cardStyle?: "feature" | "statement";
-        icon?: Icon;
-        title?: string;
-        bodyText?: string;
-        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -11595,8 +12004,85 @@ export type BLOG_POST_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
+        pageSectionId?: string;
         openInNewTab?: boolean;
         computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "cardGrid";
+      columns?: "2" | "3" | "4";
+      cards: Array<{
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
       }> | null;
       image: null;
       content: null;
@@ -11972,57 +12458,9 @@ export type BLOG_POST_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link" | "none";
-        text?: string;
-        variant?: "filled" | "outline";
-        linkType?: "external" | "internal";
-        internalLink?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogPost";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "collab";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "homePage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "page";
-        };
-        externalUrl?: string;
-        openInNewTab?: boolean;
-        image: null;
-        content: null;
-      } | {
-        _key: string;
-        _type: "cardGrid";
-        columns?: "2" | "3" | "4";
-        cards: Array<{
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
           _key: string;
-          _type: "card";
-          cardStyle?: "feature" | "statement";
-          icon?: Icon;
-          title?: string;
-          bodyText?: string;
-          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
@@ -12070,8 +12508,85 @@ export type BLOG_POST_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
+          pageSectionId?: string;
           openInNewTab?: boolean;
           computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "cardGrid";
+        columns?: "2" | "3" | "4";
+        cards: Array<{
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
         }> | null;
         image: null;
         content: null;
@@ -12444,56 +12959,9 @@ export type BLOG_POST_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link" | "none";
-          text?: string;
-          variant?: "filled" | "outline";
-          linkType?: "external" | "internal";
-          internalLink?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogPost";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "collab";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "homePage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "page";
-          };
-          externalUrl?: string;
-          openInNewTab?: boolean;
-          image: null;
-        } | {
-          _key: string;
-          _type: "cardGrid";
-          columns?: "2" | "3" | "4";
-          cards: Array<{
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
             _key: string;
-            _type: "card";
-            cardStyle?: "feature" | "statement";
-            icon?: Icon;
-            title?: string;
-            bodyText?: string;
-            buttonType?: "email" | "link" | "none";
             text?: string;
             variant?: "filled" | "outline";
             linkType?: "external" | "internal";
@@ -12541,8 +13009,84 @@ export type BLOG_POST_QUERYResult = {
               href: string | null;
             } | null;
             externalUrl?: string;
+            pageSectionId?: string;
             openInNewTab?: boolean;
             computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "cardGrid";
+          columns?: "2" | "3" | "4";
+          cards: Array<{
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
           }> | null;
           image: null;
         } | {
@@ -13184,7 +13728,7 @@ export type BLOG_POST_QUERYResult = {
   };
 } | null;
 // Variable: COLLAB_QUERY
-// Query: *[_type == "collab" && slug.current == $slug][0]{  _id,  _type,  name,  slug,  genre,  location,  heroImage{    asset,    alt,    hotspot,    crop  },  previewImage{    asset,    alt,    hotspot,    crop  },  shortDescription,  bio,  mainContent[]{  _type,  _key,  title,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "cardGrid" => {    ...,    cards[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  }      }    }  }}},  sideContent[]{  _type,  _key,  style,  title,  richText,  ctaBlocks[]{    _type,    _key,    _type == "ctaCalloutLink" => {      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}    },    _type == "ctaEmailButton" => {      ...    }  }},  links{    _type,    socialLinksArray[]{      _key,      platform,      url,      customTitle    }  }}
+// Query: *[_type == "collab" && slug.current == $slug][0]{  _id,  _type,  name,  slug,  genre,  location,  heroImage{    asset,    alt,    hotspot,    crop  },  previewImage{    asset,    alt,    hotspot,    crop  },  shortDescription,  bio,  mainContent[]{  _type,  _key,  title,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "cardGrid" => {    ...,    cards[]{      ...,      ctaList[]{        _type,        _key,        _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},        _type == "embeddedCtaEmailButton" => {...}      }    }  },  _type == "ctaEvent" => {    ...,    event->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  }      }    }  }}},  sideContent[]{  _type,  _key,  style,  title,  richText,  ctaBlocks[]{    _type,    _key,    _type == "ctaCalloutLink" => {      ...,      internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}    },    _type == "ctaEmailButton" => {      ...    }  }},  links{    _type,    socialLinksArray[]{      _key,      platform,      url,      customTitle    }  }}
 export type COLLAB_QUERYResult = {
   _id: string;
   _type: "collab";
@@ -13233,57 +13777,9 @@ export type COLLAB_QUERYResult = {
       icon?: Icon;
       title?: string;
       bodyText?: string;
-      buttonType?: "email" | "link" | "none";
-      text?: string;
-      variant?: "filled" | "outline";
-      linkType?: "external" | "internal";
-      internalLink?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "blogPost";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "collab";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "homePage";
-      } | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "page";
-      };
-      externalUrl?: string;
-      openInNewTab?: boolean;
-      image: null;
-      content: null;
-    } | {
-      _key: string;
-      _type: "cardGrid";
-      columns?: "2" | "3" | "4";
-      cards: Array<{
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
         _key: string;
-        _type: "card";
-        cardStyle?: "feature" | "statement";
-        icon?: Icon;
-        title?: string;
-        bodyText?: string;
-        buttonType?: "email" | "link" | "none";
         text?: string;
         variant?: "filled" | "outline";
         linkType?: "external" | "internal";
@@ -13331,8 +13827,85 @@ export type COLLAB_QUERYResult = {
           href: string | null;
         } | null;
         externalUrl?: string;
+        pageSectionId?: string;
         openInNewTab?: boolean;
         computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "cardGrid";
+      columns?: "2" | "3" | "4";
+      cards: Array<{
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
       }> | null;
       image: null;
       content: null;
@@ -13708,57 +14281,9 @@ export type COLLAB_QUERYResult = {
         icon?: Icon;
         title?: string;
         bodyText?: string;
-        buttonType?: "email" | "link" | "none";
-        text?: string;
-        variant?: "filled" | "outline";
-        linkType?: "external" | "internal";
-        internalLink?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "blogPost";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "collab";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "homePage";
-        } | {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "page";
-        };
-        externalUrl?: string;
-        openInNewTab?: boolean;
-        image: null;
-        content: null;
-      } | {
-        _key: string;
-        _type: "cardGrid";
-        columns?: "2" | "3" | "4";
-        cards: Array<{
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
           _key: string;
-          _type: "card";
-          cardStyle?: "feature" | "statement";
-          icon?: Icon;
-          title?: string;
-          bodyText?: string;
-          buttonType?: "email" | "link" | "none";
           text?: string;
           variant?: "filled" | "outline";
           linkType?: "external" | "internal";
@@ -13806,8 +14331,85 @@ export type COLLAB_QUERYResult = {
             href: string | null;
           } | null;
           externalUrl?: string;
+          pageSectionId?: string;
           openInNewTab?: boolean;
           computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "cardGrid";
+        columns?: "2" | "3" | "4";
+        cards: Array<{
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
         }> | null;
         image: null;
         content: null;
@@ -14183,57 +14785,9 @@ export type COLLAB_QUERYResult = {
           icon?: Icon;
           title?: string;
           bodyText?: string;
-          buttonType?: "email" | "link" | "none";
-          text?: string;
-          variant?: "filled" | "outline";
-          linkType?: "external" | "internal";
-          internalLink?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "blogPost";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "collab";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "homePage";
-          } | {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "page";
-          };
-          externalUrl?: string;
-          openInNewTab?: boolean;
-          image: null;
-          content: null;
-        } | {
-          _key: string;
-          _type: "cardGrid";
-          columns?: "2" | "3" | "4";
-          cards: Array<{
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
             _key: string;
-            _type: "card";
-            cardStyle?: "feature" | "statement";
-            icon?: Icon;
-            title?: string;
-            bodyText?: string;
-            buttonType?: "email" | "link" | "none";
             text?: string;
             variant?: "filled" | "outline";
             linkType?: "external" | "internal";
@@ -14281,8 +14835,85 @@ export type COLLAB_QUERYResult = {
               href: string | null;
             } | null;
             externalUrl?: string;
+            pageSectionId?: string;
             openInNewTab?: boolean;
             computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+          content: null;
+        } | {
+          _key: string;
+          _type: "cardGrid";
+          columns?: "2" | "3" | "4";
+          cards: Array<{
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
           }> | null;
           image: null;
           content: null;
@@ -14951,8 +15582,8 @@ export type FOOTER_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  subtitle,\n  slug,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n\n      }\n    }\n  }\n},\n  heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  hasClosingCard,\n  closingCard\n}": PAGE_QUERYResult;
-    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroStyle,\n  heroTextColor,\n  showHeroLogo,\n  enableFeaturedItems,\n  featuredImages[]{\n    asset,\n    alt,\n    \n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n\n  },\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  heroCallToActionList[]{\n    _type,\n    _key,\n    _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n    _type == \"embeddedCtaEmailButton\" => {...}\n  },\n  heroContentPosition,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n\n      }\n    }\n  }\n}\n}": HOME_PAGE_QUERYResult;
+    "*[_type == \"page\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  title,\n  subtitle,\n  slug,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n\n      }\n    }\n  }\n},\n  heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  hasClosingCard,\n  closingCard\n}": PAGE_QUERYResult;
+    "*[_id == \"homePage\"][0]{\n  _id,\n  _type,\n  heroStyle,\n  heroTextColor,\n  showHeroLogo,\n  enableFeaturedItems,\n  featuredImages[]{\n    asset,\n    alt,\n    \n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n\n  },\n  heroImage{\n    asset,\n    alt\n  },\n  heroTitle,\n  heroSubtitle,\n  heroCallToActionList[]{\n    _type,\n    _key,\n    _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n    _type == \"embeddedCtaEmailButton\" => {...}\n  },\n  heroContentPosition,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n\n      }\n    }\n  }\n}\n}": HOME_PAGE_QUERYResult;
     "*[_id == \"header\"][0]{\n  _id,\n  _type,\n  logo{\n    asset,\n    alt\n  },\n  horizontalNav[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  verticalNav[]{\n    _type,\n    _type == \"navLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n    _type == \"divider\" => {...}\n  }\n}": HEADER_QUERYResult;
     "*[_id == \"siteSettings\"][0]{\n  _id,\n  _type,\n  siteTitle,\n  companyEmail,\n  siteDescription\n}": SITE_SETTINGS_QUERYResult;
     "*[_id == \"companyLinks\"][0]{\n  _id,\n  _type,\n  companyLinks{\n    _type,\n    socialLinksArray[]{\n      _key,\n      platform,\n      url,\n      customTitle,\n      hideFromFooter\n    }\n  }\n}": COMPANY_LINKS_QUERYResult;
@@ -14960,8 +15591,8 @@ declare module "@sanity/client" {
     "*[_id == \"eventsIndexPage\"][0]{\n  _id,\n  _type,\n  title,\n  backgroundImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  subtitle,\n  noUpcomingEventsMessage,\n  noPastEventsMessage,\n  hasEventsMessage,\n  eventsMessage\n}": EVENTS_INDEX_PAGE_QUERYResult;
     "*[_type == \"blogPost\"]|order(coalesce(overrideDate, _createdAt) desc){\n  _id,\n  _createdAt,\n  title,\n  slug,\n  subtitle,\n  author,\n  mainImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  hasOverrideDate,\n  overrideDate,\n  hasClosingCard,\n  closingCard\n}": BLOG_POSTS_QUERYResult;
     "*[_id == \"blogIndexPage\"][0]{\n  _id,\n  _type,\n  title,\n  heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  subtitle,\n  noArticlesMessage,\n  hasClosingCard,\n  closingCard\n}": BLOG_INDEX_PAGE_QUERYResult;
-    "*[_type == \"blogPost\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  _createdAt,\n  title,\n  slug,\n  subtitle,\n  author,\n  mainImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  hasOverrideDate,\n  overrideDate,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n\n      }\n    }\n  }\n},\n  hasClosingCard,\n  closingCard,\n  \"blogIndexHeroImage\": *[_id == \"blogIndexPage\"][0].heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  }\n}": BLOG_POST_QUERYResult;
-    "*[_type == \"collab\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  name,\n  slug,\n  genre,\n  location,\n  heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  previewImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  shortDescription,\n  bio,\n  mainContent[]{\n  _type,\n  _key,\n  title,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n}\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n\n      }\n    }\n  }\n}\n},\n  sideContent[]{\n  _type,\n  _key,\n  style,\n  title,\n  richText,\n  ctaBlocks[]{\n    _type,\n    _key,\n    _type == \"ctaCalloutLink\" => {\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n    },\n    _type == \"ctaEmailButton\" => {\n      ...\n    }\n  }\n},\n  links{\n    _type,\n    socialLinksArray[]{\n      _key,\n      platform,\n      url,\n      customTitle\n    }\n  }\n}": COLLAB_QUERYResult;
+    "*[_type == \"blogPost\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  _createdAt,\n  title,\n  slug,\n  subtitle,\n  author,\n  mainImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  hasOverrideDate,\n  overrideDate,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n\n      }\n    }\n  }\n},\n  hasClosingCard,\n  closingCard,\n  \"blogIndexHeroImage\": *[_id == \"blogIndexPage\"][0].heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  }\n}": BLOG_POST_QUERYResult;
+    "*[_type == \"collab\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  name,\n  slug,\n  genre,\n  location,\n  heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  previewImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  shortDescription,\n  bio,\n  mainContent[]{\n  _type,\n  _key,\n  title,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"cardGrid\" => {\n    ...,\n    cards[]{\n      ...,\n      ctaList[]{\n        _type,\n        _key,\n        _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n        _type == \"embeddedCtaEmailButton\" => {...}\n      }\n    }\n  },\n  _type == \"ctaEvent\" => {\n    ...,\n    event->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n\n      }\n    }\n  }\n}\n},\n  sideContent[]{\n  _type,\n  _key,\n  style,\n  title,\n  richText,\n  ctaBlocks[]{\n    _type,\n    _key,\n    _type == \"ctaCalloutLink\" => {\n      ...,\n      internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}\n    },\n    _type == \"ctaEmailButton\" => {\n      ...\n    }\n  }\n},\n  links{\n    _type,\n    socialLinksArray[]{\n      _key,\n      platform,\n      url,\n      customTitle\n    }\n  }\n}": COLLAB_QUERYResult;
     "*[_type == \"collab\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": COLLABS_SLUGS_QUERYResult;
     "*[_type == \"collab\" && defined(slug.current)]|order(order asc, name asc){\n  _id,\n  name,\n  slug,\n  genre,\n  location,\n  order,\n  previewImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  shortDescription,\n  useShortDescriptionForCards,\n  cardDescription\n}": COLLABS_ALL_QUERYResult;
     "*[_type == \"favourites\"]|order(order asc, name asc){\n  _id,\n  name,\n  genre,\n  order,\n  profileImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  description,\n  link,\n  linkLabel\n}": FAVOURITES_ALL_QUERYResult;

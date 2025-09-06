@@ -57,9 +57,26 @@ const contentProjection = `
   _type == "ctaButton" => {${fullLinkProjection}},
   _type == "ctaCalloutLink" => {${fullLinkProjection}},
   _type == "ctaCard" => {${fullLinkProjection}},
+  _type == "card" => {
+    ...,
+    ctaList[]{
+      _type,
+      _key,
+      _type == "embeddedCtaButton" => {${fullLinkProjection}},
+      _type == "embeddedCtaEmailButton" => {...}
+    }
+  },
   _type == "cardGrid" => {
     ...,
-    cards[]{${fullLinkProjection}}
+    cards[]{
+      ...,
+      ctaList[]{
+        _type,
+        _key,
+        _type == "embeddedCtaButton" => {${fullLinkProjection}},
+        _type == "embeddedCtaEmailButton" => {...}
+      }
+    }
   },
   _type == "ctaEvent" => {
     ...,

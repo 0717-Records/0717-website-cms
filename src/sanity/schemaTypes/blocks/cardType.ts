@@ -4,7 +4,7 @@
 
 import { defineField, defineType } from 'sanity';
 import { DocumentIcon } from '@sanity/icons';
-import { LINKABLE_PAGE_TYPES, LINK_TYPE_OPTIONS } from '../shared/linkSystem';
+import { createCTAListField } from '../shared/ctaListType';
 
 export const cardType = defineType({
   name: 'card',
@@ -14,7 +14,7 @@ export const cardType = defineType({
   groups: [
     { name: 'style', title: 'Style' },
     { name: 'content', title: 'Content' },
-    { name: 'button', title: 'Button' },
+    { name: 'cta', title: 'Call to Action' },
   ],
   fields: [
     defineField({
@@ -61,134 +61,12 @@ export const cardType = defineType({
       group: 'content',
       description: 'Main content text for the card',
     }),
-    defineField({
-      name: 'buttonType',
-      title: 'Button Type',
-      type: 'string',
-      group: 'button',
-      options: {
-        list: [
-          { title: 'No Button', value: 'none' },
-          { title: 'Link Button', value: 'link' },
-          { title: 'Email Button', value: 'email' },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'none',
-      description:
-        'Choose the type of button to display, or select "No Button" if the call-to-action is in the text only',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'text',
-      title: 'Button Text',
-      type: 'string',
-      group: 'button',
-      description: 'The text that will appear on the button',
-      hidden: ({ parent }) => parent?.buttonType !== 'link',
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const parent = context.parent as Record<string, unknown>;
-          if (parent?.buttonType === 'link') {
-            if (!value || value.length < 1) return 'Button text is required';
-            if (value.length > 50) return 'Button text must be at most 50 characters';
-          }
-          return true;
-        }),
-    }),
-    defineField({
-      name: 'variant',
-      title: 'Button Style',
-      type: 'string',
-      group: 'button',
-      options: {
-        list: [
-          { title: 'Filled (Default)', value: 'filled' },
-          { title: 'Outline', value: 'outline' },
-        ],
-      },
-      initialValue: 'filled',
-      description: 'Choose the visual style of the button',
-      hidden: ({ parent }) => parent?.buttonType !== 'link',
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const parent = context.parent as Record<string, unknown>;
-          if (parent?.buttonType === 'link' && !value) {
-            return 'Button style is required';
-          }
-          return true;
-        }),
-    }),
-    defineField({
-      name: 'linkType',
-      title: 'Link Type',
-      type: 'string',
-      group: 'button',
-      options: {
-        list: [...LINK_TYPE_OPTIONS],
-      },
-      initialValue: 'internal',
-      description: 'Choose whether this links to another page on your site or an external URL',
-      hidden: ({ parent }) => parent?.buttonType !== 'link',
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const parent = context.parent as Record<string, unknown>;
-          if (parent?.buttonType === 'link' && !value) {
-            return 'Link type is required';
-          }
-          return true;
-        }),
-    }),
-    defineField({
-      name: 'internalLink',
-      title: 'Internal Page',
-      type: 'reference',
-      group: 'button',
-      to: [...LINKABLE_PAGE_TYPES],
-      description: 'Select a page from your website',
-      hidden: ({ parent }) => parent?.buttonType !== 'link' || parent?.linkType !== 'internal',
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const parent = context.parent as Record<string, unknown>;
-          if (parent?.buttonType === 'link' && parent?.linkType === 'internal' && !value) {
-            return 'Please select a page to link to';
-          }
-          return true;
-        }),
-    }),
-    defineField({
-      name: 'externalUrl',
-      title: 'External URL',
-      type: 'url',
-      group: 'button',
-      description: 'Enter the full URL (e.g., https://example.com)',
-      placeholder: 'https://example.com',
-      hidden: ({ parent }) => parent?.buttonType !== 'link' || parent?.linkType !== 'external',
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const parent = context.parent as Record<string, unknown>;
-          if (parent?.buttonType === 'link' && parent?.linkType === 'external') {
-            if (!value) {
-              return 'Please enter an external URL';
-            }
-            try {
-              new URL(value as string);
-              return true;
-            } catch {
-              return 'Please enter a valid URL';
-            }
-          }
-          return true;
-        }),
-    }),
-    defineField({
-      name: 'openInNewTab',
-      title: 'Open in New Tab',
-      type: 'boolean',
-      group: 'button',
-      description: 'Check this to open the link in a new tab/window',
-      initialValue: false,
-      hidden: ({ parent }) => parent?.buttonType !== 'link' || parent?.linkType !== 'internal',
+    createCTAListField({
+      name: 'ctaList',
+      title: 'Call to Action Buttons',
+      description: 'Add call-to-action buttons for this card. Leave empty if no CTA is needed.',
+      group: 'cta',
+      maxItems: 2,
     }),
   ],
   preview: {
@@ -197,15 +75,19 @@ export const cardType = defineType({
       icon: 'icon.name',
       bodyText: 'bodyText',
       cardStyle: 'cardStyle',
+      ctaList: 'ctaList',
     },
-    prepare({ title, icon, bodyText, cardStyle }) {
+    prepare({ title, icon, bodyText, cardStyle, ctaList }) {
       const displayTitle = title || 'Untitled Card';
       const styleLabel = cardStyle === 'statement' ? 'Statement' : 'Feature';
+      const ctaCount = ctaList?.length || 0;
+      const ctaLabel = ctaCount > 0 ? ` • ${ctaCount} CTA${ctaCount !== 1 ? 's' : ''}` : '';
+      
       const subtitle = icon
-        ? `${styleLabel} • Icon: ${icon}`
+        ? `${styleLabel} • Icon: ${icon}${ctaLabel}`
         : bodyText
-          ? `${styleLabel} • ${bodyText.slice(0, 40)}...`
-          : `${styleLabel} • No content`;
+          ? `${styleLabel} • ${bodyText.slice(0, 30)}...${ctaLabel}`
+          : `${styleLabel} • No content${ctaLabel}`;
 
       return {
         title: displayTitle,
