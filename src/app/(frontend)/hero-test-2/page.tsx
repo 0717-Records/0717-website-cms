@@ -22,11 +22,12 @@ const page = async () => {
           {validImages.map((image, index) => {
             const dimensions = getImageDimensions(image as { asset: { _ref: string } });
             const aspectRatio = dimensions ? dimensions.width / dimensions.height : 1;
+            const isPortrait = aspectRatio < 1;
 
             return (
               <div
                 key={index}
-                className={`relative border border-blue-500 ${index === 0 ? 'w-full' : 'h-[50vh]'} max-w-full`}
+                className={`relative border border-blue-500 ${isPortrait ? 'h-[50vh]' : 'w-full'} max-w-full`}
                 style={{ aspectRatio: aspectRatio }}>
                 <Image
                   src={urlFor(image).width(1200).url()}
