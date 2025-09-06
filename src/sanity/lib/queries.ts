@@ -144,7 +144,8 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
   enableFeaturedItems,
   featuredImages[]{
     asset,
-    alt
+    alt,
+    ${fullLinkProjection}
   },
   heroImage{
     asset,

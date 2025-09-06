@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { getImageDimensions, urlFor } from '@/sanity/lib/image';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
+import LinkWrapper from '../UI/LinkWrapper';
 
 interface FeaturedItemsProps {
   featuredImages: NonNullable<HOME_PAGE_QUERYResult>['featuredImages'];
@@ -24,11 +25,24 @@ const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
         const aspectRatio = dimensions ? dimensions.width / dimensions.height : 1;
         const isPortrait = aspectRatio <= 1;
 
+        // Check if this image has link data (exclude 'none' linkType)
+        const hasLink = image.linkType && (
+          (image.linkType === 'internal') ||
+          (image.linkType === 'external' && image.externalUrl)
+        );
+
         return (
-          <div
+          <LinkWrapper
             key={index}
-            className={`relative w-full landscape:h-[45vh] landscape:w-auto ${isPortrait ? 'max-w-[300px] landscape:max-w-none' : 'max-w-[2000px] landscape:max-w-full'}`}
-            style={{ aspectRatio: aspectRatio }}>
+            linkType={image.linkType}
+            internalLink={image.internalLink}
+            externalUrl={image.externalUrl}
+            openInNewTab={image.openInNewTab}
+            computedHref={image.computedHref}
+            pageSectionId={image.pageSectionId}
+            className={`relative w-full landscape:h-[45vh] landscape:w-auto ${isPortrait ? 'max-w-[300px] landscape:max-w-none' : 'max-w-[2000px] landscape:max-w-full'} ${hasLink ? 'cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95' : ''}`}
+            style={{ aspectRatio: aspectRatio }}
+          >
             <Image
               src={urlFor(image).width(2000).url()}
               alt={image.alt || 'Featured item'}
@@ -37,7 +51,7 @@ const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
               sizes='(max-width: 768px) 90vw, 400px'
               priority={index === 0}
             />
-          </div>
+          </LinkWrapper>
         );
       })}
     </div>

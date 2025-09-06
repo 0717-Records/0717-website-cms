@@ -30,6 +30,15 @@ export const LINK_TYPE_OPTIONS = [
 ] as const;
 
 /**
+ * Link type options for optional linking (includes "no link" option)
+ */
+export const OPTIONAL_LINK_TYPE_OPTIONS = [
+  { title: 'No Link (Image not clickable)', value: 'none' },
+  { title: 'Internal Page', value: 'internal' },
+  { title: 'External URL', value: 'external' },
+] as const;
+
+/**
  * Create a complete link field set (linkType + internalLink + externalUrl + openInNewTab + pageSection)
  * This is the most comprehensive link setup for buttons and similar components
  */
@@ -230,3 +239,142 @@ export const standardInternalLinkField = createInternalLinkField({
  * Standard complete link field set for buttons
  */
 export const standardLinkFieldSet = createLinkFieldSet();
+
+/**
+ * Create optional link field set that includes "No Link" option
+ * Perfect for images, cards, or other elements where linking is optional
+ */
+export const createOptionalLinkFieldSet = (
+  options: {
+    group?: string;
+    linkTypeConfig?: {
+      name?: string;
+      title?: string;
+      description?: string;
+      initialValue?: 'none' | 'internal' | 'external';
+    };
+    internalLinkConfig?: {
+      name?: string;
+      title?: string;
+      description?: string;
+      hidden?: (context: { parent?: Record<string, unknown> }) => boolean;
+      validationMessage?: string;
+    };
+    externalUrlConfig?: {
+      name?: string;
+      title?: string;
+      description?: string;
+      placeholder?: string;
+      hidden?: (context: { parent?: Record<string, unknown> }) => boolean;
+      validationMessage?: string;
+    };
+    openInNewTabConfig?: {
+      name?: string;
+      title?: string;
+      description?: string;
+      hidden?: (context: { parent?: Record<string, unknown> }) => boolean;
+      initialValue?: boolean;
+    };
+    pageSectionConfig?: {
+      name?: string;
+      title?: string;
+      description?: string;
+      hidden?: (context: { parent?: Record<string, unknown> }) => boolean;
+    };
+  } = {}
+) => {
+  const {
+    group,
+    linkTypeConfig = {},
+    internalLinkConfig = {},
+    externalUrlConfig = {},
+    openInNewTabConfig = {},
+    pageSectionConfig = {},
+  } = options;
+
+  return [
+    // Link Type Selection with "No Link" option
+    defineField({
+      name: linkTypeConfig.name || 'linkType',
+      title: linkTypeConfig.title || 'Link Type',
+      type: 'string',
+      group,
+      options: {
+        list: [...OPTIONAL_LINK_TYPE_OPTIONS],
+      },
+      initialValue: linkTypeConfig.initialValue || 'none',
+      validation: (Rule) => Rule.required().error('Please select a link option'),
+      description:
+        linkTypeConfig.description ||
+        'Choose how this element should behave when clicked',
+    }),
+
+    // Internal Link Reference
+    defineField({
+      name: internalLinkConfig.name || 'internalLink',
+      title: internalLinkConfig.title || 'Internal Page',
+      type: 'reference',
+      group,
+      to: [...LINKABLE_PAGE_TYPES],
+      description:
+        internalLinkConfig.description ||
+        'Select a page from your website. If left empty, will link to the home page',
+      hidden: internalLinkConfig.hidden || (({ parent }) => parent?.linkType !== 'internal'),
+    }),
+
+    // External URL
+    defineField({
+      name: externalUrlConfig.name || 'externalUrl',
+      title: externalUrlConfig.title || 'External URL',
+      type: 'url',
+      group,
+      description:
+        externalUrlConfig.description || 'Enter the full URL (e.g., https://example.com)',
+      placeholder: externalUrlConfig.placeholder || 'https://example.com',
+      hidden: externalUrlConfig.hidden || (({ parent }) => parent?.linkType !== 'external'),
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as Record<string, unknown>;
+          if (parent?.linkType === 'external') {
+            if (!value) {
+              return externalUrlConfig.validationMessage || 'Please enter an external URL';
+            }
+            try {
+              new URL(value as string);
+              return true;
+            } catch {
+              return 'Please enter a valid URL';
+            }
+          }
+          return true;
+        }),
+    }),
+
+    // Page Section Dropdown
+    defineField({
+      name: pageSectionConfig.name || 'pageSectionId',
+      title: pageSectionConfig.title || 'Section Anchor ID (Optional)',
+      type: 'string',
+      group,
+      description:
+        pageSectionConfig.description ||
+        'Select a section from the chosen page to link directly to it. Use the dropdown to choose from available sections.',
+      components: {
+        input: SectionDropdown,
+      },
+      hidden: pageSectionConfig.hidden || (({ parent }) => parent?.linkType !== 'internal'),
+    }),
+
+    // Open in New Tab
+    defineField({
+      name: openInNewTabConfig.name || 'openInNewTab',
+      title: openInNewTabConfig.title || 'Open in New Tab',
+      type: 'boolean',
+      group,
+      description:
+        openInNewTabConfig.description || 'Check this to open the link in a new tab/window',
+      initialValue: openInNewTabConfig.initialValue ?? false,
+      hidden: openInNewTabConfig.hidden || (({ parent }) => parent?.linkType === 'none' || parent?.linkType !== 'internal'),
+    }),
+  ];
+};

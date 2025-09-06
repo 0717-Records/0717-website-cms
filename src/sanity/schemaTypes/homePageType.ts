@@ -1,5 +1,6 @@
 import { HomeIcon } from '@sanity/icons';
 import { defineField, defineType } from 'sanity';
+import { createOptionalLinkFieldSet } from './shared/linkSystem';
 
 export const homePageType = defineType({
   name: 'homePage',
@@ -128,6 +129,21 @@ export const homePageType = defineType({
               title: 'Alternative text',
               description: 'Describe the image for accessibility and SEO',
               validation: (Rule) => Rule.required(),
+            }),
+            ...createOptionalLinkFieldSet({
+              linkTypeConfig: {
+                initialValue: 'none',
+                description: 'Make this image clickable by adding a link (optional)'
+              },
+              internalLinkConfig: {
+                description: 'Select a page to link to when the image is clicked',
+              },
+              externalUrlConfig: {
+                description: 'Enter external URL to link to when the image is clicked',
+              },
+              openInNewTabConfig: {
+                description: 'Open link in new tab (recommended for external links)',
+              },
             }),
           ],
         },
