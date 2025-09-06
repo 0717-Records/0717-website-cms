@@ -19,7 +19,7 @@ const page = async () => {
     <div>
       <div
         id='hero'
-        className={`${styles.heroHeight} flex flex-col justify-around items-center text-center py-8`}>
+        className={`${styles['hero-height']} flex flex-col justify-around items-center text-center py-8`}>
         <h1 className='text-h4'>{page?.heroTitle}</h1>
         <div className='border border-green-400 w-full flex flex-wrap justify-center gap-4 px-4 md:px-8'>
           {validImages.map((image, index) => {
