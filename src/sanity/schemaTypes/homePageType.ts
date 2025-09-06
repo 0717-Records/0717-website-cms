@@ -68,6 +68,15 @@ export const homePageType = defineType({
       initialValue: 'black',
     }),
     defineField({
+      name: 'enableFeaturedItems',
+      type: 'boolean',
+      title: 'Enable Featured Items',
+      description:
+        'Display featured images/posters in the hero section. Perfect for highlighting event posters, announcements, or promotional banners as the first thing visitors see.',
+      group: 'hero',
+      initialValue: false,
+    }),
+    defineField({
       name: 'heroContentPosition',
       type: 'string',
       title: 'Content Position',
@@ -89,6 +98,7 @@ export const homePageType = defineType({
         layout: 'dropdown',
       },
       initialValue: 'center-center',
+      hidden: ({ document }) => !!document?.enableFeaturedItems,
     }),
     defineField({
       name: 'showHeroLogo',
@@ -99,18 +109,11 @@ export const homePageType = defineType({
       initialValue: true,
     }),
     defineField({
-      name: 'enableFeaturedItems',
-      type: 'boolean',
-      title: 'Enable Featured Items',
-      description: 'Display featured images/posters in the hero section. Perfect for highlighting event posters, announcements, or promotional banners as the first thing visitors see.',
-      group: 'hero',
-      initialValue: false,
-    }),
-    defineField({
       name: 'featuredImages',
       type: 'array',
       title: 'Featured Images',
-      description: 'Add promotional images, event posters, or banners to showcase in the hero. These images will be prominently displayed to grab visitor attention.',
+      description:
+        'Add promotional images, event posters, or banners to showcase in the hero. These images will be prominently displayed to grab visitor attention.',
       group: 'hero',
       of: [
         {
@@ -130,13 +133,14 @@ export const homePageType = defineType({
         },
       ],
       hidden: ({ document }) => !document?.enableFeaturedItems,
-      validation: (Rule) => Rule.custom((images, context) => {
-        const document = context.document;
-        if (document?.enableFeaturedItems && (!images || images.length === 0)) {
-          return 'Please add at least one featured image when featured items are enabled';
-        }
-        return true;
-      }),
+      validation: (Rule) =>
+        Rule.custom((images, context) => {
+          const document = context.document;
+          if (document?.enableFeaturedItems && (!images || images.length === 0)) {
+            return 'Please add at least one featured image when featured items are enabled';
+          }
+          return true;
+        }),
     }),
     defineField({
       name: 'heroTitle',
