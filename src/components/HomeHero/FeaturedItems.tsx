@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
+import { getImageDimensions, urlFor } from '@/sanity/lib/image';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 
 interface FeaturedItemsProps {
@@ -18,17 +18,23 @@ const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
   }
 
   return (
-    <div
-      className={`flex border border-red-500 items-center justify-center gap-4 transition-opacity duration-700 ease-in-out`}>
+    <div className={`w-full flex flex-wrap justify-center gap-4 border border-green-500`}>
       {validImages.map((image, index) => {
+        const dimensions = getImageDimensions(image as { asset: { _ref: string } });
+        const aspectRatio = dimensions ? dimensions.width / dimensions.height : 1;
+        const isPortrait = aspectRatio <= 1;
+
         return (
-          <div key={index} className='relative border border-blue-700'>
+          <div
+            key={index}
+            className={`relative border border-blue-500 w-full landscape:h-[50vh] landscape:w-auto ${isPortrait ? 'max-w-[300px] landscape:max-w-none' : 'max-w-[2000px] landscape:max-w-full'}`}
+            style={{ aspectRatio: aspectRatio }}>
             <Image
-              src={urlFor(image).width(800).url()}
+              src={urlFor(image).width(2000).url()}
               alt={image.alt || 'Featured item'}
               fill
               className='object-contain'
-              sizes='(max-width: 768px) 90vw, 25vw'
+              sizes='(max-width: 768px) 90vw, 400px'
               priority={index === 0}
             />
           </div>

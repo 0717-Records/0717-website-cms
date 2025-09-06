@@ -49,7 +49,8 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
   };
 
   return (
-    <div className={`flex flex-col px-8 border border-purple-600`}>
+    <div
+      className={`flex flex-col justify-around items-center text-center px-8 border border-purple-600`}>
       {/* Top Section: Logo and Title */}
       <div
         className={`flex flex-col items-center text-center px-4 py-4 ${getTextColorClasses(heroTextColor)}`}>
@@ -58,9 +59,7 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
       </div>
 
       {/* Center Section: Featured Images - can grow when wrapping */}
-      <div
-        className='flex justify-center flex-grow border border-amber-500'
-        {...createSanityDataAttribute(documentId, documentType, 'featuredImages')}>
+      <div {...createSanityDataAttribute(documentId, documentType, 'featuredImages')}>
         <FeaturedItems featuredImages={featuredImages} />
       </div>
 
