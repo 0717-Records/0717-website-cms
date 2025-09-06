@@ -16,9 +16,7 @@ const page = async () => {
 
   return (
     <div>
-      <div
-        id='hero'
-        className='min-h-[100svh] flex flex-col justify-around items-center text-center py-8'>
+      <div id='hero' className='flex flex-col items-center text-center py-8'>
         <h1 className='text-h1'>{page?.heroTitle}</h1>
         <div className='border border-green-400 w-full flex flex-wrap justify-center gap-4 px-8'>
           {validImages.map((image, index) => {
