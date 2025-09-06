@@ -16,12 +16,14 @@ const page = async () => {
 
   return (
     <div>
-      <div className='min-h-[100svh] flex flex-col items-center justify-between text-center py-8'>
+      <div
+        id='hero-section'
+        className='min-h-[100svh] flex flex-col items-center justify-between text-center py-8'>
         <h1 className='text-h1'>{page?.heroTitle}</h1>
-        <div className='border border-green-400 flex-grow w-full'>
+        <div className='border border-green-400 flex-grow w-full flex gap-4'>
           {validImages.map((image, index) => {
             return (
-              <div key={index} className='relative border border-blue-500 h-full'>
+              <div key={index} className='relative flex-1 min-h-0 border border-blue-500'>
                 <Image
                   src={urlFor(image).width(1200).url()}
                   alt={image.alt || 'Featured item'}
