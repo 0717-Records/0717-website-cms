@@ -30,6 +30,7 @@ const HeroTitle = ({
   return (
     <Heading
       level='h1'
+      showMargin={false}
       className={titleClasses}
       {...createSanityDataAttribute(documentId, documentType, 'heroTitle')}>
       {stegaClean(heroTitle)}

@@ -56,7 +56,7 @@ const Hero = ({
   return (
     <section
       id='home'
-      className={`relative ${styles['hero-height']} flex flex-col justify-center ${heroBottomSpacing} border border-green-500`}>
+      className={`relative ${styles['hero-height']} flex flex-col justify-center ${heroBottomSpacing}`}>
       {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
 
       {/* Hero Style Click-to-Edit Wrapper */}

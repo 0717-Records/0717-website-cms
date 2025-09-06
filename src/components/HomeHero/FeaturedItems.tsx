@@ -18,7 +18,7 @@ const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
   }
 
   return (
-    <div className={`w-full flex flex-wrap justify-center gap-4 border border-green-500`}>
+    <div className={`w-full flex flex-wrap justify-center gap-4`}>
       {validImages.map((image, index) => {
         const dimensions = getImageDimensions(image as { asset: { _ref: string } });
         const aspectRatio = dimensions ? dimensions.width / dimensions.height : 1;
@@ -27,7 +27,7 @@ const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
         return (
           <div
             key={index}
-            className={`relative border border-blue-500 w-full landscape:h-[50vh] landscape:w-auto ${isPortrait ? 'max-w-[300px] landscape:max-w-none' : 'max-w-[2000px] landscape:max-w-full'}`}
+            className={`relative w-full landscape:h-[45vh] landscape:w-auto ${isPortrait ? 'max-w-[300px] landscape:max-w-none' : 'max-w-[2000px] landscape:max-w-full'}`}
             style={{ aspectRatio: aspectRatio }}>
             <Image
               src={urlFor(image).width(2000).url()}

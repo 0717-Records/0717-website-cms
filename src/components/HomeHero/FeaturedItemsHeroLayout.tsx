@@ -7,6 +7,7 @@ import HeroSubtitle from './HeroSubtitle';
 import HeroLogo from './HeroLogo';
 import HeroCTA from './HeroCTA';
 import { getTextColorClasses } from './heroUtils';
+import styles from './styles.module.css';
 
 interface FeaturedItemsHeroLayoutProps {
   heroTextColor: NonNullable<HOME_PAGE_QUERYResult>['heroTextColor'];
@@ -50,7 +51,7 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
 
   return (
     <div
-      className={`flex flex-col justify-around items-center text-center px-8 border border-purple-600`}>
+      className={`relative ${styles['hero-height']} flex flex-col justify-around items-center text-center px-8 z-20`}>
       {/* Top Section: Logo and Title */}
       <div
         className={`flex flex-col items-center text-center px-4 py-4 ${getTextColorClasses(heroTextColor)}`}>
@@ -59,7 +60,9 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
       </div>
 
       {/* Center Section: Featured Images - can grow when wrapping */}
-      <div {...createSanityDataAttribute(documentId, documentType, 'featuredImages')}>
+      <div
+        className='w-full'
+        {...createSanityDataAttribute(documentId, documentType, 'featuredImages')}>
         <FeaturedItems featuredImages={featuredImages} />
       </div>
 
