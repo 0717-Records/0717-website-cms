@@ -16,7 +16,7 @@ const page = async () => {
 
   return (
     <div>
-      <div id='hero' className='flex flex-col items-center text-center py-8'>
+      <div id='hero' className='flex flex-col justify-start items-center text-center py-8'>
         <h1 className='text-h1'>{page?.heroTitle}</h1>
         <div className='border border-green-400 w-full flex flex-wrap justify-center gap-4 px-8'>
           {validImages.map((image, index) => {
@@ -26,7 +26,7 @@ const page = async () => {
             return (
               <div
                 key={index}
-                className='relative border border-blue-500 h-[50vh] max-w-full'
+                className={`relative border border-blue-500 ${index === 0 ? 'w-full' : 'h-[50vh]'} max-w-full`}
                 style={{ aspectRatio: aspectRatio }}>
                 <Image
                   src={urlFor(image).width(1200).url()}
