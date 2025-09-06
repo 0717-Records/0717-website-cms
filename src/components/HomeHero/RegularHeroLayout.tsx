@@ -13,8 +13,7 @@ interface RegularHeroLayoutProps {
   showHeroLogo: NonNullable<HOME_PAGE_QUERYResult>['showHeroLogo'];
   heroTitle: NonNullable<HOME_PAGE_QUERYResult>['heroTitle'];
   heroSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroSubtitle'];
-  enableHeroCallToAction: NonNullable<HOME_PAGE_QUERYResult>['enableHeroCallToAction'];
-  heroCallToAction: NonNullable<HOME_PAGE_QUERYResult>['heroCallToAction'];
+  heroCallToActionList: NonNullable<HOME_PAGE_QUERYResult>['heroCallToActionList'];
   heroContentPosition: NonNullable<HOME_PAGE_QUERYResult>['heroContentPosition'];
   enableFeaturedItems: NonNullable<HOME_PAGE_QUERYResult>['enableFeaturedItems'];
   documentId: string;
@@ -30,8 +29,7 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
     heroSubtitle,
     enableFeaturedItems,
     showHeroLogo,
-    enableHeroCallToAction,
-    heroCallToAction,
+    heroCallToActionList,
     documentId,
     documentType,
   } = props;
@@ -42,8 +40,7 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
     heroTextColor,
     enableFeaturedItems,
     showHeroLogo,
-    enableHeroCallToAction,
-    heroCallToAction,
+    heroCallToActionList,
     documentId,
     documentType,
   };

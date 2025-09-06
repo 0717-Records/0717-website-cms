@@ -1,6 +1,7 @@
 import { HomeIcon } from '@sanity/icons';
 import { defineField, defineType } from 'sanity';
 import { createOptionalLinkFieldSet } from './shared/linkSystem';
+import { createCTAListField } from './shared/ctaListType';
 
 export const homePageType = defineType({
   name: 'homePage',
@@ -172,21 +173,11 @@ export const homePageType = defineType({
       description: 'Plain text subtitle for the hero section (line breaks allowed)',
       group: 'hero',
     }),
-    defineField({
-      name: 'enableHeroCallToAction',
-      type: 'boolean',
-      title: 'Enable Call to Action',
-      description: 'Show a call to action button in the hero section',
+    createCTAListField({
+      name: 'heroCallToActionList',
+      title: 'Call to Action Buttons',
+      description: 'Add one or multiple call-to-action buttons to the hero section. Leave empty if no CTAs are needed.',
       group: 'hero',
-      initialValue: false,
-    }),
-    defineField({
-      name: 'heroCallToAction',
-      type: 'homeHeroCtaButton',
-      title: 'Call to Action Button',
-      description: 'Button or link for the hero section',
-      group: 'hero',
-      hidden: ({ document }) => !document?.enableHeroCallToAction,
     }),
 
     // Page Content Fields

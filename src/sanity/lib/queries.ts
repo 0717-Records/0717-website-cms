@@ -153,8 +153,12 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
   },
   heroTitle,
   heroSubtitle,
-  enableHeroCallToAction,
-  heroCallToAction{${fullLinkProjection}},
+  heroCallToActionList[]{
+    _type,
+    _key,
+    _type == "embeddedCtaButton" => {${fullLinkProjection}},
+    _type == "embeddedCtaEmailButton" => {...}
+  },
   heroContentPosition,
   ${recursiveContent}
 }`);

@@ -14,8 +14,7 @@ interface FeaturedItemsHeroLayoutProps {
   showHeroLogo: NonNullable<HOME_PAGE_QUERYResult>['showHeroLogo'];
   heroTitle: NonNullable<HOME_PAGE_QUERYResult>['heroTitle'];
   heroSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroSubtitle'];
-  enableHeroCallToAction: NonNullable<HOME_PAGE_QUERYResult>['enableHeroCallToAction'];
-  heroCallToAction: NonNullable<HOME_PAGE_QUERYResult>['heroCallToAction'];
+  heroCallToActionList: NonNullable<HOME_PAGE_QUERYResult>['heroCallToActionList'];
   enableFeaturedItems: NonNullable<HOME_PAGE_QUERYResult>['enableFeaturedItems'];
   featuredImages: NonNullable<HOME_PAGE_QUERYResult>['featuredImages'];
   documentId: string;
@@ -30,8 +29,7 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
     heroSubtitle,
     enableFeaturedItems,
     showHeroLogo,
-    enableHeroCallToAction,
-    heroCallToAction,
+    heroCallToActionList,
     featuredImages,
     documentId,
     documentType,
@@ -43,8 +41,7 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
     heroTextColor,
     enableFeaturedItems,
     showHeroLogo,
-    enableHeroCallToAction,
-    heroCallToAction,
+    heroCallToActionList,
     documentId,
     documentType,
   };

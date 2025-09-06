@@ -16,8 +16,7 @@ interface HeroProps {
   heroImage: NonNullable<HOME_PAGE_QUERYResult>['heroImage'];
   heroTitle: NonNullable<HOME_PAGE_QUERYResult>['heroTitle'];
   heroSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroSubtitle'];
-  enableHeroCallToAction: NonNullable<HOME_PAGE_QUERYResult>['enableHeroCallToAction'];
-  heroCallToAction: NonNullable<HOME_PAGE_QUERYResult>['heroCallToAction'];
+  heroCallToActionList: NonNullable<HOME_PAGE_QUERYResult>['heroCallToActionList'];
   heroContentPosition: NonNullable<HOME_PAGE_QUERYResult>['heroContentPosition'];
   enableFeaturedItems: NonNullable<HOME_PAGE_QUERYResult>['enableFeaturedItems'];
   featuredImages: NonNullable<HOME_PAGE_QUERYResult>['featuredImages'];
@@ -32,8 +31,7 @@ const Hero = ({
   heroImage,
   heroTitle,
   heroSubtitle,
-  enableHeroCallToAction,
-  heroCallToAction,
+  heroCallToActionList,
   heroContentPosition,
   enableFeaturedItems,
   featuredImages,
@@ -93,8 +91,7 @@ const Hero = ({
           showHeroLogo={showHeroLogo}
           heroTitle={heroTitle}
           heroSubtitle={heroSubtitle}
-          enableHeroCallToAction={enableHeroCallToAction}
-          heroCallToAction={heroCallToAction}
+          heroCallToActionList={heroCallToActionList}
           enableFeaturedItems={enableFeaturedItems}
           featuredImages={featuredImages}
           documentId={documentId}
@@ -106,8 +103,7 @@ const Hero = ({
           showHeroLogo={showHeroLogo}
           heroTitle={heroTitle}
           heroSubtitle={heroSubtitle}
-          enableHeroCallToAction={enableHeroCallToAction}
-          heroCallToAction={heroCallToAction}
+          heroCallToActionList={heroCallToActionList}
           heroContentPosition={heroContentPosition}
           enableFeaturedItems={enableFeaturedItems}
           documentId={documentId}

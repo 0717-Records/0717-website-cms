@@ -44,6 +44,7 @@ import { collabPageSectionType } from './collabPageSectionType';
 import { favouritesType } from './favouritesType';
 import { companyLinksArrayType, collabLinksArrayType } from './shared/socialLinksArrayType';
 import { sideContentBlockType, sideContentType } from './shared/sideContentBlockType';
+import { ctaListType } from './shared/ctaListType';
 import { navLinkType } from './navigation/navLinkType';
 import { blogIndexPageType } from './blogIndexPageType';
 import { blogPostType } from './blogPostType';
@@ -100,6 +101,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     collabLinksArrayType,
     sideContentBlockType,
     sideContentType,
+    ctaListType,
     // Navigation Components
     navLinkType,
   ],

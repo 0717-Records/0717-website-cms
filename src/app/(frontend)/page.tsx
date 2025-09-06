@@ -32,8 +32,7 @@ const Page = async () => {
         heroImage={page.heroImage}
         heroTitle={page.heroTitle}
         heroSubtitle={page.heroSubtitle}
-        enableHeroCallToAction={page.enableHeroCallToAction}
-        heroCallToAction={page.heroCallToAction}
+        heroCallToActionList={page.heroCallToActionList}
         heroContentPosition={page.heroContentPosition}
         enableFeaturedItems={page.enableFeaturedItems}
         featuredImages={page.featuredImages}
