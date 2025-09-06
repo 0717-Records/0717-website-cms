@@ -51,7 +51,7 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
 
   return (
     <div
-      className={`relative ${styles['hero-height']} flex flex-col justify-around items-center text-center px-8 z-20`}>
+      className={`relative ${styles['hero-height']} flex flex-col justify-around items-center text-center px-8 z-[25]`}>
       {/* Top Section: Logo and Title */}
       <div
         className={`flex flex-col items-center text-center px-4 py-4 ${getTextColorClasses(heroTextColor)}`}>
