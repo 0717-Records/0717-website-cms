@@ -12,6 +12,7 @@ interface CardProps extends Omit<CardBlock, '_type' | '_key'> {
   isGridChild?: boolean;
   documentId?: string;
   documentType?: string;
+  fieldPathPrefix?: string;
 }
 
 const Card = (props: CardProps) => {
@@ -25,6 +26,7 @@ const Card = (props: CardProps) => {
     isGridChild = false,
     documentId,
     documentType,
+    fieldPathPrefix,
   } = props;
   const cleanTitle = stegaClean(title);
   const cleanBodyText = stegaClean(bodyText);
@@ -36,7 +38,7 @@ const Card = (props: CardProps) => {
   }
 
   // Get field path prefix for live editing
-  const getFieldPath = (field: string) => `${field}`;
+  const getFieldPath = (field: string) => fieldPathPrefix ? `${fieldPathPrefix}.${field}` : field;
 
   // Feature Card (Style 1) - Current layout
   if (cleanCardStyle === 'feature') {

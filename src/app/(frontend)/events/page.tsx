@@ -54,6 +54,7 @@ export default async function EventsPage() {
               {...eventsIndexPage.eventsMessage}
               documentId={eventsIndexPage._id}
               documentType={eventsIndexPage._type}
+              fieldPathPrefix="eventsMessage"
               className={'mt-12 md:mt-16'}
             />
           )}
