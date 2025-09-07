@@ -13,15 +13,15 @@ const Icon = ({ image, className = '' }: IconProps) => {
   }
 
   return (
-    <div className={`flex justify-center ${className}`.trim()}>
-      <div className="relative w-[70px] h-[70px] rounded-full bg-brand-gradient flex items-center justify-center shadow-sm">
-        <div className="relative w-10 h-10">
+    <div className={`flex justify-center items-center ${className}`.trim()}>
+      <div className='relative w-[70px] h-[70px] rounded-full bg-brand-gradient flex items-center justify-center shadow-sm'>
+        <div className='relative w-10 h-10'>
           <Image
             src={urlFor(image).width(80).height(80).url()}
             alt={image.alt || ''}
             fill
-            sizes="40px"
-            className="object-contain"
+            sizes='40px'
+            className='object-contain'
           />
         </div>
       </div>

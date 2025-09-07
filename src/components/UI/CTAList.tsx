@@ -25,7 +25,7 @@ const CTAList = ({ ctaList, alignment = 'flex-row', className = '' }: CTAListPro
   const getAlignmentClasses = () => {
     if (alignment === 'flex-row') {
       // Desktop/tablet: horizontal layout, Mobile: vertical layout
-      return 'flex flex-col md:flex-row justify-center items-center gap-4';
+      return 'flex flex-col md:flex-row justify-start items-center gap-4';
     } else {
       // Always vertical layout
       return 'flex flex-col justify-center items-center gap-4';

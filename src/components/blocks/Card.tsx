@@ -73,7 +73,9 @@ const Card = (props: CardProps) => {
 
         {/* CTA Buttons */}
         {ctaList && ctaList.length > 0 && (
-          <div className='pt-2' {...createSanityDataAttribute(documentId, documentType, getFieldPath('ctaList'))}>
+          <div
+            className='pt-2'
+            {...createSanityDataAttribute(documentId, documentType, getFieldPath('ctaList'))}>
             <CTAList ctaList={ctaList} alignment='flex-col' />
           </div>
         )}
@@ -92,8 +94,8 @@ const Card = (props: CardProps) => {
           <div className='flex-shrink-0 relative'>
             <div {...createSanityDataAttribute(documentId, documentType, getFieldPath('icon'))}>
               {/* Icon background circle */}
-              <div className='absolute inset-0 w-24 h-24 lg:w-32 lg:h-32 bg-brand-secondary/25 rounded-full blur-sm'></div>
               <div className='relative w-24 h-24 lg:w-32 lg:h-32 flex items-center justify-center rounded-full'>
+                <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 inset-0 w-24 h-24 lg:w-32 lg:h-32 bg-brand-secondary/15 rounded-full'></div>
                 <Icon {...icon} className='w-16 h-16 lg:w-20 lg:h-20' />
               </div>
             </div>
@@ -123,8 +125,10 @@ const Card = (props: CardProps) => {
 
           {/* CTA Buttons */}
           {ctaList && ctaList.length > 0 && (
-            <div className='mt-6' {...createSanityDataAttribute(documentId, documentType, getFieldPath('ctaList'))}>
-              <CTAList ctaList={ctaList} alignment='flex-col' />
+            <div
+              className='mt-6'
+              {...createSanityDataAttribute(documentId, documentType, getFieldPath('ctaList'))}>
+              <CTAList ctaList={ctaList} alignment='flex-row' />
             </div>
           )}
         </div>
