@@ -30,7 +30,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
       {/* Page Hero */}
       <PageHero
         title={page.title || 'Untitled Page'}
-        heroImage={page.heroImage}
+        heroImage={page.heroImage || '/images/hero-bg/hero-bg-option2.webp'}
         documentId={page._id}
         documentType={page._type}
       />

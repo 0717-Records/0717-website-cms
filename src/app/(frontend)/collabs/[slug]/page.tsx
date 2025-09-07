@@ -38,7 +38,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
       {/* Hero Section */}
       <PageHero
         title={collab.name}
-        heroImage={collab.heroImage}
+        heroImage={collab.heroImage || '/images/hero-bg/hero-bg-option3-2.webp'}
         documentId={collab._id}
         documentType={collab._type}
       />

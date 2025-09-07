@@ -9,7 +9,7 @@ import { heroBottomSpacing } from '@/utils/spacingConstants';
 
 interface PageHeroProps {
   title?: string | null;
-  heroImage?: unknown;
+  heroImage?: unknown | string;
   height?: 'small' | 'medium' | 'large';
   overlay?: boolean;
   className?: string;
@@ -29,11 +29,17 @@ const PageHero = ({
   backLinkText,
   backLinkHref = '/',
 }: PageHeroProps) => {
-  // Check if we have a custom hero image
-  const heroImageData = heroImage as { asset?: { _ref: string; _type: string } };
-  const hasCustomImage = heroImageData?.asset;
-  const customBackgroundImage =
-    hasCustomImage && heroImageData.asset ? urlFor(heroImageData.asset).url() : null;
+  // Check if we have a custom hero image (either Sanity image or URL string)
+  const isStringUrl = typeof heroImage === 'string';
+  const heroImageData = !isStringUrl ? (heroImage as { asset?: { _ref: string; _type: string } }) : null;
+  const hasSanityImage = heroImageData?.asset;
+  const hasCustomImage = isStringUrl || hasSanityImage;
+  
+  const customBackgroundImage = isStringUrl 
+    ? heroImage as string
+    : hasSanityImage && heroImageData.asset 
+    ? urlFor(heroImageData.asset).url() 
+    : null;
 
   return (
     <div {...createSanityDataAttribute(documentId, documentType, 'heroImage')}>

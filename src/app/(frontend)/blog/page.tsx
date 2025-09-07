@@ -13,7 +13,7 @@ export default async function BlogPage() {
       {/* Page Hero */}
       <PageHero
         title={blogIndexPage?.title || 'Blog'}
-        heroImage={blogIndexPage?.heroImage}
+        heroImage={blogIndexPage?.heroImage || '/images/hero-bg/hero-bg-option7-2.webp'}
         documentId={blogIndexPage?._id}
         documentType={blogIndexPage?._type}
       />

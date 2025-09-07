@@ -21,7 +21,7 @@ export default async function EventsPage() {
       {/* Page Hero */}
       <PageHero
         title={eventsIndexPage?.title || 'All Events'}
-        heroImage={eventsIndexPage?.backgroundImage}
+        heroImage={eventsIndexPage?.backgroundImage || '/images/hero-bg/hero-bg-option6-2.webp'}
         documentId={eventsIndexPage?._id}
         documentType={eventsIndexPage?._type}
       />

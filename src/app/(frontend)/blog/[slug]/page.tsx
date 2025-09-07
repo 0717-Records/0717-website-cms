@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <>
       {/* Page Hero - No title, back to blog */}
       <PageHero
-        heroImage={post.blogIndexHeroImage}
+        heroImage={post.blogIndexHeroImage || '/images/hero-bg/hero-bg-option7-2.webp'}
         backLinkHref='/blog'
         backLinkText='Back to Blog'
         documentId={post._id}
