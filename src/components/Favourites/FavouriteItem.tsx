@@ -58,13 +58,13 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
             {favourite.name}
           </div>
 
-          {/* Genre */}
-          {favourite.genre && (
+          {/* Category */}
+          {favourite.category && (
             <div 
-              {...createSanityDataAttribute(favourite._id, 'favourites', 'genre')}
+              {...createSanityDataAttribute(favourite._id, 'favourites', 'category')}
               className='text-body-base font-medium text-brand-secondary'
             >
-              {favourite.genre}
+              {favourite.category}
             </div>
           )}
         </div>

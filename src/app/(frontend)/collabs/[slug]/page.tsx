@@ -51,7 +51,7 @@ export default async function CollabPage({ params }: CollabPageProps) {
           <div className='col-start-1 lg:col-start-2 self-start'>
             <div className='mb-4'>
               <CollabBasicInfo
-                genre={collab.genre}
+                category={collab.category}
                 location={collab.location}
                 previewImage={collab.previewImage}
                 documentId={collab._id}

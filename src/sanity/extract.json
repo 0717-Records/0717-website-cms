@@ -5894,7 +5894,7 @@
         },
         "optional": true
       },
-      "genre": {
+      "category": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
@@ -7466,7 +7466,7 @@
         },
         "optional": true
       },
-      "genre": {
+      "category": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

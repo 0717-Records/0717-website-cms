@@ -21,17 +21,17 @@ export const favouritesType = defineType({
         Rule.required().min(1).max(100).error('Name is required and must be under 100 characters'),
     }),
     defineField({
-      name: 'genre',
-      title: 'Genre',
+      name: 'category',
+      title: 'Category',
       type: 'string',
-      description: 'Musical genre or style (optional)',
-      validation: (Rule) => Rule.max(50).error('Genre must be under 50 characters'),
+      description: 'Category or classification (e.g., music genre, record label, organization type, etc.) - optional',
+      validation: (Rule) => Rule.max(50).error('Category must be under 50 characters'),
     }),
     defineField({
       name: 'profileImage',
       title: 'Profile Image',
       type: 'image',
-      description: 'Profile image for the favourite band or artist (optional)',
+      description: 'Profile image for the favourite (optional)',
       options: {
         hotspot: true,
       },
@@ -61,7 +61,7 @@ export const favouritesType = defineType({
       name: 'description',
       title: 'Description',
       type: 'text',
-      description: 'A brief description of this favourite band or artist (optional)',
+      description: 'A brief description of this favourite (optional)',
       rows: 3,
       validation: (Rule) => Rule.max(500).error('Description must be under 500 characters'),
     }),
@@ -121,7 +121,7 @@ export const favouritesType = defineType({
   preview: {
     select: {
       title: 'name',
-      subtitle: 'genre',
+      subtitle: 'category',
       media: 'profileImage',
       order: 'order',
     },
@@ -130,7 +130,7 @@ export const favouritesType = defineType({
 
       return {
         title: title || 'Untitled Favourite',
-        subtitle: `${subtitle || 'No genre'}${orderText}`,
+        subtitle: `${subtitle || 'No category'}${orderText}`,
         media: media || HeartIcon,
       };
     },

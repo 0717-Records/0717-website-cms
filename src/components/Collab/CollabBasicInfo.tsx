@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
-import { FaMusic, FaMapMarkerAlt, FaUser } from 'react-icons/fa';
+import { FaTag, FaMapMarkerAlt, FaUser } from 'react-icons/fa';
 import Heading from '../Typography/Heading/Heading';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 
 interface CollabBasicInfoProps {
-  genre?: string | null;
+  category?: string | null;
   location?: string | null;
   previewImage?: unknown;
   documentId?: string;
@@ -14,7 +14,7 @@ interface CollabBasicInfoProps {
 }
 
 export default function CollabBasicInfo({
-  genre,
+  category,
   location,
   previewImage,
   documentId,
@@ -54,12 +54,12 @@ export default function CollabBasicInfo({
         General Info
       </Heading>
       <div className='space-y-3 text-center'>
-        {genre && (
+        {category && (
           <div>
-            <dt className='text-body-base font-medium text-gray-500'>Genre</dt>
+            <dt className='text-body-base font-medium text-gray-500'>Category</dt>
             <dd className='text-body-lg text-gray-900 flex justify-center items-center space-x-3'>
-              <FaMusic className='text-brand-secondary text-body-lg flex-shrink-0' />
-              <span>{genre}</span>
+              <FaTag className='text-brand-secondary text-body-lg flex-shrink-0' />
+              <span>{category}</span>
             </dd>
           </div>
         )}

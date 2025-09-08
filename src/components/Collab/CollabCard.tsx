@@ -16,7 +16,7 @@ interface CollabCardProps extends CollabData {
 const CollabCard = ({
   name,
   slug,
-  genre,
+  category,
   location,
   previewImage,
   shortDescription,
@@ -67,10 +67,10 @@ const CollabCard = ({
             </div>
           </div>
 
-          {/* Genre */}
-          {genre && (
+          {/* Category */}
+          {category && (
             <div className='text-center'>
-              <p className='text-body-lg font-bold text-brand-secondary'>{genre}</p>
+              <p className='text-body-lg font-bold text-brand-secondary'>{category}</p>
             </div>
           )}
 

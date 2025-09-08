@@ -357,7 +357,7 @@ export const COLLAB_QUERY = defineQuery(`*[_type == "collab" && slug.current == 
   _type,
   name,
   slug,
-  genre,
+  category,
   location,
   heroImage{
     asset,
@@ -394,7 +394,7 @@ export const COLLABS_ALL_QUERY = defineQuery(`*[_type == "collab" && defined(slu
   _id,
   name,
   slug,
-  genre,
+  category,
   location,
   order,
   previewImage{
@@ -411,7 +411,7 @@ export const COLLABS_ALL_QUERY = defineQuery(`*[_type == "collab" && defined(slu
 export const FAVOURITES_ALL_QUERY = defineQuery(`*[_type == "favourites"]|order(order asc, name asc){
   _id,
   name,
-  genre,
+  category,
   order,
   profileImage{
     asset,

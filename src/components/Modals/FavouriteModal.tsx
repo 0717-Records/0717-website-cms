@@ -59,10 +59,10 @@ const FavouriteModal: React.FC<FavouriteModalProps> = ({ isModalOpen, closeModal
             </h2>
           </div>
 
-          {/* Genre */}
-          {favourite.genre && (
+          {/* Category */}
+          {favourite.category && (
             <div className='text-center'>
-              <p className='text-body-base font-medium text-brand-secondary'>{favourite.genre}</p>
+              <p className='text-body-base font-medium text-brand-secondary'>{favourite.category}</p>
             </div>
           )}
 

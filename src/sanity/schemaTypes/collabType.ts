@@ -60,16 +60,14 @@ export const collabType = defineType({
       validation: (Rule) => Rule.required().error('URL slug is required'),
     }),
     defineField({
-      name: 'genre',
-      title: 'Genre',
+      name: 'category',
+      title: 'Category',
       type: 'string',
       group: 'basic',
-      description: 'Musical genre or style of the collaboration',
+      description: 'Category or classification of the collaboration (e.g., music genre, record label, organization type, etc.) - optional',
       validation: (Rule) => 
-        Rule.required()
-          .min(1)
-          .max(50)
-          .error('Genre is required and must be under 50 characters'),
+        Rule.max(50)
+          .error('Category must be under 50 characters'),
     }),
     defineField({
       name: 'location',
