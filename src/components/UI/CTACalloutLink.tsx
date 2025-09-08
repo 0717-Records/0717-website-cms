@@ -66,9 +66,9 @@ const CTACalloutLink = ({
               <Image
                 src={image.src}
                 alt={image.alt}
-                fill
-                className='object-cover'
-                sizes='96px'
+                width={image.width || 64}
+                height={image.height || 64}
+                className='w-full h-full object-cover'
               />
             </div>
           </div>

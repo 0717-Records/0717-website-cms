@@ -24,7 +24,7 @@ export default function CollabBasicInfo({
   const imageData = previewImage as { asset?: { _ref: string; _type: string }; alt?: string };
   // Request 3x size for crisp display on high-DPI screens (max container is 280px, so request 840px)
   const imageUrl = imageData?.asset
-    ? urlFor(imageData.asset).width(840).fit('crop').crop('center').quality(90).url()
+    ? urlFor(imageData.asset).width(840).height(840).quality(90).url()
     : null;
 
   return (

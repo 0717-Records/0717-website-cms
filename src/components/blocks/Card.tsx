@@ -101,6 +101,7 @@ const Card = (props: CardProps) => {
               <Icon
                 image={icon.image}
                 showIcon={icon.showIcon}
+                className='w-16 h-16 lg:w-20 lg:h-20'
                 {...createSanityDataAttribute(documentId, documentType, fieldPathPrefix || '')}
               />
             </div>
