@@ -8,6 +8,7 @@ interface HeadingProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   className?: string;
   showUnderline?: boolean;
+  showFullWidthUnderline?: boolean;
   showMargin?: boolean;
   asDiv?: boolean;
 }
@@ -17,6 +18,7 @@ const Heading = ({
   children,
   className = '',
   showUnderline = false,
+  showFullWidthUnderline = false,
   showMargin = true,
   asDiv = false,
   ...rest
@@ -35,7 +37,14 @@ const Heading = ({
   };
 
   // Get the underline class for the heading level
-  const getUnderlineClass = (level: HeadingLevel, show: boolean) => {
+  const getUnderlineClass = (level: HeadingLevel, show: boolean, fullWidth: boolean) => {
+    if (!show && !fullWidth) return '';
+
+    // Full width underline takes precedence
+    if (fullWidth && level === 'h2') {
+      return styles.underlineH2FullWidth;
+    }
+
     if (!show) return '';
 
     const underlineClasses = {
@@ -50,7 +59,7 @@ const Heading = ({
   };
 
   const textClass = getTextClass(level);
-  const underlineClass = getUnderlineClass(level, showUnderline);
+  const underlineClass = getUnderlineClass(level, showUnderline, showFullWidthUnderline);
   const marginClass = showMargin ? 'mb-4' : '';
   const combinedClassName = `${textClass} ${underlineClass} ${marginClass} ${className}`.trim();
 

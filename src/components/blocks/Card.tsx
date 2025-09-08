@@ -113,10 +113,9 @@ const Card = (props: CardProps) => {
           {/* Title */}
           {cleanTitle && (
             <div {...createSanityDataAttribute(documentId, documentType, getFieldPath('title'))}>
-              <Heading level='h2' asDiv>
+              <Heading level='h2' showFullWidthUnderline asDiv>
                 {cleanTitle}
               </Heading>
-              {/* Subtle underline accent */}
             </div>
           )}
 
