@@ -21,7 +21,7 @@ const HeroLogo = ({
 }: HeroLogoProps) => {
   if (showHeroLogo === false) return null;
 
-  const logoSize = enableFeaturedItems ? 'w-20 md:w-24 lg:w-28' : 'w-48 md:w-56 lg:w-64 mb-4';
+  const logoSize = enableFeaturedItems ? 'w-20 md:w-24 lg:w-28' : 'w-48 md:w-56 lg:w-64';
 
   return (
     <div

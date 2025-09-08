@@ -103,7 +103,7 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
     <div
       className={`absolute z-[25] ${getTextColorClasses(heroTextColor)} ${getPositionClasses(heroContentPosition || 'center-center')}`}
       {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
-      <div className={`flex flex-col ${logoConfig.alignment} ${logoConfig.spacing} space-y-4`}>
+      <div className={`flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}`}>
         <HeroLogo {...componentProps} />
         <HeroTitle {...componentProps} />
         <HeroSubtitle {...componentProps} />
