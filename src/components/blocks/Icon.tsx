@@ -8,23 +8,15 @@ interface IconProps extends Omit<IconBlock, '_type' | '_key'> {
 }
 
 const Icon = ({ image, className = '' }: IconProps) => {
-  if (!image?.asset) {
-    return null;
-  }
+  const imgSrc = image?.asset
+    ? urlFor(image).width(80).height(80).url()
+    : '/images/logo-black-on-transparent.png';
+  const imgAlt = image?.asset ? image.alt || 'Icon image' : '07:17 Records Logo';
 
   return (
-    <div className={`flex justify-center items-center ${className}`.trim()}>
-      <div className='relative w-[70px] h-[70px] rounded-full bg-brand-gradient flex items-center justify-center shadow-sm'>
-        <div className='relative w-10 h-10'>
-          <Image
-            src={urlFor(image).width(80).height(80).url()}
-            alt={image.alt || ''}
-            fill
-            sizes='40px'
-            className='object-contain'
-          />
-        </div>
-      </div>
+    <div
+      className={`relative w-16 h-16 md:w-18 md:h-18 rounded-full bg-brand-gradient flex items-center justify-center ${className}`.trim()}>
+      <Image src={imgSrc} alt={imgAlt} fill sizes='40px' className='object-contain p-1' />
     </div>
   );
 };
