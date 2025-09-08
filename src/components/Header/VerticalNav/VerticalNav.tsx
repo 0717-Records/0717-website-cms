@@ -59,14 +59,16 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
           {/* Logo in Menu */}
           <Link href='/#home' onClick={onClose} className='flex items-center gap-2'>
             {headerData?.logo ? (
-              <Image
-                src={urlFor(headerData.logo).url()}
-                alt={headerData.logo.alt || '07:17 Records'}
-                width={160}
-                height={100}
-                className='object-contain'
-                {...createSanityDataAttribute(headerData._id, 'header', 'logo')}
-              />
+              <div className='relative w-[160px] h-[60px]'>
+                <Image
+                  src={urlFor(headerData.logo).url()}
+                  alt={headerData.logo.alt || '07:17 Records'}
+                  fill
+                  className='object-contain'
+                  sizes='160px'
+                  {...createSanityDataAttribute(headerData._id, 'header', 'logo')}
+                />
+              </div>
             ) : (
               <>
                 <span className='text-body-xl font-bold'>07:17</span>
