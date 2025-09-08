@@ -84,7 +84,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
   // Process image if provided
   let processedImage: string | null = null;
   if (image?.asset) {
-    processedImage = urlFor(image.asset).width(400).height(533).url(); // A4 aspect ratio
+    processedImage = urlFor(image.asset).width(400).fit('crop').crop('center').url();
   }
 
   const cardContent = (

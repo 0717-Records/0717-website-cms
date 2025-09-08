@@ -42,7 +42,7 @@ const Hero = ({
   const images = heroImage
     ? [
         {
-          imageUrl: urlFor(heroImage).width(1920).height(1080).url(),
+          imageUrl: urlFor(heroImage).width(1920).fit('crop').crop('center').url(),
           altText: heroImage.alt || 'Hero background image',
         },
       ]

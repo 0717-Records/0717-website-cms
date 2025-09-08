@@ -28,7 +28,7 @@ const ItemList = ({ items = [], alignment, className = '', inheritAlignment }: I
             {item.icon && item.icon.asset ? (
               <div className='relative w-6 h-6 flex-shrink-0'>
                 <Image
-                  src={urlFor(item.icon).width(72).height(72).url()}
+                  src={urlFor(item.icon).width(72).fit('crop').crop('center').url()}
                   alt={item.icon.alt || ''}
                   fill
                   sizes='24px'

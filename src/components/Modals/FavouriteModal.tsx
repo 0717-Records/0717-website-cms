@@ -19,7 +19,7 @@ interface FavouriteModalProps {
 
 const FavouriteModal: React.FC<FavouriteModalProps> = ({ isModalOpen, closeModal, favourite }) => {
   const imageUrl = favourite.profileImage?.asset
-    ? urlFor(favourite.profileImage.asset).width(400).height(400).quality(90).url()
+    ? urlFor(favourite.profileImage.asset).width(400).fit('crop').crop('center').quality(90).url()
     : null;
 
   const linkLabel = favourite.linkLabel || 'More Info';

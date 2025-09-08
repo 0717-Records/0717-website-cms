@@ -62,9 +62,11 @@ const Header = ({ headerData }: HeaderProps) => {
             <Image
               src={urlFor(headerData.logo).url()}
               alt={headerData.logo.alt || '07:17 Records'}
-              width={200}
+              width={180}
               height={125}
-              className='object-contain w-[160px] md:w-[180px] h-auto'
+              className='object-contain'
+              style={{ width: 'clamp(160px, 10vw, 180px)', height: 'auto' }}
+              sizes='(min-width: 768px) 180px, 160px'
               {...createSanityDataAttribute(headerData._id, 'header', 'logo')}
             />
           ) : (

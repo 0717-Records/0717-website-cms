@@ -18,7 +18,7 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const imageUrl = favourite.profileImage?.asset
-    ? urlFor(favourite.profileImage.asset).width(300).height(300).quality(90).url()
+    ? urlFor(favourite.profileImage.asset).width(300).fit('crop').crop('center').quality(90).url()
     : null;
 
   return (

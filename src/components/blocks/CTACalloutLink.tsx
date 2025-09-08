@@ -65,7 +65,7 @@ const CTACalloutLinkComponent = ({
   // Process image if provided
   let processedImage;
   if (image?.asset) {
-    const imageUrl = urlFor(image.asset).width(96).height(96).url();
+    const imageUrl = urlFor(image.asset).width(96).fit('crop').crop('center').url();
     const altText = stegaClean(image.alt) || '';
 
     processedImage = {

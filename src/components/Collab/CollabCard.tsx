@@ -32,7 +32,7 @@ const CollabCard = ({
   const displayDescription =
     useShortDescriptionForCards !== false ? shortDescription : cardDescription || shortDescription;
   const imageUrl = previewImage?.asset
-    ? urlFor(previewImage.asset).width(400).height(400).quality(90).url()
+    ? urlFor(previewImage.asset).width(400).fit('crop').crop('center').quality(90).url()
     : null;
 
   return (

@@ -63,8 +63,8 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
                 src={urlFor(headerData.logo).url()}
                 alt={headerData.logo.alt || '07:17 Records'}
                 width={160}
-                height={100}
-                className='object-contain'
+                height={111}
+                className='object-contain w-40 h-auto'
                 {...createSanityDataAttribute(headerData._id, 'header', 'logo')}
               />
             ) : (
