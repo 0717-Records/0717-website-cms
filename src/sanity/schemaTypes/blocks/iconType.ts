@@ -31,7 +31,7 @@ export const iconType = defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative Text (Optional)',
-          description: 'Alternative text for custom images. If no custom image is provided, this field will be ignored and the company logo alt text will be used automatically.',
+          description: 'Helps explain what the custom icon is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something. If no custom image is provided, the company logo alt text will be used automatically.',
         },
       ],
       hidden: ({ parent }) => !parent?.showIcon,

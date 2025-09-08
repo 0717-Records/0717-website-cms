@@ -62,7 +62,7 @@ export const pageType = defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative Text',
-          description: 'Important for SEO and accessibility when image cannot be displayed',
+          description: 'Helps explain what the image is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
         },
       ],
       group: 'header',

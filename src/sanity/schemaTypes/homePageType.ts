@@ -48,7 +48,7 @@ export const homePageType = defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative text',
-          description: 'Important for SEO and accessibility',
+          description: 'Helps explain what the image is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
         }),
       ],
       group: 'hero',
@@ -128,8 +128,7 @@ export const homePageType = defineType({
               name: 'alt',
               type: 'string',
               title: 'Alternative text',
-              description: 'Describe the image for accessibility and SEO',
-              validation: (Rule) => Rule.required(),
+              description: 'Helps explain what the image is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
             }),
             ...createOptionalLinkFieldSet({
               linkTypeConfig: {

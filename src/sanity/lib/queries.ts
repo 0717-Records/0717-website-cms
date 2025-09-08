@@ -166,7 +166,9 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
   },
   heroImage{
     asset,
-    alt
+    alt,
+    hotspot,
+    crop
   },
   heroTitle,
   heroSubtitle,
@@ -185,7 +187,9 @@ export const HEADER_QUERY = defineQuery(`*[_id == "header"][0]{
   _type,
   logo{
     asset,
-    alt
+    alt,
+    hotspot,
+    crop
   },
   horizontalNav[]{${fullLinkProjection}},
   verticalNav[]{

@@ -8,6 +8,7 @@ interface IconProps extends Omit<IconBlock, '_type' | '_key'> {
   'data-sanity'?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Icon = ({ image, showIcon: _showIcon, className = '', ...rest }: IconProps) => {
   // showIcon is destructured to prevent it from being passed to DOM element
   const imgSrc = image?.asset ? urlFor(image).url() : '/images/logo-black-on-transparent.png';

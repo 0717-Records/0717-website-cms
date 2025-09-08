@@ -29,7 +29,7 @@ const ItemList = ({ items = [], alignment, className = '', inheritAlignment }: I
               <div className='relative w-6 h-6 flex-shrink-0'>
                 <Image
                   src={urlFor(item.icon).width(72).height(72).url()}
-                  alt={item.icon.alt || ''}
+                  alt={item.icon.alt || 'List item icon'}
                   fill
                   sizes='24px'
                   className='object-contain'
