@@ -7,6 +7,7 @@ import { transformEvents } from '@/utils/transformEvents';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import { pageSubtitleBottomSpacing } from '@/utils/spacingConstants';
+import PageSubtitle from '@/components/Typography/PageSubtitle';
 
 export default async function EventsPage() {
   const [rawEvents, eventsIndexPage] = await Promise.all([
@@ -27,13 +28,7 @@ export default async function EventsPage() {
       />
       <Container textAlign='center'>
         {/* Page Subtitle */}
-        {eventsIndexPage?.subtitle && (
-          <div className={`container mx-auto px-4 md:px-8 ${pageSubtitleBottomSpacing}`}>
-            <p className='text-body-3xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line text-center'>
-              {eventsIndexPage.subtitle}
-            </p>
-          </div>
-        )}
+        {eventsIndexPage?.subtitle && <PageSubtitle>{eventsIndexPage.subtitle}</PageSubtitle>}
         {/* Upcoming Events Section */}
         <PageSection
           title='Upcoming Events'
@@ -54,7 +49,7 @@ export default async function EventsPage() {
               {...eventsIndexPage.eventsMessage}
               documentId={eventsIndexPage._id}
               documentType={eventsIndexPage._type}
-              fieldPathPrefix="eventsMessage"
+              fieldPathPrefix='eventsMessage'
               className={'mt-12 md:mt-16'}
             />
           )}
