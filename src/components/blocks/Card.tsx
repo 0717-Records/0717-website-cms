@@ -50,8 +50,9 @@ const Card = (props: CardProps) => {
         {icon && icon.showIcon && (
           <div className='flex justify-center'>
             <Icon 
-              {...icon} 
-              data-sanity={createSanityDataAttribute(documentId, documentType, getFieldPath('icon'))?.toString()}
+              image={icon.image}
+              showIcon={icon.showIcon}
+              {...createSanityDataAttribute(documentId, documentType, fieldPathPrefix || '')}
             />
           </div>
         )}
@@ -98,9 +99,10 @@ const Card = (props: CardProps) => {
             {/* Icon background circle */}
             <div className='relative w-24 h-24 lg:w-32 lg:h-32 flex items-center justify-center rounded-full bg-brand-secondary/15'>
               <Icon 
-                {...icon} 
+                image={icon.image}
+                showIcon={icon.showIcon}
                 className='w-16 h-16 lg:w-20 lg:h-20' 
-                data-sanity={createSanityDataAttribute(documentId, documentType, getFieldPath('icon'))?.toString()}
+                {...createSanityDataAttribute(documentId, documentType, fieldPathPrefix || '')}
               />
             </div>
           </div>

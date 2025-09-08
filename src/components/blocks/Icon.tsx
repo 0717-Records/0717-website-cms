@@ -8,14 +8,15 @@ interface IconProps extends Omit<IconBlock, '_type' | '_key'> {
   'data-sanity'?: string;
 }
 
-const Icon = ({ image, className = '', 'data-sanity': dataSanity }: IconProps) => {
+const Icon = ({ image, showIcon: _showIcon, className = '', ...rest }: IconProps) => {
+  // showIcon is destructured to prevent it from being passed to DOM element
   const imgSrc = image?.asset ? urlFor(image).url() : '/images/logo-black-on-transparent.png';
   const imgAlt = image?.asset ? image.alt || 'Icon image' : '07:17 Records Logo';
 
   return (
     <div
       className={`relative w-16 h-16 md:w-18 md:h-18 rounded-full bg-brand-gradient flex items-center justify-center ${className}`.trim()}
-      {...(dataSanity && { 'data-sanity': dataSanity })}>
+      {...rest}>
       <Image
         src={imgSrc}
         alt={imgAlt}

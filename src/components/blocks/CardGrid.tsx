@@ -41,6 +41,7 @@ const CardGrid = ({ columns = '2', cards, documentId, documentType }: CardGridPr
           isGridChild
           documentId={documentId}
           documentType={documentType}
+          fieldPathPrefix={`cards[_key=="${card._key}"]`}
         />
       ))}
     </div>
