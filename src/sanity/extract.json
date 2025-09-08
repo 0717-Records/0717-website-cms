@@ -2819,6 +2819,13 @@
             "value": "icon"
           }
         },
+        "showIcon": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "image": {
           "type": "objectAttribute",
           "value": {
@@ -3632,21 +3639,6 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "icon"
-                  }
-                },
-                {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "rest": {
-                    "type": "inline",
                     "name": "imageBlock"
                   }
                 },
@@ -4019,21 +4011,6 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "icon"
-                  }
-                },
-                {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "rest": {
-                    "type": "inline",
                     "name": "imageBlock"
                   }
                 },
@@ -4392,21 +4369,6 @@
                   "rest": {
                     "type": "inline",
                     "name": "cardGrid"
-                  }
-                },
-                {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "rest": {
-                    "type": "inline",
-                    "name": "icon"
                   }
                 },
                 {
@@ -4800,21 +4762,6 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "icon"
-                  }
-                },
-                {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "rest": {
-                    "type": "inline",
                     "name": "imageBlock"
                   }
                 },
@@ -5147,21 +5094,6 @@
             "rest": {
               "type": "inline",
               "name": "cardGrid"
-            }
-          },
-          {
-            "type": "object",
-            "attributes": {
-              "_key": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                }
-              }
-            },
-            "rest": {
-              "type": "inline",
-              "name": "icon"
             }
           },
           {
@@ -7183,21 +7115,6 @@
                 },
                 "rest": {
                   "type": "inline",
-                  "name": "icon"
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "inline",
                   "name": "imageBlock"
                 }
               },
@@ -8388,21 +8305,6 @@
                 "rest": {
                   "type": "inline",
                   "name": "cardGrid"
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "inline",
-                  "name": "icon"
                 }
               },
               {

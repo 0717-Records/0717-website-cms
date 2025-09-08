@@ -33,7 +33,7 @@ const Card = (props: CardProps) => {
   const cleanCardStyle = stegaClean(cardStyle) || 'feature';
 
   // Don't render empty cards (but allow cards with just text content and no button)
-  if (!icon?.image && !cleanTitle && !cleanBodyText) {
+  if (!icon?.showIcon && !cleanTitle && !cleanBodyText) {
     return null;
   }
 
@@ -47,11 +47,12 @@ const Card = (props: CardProps) => {
         className={`${className} flex flex-col gap-6 text-center items-center`}
         isGridChild={isGridChild}>
         {/* Icon */}
-        {icon && icon.image && (
+        {icon && icon.showIcon && (
           <div className='flex justify-center'>
-            <div {...createSanityDataAttribute(documentId, documentType, getFieldPath('icon'))}>
-              <Icon {...icon} />
-            </div>
+            <Icon 
+              {...icon} 
+              data-sanity={createSanityDataAttribute(documentId, documentType, getFieldPath('icon'))?.toString()}
+            />
           </div>
         )}
 
@@ -92,14 +93,15 @@ const Card = (props: CardProps) => {
       isGridChild={isGridChild}>
       <div className='relative z-10 flex flex-col lg:flex-row items-center gap-8 p-3 lg:p-4'>
         {/* Left side - Icon */}
-        {icon && icon.image && (
+        {icon && icon.showIcon && (
           <div className='flex-shrink-0 relative'>
-            <div {...createSanityDataAttribute(documentId, documentType, getFieldPath('icon'))}>
-              {/* Icon background circle */}
-              <div className='relative w-24 h-24 lg:w-32 lg:h-32 flex items-center justify-center rounded-full'>
-                <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 inset-0 w-24 h-24 lg:w-32 lg:h-32 bg-brand-secondary/15 rounded-full'></div>
-                <Icon {...icon} className='w-16 h-16 lg:w-20 lg:h-20' />
-              </div>
+            {/* Icon background circle */}
+            <div className='relative w-24 h-24 lg:w-32 lg:h-32 flex items-center justify-center rounded-full bg-brand-secondary/15'>
+              <Icon 
+                {...icon} 
+                className='w-16 h-16 lg:w-20 lg:h-20' 
+                data-sanity={createSanityDataAttribute(documentId, documentType, getFieldPath('icon'))?.toString()}
+              />
             </div>
           </div>
         )}

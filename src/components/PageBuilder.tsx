@@ -28,7 +28,6 @@ import CTAEmailButtonComponent from './blocks/CTAEmailButton';
 import CTAEvent from './blocks/CTAEvent';
 import CTABlogPost from './blocks/CTABlogPost';
 import CardGrid from './blocks/CardGrid';
-import Icon from './blocks/Icon';
 import ImageBlock from './blocks/Image';
 import ImageGallery from './blocks/ImageGallery';
 import YouTubeVideo from './blocks/YouTubeVideo';
@@ -319,12 +318,6 @@ const BlockRenderer = ({
               </BlockWrapper>
             );
 
-          case 'icon':
-            return (
-              <BlockWrapper key={block._key}>
-                <Icon {...block} />
-              </BlockWrapper>
-            );
 
           case 'imageBlock':
             return (

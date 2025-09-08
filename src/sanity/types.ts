@@ -460,6 +460,7 @@ export type CardGrid = {
 
 export type Icon = {
   _type: "icon";
+  showIcon?: boolean;
   image?: {
     asset?: {
       _ref: string;
@@ -572,8 +573,6 @@ export type SubSubSection = {
     _key: string;
   } & CardGrid | {
     _key: string;
-  } & Icon | {
-    _key: string;
   } & ImageBlock | {
     _key: string;
   } & ImageGallery | {
@@ -625,8 +624,6 @@ export type SubSection = {
     _key: string;
   } & CardGrid | {
     _key: string;
-  } & Icon | {
-    _key: string;
   } & ImageBlock | {
     _key: string;
   } & ImageGallery | {
@@ -677,8 +674,6 @@ export type CollabPageSection = {
   } & CtaBlogPost | {
     _key: string;
   } & CardGrid | {
-    _key: string;
-  } & Icon | {
     _key: string;
   } & ImageBlock | {
     _key: string;
@@ -732,8 +727,6 @@ export type PageSection = {
     _key: string;
   } & CardGrid | {
     _key: string;
-  } & Icon | {
-    _key: string;
   } & ImageBlock | {
     _key: string;
   } & ImageGallery | {
@@ -780,8 +773,6 @@ export type PageBuilder = Array<{
 } & CtaBlogPost | {
   _key: string;
 } & CardGrid | {
-  _key: string;
-} & Icon | {
   _key: string;
 } & ImageBlock | {
   _key: string;
@@ -1082,8 +1073,6 @@ export type BlogPost = {
     _key: string;
   } & CardGrid | {
     _key: string;
-  } & Icon | {
-    _key: string;
   } & ImageBlock | {
     _key: string;
   } & ImageGallery | {
@@ -1267,8 +1256,6 @@ export type Page = {
   } & CtaBlogPost | {
     _key: string;
   } & CardGrid | {
-    _key: string;
-  } & Icon | {
     _key: string;
   } & ImageBlock | {
     _key: string;
@@ -1858,21 +1845,6 @@ export type PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "icon";
-    image: {
-      asset: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      } | null;
-      alt: string | null;
-      hotspot: SanityImageHotspot | null;
-      crop: SanityImageCrop | null;
-    } | null;
-    content: null;
-  } | {
-    _key: string;
     _type: "imageBlock";
     image: {
       asset: {
@@ -2302,21 +2274,6 @@ export type PAGE_QUERYResult = {
       _type: "favouriteBlock";
       blockAdded?: string;
       image: null;
-      content: null;
-    } | {
-      _key: string;
-      _type: "icon";
-      image: {
-        asset: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        } | null;
-        alt: string | null;
-        hotspot: SanityImageHotspot | null;
-        crop: SanityImageCrop | null;
-      } | null;
       content: null;
     } | {
       _key: string;
@@ -2809,21 +2766,6 @@ export type PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "icon";
-        image: {
-          asset: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          } | null;
-          alt: string | null;
-          hotspot: SanityImageHotspot | null;
-          crop: SanityImageCrop | null;
-        } | null;
-        content: null;
-      } | {
-        _key: string;
         _type: "imageBlock";
         image: {
           asset: {
@@ -3296,20 +3238,6 @@ export type PAGE_QUERYResult = {
           _type: "favouriteBlock";
           blockAdded?: string;
           image: null;
-        } | {
-          _key: string;
-          _type: "icon";
-          image: {
-            asset: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            } | null;
-            alt: string | null;
-            hotspot: SanityImageHotspot | null;
-            crop: SanityImageCrop | null;
-          } | null;
         } | {
           _key: string;
           _type: "imageBlock";
@@ -4128,21 +4056,6 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "icon";
-    image: {
-      asset: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      } | null;
-      alt: string | null;
-      hotspot: SanityImageHotspot | null;
-      crop: SanityImageCrop | null;
-    } | null;
-    content: null;
-  } | {
-    _key: string;
     _type: "imageBlock";
     image: {
       asset: {
@@ -4572,21 +4485,6 @@ export type HOME_PAGE_QUERYResult = {
       _type: "favouriteBlock";
       blockAdded?: string;
       image: null;
-      content: null;
-    } | {
-      _key: string;
-      _type: "icon";
-      image: {
-        asset: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        } | null;
-        alt: string | null;
-        hotspot: SanityImageHotspot | null;
-        crop: SanityImageCrop | null;
-      } | null;
       content: null;
     } | {
       _key: string;
@@ -5079,21 +4977,6 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "icon";
-        image: {
-          asset: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          } | null;
-          alt: string | null;
-          hotspot: SanityImageHotspot | null;
-          crop: SanityImageCrop | null;
-        } | null;
-        content: null;
-      } | {
-        _key: string;
         _type: "imageBlock";
         image: {
           asset: {
@@ -5566,20 +5449,6 @@ export type HOME_PAGE_QUERYResult = {
           _type: "favouriteBlock";
           blockAdded?: string;
           image: null;
-        } | {
-          _key: string;
-          _type: "icon";
-          image: {
-            asset: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            } | null;
-            alt: string | null;
-            hotspot: SanityImageHotspot | null;
-            crop: SanityImageCrop | null;
-          } | null;
         } | {
           _key: string;
           _type: "imageBlock";
@@ -6592,21 +6461,6 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "icon";
-    image: {
-      asset: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      } | null;
-      alt: string | null;
-      hotspot: SanityImageHotspot | null;
-      crop: SanityImageCrop | null;
-    } | null;
-    content: null;
-  } | {
-    _key: string;
     _type: "imageBlock";
     image: {
       asset: {
@@ -7036,21 +6890,6 @@ export type HOME_PAGE_QUERYResult = {
       _type: "favouriteBlock";
       blockAdded?: string;
       image: null;
-      content: null;
-    } | {
-      _key: string;
-      _type: "icon";
-      image: {
-        asset: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        } | null;
-        alt: string | null;
-        hotspot: SanityImageHotspot | null;
-        crop: SanityImageCrop | null;
-      } | null;
       content: null;
     } | {
       _key: string;
@@ -7543,21 +7382,6 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "icon";
-        image: {
-          asset: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          } | null;
-          alt: string | null;
-          hotspot: SanityImageHotspot | null;
-          crop: SanityImageCrop | null;
-        } | null;
-        content: null;
-      } | {
-        _key: string;
         _type: "imageBlock";
         image: {
           asset: {
@@ -8030,20 +7854,6 @@ export type HOME_PAGE_QUERYResult = {
           _type: "favouriteBlock";
           blockAdded?: string;
           image: null;
-        } | {
-          _key: string;
-          _type: "icon";
-          image: {
-            asset: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            } | null;
-            alt: string | null;
-            hotspot: SanityImageHotspot | null;
-            crop: SanityImageCrop | null;
-          } | null;
         } | {
           _key: string;
           _type: "imageBlock";
@@ -8832,21 +8642,6 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "icon";
-    image: {
-      asset: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      } | null;
-      alt: string | null;
-      hotspot: SanityImageHotspot | null;
-      crop: SanityImageCrop | null;
-    } | null;
-    content: null;
-  } | {
-    _key: string;
     _type: "imageBlock";
     image: {
       asset: {
@@ -9276,21 +9071,6 @@ export type HOME_PAGE_QUERYResult = {
       _type: "favouriteBlock";
       blockAdded?: string;
       image: null;
-      content: null;
-    } | {
-      _key: string;
-      _type: "icon";
-      image: {
-        asset: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        } | null;
-        alt: string | null;
-        hotspot: SanityImageHotspot | null;
-        crop: SanityImageCrop | null;
-      } | null;
       content: null;
     } | {
       _key: string;
@@ -9783,21 +9563,6 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "icon";
-        image: {
-          asset: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          } | null;
-          alt: string | null;
-          hotspot: SanityImageHotspot | null;
-          crop: SanityImageCrop | null;
-        } | null;
-        content: null;
-      } | {
-        _key: string;
         _type: "imageBlock";
         image: {
           asset: {
@@ -10270,20 +10035,6 @@ export type HOME_PAGE_QUERYResult = {
           _type: "favouriteBlock";
           blockAdded?: string;
           image: null;
-        } | {
-          _key: string;
-          _type: "icon";
-          image: {
-            asset: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            } | null;
-            alt: string | null;
-            hotspot: SanityImageHotspot | null;
-            crop: SanityImageCrop | null;
-          } | null;
         } | {
           _key: string;
           _type: "imageBlock";
@@ -11858,21 +11609,6 @@ export type BLOG_POST_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "icon";
-    image: {
-      asset: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      } | null;
-      alt: string | null;
-      hotspot: SanityImageHotspot | null;
-      crop: SanityImageCrop | null;
-    } | null;
-    content: null;
-  } | {
-    _key: string;
     _type: "imageBlock";
     image: {
       asset: {
@@ -12302,21 +12038,6 @@ export type BLOG_POST_QUERYResult = {
       _type: "favouriteBlock";
       blockAdded?: string;
       image: null;
-      content: null;
-    } | {
-      _key: string;
-      _type: "icon";
-      image: {
-        asset: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        } | null;
-        alt: string | null;
-        hotspot: SanityImageHotspot | null;
-        crop: SanityImageCrop | null;
-      } | null;
       content: null;
     } | {
       _key: string;
@@ -12809,21 +12530,6 @@ export type BLOG_POST_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "icon";
-        image: {
-          asset: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          } | null;
-          alt: string | null;
-          hotspot: SanityImageHotspot | null;
-          crop: SanityImageCrop | null;
-        } | null;
-        content: null;
-      } | {
-        _key: string;
         _type: "imageBlock";
         image: {
           asset: {
@@ -13296,20 +13002,6 @@ export type BLOG_POST_QUERYResult = {
           _type: "favouriteBlock";
           blockAdded?: string;
           image: null;
-        } | {
-          _key: string;
-          _type: "icon";
-          image: {
-            asset: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            } | null;
-            alt: string | null;
-            hotspot: SanityImageHotspot | null;
-            crop: SanityImageCrop | null;
-          } | null;
         } | {
           _key: string;
           _type: "imageBlock";
@@ -14128,21 +13820,6 @@ export type COLLAB_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "icon";
-      image: {
-        asset: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        } | null;
-        alt: string | null;
-        hotspot: SanityImageHotspot | null;
-        crop: SanityImageCrop | null;
-      } | null;
-      content: null;
-    } | {
-      _key: string;
       _type: "imageBlock";
       image: {
         asset: {
@@ -14632,21 +14309,6 @@ export type COLLAB_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "icon";
-        image: {
-          asset: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          } | null;
-          alt: string | null;
-          hotspot: SanityImageHotspot | null;
-          crop: SanityImageCrop | null;
-        } | null;
-        content: null;
-      } | {
-        _key: string;
         _type: "imageBlock";
         image: {
           asset: {
@@ -15133,21 +14795,6 @@ export type COLLAB_QUERYResult = {
           _type: "favouriteBlock";
           blockAdded?: string;
           image: null;
-          content: null;
-        } | {
-          _key: string;
-          _type: "icon";
-          image: {
-            asset: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            } | null;
-            alt: string | null;
-            hotspot: SanityImageHotspot | null;
-            crop: SanityImageCrop | null;
-          } | null;
           content: null;
         } | {
           _key: string;
