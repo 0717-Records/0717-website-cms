@@ -38,7 +38,7 @@ const Card = (props: CardProps) => {
   }
 
   // Get field path prefix for live editing
-  const getFieldPath = (field: string) => fieldPathPrefix ? `${fieldPathPrefix}.${field}` : field;
+  const getFieldPath = (field: string) => (fieldPathPrefix ? `${fieldPathPrefix}.${field}` : field);
 
   // Feature Card (Style 1) - Current layout
   if (cleanCardStyle === 'feature') {
@@ -49,7 +49,7 @@ const Card = (props: CardProps) => {
         {/* Icon */}
         {icon && icon.showIcon && (
           <div className='flex justify-center'>
-            <Icon 
+            <Icon
               image={icon.image}
               showIcon={icon.showIcon}
               {...createSanityDataAttribute(documentId, documentType, fieldPathPrefix || '')}
@@ -98,10 +98,10 @@ const Card = (props: CardProps) => {
           <div className='flex-shrink-0 relative'>
             {/* Icon background circle */}
             <div className='relative w-24 h-24 lg:w-32 lg:h-32 flex items-center justify-center rounded-full bg-brand-secondary/15'>
-              <Icon 
+              <Icon
                 image={icon.image}
                 showIcon={icon.showIcon}
-                className='w-16 h-16 lg:w-20 lg:h-20' 
+                className='w-16 h-16 lg:w-20 lg:h-20'
                 {...createSanityDataAttribute(documentId, documentType, fieldPathPrefix || '')}
               />
             </div>
@@ -109,7 +109,7 @@ const Card = (props: CardProps) => {
         )}
 
         {/* Right side - Content */}
-        <div className='flex-1 text-center lg:text-left'>
+        <div className='flex-1 flex flex-col gap-4 md:gap-8 text-center lg:text-left'>
           {/* Title */}
           {cleanTitle && (
             <div {...createSanityDataAttribute(documentId, documentType, getFieldPath('title'))}>
