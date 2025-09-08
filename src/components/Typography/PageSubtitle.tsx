@@ -16,7 +16,7 @@ const PageSubtitle = ({
 }: PageSubtitleProps) => {
   return (
     <p
-      className={`${className} text-body-2xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line ${alignment} ${!omitBottomSpacing ? pageSubtitleBottomSpacing : ''}`}>
+      className={`${className} text-body-lg md:text-body-xl text-text-subtle max-w-3xl mx-auto whitespace-pre-line ${alignment} ${!omitBottomSpacing ? pageSubtitleBottomSpacing : ''}`}>
       {children}
     </p>
   );
