@@ -26,10 +26,14 @@ export const components: PortableTextComponents = {
 
   list: {
     bullet: ({ children }) => (
-      <ul className='list-disc pl-6 space-y-2 [&>li::marker]:text-brand-secondary'>{children}</ul>
+      <ul className='list-disc pl-6 space-y-2 [&>li::marker]:text-brand-secondary m-6'>
+        {children}
+      </ul>
     ),
     number: ({ children }) => (
-      <ol className='list-decimal pl-6 space-y-2 [&>li::marker]:text-brand-secondary'>{children}</ol>
+      <ol className='list-decimal pl-6 space-y-2 [&>li::marker]:text-brand-secondary m-6'>
+        {children}
+      </ol>
     ),
   },
 
@@ -47,15 +51,12 @@ export const components: PortableTextComponents = {
         return <span>{children}</span>;
       }
 
-      const linkClassName = 'text-brand-secondary hover:text-brand-primary underline transition-colors';
+      const linkClassName =
+        'text-brand-secondary hover:text-brand-primary underline transition-colors';
 
       // All rich text links are treated as external and open in new tab
       return (
-        <a
-          href={href}
-          target='_blank'
-          rel='noopener noreferrer'
-          className={linkClassName}>
+        <a href={href} target='_blank' rel='noopener noreferrer' className={linkClassName}>
           {children}
         </a>
       );
@@ -72,7 +73,7 @@ export const components: PortableTextComponents = {
       if (!props.value || !props.value.asset || !props.value.asset._ref) {
         return null;
       }
-      
+
       return (
         <Image
           className='rounded-lg not-prose w-full h-auto'
