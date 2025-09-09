@@ -19,6 +19,7 @@ interface FeaturedItemsHeroLayoutProps {
   featuredImages: NonNullable<HOME_PAGE_QUERYResult>['featuredImages'];
   documentId: string;
   documentType: string;
+  showLogoBackColor?: boolean;
 }
 
 // Featured items layout: 3-section vertical layout
@@ -33,6 +34,7 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
     featuredImages,
     documentId,
     documentType,
+    showLogoBackColor,
   } = props;
 
   const componentProps = {
@@ -44,6 +46,7 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
     heroCallToActionList,
     documentId,
     documentType,
+    showLogoBackColor,
   };
 
   return (

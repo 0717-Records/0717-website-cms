@@ -18,6 +18,7 @@ interface RegularHeroLayoutProps {
   enableFeaturedItems: NonNullable<HOME_PAGE_QUERYResult>['enableFeaturedItems'];
   documentId: string;
   documentType: string;
+  showLogoBackColor?: boolean;
 }
 
 // Regular positioned layout: absolute positioning with content position settings
@@ -32,6 +33,7 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
     heroCallToActionList,
     documentId,
     documentType,
+    showLogoBackColor,
   } = props;
 
   const componentProps = {
@@ -43,6 +45,7 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
     heroCallToActionList,
     documentId,
     documentType,
+    showLogoBackColor,
   };
 
   // Map content position to Tailwind classes

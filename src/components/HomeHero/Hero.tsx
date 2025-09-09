@@ -96,6 +96,7 @@ const Hero = ({
           featuredImages={featuredImages}
           documentId={documentId}
           documentType={documentType}
+          showLogoBackColor={currentHeroStyle === 'default'}
         />
       ) : (
         <RegularHeroLayout
@@ -108,6 +109,7 @@ const Hero = ({
           enableFeaturedItems={enableFeaturedItems}
           documentId={documentId}
           documentType={documentType}
+          showLogoBackColor={currentHeroStyle === 'default'}
         />
       )}
     </section>
