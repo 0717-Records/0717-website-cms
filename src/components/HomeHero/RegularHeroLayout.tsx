@@ -105,9 +105,12 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
       {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
       <div className={`flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}`}>
         <HeroLogo {...componentProps} />
-        <HeroTitle {...componentProps} />
-        <HeroSubtitle {...componentProps} />
-        <HeroCTA {...componentProps} />
+        <div
+          className={`relative z-10 flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}`}>
+          <HeroTitle {...componentProps} />
+          <HeroSubtitle {...componentProps} />
+          <HeroCTA {...componentProps} />
+        </div>
       </div>
     </div>
   );

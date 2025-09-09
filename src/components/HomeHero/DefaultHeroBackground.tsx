@@ -65,12 +65,15 @@ const DefaultHeroBackground = () => {
       {/* Key decorative circles - minimal and strategic */}
       {/* Large left circle - positioned to peek from bottom-left - ~50vw diameter with min size */}
       <div className='absolute bottom-0 left-1/2 sm:left-0 w-[50vw] h-[50vw] rounded-full bg-gradient-to-tr from-[#ffea00]/20 to-[#ffea00]/10 transform -translate-x-1/2 translate-y-1/2 blur-xl' />
+      <div className='absolute bottom-0 left-1/2 sm:left-0 w-[35vw] h-[35vw] rounded-full bg-gradient-to-tr from-[#ffea00]/40 to-[#ffea00]/20 transform -translate-x-1/2 translate-y-1/2' />
 
       {/* Central accent circle - subtly positioned behind content area - ~25vw diameter with min size */}
-      <div className='absolute top-1/2 left-1/2 w-64 h-64 md:w-80 md:h-80 lg:w-[25vw] lg:h-[25vw] rounded-full bg-gradient-to-br from-[#ffea00]/20 to-[#ffea00]/10 transform -translate-y-1/2 -translate-x-1/2 blur-sm' />
+      {/* <div className='absolute top-1/2 left-1/2 w-64 h-64 md:w-80 md:h-80 lg:w-[25vw] lg:h-[25vw] rounded-full bg-gradient-to-br from-[#ffea00]/20 to-[#ffea00]/10 transform -translate-y-1/2 -translate-x-1/2 blur-sm' />
+      <div className='absolute top-1/2 left-1/2 w-64 h-64 md:w-80 md:h-80 lg:w-[20vw] lg:h-[20vw] rounded-full bg-gradient-to-br from-[#ffea00]/40 to-[#ffea00]/20 transform -translate-y-1/2 -translate-x-1/2' /> */}
 
       {/* Large right circle - positioned to peek from top-right - ~50vw diameter with min size */}
       <div className='absolute top-0 right-1/2 sm:right-0 w-[50vw] h-[50vw] rounded-full bg-gradient-to-bl from-[#ffea00]/30 to-[#f4a300]/20 transform translate-x-1/2 -translate-y-1/2 blur-xl' />
+      <div className='absolute top-0 right-1/2 sm:right-0 w-[40vw] h-[40vw] rounded-full bg-gradient-to-bl from-[#ffea00]/30 to-[#f4a300]/20 transform translate-x-1/2 -translate-y-1/2' />
     </div>
   );
 };
