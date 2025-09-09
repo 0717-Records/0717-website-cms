@@ -11,7 +11,7 @@ interface ErrorPageProps {
   reset: () => void;
 }
 
-export default function ErrorPage({ error, reset }: ErrorPageProps) {
+export default function ErrorPage({ error }: ErrorPageProps) {
   return (
     <>
       {/* Hero Section */}
