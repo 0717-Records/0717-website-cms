@@ -1,4 +1,5 @@
 import React from 'react';
+import { notFound } from 'next/navigation';
 import PageBuilder from '@/components/PageBuilder';
 import PageHero from '@/components/Page/PageHero';
 import { getPageBySlug, getSiteSettings, getCompanyLinks } from '@/actions';
@@ -22,7 +23,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   ]);
 
   if (!page) {
-    return <div>Page not found</div>;
+    notFound();
   }
 
   return (
