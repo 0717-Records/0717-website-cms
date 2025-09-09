@@ -56,7 +56,7 @@ const PageHero = ({
 
         {/* Back Link */}
         {!hideBackLink && (
-          <div className='absolute top-3 left-3 md:top-8 md:left-8 z-[26]'>
+          <div className='absolute top-2 left-2 md:top-8 md:left-8 z-[26]'>
             <Link
               href={backLinkHref}
               className='inline-flex items-center gap-2 text-white hover:bg-black active:scale-90 transition-all duration-200 text-body-base bg-black/30 backdrop-blur-sm rounded-lg px-3 py-1 md:py-2 border border-white/20'>
@@ -68,8 +68,8 @@ const PageHero = ({
 
         {/* Text Content with Dark Overlay */}
         {title && (
-          <div className='relative z-[25] text-white text-center py-4 px-6 bg-black/20 backdrop-blur-sm rounded-lg -m-2'>
-            <Heading level='h1' showUnderline className='text-h5 md:text-h3 font-bold'>
+          <div className='relative z-[25] text-white text-center py-3 px-6 bg-black/20 backdrop-blur-sm rounded-lg -m-2'>
+            <Heading level='h1' showUnderline className='text-h2 md:text-h1font-bold'>
               {title}
             </Heading>
           </div>
