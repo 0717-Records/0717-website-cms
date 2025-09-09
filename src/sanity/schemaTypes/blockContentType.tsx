@@ -1,5 +1,5 @@
 import { defineType, defineArrayMember } from 'sanity';
-import { ImageIcon, DropIcon, LinkIcon } from '@sanity/icons';
+import { DropIcon, LinkIcon } from '@sanity/icons';
 import React from 'react';
 import BodyTextPreview, { type BlockStyleProps } from '../components/BodyTextPreview';
 
