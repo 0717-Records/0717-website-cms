@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { PortableTextComponents } from 'next-sanity';
 import { urlFor } from '@/sanity/lib/image';
 
@@ -41,72 +40,24 @@ export const components: PortableTextComponents = {
     em: ({ children }) => <em className='italic'>{children}</em>,
 
     link: ({ value, children }) => {
-      // Handle the new CTA-style link structure
-      let href = '';
-      let target: string | undefined;
-      let rel: string | undefined;
-
-      if (value?.linkType === 'internal') {
-        if (value.internalLink) {
-          // Handle both reference objects and dereferenced objects
-          if ('href' in value.internalLink && value.internalLink.href) {
-            href = value.internalLink.href;
-          } else if ('slug' in value.internalLink && value.internalLink.slug?.current) {
-            href = `/${value.internalLink.slug.current}`;
-          }
-          
-          // Add section anchor if specified
-          if (value.pageSectionId) {
-            href += `#${value.pageSectionId}`;
-          }
-        } else {
-          // Default to home page if no internal link is selected
-          href = '/';
-        }
-        
-        // Internal links can optionally open in new tab
-        if (value.openInNewTab) {
-          target = '_blank';
-          rel = 'noopener noreferrer';
-        }
-      } else if (value?.linkType === 'external' && value?.externalUrl) {
-        href = value.externalUrl;
-        target = '_blank';
-        rel = 'noopener noreferrer';
-      } else if (value?.href) {
-        // Fallback for legacy simple link structure
-        href = value.href;
-        target = href.startsWith('http') ? '_blank' : undefined;
-        rel = target === '_blank' ? 'noopener noreferrer' : undefined;
-      }
+      // Handle simple external link structure
+      const href = value?.href;
 
       if (!href) {
         return <span>{children}</span>;
       }
 
-      // Use Next.js Link for internal links, regular anchor for external links or when target="_blank"
-      const isExternal = 
-        href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:');
-      const shouldUseAnchor = isExternal || target === '_blank';
-
       const linkClassName = 'text-brand-secondary hover:text-brand-primary underline transition-colors';
 
-      if (shouldUseAnchor) {
-        return (
-          <a
-            href={href}
-            target={target}
-            rel={rel}
-            className={linkClassName}>
-            {children}
-          </a>
-        );
-      }
-
+      // All rich text links are treated as external and open in new tab
       return (
-        <Link href={href} className={linkClassName}>
+        <a
+          href={href}
+          target='_blank'
+          rel='noopener noreferrer'
+          className={linkClassName}>
           {children}
-        </Link>
+        </a>
       );
     },
 

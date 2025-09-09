@@ -2,7 +2,6 @@ import { defineType, defineArrayMember } from 'sanity';
 import { ImageIcon, DropIcon, LinkIcon } from '@sanity/icons';
 import React from 'react';
 import BodyTextPreview, { type BlockStyleProps } from '../components/BodyTextPreview';
-import { createLinkFieldSet } from './shared/linkSystem';
 
 /**
  * This is the schema type for block content used across various document types
@@ -92,53 +91,30 @@ export const blockContentType = defineType({
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
-            title: 'Link',
+            title: 'URL',
             name: 'link',
             type: 'object',
             icon: LinkIcon,
             fields: [
-              ...createLinkFieldSet({
-                linkTypeConfig: {
-                  description: 'Choose whether this links to another page on your site or an external URL'
-                },
-                internalLinkConfig: {
-                  description: 'Select a page from your website to link to'
-                },
-                externalUrlConfig: {
-                  description: 'Enter the full URL (e.g., https://example.com)'
-                },
-                openInNewTabConfig: {
-                  description: 'Check this to open the link in a new tab/window'
-                },
-                pageSectionConfig: {
-                  description: 'Optional: Select a specific section on the page to link to'
-                }
-              })
+              {
+                title: 'URL',
+                name: 'href',
+                type: 'url',
+                validation: (rule) =>
+                  rule.required().uri({
+                    allowRelative: false,
+                    scheme: ['http', 'https', 'mailto', 'tel'],
+                  }),
+              },
             ],
             preview: {
               select: {
-                linkType: 'linkType',
-                internalTitle: 'internalLink.title',
-                externalUrl: 'externalUrl',
-                openInNewTab: 'openInNewTab',
+                href: 'href',
               },
-              prepare({ linkType, internalTitle, externalUrl, openInNewTab }) {
-                let linkInfo = 'No link';
-                if (linkType === 'internal' && internalTitle) {
-                  const newTabIndicator = openInNewTab ? ' ↗' : '';
-                  linkInfo = `→ ${internalTitle}${newTabIndicator}`;
-                } else if (linkType === 'external' && externalUrl) {
-                  try {
-                    const url = new URL(externalUrl);
-                    linkInfo = `→ ${url.hostname} ↗`;
-                  } catch {
-                    linkInfo = '→ External URL ↗';
-                  }
-                }
-                
+              prepare({ href }) {
                 return {
-                  title: linkInfo,
-                  subtitle: 'Rich Text Link',
+                  title: href || 'No URL',
+                  subtitle: 'External Link',
                   media: LinkIcon,
                 };
               },
