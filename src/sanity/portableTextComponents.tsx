@@ -2,8 +2,38 @@ import Image from 'next/image';
 import { PortableTextComponents } from 'next-sanity';
 import { urlFor } from '@/sanity/lib/image';
 
-// Default components with gradient underlines
-export const components: PortableTextComponents = {
+// Get text alignment from context (passed down from RichText component)
+const getAlignmentClasses = (alignment: string = 'left') => {
+  switch (alignment) {
+    case 'right':
+      return {
+        bulletClass: 'list-disc space-y-2 [&>li::marker]:text-brand-secondary m-6 text-right [&>li]:list-inside',
+        numberClass: 'list-decimal space-y-2 [&>li::marker]:text-brand-secondary m-6 text-right [&>li]:list-inside',
+        listItemClass: 'leading-relaxed',
+        standoutClass: 'border-r-4 border-brand-primary bg-gray-50 pr-4 py-3 my-4 rounded-l-lg italic text-body-xl text-right',
+      };
+    case 'center':
+      return {
+        bulletClass: 'list-disc list-inside space-y-2 [&>li::marker]:text-brand-secondary m-6 text-center',
+        numberClass: 'list-decimal list-inside space-y-2 [&>li::marker]:text-brand-secondary m-6 text-center',
+        listItemClass: 'leading-relaxed text-center',
+        standoutClass: 'border-l-4 border-brand-primary bg-gray-50 pl-4 py-3 my-4 rounded-r-lg italic text-body-xl text-center',
+      };
+    default: // 'left' or 'inherit'
+      return {
+        bulletClass: 'list-disc pl-6 space-y-2 [&>li::marker]:text-brand-secondary m-6',
+        numberClass: 'list-decimal pl-6 space-y-2 [&>li::marker]:text-brand-secondary m-6',
+        listItemClass: 'leading-relaxed',
+        standoutClass: 'border-l-4 border-brand-primary bg-gray-50 pl-4 py-3 my-4 rounded-r-lg italic text-body-xl',
+      };
+  }
+};
+
+// Create components factory that accepts alignment context
+export const createComponents = (alignment: string = 'left'): PortableTextComponents => {
+  const alignmentClasses = getAlignmentClasses(alignment);
+
+  return {
   block: {
     // Default style (what users get when they just start typing)
     normal: ({ children }) => <p className='text-body-base'>{children}</p>,
@@ -18,26 +48,26 @@ export const components: PortableTextComponents = {
 
     // Special styles
     standout: ({ children }) => (
-      <div className='border-l-4 border-brand-primary bg-gray-50 pl-4 py-3 my-4 rounded-r-lg italic text-body-xl'>
+      <div className={alignmentClasses.standoutClass}>
         {children}
       </div>
     ),
   },
 
-  list: {
-    bullet: ({ children }) => (
-      <ul className='list-disc pl-6 space-y-2 [&>li::marker]:text-brand-secondary m-6'>
-        {children}
-      </ul>
-    ),
-    number: ({ children }) => (
-      <ol className='list-decimal pl-6 space-y-2 [&>li::marker]:text-brand-secondary m-6'>
-        {children}
-      </ol>
-    ),
-  },
+    list: {
+      bullet: ({ children }) => (
+        <ul className={alignmentClasses.bulletClass}>
+          {children}
+        </ul>
+      ),
+      number: ({ children }) => (
+        <ol className={alignmentClasses.numberClass}>
+          {children}
+        </ol>
+      ),
+    },
 
-  listItem: ({ children }) => <li className='leading-relaxed'>{children}</li>,
+    listItem: ({ children }) => <li className={alignmentClasses.listItemClass}>{children}</li>,
 
   marks: {
     strong: ({ children }) => <strong className='font-bold'>{children}</strong>,
@@ -85,7 +115,11 @@ export const components: PortableTextComponents = {
       );
     },
   },
+  };
 };
+
+// Default components (for backward compatibility)
+export const components: PortableTextComponents = createComponents('left');
 
 // Components specifically for hero content
 export const heroComponents: PortableTextComponents = {

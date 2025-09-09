@@ -86,19 +86,6 @@ export type SideContentBlock = {
     level?: number;
     _type: "block";
     _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
   }>;
   ctaBlocks?: Array<{
     _key: string;
@@ -356,19 +343,6 @@ export type TextImage = {
     level?: number;
     _type: "block";
     _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
   }>;
   image?: {
     asset?: {
@@ -498,19 +472,6 @@ export type RichText = {
     } & Color>;
     level?: number;
     _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
     _key: string;
   }>;
 };
@@ -866,19 +827,6 @@ export type BlockContent = Array<{
   } & Color>;
   level?: number;
   _type: "block";
-  _key: string;
-} | {
-  asset?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-  };
-  media?: unknown;
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  alt?: string;
-  _type: "image";
   _key: string;
 }>;
 
@@ -2374,21 +2322,6 @@ export type PAGE_QUERYResult = {
         _key: string;
         image: null;
         content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-        image: null;
-        content: null;
       }> | null;
       image: null;
     } | {
@@ -2862,20 +2795,6 @@ export type PAGE_QUERYResult = {
           _type: "block";
           _key: string;
           image: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-          image: null;
         }> | null;
         image: null;
       } | {
@@ -3331,19 +3250,6 @@ export type PAGE_QUERYResult = {
             level?: number;
             _type: "block";
             _key: string;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
-            _key: string;
           }>;
           image: null;
         } | {
@@ -3373,19 +3279,6 @@ export type PAGE_QUERYResult = {
             }>;
             level?: number;
             _type: "block";
-            _key: string;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
             _key: string;
           }>;
           image: {
@@ -3430,20 +3323,6 @@ export type PAGE_QUERYResult = {
           _type: "block";
           _key: string;
           image: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-          image: null;
         }> | null;
         image: {
           asset: {
@@ -3486,21 +3365,6 @@ export type PAGE_QUERYResult = {
         }>;
         level?: number;
         _type: "block";
-        _key: string;
-        image: null;
-        content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
         _key: string;
         image: null;
         content: null;
@@ -3559,21 +3423,6 @@ export type PAGE_QUERYResult = {
       _key: string;
       image: null;
       content: null;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-      image: null;
-      content: null;
     }> | null;
     image: null;
   } | {
@@ -3604,21 +3453,6 @@ export type PAGE_QUERYResult = {
       }>;
       level?: number;
       _type: "block";
-      _key: string;
-      image: null;
-      content: null;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
       _key: string;
       image: null;
       content: null;
@@ -4587,21 +4421,6 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         image: null;
         content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-        image: null;
-        content: null;
       }> | null;
       image: null;
     } | {
@@ -5075,20 +4894,6 @@ export type HOME_PAGE_QUERYResult = {
           _type: "block";
           _key: string;
           image: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-          image: null;
         }> | null;
         image: null;
       } | {
@@ -5544,19 +5349,6 @@ export type HOME_PAGE_QUERYResult = {
             level?: number;
             _type: "block";
             _key: string;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
-            _key: string;
           }>;
           image: null;
         } | {
@@ -5586,19 +5378,6 @@ export type HOME_PAGE_QUERYResult = {
             }>;
             level?: number;
             _type: "block";
-            _key: string;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
             _key: string;
           }>;
           image: {
@@ -5643,20 +5422,6 @@ export type HOME_PAGE_QUERYResult = {
           _type: "block";
           _key: string;
           image: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-          image: null;
         }> | null;
         image: {
           asset: {
@@ -5699,21 +5464,6 @@ export type HOME_PAGE_QUERYResult = {
         }>;
         level?: number;
         _type: "block";
-        _key: string;
-        image: null;
-        content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
         _key: string;
         image: null;
         content: null;
@@ -5772,21 +5522,6 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       image: null;
       content: null;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-      image: null;
-      content: null;
     }> | null;
     image: null;
   } | {
@@ -5817,21 +5552,6 @@ export type HOME_PAGE_QUERYResult = {
       }>;
       level?: number;
       _type: "block";
-      _key: string;
-      image: null;
-      content: null;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
       _key: string;
       image: null;
       content: null;
@@ -6996,21 +6716,6 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         image: null;
         content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-        image: null;
-        content: null;
       }> | null;
       image: null;
     } | {
@@ -7484,20 +7189,6 @@ export type HOME_PAGE_QUERYResult = {
           _type: "block";
           _key: string;
           image: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-          image: null;
         }> | null;
         image: null;
       } | {
@@ -7953,19 +7644,6 @@ export type HOME_PAGE_QUERYResult = {
             level?: number;
             _type: "block";
             _key: string;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
-            _key: string;
           }>;
           image: null;
         } | {
@@ -7995,19 +7673,6 @@ export type HOME_PAGE_QUERYResult = {
             }>;
             level?: number;
             _type: "block";
-            _key: string;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
             _key: string;
           }>;
           image: {
@@ -8052,20 +7717,6 @@ export type HOME_PAGE_QUERYResult = {
           _type: "block";
           _key: string;
           image: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-          image: null;
         }> | null;
         image: {
           asset: {
@@ -8108,21 +7759,6 @@ export type HOME_PAGE_QUERYResult = {
         }>;
         level?: number;
         _type: "block";
-        _key: string;
-        image: null;
-        content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
         _key: string;
         image: null;
         content: null;
@@ -8181,21 +7817,6 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       image: null;
       content: null;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-      image: null;
-      content: null;
     }> | null;
     image: null;
   } | {
@@ -8226,21 +7847,6 @@ export type HOME_PAGE_QUERYResult = {
       }>;
       level?: number;
       _type: "block";
-      _key: string;
-      image: null;
-      content: null;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
       _key: string;
       image: null;
       content: null;
@@ -9179,21 +8785,6 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         image: null;
         content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-        image: null;
-        content: null;
       }> | null;
       image: null;
     } | {
@@ -9667,20 +9258,6 @@ export type HOME_PAGE_QUERYResult = {
           _type: "block";
           _key: string;
           image: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-          image: null;
         }> | null;
         image: null;
       } | {
@@ -10136,19 +9713,6 @@ export type HOME_PAGE_QUERYResult = {
             level?: number;
             _type: "block";
             _key: string;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
-            _key: string;
           }>;
           image: null;
         } | {
@@ -10178,19 +9742,6 @@ export type HOME_PAGE_QUERYResult = {
             }>;
             level?: number;
             _type: "block";
-            _key: string;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
             _key: string;
           }>;
           image: {
@@ -10235,20 +9786,6 @@ export type HOME_PAGE_QUERYResult = {
           _type: "block";
           _key: string;
           image: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-          image: null;
         }> | null;
         image: {
           asset: {
@@ -10291,21 +9828,6 @@ export type HOME_PAGE_QUERYResult = {
         }>;
         level?: number;
         _type: "block";
-        _key: string;
-        image: null;
-        content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
         _key: string;
         image: null;
         content: null;
@@ -10364,21 +9886,6 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       image: null;
       content: null;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-      image: null;
-      content: null;
     }> | null;
     image: null;
   } | {
@@ -10409,21 +9916,6 @@ export type HOME_PAGE_QUERYResult = {
       }>;
       level?: number;
       _type: "block";
-      _key: string;
-      image: null;
-      content: null;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
       _key: string;
       image: null;
       content: null;
@@ -12150,21 +11642,6 @@ export type BLOG_POST_QUERYResult = {
         _key: string;
         image: null;
         content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-        image: null;
-        content: null;
       }> | null;
       image: null;
     } | {
@@ -12638,20 +12115,6 @@ export type BLOG_POST_QUERYResult = {
           _type: "block";
           _key: string;
           image: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-          image: null;
         }> | null;
         image: null;
       } | {
@@ -13107,19 +12570,6 @@ export type BLOG_POST_QUERYResult = {
             level?: number;
             _type: "block";
             _key: string;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
-            _key: string;
           }>;
           image: null;
         } | {
@@ -13149,19 +12599,6 @@ export type BLOG_POST_QUERYResult = {
             }>;
             level?: number;
             _type: "block";
-            _key: string;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
             _key: string;
           }>;
           image: {
@@ -13206,20 +12643,6 @@ export type BLOG_POST_QUERYResult = {
           _type: "block";
           _key: string;
           image: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
-          _key: string;
-          image: null;
         }> | null;
         image: {
           asset: {
@@ -13262,21 +12685,6 @@ export type BLOG_POST_QUERYResult = {
         }>;
         level?: number;
         _type: "block";
-        _key: string;
-        image: null;
-        content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
         _key: string;
         image: null;
         content: null;
@@ -13335,21 +12743,6 @@ export type BLOG_POST_QUERYResult = {
       _key: string;
       image: null;
       content: null;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-      image: null;
-      content: null;
     }> | null;
     image: null;
   } | {
@@ -13380,21 +12773,6 @@ export type BLOG_POST_QUERYResult = {
       }>;
       level?: number;
       _type: "block";
-      _key: string;
-      image: null;
-      content: null;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
       _key: string;
       image: null;
       content: null;
@@ -13929,21 +13307,6 @@ export type COLLAB_QUERYResult = {
         _key: string;
         image: null;
         content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-        image: null;
-        content: null;
       }> | null;
       image: null;
     } | {
@@ -14415,21 +13778,6 @@ export type COLLAB_QUERYResult = {
           }>;
           level?: number;
           _type: "block";
-          _key: string;
-          image: null;
-          content: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
           _key: string;
           image: null;
           content: null;
@@ -14906,20 +14254,6 @@ export type COLLAB_QUERYResult = {
             _type: "block";
             _key: string;
             image: null;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
-            _key: string;
-            image: null;
           }> | null;
           image: null;
         } | {
@@ -14950,20 +14284,6 @@ export type COLLAB_QUERYResult = {
             }>;
             level?: number;
             _type: "block";
-            _key: string;
-            image: null;
-          } | {
-            asset?: {
-              _ref: string;
-              _type: "reference";
-              _weak?: boolean;
-              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-            };
-            media?: unknown;
-            hotspot?: SanityImageHotspot;
-            crop?: SanityImageCrop;
-            alt?: string;
-            _type: "image";
             _key: string;
             image: null;
           }> | null;
@@ -15008,21 +14328,6 @@ export type COLLAB_QUERYResult = {
           }>;
           level?: number;
           _type: "block";
-          _key: string;
-          image: null;
-          content: null;
-        } | {
-          asset?: {
-            _ref: string;
-            _type: "reference";
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt?: string;
-          _type: "image";
           _key: string;
           image: null;
           content: null;
@@ -15071,21 +14376,6 @@ export type COLLAB_QUERYResult = {
         _key: string;
         image: null;
         content: null;
-      } | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-        image: null;
-        content: null;
       }> | null;
       image: {
         asset: {
@@ -15130,19 +14420,6 @@ export type COLLAB_QUERYResult = {
       }>;
       level?: number;
       _type: "block";
-      _key: string;
-    } | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
       _key: string;
     }> | null;
     ctaBlocks: Array<{

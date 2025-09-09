@@ -1,6 +1,6 @@
 import React from 'react';
 import { PortableText, stegaClean } from 'next-sanity';
-import { components } from '@/sanity/portableTextComponents';
+import { createComponents } from '@/sanity/portableTextComponents';
 import type { RichTextBlock } from '@/types/blocks';
 import { getTextAlignClass, type TextAlignment } from '../../utils/sectionHelpers';
 import { resolveAlignment } from './shared/alignmentUtils';
@@ -33,27 +33,15 @@ const RichText = ({
     return null;
   }
 
-  const getCustomStyles = (align: TextAlignment) => {
-    if (align === 'center') {
-      return {
-        '--list-style-position': 'inside',
-      } as React.CSSProperties;
-    }
-    return {};
-  };
+  // The portable text components now handle alignment directly
 
-  const getListStyleClass = (align: TextAlignment) => {
-    if (align === 'center') {
-      return '[&_ul]:list-inside [&_ol]:list-inside [&_ul]:pl-0 [&_ol]:pl-0';
-    }
-    return '';
-  };
+  // Create components with alignment context
+  const alignedComponents = createComponents(effectiveTextAlign);
 
   const proseContent = (
     <div
-      className={`prose prose-slate max-w-none text-text-subtle ${getTextAlignClass(effectiveTextAlign)} ${getListStyleClass(effectiveTextAlign)}`}
-      style={getCustomStyles(effectiveTextAlign)}>
-      <PortableText value={content} components={components} />
+      className={`prose prose-slate max-w-none text-text-subtle ${getTextAlignClass(effectiveTextAlign)}`}>
+      <PortableText value={content} components={alignedComponents} />
     </div>
   );
 
