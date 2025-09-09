@@ -5,7 +5,7 @@
 /**
  * Space under all hero sections (PageHero, HomeHero) before the next content
  */
-export const heroBottomSpacing = 'mb-12 md:mb-20';
+export const heroBottomSpacing = 'mb-14 md:mb-24';
 
 /**
  * Space under page subtitles (non-blog pages)
@@ -35,7 +35,7 @@ export const sectionDividerBottomSpacing = 'mb-8 md:mb-12';
 /**
  * Bottom padding for PageSections (after the last piece of content in that section)
  */
-export const sectionBottomPadding = 'pb-12 md:pb-16';
+export const sectionBottomPadding = 'pb-14 md:pb-24';
 
 /**
  * Space after most content blocks (with exceptions defined in implementation)

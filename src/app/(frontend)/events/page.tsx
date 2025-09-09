@@ -6,7 +6,6 @@ import PageSection from '@/components/Layout/PageSection';
 import { transformEvents } from '@/utils/transformEvents';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
-import { pageSubtitleBottomSpacing } from '@/utils/spacingConstants';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
 
 export default async function EventsPage() {
