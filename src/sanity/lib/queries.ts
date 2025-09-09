@@ -1,5 +1,6 @@
 import { defineQuery } from 'next-sanity';
 
+
 // Reusable internal link dereferencing with href computation and section anchor support
 const internalLinkProjection = `{
   _id,
@@ -24,14 +25,14 @@ const fullLinkProjection = `
   "computedHref": select(
     linkType == "external" => externalUrl,
     linkType == "internal" && defined(pageSectionId) && pageSectionId != "" => 
-      coalesce(internalLink.href, "/") + "#" + pageSectionId,
+      coalesce(internalLink->${internalLinkProjection}.href, "/") + "#" + pageSectionId,
     linkType == "internal" => 
-      coalesce(internalLink.href, "/"),
+      coalesce(internalLink->${internalLinkProjection}.href, "/"),
     "/"
   )
 `;
 
-// Single content block projection that recursively handles nested content  
+// Single content block projection that recursively handles nested content
 // Add new block types here and they'll work at all nesting levels automatically
 const contentProjection = `
   ...,
@@ -40,16 +41,6 @@ const contentProjection = `
     alt,
     hotspot,
     crop
-  },
-  _type == "richText" => {
-    ...,
-    content[]{
-      ...,
-      markDefs[]{
-        ...,
-        internalLink->${internalLinkProjection}
-      }
-    }
   },
   _type == "pageSection" => {
     ...,
@@ -143,110 +134,14 @@ const recursiveContent = `content[]{${contentProjection},
   }
 }`;
 
+
 export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slug][0]{
   _id,
   _type,
   title,
   subtitle,
   slug,
-  content[]{
-    ...,
-    image{
-      asset,
-      alt,
-      hotspot,
-      crop
-    },
-    _type == "richText" => {
-      ...,
-      content[]{
-        ...,
-        markDefs[]{
-          ...,
-          internalLink->${internalLinkProjection}
-        }
-      }
-    },
-    _type == "pageSection" => {
-      ...,
-      anchorId
-    },
-    _type == "subSection" => {
-      ...,
-      anchorId
-    },
-    _type == "subSubSection" => {
-      ...,
-      anchorId
-    },
-    _type == "ctaButton" => {${fullLinkProjection}},
-    _type == "ctaCalloutLink" => {${fullLinkProjection}},
-    _type == "ctaCard" => {${fullLinkProjection}},
-    _type == "card" => {
-      ...,
-      ctaList[]{
-        _type,
-        _key,
-        _type == "embeddedCtaButton" => {${fullLinkProjection}},
-        _type == "embeddedCtaEmailButton" => {...}
-      }
-    },
-    _type == "cardGrid" => {
-      ...,
-      cards[]{
-        ...,
-        ctaList[]{
-          _type,
-          _key,
-          _type == "embeddedCtaButton" => {${fullLinkProjection}},
-          _type == "embeddedCtaEmailButton" => {...}
-        }
-      }
-    },
-    _type == "ctaEvent" => {
-      ...,
-      event->{
-        _id,
-        title,
-        shortDescription,
-        venue,
-        location,
-        image{
-          asset,
-          alt,
-          hotspot,
-          crop
-        },
-        tags,
-        link,
-        startDate,
-        endDate,
-        timeDescription,
-        pastEventText,
-        pastEventLinkBehavior,
-        pastEventLink
-      }
-    },
-    _type == "ctaBlogPost" => {
-      ...,
-      blogPost->{
-        _id,
-        _createdAt,
-        title,
-        slug,
-        subtitle,
-        author,
-        mainImage{
-          asset,
-          alt,
-          hotspot,
-          crop
-        },
-        hasOverrideDate,
-        overrideDate
-      }
-    }
-  },
+  ${recursiveContent},
   heroImage{
     asset,
     alt,
@@ -367,8 +262,7 @@ export const EVENTS_INDEX_PAGE_QUERY = defineQuery(`*[_id == "eventsIndexPage"][
 }`);
 
 // Blog Post Queries
-export const BLOG_POSTS_QUERY =
-  defineQuery(`*[_type == "blogPost"]|order(coalesce(overrideDate, _createdAt) desc){
+export const BLOG_POSTS_QUERY = defineQuery(`*[_type == "blogPost"]|order(coalesce(overrideDate, _createdAt) desc){
   _id,
   _createdAt,
   title,
@@ -496,8 +390,7 @@ export const COLLABS_SLUGS_QUERY = defineQuery(`*[_type == "collab" && defined(s
   "slug": slug.current
 }`);
 
-export const COLLABS_ALL_QUERY =
-  defineQuery(`*[_type == "collab" && defined(slug.current)]|order(order asc, name asc){
+export const COLLABS_ALL_QUERY = defineQuery(`*[_type == "collab" && defined(slug.current)]|order(order asc, name asc){
   _id,
   name,
   slug,
@@ -515,8 +408,7 @@ export const COLLABS_ALL_QUERY =
   cardDescription
 }`);
 
-export const FAVOURITES_ALL_QUERY =
-  defineQuery(`*[_type == "favourites"]|order(order asc, name asc){
+export const FAVOURITES_ALL_QUERY = defineQuery(`*[_type == "favourites"]|order(order asc, name asc){
   _id,
   name,
   category,
