@@ -75,9 +75,43 @@ export type SideContentBlock = {
       _key: string;
     }>;
     style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "standout";
-    listItem?: "bullet";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
-      href?: string;
+      linkType?: "internal" | "external";
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "homePage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "collab";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "blogIndexPage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "blogPost";
+      };
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
       _type: "link";
       _key: string;
     } | {
@@ -345,9 +379,43 @@ export type TextImage = {
       _key: string;
     }>;
     style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "standout";
-    listItem?: "bullet";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
-      href?: string;
+      linkType?: "internal" | "external";
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "homePage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "collab";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "blogIndexPage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "blogPost";
+      };
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
       _type: "link";
       _key: string;
     } | {
@@ -479,6 +547,7 @@ export type Icon = {
 export type RichText = {
   _type: "richText";
   isCallout?: boolean;
+  textAlign?: "inherit" | "left" | "center" | "right";
   content?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -487,9 +556,43 @@ export type RichText = {
       _key: string;
     }>;
     style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "standout";
-    listItem?: "bullet";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
-      href?: string;
+      linkType?: "internal" | "external";
+      internalLink?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "page";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "homePage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "collab";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "blogIndexPage";
+      } | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "blogPost";
+      };
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
       _type: "link";
       _key: string;
     } | {
@@ -512,7 +615,6 @@ export type RichText = {
     _type: "image";
     _key: string;
   }>;
-  textAlign?: "inherit" | "left" | "center" | "right";
 };
 
 export type ItemList = {
@@ -856,9 +958,43 @@ export type BlockContent = Array<{
     _key: string;
   }>;
   style?: "normal" | "body-3xl" | "body-2xl" | "body-xl" | "body-lg" | "body-sm" | "body-xs" | "standout";
-  listItem?: "bullet";
+  listItem?: "bullet" | "number";
   markDefs?: Array<{
-    href?: string;
+    linkType?: "internal" | "external";
+    internalLink?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "page";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "homePage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "collab";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "blogIndexPage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "blogPost";
+    };
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
     _type: "link";
     _key: string;
   } | {
@@ -1021,6 +1157,137 @@ export type HomePage = {
   content?: PageBuilder;
 };
 
+export type Page = {
+  _id: string;
+  _type: "page";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  subtitle?: string;
+  content?: Array<{
+    _key: string;
+  } & PageSection | {
+    _key: string;
+  } & Divider | {
+    _key: string;
+  } & ItemList | {
+    _key: string;
+  } & RichText | {
+    _key: string;
+  } & Quote | {
+    _key: string;
+  } & TextImage | {
+    _key: string;
+  } & Card | {
+    _key: string;
+  } & CtaButton | {
+    _key: string;
+  } & CtaCalloutLink | {
+    _key: string;
+  } & CtaEmailButton | {
+    _key: string;
+  } & CtaEvent | {
+    _key: string;
+  } & CtaBlogPost | {
+    _key: string;
+  } & CardGrid | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
+    _key: string;
+  } & YouTubeVideo | {
+    _key: string;
+  } & SpotifyWidget | {
+    _key: string;
+  } & BandcampWidget | {
+    _key: string;
+  } & EventBlock | {
+    _key: string;
+  } & CollabAllBlock | {
+    _key: string;
+  } & FavouriteBlock | {
+    _key: string;
+  } & CompanyLinksBlock>;
+  hasClosingCard?: boolean;
+  closingCard?: Card;
+};
+
+export type Collab = {
+  _id: string;
+  _type: "collab";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  category?: string;
+  location?: string;
+  order?: number;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  previewImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  shortDescription?: string;
+  useShortDescriptionForCards?: boolean;
+  cardDescription?: string;
+  bio?: string;
+  mainContent?: Array<{
+    _key: string;
+  } & CollabPageSection>;
+  links?: CollabLinksArray;
+  sideContent?: SideContent;
+};
+
+export type CollabLinksArray = {
+  _type: "collabLinksArray";
+  socialLinksArray?: Array<{
+    platform?: "facebook" | "instagram" | "youtube" | "twitter" | "soundcloud" | "bandcamp" | "spotify" | "itunes" | "officialWebsite" | "genericLink";
+    url?: string;
+    customTitle?: string;
+    hideFromFooter?: boolean;
+    _type: "socialLinkItem";
+    _key: string;
+  }>;
+};
+
 export type BlogPost = {
   _id: string;
   _type: "blogPost";
@@ -1121,66 +1388,6 @@ export type BlogIndexPage = {
   closingCard?: Card;
 };
 
-export type Collab = {
-  _id: string;
-  _type: "collab";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  slug?: Slug;
-  category?: string;
-  location?: string;
-  order?: number;
-  heroImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  previewImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  shortDescription?: string;
-  useShortDescriptionForCards?: boolean;
-  cardDescription?: string;
-  bio?: string;
-  mainContent?: Array<{
-    _key: string;
-  } & CollabPageSection>;
-  links?: CollabLinksArray;
-  sideContent?: SideContent;
-};
-
-export type CollabLinksArray = {
-  _type: "collabLinksArray";
-  socialLinksArray?: Array<{
-    platform?: "facebook" | "instagram" | "youtube" | "twitter" | "soundcloud" | "bandcamp" | "spotify" | "itunes" | "officialWebsite" | "genericLink";
-    url?: string;
-    customTitle?: string;
-    hideFromFooter?: boolean;
-    _type: "socialLinkItem";
-    _key: string;
-  }>;
-};
-
 export type EventsIndexPage = {
   _id: string;
   _type: "eventsIndexPage";
@@ -1206,77 +1413,6 @@ export type EventsIndexPage = {
   hasEventsMessage?: boolean;
   eventsMessage?: Card;
   noPastEventsMessage?: string;
-};
-
-export type Page = {
-  _id: string;
-  _type: "page";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  heroImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  subtitle?: string;
-  content?: Array<{
-    _key: string;
-  } & PageSection | {
-    _key: string;
-  } & Divider | {
-    _key: string;
-  } & ItemList | {
-    _key: string;
-  } & RichText | {
-    _key: string;
-  } & Quote | {
-    _key: string;
-  } & TextImage | {
-    _key: string;
-  } & Card | {
-    _key: string;
-  } & CtaButton | {
-    _key: string;
-  } & CtaCalloutLink | {
-    _key: string;
-  } & CtaEmailButton | {
-    _key: string;
-  } & CtaEvent | {
-    _key: string;
-  } & CtaBlogPost | {
-    _key: string;
-  } & CardGrid | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
-    _key: string;
-  } & YouTubeVideo | {
-    _key: string;
-  } & SpotifyWidget | {
-    _key: string;
-  } & BandcampWidget | {
-    _key: string;
-  } & EventBlock | {
-    _key: string;
-  } & CollabAllBlock | {
-    _key: string;
-  } & FavouriteBlock | {
-    _key: string;
-  } & CompanyLinksBlock>;
-  hasClosingCard?: boolean;
-  closingCard?: Card;
 };
 
 export type Card = {
@@ -1471,7 +1607,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = NavLink | CtaList | SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaBlogPost | CtaEvent | HomeHeroCtaButton | EmbeddedCtaEmailButton | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Event | HomePage | BlogPost | BlogIndexPage | Collab | CollabLinksArray | EventsIndexPage | Page | Card | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = NavLink | CtaList | SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaBlogPost | CtaEvent | HomeHeroCtaButton | EmbeddedCtaEmailButton | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Event | HomePage | Page | Collab | CollabLinksArray | BlogPost | BlogIndexPage | EventsIndexPage | Card | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY
@@ -2352,6 +2488,7 @@ export type PAGE_QUERYResult = {
       _key: string;
       _type: "richText";
       isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
         children?: Array<{
           marks?: Array<string>;
@@ -2360,11 +2497,45 @@ export type PAGE_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -2389,7 +2560,6 @@ export type PAGE_QUERYResult = {
         image: null;
         content: null;
       }> | null;
-      textAlign?: "center" | "inherit" | "left" | "right";
       image: null;
     } | {
       _key: string;
@@ -2841,6 +3011,7 @@ export type PAGE_QUERYResult = {
         _key: string;
         _type: "richText";
         isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
         content: Array<{
           children?: Array<{
             marks?: Array<string>;
@@ -2849,11 +3020,45 @@ export type PAGE_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -2876,7 +3081,6 @@ export type PAGE_QUERYResult = {
           _key: string;
           image: null;
         }> | null;
-        textAlign?: "center" | "inherit" | "left" | "right";
         image: null;
       } | {
         _key: string;
@@ -3311,6 +3515,7 @@ export type PAGE_QUERYResult = {
           _key: string;
           _type: "richText";
           isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
           content?: Array<{
             children?: Array<{
               marks?: Array<string>;
@@ -3319,11 +3524,45 @@ export type PAGE_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -3344,7 +3583,6 @@ export type PAGE_QUERYResult = {
             _type: "image";
             _key: string;
           }>;
-          textAlign?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
           _key: string;
@@ -3363,11 +3601,45 @@ export type PAGE_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -3418,11 +3690,45 @@ export type PAGE_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -3476,11 +3782,45 @@ export type PAGE_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -3537,6 +3877,7 @@ export type PAGE_QUERYResult = {
     _key: string;
     _type: "richText";
     isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       children?: Array<{
         marks?: Array<string>;
@@ -3545,11 +3886,45 @@ export type PAGE_QUERYResult = {
         _key: string;
       }>;
       style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-      listItem?: "bullet";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         _key: string;
       } & Color | {
-        href?: string;
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogPost";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
         _type: "link";
         _key: string;
       }>;
@@ -3574,7 +3949,6 @@ export type PAGE_QUERYResult = {
       image: null;
       content: null;
     }> | null;
-    textAlign?: "center" | "inherit" | "left" | "right";
     image: null;
   } | {
     _key: string;
@@ -3594,11 +3968,45 @@ export type PAGE_QUERYResult = {
         _key: string;
       }>;
       style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-      listItem?: "bullet";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         _key: string;
       } & Color | {
-        href?: string;
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogPost";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
         _type: "link";
         _key: string;
       }>;
@@ -4565,6 +4973,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "richText";
       isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
         children?: Array<{
           marks?: Array<string>;
@@ -4573,11 +4982,45 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -4602,7 +5045,6 @@ export type HOME_PAGE_QUERYResult = {
         image: null;
         content: null;
       }> | null;
-      textAlign?: "center" | "inherit" | "left" | "right";
       image: null;
     } | {
       _key: string;
@@ -5054,6 +5496,7 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "richText";
         isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
         content: Array<{
           children?: Array<{
             marks?: Array<string>;
@@ -5062,11 +5505,45 @@ export type HOME_PAGE_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -5089,7 +5566,6 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           image: null;
         }> | null;
-        textAlign?: "center" | "inherit" | "left" | "right";
         image: null;
       } | {
         _key: string;
@@ -5524,6 +6000,7 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "richText";
           isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
           content?: Array<{
             children?: Array<{
               marks?: Array<string>;
@@ -5532,11 +6009,45 @@ export type HOME_PAGE_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -5557,7 +6068,6 @@ export type HOME_PAGE_QUERYResult = {
             _type: "image";
             _key: string;
           }>;
-          textAlign?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
           _key: string;
@@ -5576,11 +6086,45 @@ export type HOME_PAGE_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -5631,11 +6175,45 @@ export type HOME_PAGE_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -5689,11 +6267,45 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -5750,6 +6362,7 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "richText";
     isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       children?: Array<{
         marks?: Array<string>;
@@ -5758,11 +6371,45 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
       }>;
       style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-      listItem?: "bullet";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         _key: string;
       } & Color | {
-        href?: string;
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogPost";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
         _type: "link";
         _key: string;
       }>;
@@ -5787,7 +6434,6 @@ export type HOME_PAGE_QUERYResult = {
       image: null;
       content: null;
     }> | null;
-    textAlign?: "center" | "inherit" | "left" | "right";
     image: null;
   } | {
     _key: string;
@@ -5807,11 +6453,45 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
       }>;
       style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-      listItem?: "bullet";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         _key: string;
       } & Color | {
-        href?: string;
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogPost";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
         _type: "link";
         _key: string;
       }>;
@@ -6974,6 +7654,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "richText";
       isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
         children?: Array<{
           marks?: Array<string>;
@@ -6982,11 +7663,45 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -7011,7 +7726,6 @@ export type HOME_PAGE_QUERYResult = {
         image: null;
         content: null;
       }> | null;
-      textAlign?: "center" | "inherit" | "left" | "right";
       image: null;
     } | {
       _key: string;
@@ -7463,6 +8177,7 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "richText";
         isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
         content: Array<{
           children?: Array<{
             marks?: Array<string>;
@@ -7471,11 +8186,45 @@ export type HOME_PAGE_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -7498,7 +8247,6 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           image: null;
         }> | null;
-        textAlign?: "center" | "inherit" | "left" | "right";
         image: null;
       } | {
         _key: string;
@@ -7933,6 +8681,7 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "richText";
           isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
           content?: Array<{
             children?: Array<{
               marks?: Array<string>;
@@ -7941,11 +8690,45 @@ export type HOME_PAGE_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -7966,7 +8749,6 @@ export type HOME_PAGE_QUERYResult = {
             _type: "image";
             _key: string;
           }>;
-          textAlign?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
           _key: string;
@@ -7985,11 +8767,45 @@ export type HOME_PAGE_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -8040,11 +8856,45 @@ export type HOME_PAGE_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -8098,11 +8948,45 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -8159,6 +9043,7 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "richText";
     isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       children?: Array<{
         marks?: Array<string>;
@@ -8167,11 +9052,45 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
       }>;
       style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-      listItem?: "bullet";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         _key: string;
       } & Color | {
-        href?: string;
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogPost";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
         _type: "link";
         _key: string;
       }>;
@@ -8196,7 +9115,6 @@ export type HOME_PAGE_QUERYResult = {
       image: null;
       content: null;
     }> | null;
-    textAlign?: "center" | "inherit" | "left" | "right";
     image: null;
   } | {
     _key: string;
@@ -8216,11 +9134,45 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
       }>;
       style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-      listItem?: "bullet";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         _key: string;
       } & Color | {
-        href?: string;
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogPost";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
         _type: "link";
         _key: string;
       }>;
@@ -9157,6 +10109,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "richText";
       isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
         children?: Array<{
           marks?: Array<string>;
@@ -9165,11 +10118,45 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -9194,7 +10181,6 @@ export type HOME_PAGE_QUERYResult = {
         image: null;
         content: null;
       }> | null;
-      textAlign?: "center" | "inherit" | "left" | "right";
       image: null;
     } | {
       _key: string;
@@ -9646,6 +10632,7 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "richText";
         isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
         content: Array<{
           children?: Array<{
             marks?: Array<string>;
@@ -9654,11 +10641,45 @@ export type HOME_PAGE_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -9681,7 +10702,6 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           image: null;
         }> | null;
-        textAlign?: "center" | "inherit" | "left" | "right";
         image: null;
       } | {
         _key: string;
@@ -10116,6 +11136,7 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "richText";
           isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
           content?: Array<{
             children?: Array<{
               marks?: Array<string>;
@@ -10124,11 +11145,45 @@ export type HOME_PAGE_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -10149,7 +11204,6 @@ export type HOME_PAGE_QUERYResult = {
             _type: "image";
             _key: string;
           }>;
-          textAlign?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
           _key: string;
@@ -10168,11 +11222,45 @@ export type HOME_PAGE_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -10223,11 +11311,45 @@ export type HOME_PAGE_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -10281,11 +11403,45 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -10342,6 +11498,7 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "richText";
     isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       children?: Array<{
         marks?: Array<string>;
@@ -10350,11 +11507,45 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
       }>;
       style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-      listItem?: "bullet";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         _key: string;
       } & Color | {
-        href?: string;
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogPost";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
         _type: "link";
         _key: string;
       }>;
@@ -10379,7 +11570,6 @@ export type HOME_PAGE_QUERYResult = {
       image: null;
       content: null;
     }> | null;
-    textAlign?: "center" | "inherit" | "left" | "right";
     image: null;
   } | {
     _key: string;
@@ -10399,11 +11589,45 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
       }>;
       style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-      listItem?: "bullet";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         _key: string;
       } & Color | {
-        href?: string;
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogPost";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
         _type: "link";
         _key: string;
       }>;
@@ -12128,6 +13352,7 @@ export type BLOG_POST_QUERYResult = {
       _key: string;
       _type: "richText";
       isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
         children?: Array<{
           marks?: Array<string>;
@@ -12136,11 +13361,45 @@ export type BLOG_POST_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -12165,7 +13424,6 @@ export type BLOG_POST_QUERYResult = {
         image: null;
         content: null;
       }> | null;
-      textAlign?: "center" | "inherit" | "left" | "right";
       image: null;
     } | {
       _key: string;
@@ -12617,6 +13875,7 @@ export type BLOG_POST_QUERYResult = {
         _key: string;
         _type: "richText";
         isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
         content: Array<{
           children?: Array<{
             marks?: Array<string>;
@@ -12625,11 +13884,45 @@ export type BLOG_POST_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -12652,7 +13945,6 @@ export type BLOG_POST_QUERYResult = {
           _key: string;
           image: null;
         }> | null;
-        textAlign?: "center" | "inherit" | "left" | "right";
         image: null;
       } | {
         _key: string;
@@ -13087,6 +14379,7 @@ export type BLOG_POST_QUERYResult = {
           _key: string;
           _type: "richText";
           isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
           content?: Array<{
             children?: Array<{
               marks?: Array<string>;
@@ -13095,11 +14388,45 @@ export type BLOG_POST_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -13120,7 +14447,6 @@ export type BLOG_POST_QUERYResult = {
             _type: "image";
             _key: string;
           }>;
-          textAlign?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
           _key: string;
@@ -13139,11 +14465,45 @@ export type BLOG_POST_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -13194,11 +14554,45 @@ export type BLOG_POST_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -13252,11 +14646,45 @@ export type BLOG_POST_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -13313,6 +14741,7 @@ export type BLOG_POST_QUERYResult = {
     _key: string;
     _type: "richText";
     isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
     content: Array<{
       children?: Array<{
         marks?: Array<string>;
@@ -13321,11 +14750,45 @@ export type BLOG_POST_QUERYResult = {
         _key: string;
       }>;
       style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-      listItem?: "bullet";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         _key: string;
       } & Color | {
-        href?: string;
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogPost";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
         _type: "link";
         _key: string;
       }>;
@@ -13350,7 +14813,6 @@ export type BLOG_POST_QUERYResult = {
       image: null;
       content: null;
     }> | null;
-    textAlign?: "center" | "inherit" | "left" | "right";
     image: null;
   } | {
     _key: string;
@@ -13370,11 +14832,45 @@ export type BLOG_POST_QUERYResult = {
         _key: string;
       }>;
       style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-      listItem?: "bullet";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         _key: string;
       } & Color | {
-        href?: string;
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogPost";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
         _type: "link";
         _key: string;
       }>;
@@ -13907,6 +15403,7 @@ export type COLLAB_QUERYResult = {
       _key: string;
       _type: "richText";
       isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
       content: Array<{
         children?: Array<{
           marks?: Array<string>;
@@ -13915,11 +15412,45 @@ export type COLLAB_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -13944,7 +15475,6 @@ export type COLLAB_QUERYResult = {
         image: null;
         content: null;
       }> | null;
-      textAlign?: "center" | "inherit" | "left" | "right";
       image: null;
     } | {
       _key: string;
@@ -14396,6 +15926,7 @@ export type COLLAB_QUERYResult = {
         _key: string;
         _type: "richText";
         isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
         content: Array<{
           children?: Array<{
             marks?: Array<string>;
@@ -14404,11 +15935,45 @@ export type COLLAB_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -14433,7 +15998,6 @@ export type COLLAB_QUERYResult = {
           image: null;
           content: null;
         }> | null;
-        textAlign?: "center" | "inherit" | "left" | "right";
         image: null;
       } | {
         _key: string;
@@ -14885,6 +16449,7 @@ export type COLLAB_QUERYResult = {
           _key: string;
           _type: "richText";
           isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
           content: Array<{
             children?: Array<{
               marks?: Array<string>;
@@ -14893,11 +16458,45 @@ export type COLLAB_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -14920,7 +16519,6 @@ export type COLLAB_QUERYResult = {
             _key: string;
             image: null;
           }> | null;
-          textAlign?: "center" | "inherit" | "left" | "right";
           image: null;
         } | {
           _key: string;
@@ -14940,11 +16538,45 @@ export type COLLAB_QUERYResult = {
               _key: string;
             }>;
             style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-            listItem?: "bullet";
+            listItem?: "bullet" | "number";
             markDefs?: Array<{
               _key: string;
             } & Color | {
-              href?: string;
+              linkType?: "external" | "internal";
+              internalLink?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "blogPost";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "collab";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "homePage";
+              } | {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "page";
+              };
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
               _type: "link";
               _key: string;
             }>;
@@ -14998,11 +16630,45 @@ export type COLLAB_QUERYResult = {
             _key: string;
           }>;
           style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-          listItem?: "bullet";
+          listItem?: "bullet" | "number";
           markDefs?: Array<{
             _key: string;
           } & Color | {
-            href?: string;
+            linkType?: "external" | "internal";
+            internalLink?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "blogPost";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "collab";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "homePage";
+            } | {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "page";
+            };
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
             _type: "link";
             _key: string;
           }>;
@@ -15058,11 +16724,45 @@ export type COLLAB_QUERYResult = {
           _key: string;
         }>;
         style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-        listItem?: "bullet";
+        listItem?: "bullet" | "number";
         markDefs?: Array<{
           _key: string;
         } & Color | {
-          href?: string;
+          linkType?: "external" | "internal";
+          internalLink?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "blogPost";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "collab";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "homePage";
+          } | {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "page";
+          };
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
           _type: "link";
           _key: string;
         }>;
@@ -15120,11 +16820,45 @@ export type COLLAB_QUERYResult = {
         _key: string;
       }>;
       style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
-      listItem?: "bullet";
+      listItem?: "bullet" | "number";
       markDefs?: Array<{
         _key: string;
       } & Color | {
-        href?: string;
+        linkType?: "external" | "internal";
+        internalLink?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "blogPost";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "collab";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "eventsIndexPage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "homePage";
+        } | {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "page";
+        };
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
         _type: "link";
         _key: string;
       }>;

@@ -16,12 +16,6 @@ export const richTextType = defineType({
       initialValue: false,
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
-      type: 'blockContent',
-      validation: (Rule) => Rule.required().error('Rich text content is required'),
-    }),
-    defineField({
       name: 'textAlign',
       title: 'Text Alignment',
       type: 'string',
@@ -37,6 +31,12 @@ export const richTextType = defineType({
       },
       initialValue: 'inherit',
       hidden: ({ parent }) => Boolean(parent?.isCallout),
+    }),
+    defineField({
+      name: 'content',
+      title: 'Content',
+      type: 'blockContent',
+      validation: (Rule) => Rule.required().error('Rich text content is required'),
     }),
   ],
   preview: {

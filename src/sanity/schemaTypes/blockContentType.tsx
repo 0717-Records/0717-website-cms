@@ -1,7 +1,8 @@
 import { defineType, defineArrayMember } from 'sanity';
-import { ImageIcon, DropIcon } from '@sanity/icons';
+import { ImageIcon, DropIcon, LinkIcon } from '@sanity/icons';
 import React from 'react';
 import BodyTextPreview, { type BlockStyleProps } from '../components/BodyTextPreview';
+import { createLinkFieldSet } from './shared/linkSystem';
 
 /**
  * This is the schema type for block content used across various document types
@@ -76,7 +77,10 @@ export const blockContentType = defineType({
         // Special Styles
         { title: 'Standout', value: 'standout' },
       ],
-      lists: [{ title: 'Bullet', value: 'bullet' }],
+      lists: [
+        { title: 'Bullet', value: 'bullet' },
+        { title: 'Numbered', value: 'number' }
+      ],
       // Marks let you mark up inline text in the Portable Text Editor
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
@@ -88,16 +92,57 @@ export const blockContentType = defineType({
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
-            title: 'URL',
+            title: 'Link',
             name: 'link',
             type: 'object',
+            icon: LinkIcon,
             fields: [
-              {
-                title: 'URL',
-                name: 'href',
-                type: 'url',
-              },
+              ...createLinkFieldSet({
+                linkTypeConfig: {
+                  description: 'Choose whether this links to another page on your site or an external URL'
+                },
+                internalLinkConfig: {
+                  description: 'Select a page from your website to link to'
+                },
+                externalUrlConfig: {
+                  description: 'Enter the full URL (e.g., https://example.com)'
+                },
+                openInNewTabConfig: {
+                  description: 'Check this to open the link in a new tab/window'
+                },
+                pageSectionConfig: {
+                  description: 'Optional: Select a specific section on the page to link to'
+                }
+              })
             ],
+            preview: {
+              select: {
+                linkType: 'linkType',
+                internalTitle: 'internalLink.title',
+                externalUrl: 'externalUrl',
+                openInNewTab: 'openInNewTab',
+              },
+              prepare({ linkType, internalTitle, externalUrl, openInNewTab }) {
+                let linkInfo = 'No link';
+                if (linkType === 'internal' && internalTitle) {
+                  const newTabIndicator = openInNewTab ? ' ↗' : '';
+                  linkInfo = `→ ${internalTitle}${newTabIndicator}`;
+                } else if (linkType === 'external' && externalUrl) {
+                  try {
+                    const url = new URL(externalUrl);
+                    linkInfo = `→ ${url.hostname} ↗`;
+                  } catch {
+                    linkInfo = '→ External URL ↗';
+                  }
+                }
+                
+                return {
+                  title: linkInfo,
+                  subtitle: 'Rich Text Link',
+                  media: LinkIcon,
+                };
+              },
+            },
           },
           {
             title: 'Color',
