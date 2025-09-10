@@ -17,7 +17,7 @@ const EventBlock = ({ maxEvents = 6, events }: EventBlockProps) => {
     <div className='w-full'>
       <EventList
         events={transformedEvents}
-        filter='upcoming'
+        filter='all'
         limit={maxEvents}
         noEventsText='No events at the moment. Check back soon!'
       />
