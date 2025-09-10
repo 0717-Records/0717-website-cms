@@ -35,8 +35,8 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ isLoading = false }) =>
 
   return (
     <>
-      <div className='h-screen flex justify-center items-start'>
-        <div className='relative mt-10 w-[75%] h-[75%] sm:w-[500px] sm:h-[500px]'>
+      <div className='h-screen'>
+        <div className='fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[75%] h-[75%] sm:w-[500px] sm:h-[500px]'>
           <Image
             src={'/images/logo-black-on-transparent.png'}
             alt='07:17 Records Logo'
