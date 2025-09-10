@@ -6,7 +6,7 @@ import FeaturedItemsHeroLayout from './FeaturedItemsHeroLayout';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import { createSanityDataAttribute } from '../../utils/sectionHelpers';
-import { heroBottomSpacing } from '@/utils/spacingConstants';
+import { homeHeroBottomSpacing } from '@/utils/spacingConstants';
 import { stegaClean } from '@sanity/client/stega';
 
 interface HeroProps {
@@ -54,7 +54,7 @@ const Hero = ({
   return (
     <section
       id='home'
-      className={`relative ${styles['hero-height']} flex flex-col justify-center ${heroBottomSpacing}`}>
+      className={`relative ${styles['hero-height']} flex flex-col justify-center ${homeHeroBottomSpacing}`}>
       {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
 
       {/* Hero Style Click-to-Edit Wrapper */}

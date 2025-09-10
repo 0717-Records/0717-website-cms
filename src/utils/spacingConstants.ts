@@ -5,12 +5,13 @@
 /**
  * Space under all hero sections (PageHero, HomeHero) before the next content
  */
-export const heroBottomSpacing = 'mb-14 md:mb-24';
+export const heroBottomSpacing = 'mb-10 md:mb-16';
+export const homeHeroBottomSpacing = 'mb-14 md:mb-24';
 
 /**
  * Space under page subtitles (non-blog pages)
  */
-export const pageSubtitleBottomSpacing = 'mb-12 md:mb-16';
+export const pageSubtitleBottomSpacing = 'mb-10 md:mb-16';
 
 /**
  * Space above PageSections that come after orphaned content blocks
