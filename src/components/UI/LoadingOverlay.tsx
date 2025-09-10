@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 
 interface LoadingOverlayProps {
   isLoading?: boolean;
@@ -9,6 +10,8 @@ interface LoadingOverlayProps {
 const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ isLoading = false }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
+
+  useBodyScrollLock(isLoading);
 
   useEffect(() => {
     if (isLoading) {
