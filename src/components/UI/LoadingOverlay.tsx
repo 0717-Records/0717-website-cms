@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
+import Image from 'next/image';
 
 interface LoadingOverlayProps {
   isLoading?: boolean;
@@ -33,44 +34,55 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ isLoading = false }) =>
   if (!shouldRender) return null;
 
   return (
-    <div
-      className={`fixed inset-0 z-50 transition-opacity duration-300 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`}
-      style={{
-        pointerEvents: isVisible ? 'auto' : 'none',
-      }}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Page loading"
-    >
-      {/* Black overlay with reduced opacity */}
-      <div className="absolute inset-0 bg-black/70" />
-      
-      {/* Spinner in center */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative">
-          {/* Outer ring - Brand Secondary */}
-          <div 
-            className="w-16 h-16 border-4 border-transparent rounded-full animate-spin"
-            style={{
-              borderTopColor: '#f4a300', // brand-secondary
-              borderRightColor: '#f4a300',
-            }}
-          />
-          {/* Inner ring - Brand Primary */}
-          <div 
-            className="absolute top-2 left-2 w-12 h-12 border-4 border-transparent rounded-full animate-spin"
-            style={{
-              borderTopColor: '#ffea00', // brand-primary
-              borderLeftColor: '#ffea00',
-              animationDirection: 'reverse',
-              animationDuration: '1.5s',
-            }}
+    <>
+      <div className='h-screen flex justify-center items-start'>
+        <div className='relative mt-10 w-[75%] h-[75%] sm:w-[500px] sm:h-[500px]'>
+          <Image
+            src={'/images/logo-black-on-transparent.png'}
+            alt='07:17 Records Logo'
+            fill
+            className={`object-contain drop-shadow-lg drop-shadow-black/40 opacity-30`}
           />
         </div>
       </div>
-    </div>
+      <div
+        className={`fixed inset-0 z-50 transition-opacity duration-300 ${
+          isVisible ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{
+          pointerEvents: isVisible ? 'auto' : 'none',
+        }}
+        role='dialog'
+        aria-modal='true'
+        aria-label='Page loading'>
+        {/* Black overlay with reduced opacity */}
+        <div className='absolute inset-0 bg-black/70' />
+
+        {/* Spinner in center */}
+        <div className='absolute inset-0 flex items-center justify-center'>
+          <div className='relative'>
+            {/* Outer ring - Brand Secondary */}
+            <div
+              className='w-16 h-16 border-4 border-transparent rounded-full animate-spin'
+              style={{
+                borderTopColor: '#f4a300', // brand-secondary
+                borderRightColor: '#f4a300',
+              }}
+            />
+            {/* Inner ring - Brand Primary */}
+            <div
+              className='absolute top-2 left-2 w-12 h-12 border-4 border-transparent rounded-full animate-spin'
+              style={{
+                borderTopColor: '#ffea00', // brand-primary
+                borderLeftColor: '#ffea00',
+                animationDirection: 'reverse',
+                animationDuration: '1.5s',
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
