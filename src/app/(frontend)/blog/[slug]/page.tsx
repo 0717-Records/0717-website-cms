@@ -120,7 +120,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Closing Card */}
         {post.hasClosingCard && post.closingCard && (
           <div className={closingCardSpacing}>
-            <Card {...post.closingCard} documentId={post._id} documentType={post._type} />
+            <Card {...post.closingCard} documentId={post._id} documentType={post._type} fieldPathPrefix='closingCard' />
           </div>
         )}
       </Container>

@@ -39,6 +39,7 @@ export default async function BlogPage() {
               {...blogIndexPage.closingCard}
               documentId={blogIndexPage._id}
               documentType={blogIndexPage._type}
+              fieldPathPrefix='closingCard'
             />
           </div>
         )}
