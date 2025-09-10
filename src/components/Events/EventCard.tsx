@@ -51,7 +51,7 @@ const EventCard = (props: EventCardProps) => {
         hasLink ? 'group hover:shadow-xl hover:scale-103 cursor-pointer' : ''
       }`}>
       {/* Event Poster */}
-      <div className='relative w-1/3 md:w-full aspect-[3/4] bg-gray-900 overflow-hidden flex-shrink-0'>
+      <div className='relative w-1/3 md:w-full aspect-[724/1024] bg-gray-900 overflow-hidden flex-shrink-0'>
         {image ? (
           <>
             <Image
