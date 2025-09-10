@@ -6,6 +6,7 @@ import '../globals.css';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import DisableDraftMode from '@/components/DisableDraftMode';
+import ScrollToTop from '@/components/ScrollToTop';
 import { Signika } from 'next/font/google';
 import { getHeader, getFooter, getSiteSettings, getCompanyLinks } from '@/actions';
 import { SiteDataProvider } from '@/contexts/SiteDataContext';
@@ -24,6 +25,7 @@ const FrontendLayout = async ({
 
   return (
     <SiteDataProvider companyEmail={siteSettingsData?.companyEmail || undefined}>
+      <ScrollToTop />
       <div className={`min-h-screen flex flex-col ${signika.className} font-variant-small-caps`}>
         <Header headerData={headerData} />
         <main id='main-content' className='flex-1'>
