@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
@@ -29,6 +29,14 @@ interface VerticalNavProps {
 const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavProps) => {
   useBodyScrollLock(isMenuOpen);
   const focusTrapRef = useFocusTrap(isMenuOpen);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to top when menu opens
+  useEffect(() => {
+    if (isMenuOpen && scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
+    }
+  }, [isMenuOpen]);
 
   return (
     <div
@@ -83,6 +91,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
 
         {/* Menu Navigation */}
         <div
+          ref={scrollContainerRef}
           className='flex-1 overflow-y-auto overflow-x-hidden'
           style={{
             scrollbarWidth: 'thin',
