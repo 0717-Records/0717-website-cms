@@ -3,11 +3,15 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-export default function HashScroll() {
+export default function NavigationScroll() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!window.location.hash) return;
+    // If there's no hash, scroll to top
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
 
     const hash = window.location.hash;
     const targetId = hash.substring(1); // Remove the # symbol
