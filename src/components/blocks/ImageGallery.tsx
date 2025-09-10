@@ -58,12 +58,15 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
         {images.map((item, idx) => {
           const hasImage = item.image?.asset;
           const imageUrl = hasImage && item.image ? urlFor(item.image).url() : null;
-          const imageAlt = hasImage && item.image 
-            ? stegaClean(item.image.alt) || `Gallery image ${idx + 1}`
-            : `Gallery placeholder ${idx + 1}`;
+          const imageAlt =
+            hasImage && item.image
+              ? stegaClean(item.image.alt) || `Gallery image ${idx + 1}`
+              : `Gallery placeholder ${idx + 1}`;
 
           // Calculate the actual index in the filtered images array (only images with assets)
-          const filteredImageIndex = images.slice(0, idx).filter(item => item.image?.asset).length;
+          const filteredImageIndex = images
+            .slice(0, idx)
+            .filter((item) => item.image?.asset).length;
 
           return (
             <figure key={item._key || idx} className={gridClasses}>
@@ -82,7 +85,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                     alt={imageAlt}
                     fill
                     sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
-                    className='object-cover rounded-lg'
+                    className='object-contain rounded-lg'
                   />
                 </button>
               ) : (
@@ -97,7 +100,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
       <ImageGalleryModal
         isModalOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
-        images={images.filter(item => item.image?.asset)}
+        images={images.filter((item) => item.image?.asset)}
         initialIndex={selectedImageIndex}
         documentId={documentId}
         documentType={documentType}
