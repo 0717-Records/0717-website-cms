@@ -122,7 +122,7 @@ const Card = (props: CardProps) => {
           {/* Body Text */}
           {cleanBodyText && (
             <p
-              className='text-body-2xl text-gray-600 leading-relaxed whitespace-pre-line font-medium italic'
+              className='text-body-xl text-gray-600 leading-relaxed whitespace-pre-line font-medium italic'
               {...createSanityDataAttribute(documentId, documentType, getFieldPath('bodyText'))}>
               {cleanBodyText}
             </p>
