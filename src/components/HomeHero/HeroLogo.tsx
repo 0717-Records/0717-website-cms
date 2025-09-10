@@ -38,7 +38,7 @@ const HeroLogo = ({
         alt='07:17 Records Logo'
         width={500}
         height={500}
-        className={`${logoSize} h-auto object-contain relative z-10`}
+        className={`${logoSize} h-auto object-contain relative z-10 drop-shadow-lg drop-shadow-black/40`}
       />
       {showLogoBackColor && (
         <>
