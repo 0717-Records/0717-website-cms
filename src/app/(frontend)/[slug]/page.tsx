@@ -71,6 +71,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
               {...(page.closingCard as NonNullable<typeof page.closingCard>)}
               documentId={page._id}
               documentType={page._type}
+              fieldPathPrefix='closingCard'
             />
           </div>
         )}
