@@ -16,7 +16,7 @@ export const pageSubtitleBottomSpacing = 'mb-10 md:mb-16';
 /**
  * Space above PageSections that come after orphaned content blocks
  */
-export const pageSectionTopSpacing = 'mt-8 md:mt-12';
+export const pageSectionTopSpacing = 'mt-26 md:mt-40';
 
 /**
  * Space under blog header sections (title, subtitle, author, date, horizontal line group)
@@ -36,7 +36,7 @@ export const sectionDividerBottomSpacing = 'mb-8 md:mb-12';
 /**
  * Bottom padding for PageSections (after the last piece of content in that section)
  */
-export const sectionBottomPadding = 'pb-14 md:pb-24';
+export const sectionBottomPadding = 'pb-26 md:pb-40';
 
 /**
  * Space after most content blocks (with exceptions defined in implementation)
