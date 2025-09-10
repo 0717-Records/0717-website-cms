@@ -65,14 +65,14 @@ const CTACalloutLinkComponent = ({
   // Process image if provided
   let processedImage;
   if (image?.asset) {
-    const imageUrl = urlFor(image.asset).width(96).height(96).url();
+    const imageUrl = urlFor(image.asset).width(840).height(840).url();
     const altText = stegaClean(image.alt) || 'Callout image';
 
     processedImage = {
       src: imageUrl,
       alt: altText,
-      width: 96,
-      height: 96,
+      width: 840,
+      height: 840,
     };
   }
 
