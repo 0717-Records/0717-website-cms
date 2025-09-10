@@ -58,11 +58,11 @@ const CTACalloutLink = ({
         group
         ${className}
       `.trim()}>
-      <div className='flex flex-col sm:flex-row justify-center items-center gap-6 md:gap-10'>
+      <div className='flex flex-col [@media(min-width:400px)]:flex-row justify-center items-center gap-6 md:gap-10'>
         {/* Image */}
         {image && (
           <div className='flex-shrink-0'>
-            <div className='w-18 h-18 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center'>
+            <div className='w-18 h-18 [@media(min-width:400px)]:w-24 [@media(min-width:400px)]:h-24 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center'>
               <Image
                 src={image.src}
                 alt={image.alt}
@@ -75,13 +75,13 @@ const CTACalloutLink = ({
         )}
 
         {/* Content */}
-        <div className='flex-grow text-center sm:text-left'>
+        <div className='flex-grow text-center [@media(min-width:400px)]:text-left'>
           {heading && <div className='font-semibold text-body-lg mb-1'>{heading}</div>}
           <p className='text-gray-600 leading-relaxed whitespace-pre-line'>{text}</p>
         </div>
 
         {/* Link Icon */}
-        <div className='flex-shrink-0 bg-brand-secondary group-hover:bg-brand-primary p-4 sm:p-6 rounded-full transition-colors duration-200'>
+        <div className='flex-shrink-0 bg-brand-secondary group-hover:bg-brand-primary p-4 [@media(min-width:400px)]:p-6 rounded-full transition-colors duration-200'>
           <LinkIcon className='w-6 h-6 text-black' />
         </div>
       </div>
