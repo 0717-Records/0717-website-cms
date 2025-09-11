@@ -24,6 +24,8 @@ export const imageGalleryType = defineType({
     defineField({
       name: 'images',
       title: 'Images',
+      description:
+        'Images of aspect ratio close to 4:3 (landscape) work best for the image thumnails.',
       type: 'array',
       of: [
         defineArrayMember({
@@ -41,7 +43,8 @@ export const imageGalleryType = defineType({
                   name: 'alt',
                   type: 'string',
                   title: 'Alternative Text',
-                  description: 'Helps explain what the image is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
+                  description:
+                    'Helps explain what the image is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
                 },
               ],
             }),
@@ -60,7 +63,7 @@ export const imageGalleryType = defineType({
             },
             prepare({ image, caption, alt }) {
               const title = alt || 'Gallery Image';
-              const subtitle = caption 
+              const subtitle = caption
                 ? `Caption: ${caption.slice(0, 40)}${caption.length > 40 ? '...' : ''}`
                 : 'No caption';
 
@@ -82,8 +85,9 @@ export const imageGalleryType = defineType({
     },
     prepare({ images, columns }) {
       const imageCount = images?.length || 0;
-      const columnText = columns === '2' ? '2 columns' : columns === '3' ? '3 columns' : '4 columns';
-      
+      const columnText =
+        columns === '2' ? '2 columns' : columns === '3' ? '3 columns' : '4 columns';
+
       const title = `Image Gallery (${imageCount} image${imageCount !== 1 ? 's' : ''})`;
       const subtitle = `${columnText}`;
 
