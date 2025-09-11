@@ -26,13 +26,33 @@ const Page = async () => {
     <>
       {/* Hero Section */}
       <Hero
-        heroStyle="default"
-        heroTextColor="black"
+        heroStyle='default'
+        heroTextColor='black'
         showHeroLogo={false}
         heroImage={page.heroImage}
         heroTitle={page.heroTitle}
-        heroSubtitle={page.heroSubtitle}
-        heroCallToActionList={page.heroCallToActionList}
+        heroSubtitle="Upcoming events you won't want to miss!"
+        heroCallToActionList={[
+          {
+            _type: 'embeddedCtaButton',
+            _key: 'demo-cta-1',
+            text: 'View Events',
+            linkType: 'internal',
+            internalLink: null,
+            computedHref: '/events',
+            variant: 'filled',
+          },
+          {
+            _type: 'embeddedCtaButton',
+            _key: 'demo-cta-2',
+            text: 'Buy Tickets',
+            linkType: 'external',
+            internalLink: null,
+            externalUrl: 'https://www.0717records.com/',
+            computedHref: 'https://www.0717records.com/',
+            variant: 'filled',
+          },
+        ]}
         heroContentPosition={page.heroContentPosition}
         enableFeaturedItems={true}
         featuredImages={page.featuredImages}
