@@ -5,7 +5,7 @@ import { FaArrowRight, FaExternalLinkAlt } from 'react-icons/fa';
 
 type CTACalloutLinkProps = {
   heading?: string;
-  text: string;
+  text?: string;
   image?: {
     src: string;
     alt: string;
@@ -75,10 +75,12 @@ const CTACalloutLink = ({
         )}
 
         {/* Content */}
-        <div className='flex-grow text-center [@media(min-width:400px)]:text-left'>
-          {heading && <div className='font-semibold text-body-lg mb-1'>{heading}</div>}
-          <p className='text-gray-600 leading-relaxed whitespace-pre-line'>{text}</p>
-        </div>
+        {(heading || text) && (
+          <div className='flex-grow text-center [@media(min-width:400px)]:text-left'>
+            {heading && <div className='font-semibold text-body-lg mb-1'>{heading}</div>}
+            {text && <p className='text-gray-600 leading-relaxed whitespace-pre-line'>{text}</p>}
+          </div>
+        )}
 
         {/* Link Icon */}
         <div className='flex-shrink-0 bg-brand-secondary group-hover:bg-brand-primary p-4 [@media(min-width:400px)]:p-6 rounded-full transition-colors duration-200'>

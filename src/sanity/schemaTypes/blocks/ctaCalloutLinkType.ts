@@ -28,11 +28,11 @@ export const ctaCalloutLinkType = defineType({
     }),
     defineField({
       name: 'text',
-      title: 'Text',
+      title: 'Text (Optional)',
       type: 'text',
       group: 'content',
-      description: 'Main text content - supports line breaks',
-      validation: (Rule) => Rule.required().min(1).max(500),
+      description: 'Optional main text content - supports line breaks',
+      validation: (Rule) => Rule.max(500),
     }),
     defineField({
       name: 'image',
@@ -65,7 +65,7 @@ export const ctaCalloutLinkType = defineType({
       imageAsset: 'image.asset',
     },
     prepare({ heading, text, linkType, internalTitle, externalUrl, openInNewTab, imageAsset }) {
-      const title = heading || text?.slice(0, 50) + (text?.length > 50 ? '...' : '') || 'Untitled Callout';
+      const title = heading || (text ? text.slice(0, 50) + (text.length > 50 ? '...' : '') : 'Callout Link');
       
       let linkInfo = 'No link';
       if (linkType === 'internal' && internalTitle) {

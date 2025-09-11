@@ -22,8 +22,8 @@ const CTACalloutLinkComponent = ({
   const cleanText = stegaClean(text);
   const cleanExternalUrl = stegaClean(externalUrl);
 
-  // Don't render if no text (which is required)
-  if (!cleanText) {
+  // Don't render if no content at all (no heading, text, or image)
+  if (!cleanHeading && !cleanText && !image?.asset) {
     return null;
   }
 
