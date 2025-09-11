@@ -59,7 +59,7 @@ const EventCard = (props: EventCardProps) => {
               alt={`${title} event poster`}
               fill
               sizes='(max-width: 768px) 33vw, 400px'
-              className={`object-cover transition-all duration-300 ${isPast ? 'brightness-50' : ''}`}
+              className={`object-cover transition-all duration-300 ${isPast ? 'brightness-30' : ''}`}
               priority
             />
             {isPast && <PastEventOverlay text={pastEventText} />}
@@ -67,7 +67,7 @@ const EventCard = (props: EventCardProps) => {
         ) : (
           <div className='w-full h-full relative'>
             <div
-              className={`w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 ${isPast ? 'brightness-50' : ''}`}>
+              className={`w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 ${isPast ? 'brightness-30' : ''}`}>
               <div className='text-center text-white/70'>
                 <div className='text-body-3xl md:text-h2 mb-1 md:mb-2'>🎭</div>
               </div>
