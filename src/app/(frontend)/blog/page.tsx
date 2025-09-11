@@ -4,6 +4,7 @@ import PageHero from '@/components/Page/PageHero';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
+import { closingCardSpacing } from '@/utils/spacingConstants';
 
 export default async function BlogPage() {
   const [blogPosts, blogIndexPage] = await Promise.all([getAllBlogPosts(), getBlogIndexPage()]);
@@ -34,7 +35,7 @@ export default async function BlogPage() {
 
         {/* Closing Card */}
         {blogIndexPage?.hasClosingCard && blogIndexPage?.closingCard && (
-          <div className='pb-16 md:pb-24'>
+          <div className={closingCardSpacing}>
             <Card
               {...blogIndexPage.closingCard}
               documentId={blogIndexPage._id}
