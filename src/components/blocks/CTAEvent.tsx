@@ -1,8 +1,7 @@
 import React from 'react';
-import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { formatEventDate, getEventLink, isEventPast } from '@/components/Events/eventUtils';
-import PastEventOverlay from '@/components/Events/PastEventOverlay';
+import EventImage from '@/components/Events/EventImage';
 import { FaLocationDot } from 'react-icons/fa6';
 
 // Interface that matches the dereferenced event data from GROQ queries
@@ -94,37 +93,14 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
       }`}>
       {/* Event Poster - Mobile layout always (1/3 width) */}
       <div className='relative w-1/4 aspect-[724/1024] bg-gray-900 overflow-hidden flex-shrink-0'>
-        {processedImage ? (
-          <>
-            <Image
-              src={processedImage}
-              alt={`${title} event poster`}
-              fill
-              sizes='(max-width: 768px) 33vw, 200px'
-              className={`object-cover transition-all duration-300 ${isPast ? 'brightness-30' : ''}`}
-              priority
-            />
-            {isPast && (
-              <PastEventOverlay
-                text={pastEventText || 'This Event Has Been.\nThanks For Your Support.'}
-              />
-            )}
-          </>
-        ) : (
-          <div className='w-full h-full relative'>
-            <div
-              className={`w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 ${isPast ? 'brightness-30' : ''}`}>
-              <div className='text-center text-white/70'>
-                <div className='text-body-3xl mb-1'>🎭</div>
-              </div>
-            </div>
-            {isPast && (
-              <PastEventOverlay
-                text={pastEventText || 'This Event Has Been.\nThanks For Your Support.'}
-              />
-            )}
-          </div>
-        )}
+        <EventImage
+          image={processedImage}
+          title={title}
+          isPast={isPast}
+          pastEventText={pastEventText}
+          sizes='(max-width: 768px) 33vw, 200px'
+          fallbackIconSize='text-body-3xl'
+        />
       </div>
 
       {/* Event Details - Mobile layout (2/3 width) */}

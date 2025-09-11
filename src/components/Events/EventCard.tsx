@@ -1,8 +1,7 @@
 import React from 'react';
-import Image from 'next/image';
 import { FaLocationDot } from 'react-icons/fa6';
 import { formatEventDate, getEventLink } from '@/components/Events/eventUtils';
-import PastEventOverlay from '@/components/Events/PastEventOverlay';
+import EventImage from '@/components/Events/EventImage';
 
 interface EventCardProps {
   title: string;
@@ -52,29 +51,14 @@ const EventCard = (props: EventCardProps) => {
       }`}>
       {/* Event Poster */}
       <div className='relative w-1/3 md:w-full aspect-[724/1024] bg-gray-900 overflow-hidden flex-shrink-0'>
-        {image ? (
-          <>
-            <Image
-              src={image}
-              alt={`${title} event poster`}
-              fill
-              sizes='(max-width: 768px) 33vw, 400px'
-              className={`object-cover transition-all duration-300 ${isPast ? 'brightness-30' : ''}`}
-              priority
-            />
-            {isPast && <PastEventOverlay text={pastEventText} />}
-          </>
-        ) : (
-          <div className='w-full h-full relative'>
-            <div
-              className={`w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 ${isPast ? 'brightness-30' : ''}`}>
-              <div className='text-center text-white/70'>
-                <div className='text-body-3xl md:text-h2 mb-1 md:mb-2'>🎭</div>
-              </div>
-            </div>
-            {isPast && <PastEventOverlay text={pastEventText} />}
-          </div>
-        )}
+        <EventImage
+          image={image}
+          title={title}
+          isPast={isPast}
+          pastEventText={pastEventText}
+          sizes='(max-width: 768px) 33vw, 400px'
+          fallbackIconSize='text-body-3xl md:text-h2'
+        />
       </div>
       {/* Event Details */}
       <div className='p-3 md:p-4 flex flex-col items-start md:items-center text-left md:text-center flex-grow w-2/3 md:w-full'>
