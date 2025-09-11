@@ -37,6 +37,7 @@ export const sectionDividerBottomSpacing = 'mb-8 md:mb-12';
  * Bottom padding for PageSections (after the last piece of content in that section)
  */
 export const sectionBottomPadding = 'pb-26 md:pb-40';
+export const collabSectionBottomPadding = 'pb-16 md:pb-20';
 
 /**
  * Space after most content blocks (with exceptions defined in implementation)

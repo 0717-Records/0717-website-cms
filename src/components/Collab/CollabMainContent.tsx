@@ -4,7 +4,7 @@ import type { PAGE_QUERYResult, COLLABS_ALL_QUERYResult } from '@/sanity/types';
 import type { SiteSettingsProps } from '@/types/shared';
 import Heading from '../Typography/Heading/Heading';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
-import { sectionTitleBottomSpacing, sectionBottomPadding } from '@/utils/spacingConstants';
+import { sectionTitleBottomSpacing, collabSectionBottomPadding } from '@/utils/spacingConstants';
 
 // Type definitions
 interface CollabPageSection {
@@ -35,7 +35,7 @@ export default function CollabMainContent({
     <>
       {/* Bio Section */}
       {bio && (
-        <section className={sectionBottomPadding}>
+        <section className={collabSectionBottomPadding}>
           <Heading level='h2' className={sectionTitleBottomSpacing} showUnderline={true}>
             Biography
           </Heading>
@@ -48,7 +48,7 @@ export default function CollabMainContent({
         <>
           {(mainContent as CollabPageSection[]).map((section: CollabPageSection, index: number) => {
             return (
-              <section key={section._key || index} className={sectionBottomPadding}>
+              <section key={section._key || index} className={collabSectionBottomPadding}>
                 {section.title && (
                   <>
                     <Heading
