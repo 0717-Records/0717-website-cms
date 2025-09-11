@@ -349,6 +349,7 @@ const collabContentProjection = `mainContent[]{
   _type,
   _key,
   title,
+  anchorId,
   ${recursiveContent}
 }`;
 

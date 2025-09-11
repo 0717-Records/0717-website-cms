@@ -1,4 +1,5 @@
 import React from 'react';
+import { stegaClean } from 'next-sanity';
 import PageBuilder from '@/components/PageBuilder';
 import type { PAGE_QUERYResult, COLLABS_ALL_QUERYResult } from '@/sanity/types';
 import type { SiteSettingsProps } from '@/types/shared';
@@ -11,6 +12,7 @@ interface CollabPageSection {
   _key: string;
   _type: string;
   title?: string | null;
+  anchorId?: string | null;
   content?: unknown;
 }
 
@@ -48,7 +50,10 @@ export default function CollabMainContent({
         <>
           {(mainContent as CollabPageSection[]).map((section: CollabPageSection, index: number) => {
             return (
-              <section key={section._key || index} className={collabSectionBottomPadding}>
+              <section 
+                key={section._key || index} 
+                id={section.anchorId ? stegaClean(section.anchorId) : undefined}
+                className={collabSectionBottomPadding}>
                 {section.title && (
                   <>
                     <Heading
