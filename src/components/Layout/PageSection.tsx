@@ -28,6 +28,7 @@ interface PageSectionProps extends SanityLiveEditingProps {
   anchorId?: string; // ID for anchor linking
   inheritAlignment?: 'left' | 'center' | 'right';
   textAlign?: string; // NOTE: This field is currently not set in the CMS, but has been left here for the future in case we want to allow for section level text alignment control in the CMS
+  shouldApplyBottomPadding?: boolean; // Whether to apply bottom padding (omitted for last section if no orphaned content follows)
 }
 
 const PageSection = ({
@@ -42,6 +43,7 @@ const PageSection = ({
   subtitlePath,
   inheritAlignment,
   textAlign = 'inherit',
+  shouldApplyBottomPadding = true,
 }: PageSectionProps) => {
   // Create data attributes for Sanity live editing
   const titleDataAttribute = createSanityDataAttribute(documentId, documentType, titlePath);
@@ -70,7 +72,7 @@ const PageSection = ({
     <PageSectionContext.Provider value={{ hasTitle }}>
       <section
         id={anchorId ? stegaClean(anchorId) : undefined}
-        className={`${sectionBottomPadding} ${className}`.trim()}>
+        className={`${shouldApplyBottomPadding ? sectionBottomPadding : ''} ${className}`.trim()}>
         {/* Title is now always present since it's required */}
         <div className={getTextAlignClass(effectiveTextAlign)}>
           <Heading

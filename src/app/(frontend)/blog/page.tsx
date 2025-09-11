@@ -23,7 +23,7 @@ export default async function BlogPage() {
         {blogIndexPage?.subtitle && <PageSubtitle>{blogIndexPage.subtitle}</PageSubtitle>}
 
         {/* List of Blog Posts */}
-        <div className={`${!blogIndexPage?.subtitle ? 'pt-16 md:pt-24' : ''} pb-16 md:pb-24`}>
+        <div className={`${!blogIndexPage?.subtitle ? 'pt-16 md:pt-24' : ''}`}>
           <BlogList
             posts={blogPosts}
             noPostsText={

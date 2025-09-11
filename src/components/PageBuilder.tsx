@@ -175,6 +175,26 @@ const BlockRenderer = ({
           );
         };
 
+        // Determine if this PageSection should have bottom padding
+        const shouldApplyBottomPadding = (() => {
+          if (block._type !== 'pageSection') return true;
+          
+          const isLastBlock = index === blocks.length - 1;
+          if (!isLastBlock) return true;
+          
+          // This is the last PageSection, check if there are orphaned content blocks after it
+          const hasOrphanedContentAfter = blocks
+            .slice(index + 1)
+            .some(afterBlock => 
+              afterBlock._type !== 'pageSection' && 
+              afterBlock._type !== 'subSection' && 
+              afterBlock._type !== 'subSubSection'
+            );
+          
+          // Apply padding if there are orphaned content blocks after this section
+          return hasOrphanedContentAfter;
+        })();
+
         // IMPORTANT: All block types should be wrapped in BlockWrapper to enable Sanity Live Editing.
         // BlockWrapper provides the necessary data-sanity attributes for visual editing in Sanity Studio.
         // Only skip BlockWrapper if the block component handles its own Sanity data attributes internally.
@@ -191,7 +211,8 @@ const BlockRenderer = ({
                   titlePath={`${blockPath}.title`}
                   subtitlePath={`${blockPath}.subtitle`}
                   inheritAlignment={alignment}
-                  textAlign={(block as { textAlign?: string }).textAlign}>
+                  textAlign={(block as { textAlign?: string }).textAlign}
+                  shouldApplyBottomPadding={shouldApplyBottomPadding}>
                   {renderNestedContent(block.content)}
                 </PageSection>
               </BlockWrapper>
