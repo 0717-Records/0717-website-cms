@@ -137,6 +137,53 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
                   No navigation links configured
                 </div>
               )}
+
+              {/* 
+                ========================================
+                DELETE THIS ENTIRE BLOCK BEFORE PRODUCTION
+                From this comment down to the "END DELETE BLOCK" comment
+                ========================================
+              */}
+              <div className='py-2'>
+                <Divider isSmall alignment='left' />
+              </div>
+              <div>
+                <Link
+                  href='/home-hero-2'
+                  onClick={onClose}
+                  className='block uppercase font-medium text-gray-500 hover:text-brand-secondary transition-colors text-body-sm'>
+                  Demo Hero 2
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href='/home-hero-3'
+                  onClick={onClose}
+                  className='block uppercase font-medium text-gray-500 hover:text-brand-secondary transition-colors text-body-sm'>
+                  Demo Hero 3
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href='/home-hero-4'
+                  onClick={onClose}
+                  className='block uppercase font-medium text-gray-500 hover:text-brand-secondary transition-colors text-body-sm'>
+                  Demo Hero 4
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href='/home-hero-5'
+                  onClick={onClose}
+                  className='block uppercase font-medium text-gray-500 hover:text-brand-secondary transition-colors text-body-sm'>
+                  Demo Hero 5
+                </Link>
+              </div>
+              {/* 
+                ========================================
+                END DELETE BLOCK - DELETE UP TO HERE
+                ========================================
+              */}
             </div>
           </nav>
         </div>
