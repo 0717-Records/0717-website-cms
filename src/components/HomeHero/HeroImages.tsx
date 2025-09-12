@@ -11,32 +11,22 @@ interface HeroImage {
 interface HeroImagesProps {
   images: HeroImage[];
   duration?: number;
-  onFirstImageLoaded?: (loadedImmediately: boolean) => void;
+  onFirstImageLoaded?: () => void;
 }
 
 const HeroImages = ({ images, duration = 4000, onFirstImageLoaded }: HeroImagesProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
-  const [enableTransitions, setEnableTransitions] = useState(false);
 
   // Track when each image loads
   const handleImageLoad = useCallback((index: number) => {
     setLoadedImages(prev => new Set(prev).add(index));
     
-    // When first image loads, notify parent and decide about transitions
+    // When first image loads, notify parent
     if (index === 0 && onFirstImageLoaded) {
-      onFirstImageLoaded(true); // For now, assume it's immediate and let parent handle
+      onFirstImageLoaded();
     }
   }, [onFirstImageLoaded]);
-
-  // Enable transitions after a very short delay to allow first image to appear immediately if cached
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setEnableTransitions(true);
-    }, 50); // Very short delay
-    
-    return () => clearTimeout(timer);
-  }, []);
 
   // Transition to next image
   useEffect(() => {
@@ -60,9 +50,8 @@ const HeroImages = ({ images, duration = 4000, onFirstImageLoaded }: HeroImagesP
         const isCurrentImage = index === currentIndex;
         const isImageLoaded = loadedImages.has(index);
         
-        // First image: no transition initially to appear immediately, then enable transitions
-        // Other images: always use transitions (after transitions are enabled)
-        const shouldUseTransition = enableTransitions;
+        // All images use smooth transitions
+        const shouldUseTransition = true;
         
         // Show image if it's current AND loaded
         const shouldShow = isCurrentImage && isImageLoaded;

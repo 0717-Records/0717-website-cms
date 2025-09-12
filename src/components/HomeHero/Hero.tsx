@@ -46,9 +46,10 @@ const Hero = ({
   const [firstImageLoaded, setFirstImageLoaded] = useState(false);
   const [shouldUseGradientTransition, setShouldUseGradientTransition] = useState(true);
 
-  const handleFirstImageLoaded = (loadedImmediately: boolean) => {
+  const handleFirstImageLoaded = () => {
     setFirstImageLoaded(true);
-    setShouldUseGradientTransition(!loadedImmediately);
+    // Always use gradient transition since we're always fading in
+    setShouldUseGradientTransition(true);
   };
 
   // Convert Sanity image array to HeroImages component format and filter valid images
