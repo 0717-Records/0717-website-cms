@@ -26,14 +26,15 @@ const Page = async () => {
     <>
       {/* Hero Section */}
       <Hero
-        heroStyle="background-images"
-        heroTextColor="white"
+        heroStyle='background-images'
+        heroTextColor='white'
         showHeroLogo={true}
-        heroImage={page.heroImage}
-        heroTitle={page.heroTitle}
-        heroSubtitle={page.heroSubtitle}
+        heroBackgroundImages={page.heroBackgroundImages}
+        heroImageTransitionDuration={4}
+        heroTitle='Demo Hero 2 - Multi-Image Background'
+        heroSubtitle='Showcasing the multi-image carousel with white text on dynamic backgrounds'
         heroCallToActionList={page.heroCallToActionList}
-        heroContentPosition="center-center"
+        heroContentPosition='center-center'
         enableFeaturedItems={false}
         featuredImages={page.featuredImages}
         documentId={page._id}

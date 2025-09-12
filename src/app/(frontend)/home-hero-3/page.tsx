@@ -29,9 +29,10 @@ const Page = async () => {
         heroStyle='default'
         heroTextColor='black'
         showHeroLogo={false}
-        heroImage={page.heroImage}
-        heroTitle={page.heroTitle}
-        heroSubtitle="Upcoming events you won't want to miss!"
+        heroBackgroundImages={[]}
+        heroImageTransitionDuration={4}
+        heroTitle='Demo Hero 3 - Featured items on default style'
+        heroSubtitle='This showcases the default hero style with featured items.'
         heroCallToActionList={[
           {
             _type: 'embeddedCtaButton',
@@ -53,7 +54,7 @@ const Page = async () => {
             variant: 'filled',
           },
         ]}
-        heroContentPosition={page.heroContentPosition}
+        heroContentPosition='center-center'
         enableFeaturedItems={true}
         featuredImages={page.featuredImages}
         documentId={page._id}

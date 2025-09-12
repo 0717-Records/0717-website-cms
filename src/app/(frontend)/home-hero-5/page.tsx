@@ -26,14 +26,25 @@ const Page = async () => {
     <>
       {/* Hero Section */}
       <Hero
-        heroStyle="background-images"
-        heroTextColor="white"
+        heroStyle='background-images'
+        heroTextColor='white'
         showHeroLogo={false}
-        heroImage={page.heroImage}
-        heroTitle={page.heroTitle}
-        heroSubtitle={page.heroSubtitle}
-        heroCallToActionList={page.heroCallToActionList}
-        heroContentPosition="bottom-right"
+        heroBackgroundImages={page.heroBackgroundImages}
+        heroImageTransitionDuration={4}
+        heroTitle='Demo Hero 5 - Content Position'
+        heroSubtitle='This showcases the bottom-right content position, with logo switched off. All 9 positions are supported.'
+        heroCallToActionList={[
+          {
+            _type: 'embeddedCtaButton',
+            _key: 'demo-cta-5',
+            text: 'Explore More',
+            linkType: 'internal',
+            internalLink: null,
+            computedHref: '/',
+            variant: 'filled',
+          },
+        ]}
+        heroContentPosition='bottom-right'
         enableFeaturedItems={false}
         featuredImages={page.featuredImages}
         documentId={page._id}
