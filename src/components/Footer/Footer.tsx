@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,6 +8,7 @@ import { SocialIcon, type SocialPlatform, getPlatformLabel } from '@/utils/socia
 import { cleanPlatform } from '@/utils/cleanPlatform';
 import CTAEmailButton from '@/components/UI/CTAEmailButton';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
+import { usePageLoad } from '@/contexts/PageLoadContext';
 import type {
   FOOTER_QUERYResult,
   SITE_SETTINGS_QUERYResult,
@@ -25,6 +28,8 @@ interface FooterProps {
 }
 
 const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps) => {
+  const { isPageReady } = usePageLoad();
+
   // Get company links from company links data, filtering out hidden ones and invalid entries
   const companyLinks =
     companyLinksData?.companyLinks?.socialLinksArray?.filter(
@@ -63,7 +68,11 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
       : null;
 
   return (
-    <footer className='bg-black text-white py-10 px-6 md:px-16 w-full' aria-label='Site Footer'>
+    <footer 
+      className={`bg-black text-white py-10 px-6 md:px-16 w-full transition-opacity duration-500 ease-in-out ${
+        isPageReady ? 'opacity-100' : 'opacity-0'
+      }`} 
+      aria-label='Site Footer'>
       <div className='container md:grid grid-cols-2 grid-rows-[auto_auto] mx-auto'>
         {/* LEFT COLUMN */}
         <div className='flex flex-col items-center md:items-start col-start-1 row-start-1 text-center md:text-left'>
