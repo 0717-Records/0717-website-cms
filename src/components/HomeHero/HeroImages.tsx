@@ -11,28 +11,32 @@ interface HeroImage {
 interface HeroImagesProps {
   images: HeroImage[];
   duration?: number;
-  onFirstImageLoaded?: () => void;
+  onFirstImageLoaded?: (loadedImmediately: boolean) => void;
 }
 
 const HeroImages = ({ images, duration = 4000, onFirstImageLoaded }: HeroImagesProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
+  const [enableTransitions, setEnableTransitions] = useState(false);
 
-  // Handle image load
+  // Track when each image loads
   const handleImageLoad = useCallback((index: number) => {
-    setLoadedImages(prev => {
-      const newSet = new Set(prev);
-      newSet.add(index);
-      return newSet;
-    });
-  }, []);
-
-  // Notify parent when first image loads (using useEffect to avoid setState during render)
-  useEffect(() => {
-    if (loadedImages.has(0) && onFirstImageLoaded) {
-      onFirstImageLoaded();
+    setLoadedImages(prev => new Set(prev).add(index));
+    
+    // When first image loads, notify parent and decide about transitions
+    if (index === 0 && onFirstImageLoaded) {
+      onFirstImageLoaded(true); // For now, assume it's immediate and let parent handle
     }
-  }, [loadedImages, onFirstImageLoaded]);
+  }, [onFirstImageLoaded]);
+
+  // Enable transitions after a very short delay to allow first image to appear immediately if cached
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setEnableTransitions(true);
+    }, 50); // Very short delay
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   // Transition to next image
   useEffect(() => {
@@ -56,6 +60,13 @@ const HeroImages = ({ images, duration = 4000, onFirstImageLoaded }: HeroImagesP
         const isCurrentImage = index === currentIndex;
         const isImageLoaded = loadedImages.has(index);
         
+        // First image: no transition initially to appear immediately, then enable transitions
+        // Other images: always use transitions (after transitions are enabled)
+        const shouldUseTransition = enableTransitions;
+        
+        // Show image if it's current AND loaded
+        const shouldShow = isCurrentImage && isImageLoaded;
+        
         return (
           <Image
             priority={index === 0}
@@ -63,8 +74,10 @@ const HeroImages = ({ images, duration = 4000, onFirstImageLoaded }: HeroImagesP
             src={image.imageUrl}
             alt={image.altText || `Hero background image ${index + 1}`}
             fill
-            className={`absolute top-0 left-0 w-full h-full object-center object-cover transition-opacity duration-1000 ease-in-out ${
-              isCurrentImage && isImageLoaded ? 'opacity-100' : 'opacity-0'
+            className={`absolute top-0 left-0 w-full h-full object-center object-cover ${
+              shouldUseTransition ? 'transition-opacity duration-1000 ease-in-out' : ''
+            } ${
+              shouldShow ? 'opacity-100' : 'opacity-0'
             }`}
             onLoad={() => handleImageLoad(index)}
           />

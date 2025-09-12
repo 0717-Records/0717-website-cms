@@ -44,12 +44,17 @@ const Hero = ({
   documentType,
 }: HeroProps) => {
   const [firstImageLoaded, setFirstImageLoaded] = useState(false);
+  const [shouldUseGradientTransition, setShouldUseGradientTransition] = useState(true);
+
+  const handleFirstImageLoaded = (loadedImmediately: boolean) => {
+    setFirstImageLoaded(true);
+    setShouldUseGradientTransition(!loadedImmediately);
+  };
 
   // Convert Sanity image array to HeroImages component format and filter valid images
-  const validBackgroundImages = heroBackgroundImages?.filter(
-    (image) => image && image.asset && image.asset._ref
-  ) || [];
-  
+  const validBackgroundImages =
+    heroBackgroundImages?.filter((image) => image && image.asset && image.asset._ref) || [];
+
   const images = validBackgroundImages.map((image, index) => ({
     imageUrl: urlFor(image).width(1920).height(1080).url(),
     altText: image.alt || `Hero background image ${index + 1}`,
@@ -58,10 +63,15 @@ const Hero = ({
   // Determine hero style - default to 'default' if not provided, clean any stega characters
   const currentHeroStyle = stegaClean(heroStyle) || 'default';
 
+  // Get background color based on text color for better contrast
+  const heroBackgroundColor = stegaClean(heroTextColor) === 'white' ? 'bg-black' : 'bg-white';
+
   return (
     <section
       id='home'
-      className={`relative ${styles['hero-height']} flex flex-col justify-center ${homeHeroBottomSpacing}`}>
+      className={`relative ${styles['hero-height']} flex flex-col justify-center ${homeHeroBottomSpacing} ${
+        currentHeroStyle === 'background-images' ? heroBackgroundColor : ''
+      }`}>
       {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
 
       {/* Hero Style Click-to-Edit Wrapper */}
@@ -80,16 +90,16 @@ const Hero = ({
       {currentHeroStyle === 'background-images' && (
         <>
           {images.length > 0 && (
-            <HeroImages 
-              images={images} 
+            <HeroImages
+              images={images}
               duration={(heroImageTransitionDuration || 4) * 1000}
-              onFirstImageLoaded={() => setFirstImageLoaded(true)}
+              onFirstImageLoaded={handleFirstImageLoaded}
             />
           )}
-          <div 
-            className={`absolute inset-0 bg-gradient-to-t from-black from-20% to-transparent z-20 transition-opacity duration-1000 ease-in-out ${
-              firstImageLoaded || images.length === 0 ? 'opacity-90' : 'opacity-0'
-            }`} 
+          <div
+            className={`absolute inset-0 bg-gradient-to-t from-black from-20% to-transparent z-20 ${
+              shouldUseGradientTransition ? 'transition-opacity duration-1000 ease-in-out' : ''
+            } ${firstImageLoaded || images.length === 0 ? 'opacity-90' : 'opacity-0'}`}
           />
         </>
       )}
