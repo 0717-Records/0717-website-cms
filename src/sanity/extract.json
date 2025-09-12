@@ -3174,6 +3174,13 @@
             "value": "subSubSection"
           }
         },
+        "hideSection": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "title": {
           "type": "objectAttribute",
           "value": {
@@ -3530,6 +3537,13 @@
             "type": "string",
             "value": "subSection"
           }
+        },
+        "hideSection": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
         },
         "title": {
           "type": "objectAttribute",
@@ -3903,6 +3917,13 @@
             "value": "collabPageSection"
           }
         },
+        "hideSection": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "title": {
           "type": "objectAttribute",
           "value": {
@@ -4275,6 +4296,13 @@
             "value": "pageSection"
           }
         },
+        "hideSection": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "title": {
           "type": "objectAttribute",
           "value": {
@@ -4282,14 +4310,14 @@
           },
           "optional": true
         },
-        "anchorId": {
+        "subtitle": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
           "optional": true
         },
-        "subtitle": {
+        "anchorId": {
           "type": "objectAttribute",
           "value": {
             "type": "string"

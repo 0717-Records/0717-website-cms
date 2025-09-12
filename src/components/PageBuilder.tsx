@@ -87,21 +87,59 @@ const BlockRenderer = ({
     return null;
   }
 
+  // Filter out hidden sections for spacing calculations
+  const visibleBlocks = blocks.filter((block) => {
+    if (block._type === 'pageSection' || block._type === 'subSection' || block._type === 'subSubSection') {
+      const sectionBlock = block as { hideSection?: boolean };
+      return !sectionBlock.hideSection;
+    }
+    return true;
+  });
+
   return (
     <>
-      {blocks.map((block, index) => {
+      {blocks.map((block) => {
+        // Check if this section should be hidden from frontend but preserve for click-to-edit
+        const isHiddenSection = (block._type === 'pageSection' || block._type === 'subSection' || block._type === 'subSubSection') && 
+          (block as { hideSection?: boolean }).hideSection;
+        
+        // If hidden, render an invisible div that maintains click-to-edit functionality
+        // but excludes content from screen readers, SEO crawlers, and page inspection
+        if (isHiddenSection) {
+          const blockPath = `${pathPrefix}[_key=="${block._key}"]`;
+          return (
+            <div
+              key={block._key}
+              className="hidden"
+              aria-hidden="true"
+              role="presentation"
+              style={{ display: 'none' }}
+              data-noindex="true"
+              data-sanity={createDataAttribute({
+                ...createDataAttributeConfig,
+                id: documentId,
+                type: documentType,
+                path: blockPath,
+              }).toString()}>
+              {/* Hidden section - completely excluded from accessibility tree and SEO */}
+            </div>
+          );
+        }
+
+        // Find position in visible blocks for spacing calculations
+        const visibleIndex = visibleBlocks.findIndex(b => b._key === block._key);
         const blockPath = `${pathPrefix}[_key=="${block._key}"]`;
 
         const BlockWrapper = ({ children }: { children: React.ReactNode }) => {
-          const isLastBlock = index === blocks.length - 1;
-          const hasSiblingBefore = index > 0;
+          const isLastBlock = visibleIndex === visibleBlocks.length - 1;
+          const hasSiblingBefore = visibleIndex > 0;
           
           let marginClass = '';
           
           if (block._type === 'pageSection') {
             // SPACE_B: PageSection that comes after orphaned content blocks
-            const hasOrphanedContentBefore = blocks
-              .slice(0, index)
+            const hasOrphanedContentBefore = visibleBlocks
+              .slice(0, visibleIndex)
               .some(prevBlock => 
                 prevBlock._type !== 'pageSection' && 
                 prevBlock._type !== 'subSection' && 
@@ -119,7 +157,7 @@ const BlockRenderer = ({
             
             // Add bottom spacing if the next block is a content block (not a section)
             if (!isLastBlock) {
-              const nextBlock = blocks[index + 1];
+              const nextBlock = visibleBlocks[visibleIndex + 1];
               const nextBlockIsContentBlock = nextBlock && 
                 nextBlock._type !== 'pageSection' && 
                 nextBlock._type !== 'subSection' && 
@@ -179,12 +217,12 @@ const BlockRenderer = ({
         const shouldApplyBottomPadding = (() => {
           if (block._type !== 'pageSection') return true;
           
-          const isLastBlock = index === blocks.length - 1;
-          if (!isLastBlock) return true;
+          const isLastVisibleBlock = visibleIndex === visibleBlocks.length - 1;
+          if (!isLastVisibleBlock) return true;
           
-          // This is the last PageSection, check if there are orphaned content blocks after it
-          const hasOrphanedContentAfter = blocks
-            .slice(index + 1)
+          // This is the last visible PageSection, check if there are orphaned content blocks after it
+          const hasOrphanedContentAfter = visibleBlocks
+            .slice(visibleIndex + 1)
             .some(afterBlock => 
               afterBlock._type !== 'pageSection' && 
               afterBlock._type !== 'subSection' && 

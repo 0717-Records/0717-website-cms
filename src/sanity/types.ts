@@ -506,6 +506,7 @@ export type Divider = {
 
 export type SubSubSection = {
   _type: "subSubSection";
+  hideSection?: boolean;
   title?: string;
   anchorId?: string;
   content?: Array<{
@@ -555,6 +556,7 @@ export type SubSubSection = {
 
 export type SubSection = {
   _type: "subSection";
+  hideSection?: boolean;
   title?: string;
   anchorId?: string;
   content?: Array<{
@@ -606,6 +608,7 @@ export type SubSection = {
 
 export type CollabPageSection = {
   _type: "collabPageSection";
+  hideSection?: boolean;
   title?: string;
   anchorId?: string;
   content?: Array<{
@@ -657,9 +660,10 @@ export type CollabPageSection = {
 
 export type PageSection = {
   _type: "pageSection";
+  hideSection?: boolean;
   title?: string;
-  anchorId?: string;
   subtitle?: string;
+  anchorId?: string;
   content?: Array<{
     _key: string;
   } & SubSection | {
@@ -1861,9 +1865,10 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "pageSection";
+    hideSection?: boolean;
     title?: string;
-    anchorId: string | null;
     subtitle?: string;
+    anchorId: string | null;
     content: Array<{
       _key: string;
       _type: "bandcampWidget";
@@ -2336,6 +2341,7 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "subSection";
+      hideSection?: boolean;
       title?: string;
       anchorId: string | null;
       content: Array<{
@@ -2809,6 +2815,7 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "subSubSection";
+        hideSection?: boolean;
         title?: string;
         anchorId: string | null;
         content: Array<{
@@ -3952,9 +3959,10 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "pageSection";
+    hideSection?: boolean;
     title?: string;
-    anchorId: string | null;
     subtitle?: string;
+    anchorId: string | null;
     content: Array<{
       _key: string;
       _type: "bandcampWidget";
@@ -4427,6 +4435,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "subSection";
+      hideSection?: boolean;
       title?: string;
       anchorId: string | null;
       content: Array<{
@@ -4900,6 +4909,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "subSubSection";
+        hideSection?: boolean;
         title?: string;
         anchorId: string | null;
         content: Array<{
@@ -6245,9 +6255,10 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "pageSection";
+    hideSection?: boolean;
     title?: string;
-    anchorId: string | null;
     subtitle?: string;
+    anchorId: string | null;
     content: Array<{
       _key: string;
       _type: "bandcampWidget";
@@ -6720,6 +6731,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "subSection";
+      hideSection?: boolean;
       title?: string;
       anchorId: string | null;
       content: Array<{
@@ -7193,6 +7205,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "subSubSection";
+        hideSection?: boolean;
         title?: string;
         anchorId: string | null;
         content: Array<{
@@ -8305,9 +8318,10 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "pageSection";
+    hideSection?: boolean;
     title?: string;
-    anchorId: string | null;
     subtitle?: string;
+    anchorId: string | null;
     content: Array<{
       _key: string;
       _type: "bandcampWidget";
@@ -8780,6 +8794,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "subSection";
+      hideSection?: boolean;
       title?: string;
       anchorId: string | null;
       content: Array<{
@@ -9253,6 +9268,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "subSubSection";
+        hideSection?: boolean;
         title?: string;
         anchorId: string | null;
         content: Array<{
@@ -11155,9 +11171,10 @@ export type BLOG_POST_QUERYResult = {
   } | {
     _key: string;
     _type: "pageSection";
+    hideSection?: boolean;
     title?: string;
-    anchorId: string | null;
     subtitle?: string;
+    anchorId: string | null;
     content: Array<{
       _key: string;
       _type: "bandcampWidget";
@@ -11630,6 +11647,7 @@ export type BLOG_POST_QUERYResult = {
     } | {
       _key: string;
       _type: "subSection";
+      hideSection?: boolean;
       title?: string;
       anchorId: string | null;
       content: Array<{
@@ -12103,6 +12121,7 @@ export type BLOG_POST_QUERYResult = {
       } | {
         _key: string;
         _type: "subSubSection";
+        hideSection?: boolean;
         title?: string;
         anchorId: string | null;
         content: Array<{
@@ -13296,6 +13315,7 @@ export type COLLAB_QUERYResult = {
     } | {
       _key: string;
       _type: "subSection";
+      hideSection?: boolean;
       title?: string;
       anchorId: string | null;
       content: Array<{
@@ -13770,6 +13790,7 @@ export type COLLAB_QUERYResult = {
       } | {
         _key: string;
         _type: "subSubSection";
+        hideSection?: boolean;
         title?: string;
         anchorId: string | null;
         content: Array<{

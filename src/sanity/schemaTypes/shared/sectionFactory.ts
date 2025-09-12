@@ -39,6 +39,13 @@ interface SectionFactoryConfig {
 export function createSectionSchema(config: SectionFactoryConfig) {
   const fields: FieldDefinition[] = [
     defineField({
+      name: 'hideSection',
+      title: 'Hide Section',
+      type: 'boolean',
+      description: 'Hide this section and all its content from the frontend. Useful for temporarily disabling sections without deleting them.',
+      initialValue: false,
+    }),
+    defineField({
       name: 'title',
       title: 'Section Title',
       type: 'string',
@@ -138,18 +145,22 @@ export function createSectionSchema(config: SectionFactoryConfig) {
     preview: {
       select: {
         title: 'title',
+        hideSection: 'hideSection',
         ...(config.hasSubtitle && { subtitle: 'subtitle' }),
         content: 'content',
       },
-      prepare(selection: { title?: string; subtitle?: string; content?: unknown[] }) {
-        const { title, subtitle, content } = selection;
+      prepare(selection: { title?: string; hideSection?: boolean; subtitle?: string; content?: unknown[] }) {
+        const { title, hideSection, subtitle, content } = selection;
         const blockCount = Array.isArray(content) ? content.length : 0;
         const displaySubtitle = subtitle 
           ? `${subtitle.slice(0, 50)}${subtitle.length > 50 ? '...' : ''}`
           : `${blockCount} block${blockCount !== 1 ? 's' : ''}`;
         
+        const titlePrefix = hideSection ? '🚫 ' : '';
+        const statusSuffix = hideSection ? ' (Hidden)' : '';
+        
         return {
-          title: title || config.title,
+          title: `${titlePrefix}${title || config.title}${statusSuffix}`,
           subtitle: displaySubtitle,
         };
       },
