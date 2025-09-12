@@ -111,6 +111,10 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
               {navLinks && navLinks.length > 0 ? (
                 navLinks.map((item, index) => {
                   if (isNavigationLink(item)) {
+                    // Skip hidden navigation links
+                    if (item.hideLink) {
+                      return null;
+                    }
                     const linkProps = getNavLinkProps(item);
                     const label = getNavLinkLabel(item);
                     return (

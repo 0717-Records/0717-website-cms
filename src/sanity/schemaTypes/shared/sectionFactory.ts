@@ -42,7 +42,7 @@ export function createSectionSchema(config: SectionFactoryConfig) {
       name: 'hideSection',
       title: 'Hide Section',
       type: 'boolean',
-      description: 'Hide this section and all its content from the frontend. Useful for temporarily disabling sections without deleting them.',
+      description: 'Hide this section and all its content from the frontend. Useful for temporarily disabling sections without deleting them. ⚠️ Warning: Any navigation links that point to this section will not work while it is hidden. Consider hiding those navigation links as well.',
       initialValue: false,
     }),
     defineField({

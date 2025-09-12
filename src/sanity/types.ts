@@ -15,6 +15,7 @@
 // Source: schema.json
 export type NavLink = {
   _type: "navLink";
+  hideLink?: boolean;
   label?: string;
   linkType?: "internal" | "external";
   internalLink?: {
@@ -10061,6 +10062,7 @@ export type HEADER_QUERYResult = {
   horizontalNav: Array<{
     _key: string;
     _type: "navLink";
+    hideLink?: boolean;
     label?: string;
     linkType?: "external" | "internal";
     internalLink: {
@@ -10118,6 +10120,7 @@ export type HEADER_QUERYResult = {
   } | {
     _type: "navLink";
     _key: string;
+    hideLink?: boolean;
     label?: string;
     linkType?: "external" | "internal";
     internalLink: {

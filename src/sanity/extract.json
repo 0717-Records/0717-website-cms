@@ -12,6 +12,13 @@
             "value": "navLink"
           }
         },
+        "hideLink": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "label": {
           "type": "objectAttribute",
           "value": {

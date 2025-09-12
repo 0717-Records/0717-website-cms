@@ -11,6 +11,13 @@ export const navLinkType = defineType({
   type: 'object',
   fields: [
     defineField({
+      name: 'hideLink',
+      title: 'Hide Link',
+      type: 'boolean',
+      description: 'Hide this navigation link from being displayed in the navigation. Useful for temporarily disabling links without deleting them.',
+      initialValue: false,
+    }),
+    defineField({
       name: 'label',
       title: 'Link Label',
       type: 'string',
@@ -39,6 +46,7 @@ export const navLinkType = defineType({
   preview: {
     select: {
       title: 'label',
+      hideLink: 'hideLink',
       linkType: 'linkType',
       internalLinkTitle: 'internalLink.title',
       internalLinkName: 'internalLink.name',
@@ -47,7 +55,7 @@ export const navLinkType = defineType({
       pageSectionId: 'pageSectionId',
     },
     prepare(selection) {
-      const { title, linkType, internalLinkTitle, internalLinkName, internalLinkType, externalUrl, pageSectionId } = selection;
+      const { title, hideLink, linkType, internalLinkTitle, internalLinkName, internalLinkType, externalUrl, pageSectionId } = selection;
       let subtitle = '';
       
       if (linkType === 'internal') {
@@ -76,8 +84,11 @@ export const navLinkType = defineType({
         subtitle = '→ Link type not specified';
       }
       
+      const titlePrefix = hideLink ? '🚫 ' : '';
+      const statusSuffix = hideLink ? ' (Hidden)' : '';
+      
       return {
-        title: title || 'Navigation Link',
+        title: `${titlePrefix}${title || 'Navigation Link'}${statusSuffix}`,
         subtitle,
       };
     },
