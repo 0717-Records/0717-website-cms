@@ -81,8 +81,8 @@ const PageHero = ({
 
         {/* Text Content with Dark Overlay */}
         {title && (
-          <div className='relative z-[25] text-white text-center py-3 px-6 bg-black/20 backdrop-blur-sm rounded-lg -m-2'>
-            <Heading level='h1' showUnderline className='text-h2 md:text-h1font-bold'>
+          <div className='relative z-[25] text-white text-center py-1 px-5 mt-6 md:mt-0 bg-black/20 backdrop-blur-sm rounded-lg -m-2'>
+            <Heading level='h1' showUnderline className='text-h2 md:text-h1 font-bold'>
               {title}
             </Heading>
           </div>
