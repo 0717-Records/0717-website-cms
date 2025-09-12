@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Heading from '../Typography/Heading/Heading';
@@ -29,6 +31,8 @@ const PageHero = ({
   backLinkText,
   backLinkHref = '/',
 }: PageHeroProps) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   // Check if we have a custom hero image (either Sanity image or URL string)
   const isStringUrl = typeof heroImage === 'string';
   const heroImageData = !isStringUrl
@@ -49,7 +53,16 @@ const PageHero = ({
         className={`relative h-48 md:h-64 bg-black flex items-center justify-center overflow-hidden px-5 ${heroBottomSpacing}`}>
         {/* Background */}
         {hasCustomImage ? (
-          <Image src={customBackgroundImage!} alt='' fill className='object-cover z-10' priority />
+          <Image
+            src={customBackgroundImage!}
+            alt=''
+            fill
+            className={`object-cover z-10 transition-opacity duration-500 ease-in-out ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            priority
+            onLoad={() => setImageLoaded(true)}
+          />
         ) : (
           <FallbackBackground />
         )}

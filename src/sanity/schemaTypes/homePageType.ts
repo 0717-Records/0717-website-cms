@@ -1,3 +1,7 @@
+// AI Helper: This is a Sanity CMS schema definition. It defines the structure and validation rules for content types.
+// When modifying, ensure all fields have appropriate validation, titles, and descriptions for content editors.
+// Follow the existing patterns in other schema files for consistency.
+
 import { HomeIcon } from '@sanity/icons';
 import { defineField, defineType } from 'sanity';
 import { createOptionalLinkFieldSet } from './shared/linkSystem';
@@ -36,29 +40,59 @@ export const homePageType = defineType({
       initialValue: 'default',
     }),
     defineField({
-      name: 'heroImage',
-      type: 'image',
-      title: 'Hero Image',
-      description: 'Main background image for the hero section',
+      name: 'heroBackgroundImages',
+      type: 'array',
+      title: 'Background Images',
+      description: 'Add one or more background images that will cycle in the hero section. Images can be reordered by dragging.',
       options: {
-        hotspot: true,
+        sortable: true,
       },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          description: 'Helps explain what the image is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
-        }),
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+              description: 'Helps explain what the image is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
+            }),
+          ],
+        },
       ],
       group: 'hero',
       hidden: ({ document }) => document?.heroStyle !== 'background-images',
+      validation: (Rule) =>
+        Rule.custom((images, context) => {
+          const document = context.document;
+          if (document?.heroStyle === 'background-images' && (!images || images.length === 0)) {
+            return 'Please add at least one background image when Background Images hero style is selected';
+          }
+          return true;
+        }),
+    }),
+    defineField({
+      name: 'heroImageTransitionDuration',
+      type: 'number',
+      title: 'Image Transition Duration (seconds)',
+      description: 'How long each background image displays before transitioning to the next (only applies when multiple images are added). Minimum: 2 seconds, Maximum: 30 seconds.',
+      group: 'hero',
+      initialValue: 4,
+      hidden: ({ document }) => document?.heroStyle !== 'background-images',
+      validation: (Rule) =>
+        Rule.min(2)
+          .max(30)
+          .required()
+          .error('Duration must be between 2 and 30 seconds'),
     }),
     defineField({
       name: 'heroTextColor',
       type: 'string',
       title: 'Text Color',
-      description: 'Choose the color for the hero title and subtitle text',
+      description: '⚠️ IMPORTANT: When using Background Images style, carefully consider the chosen text color against ALL selected background images to ensure text remains readable across all images in the carousel.',
       group: 'hero',
       options: {
         list: [

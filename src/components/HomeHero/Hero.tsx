@@ -1,3 +1,6 @@
+'use client';
+
+import React, { useState } from 'react';
 import styles from './styles.module.css';
 import HeroImages from './HeroImages';
 import DefaultHeroBackground from './DefaultHeroBackground';
@@ -13,7 +16,8 @@ interface HeroProps {
   heroStyle: NonNullable<HOME_PAGE_QUERYResult>['heroStyle'];
   heroTextColor: NonNullable<HOME_PAGE_QUERYResult>['heroTextColor'];
   showHeroLogo: NonNullable<HOME_PAGE_QUERYResult>['showHeroLogo'];
-  heroImage: NonNullable<HOME_PAGE_QUERYResult>['heroImage'];
+  heroBackgroundImages: NonNullable<HOME_PAGE_QUERYResult>['heroBackgroundImages'];
+  heroImageTransitionDuration: NonNullable<HOME_PAGE_QUERYResult>['heroImageTransitionDuration'];
   heroTitle: NonNullable<HOME_PAGE_QUERYResult>['heroTitle'];
   heroSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroSubtitle'];
   heroCallToActionList: NonNullable<HOME_PAGE_QUERYResult>['heroCallToActionList'];
@@ -28,7 +32,8 @@ const Hero = ({
   heroStyle,
   heroTextColor,
   showHeroLogo,
-  heroImage,
+  heroBackgroundImages,
+  heroImageTransitionDuration,
   heroTitle,
   heroSubtitle,
   heroCallToActionList,
@@ -38,15 +43,17 @@ const Hero = ({
   documentId,
   documentType,
 }: HeroProps) => {
-  // Convert single Sanity image to array format for HeroImages component
-  const images = heroImage
-    ? [
-        {
-          imageUrl: urlFor(heroImage).width(1920).height(1080).url(),
-          altText: heroImage.alt || 'Hero background image',
-        },
-      ]
-    : [];
+  const [firstImageLoaded, setFirstImageLoaded] = useState(false);
+
+  // Convert Sanity image array to HeroImages component format and filter valid images
+  const validBackgroundImages = heroBackgroundImages?.filter(
+    (image) => image && image.asset && image.asset._ref
+  ) || [];
+  
+  const images = validBackgroundImages.map((image, index) => ({
+    imageUrl: urlFor(image).width(1920).height(1080).url(),
+    altText: image.alt || `Hero background image ${index + 1}`,
+  }));
 
   // Determine hero style - default to 'default' if not provided, clean any stega characters
   const currentHeroStyle = stegaClean(heroStyle) || 'default';
@@ -72,8 +79,18 @@ const Hero = ({
       {/* Background Images Hero Style */}
       {currentHeroStyle === 'background-images' && (
         <>
-          {images.length > 0 && <HeroImages images={images} />}
-          <div className='absolute inset-0 bg-gradient-to-t from-black from-20% to-transparent opacity-90 z-20' />
+          {images.length > 0 && (
+            <HeroImages 
+              images={images} 
+              duration={(heroImageTransitionDuration || 4) * 1000}
+              onFirstImageLoaded={() => setFirstImageLoaded(true)}
+            />
+          )}
+          <div 
+            className={`absolute inset-0 bg-gradient-to-t from-black from-20% to-transparent z-20 transition-opacity duration-1000 ease-in-out ${
+              firstImageLoaded || images.length === 0 ? 'opacity-90' : 'opacity-0'
+            }`} 
+          />
         </>
       )}
 

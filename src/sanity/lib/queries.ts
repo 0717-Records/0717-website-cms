@@ -164,12 +164,13 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
     alt,
     ${fullLinkProjection}
   },
-  heroImage{
+  heroBackgroundImages[]{
     asset,
     alt,
     hotspot,
     crop
   },
+  heroImageTransitionDuration,
   heroTitle,
   heroSubtitle,
   heroCallToActionList[]{
