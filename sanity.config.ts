@@ -15,6 +15,7 @@ import { apiVersion, dataset, projectId } from './src/sanity/env';
 import { schema } from './src/sanity/schemaTypes';
 import { structure } from './src/sanity/structure';
 import { resolve } from '@/sanity/presentation/resolve';
+import { protectedDocumentActions } from './src/sanity/actions/protectedDocumentActions';
 // Document actions temporarily removed to fix build
 // import { UpdateAnchorReferencesAction } from './src/sanity/actions/UpdateAnchorReferencesAction';
 // import { DebugAnchorReferencesAction } from './src/sanity/actions/DebugAnchorReferencesAction';
@@ -44,6 +45,7 @@ export default defineConfig({
     newDocumentOptions: (prev) => prev.filter((item) => 
       !['siteSettings', 'header', 'footer', 'homePage', 'blogIndexPage', 'eventsIndexPage', 'companyLinks'].includes(item.templateId)
     ),
+    actions: protectedDocumentActions,
     // Document actions temporarily removed to fix build
     // actions: (prev, { schemaType }) => {
     //   const pageTypes = ['page', 'homePage', 'eventsIndexPage', 'collab'];
