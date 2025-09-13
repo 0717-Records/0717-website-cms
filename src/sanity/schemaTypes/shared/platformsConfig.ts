@@ -88,6 +88,7 @@ export const SOCIAL_PLATFORMS: PlatformConfig[] = [
     label: 'Official Website',
     icon: 'officialWebsite',
     placeholder: 'https://yourwebsite.com',
+    allowMultiple: false,
   },
   {
     key: 'genericLink',
@@ -115,4 +116,27 @@ export const validatePlatformUrl = (platform: string, url: string): true | strin
   if (!config?.urlValidation) return true;
   const result = config.urlValidation(url);
   return result === true ? true : typeof result === 'string' ? result : 'Invalid URL';
+};
+
+// Auto-detect platform from URL
+export const detectPlatformFromUrl = (url: string): PlatformConfig | null => {
+  if (!url) return null;
+  
+  // Check each platform's validation pattern to find a match
+  for (const platform of SOCIAL_PLATFORMS) {
+    // Skip generic platforms that don't have specific URL patterns
+    if (platform.key === 'genericLink' || platform.key === 'officialWebsite') {
+      continue;
+    }
+    
+    // Use the platform's validation function to check if URL matches
+    if (platform.urlValidation) {
+      const result = platform.urlValidation(url);
+      if (result === true) {
+        return platform;
+      }
+    }
+  }
+  
+  return null;
 };

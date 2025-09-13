@@ -4,12 +4,14 @@ import { SocialIcon, type SocialPlatform, getPlatformLabel } from '@/utils/socia
 import { cleanPlatform } from '@/utils/cleanPlatform';
 import { createDataAttribute } from 'next-sanity';
 import { createDataAttributeConfig } from '@/components/PageBuilder';
+import { detectPlatformFromUrl } from '@/sanity/schemaTypes/shared/platformsConfig';
 
 interface SocialLinkItem {
   _key: string;
-  platform: string | null;
+  platform?: string | null;
   url: string | null;
   customTitle?: string | null;
+  hideFromFooter?: boolean | null;
 }
 
 interface CompanyLinksData {
@@ -24,19 +26,27 @@ interface CompanyLinksBlockProps {
 const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) => {
   if (!companyLinks?.socialLinksArray) return null;
 
-  const socialLinks = companyLinks.socialLinksArray.filter(
-    (link) =>
-      link.url && link.platform && typeof link.platform === 'string' && link.platform.trim() !== ''
-  );
+  // Filter for valid links and get final platform (detected or manual)
+  const socialLinks = companyLinks.socialLinksArray.filter((link) => {
+    if (!link.url) return false;
+    
+    // Get final platform from auto-detection or manual selection
+    const detected = detectPlatformFromUrl(link.url);
+    const finalPlatform = detected?.key || link.platform;
+    
+    return finalPlatform && typeof finalPlatform === 'string' && finalPlatform.trim() !== '';
+  });
 
   // If no links exist, don't render anything
   if (socialLinks.length === 0) {
     return null;
   }
 
-  // Transform to display format
+  // Transform to display format with final platform values
   const allLinks = socialLinks.map((link) => {
-    const platform = cleanPlatform(link.platform) as SocialPlatform;
+    const detected = detectPlatformFromUrl(link.url!);
+    const finalPlatform = detected?.key || link.platform;
+    const platform = cleanPlatform(finalPlatform) as SocialPlatform;
 
     return {
       _key: link._key,

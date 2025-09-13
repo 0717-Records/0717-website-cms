@@ -8,6 +8,7 @@ import { SocialIcon, type SocialPlatform, getPlatformLabel } from '@/utils/socia
 import { cleanPlatform } from '@/utils/cleanPlatform';
 import CTAEmailButton from '@/components/UI/CTAEmailButton';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
+import { detectPlatformFromUrl } from '@/sanity/schemaTypes/shared/platformsConfig';
 import { usePageLoad } from '@/contexts/PageLoadContext';
 import type {
   FOOTER_QUERYResult,
@@ -33,17 +34,22 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
   // Get company links from company links data, filtering out hidden ones and invalid entries
   const companyLinks =
     companyLinksData?.companyLinks?.socialLinksArray?.filter(
-      (link) =>
-        link.url &&
-        link.platform &&
-        typeof link.platform === 'string' &&
-        link.platform.trim() !== '' &&
-        !link.hideFromFooter // Hide links marked as hideFromFooter
+      (link) => {
+        if (!link.url || link.hideFromFooter) return false;
+        
+        // Get final platform from auto-detection or manual selection
+        const detected = detectPlatformFromUrl(link.url);
+        const finalPlatform = detected?.key || link.platform;
+        
+        return finalPlatform && typeof finalPlatform === 'string' && finalPlatform.trim() !== '';
+      }
     ) || [];
 
-  // Transform company links to display format
+  // Transform company links to display format with final platform values
   const transformedLinks = companyLinks.map((link) => {
-    const platform = cleanPlatform(link.platform) as SocialPlatform;
+    const detected = detectPlatformFromUrl(link.url!);
+    const finalPlatform = detected?.key || link.platform;
+    const platform = cleanPlatform(finalPlatform) as SocialPlatform;
 
     return {
       _key: link._key,

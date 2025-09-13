@@ -4,10 +4,11 @@ import Heading from '@/components/Typography/Heading/Heading';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 import { cleanPlatform } from '@/utils/cleanPlatform';
 import { type SocialPlatform } from '@/utils/socialIcons';
+import { detectPlatformFromUrl } from '@/sanity/schemaTypes/shared/platformsConfig';
 
 interface SocialLinkItem {
   _key: string;
-  platform: string | null;
+  platform?: string | null;
   url: string | null;
   customTitle?: string | null;
 }
@@ -26,21 +27,27 @@ interface CollabLinksProps {
 const CollabLinks: React.FC<CollabLinksProps> = ({ links, documentId, documentType }) => {
   if (!links?.socialLinksArray) return null;
 
-  const socialLinks = links.socialLinksArray.filter((link) => 
-    link.url && 
-    link.platform && 
-    typeof link.platform === 'string' &&
-    link.platform.trim() !== ''
-  );
+  // Filter for valid links and get final platform (detected or manual)
+  const socialLinks = links.socialLinksArray.filter((link) => {
+    if (!link.url) return false;
+    
+    // Get final platform from auto-detection or manual selection
+    const detected = detectPlatformFromUrl(link.url);
+    const finalPlatform = detected?.key || link.platform;
+    
+    return finalPlatform && typeof finalPlatform === 'string' && finalPlatform.trim() !== '';
+  });
   
   // If no links exist, don't render anything
   if (socialLinks.length === 0) {
     return null;
   }
 
-  // Transform to display format with cleaned platform values
+  // Transform to display format with final platform values
   const allLinks = socialLinks.map((link) => {
-    const platform = cleanPlatform(link.platform) as SocialPlatform;
+    const detected = detectPlatformFromUrl(link.url!);
+    const finalPlatform = detected?.key || link.platform;
+    const platform = cleanPlatform(finalPlatform) as SocialPlatform;
     
     return {
       _key: link._key,

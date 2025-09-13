@@ -7447,43 +7447,25 @@
             "of": {
               "type": "object",
               "attributes": {
+                "url": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  },
+                  "optional": true
+                },
+                "detectedPlatform": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  },
+                  "optional": true
+                },
                 "platform": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "union",
                     "of": [
-                      {
-                        "type": "string",
-                        "value": "facebook"
-                      },
-                      {
-                        "type": "string",
-                        "value": "instagram"
-                      },
-                      {
-                        "type": "string",
-                        "value": "youtube"
-                      },
-                      {
-                        "type": "string",
-                        "value": "twitter"
-                      },
-                      {
-                        "type": "string",
-                        "value": "soundcloud"
-                      },
-                      {
-                        "type": "string",
-                        "value": "bandcamp"
-                      },
-                      {
-                        "type": "string",
-                        "value": "spotify"
-                      },
-                      {
-                        "type": "string",
-                        "value": "itunes"
-                      },
                       {
                         "type": "string",
                         "value": "officialWebsite"
@@ -7496,24 +7478,10 @@
                   },
                   "optional": true
                 },
-                "url": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
-                  },
-                  "optional": true
-                },
                 "customTitle": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
-                  },
-                  "optional": true
-                },
-                "hideFromFooter": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "boolean"
                   },
                   "optional": true
                 },
@@ -8319,6 +8287,20 @@
             "of": {
               "type": "object",
               "attributes": {
+                "url": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  },
+                  "optional": true
+                },
+                "detectedPlatform": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  },
+                  "optional": true
+                },
                 "platform": {
                   "type": "objectAttribute",
                   "value": {
@@ -8326,48 +8308,9 @@
                     "of": [
                       {
                         "type": "string",
-                        "value": "facebook"
-                      },
-                      {
-                        "type": "string",
-                        "value": "instagram"
-                      },
-                      {
-                        "type": "string",
-                        "value": "youtube"
-                      },
-                      {
-                        "type": "string",
-                        "value": "twitter"
-                      },
-                      {
-                        "type": "string",
-                        "value": "soundcloud"
-                      },
-                      {
-                        "type": "string",
-                        "value": "bandcamp"
-                      },
-                      {
-                        "type": "string",
-                        "value": "spotify"
-                      },
-                      {
-                        "type": "string",
-                        "value": "itunes"
-                      },
-                      {
-                        "type": "string",
                         "value": "genericLink"
                       }
                     ]
-                  },
-                  "optional": true
-                },
-                "url": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
                   },
                   "optional": true
                 },

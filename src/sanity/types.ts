@@ -1127,10 +1127,10 @@ export type Collab = {
 export type CollabLinksArray = {
   _type: "collabLinksArray";
   socialLinksArray?: Array<{
-    platform?: "facebook" | "instagram" | "youtube" | "twitter" | "soundcloud" | "bandcamp" | "spotify" | "itunes" | "officialWebsite" | "genericLink";
     url?: string;
+    detectedPlatform?: string;
+    platform?: "officialWebsite" | "genericLink";
     customTitle?: string;
-    hideFromFooter?: boolean;
     _type: "socialLinkItem";
     _key: string;
   }>;
@@ -1255,8 +1255,9 @@ export type CompanyLinks = {
 export type CompanyLinksArray = {
   _type: "companyLinksArray";
   socialLinksArray?: Array<{
-    platform?: "facebook" | "instagram" | "youtube" | "twitter" | "soundcloud" | "bandcamp" | "spotify" | "itunes" | "genericLink";
     url?: string;
+    detectedPlatform?: string;
+    platform?: "genericLink";
     customTitle?: string;
     hideFromFooter?: boolean;
     _type: "socialLinkItem";
@@ -10310,7 +10311,7 @@ export type COMPANY_LINKS_QUERYResult = {
     _type: "companyLinksArray";
     socialLinksArray: Array<{
       _key: string;
-      platform: "bandcamp" | "facebook" | "genericLink" | "instagram" | "itunes" | "soundcloud" | "spotify" | "twitter" | "youtube" | null;
+      platform: "genericLink" | null;
       url: string | null;
       customTitle: string | null;
       hideFromFooter: boolean | null;
@@ -14435,7 +14436,7 @@ export type COLLAB_QUERYResult = {
     _type: "collabLinksArray";
     socialLinksArray: Array<{
       _key: string;
-      platform: "bandcamp" | "facebook" | "genericLink" | "instagram" | "itunes" | "officialWebsite" | "soundcloud" | "spotify" | "twitter" | "youtube" | null;
+      platform: "genericLink" | "officialWebsite" | null;
       url: string | null;
       customTitle: string | null;
     }> | null;
