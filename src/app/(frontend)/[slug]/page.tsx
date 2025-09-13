@@ -10,6 +10,35 @@ import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import { pageSubtitleBottomSpacing, closingCardSpacing } from '@/utils/spacingConstants';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
+import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const [siteSettings, page] = await Promise.all([
+    getSiteSettings(),
+    getPageBySlug(slug),
+  ]);
+
+  if (!siteSettings) {
+    return {
+      title: 'Page | 07:17 Records',
+      description: 'Discover more about our content',
+    };
+  }
+
+  if (!page) {
+    return {
+      title: 'Page Not Found | 07:17 Records',
+      description: 'The page you are looking for could not be found.',
+    };
+  }
+
+  return generatePageMetadata({
+    title: page.title || undefined,
+    description: page.subtitle || siteSettings.siteDescription || undefined,
+    siteSettings,
+  });
+}
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;

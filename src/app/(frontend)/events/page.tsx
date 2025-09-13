@@ -7,6 +7,28 @@ import { transformEvents } from '@/utils/transformEvents';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
+import { getSiteSettings } from '@/actions';
+import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
+
+export async function generateMetadata() {
+  const [siteSettings, eventsIndexPage] = await Promise.all([
+    getSiteSettings(),
+    getEventsIndexPage(),
+  ]);
+
+  if (!siteSettings) {
+    return {
+      title: 'Events | 07:17 Records',
+      description: 'Discover upcoming and past events',
+    };
+  }
+
+  return generatePageMetadata({
+    title: eventsIndexPage?.title || 'Events',
+    description: eventsIndexPage?.subtitle || siteSettings.siteDescription || undefined,
+    siteSettings,
+  });
+}
 
 export default async function EventsPage() {
   const [rawEvents, eventsIndexPage] = await Promise.all([

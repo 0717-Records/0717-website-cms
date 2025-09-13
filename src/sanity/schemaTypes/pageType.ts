@@ -71,7 +71,7 @@ export const pageType = defineType({
       name: 'subtitle',
       type: 'text',
       title: 'Page Subtitle',
-      description: 'Optional subtitle that appears below the page title',
+      description: 'Optional subtitle that appears below the page title. This text will also be used for SEO meta tags (the description that appears in search engine results and when sharing on social media).',
       rows: 3,
       validation: (Rule) => Rule.max(300),
       group: 'header',

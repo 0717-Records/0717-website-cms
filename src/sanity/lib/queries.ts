@@ -204,8 +204,16 @@ export const SITE_SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
   _id,
   _type,
   siteTitle,
-  companyEmail,
-  siteDescription
+  defaultPageTitle,
+  siteDescription,
+  seoKeywords,
+  defaultOgImage{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
+  companyEmail
 }`);
 
 export const COMPANY_LINKS_QUERY = defineQuery(`*[_id == "companyLinks"][0]{

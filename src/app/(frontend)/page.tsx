@@ -7,6 +7,21 @@ import { getCollabs } from '@/actions/collabs';
 import { getFavourites } from '@/actions/favourites';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 import Container from '@/components/Layout/Container';
+import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
+
+export async function generateMetadata() {
+  const siteSettings = await getSiteSettings();
+  if (!siteSettings) {
+    return {
+      title: '07:17 Records | Thank You For Creating',
+      description: 'Welcome to 07:17 Records',
+    };
+  }
+
+  return generatePageMetadata({
+    siteSettings,
+  });
+}
 
 const Page = async () => {
   const [page, siteSettings, events, collabs, favourites, companyLinks] = await Promise.all([

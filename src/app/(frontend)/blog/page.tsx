@@ -5,6 +5,28 @@ import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
 import { closingCardSpacing } from '@/utils/spacingConstants';
+import { getSiteSettings } from '@/actions';
+import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
+
+export async function generateMetadata() {
+  const [siteSettings, blogIndexPage] = await Promise.all([
+    getSiteSettings(),
+    getBlogIndexPage(),
+  ]);
+
+  if (!siteSettings) {
+    return {
+      title: 'Blog | 07:17 Records',
+      description: 'Read our latest articles and insights',
+    };
+  }
+
+  return generatePageMetadata({
+    title: blogIndexPage?.title || 'Blog',
+    description: blogIndexPage?.subtitle || siteSettings.siteDescription || undefined,
+    siteSettings,
+  });
+}
 
 export default async function BlogPage() {
   const [blogPosts, blogIndexPage] = await Promise.all([getAllBlogPosts(), getBlogIndexPage()]);

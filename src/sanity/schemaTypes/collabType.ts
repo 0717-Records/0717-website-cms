@@ -116,7 +116,7 @@ export const collabType = defineType({
       title: 'Preview Image',
       type: 'image',
       group: 'images',
-      description: 'Smaller image used in cards and previews (optional)',
+      description: 'Smaller image used in cards and previews. This image will also be used as the Open Graph image for social media sharing when this collaboration is shared on social platforms (optional).',
       options: {
         hotspot: true,
       },
@@ -136,9 +136,9 @@ export const collabType = defineType({
       title: 'Short Description',
       type: 'text',
       group: 'content',
-      description: 'Brief description used as subtitle on the detail page',
+      description: 'Brief description used as subtitle on the detail page. This text will also be used for SEO meta tags (the description that appears in search engine results and when sharing on social media).',
       rows: 3,
-      validation: (Rule) => 
+      validation: (Rule) =>
         Rule.required()
           .min(10)
           .max(300)

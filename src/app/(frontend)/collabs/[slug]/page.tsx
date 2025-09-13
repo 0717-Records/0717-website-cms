@@ -9,6 +9,7 @@ import CollabSideContent from '@/components/Collab/CollabSideContent';
 import PageHero from '@/components/Page/PageHero';
 import Container from '@/components/Layout/Container';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
+import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
 
 interface CollabSlug {
   slug: string;
@@ -16,6 +17,35 @@ interface CollabSlug {
 
 interface CollabPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: CollabPageProps) {
+  const { slug } = await params;
+  const [siteSettings, collab] = await Promise.all([
+    getSiteSettings(),
+    getCollab(slug),
+  ]);
+
+  if (!siteSettings) {
+    return {
+      title: 'Collaboration | 07:17 Records',
+      description: 'Discover our latest collaboration',
+    };
+  }
+
+  if (!collab) {
+    return {
+      title: 'Collaboration Not Found | 07:17 Records',
+      description: 'The collaboration you are looking for could not be found.',
+    };
+  }
+
+  return generatePageMetadata({
+    title: collab.name || undefined,
+    description: collab.shortDescription || siteSettings.siteDescription || undefined,
+    siteSettings,
+    image: collab.previewImage?.asset?._ref ? collab.previewImage : undefined, // Only pass image if it exists, otherwise use default
+  });
 }
 
 export default async function CollabPage({ params }: CollabPageProps) {

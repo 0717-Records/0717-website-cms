@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { getBlogPostBySlug } from '@/actions/blog';
-import { getCompanyLinks } from '@/actions';
+import { getCompanyLinks, getSiteSettings } from '@/actions';
 import PageHero from '@/components/Page/PageHero';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 import { blogHeaderBottomSpacing, closingCardSpacing } from '@/utils/spacingConstants';
+import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -29,6 +30,35 @@ function formatBlogDate(
       year: 'numeric',
     })
     .toUpperCase();
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps) {
+  const { slug } = await params;
+  const [siteSettings, post] = await Promise.all([
+    getSiteSettings(),
+    getBlogPostBySlug(slug),
+  ]);
+
+  if (!siteSettings) {
+    return {
+      title: 'Blog Post | 07:17 Records',
+      description: 'Read our latest article',
+    };
+  }
+
+  if (!post) {
+    return {
+      title: 'Blog Post Not Found | 07:17 Records',
+      description: 'The blog post you are looking for could not be found.',
+    };
+  }
+
+  return generatePageMetadata({
+    title: post.title || undefined,
+    description: post.subtitle || siteSettings.siteDescription || undefined,
+    siteSettings,
+    image: post.mainImage?.asset?._ref ? post.mainImage : undefined, // Only pass image if it exists, otherwise use default
+  });
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

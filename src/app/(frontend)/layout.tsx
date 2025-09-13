@@ -12,8 +12,24 @@ import { Signika } from 'next/font/google';
 import { getHeader, getFooter, getSiteSettings, getCompanyLinks } from '@/actions';
 import { SiteDataProvider } from '@/contexts/SiteDataContext';
 import { PageLoadProvider } from '@/contexts/PageLoadContext';
+import { generateMetadata as generateDefaultMetadata } from '@/lib/metadata';
 
 const signika = Signika({ subsets: ['latin'] });
+
+export async function generateMetadata() {
+  const siteSettings = await getSiteSettings();
+  if (!siteSettings) {
+    return {
+      title: '07:17 Records | Thank You For Creating',
+      description: 'Welcome to 07:17 Records',
+    };
+  }
+
+  return generateDefaultMetadata({
+    siteSettings,
+    image: siteSettings.defaultOgImage, // Set default OG image at layout level
+  });
+}
 
 const FrontendLayout = async ({
   children,

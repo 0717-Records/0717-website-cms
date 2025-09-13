@@ -53,7 +53,7 @@ export const blogPostType = defineType({
       name: 'mainImage',
       type: 'image',
       title: 'Main Image',
-      description: 'Optional main image for the blog article. This image will be used on the blog index page as the card image and will also be displayed on the blog post page between the author/date section and the main content.',
+      description: 'Optional main image for the blog article. This image will be used on the blog index page as the card image, displayed on the blog post page between the author/date section and the main content, and as the Open Graph image for social media sharing.',
       options: {
         hotspot: true,
       },
@@ -71,7 +71,7 @@ export const blogPostType = defineType({
       name: 'subtitle',
       type: 'text',
       title: 'Article Subtitle',
-      description: 'Optional subtitle that appears below the article title',
+      description: 'Optional subtitle that appears below the article title. This text will also be used for SEO meta tags (the description that appears in search engine results and when sharing on social media).',
       rows: 3,
       validation: (Rule) => Rule.max(300),
       group: 'header',
