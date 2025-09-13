@@ -41,7 +41,7 @@ export const collabType = defineType({
       type: 'string',
       group: 'basic',
       description: 'The name of this collaboration',
-      validation: (Rule) => 
+      validation: (Rule) =>
         Rule.required()
           .min(1)
           .max(100)
@@ -64,10 +64,9 @@ export const collabType = defineType({
       title: 'Category',
       type: 'string',
       group: 'basic',
-      description: 'Category or classification of the collaboration (e.g., music genre, record label, organization type, etc.) - optional',
-      validation: (Rule) => 
-        Rule.max(50)
-          .error('Category must be under 50 characters'),
+      description:
+        'Category or classification of the collaboration (e.g., music genre, record label, organization type, etc.) - optional',
+      validation: (Rule) => Rule.max(50).error('Category must be under 50 characters'),
     }),
     defineField({
       name: 'location',
@@ -84,7 +83,7 @@ export const collabType = defineType({
       group: 'basic',
       description: 'Order in which this collaboration appears (lower numbers appear first)',
       initialValue: 100,
-      validation: (Rule) => 
+      validation: (Rule) =>
         Rule.required()
           .integer()
           .min(0)
@@ -107,7 +106,8 @@ export const collabType = defineType({
           name: 'alt',
           title: 'Alternative Text',
           type: 'string',
-          description: 'Helps explain what the image is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
+          description:
+            'Helps explain what the image is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
         }),
       ],
     }),
@@ -116,7 +116,8 @@ export const collabType = defineType({
       title: 'Preview Image',
       type: 'image',
       group: 'images',
-      description: 'Smaller image used in cards and previews. This image will also be used as the Open Graph image for social media sharing when this collaboration is shared on social platforms (optional).',
+      description:
+        'Smaller image used in cards and previews. This image will also be used as the Open Graph image for social media sharing when this collaboration is shared on social platforms (optional).',
       options: {
         hotspot: true,
       },
@@ -125,7 +126,8 @@ export const collabType = defineType({
           name: 'alt',
           title: 'Alternative Text',
           type: 'string',
-          description: 'Helps explain what the image is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
+          description:
+            'Helps explain what the image is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
         }),
       ],
     }),
@@ -136,7 +138,8 @@ export const collabType = defineType({
       title: 'Short Description',
       type: 'text',
       group: 'content',
-      description: 'Brief description used as subtitle on the detail page. This text will also be used for SEO meta tags (the description that appears in search engine results and when sharing on social media).',
+      description:
+        'Brief description used as subtitle on the detail page. This text will also be used for SEO meta tags (the description that appears in search engine results and when sharing on social media).',
       rows: 3,
       validation: (Rule) =>
         Rule.required()
@@ -149,7 +152,8 @@ export const collabType = defineType({
       title: 'Use Short Description for Cards',
       type: 'boolean',
       group: 'content',
-      description: 'Use the short description above for card previews. Uncheck to provide a custom card description.',
+      description:
+        'Use the short description above for card previews. Uncheck to provide a custom card description.',
       initialValue: true,
     }),
     defineField({
@@ -207,14 +211,16 @@ export const collabType = defineType({
       group: 'sidebar',
       description: 'Content blocks for the right sidebar of the collaboration page',
     }),
-
   ],
-  
+
   orderings: [
     {
       title: 'Display Order',
       name: 'displayOrder',
-      by: [{ field: 'order', direction: 'asc' }, { field: 'name', direction: 'asc' }],
+      by: [
+        { field: 'order', direction: 'asc' },
+        { field: 'name', direction: 'asc' },
+      ],
     },
     {
       title: 'Name A-Z',
@@ -222,7 +228,7 @@ export const collabType = defineType({
       by: [{ field: 'name', direction: 'asc' }],
     },
     {
-      title: 'Name Z-A', 
+      title: 'Name Z-A',
       name: 'nameDesc',
       by: [{ field: 'name', direction: 'desc' }],
     },
@@ -241,20 +247,15 @@ export const collabType = defineType({
   preview: {
     select: {
       title: 'name',
-      subtitle: 'genre',
       location: 'location',
       media: 'previewImage',
-      shortDescription: 'shortDescription',
     },
-    prepare({ title, subtitle, location, media, shortDescription }) {
+    prepare({ title, location, media }) {
       const locationText = location ? ` • ${location}` : '';
-      const descriptionPreview = shortDescription 
-        ? ` • ${shortDescription.slice(0, 40)}${shortDescription.length > 40 ? '...' : ''}`
-        : '';
-      
+
       return {
         title: title || 'Untitled Collaboration',
-        subtitle: `${subtitle || 'No genre'}${locationText}${descriptionPreview}`,
+        subtitle: `${locationText}`,
         media: media || UsersIcon,
       };
     },
