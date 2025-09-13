@@ -13,6 +13,24 @@ import {
 import React from 'react';
 import { useFormValue } from 'sanity';
 
+// Platform emoji mapping for Sanity previews
+const getPlatformEmoji = (platformKey: string): string => {
+  const emojiMap: Record<string, string> = {
+    facebook: '📘', // Blue Facebook-like icon
+    instagram: '📷', // Camera for Instagram
+    youtube: '📺', // TV for YouTube
+    twitter: '🐦', // Bird for Twitter/X
+    soundcloud: '🎵', // Musical note for SoundCloud
+    bandcamp: '🎸', // Guitar for Bandcamp
+    spotify: '🎧', // Headphones for Spotify
+    itunes: '🍎', // Apple for iTunes/Apple Music
+    officialWebsite: '🌐', // Globe for official website
+    genericLink: '🔗', // Chain link for generic links
+  };
+  
+  return emojiMap[platformKey] || '🔗';
+};
+
 const createSocialLinksArrayField = (
   includeOfficialWebsite: boolean = false,
   hideFooterOption: boolean = true
@@ -228,10 +246,9 @@ const createSocialLinksArrayField = (
               title: title || 'Untitled Link',
               subtitle: displayUrl,
               media: () => {
-                if (detected) return '✅'; // Detected platform
-                if (finalPlatform?.key === 'genericLink') return '🔗';
-                if (finalPlatform?.key === 'officialWebsite') return '🌐';
-                return '📱';
+                if (detected) return getPlatformEmoji(detected.key);
+                if (finalPlatform?.key) return getPlatformEmoji(finalPlatform.key);
+                return '🔗'; // Default fallback
               },
             };
           },
