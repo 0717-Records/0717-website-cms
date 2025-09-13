@@ -40,12 +40,24 @@ const createSocialLinksArrayField = (
     (platform) => platform.key === 'officialWebsite' || platform.key === 'genericLink'
   ).filter((platform) => includeOfficialWebsite || platform.key !== 'officialWebsite');
 
+  // Generate platform list for description
+  const generatePlatformList = () => {
+    const relevantPlatforms = includeOfficialWebsite 
+      ? SOCIAL_PLATFORMS 
+      : SOCIAL_PLATFORMS.filter(p => p.key !== 'officialWebsite');
+    
+    return relevantPlatforms
+      .map(platform => `${getPlatformEmoji(platform.key)} ${platform.label}`)
+      .join(', ');
+  };
+
   return defineField({
     name: 'socialLinksArray',
     title: 'Social Links',
     type: 'array',
-    description:
-      'Add social media links by pasting the URL. The platform will be auto-detected when possible. Each social platform can only be added once, but you can add multiple Generic Link entries.',
+    description: `Add social media links by pasting the URL. The platform will be auto-detected when possible. Each social platform can only be added once, but you can add multiple Generic Link entries.
+
+Supported platforms: ${generatePlatformList()}`,
     of: [
       {
         type: 'object',
