@@ -1,7 +1,7 @@
 // AI Helper: This file defines document actions that prevent deletion and duplication of protected Sanity documents.
 // These actions ensure that critical singleton documents cannot be accidentally deleted or duplicated.
 
-import { DocumentActionComponent } from 'sanity';
+import { DocumentActionsResolver } from 'sanity';
 
 // List of document types that should be protected from deletion and duplication
 const PROTECTED_DOCUMENT_TYPES = [
@@ -14,7 +14,7 @@ const PROTECTED_DOCUMENT_TYPES = [
   'companyLinks'
 ];
 
-export const protectedDocumentActions: DocumentActionComponent = (prev, { schemaType }) => {
+export const protectedDocumentActions: DocumentActionsResolver = (prev, { schemaType }) => {
   // If this is a protected document type, filter out delete and duplicate actions
   if (PROTECTED_DOCUMENT_TYPES.includes(schemaType)) {
     return prev.filter(
