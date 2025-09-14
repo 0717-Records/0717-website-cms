@@ -88,7 +88,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
 
   const cardContent = (
     <div
-      className={`mx-auto bg-white rounded-lg shadow-lg overflow-hidden flex flex-row gap-2 sm:gap-4 transition-all duration-300 ${
+      className={`mx-auto md:max-w-[650px] bg-white rounded-lg shadow-lg overflow-hidden flex flex-row gap-2 sm:gap-4 transition-all duration-300 ${
         hasLink ? 'group hover:shadow-xl hover:scale-103 cursor-pointer' : ''
       }`}>
       {/* Event Poster - Mobile layout always (1/3 width) */}
@@ -139,7 +139,7 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
 
         {/* Tags */}
         {tags && tags.length > 0 && (
-          <div className='flex flex-wrap justify-start gap-1 mb-2'>
+          <div className='flex flex-wrap justify-start gap-2 mb-2'>
             {tags.map((tag) => (
               <span
                 key={tag}
