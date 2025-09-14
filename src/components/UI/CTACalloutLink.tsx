@@ -48,6 +48,7 @@ const CTACalloutLink = ({
         sm:py-6 
         sm:px-8 
         w-full 
+        md:max-w-[650px] 
         m-auto  
         hover:bg-brand-secondary/15 
         hover:border-brand-secondary/30
