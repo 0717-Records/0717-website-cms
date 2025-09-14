@@ -2,7 +2,7 @@
 // This type represents any block that can contain other blocks
 
 
-import type { ItemList, Divider, RichText, Quote, TextImage, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, EmbeddedCtaEmailButton, CtaEvent, CtaBlogPost, SubSection, SubSubSection, EventBlock, CollabAllBlock, FavouriteBlock, CompanyLinksBlock } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Quote, TextImage, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, EmbeddedCtaEmailButton, CtaEvent, CtaBlogPost, SubSection, SubSubSection, EventBlock, CollabAllBlock, FavouriteBlock, CompanyLinksBlock, BlockList } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -45,6 +45,7 @@ export type EventBlockType = EventBlock & { _key: string };
 export type CollabAllBlockType = CollabAllBlock & { _key: string };
 export type FavouriteBlockType = FavouriteBlock & { _key: string };
 export type CompanyLinksBlockType = CompanyLinksBlock & { _key: string };
+export type BlockListBlock = BlockList & { _key: string };
 
 // Union of all possible block types (current and future)
 export type NestedBlock =
@@ -74,7 +75,8 @@ export type NestedBlock =
   | EventBlockType
   | CollabAllBlockType
   | FavouriteBlockType
-  | CompanyLinksBlockType;
+  | CompanyLinksBlockType
+  | BlockListBlock;
 
 // Union of blocks that can contain nested content
 export type BlockWithContent = PageSectionBlock | SubSectionBlock | SubSubSectionBlock | SectionBlock | CardBlock;

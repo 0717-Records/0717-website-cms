@@ -8,7 +8,7 @@ import type {
   FAVOURITES_ALL_QUERYResult,
   COMPANY_LINKS_QUERYResult,
 } from '@/sanity/types';
-import type { NestedBlock } from '@/types/blocks';
+import type { NestedBlock, BlockListBlock } from '@/types/blocks';
 import type { SiteSettingsProps } from '@/types/shared';
 import { client } from '@/sanity/lib/client';
 import { createDataAttribute } from 'next-sanity';
@@ -37,6 +37,7 @@ import EventBlock from './blocks/EventBlock';
 import CollabAllBlock from './blocks/CollabAllBlock';
 import FavouriteBlock from './blocks/FavouriteBlock';
 import CompanyLinksBlock from './blocks/CompanyLinksBlock';
+import BlockList from './blocks/BlockList';
 import Divider from './UI/Divider';
 
 // Shared interface for common props used across PageBuilder components
@@ -465,6 +466,18 @@ const BlockRenderer = ({
             return (
               <BlockWrapper key={block._key}>
                 <CompanyLinksBlock companyLinks={companyLinks?.companyLinks || null} />
+              </BlockWrapper>
+            );
+
+          case 'blockList':
+            return (
+              <BlockWrapper key={block._key}>
+                <BlockList
+                  {...(block as BlockListBlock)}
+                  documentId={documentId}
+                  documentType={documentType}
+                  fieldPathPrefix={blockPath}
+                />
               </BlockWrapper>
             );
 

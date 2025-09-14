@@ -95,6 +95,16 @@ export type SideContentBlock = {
   } & EmbeddedCtaEmailButton>;
 };
 
+export type BlockList = {
+  _type: "blockList";
+  items?: Array<{
+    leftContent?: string;
+    rightContent?: string;
+    _type: "blockListItem";
+    _key: string;
+  }>;
+};
+
 export type CompanyLinksBlock = {
   _type: "companyLinksBlock";
   blockAdded?: string;
@@ -552,7 +562,9 @@ export type SubSubSection = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock>;
+  } & CompanyLinksBlock | {
+    _key: string;
+  } & BlockList>;
 };
 
 export type SubSection = {
@@ -604,7 +616,9 @@ export type SubSection = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock>;
+  } & CompanyLinksBlock | {
+    _key: string;
+  } & BlockList>;
 };
 
 export type CollabPageSection = {
@@ -656,7 +670,9 @@ export type CollabPageSection = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock>;
+  } & CompanyLinksBlock | {
+    _key: string;
+  } & BlockList>;
 };
 
 export type PageSection = {
@@ -709,7 +725,9 @@ export type PageSection = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock>;
+  } & CompanyLinksBlock | {
+    _key: string;
+  } & BlockList>;
 };
 
 export type PageBuilder = Array<{
@@ -756,7 +774,9 @@ export type PageBuilder = Array<{
   _key: string;
 } & FavouriteBlock | {
   _key: string;
-} & CompanyLinksBlock>;
+} & CompanyLinksBlock | {
+  _key: string;
+} & BlockList>;
 
 export type Footer = {
   _id: string;
@@ -1045,7 +1065,9 @@ export type BlogPost = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock>;
+  } & CompanyLinksBlock | {
+    _key: string;
+  } & BlockList>;
   hasClosingCard?: boolean;
   closingCard?: Card;
 };
@@ -1229,7 +1251,9 @@ export type Page = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock>;
+  } & CompanyLinksBlock | {
+    _key: string;
+  } & BlockList>;
   hasClosingCard?: boolean;
   closingCard?: Card;
 };
@@ -1441,7 +1465,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = NavLink | CtaList | SideContent | SideContentBlock | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaBlogPost | CtaEvent | HomeHeroCtaButton | EmbeddedCtaEmailButton | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Event | HomePage | BlogPost | BlogIndexPage | Collab | CollabLinksArray | EventsIndexPage | Page | Card | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = NavLink | CtaList | SideContent | SideContentBlock | BlockList | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaBlogPost | CtaEvent | HomeHeroCtaButton | EmbeddedCtaEmailButton | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | CardGrid | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Event | HomePage | BlogPost | BlogIndexPage | Collab | CollabLinksArray | EventsIndexPage | Page | Card | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY
@@ -1456,6 +1480,17 @@ export type PAGE_QUERYResult = {
     _key: string;
     _type: "bandcampWidget";
     embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
     image: null;
     content: null;
   } | {
@@ -1889,6 +1924,17 @@ export type PAGE_QUERYResult = {
       _key: string;
       _type: "bandcampWidget";
       embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
       image: null;
       content: null;
     } | {
@@ -2368,6 +2414,17 @@ export type PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
         icon?: Icon;
@@ -2838,6 +2895,16 @@ export type PAGE_QUERYResult = {
           _key: string;
           _type: "bandcampWidget";
           embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
           image: null;
         } | {
           _key: string;
@@ -3554,6 +3621,17 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "card";
     cardStyle?: "feature" | "statement";
     icon?: Icon;
@@ -3983,6 +4061,17 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "bandcampWidget";
       embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
       image: null;
       content: null;
     } | {
@@ -4462,6 +4551,17 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
         icon?: Icon;
@@ -4932,6 +5032,16 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "bandcampWidget";
           embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
           image: null;
         } | {
           _key: string;
@@ -5850,6 +5960,17 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "card";
     cardStyle?: "feature" | "statement";
     icon?: Icon;
@@ -6279,6 +6400,17 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "bandcampWidget";
       embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
       image: null;
       content: null;
     } | {
@@ -6758,6 +6890,17 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
         icon?: Icon;
@@ -7228,6 +7371,16 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "bandcampWidget";
           embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
           image: null;
         } | {
           _key: string;
@@ -7913,6 +8066,17 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "card";
     cardStyle?: "feature" | "statement";
     icon?: Icon;
@@ -8342,6 +8506,17 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "bandcampWidget";
       embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
       image: null;
       content: null;
     } | {
@@ -8821,6 +8996,17 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
         icon?: Icon;
@@ -9291,6 +9477,16 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "bandcampWidget";
           embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
           image: null;
         } | {
           _key: string;
@@ -10820,6 +11016,17 @@ export type BLOG_POST_QUERYResult = {
     content: null;
   } | {
     _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
     _type: "card";
     cardStyle?: "feature" | "statement";
     icon?: Icon;
@@ -11249,6 +11456,17 @@ export type BLOG_POST_QUERYResult = {
       _key: string;
       _type: "bandcampWidget";
       embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
       image: null;
       content: null;
     } | {
@@ -11728,6 +11946,17 @@ export type BLOG_POST_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
         icon?: Icon;
@@ -12198,6 +12427,16 @@ export type BLOG_POST_QUERYResult = {
           _key: string;
           _type: "bandcampWidget";
           embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
           image: null;
         } | {
           _key: string;
@@ -12921,6 +13160,17 @@ export type COLLAB_QUERYResult = {
       content: null;
     } | {
       _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
       _type: "card";
       cardStyle?: "feature" | "statement";
       icon?: Icon;
@@ -13396,6 +13646,17 @@ export type COLLAB_QUERYResult = {
         content: null;
       } | {
         _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
         _type: "card";
         cardStyle?: "feature" | "statement";
         icon?: Icon;
@@ -13867,6 +14128,17 @@ export type COLLAB_QUERYResult = {
           _key: string;
           _type: "bandcampWidget";
           embedCode?: string;
+          image: null;
+          content: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
           image: null;
           content: null;
         } | {
