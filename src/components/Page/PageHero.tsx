@@ -50,6 +50,7 @@ const PageHero = ({
   return (
     <div {...createSanityDataAttribute(documentId, documentType, 'heroImage')}>
       <section
+        data-hero
         className={`relative h-48 md:h-64 bg-black flex items-center justify-center overflow-hidden px-5 ${heroBottomSpacing}`}>
         {/* Background */}
         {hasCustomImage ? (

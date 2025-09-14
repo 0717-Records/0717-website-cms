@@ -1,15 +1,31 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import { usePageLoad } from '@/contexts/PageLoadContext';
 
 export default function NavigationScroll() {
   const pathname = usePathname();
+  const { isPageReady } = usePageLoad();
+  const hasScrolledRef = useRef(false);
+  const currentHashRef = useRef('');
 
   useEffect(() => {
+    // Update current hash whenever pathname changes
+    currentHashRef.current = window.location.hash;
+    hasScrolledRef.current = false;
+  }, [pathname]);
+
+  useEffect(() => {
+    // If we've already scrolled for this hash, don't scroll again
+    if (hasScrolledRef.current && currentHashRef.current === window.location.hash) {
+      return;
+    }
+
     // If there's no hash, scroll to top
     if (!window.location.hash) {
       window.scrollTo(0, 0);
+      hasScrolledRef.current = true;
       return;
     }
 
@@ -19,6 +35,7 @@ export default function NavigationScroll() {
     const scrollToElement = (element: Element) => {
       requestAnimationFrame(() => {
         element.scrollIntoView({ behavior: 'instant' });
+        hasScrolledRef.current = true;
       });
     };
 
@@ -31,19 +48,11 @@ export default function NavigationScroll() {
       return false;
     };
 
-    // Try to find the element immediately
-    if (findAndScrollToElement()) {
-      return;
-    }
-
-    // If not found, wait for DOM to be ready
-    if (document.readyState !== 'complete') {
-      const handleLoad = () => {
-        if (findAndScrollToElement()) {
-          window.removeEventListener('load', handleLoad);
-        }
-      };
-      window.addEventListener('load', handleLoad);
+    // If page is ready, try to scroll immediately
+    if (isPageReady) {
+      if (findAndScrollToElement()) {
+        return;
+      }
     }
 
     // Use MutationObserver to watch for the element being added to the DOM
@@ -73,16 +82,29 @@ export default function NavigationScroll() {
       subtree: true,
     });
 
-    // Cleanup timeout - stop trying after 5 seconds
+    // Also listen for window load as a fallback
+    const handleLoad = () => {
+      if (!hasScrolledRef.current) {
+        findAndScrollToElement();
+      }
+    };
+
+    if (document.readyState !== 'complete') {
+      window.addEventListener('load', handleLoad);
+    }
+
+    // Cleanup timeout - stop trying after 10 seconds
     const cleanup = setTimeout(() => {
       observer.disconnect();
-    }, 5000);
+      window.removeEventListener('load', handleLoad);
+    }, 10000);
 
     return () => {
       observer.disconnect();
+      window.removeEventListener('load', handleLoad);
       clearTimeout(cleanup);
     };
-  }, [pathname]);
+  }, [pathname, isPageReady]);
 
   return null;
 }

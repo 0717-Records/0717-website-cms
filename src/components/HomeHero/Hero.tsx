@@ -70,6 +70,7 @@ const Hero = ({
   return (
     <section
       id='home'
+      data-hero
       className={`relative ${styles['hero-height']} flex flex-col justify-center ${homeHeroBottomSpacing} ${
         currentHeroStyle === 'background-images' ? heroBackgroundColor : ''
       }`}>

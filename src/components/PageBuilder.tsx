@@ -503,6 +503,7 @@ const PageBuilder = ({
 
   return (
     <div
+      data-page-builder
       data-sanity={createDataAttribute({
         ...createDataAttributeConfig,
         id: documentId,
