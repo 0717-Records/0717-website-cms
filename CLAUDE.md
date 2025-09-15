@@ -113,7 +113,7 @@ The `UnifiedImage` component (`@/components/UI/UnifiedImage`) automatically hand
   mode="sized"
   width={180}
   height={125}
-  sizeContext="thumbnail"
+  sizeContext="logo"
   objectFit="contain"
   documentId={headerData._id}
   documentType="header"
@@ -121,7 +121,19 @@ The `UnifiedImage` component (`@/components/UI/UnifiedImage`) automatically hand
 />
 ```
 
-#### 3. Gallery Images with Modal
+#### 3. Profile Images
+```typescript
+<UnifiedImage
+  src={profileImage}
+  alt="Profile image"
+  mode="fill"
+  sizeContext="profile"
+  objectFit="cover"
+  sizes="(max-width: 768px) 150px, 200px"
+/>
+```
+
+#### 4. Gallery Images with Modal
 ```typescript
 <UnifiedImage
   src={image}
@@ -135,7 +147,7 @@ The `UnifiedImage` component (`@/components/UI/UnifiedImage`) automatically hand
 />
 ```
 
-#### 4. Hero/Background Images
+#### 5. Hero/Background Images
 ```typescript
 <UnifiedImage
   src={heroImage}
@@ -148,7 +160,7 @@ The `UnifiedImage` component (`@/components/UI/UnifiedImage`) automatically hand
 />
 ```
 
-#### 5. Icon Images
+#### 6. Icon Images
 ```typescript
 <UnifiedImage
   src={icon}
@@ -166,6 +178,8 @@ The `UnifiedImage` component (`@/components/UI/UnifiedImage`) automatically hand
 #### Size Context (Automatic Optimization)
 - `sizeContext="icon"`: 24px base, 3x multiplier (72px from Sanity)
 - `sizeContext="thumbnail"`: 64px base, 2.5x multiplier (160px from Sanity)
+- `sizeContext="logo"`: 200px base, 2x multiplier (400px from Sanity)
+- `sizeContext="profile"`: 300px base, 2x multiplier (600px from Sanity)
 - `sizeContext="card"`: 200px base, 2x multiplier (400px from Sanity)
 - `sizeContext="gallery"`: 300px base, 2x multiplier (600px from Sanity)
 - `sizeContext="hero"`: 800px base, 2x multiplier (1600px from Sanity)

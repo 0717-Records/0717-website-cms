@@ -45,7 +45,7 @@ export const BlogCardImageExample = ({ post }: { post: BlogPost }) => (
 /**
  * 2. Header Logo (replaces Header pattern)
  * - Previously: urlFor(logo).url() with object-contain and fixed dimensions
- * - Now: Automatic sizing with 'thumbnail' context
+ * - Now: Automatic sizing with 'logo' context
  */
 export const HeaderLogoExample = ({ headerData }: { headerData: HeaderData }) => (
   <UnifiedImage
@@ -54,7 +54,7 @@ export const HeaderLogoExample = ({ headerData }: { headerData: HeaderData }) =>
     mode="sized"
     width={180}
     height={125}
-    sizeContext="thumbnail"
+    sizeContext="logo"
     objectFit="contain"
     className="w-[160px] md:w-[180px] h-auto"
     documentId={headerData._id}

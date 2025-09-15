@@ -90,7 +90,7 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
                 mode="sized"
                 width={300}
                 height={190}
-                sizeContext="thumbnail"
+                sizeContext="logo"
                 objectFit="contain"
                 className='w-[200px] md:w-[300px] h-auto'
                 {...createSanityDataAttribute(footerData?._id, 'footer', 'logo')}

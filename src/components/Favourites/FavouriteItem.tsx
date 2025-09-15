@@ -36,7 +36,7 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
               src={favourite.profileImage}
               alt={imageAlt}
               mode="fill"
-              sizeContext="thumbnail"
+              sizeContext="profile"
               objectFit="cover"
               sizes='(max-width: 768px) 150px, 200px'
               fallback={

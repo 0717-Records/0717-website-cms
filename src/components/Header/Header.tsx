@@ -63,7 +63,7 @@ const Header = ({ headerData }: HeaderProps) => {
               mode="sized"
               width={180}
               height={125}
-              sizeContext="thumbnail"
+              sizeContext="logo"
               objectFit="contain"
               className='w-[160px] md:w-[180px] h-auto'
               documentId={headerData._id}

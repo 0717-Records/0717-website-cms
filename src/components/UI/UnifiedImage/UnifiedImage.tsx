@@ -15,6 +15,8 @@ import ImgPlaceHolder from '../ImgPlaceHolder';
 const SIZE_CONTEXTS = {
   icon: { base: 24, multiplier: 3, maxWidth: 72 },
   thumbnail: { base: 64, multiplier: 2.5, maxWidth: 160 },
+  logo: { base: 200, multiplier: 2, maxWidth: 400 },
+  profile: { base: 300, multiplier: 2, maxWidth: 600 },
   card: { base: 200, multiplier: 2, maxWidth: 400 },
   hero: { base: 800, multiplier: 2, maxWidth: 1600 },
   gallery: { base: 300, multiplier: 2, maxWidth: 600 },
@@ -104,7 +106,7 @@ const UnifiedImage: React.FC<UnifiedImageProps> = ({
   mode = 'fill',
   width,
   height,
-  aspectRatio: _aspectRatio,
+  aspectRatio,
   objectFit = 'cover',
   displaySize,
   dpiMultiplier = 'auto',
@@ -250,6 +252,8 @@ const UnifiedImage: React.FC<UnifiedImageProps> = ({
       const defaults = {
         icon: '32px',
         thumbnail: '(max-width: 768px) 64px, 128px',
+        logo: '(max-width: 768px) 160px, 200px',
+        profile: '(max-width: 768px) 150px, 300px',
         card: '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw',
         hero: '100vw',
         gallery: '(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw',

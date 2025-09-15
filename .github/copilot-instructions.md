@@ -270,6 +270,8 @@ The project now includes a comprehensive `UnifiedImage` component (`@/components
 **Size Context Guidelines:**
 - `sizeContext="icon"`: For 16-32px icons (requests 72px from Sanity)
 - `sizeContext="thumbnail"`: For 64px thumbnails (requests 160px from Sanity)
+- `sizeContext="logo"`: For logos (requests 400px from Sanity)
+- `sizeContext="profile"`: For profile images (requests 600px from Sanity)
 - `sizeContext="card"`: For 200px cards (requests 400px from Sanity)
 - `sizeContext="gallery"`: For gallery items (requests 600px from Sanity)
 - `sizeContext="hero"`: For hero images (requests 1600px from Sanity)
