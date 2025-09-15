@@ -8,7 +8,7 @@ import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
 import { getSiteSettings } from '@/actions';
-import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
+import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
 
 export async function generateMetadata() {
   const [siteSettings, eventsIndexPage] = await Promise.all([
@@ -27,6 +27,7 @@ export async function generateMetadata() {
     title: eventsIndexPage?.title || 'Events',
     description: eventsIndexPage?.subtitle || siteSettings.siteDescription || undefined,
     siteSettings,
+    canonicalUrl: generateCanonicalUrl('/events'),
   });
 }
 

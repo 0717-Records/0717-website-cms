@@ -6,7 +6,7 @@ import Card from '@/components/blocks/Card';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
 import { closingCardSpacing } from '@/utils/spacingConstants';
 import { getSiteSettings } from '@/actions';
-import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
+import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
 
 export async function generateMetadata() {
   const [siteSettings, blogIndexPage] = await Promise.all([
@@ -25,6 +25,7 @@ export async function generateMetadata() {
     title: blogIndexPage?.title || 'Blog',
     description: blogIndexPage?.subtitle || siteSettings.siteDescription || undefined,
     siteSettings,
+    canonicalUrl: generateCanonicalUrl('/blog'),
   });
 }
 

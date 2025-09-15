@@ -7,7 +7,7 @@ import { getCollabs } from '@/actions/collabs';
 import { getFavourites } from '@/actions/favourites';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 import Container from '@/components/Layout/Container';
-import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
+import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
 
 export async function generateMetadata() {
   const siteSettings = await getSiteSettings();
@@ -20,6 +20,7 @@ export async function generateMetadata() {
 
   return generatePageMetadata({
     siteSettings,
+    canonicalUrl: generateCanonicalUrl('/'),
   });
 }
 

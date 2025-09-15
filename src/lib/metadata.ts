@@ -2,6 +2,17 @@ import { Metadata } from 'next';
 import { urlFor } from '@/sanity/lib/image';
 import type { SITE_SETTINGS_QUERYResult } from '@/sanity/types';
 
+export function getBaseUrl(): string {
+  return process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+}
+
+export function generateCanonicalUrl(path: string): string {
+  const baseUrl = getBaseUrl();
+  // Ensure path starts with / and remove any trailing slashes except for root
+  const cleanPath = path === '/' ? '/' : `/${path.replace(/^\/+|\/+$/g, '')}`;
+  return `${baseUrl}${cleanPath}`;
+}
+
 export interface MetadataConfig {
   title?: string;
   description?: string;
@@ -9,6 +20,7 @@ export interface MetadataConfig {
     asset?: { _ref: string } | null;
     alt?: string | null;
   } | null;
+  canonicalUrl?: string;
   siteSettings: SITE_SETTINGS_QUERYResult;
 }
 
@@ -16,6 +28,7 @@ export function generateMetadata({
   title,
   description,
   image,
+  canonicalUrl,
   siteSettings,
 }: MetadataConfig): Metadata {
   const siteTitle = siteSettings?.siteTitle || '07:17 Records';
@@ -46,14 +59,20 @@ export function generateMetadata({
   }
 
   const metadata: Metadata = {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
+    metadataBase: new URL(getBaseUrl()),
     title: pageTitle,
     description: pageDescription,
     keywords: seoKeywords || undefined,
+    ...(canonicalUrl && {
+      alternates: {
+        canonical: canonicalUrl,
+      },
+    }),
     openGraph: {
       title: pageTitle,
       description: pageDescription,
       type: 'website',
+      ...(canonicalUrl && { url: canonicalUrl }),
       ...(ogImageUrl && {
         images: [
           {

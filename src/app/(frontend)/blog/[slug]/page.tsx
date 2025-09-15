@@ -11,7 +11,7 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 import { blogHeaderBottomSpacing, closingCardSpacing } from '@/utils/spacingConstants';
-import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
+import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -58,6 +58,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     description: post.subtitle || siteSettings.siteDescription || undefined,
     siteSettings,
     image: post.mainImage?.asset?._ref ? post.mainImage : undefined, // Only pass image if it exists, otherwise use default
+    canonicalUrl: generateCanonicalUrl(`/blog/${slug}`),
   });
 }
 

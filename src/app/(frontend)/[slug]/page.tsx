@@ -10,7 +10,7 @@ import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import { pageSubtitleBottomSpacing, closingCardSpacing } from '@/utils/spacingConstants';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
-import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
+import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -37,6 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: page.title || undefined,
     description: page.subtitle || siteSettings.siteDescription || undefined,
     siteSettings,
+    canonicalUrl: generateCanonicalUrl(`/${slug}`),
   });
 }
 
