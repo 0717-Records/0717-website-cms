@@ -98,6 +98,9 @@ interface UnifiedImageProps {
   style?: React.CSSProperties;
   onLoad?: () => void;
   onError?: () => void;
+
+  // Fill mode behavior
+  fillContainer?: boolean;
 }
 
 const UnifiedImage: React.FC<UnifiedImageProps> = ({
@@ -106,7 +109,7 @@ const UnifiedImage: React.FC<UnifiedImageProps> = ({
   mode = 'fill',
   width,
   height,
-  aspectRatio,
+  aspectRatio: _aspectRatio, // eslint-disable-line @typescript-eslint/no-unused-vars
   objectFit = 'cover',
   displaySize,
   dpiMultiplier = 'auto',
@@ -133,6 +136,7 @@ const UnifiedImage: React.FC<UnifiedImageProps> = ({
   style,
   onLoad,
   onError,
+  fillContainer = true,
   ...props
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -339,7 +343,7 @@ const UnifiedImage: React.FC<UnifiedImageProps> = ({
       )}
 
       {/* Image element */}
-      <div {...sanityDataAttribute}>
+      <div {...sanityDataAttribute} className={mode === 'fill' && fillContainer ? 'relative w-full h-full' : undefined}>
         {enableModal ? (
           <button
             onClick={handleOpenModal}

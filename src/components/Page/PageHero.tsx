@@ -58,6 +58,7 @@ const PageHero = ({
             sizeContext="hero"
             objectFit="cover"
             priority
+            fillContainer={false}
             className={`z-10 transition-opacity duration-500 ease-in-out ${
               imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}

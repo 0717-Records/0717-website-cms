@@ -189,6 +189,10 @@ The `UnifiedImage` component (`@/components/UI/UnifiedImage`) automatically hand
 - `mode="fill"`: Use with containers that have defined dimensions/aspect ratios
 - `mode="sized"`: Use with explicit width/height props
 
+#### Fill Mode Options
+- `fillContainer={true}` (default): Creates positioned container for fill images (use for logos, contained images)
+- `fillContainer={false}`: No container positioning, lets image fill parent directly (use for backgrounds, hero images)
+
 #### Object Fit
 - `objectFit="cover"`: Crops image to fill container (default)
 - `objectFit="contain"`: Scales image to fit within container
