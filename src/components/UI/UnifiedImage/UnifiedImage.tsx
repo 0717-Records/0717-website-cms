@@ -339,12 +339,12 @@ const UnifiedImage: React.FC<UnifiedImageProps> = ({
       )}
 
       {/* Image element */}
-      <div {...sanityDataAttribute} className={mode === 'fill' ? 'relative w-full h-full' : undefined}>
+      <div {...sanityDataAttribute}>
         {enableModal ? (
           <button
             onClick={handleOpenModal}
             className={`cursor-pointer border-none bg-transparent p-0 block ${
-              mode === 'fill' ? 'w-full h-full relative' : ''
+              mode === 'fill' ? 'w-full h-full' : ''
             }`}
             aria-label={`View full-screen image: ${imageAlt}`}
           >
