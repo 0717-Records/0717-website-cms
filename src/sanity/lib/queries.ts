@@ -418,6 +418,13 @@ export const COLLABS_ALL_QUERY = defineQuery(`*[_type == "collab" && defined(slu
   cardDescription
 }`);
 
+export const COLLABS_SITEMAP_QUERY = defineQuery(`*[_type == "collab" && defined(slug.current)]{
+  _id,
+  _updatedAt,
+  name,
+  slug
+}`);
+
 export const FAVOURITES_ALL_QUERY = defineQuery(`*[_type == "favourites"]|order(order asc, name asc){
   _id,
   name,
@@ -449,4 +456,19 @@ export const FOOTER_QUERY = defineQuery(`*[_type == "footer" && _id == "footer"]
     message
   },
   copyrightText
+}`);
+
+// Sitemap queries
+export const ALL_PAGES_QUERY = defineQuery(`*[_type == "page" && defined(slug.current)]{
+  _id,
+  _updatedAt,
+  title,
+  slug
+}`);
+
+export const ALL_BLOG_POSTS_SLUGS_QUERY = defineQuery(`*[_type == "blogPost" && defined(slug.current)]{
+  _id,
+  _updatedAt,
+  title,
+  slug
 }`);

@@ -109,6 +109,68 @@ Apply this pattern to ALL Sanity image array components:
 3. Check filtered array length before rendering
 4. Use filtered array for mapping
 
+## SEO Sitemap Maintenance
+**CRITICAL: When adding new document types or routes, the sitemap must be updated to maintain SEO.**
+
+### Sitemap Implementation
+The XML sitemap is generated dynamically at `/sitemap.xml` using the route handler at `src/app/sitemap.xml/route.ts`. It automatically includes:
+- Static pages (home, blog index, events index, collabs index)
+- Dynamic pages from Sanity (`page` document type)
+- Blog posts (`blogPost` document type)
+- Collaborations (`collab` document type)
+
+### When to Update Sitemap
+**YOU MUST update the sitemap when:**
+
+1. **Adding new document types** with public-facing pages
+2. **Adding new static routes** (new page components)
+3. **Changing URL structure** for existing content types
+4. **Adding new index/listing pages**
+
+### How to Update Sitemap
+1. **Add query to `src/sanity/lib/queries.ts`** for new document type:
+   ```typescript
+   export const ALL_NEW_TYPE_QUERY = defineQuery(`*[_type == "newType" && defined(slug.current)]{
+     _id,
+     _updatedAt,
+     title,
+     slug
+   }`);
+   ```
+
+2. **Add action to appropriate file in `src/actions/`**:
+   ```typescript
+   export async function getAllNewTypeForSitemap() {
+     const { data: items } = await sanityFetch({
+       query: ALL_NEW_TYPE_QUERY,
+     });
+     return items;
+   }
+   ```
+
+3. **Export from `src/actions/index.ts`**
+
+4. **Update `src/app/sitemap.xml/route.ts`**:
+   - Import the new action
+   - Add to Promise.all() fetch
+   - Add URL mapping to dynamicUrls array with appropriate priority and changefreq
+
+### URL Priority Guidelines
+- Homepage: 1.0
+- Main index pages: 0.9
+- Category/listing pages: 0.8
+- Individual content pages: 0.6-0.7
+- Archive/old content: 0.5
+
+### Change Frequency Guidelines
+- Homepage: weekly
+- Blog index: daily (if content updates frequently)
+- Category pages: weekly
+- Individual content: monthly
+- Static pages: monthly
+
+**Failure to update the sitemap when adding new content types will result in poor SEO performance and content discovery issues.**
+
 ## General Development Guidelines
 - Follow existing code patterns and conventions
 - Ensure proper TypeScript types are maintained

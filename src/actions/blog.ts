@@ -1,5 +1,5 @@
 import { sanityFetch } from '@/sanity/lib/live';
-import { BLOG_POSTS_QUERY, BLOG_INDEX_PAGE_QUERY, BLOG_POST_QUERY } from '@/sanity/lib/queries';
+import { BLOG_POSTS_QUERY, BLOG_INDEX_PAGE_QUERY, BLOG_POST_QUERY, ALL_BLOG_POSTS_SLUGS_QUERY } from '@/sanity/lib/queries';
 
 // Server-side function using live queries (for use in server components)
 export async function getAllBlogPosts() {
@@ -27,4 +27,13 @@ export async function getBlogPostBySlug(slug: string) {
   });
 
   return post;
+}
+
+// Server-side function to get all blog posts for sitemap
+export async function getAllBlogPostsForSitemap() {
+  const { data: posts } = await sanityFetch({
+    query: ALL_BLOG_POSTS_SLUGS_QUERY,
+  });
+
+  return posts;
 }
