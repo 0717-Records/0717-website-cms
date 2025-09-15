@@ -1,15 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { stegaClean } from 'next-sanity';
-import NextImage from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from 'next-sanity';
 import { components } from '@/sanity/portableTextComponents';
 import type { TextImageBlock } from '@/types/blocks';
-import ImageModal from '../Modals/ImageModal';
 import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
-import ImgPlaceHolder from '../UI/ImgPlaceHolder';
+import UnifiedImage from '../UI/UnifiedImage';
 
 interface TextImageProps
   extends TextImageBlock,
@@ -27,27 +24,12 @@ const TextImage: React.FC<TextImageProps> = ({
   documentType,
   pathPrefix,
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   // Don't render if content is missing
   if (!content) {
     return null;
   }
 
   const cleanLayout = stegaClean(layout) || 'text-left';
-  const hasImage = image?.asset;
-  const imageUrl = hasImage ? urlFor(image).url() : null;
-  const imageAlt = hasImage ? stegaClean(image.alt) || 'Image' : 'No image available';
-
-  const handleImageClick = () => {
-    if (hasImage) {
-      setIsModalOpen(true);
-    }
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
 
   // Create data attributes for Sanity live editing
   const contentDataAttribute = pathPrefix
@@ -94,42 +76,22 @@ const TextImage: React.FC<TextImageProps> = ({
 
         {/* Image */}
         <div className={`w-full lg:w-1/2 ${layoutClasses.imageOrder}`} {...imageDataAttribute}>
-          {hasImage ? (
-            <div
-              className='relative cursor-pointer'
-              onClick={handleImageClick}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  handleImageClick();
-                }
-              }}
-              tabIndex={0}
-              role='button'
-              aria-label={`View full-screen image: ${imageAlt}`}>
-              <NextImage
-                src={imageUrl!}
-                alt={imageAlt}
-                width={600}
-                height={400}
-                className='w-full h-auto rounded-lg'
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-          ) : (
-            <ImgPlaceHolder />
-          )}
+          <UnifiedImage
+            src={image}
+            alt={image?.alt ? stegaClean(image.alt) : 'Text content image'}
+            mode="sized"
+            width={600}
+            height={400}
+            sizeContext="card"
+            objectFit="cover"
+            enableModal
+            className='w-full h-auto rounded-lg'
+            documentId={documentId}
+            documentType={documentType}
+            fieldPath={pathPrefix ? `${pathPrefix}.image` : 'image'}
+          />
         </div>
       </div>
-
-      {hasImage && (
-        <ImageModal
-          isModalOpen={isModalOpen}
-          closeModal={handleCloseModal}
-          imageUrl={imageUrl!}
-          imageAlt={imageAlt}
-        />
-      )}
     </>
   );
 };

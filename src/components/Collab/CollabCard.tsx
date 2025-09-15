@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import { FaUser } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6';
 import type { COLLABS_ALL_QUERYResult } from '@/sanity/types';
@@ -31,9 +30,6 @@ const CollabCard = ({
   const collabUrl = `/collabs/${slug.current}`;
   const displayDescription =
     useShortDescriptionForCards !== false ? shortDescription : cardDescription || shortDescription;
-  const imageUrl = previewImage?.asset
-    ? urlFor(previewImage.asset).width(400).height(400).quality(90).url()
-    : null;
 
   return (
     <Link
@@ -44,19 +40,21 @@ const CollabCard = ({
           {/* Preview Image */}
           <div className='flex justify-center'>
             <div className='relative w-[75%] max-w-[300px] aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary'>
-              {imageUrl ? (
-                <Image
-                  src={imageUrl}
-                  alt={previewImage?.alt || `${name || 'Collaboration'} profile image`}
-                  fill
-                  sizes='128px'
-                  className='object-cover'
-                />
-              ) : (
-                <div className='w-full h-full flex items-center justify-center'>
-                  <FaUser className='text-white text-body-4xl' />
-                </div>
-              )}
+              <UnifiedImage
+                src={previewImage}
+                alt={`${name || 'Collaboration'} profile image`}
+                mode="fill"
+                sizeContext="card"
+                objectFit="cover"
+                generateSchema
+                schemaContext="profile"
+                sizes="128px"
+                fallback={
+                  <div className='w-full h-full flex items-center justify-center'>
+                    <FaUser className='text-white text-body-4xl' />
+                  </div>
+                }
+              />
             </div>
           </div>
 

@@ -1,9 +1,8 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FaUser, FaCalendar } from 'react-icons/fa6';
-import { urlFor } from '@/sanity/lib/image';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 
 interface BlogCardProps {
   _id: string;
@@ -37,8 +36,6 @@ const BlogCard = (props: BlogCardProps) => {
     props;
 
   const formattedDate = formatBlogDate(_createdAt, overrideDate, hasOverrideDate);
-  const imageUrl = mainImage ? urlFor(mainImage).url() : null;
-  const imageAlt = (mainImage as { alt?: string })?.alt || `${title || 'Blog post'} image`;
 
   // Don't render if no title (should be filtered out at parent level)
   if (!title) return null;
@@ -50,22 +47,25 @@ const BlogCard = (props: BlogCardProps) => {
       <div className='w-full h-full bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:scale-103 cursor-pointer group'>
         {/* Blog Post Image */}
         <div className='relative w-full aspect-[4/3] bg-gray-900 overflow-hidden flex-shrink-0'>
-          {imageUrl ? (
-            <Image
-              src={imageUrl}
-              alt={imageAlt}
-              fill
-              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw'
-              className='object-cover transition-all duration-300'
-              priority
-            />
-          ) : (
-            <div className='w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900'>
-              <div className='text-center text-white/70'>
-                <div className='text-h2 mb-2'>📝</div>
+          <UnifiedImage
+            src={mainImage}
+            alt={`${title || 'Blog post'} image`}
+            mode="fill"
+            sizeContext="card"
+            objectFit="cover"
+            priority
+            generateSchema
+            schemaContext="blog"
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw'
+            className='transition-all duration-300'
+            fallback={
+              <div className='w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900'>
+                <div className='text-center text-white/70'>
+                  <div className='text-h2 mb-2'>📝</div>
+                </div>
               </div>
-            </div>
-          )}
+            }
+          />
         </div>
 
         {/* Blog Post Details */}

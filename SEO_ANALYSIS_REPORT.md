@@ -64,7 +64,7 @@ Based on extremely detailed analysis of the 07:17 Records website staging enviro
 - **Location**: `/Users/viteshbava/Documents/CODE/0717-website-cms/.env.local:5`
 - **Fix Required**: Update base URL configuration
 
-### 6. **Missing Viewport Meta Tag in Root Layout**
+### 6. ** [DONE] Missing Viewport Meta Tag in Root Layout**
 
 - **Issue**: Main layout.tsx lacks explicit viewport meta tag
 - **Impact**: Mobile SEO and Core Web Vitals issues
@@ -72,7 +72,7 @@ Based on extremely detailed analysis of the 07:17 Records website staging enviro
 - **Location**: `src/app/layout.tsx`
 - **Fix Required**: Add viewport meta tag to root layout
 
-### 7. **Development Robots Meta Tag in Production**
+### 7. ** [IGNORE] Development Robots Meta Tag in Production**
 
 - **Issue**: `<meta name='robots' content='noindex, nofollow' />` appears conditionally
 - **Impact**: Could prevent indexing if deployed incorrectly

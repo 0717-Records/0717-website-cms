@@ -1,5 +1,6 @@
 import { urlFor } from '@/sanity/lib/image';
 import type { SITE_SETTINGS_QUERYResult } from '@/sanity/types';
+import type { ImageObjectData } from '@/lib/imageUtils';
 
 export interface OrganizationData {
   name: string;
@@ -20,10 +21,11 @@ export interface WebSiteData {
   };
 }
 
+
 export interface BlogPostData {
   headline: string;
   description?: string;
-  image?: string;
+  image?: string | ImageObjectData;
   datePublished: string;
   dateModified: string;
   author: {
@@ -51,7 +53,7 @@ export interface EventData {
 export interface ArticleData {
   headline: string;
   description?: string;
-  image?: string;
+  image?: string | ImageObjectData;
   datePublished: string;
   dateModified: string;
   author: {
@@ -65,6 +67,17 @@ export interface ArticleData {
 export interface BreadcrumbItem {
   name: string;
   url: string;
+}
+
+export function generateImageObjectSchema(data: ImageObjectData) {
+  return {
+    '@type': 'ImageObject',
+    url: data.url,
+    ...(data.width && { width: data.width }),
+    ...(data.height && { height: data.height }),
+    ...(data.alt && { description: data.alt }),
+    ...(data.caption && { caption: data.caption }),
+  };
 }
 
 export function generateOrganizationSchema(data: OrganizationData) {
@@ -98,12 +111,18 @@ export function generateWebSiteSchema(data: WebSiteData) {
 }
 
 export function generateBlogPostSchema(data: BlogPostData) {
+  const imageSchema = data.image
+    ? (typeof data.image === 'string'
+        ? data.image
+        : generateImageObjectSchema(data.image))
+    : undefined;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: data.headline,
     ...(data.description && { description: data.description }),
-    ...(data.image && { image: data.image }),
+    ...(imageSchema && { image: imageSchema }),
     datePublished: data.datePublished,
     dateModified: data.dateModified,
     author: {
@@ -137,12 +156,18 @@ export function generateEventSchema(data: EventData) {
 }
 
 export function generateArticleSchema(data: ArticleData) {
+  const imageSchema = data.image
+    ? (typeof data.image === 'string'
+        ? data.image
+        : generateImageObjectSchema(data.image))
+    : undefined;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: data.headline,
     ...(data.description && { description: data.description }),
-    ...(data.image && { image: data.image }),
+    ...(imageSchema && { image: imageSchema }),
     datePublished: data.datePublished,
     dateModified: data.dateModified,
     author: {

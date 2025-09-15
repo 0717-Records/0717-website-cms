@@ -2,8 +2,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 import type { HEADER_QUERYResult } from '@/sanity/types';
 import MenuButton from '../MenuButton';
@@ -68,11 +67,12 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
           <Link href='/#home' onClick={onClose} className='flex items-center gap-2'>
             {headerData?.logo ? (
               <div className='relative w-[160px] h-[60px]'>
-                <Image
-                  src={urlFor(headerData.logo).url()}
+                <UnifiedImage
+                  src={headerData.logo}
                   alt={headerData.logo.alt || '07:17 Records'}
-                  fill
-                  className='object-contain'
+                  mode="fill"
+                  sizeContext="thumbnail"
+                  objectFit="contain"
                   sizes='160px'
                   {...createSanityDataAttribute(headerData._id, 'header', 'logo')}
                 />

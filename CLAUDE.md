@@ -76,38 +76,170 @@ When accessing potentially undefined fields from removed schema properties:
 - Consider making the field optional (`?:`) in component interfaces
 - Add explanatory comments about field availability
 
-## Sanity Image Array Handling
-**CRITICAL: Always filter null/undefined images when working with Sanity image arrays.**
+## Unified Image Component Usage
+**CRITICAL: Use the UnifiedImage component for all image handling to ensure consistency, performance, and SEO.**
 
-### Common Error Prevention
-When working with Sanity image arrays (like `featuredImages`, `gallery`, etc.), always filter out invalid entries to prevent `Cannot read properties of null (reading '_ref')` errors:
+### Overview
+The `UnifiedImage` component (`@/components/UI/UnifiedImage`) automatically handles:
+- **Auto-sizing for crisp images**: Automatically requests 2-3x display size from Sanity for high-DPI displays
+- **Schema markup generation**: Adds ImageObject structured data for SEO
+- **Responsive optimization**: Generates appropriate sizes for different breakpoints
+- **Null/undefined handling**: Built-in validation and fallback rendering
+- **Modal support**: Optional full-screen image viewing
+- **Sanity live editing**: Proper data attributes for Studio editing
+
+### Basic Usage Patterns
+
+#### 1. Blog Card Images
+```typescript
+<div className="relative w-full aspect-[4/3] overflow-hidden">
+  <UnifiedImage
+    src={post.mainImage}
+    alt={`${post.title} image`}
+    mode="fill"
+    sizeContext="card"
+    objectFit="cover"
+    generateSchema
+    schemaContext="blog"
+  />
+</div>
+```
+
+#### 2. Header/Logo Images
+```typescript
+<UnifiedImage
+  src={headerData.logo}
+  alt="07:17 Records"
+  mode="sized"
+  width={180}
+  height={125}
+  sizeContext="thumbnail"
+  objectFit="contain"
+  documentId={headerData._id}
+  documentType="header"
+  fieldPath="logo"
+/>
+```
+
+#### 3. Gallery Images with Modal
+```typescript
+<UnifiedImage
+  src={image}
+  alt={`Gallery image ${index + 1}`}
+  mode="fill"
+  sizeContext="gallery"
+  objectFit="cover"
+  enableModal
+  modalCaption="Optional caption"
+  sizes="(max-width: 768px) 50vw, 33vw"
+/>
+```
+
+#### 4. Hero/Background Images
+```typescript
+<UnifiedImage
+  src={heroImage}
+  alt=""
+  mode="fill"
+  sizeContext="hero"
+  objectFit="cover"
+  priority
+  sizes="100vw"
+/>
+```
+
+#### 5. Icon Images
+```typescript
+<UnifiedImage
+  src={icon}
+  alt="Icon description"
+  mode="sized"
+  width={24}
+  height={24}
+  sizeContext="icon"
+  objectFit="contain"
+/>
+```
+
+### Key Props
+
+#### Size Context (Automatic Optimization)
+- `sizeContext="icon"`: 24px base, 3x multiplier (72px from Sanity)
+- `sizeContext="thumbnail"`: 64px base, 2.5x multiplier (160px from Sanity)
+- `sizeContext="card"`: 200px base, 2x multiplier (400px from Sanity)
+- `sizeContext="gallery"`: 300px base, 2x multiplier (600px from Sanity)
+- `sizeContext="hero"`: 800px base, 2x multiplier (1600px from Sanity)
+- `sizeContext="full"`: 1200px base, 1.5x multiplier (1800px from Sanity)
+
+#### Layout Modes
+- `mode="fill"`: Use with containers that have defined dimensions/aspect ratios
+- `mode="sized"`: Use with explicit width/height props
+
+#### Object Fit
+- `objectFit="cover"`: Crops image to fill container (default)
+- `objectFit="contain"`: Scales image to fit within container
+
+#### Schema Generation
+- `generateSchema={true}`: Adds ImageObject structured data
+- `schemaContext="blog|article|gallery|profile"`: Context for schema generation
+
+### Advanced Usage
+
+#### Custom Display Sizes
+```typescript
+<UnifiedImage
+  src={image}
+  displaySize={{ width: 400, height: 300 }}
+  dpiMultiplier={3}
+  mode="fill"
+/>
+```
+
+#### Responsive Sizes
+```typescript
+<UnifiedImage
+  src={image}
+  responsiveSizes={{
+    mobile: { width: 400, height: 300 },
+    tablet: { width: 600, height: 450 },
+    desktop: { width: 800, height: 600 }
+  }}
+  sizes="(max-width: 768px) 400px, (max-width: 1024px) 600px, 800px"
+  mode="fill"
+/>
+```
+
+### Sanity Image Array Handling
+**The UnifiedImage component automatically handles invalid images, but you should still filter arrays:**
 
 ```typescript
-// ❌ Wrong - Will crash if array contains null/undefined entries
-{featuredImages.map((image, index) => (
-  <Image src={urlFor(image).url()} ... />
-))}
+// ✅ Recommended pattern with UnifiedImage
+const validImages = images?.filter(item => item.image?.asset?._ref) || [];
 
-// ✅ Correct - Filter out invalid entries first
-const validImages = featuredImages?.filter((image) => image && image.asset && image.asset._ref) || [];
-
-{validImages.map((image, index) => (
-  <Image src={urlFor(image).url()} ... />
+{validImages.map((item, index) => (
+  <UnifiedImage
+    key={item._key || index}
+    src={item.image}
+    alt={`Gallery image ${index + 1}`}
+    mode="fill"
+    sizeContext="gallery"
+    // Component handles null/undefined gracefully
+  />
 ))}
 ```
 
-### Why This Happens
-- Sanity Studio allows adding array items that aren't fully saved
-- Draft content can contain null/undefined entries
-- Image uploads can fail leaving empty references
-- Always validate `image.asset._ref` exists before using `urlFor()`
+### Migration from Old Patterns
+- **Replace** `urlFor(image).width(X).height(Y).url()` → Use `sizeContext` or `displaySize`
+- **Replace** manual `object-cover`/`object-contain` classes → Use `objectFit` prop
+- **Replace** custom modal implementations → Use `enableModal={true}`
+- **Replace** manual schema generation → Use `generateSchema={true}`
+- **Replace** manual alt text fallbacks → Component handles automatically
 
-### Standard Pattern
-Apply this pattern to ALL Sanity image array components:
-1. Check if array exists and has length
-2. Filter for valid images with proper asset references  
-3. Check filtered array length before rendering
-4. Use filtered array for mapping
+### Performance Benefits
+- **Automatic DPI optimization**: No more blurry images on high-resolution displays
+- **Optimal Sanity requests**: Automatically calculates best image dimensions
+- **Built-in Next.js optimization**: Proper `sizes`, `priority`, and responsive handling
+- **Consistent quality settings**: Optimal quality for each context
 
 ## SEO Sitemap Maintenance
 **CRITICAL: When adding new document types or routes, the sitemap must be updated to maintain SEO.**
@@ -234,6 +366,7 @@ The website has comprehensive SEO implementation including:
 - **Event** - Event listings and details
 - **BreadcrumbList** - Navigation breadcrumbs
 - **WebPage** - General page information
+- **ImageObject** - Featured images with detailed metadata (automatically handled by UnifiedImage component)
 
 ### Robots.txt Maintenance
 **Location**: `src/app/robots.txt/route.ts`

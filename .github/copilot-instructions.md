@@ -223,13 +223,59 @@ export default NavigationComponent
 
 ### Image Optimization Best Practices
 
-**Always ensure crisp images on high-DPI displays:**
+**🚀 NEW: Use UnifiedImage Component for All Images**
 
-- **For small icons/images (24px or smaller)**: Request 3x the display size from Sanity (e.g., 72px for 24px display)
-- **For medium images (up to 200px)**: Request 2-3x the display size
-- **For large images**: Use responsive sizing with multiple breakpoints
+The project now includes a comprehensive `UnifiedImage` component (`@/components/UI/UnifiedImage`) that automatically handles image optimization, DPI scaling, schema markup, and fallbacks. **Always use this component instead of manual `urlFor()` implementations.**
 
-**Sanity Image Implementation Pattern:**
+```tsx
+// ✅ RECOMMENDED - Use UnifiedImage component
+<UnifiedImage
+  src={image}
+  alt="Image description"
+  mode="fill"
+  sizeContext="card"
+  objectFit="cover"
+  generateSchema
+  schemaContext="blog"
+/>
+
+// ✅ For icons
+<UnifiedImage
+  src={icon}
+  alt="Icon description"
+  mode="sized"
+  width={24}
+  height={24}
+  sizeContext="icon"
+  objectFit="contain"
+/>
+
+// ❌ OLD PATTERN - Avoid manual urlFor() usage
+<Image
+  src={urlFor(image).width(72).height(72).url()}
+  alt={image.alt || ''}
+  fill
+  className='object-contain'
+/>
+```
+
+**UnifiedImage Benefits:**
+- **Automatic DPI optimization**: Automatically requests 2-3x image size from Sanity for crisp display
+- **Built-in schema markup**: Adds ImageObject structured data for SEO
+- **Smart sizing**: Context-aware optimization (icon, card, hero, etc.)
+- **Null handling**: Graceful fallbacks for missing/invalid images
+- **Modal support**: Optional full-screen viewing
+- **Responsive optimization**: Automatic sizes attribute generation
+
+**Size Context Guidelines:**
+- `sizeContext="icon"`: For 16-32px icons (requests 72px from Sanity)
+- `sizeContext="thumbnail"`: For 64px thumbnails (requests 160px from Sanity)
+- `sizeContext="card"`: For 200px cards (requests 400px from Sanity)
+- `sizeContext="gallery"`: For gallery items (requests 600px from Sanity)
+- `sizeContext="hero"`: For hero images (requests 1600px from Sanity)
+- `sizeContext="full"`: For full-width content (requests 1800px from Sanity)
+
+**Legacy Pattern (Only if UnifiedImage cannot be used):**
 
 ```tsx
 // ✅ CORRECT - Crisp on all displays
@@ -241,44 +287,13 @@ export default NavigationComponent
   className='object-contain'
 />
 
-// ❌ INCORRECT - Blurry on high-DPI displays
-<Image
-  src={urlFor(image).width(24).height(24).url()}
-  alt={image.alt || ''}
-  fill
-  className='object-contain'
-/>
-```
-
-**Always handle uploading/incomplete images:**
-
-```tsx
-// ✅ CORRECT - Handles uploading state
+// Always handle uploading/incomplete images
 {image && image.asset ? (
   <Image src={urlFor(image).width(72).height(72).url()} ... />
 ) : image && !image.asset ? (
   <div className="loading-placeholder animate-pulse">...</div>
 ) : null}
-
-// ❌ INCORRECT - Will crash on uploading images
-{image && (
-  <Image src={urlFor(image).width(72).height(72).url()} ... />
-)}
 ```
-
-**Sizing Guidelines:**
-
-- Icons (16-32px display): Request 48-96px from Sanity
-- Small images (32-100px display): Request 96-300px from Sanity
-- Medium images (100-400px display): Request 300-1200px from Sanity
-- Large images (400px+ display): Use responsive sizing with `sizes` attribute
-
-**Always include:**
-
-- `sizes` attribute for responsive images
-- `alt` text from Sanity (with fallback)
-- Asset existence check before rendering
-- Loading state for uploading images
 
 ## Development Workflow
 

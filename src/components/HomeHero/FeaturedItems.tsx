@@ -1,6 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
-import { getImageDimensions, urlFor } from '@/sanity/lib/image';
+import { getImageDimensions } from '@/sanity/lib/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import LinkWrapper from '../UI/LinkWrapper';
 
@@ -43,11 +43,12 @@ const FeaturedItems = ({ featuredImages }: FeaturedItemsProps) => {
             className={`relative w-full landscape:h-[45vh] landscape:w-auto ${isPortrait ? 'max-w-[300px] landscape:max-w-none' : 'max-w-[2000px] landscape:max-w-full'} ${hasLink ? 'cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95' : ''}`}
             style={{ aspectRatio: aspectRatio }}
           >
-            <Image
-              src={urlFor(image).width(2000).url()}
+            <UnifiedImage
+              src={image}
               alt={image.alt || 'Featured item'}
-              fill
-              className='object-contain'
+              mode="fill"
+              objectFit="contain"
+              displaySize={{ width: 2000 }}
               sizes='(max-width: 768px) 90vw, 400px'
               priority={index === 0}
             />

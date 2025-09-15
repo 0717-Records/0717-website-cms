@@ -1,13 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { stegaClean } from 'next-sanity';
-import NextImage from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
 import type { ImageBlock } from '@/types/blocks';
-import ImageModal from '../Modals/ImageModal';
 import { createSanityDataAttribute, type SanityLiveEditingProps } from '../../utils/sectionHelpers';
-import ImgPlaceHolder from '../UI/ImgPlaceHolder';
+import UnifiedImage from '../UI/UnifiedImage';
 
 interface ImageProps
   extends ImageBlock,
@@ -25,14 +22,8 @@ const Image: React.FC<ImageProps> = ({
   documentType,
   pathPrefix,
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const hasImage = image?.asset;
-  
   const cleanSize = stegaClean(size) || 'full';
   const cleanCaption = stegaClean(caption);
-
-  const imageUrl = hasImage ? urlFor(image).url() : null;
-  const imageAlt = hasImage ? stegaClean(image.alt) || 'Image' : 'No image available';
 
   const getSizeClasses = (size: string) => {
     switch (size) {
@@ -53,32 +44,22 @@ const Image: React.FC<ImageProps> = ({
 
   return (
     <figure className={`${sizeClasses} ${className}`}>
-      {hasImage ? (
-        <>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className='cursor-pointer relative border-none bg-transparent p-0 w-full'
-            aria-label={`View full-screen image: ${imageAlt}`}>
-            <NextImage
-              src={imageUrl!}
-              alt={imageAlt}
-              width={800}
-              height={600}
-              className='w-full h-auto rounded-lg'
-              style={{ objectFit: 'cover' }}
-            />
-          </button>
-          <ImageModal 
-            imageUrl={imageUrl!} 
-            imageAlt={imageAlt} 
-            caption={cleanCaption}
-            isModalOpen={isModalOpen}
-            closeModal={() => setIsModalOpen(false)}
-          />
-        </>
-      ) : (
-        <ImgPlaceHolder />
-      )}
+      <UnifiedImage
+        src={image}
+        alt="Content image"
+        mode="sized"
+        width={800}
+        height={600}
+        sizeContext="full"
+        objectFit="cover"
+        enableModal
+        modalCaption={cleanCaption}
+        rounded
+        className="w-full h-auto"
+        documentId={documentId}
+        documentType={documentType}
+        fieldPath={pathPrefix ? `${pathPrefix}.image` : 'image'}
+      />
       {cleanCaption && (
         <figcaption
           className='mt-2 text-body-sm text-gray-600 text-center italic'

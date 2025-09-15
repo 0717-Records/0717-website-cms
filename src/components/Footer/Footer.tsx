@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { urlFor } from '@/sanity/lib/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import { SocialIcon, type SocialPlatform, getPlatformLabel } from '@/utils/socialIcons';
 import { cleanPlatform } from '@/utils/cleanPlatform';
 import CTAEmailButton from '@/components/UI/CTAEmailButton';
@@ -85,12 +84,15 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
           {/* Logo */}
           <Link href='/#home' className=''>
             {footerLogo ? (
-              <Image
-                src={urlFor(footerLogo).url()}
+              <UnifiedImage
+                src={footerLogo}
                 alt={footerLogo.alt || '07:17 Records'}
+                mode="sized"
                 width={300}
                 height={190}
-                className='object-contain w-[200px] md:w-[300px] h-auto'
+                sizeContext="thumbnail"
+                objectFit="contain"
+                className='w-[200px] md:w-[300px] h-auto'
                 {...createSanityDataAttribute(footerData?._id, 'footer', 'logo')}
               />
             ) : (

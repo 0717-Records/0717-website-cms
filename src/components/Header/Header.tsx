@@ -2,9 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
-import { createSanityDataAttribute } from '@/utils/sectionHelpers';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import type { HEADER_QUERYResult } from '@/sanity/types';
 import HorizontalNav from './HorizontalNav';
 import MenuButton from './MenuButton';
@@ -59,13 +57,18 @@ const Header = ({ headerData }: HeaderProps) => {
         {/* Logo */}
         <Link href='/#home' className='flex items-center gap-2'>
           {headerData?.logo ? (
-            <Image
-              src={urlFor(headerData.logo).url()}
+            <UnifiedImage
+              src={headerData.logo}
               alt={headerData.logo.alt || '07:17 Records'}
-              width={200}
+              mode="sized"
+              width={180}
               height={125}
-              className='object-contain w-[160px] md:w-[180px] h-auto'
-              {...createSanityDataAttribute(headerData._id, 'header', 'logo')}
+              sizeContext="thumbnail"
+              objectFit="contain"
+              className='w-[160px] md:w-[180px] h-auto'
+              documentId={headerData._id}
+              documentType="header"
+              fieldPath="logo"
             />
           ) : (
             <>

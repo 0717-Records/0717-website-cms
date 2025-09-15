@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import { stegaClean } from '@sanity/client/stega';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { createSanityDataAttribute } from '../../utils/sectionHelpers';
@@ -24,21 +24,23 @@ const HeroLogo = ({
   if (showHeroLogo === false) return null;
 
   const logoSize = enableFeaturedItems ? 'w-20 md:w-24 lg:w-28' : 'w-48 md:w-56 lg:w-64';
+  const logoSrc = stegaClean(heroTextColor) === 'white'
+    ? '/images/logo-white-on-transparent.png'
+    : '/images/logo-black-on-transparent.png';
 
   return (
     <div
       className='flex justify-center items-center relative'
       {...createSanityDataAttribute(documentId, documentType, 'showHeroLogo')}>
-      <Image
-        src={
-          stegaClean(heroTextColor) === 'white'
-            ? '/images/logo-white-on-transparent.png'
-            : '/images/logo-black-on-transparent.png'
-        }
+      <UnifiedImage
+        src={logoSrc}
         alt='07:17 Records Logo'
+        mode="sized"
         width={500}
         height={500}
-        className={`${logoSize} h-auto object-contain relative z-10 drop-shadow-lg drop-shadow-black/40`}
+        sizeContext="hero"
+        objectFit="contain"
+        className={`${logoSize} h-auto relative z-10 drop-shadow-lg drop-shadow-black/40`}
       />
       {showLogoBackColor && (
         <>

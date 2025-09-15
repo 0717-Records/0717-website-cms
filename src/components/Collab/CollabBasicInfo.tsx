@@ -1,6 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import { FaTag, FaMapMarkerAlt, FaUser } from 'react-icons/fa';
 import Heading from '../Typography/Heading/Heading';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
@@ -22,10 +21,6 @@ export default function CollabBasicInfo({
 }: CollabBasicInfoProps) {
   // Process image data
   const imageData = previewImage as { asset?: { _ref: string; _type: string }; alt?: string };
-  // Request 3x size for crisp display on high-DPI screens (max container is 280px, so request 840px)
-  const imageUrl = imageData?.asset
-    ? urlFor(imageData.asset).width(840).height(840).quality(90).url()
-    : null;
 
   return (
     <aside className='bg-white border border-gray-200 rounded-lg p-6'>
@@ -34,19 +29,19 @@ export default function CollabBasicInfo({
         <div
           className='relative w-[75%] h-[75%] max-w-[280px] max-h-[280px] lg:max-w-none lg:max-h-none aspect-square rounded-full overflow-hidden'
           {...createSanityDataAttribute(documentId, documentType, 'previewImage')}>
-          {imageUrl ? (
-            <Image
-              src={imageUrl}
-              alt={imageData?.alt || 'Collaboration profile'}
-              fill
-              sizes='(max-width: 768px) 75vw, (max-width: 1024px) 280px, 280px'
-              className='object-cover'
-            />
-          ) : (
-            <div className='w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-secondary to-brand-primary'>
-              <FaUser className='text-white text-body-8xl' />
-            </div>
-          )}
+          <UnifiedImage
+            src={imageData}
+            alt={imageData?.alt || 'Collaboration profile'}
+            mode="fill"
+            sizeContext="card"
+            objectFit="cover"
+            sizes='(max-width: 768px) 75vw, (max-width: 1024px) 280px, 280px'
+            fallback={
+              <div className='w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-secondary to-brand-primary'>
+                <FaUser className='text-white text-body-8xl' />
+              </div>
+            }
+          />
         </div>
       </div>
 

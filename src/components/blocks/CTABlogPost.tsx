@@ -1,8 +1,7 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FaUser, FaCalendar } from 'react-icons/fa6';
-import { urlFor } from '@/sanity/lib/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 // Interface that matches the dereferenced blog post data from GROQ queries
@@ -66,7 +65,6 @@ const CTABlogPost = ({ blogPost, className = '' }: CTABlogPostProps) => {
   }
 
   const formattedDate = formatBlogDate(_createdAt, overrideDate, hasOverrideDate);
-  const imageUrl = mainImage ? urlFor(mainImage).url() : null;
   const imageAlt = (mainImage as { alt?: string })?.alt || `${title} image`;
   const blogPostUrl = slug?.current ? `/blog/${slug.current}` : '#';
 
@@ -74,22 +72,23 @@ const CTABlogPost = ({ blogPost, className = '' }: CTABlogPostProps) => {
     <div className='w-full bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group text-left'>
       {/* Blog Post Image - Mobile: full width on top, Desktop: left side with 4:3 aspect ratio */}
       <div className='relative w-full md:w-1/3 aspect-[4/3] bg-gray-900 overflow-hidden flex-shrink-0'>
-        {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={imageAlt}
-            fill
-            sizes='(max-width: 768px) 100vw, 33vw'
-            className='object-cover transition-all duration-300'
-            priority
-          />
-        ) : (
-          <div className='w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900'>
-            <div className='text-center text-white/70'>
-              <div className='text-h2 mb-2'>📝</div>
+        <UnifiedImage
+          src={mainImage}
+          alt={imageAlt}
+          mode="fill"
+          sizeContext="card"
+          objectFit="cover"
+          sizes='(max-width: 768px) 100vw, 33vw'
+          className='transition-all duration-300'
+          priority
+          fallback={
+            <div className='w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900'>
+              <div className='text-center text-white/70'>
+                <div className='text-h2 mb-2'>📝</div>
+              </div>
             </div>
-          </div>
-        )}
+          }
+        />
       </div>
 
       {/* Blog Post Details - Mobile: below image, Desktop: right side */}

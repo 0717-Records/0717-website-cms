@@ -1,11 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import Heading from '../Typography/Heading/Heading';
 import FallbackBackground from './FallbackBackground';
 import Breadcrumb from '../UI/Breadcrumb';
-import { urlFor } from '@/sanity/lib/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 import { heroBottomSpacing } from '@/utils/spacingConstants';
 
@@ -44,11 +43,6 @@ const PageHero = ({
   const hasSanityImage = heroImageData?.asset;
   const hasCustomImage = isStringUrl || hasSanityImage;
 
-  const customBackgroundImage = isStringUrl
-    ? (heroImage as string)
-    : hasSanityImage && heroImageData.asset
-      ? urlFor(heroImageData.asset).url()
-      : null;
 
   return (
     <div {...createSanityDataAttribute(documentId, documentType, 'heroImage')}>
@@ -57,14 +51,16 @@ const PageHero = ({
         className={`relative h-48 md:h-64 bg-black flex items-center justify-center overflow-hidden px-5 ${heroBottomSpacing}`}>
         {/* Background */}
         {hasCustomImage ? (
-          <Image
-            src={customBackgroundImage!}
+          <UnifiedImage
+            src={isStringUrl ? (heroImage as string) : heroImageData}
             alt=''
-            fill
-            className={`object-cover z-10 transition-opacity duration-500 ease-in-out ${
+            mode="fill"
+            sizeContext="hero"
+            objectFit="cover"
+            priority
+            className={`z-10 transition-opacity duration-500 ease-in-out ${
               imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
-            priority
             onLoad={() => setImageLoaded(true)}
           />
         ) : (

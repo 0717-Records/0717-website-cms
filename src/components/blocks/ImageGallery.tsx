@@ -2,12 +2,10 @@
 
 import React, { useState } from 'react';
 import { stegaClean } from 'next-sanity';
-import NextImage from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
 import type { ImageGalleryBlock } from '@/types/blocks';
 import type { SanityLiveEditingProps } from '../../utils/sectionHelpers';
 import ImageGalleryModal from '../Modals/ImageGalleryModal';
-import ImgPlaceHolder from '../UI/ImgPlaceHolder';
+import UnifiedImage from '../UI/UnifiedImage';
 
 interface ImageGalleryProps
   extends ImageGalleryBlock,
@@ -57,7 +55,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
         aria-label={`Image gallery with ${images.length} images`}>
         {images.map((item, idx) => {
           const hasImage = item.image?.asset;
-          const imageUrl = hasImage && item.image ? urlFor(item.image).url() : null;
           const imageAlt =
             hasImage && item.image
               ? stegaClean(item.image.alt) || `Gallery image ${idx + 1}`
@@ -80,17 +77,19 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                   tabIndex={0}
                   aria-label={`Open image ${idx + 1} of ${images.length} in modal: ${imageAlt}`}
                   aria-describedby={`gallery-image-${idx}`}>
-                  <NextImage
-                    src={imageUrl!}
+                  <UnifiedImage
+                    src={item.image}
                     alt={imageAlt}
-                    fill
+                    mode="fill"
+                    sizeContext="gallery"
+                    objectFit="cover"
                     sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
-                    className='object-cover rounded-lg'
+                    className='rounded-lg'
                   />
                 </button>
               ) : (
                 <div className='aspect-[4/3] flex items-center justify-center'>
-                  <ImgPlaceHolder />
+                  <div className='text-gray-400 text-body-lg'>No image</div>
                 </div>
               )}
             </figure>

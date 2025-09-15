@@ -1,6 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import type { ItemListBlock } from '@/types/blocks';
 import { getAlignmentClasses } from './shared/alignmentUtils';
 
@@ -27,12 +26,13 @@ const ItemList = ({ items = [], alignment, className = '', inheritAlignment }: I
             className='group flex items-center gap-3 px-4 py-3 rounded-2xl border border-gray-200'>
             {item.icon && item.icon.asset ? (
               <div className='relative w-6 h-6 flex-shrink-0'>
-                <Image
-                  src={urlFor(item.icon).width(72).height(72).url()}
+                <UnifiedImage
+                  src={item.icon}
                   alt={item.icon.alt || 'List item icon'}
-                  fill
+                  mode="fill"
+                  sizeContext="icon"
+                  objectFit="contain"
                   sizes='24px'
-                  className='object-contain'
                 />
               </div>
             ) : item.icon && !item.icon.asset ? (

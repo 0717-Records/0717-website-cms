@@ -7,7 +7,7 @@ import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import PageBuilder from '@/components/PageBuilder';
 import { FaUser, FaCalendar } from 'react-icons/fa6';
-import Image from 'next/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import { urlFor } from '@/sanity/lib/image';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 import { blogHeaderBottomSpacing, closingCardSpacing } from '@/utils/spacingConstants';
@@ -173,13 +173,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {post.mainImage && (
           <div className={`'w-full ${blogHeaderBottomSpacing}`}>
             <div className='relative w-full aspect-[16/9] overflow-hidden rounded-lg'>
-              <Image
-                src={urlFor(post.mainImage).url()}
-                alt={(post.mainImage as { alt?: string })?.alt || post.title || 'Blog post image'}
-                fill
-                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw'
-                className='object-cover'
+              <UnifiedImage
+                src={post.mainImage}
+                alt={post.title || 'Blog post image'}
+                mode="fill"
+                sizeContext="hero"
+                objectFit="cover"
                 priority
+                generateSchema
+                schemaContext="blog"
+                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw'
+                className='rounded-lg'
               />
             </div>
           </div>

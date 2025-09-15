@@ -1,6 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
-import { urlFor } from '@/sanity/lib/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 import type { IconBlock } from '@/types/blocks';
 
 interface IconProps extends Omit<IconBlock, '_type' | '_key'> {
@@ -11,19 +10,31 @@ interface IconProps extends Omit<IconBlock, '_type' | '_key'> {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Icon = ({ image, showIcon: _showIcon, className = '', ...rest }: IconProps) => {
   // showIcon is destructured to prevent it from being passed to DOM element
-  const imgSrc = image?.asset ? urlFor(image).url() : '/images/logo-black-on-transparent.png';
   const imgAlt = image?.asset ? image.alt || 'Icon image' : '07:17 Records Logo';
+  const fallbackImage = '/images/logo-black-on-transparent.png';
 
   return (
     <div
       className={`relative w-16 h-16 md:w-18 md:h-18 rounded-full bg-brand-gradient flex items-center justify-center ${className}`.trim()}
       {...rest}>
-      <Image
-        src={imgSrc}
+      <UnifiedImage
+        src={image?.asset ? image : null}
         alt={imgAlt}
-        fill
+        mode="fill"
+        sizeContext="icon"
+        objectFit="contain"
         sizes='40px'
-        className={`object-contain ${image?.asset ? 'p-3' : 'p-1'}`}
+        className={`${image?.asset ? 'p-3' : 'p-1'}`}
+        fallback={
+          <UnifiedImage
+            src={fallbackImage}
+            alt="07:17 Records Logo"
+            mode="fill"
+            sizeContext="icon"
+            objectFit="contain"
+            className="p-1"
+          />
+        }
       />
     </div>
   );
