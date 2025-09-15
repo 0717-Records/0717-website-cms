@@ -317,7 +317,7 @@ const UnifiedImage: React.FC<UnifiedImageProps> = ({
     src: imageUrl,
     alt: imageAlt,
     className: `${objectFit === 'contain' ? 'object-contain' : 'object-cover'} ${roundedClasses} ${className}`,
-    sizes: responsiveSizesString,
+    sizes: responsiveSizesString || (mode === 'fill' ? '100vw' : undefined),
     priority,
     loading,
     onLoad: handleLoad,
@@ -339,11 +339,13 @@ const UnifiedImage: React.FC<UnifiedImageProps> = ({
       )}
 
       {/* Image element */}
-      <div {...sanityDataAttribute}>
+      <div {...sanityDataAttribute} className={mode === 'fill' ? 'relative w-full h-full' : undefined}>
         {enableModal ? (
           <button
             onClick={handleOpenModal}
-            className="cursor-pointer border-none bg-transparent p-0 block w-full h-full"
+            className={`cursor-pointer border-none bg-transparent p-0 block ${
+              mode === 'fill' ? 'w-full h-full relative' : ''
+            }`}
             aria-label={`View full-screen image: ${imageAlt}`}
           >
             {mode === 'fill' ? (

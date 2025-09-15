@@ -60,15 +60,16 @@ const Header = ({ headerData }: HeaderProps) => {
             <UnifiedImage
               src={headerData.logo}
               alt={headerData.logo.alt || '07:17 Records'}
-              mode="sized"
-              width={180}
+              mode='sized'
+              width={200}
               height={125}
-              sizeContext="logo"
-              objectFit="contain"
+              sizeContext='logo'
+              objectFit='contain'
               className='w-[160px] md:w-[180px] h-auto'
+              priority
               documentId={headerData._id}
-              documentType="header"
-              fieldPath="logo"
+              documentType='header'
+              fieldPath='logo'
             />
           ) : (
             <>

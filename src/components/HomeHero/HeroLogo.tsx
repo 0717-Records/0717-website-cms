@@ -40,7 +40,9 @@ const HeroLogo = ({
         height={500}
         sizeContext="hero"
         objectFit="contain"
-        className={`${logoSize} h-auto relative z-10 drop-shadow-lg drop-shadow-black/40`}
+        className={`${logoSize} h-auto object-contain relative z-10 drop-shadow-lg drop-shadow-black/40`}
+        priority
+        sizes="(max-width: 768px) 320px, (max-width: 1024px) 384px, 512px"
       />
       {showLogoBackColor && (
         <>
