@@ -54,6 +54,8 @@ const Image: React.FC<ImageProps> = ({
         objectFit="cover"
         enableModal
         modalCaption={cleanCaption}
+        generateSchema
+        schemaContext="article"
         rounded
         className="w-full h-auto"
         documentId={documentId}

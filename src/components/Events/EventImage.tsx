@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import UnifiedImage from '../UI/UnifiedImage';
 import PastEventOverlay from './PastEventOverlay';
 
 interface EventImageProps {
@@ -22,13 +22,17 @@ const EventImage = ({
   if (image) {
     return (
       <>
-        <Image
+        <UnifiedImage
           src={image}
           alt={`${title} event poster`}
-          fill
+          mode="fill"
+          sizeContext="card"
+          objectFit="cover"
           sizes={sizes}
-          className={`object-cover transition-all duration-300 ${isPast ? 'brightness-30' : ''}`}
+          generateSchema
+          schemaContext="article"
           priority
+          className={`transition-all duration-300 ${isPast ? 'brightness-30' : ''}`}
         />
         {isPast && (
           <PastEventOverlay

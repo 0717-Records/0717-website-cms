@@ -85,6 +85,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
                   mode="fill"
                   sizeContext="gallery"
                   objectFit="cover"
+                  generateSchema
+                  schemaContext="gallery"
                   sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
                   className='rounded-lg'
                 />
