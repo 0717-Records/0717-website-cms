@@ -67,31 +67,28 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
 
           return (
             <figure key={item._key || idx} className={gridClasses}>
-              {hasImage ? (
-                <button
-                  onClick={() => {
+              <button
+                onClick={() => {
+                  if (hasImage) {
                     setSelectedImageIndex(filteredImageIndex);
                     setIsModalOpen(true);
-                  }}
-                  className='relative cursor-pointer transition hover:scale-102 aspect-[4/3] block w-full h-full'
-                  tabIndex={0}
-                  aria-label={`Open image ${idx + 1} of ${images.length} in modal: ${imageAlt}`}
-                  aria-describedby={`gallery-image-${idx}`}>
-                  <UnifiedImage
-                    src={item.image}
-                    alt={imageAlt}
-                    mode="fill"
-                    sizeContext="gallery"
-                    objectFit="cover"
-                    sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
-                    className='rounded-lg'
-                  />
-                </button>
-              ) : (
-                <div className='aspect-[4/3] flex items-center justify-center'>
-                  <div className='text-gray-400 text-body-lg'>No image</div>
-                </div>
-              )}
+                  }
+                }}
+                className='relative cursor-pointer transition hover:scale-102 aspect-[4/3] block w-full h-full'
+                tabIndex={0}
+                aria-label={hasImage ? `Open image ${idx + 1} of ${images.length} in modal: ${imageAlt}` : `Gallery placeholder ${idx + 1}`}
+                aria-describedby={`gallery-image-${idx}`}
+                disabled={!hasImage}>
+                <UnifiedImage
+                  src={item.image}
+                  alt={imageAlt}
+                  mode="fill"
+                  sizeContext="gallery"
+                  objectFit="cover"
+                  sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
+                  className='rounded-lg'
+                />
+              </button>
             </figure>
           );
         })}
