@@ -11,7 +11,8 @@ export default function NotFound() {
       <PageHero
         title='Page Not Found'
         heroImage='/images/hero-bg/hero-bg-option3-2.webp'
-        hideBackLink={true}
+        showBreadcrumb={true}
+        breadcrumbPageTitle="Page Not Found"
       />
 
       <Container>

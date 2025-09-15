@@ -39,6 +39,8 @@ export default async function BlogPage() {
         heroImage={blogIndexPage?.heroImage || '/images/hero-bg/hero-bg-option7-2.webp'}
         documentId={blogIndexPage?._id}
         documentType={blogIndexPage?._type}
+        showBreadcrumb={true}
+        breadcrumbPageTitle={blogIndexPage?.title || 'Blog'}
       />
       <Container>
         {/* Page Subtitle */}

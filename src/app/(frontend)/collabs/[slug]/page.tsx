@@ -71,6 +71,8 @@ export default async function CollabPage({ params }: CollabPageProps) {
         heroImage={collab.heroImage || '/images/hero-bg/hero-bg-option3-2.webp'}
         documentId={collab._id}
         documentType={collab._type}
+        showBreadcrumb={true}
+        breadcrumbPageTitle={collab.name || 'Collaboration'}
       />
       <Container textAlign='left'>
         {/* Short Description */}

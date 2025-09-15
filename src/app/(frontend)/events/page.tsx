@@ -46,6 +46,8 @@ export default async function EventsPage() {
         heroImage={eventsIndexPage?.backgroundImage || '/images/hero-bg/hero-bg-option6-2.webp'}
         documentId={eventsIndexPage?._id}
         documentType={eventsIndexPage?._type}
+        showBreadcrumb={true}
+        breadcrumbPageTitle={eventsIndexPage?.title || 'All Events'}
       />
       <Container textAlign='center'>
         {/* Page Subtitle */}

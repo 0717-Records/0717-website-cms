@@ -18,7 +18,8 @@ export default function ErrorPage({ error }: ErrorPageProps) {
       <PageHero
         title='Something Went Wrong'
         heroImage='/images/hero-bg/hero-bg-option3-2.webp'
-        hideBackLink={true}
+        showBreadcrumb={true}
+        breadcrumbPageTitle="Error"
       />
 
       <Container>

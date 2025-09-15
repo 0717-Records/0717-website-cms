@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import Heading from '../Typography/Heading/Heading';
 import FallbackBackground from './FallbackBackground';
+import Breadcrumb from '../UI/Breadcrumb';
 import { urlFor } from '@/sanity/lib/image';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 import { heroBottomSpacing } from '@/utils/spacingConstants';
@@ -15,11 +15,13 @@ interface PageHeroProps {
   height?: 'small' | 'medium' | 'large';
   overlay?: boolean;
   className?: string;
-  hideBackLink?: boolean;
-  backLinkText?: string;
-  backLinkHref?: string;
   documentId?: string;
   documentType?: string;
+  // Breadcrumb props
+  showBreadcrumb?: boolean;
+  breadcrumbPageTitle?: string;
+  breadcrumbClickable?: boolean;
+  breadcrumbHref?: string;
 }
 
 const PageHero = ({
@@ -27,9 +29,10 @@ const PageHero = ({
   heroImage,
   documentId,
   documentType,
-  hideBackLink = false,
-  backLinkText,
-  backLinkHref = '/',
+  showBreadcrumb = false,
+  breadcrumbPageTitle,
+  breadcrumbClickable = false,
+  breadcrumbHref,
 }: PageHeroProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -68,15 +71,14 @@ const PageHero = ({
           <FallbackBackground />
         )}
 
-        {/* Back Link */}
-        {!hideBackLink && (
+        {/* Breadcrumb */}
+        {showBreadcrumb && breadcrumbPageTitle && (
           <div className='absolute top-2 left-2 md:top-8 md:left-8 z-[26]'>
-            <Link
-              href={backLinkHref}
-              className='inline-flex items-center gap-2 text-white hover:bg-black active:scale-90 transition-all duration-200 text-body-base bg-black/30 backdrop-blur-sm rounded-lg px-3 py-1 md:py-2 border border-white/20'>
-              <span>←</span>
-              {backLinkText && <span>{backLinkText}</span>}
-            </Link>
+            <Breadcrumb
+              pageTitle={breadcrumbPageTitle}
+              pageTitleClickable={breadcrumbClickable}
+              pageTitleHref={breadcrumbHref}
+            />
           </div>
         )}
 
