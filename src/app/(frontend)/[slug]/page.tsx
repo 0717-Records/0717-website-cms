@@ -11,6 +11,13 @@ import Card from '@/components/blocks/Card';
 import { pageSubtitleBottomSpacing, closingCardSpacing } from '@/utils/spacingConstants';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
 import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
+import {
+  generateArticleSchema,
+  getOrganizationDataFromSiteSettings,
+  generateStructuredDataScript
+} from '@/lib/structuredData';
+import BreadcrumbStructuredData from '@/components/StructuredData/BreadcrumbStructuredData';
+import { urlFor } from '@/sanity/lib/image';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -56,8 +63,45 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
     notFound();
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://0717records.com';
+
+  // Generate breadcrumb data
+  const breadcrumbItems = [
+    { name: 'Home', url: baseUrl },
+    { name: page.title || 'Page', url: `${baseUrl}/${slug}` },
+  ];
+
+  // Generate Article structured data
+  let articleSchema;
+  if (siteSettings && page._createdAt && page._updatedAt) {
+    const organizationData = getOrganizationDataFromSiteSettings(siteSettings, baseUrl);
+
+    articleSchema = generateArticleSchema({
+      headline: page.title || 'Page',
+      description: page.subtitle || undefined,
+      image: page.heroImage ? urlFor(page.heroImage).width(1200).height(630).url() : undefined,
+      datePublished: page._createdAt,
+      dateModified: page._updatedAt,
+      author: {
+        name: siteSettings.siteTitle || '07:17 Records',
+        type: 'Organization',
+      },
+      publisher: organizationData,
+      url: `${baseUrl}/${slug}`,
+    });
+  }
+
   return (
     <>
+      {/* Structured Data */}
+      <BreadcrumbStructuredData items={breadcrumbItems} />
+      {articleSchema && (
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={generateStructuredDataScript(articleSchema)}
+        />
+      )}
+
       {/* Page Hero */}
       <PageHero
         title={page.title || 'Untitled Page'}

@@ -12,6 +12,12 @@ import { urlFor } from '@/sanity/lib/image';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 import { blogHeaderBottomSpacing, closingCardSpacing } from '@/utils/spacingConstants';
 import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
+import {
+  generateBlogPostSchema,
+  getOrganizationDataFromSiteSettings,
+  generateStructuredDataScript
+} from '@/lib/structuredData';
+import BreadcrumbStructuredData from '@/components/StructuredData/BreadcrumbStructuredData';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -64,16 +70,60 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const [post, companyLinks] = await Promise.all([getBlogPostBySlug(slug), getCompanyLinks()]);
+  const [post, companyLinks, siteSettings] = await Promise.all([
+    getBlogPostBySlug(slug),
+    getCompanyLinks(),
+    getSiteSettings()
+  ]);
 
   if (!post) {
     notFound();
   }
 
   const formattedDate = formatBlogDate(post._createdAt, post.overrideDate, post.hasOverrideDate);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://0717records.com';
+
+  // Generate breadcrumb data
+  const breadcrumbItems = [
+    { name: 'Home', url: baseUrl },
+    { name: 'Blog', url: `${baseUrl}/blog` },
+    { name: post.title || 'Blog Post', url: `${baseUrl}/blog/${slug}` },
+  ];
+
+  // Generate BlogPosting structured data
+  let blogPostSchema;
+  if (siteSettings) {
+    const publishDate = post.hasOverrideDate && post.overrideDate ? post.overrideDate : post._createdAt;
+    const modifiedDate = post._updatedAt;
+
+    const organizationData = getOrganizationDataFromSiteSettings(siteSettings, baseUrl);
+
+    blogPostSchema = generateBlogPostSchema({
+      headline: post.title || 'Blog Post',
+      description: post.subtitle || undefined,
+      image: post.mainImage ? urlFor(post.mainImage).width(1200).height(630).url() : undefined,
+      datePublished: publishDate,
+      dateModified: modifiedDate,
+      author: {
+        name: post.author || siteSettings.siteTitle || '07:17 Records',
+        type: 'Person',
+      },
+      publisher: organizationData,
+      url: `${baseUrl}/blog/${slug}`,
+    });
+  }
 
   return (
     <>
+      {/* Structured Data */}
+      <BreadcrumbStructuredData items={breadcrumbItems} />
+      {blogPostSchema && (
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={generateStructuredDataScript(blogPostSchema)}
+        />
+      )}
+
       {/* Page Hero - No title, back to blog */}
       <PageHero
         heroImage={post.blogIndexHeroImage || '/images/hero-bg/hero-bg-option7-2.webp'}

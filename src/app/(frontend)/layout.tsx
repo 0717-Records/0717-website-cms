@@ -13,6 +13,13 @@ import { getHeader, getFooter, getSiteSettings, getCompanyLinks } from '@/action
 import { SiteDataProvider } from '@/contexts/SiteDataContext';
 import { PageLoadProvider } from '@/contexts/PageLoadContext';
 import { generateMetadata as generateDefaultMetadata } from '@/lib/metadata';
+import {
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+  getOrganizationDataFromSiteSettings,
+  getWebSiteDataFromSiteSettings,
+  generateStructuredDataScript
+} from '@/lib/structuredData';
 
 const signika = Signika({ subsets: ['latin'] });
 
@@ -41,11 +48,40 @@ const FrontendLayout = async ({
   const siteSettingsData = await getSiteSettings();
   const companyLinksData = await getCompanyLinks();
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://0717records.com';
+
+  // Generate structured data if site settings are available
+  let organizationSchema;
+  let webSiteSchema;
+
+  if (siteSettingsData) {
+    const organizationData = getOrganizationDataFromSiteSettings(siteSettingsData, baseUrl);
+    const webSiteData = getWebSiteDataFromSiteSettings(siteSettingsData, baseUrl);
+
+    organizationSchema = generateOrganizationSchema(organizationData);
+    webSiteSchema = generateWebSiteSchema(webSiteData);
+  }
+
   return (
     <PageLoadProvider>
       <SiteDataProvider companyEmail={siteSettingsData?.companyEmail || undefined}>
         <NavigationScroll />
         <PageReadyTrigger />
+
+        {/* Structured Data */}
+        {organizationSchema && (
+          <script
+            type='application/ld+json'
+            dangerouslySetInnerHTML={generateStructuredDataScript(organizationSchema)}
+          />
+        )}
+        {webSiteSchema && (
+          <script
+            type='application/ld+json'
+            dangerouslySetInnerHTML={generateStructuredDataScript(webSiteSchema)}
+          />
+        )}
+
         <div className={`min-h-screen flex flex-col ${signika.className} font-variant-small-caps`}>
           <Header headerData={headerData} />
           <main id='main-content' className='flex-1'>

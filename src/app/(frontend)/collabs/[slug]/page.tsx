@@ -10,6 +10,7 @@ import PageHero from '@/components/Page/PageHero';
 import Container from '@/components/Layout/Container';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
 import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
+import BreadcrumbStructuredData from '@/components/StructuredData/BreadcrumbStructuredData';
 
 interface CollabSlug {
   slug: string;
@@ -64,8 +65,20 @@ export default async function CollabPage({ params }: CollabPageProps) {
   const companyEmail = siteSettings?.companyEmail || undefined;
   // Company links are now handled separately in the layout
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://0717records.com';
+
+  // Generate breadcrumb data
+  const breadcrumbItems = [
+    { name: 'Home', url: baseUrl },
+    { name: 'Collaborations', url: `${baseUrl}/collabs` },
+    { name: collab.name || 'Collaboration', url: `${baseUrl}/collabs/${slug}` },
+  ];
+
   return (
     <>
+      {/* Structured Data */}
+      <BreadcrumbStructuredData items={breadcrumbItems} />
+
       {/* Hero Section */}
       <PageHero
         title={collab.name}
