@@ -201,6 +201,12 @@ The `UnifiedImage` component (`@/components/UI/UnifiedImage`) automatically hand
 - `generateSchema={true}`: Adds ImageObject structured data
 - `schemaContext="blog|article|gallery|profile"`: Context for schema generation
 
+**IMPORTANT: Schema markup is required for all featured/content images for SEO:**
+- **Blog images**: Use `generateSchema schemaContext="blog"`
+- **Content/article images**: Use `generateSchema schemaContext="article"`
+- **Gallery images**: Use `generateSchema schemaContext="gallery"`
+- **Profile/user images**: Use `generateSchema schemaContext="profile"`
+
 ### Advanced Usage
 
 #### Custom Display Sizes
@@ -258,6 +264,21 @@ const validImages = images?.filter(item => item.image?.asset?._ref) || [];
 - **Optimal Sanity requests**: Automatically calculates best image dimensions
 - **Built-in Next.js optimization**: Proper `sizes`, `priority`, and responsive handling
 - **Consistent quality settings**: Optimal quality for each context
+
+### Maintenance Requirements
+**CRITICAL: When adding new image components, you MUST:**
+
+1. **Use UnifiedImage instead of Next.js Image** - Never use native `next/image` directly
+2. **Add schema markup for content images** - Use `generateSchema={true}` with appropriate `schemaContext`
+3. **Choose appropriate size context** - Use predefined contexts (icon, thumbnail, card, gallery, hero, full) for optimal sizing
+4. **Provide meaningful alt text** - Essential for accessibility and SEO
+5. **Add proper sizes prop** - For responsive images, especially with `mode="fill"`
+
+**Schema markup is required for:**
+- Featured images (blog posts, articles, events)
+- Gallery images and collections
+- Profile/author images
+- Content images within rich text
 
 ## SEO Sitemap Maintenance
 **CRITICAL: When adding new document types or routes, the sitemap must be updated to maintain SEO.**
