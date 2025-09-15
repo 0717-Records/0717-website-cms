@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
-import Image from 'next/image';
+import UnifiedImage from '@/components/UI/UnifiedImage';
 
 interface LoadingOverlayProps {
   isLoading?: boolean;
@@ -37,11 +37,15 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ isLoading = false }) =>
     <>
       <div className='h-screen'>
         <div className='fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[75%] h-[75%] sm:w-[500px] sm:h-[500px]'>
-          <Image
-            src={'/images/logo-black-on-transparent.png'}
+          <UnifiedImage
+            src='/images/logo-black-on-transparent.png'
             alt='07:17 Records Logo'
-            fill
-            className={`object-contain drop-shadow-lg drop-shadow-black/40 opacity-30`}
+            mode="fill"
+            sizeContext="hero"
+            objectFit="contain"
+            fillContainer={true}
+            sizes="(max-width: 640px) 75vw, 500px"
+            className="drop-shadow-lg drop-shadow-black/40 opacity-30"
           />
         </div>
       </div>
