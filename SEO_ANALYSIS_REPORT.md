@@ -39,7 +39,7 @@ Based on extremely detailed analysis of the 07:17 Records website staging enviro
 
 ## **SCHEMA MARKUP DEFICIENCIES**
 
-### 4. **No Structured Data Implementation**
+### 4. **.[DONE] No Structured Data Implementation**
 
 - **Issue**: Zero JSON-LD schema markup across the site
 - **Missing Schemas**:
@@ -56,7 +56,7 @@ Based on extremely detailed analysis of the 07:17 Records website staging enviro
 
 ## **TECHNICAL SEO CONFIGURATION ISSUES**
 
-### 5. **Inconsistent Base URL Configuration**
+### 5. ** [IGNORE] Inconsistent Base URL Configuration**
 
 - **Issue**: `.env.local` shows `NEXT_PUBLIC_BASE_URL="http://localhost:3000"` but server runs on port 3001
 - **Impact**: Potential metadata URL issues
