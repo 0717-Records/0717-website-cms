@@ -171,6 +171,105 @@ The XML sitemap is generated dynamically at `/sitemap.xml` using the route handl
 
 **Failure to update the sitemap when adding new content types will result in poor SEO performance and content discovery issues.**
 
+## SEO Implementation Maintenance
+**CRITICAL: All SEO features must be maintained when making structural changes to the website.**
+
+### Implemented SEO Features
+The website has comprehensive SEO implementation including:
+- **XML Sitemap** (`/sitemap.xml`) - Dynamically generated
+- **Robots.txt** (`/robots.txt`) - Static configuration
+- **Breadcrumbs** - Dynamic navigation aids
+- **Canonical URLs** - Prevents duplicate content issues
+- **Structured Data (JSON-LD)** - Rich snippets for search engines
+
+### Breadcrumb Maintenance
+**Location**: `src/components/ui/Breadcrumb.tsx`
+
+**MUST update breadcrumbs when:**
+1. **Adding new page types** or content types
+2. **Changing URL structure** or routing patterns
+3. **Adding nested navigation** or hierarchical content
+4. **Modifying page titles** or display names
+
+**How to update breadcrumbs:**
+1. Add new route patterns to the breadcrumb mapping logic
+2. Ensure proper parent-child relationships for nested pages
+3. Update the breadcrumb generation for new content types
+4. Test breadcrumb paths match actual navigation structure
+
+### Canonical URL Maintenance
+**Location**: Meta tags in page components and layout files
+
+**MUST update canonical URLs when:**
+1. **Changing domain** or subdomain structure
+2. **Modifying URL patterns** for existing content types
+3. **Adding URL parameters** that should be canonicalized
+4. **Implementing URL redirects** or aliases
+
+**How to maintain canonical URLs:**
+1. Ensure all pages have proper canonical meta tags
+2. Use absolute URLs (including domain)
+3. Point to the preferred version of duplicate content
+4. Update the canonical URL generation logic for new page types
+
+### Structured Data (JSON-LD) Maintenance
+**Location**: Various page components with structured data scripts
+
+**MUST update structured data when:**
+1. **Adding new content types** (Article, Event, Organization, etc.)
+2. **Changing content structure** or available fields
+3. **Adding new schema.org types** for rich snippets
+4. **Modifying business information** (contact, address, etc.)
+
+**How to update structured data:**
+1. **For new content types**: Add appropriate schema.org JSON-LD scripts
+2. **For content changes**: Update existing structured data to match new fields
+3. **For business info**: Update Organization schema across all pages
+4. **Validation**: Test with Google's Rich Results Test tool
+
+**Common structured data types to maintain:**
+- **WebSite** - Homepage search box and site info
+- **Organization** - Business details and contact info
+- **Article** - Blog posts and content pages
+- **Event** - Event listings and details
+- **BreadcrumbList** - Navigation breadcrumbs
+- **WebPage** - General page information
+
+### Robots.txt Maintenance
+**Location**: `src/app/robots.txt/route.ts`
+
+**MUST update robots.txt when:**
+1. **Adding admin/private sections** that should be blocked
+2. **Changing sitemap URL** or adding new sitemaps
+3. **Adding crawl directives** for specific user agents
+4. **Blocking specific URL patterns** or directories
+
+**How to update robots.txt:**
+1. Add new Disallow rules for private content
+2. Update sitemap references if sitemap location changes
+3. Add specific crawl rules for different bots if needed
+4. Test that important content is not accidentally blocked
+
+### SEO Testing Checklist
+**After making changes that affect SEO, ALWAYS verify:**
+
+1. **Sitemap validation**: Visit `/sitemap.xml` and ensure new content appears
+2. **Robots.txt check**: Visit `/robots.txt` and verify directives are correct
+3. **Breadcrumb testing**: Navigate through pages and check breadcrumb accuracy
+4. **Canonical URL verification**: View page source and confirm canonical tags
+5. **Structured data validation**: Use Google's Rich Results Test
+6. **Mobile-friendly test**: Ensure responsive design maintains SEO benefits
+
+### SEO Impact Assessment
+**Before making these changes, consider SEO impact:**
+- **URL structure changes**: May affect existing search rankings
+- **Content type additions**: Require comprehensive SEO implementation
+- **Navigation changes**: Must be reflected in breadcrumbs and structured data
+- **Meta tag modifications**: Could affect search result appearance
+- **Schema changes**: May break existing structured data
+
+**Always test SEO changes in staging environment before production deployment.**
+
 ## General Development Guidelines
 - Follow existing code patterns and conventions
 - Ensure proper TypeScript types are maintained
