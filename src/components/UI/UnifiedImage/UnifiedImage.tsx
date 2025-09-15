@@ -348,7 +348,7 @@ const UnifiedImage: React.FC<UnifiedImageProps> = ({
           <button
             onClick={handleOpenModal}
             className={`cursor-pointer border-none bg-transparent p-0 block ${
-              mode === 'fill' ? 'w-full h-full' : ''
+              mode === 'fill' ? 'w-full h-full' : 'w-full'
             }`}
             aria-label={`View full-screen image: ${imageAlt}`}
           >
