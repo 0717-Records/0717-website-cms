@@ -31,7 +31,7 @@ const Image: React.FC<ImageProps> = ({
         return 'w-full md:w-1/2 mx-auto';
       case 'full':
       default:
-        return 'w-full';
+        return 'w-full mx-auto';
     }
   };
 

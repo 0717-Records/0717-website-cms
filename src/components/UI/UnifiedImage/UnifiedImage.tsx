@@ -343,7 +343,7 @@ const UnifiedImage: React.FC<UnifiedImageProps> = ({
       )}
 
       {/* Image element */}
-      <div {...sanityDataAttribute} className={mode === 'fill' && fillContainer ? 'relative w-full h-full' : mode === 'fill' ? 'absolute inset-0' : undefined}>
+      <div {...sanityDataAttribute} className={mode === 'fill' && fillContainer ? 'relative w-full h-full' : mode === 'fill' ? 'absolute inset-0' : 'flex justify-center'}>
         {enableModal ? (
           <button
             onClick={handleOpenModal}
