@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { FaLocationDot } from 'react-icons/fa6';
 import { formatEventDate, getEventLink } from '@/components/Events/eventUtils';
 import EventImage from '@/components/Events/EventImage';
+import { generateEventSchema, generateStructuredDataScript, type EventData } from '@/lib/structuredData';
 
 interface EventCardProps {
   title: string;
@@ -18,12 +19,15 @@ interface EventCardProps {
   pastEventLinkBehavior: 'keep' | 'change' | 'remove';
   pastEventLink?: string | null;
   isPast: boolean;
+  // Optional schema generation props
+  generateSchema?: boolean;
+  baseUrl?: string;
 }
 
 const EventCard = (props: EventCardProps) => {
   const {
     title,
-    // shortDescription,
+    shortDescription,
     venue,
     location,
     image,
@@ -33,6 +37,8 @@ const EventCard = (props: EventCardProps) => {
     timeDescription,
     pastEventText,
     isPast,
+    generateSchema = false,
+    baseUrl = 'https://0717records.com',
   } = props;
 
   const { dateDisplay, timeDisplay } = formatEventDate(startDate, endDate, timeDescription);
@@ -43,6 +49,34 @@ const EventCard = (props: EventCardProps) => {
     pastEventLink: props.pastEventLink,
   });
   const hasLink = Boolean(eventLink);
+
+  // Generate Event schema with location data
+  const eventSchema = useMemo(() => {
+    if (!generateSchema) return null;
+
+    // Create organization data directly for events
+    const organizationData = {
+      name: '07:17 Records',
+      url: baseUrl,
+      description: 'Independent Record Label',
+    };
+
+    const eventData: EventData = {
+      name: title,
+      description: shortDescription || `Event at ${venue ? `${venue}, ${location}` : location}`,
+      startDate: new Date(startDate).toISOString(),
+      ...(endDate && { endDate: new Date(endDate).toISOString() }),
+      location: {
+        name: venue || location,
+        address: venue ? `${venue}, ${location}` : location,
+      },
+      ...(image && { image }),
+      url: eventLink || baseUrl,
+      organizer: organizationData,
+    };
+
+    return generateEventSchema(eventData);
+  }, [generateSchema, title, shortDescription, venue, location, startDate, endDate, image, eventLink, baseUrl]);
 
   const cardContent = (
     <div
@@ -118,19 +152,39 @@ const EventCard = (props: EventCardProps) => {
   // If there's a link, wrap the entire card in an anchor tag
   if (hasLink && eventLink) {
     return (
-      <a
-        href={eventLink}
-        target='_blank'
-        rel='noopener noreferrer'
-        className='block w-full h-full text-inherit no-underline'
-        aria-label={`View details for ${title} event`}>
-        {cardContent}
-      </a>
+      <>
+        {/* Event Schema Markup */}
+        {eventSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={generateStructuredDataScript(eventSchema)}
+          />
+        )}
+        <a
+          href={eventLink}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='block w-full h-full text-inherit no-underline'
+          aria-label={`View details for ${title} event`}>
+          {cardContent}
+        </a>
+      </>
     );
   }
 
   // If no link, return the card content directly
-  return cardContent;
+  return (
+    <>
+      {/* Event Schema Markup */}
+      {eventSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={generateStructuredDataScript(eventSchema)}
+        />
+      )}
+      {cardContent}
+    </>
+  );
 };
 
 export default EventCard;

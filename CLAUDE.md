@@ -280,6 +280,51 @@ const validImages = images?.filter(item => item.image?.asset?._ref) || [];
 - Profile/author images
 - Content images within rich text
 
+## Event Schema Maintenance
+**CRITICAL: All event components must include location-specific schema markup for local SEO.**
+
+### Event Schema Implementation
+The website includes comprehensive Event schema markup with Place/location data using `src/lib/structuredData.ts`. Event schema generation is enabled in:
+
+- **EventCard component** - Individual event cards with full location data
+- **EventList component** - Event listing pages (passes through to EventCard)
+- **EventBlock component** - Event blocks in page content
+
+### Usage Requirements
+**IMPORTANT: When displaying events, you MUST enable schema generation:**
+
+```typescript
+// Event pages (like /events)
+<EventList
+  events={events}
+  filter="upcoming"
+  generateSchema={true}
+  baseUrl={baseUrl}
+  noEventsText="No events message"
+/>
+
+// Event blocks in page content
+<EventBlock
+  events={events}
+  maxEvents={6}
+  generateSchema={true}
+  baseUrl={baseUrl}
+/>
+```
+
+### Location Schema Benefits
+Event schema automatically generates:
+- **Event structured data** with start/end dates
+- **Place schema** for venue and location information
+- **Organization schema** for event organizer (07:17 Records)
+- **Local SEO benefits** for location-based searches
+
+**Generated schema includes:**
+- Event name, description, dates
+- Venue name and full address
+- Event URL and organizer details
+- Proper schema.org Event and Place markup
+
 ## SEO Sitemap Maintenance
 **CRITICAL: When adding new document types or routes, the sitemap must be updated to maintain SEO.**
 

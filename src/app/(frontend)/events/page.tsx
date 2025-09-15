@@ -37,6 +37,7 @@ export default async function EventsPage() {
     getEventsIndexPage(), // CMS page data
   ]);
   const allEvents = transformEvents(rawEvents);
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://0717records.com';
   // const allEvents = (await getEvents()) as TransformedEvent[]; // Test JSON data - uncomment for testing
 
   return (
@@ -65,6 +66,8 @@ export default async function EventsPage() {
               eventsIndexPage?.noUpcomingEventsMessage ||
               'No upcoming events at the moment. Check back soon!'
             }
+            generateSchema={true}
+            baseUrl={baseUrl}
           />
 
           {/* Events Message Card */}
@@ -87,6 +90,8 @@ export default async function EventsPage() {
             events={allEvents}
             filter='past'
             noEventsText={eventsIndexPage?.noPastEventsMessage || 'No past events to display yet.'}
+            generateSchema={true}
+            baseUrl={baseUrl}
           />
         </PageSection>
       </Container>

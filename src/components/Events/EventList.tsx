@@ -22,6 +22,9 @@ interface EventListProps {
   filter: 'all' | 'upcoming' | 'past';
   limit?: number;
   noEventsText: string;
+  // Optional schema generation props
+  generateSchema?: boolean;
+  baseUrl?: string;
 }
 
 function isEventPast(event: Event): boolean {
@@ -40,7 +43,7 @@ function isEventPast(event: Event): boolean {
   return nowInNZ >= dayAfterEvent;
 }
 
-const EventList = ({ events, filter, limit, noEventsText }: EventListProps) => {
+const EventList = ({ events, filter, limit, noEventsText, generateSchema = false, baseUrl }: EventListProps) => {
   // Filter events based on the filter prop
   let filteredEvents: Event[] = [];
 
@@ -91,7 +94,7 @@ const EventList = ({ events, filter, limit, noEventsText }: EventListProps) => {
         <div
           key={`${filter}-${event.title}-${index}`}
           className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] flex'>
-          <EventCard {...event} isPast={isEventPast(event)} />
+          <EventCard {...event} isPast={isEventPast(event)} generateSchema={generateSchema} baseUrl={baseUrl} />
         </div>
       ))}
     </div>

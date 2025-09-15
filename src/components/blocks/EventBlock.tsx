@@ -7,9 +7,12 @@ import { transformEvents } from '@/utils/transformEvents';
 interface EventBlockProps {
   maxEvents?: number;
   events: EVENTS_QUERYResult;
+  // Optional schema generation props
+  generateSchema?: boolean;
+  baseUrl?: string;
 }
 
-const EventBlock = ({ maxEvents = 6, events }: EventBlockProps) => {
+const EventBlock = ({ maxEvents = 6, events, generateSchema = false, baseUrl }: EventBlockProps) => {
   // Transform Sanity data to EventList format
   const transformedEvents = transformEvents(events);
 
@@ -20,6 +23,8 @@ const EventBlock = ({ maxEvents = 6, events }: EventBlockProps) => {
         filter='all'
         limit={maxEvents}
         noEventsText='No events at the moment. Check back soon!'
+        generateSchema={generateSchema}
+        baseUrl={baseUrl}
       />
 
       {/* CTA Link to view all events */}
