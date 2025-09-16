@@ -173,6 +173,97 @@ The `UnifiedImage` component (`@/components/UI/UnifiedImage`) automatically hand
 />
 ```
 
+### CRITICAL: Image Implementation Error Prevention
+
+**ALWAYS follow these patterns to avoid Next.js Image errors:**
+
+#### ✅ CORRECT: Sized Mode Pattern (Preferred for most cases)
+```typescript
+// Use for logos, content images, cards - any image where you want responsive sizing
+<UnifiedImage
+  src={image}
+  alt="Description"
+  mode="sized"
+  width={1200}          // Explicit width for Next.js optimization
+  height={800}          // Explicit height for Next.js optimization
+  sizeContext="full"    // Or appropriate context
+  objectFit="cover"
+  className="w-full h-auto rounded-lg"  // REQUIRED: w-full h-auto for responsive
+  enableModal
+  generateSchema
+  schemaContext="article"
+/>
+```
+
+#### ✅ CORRECT: Fill Mode Pattern (For constrained containers only)
+```typescript
+// Use ONLY when you have a container with defined dimensions
+<div className="relative w-full aspect-[4/3] overflow-hidden">
+  <UnifiedImage
+    src={image}
+    alt="Description"
+    mode="fill"
+    sizeContext="gallery"
+    objectFit="cover"
+    fillContainer={true}  // Default - creates relative positioning
+    sizes="(max-width: 768px) 100vw, 50vw"
+    enableModal
+  />
+</div>
+```
+
+#### ❌ WRONG: Common Patterns That Cause Errors
+
+**Never do this - causes aspect ratio warnings:**
+```typescript
+// ❌ WRONG: Sized mode without proper className
+<UnifiedImage
+  mode="sized"
+  width={800}
+  height={600}
+  className="w-full"  // Missing h-auto
+/>
+
+// ❌ WRONG: Fill mode without proper container
+<UnifiedImage
+  mode="fill"  // No relative positioned parent
+/>
+
+// ❌ WRONG: fillContainer=false without absolute positioned parent
+<div className="static">  // Should be relative
+  <UnifiedImage
+    mode="fill"
+    fillContainer={false}
+  />
+</div>
+```
+
+#### Mode Selection Guidelines
+
+**Use `mode="sized"`** when:
+- Logo images (Header, Footer, Navigation)
+- Content images in articles/blogs
+- Card images that need responsive sizing
+- Any image that should scale with container width
+
+**Use `mode="fill"`** when:
+- Hero background images
+- Gallery thumbnails in fixed-size grids
+- Images in containers with specific aspect ratios
+- You have a container with defined dimensions (relative w-full h-full)
+
+#### Mandatory Props for Each Mode
+
+**For `mode="sized"` (ALWAYS include these):**
+- `width` and `height` - Explicit dimensions for Next.js
+- `className="w-full h-auto"` - Responsive scaling
+- `sizeContext` - Appropriate size context
+
+**For `mode="fill"` (ALWAYS include these):**
+- Parent container with `relative` positioning
+- `sizes` prop for responsive images
+- `fillContainer={true}` (default) or proper absolute positioning setup
+
 ### Key Props
 
 #### Size Context (Automatic Optimization)

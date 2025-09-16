@@ -48,16 +48,15 @@ const Image: React.FC<ImageProps> = ({
         src={image}
         alt="Content image"
         mode="sized"
-        width={800}
-        height={600}
+        width={1200}
+        height={800}
         sizeContext="full"
         objectFit="cover"
         enableModal
         modalCaption={cleanCaption}
         generateSchema
         schemaContext="article"
-        rounded
-        className="w-full h-auto"
+        className="w-full h-auto rounded-lg"
         documentId={documentId}
         documentType={documentType}
         fieldPath={pathPrefix ? `${pathPrefix}.image` : 'image'}
