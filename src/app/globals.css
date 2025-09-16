@@ -1,5 +1,18 @@
 @import 'tailwindcss';
 
+/*
+  ⚠️  CRITICAL CSS DUPLICATION WARNING ⚠️
+
+  Some styles in this file are duplicated in src/app/layout.tsx as inline critical CSS
+  for performance optimization (faster LCP, reduced render blocking).
+
+  When changing these values, update BOTH locations:
+  1. This file (globals.css) - for full styling and consistency
+  2. src/app/layout.tsx inline styles - for critical performance CSS
+
+  Affected styles: brand colors, typography, layout positioning, scroll padding
+*/
+
 /* Brand Colors and Typography System - Tailwind v4 */
 @theme {
   --color-brand-primary: #ffea00;

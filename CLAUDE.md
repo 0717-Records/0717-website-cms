@@ -578,6 +578,57 @@ The website has comprehensive SEO implementation including:
 
 **Always test SEO changes in staging environment before production deployment.**
 
+## Critical CSS Performance Optimization
+
+**CRITICAL: This project uses intentional CSS duplication for performance optimization.**
+
+### Overview
+The website implements critical CSS inlining in `src/app/layout.tsx` to improve Core Web Vitals and reduce render-blocking. This creates **intentional duplication** between two files that must be kept in sync.
+
+### Files with Duplicated Styles
+
+**Primary styles:** `src/app/globals.css`
+**Critical inline styles:** `src/app/layout.tsx` (in `<style>` tag)
+
+### Maintenance Requirements
+
+**When modifying these style categories, update BOTH files:**
+
+1. **Brand colors** (`--color-brand-primary`, `--color-brand-secondary`, etc.)
+2. **Typography** (`text-body-base`, heading sizes, line heights)
+3. **Layout positioning** (`scroll-padding-top`, header positioning)
+4. **Critical spacing** (margins, padding for above-the-fold content)
+5. **Interactive elements** (button styles, hover states)
+
+### Why This Pattern Exists
+
+- **Performance**: Critical styles load immediately, preventing render blocking
+- **LCP optimization**: Above-the-fold content renders faster
+- **Core Web Vitals**: Reduces Largest Contentful Paint and Cumulative Layout Shift
+- **User experience**: Prevents Flash of Unstyled Content (FOUC)
+
+### Warning System
+
+Both files contain prominent warnings with ⚠️ symbols:
+- `globals.css` - Warning at the top of the file
+- `layout.tsx` - Warning before the inline `<style>` tag
+
+### Best Practices
+
+1. **Always check both files** when making style changes
+2. **Test performance impact** after modifications
+3. **Keep critical CSS minimal** - only above-the-fold essentials
+4. **Update cross-references** if file locations change
+5. **Document new duplications** if adding critical styles
+
+### Alternative Approaches Considered
+
+- **CSS-in-JS critical extraction**: More complex, harder to maintain
+- **Build-time critical CSS tools**: Additional build complexity
+- **No critical CSS**: Worse Core Web Vitals scores
+
+**The current approach prioritizes maintainability while achieving performance goals.**
+
 ## General Development Guidelines
 - Follow existing code patterns and conventions
 - Ensure proper TypeScript types are maintained
