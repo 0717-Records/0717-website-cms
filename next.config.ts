@@ -11,15 +11,18 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // CSS optimization
-  experimental: {
-    optimizeCss: true,
-    cssChunking: 'strict',
-  },
-
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+  // Modern JavaScript - reduce polyfills for better performance
+  transpilePackages: [],
+
+  // CSS and JavaScript optimization
+  experimental: {
+    optimizeCss: true,
+    cssChunking: 'strict',
   },
 
   // Bundle optimization

@@ -25,6 +25,16 @@
     "sanity": "^3.99.0",
     "styled-components": "^6.1.19"
   },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions",
+    ">0.2%",
+    "not dead",
+    "not IE 11",
+    "not op_mini all"
+  ],
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
