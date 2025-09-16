@@ -1,5 +1,12 @@
 import React from 'react';
+import { Signika } from 'next/font/google';
 import '@/app/globals.css';
+
+const signika = Signika({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+});
 
 const RootLayout = ({
   children,
@@ -30,7 +37,7 @@ const RootLayout = ({
           }}
         />
       </head>
-      <body className='text-body-base bg-gray-50'>{children}</body>
+      <body className={`${signika.className} text-body-base bg-gray-50`}>{children}</body>
     </html>
   );
 };
