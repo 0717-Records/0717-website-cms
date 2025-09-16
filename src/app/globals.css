@@ -29,7 +29,7 @@
   );
 
   /* Typography Scale System */
-  --font-scale-base: 1.2rem; /* WARNING: if changing this please change the same in BodyTextPreview.tsx */
+  --font-scale-base: 1rem; /* WARNING: if changing this please change the same in BodyTextPreview.tsx */
 }
 
 /* Base styles */

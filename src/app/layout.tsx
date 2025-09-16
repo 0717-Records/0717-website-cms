@@ -60,7 +60,7 @@ const RootLayout = ({
 
             /* Essential typography for LCP */
             .text-body-base {
-              font-size: 1.2rem;
+              font-size: 1.125rem;
               line-height: 1.75;
             }
 

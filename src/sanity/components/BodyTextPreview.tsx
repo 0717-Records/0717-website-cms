@@ -25,8 +25,8 @@ interface BodyTextPreviewProps extends BlockStyleProps {
 
 const BodyTextPreview = ({ children, value }: BodyTextPreviewProps) => {
   // ⚠️ This base scale must match --font-scale-base in src/app/globals.css
-  // Currently set to 1.1rem in globals.css
-  const FONT_SCALE_BASE = 1.2; // rem equivalent (1.1rem = 1.1 * 16px = 17.6px)
+  // Currently set to 1rem in globals.css
+  const FONT_SCALE_BASE = 1.0; // rem equivalent (1rem = 1.0 * 16px = 16px)
   const BASE_PX = 16; // Default browser font size
   const SCALE_PX = FONT_SCALE_BASE * BASE_PX;
 
