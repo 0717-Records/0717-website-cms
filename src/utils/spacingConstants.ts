@@ -58,3 +58,8 @@ export const subSectionTitleBottomSpacing = 'mb-4 md:mb-6';
  * Space above and below closing cards on all pages
  */
 export const closingCardSpacing = 'mt-16 md:mt-24';
+
+/**
+ * Max width for card like components (e.g. Cards, CTA Events, CTA Blog Posts etc)
+ */
+export const maxCardWidth = 'max-w-[650px]';

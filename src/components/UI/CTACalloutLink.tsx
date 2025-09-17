@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaArrowRight, FaExternalLinkAlt } from 'react-icons/fa';
+import { maxCardWidth } from '@/utils/spacingConstants';
 
 type CTACalloutLinkProps = {
   heading?: string;
@@ -48,7 +49,7 @@ const CTACalloutLink = ({
         sm:py-6 
         sm:px-8 
         w-full 
-        md:max-w-[650px] 
+        ${maxCardWidth}  
         m-auto  
         hover:bg-brand-secondary/15 
         hover:border-brand-secondary/30

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { FaUser, FaCalendar } from 'react-icons/fa6';
 import UnifiedImage from '@/components/UI/UnifiedImage';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { maxCardWidth } from '@/utils/spacingConstants';
 
 // Interface that matches the dereferenced blog post data from GROQ queries
 interface DereferencedBlogPost {
@@ -69,15 +70,16 @@ const CTABlogPost = ({ blogPost, className = '' }: CTABlogPostProps) => {
   const blogPostUrl = slug?.current ? `/blog/${slug.current}` : '#';
 
   const cardContent = (
-    <div className='w-full bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group text-left'>
+    <div
+      className={`${maxCardWidth} mx-auto bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer group text-left`}>
       {/* Blog Post Image - Mobile: full width on top, Desktop: left side with 4:3 aspect ratio */}
-      <div className='relative w-full md:w-1/3 aspect-[4/3] bg-gray-900 overflow-hidden flex-shrink-0'>
+      <div className='relative w-full md:w-5/12 aspect-[4/3] bg-gray-900 overflow-hidden flex-shrink-0'>
         <UnifiedImage
           src={mainImage}
           alt={imageAlt}
-          mode="fill"
-          sizeContext="card"
-          objectFit="cover"
+          mode='fill'
+          sizeContext='card'
+          objectFit='cover'
           sizes='(max-width: 768px) 100vw, 33vw'
           className='transition-all duration-300'
           priority

@@ -78,7 +78,7 @@ const Card = (props: CardProps) => {
         {/* CTA Buttons */}
         {ctaList && ctaList.length > 0 && (
           <div
-            className='pt-2'
+            className='pt-6'
             {...createSanityDataAttribute(documentId, documentType, getFieldPath('ctaList'))}>
             <CTAList ctaList={ctaList} alignment='flex-col' />
           </div>

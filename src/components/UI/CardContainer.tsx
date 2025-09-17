@@ -1,3 +1,4 @@
+import { maxCardWidth } from '@/utils/spacingConstants';
 import React from 'react';
 
 interface CardContainerProps {
@@ -18,10 +19,11 @@ const CardContainer = ({ children, className = '', isGridChild = false }: CardCo
         flex-col 
         items-center 
         text-center 
-        ${!isGridChild ? 'max-w-[800px] mx-auto' : ''}
+        ${maxCardWidth} 
+        ${!isGridChild ? 'mx-auto' : ''}
         ${className}
       `.trim()}>
-      <div className='w-full space-y-4'>{children}</div>
+      <div className='w-full'>{children}</div>
     </div>
   );
 };

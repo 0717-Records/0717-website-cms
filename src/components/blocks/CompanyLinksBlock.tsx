@@ -59,7 +59,7 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
   return (
     <div className='w-full'>
       <div
-        className='flex flex-wrap justify-center gap-6 md:gap-8'
+        className='flex flex-wrap justify-center gap-4'
         data-sanity={createDataAttribute({
           ...createDataAttributeConfig,
           id: 'companyLinks',
@@ -81,13 +81,13 @@ const CompanyLinksBlock: React.FC<CompanyLinksBlockProps> = ({ companyLinks }) =
               href={link.url}
               target='_blank'
               rel='noopener noreferrer'
-              className='group flex flex-col items-center gap-3 shadow-sm border border-gray-200 p-4 rounded-2xl bg-white transition-all duration-200 hover:scale-105 flex-shrink-0 w-[95px]'
+              className='group flex flex-col items-center gap-3 shadow-sm border border-gray-200 px-2 py-4 rounded-2xl bg-white transition-all duration-200 hover:scale-105 flex-shrink-0 w-[95px]'
               data-sanity={dataAttribute}>
               {/* Icon Circle */}
               <div className='w-16 h-16 rounded-full bg-brand-gradient flex items-center justify-center'>
                 <SocialIcon
                   platform={link.platform}
-                  className='text-black text-body-3xl transition-transform duration-200 group-hover:scale-110'
+                  className='text-black text-body-4xl md:text-body-3xl transition-transform duration-200 group-hover:scale-110'
                 />
               </div>
 

@@ -3,6 +3,7 @@ import { urlFor } from '@/sanity/lib/image';
 import { formatEventDate, getEventLink, isEventPast } from '@/components/Events/eventUtils';
 import EventImage from '@/components/Events/EventImage';
 import { FaLocationDot } from 'react-icons/fa6';
+import { maxCardWidth } from '@/utils/spacingConstants';
 
 // Interface that matches the dereferenced event data from GROQ queries
 interface DereferencedEvent {
@@ -88,11 +89,11 @@ const CTAEvent = ({ event, className = '' }: CTAEventProps) => {
 
   const cardContent = (
     <div
-      className={`mx-auto md:max-w-[650px] bg-white rounded-lg shadow-lg overflow-hidden flex flex-row gap-2 sm:gap-4 transition-all duration-300 ${
+      className={`mx-auto ${maxCardWidth} bg-white rounded-lg shadow-lg overflow-hidden flex flex-row gap-2 sm:gap-4 transition-all duration-300 ${
         hasLink ? 'group hover:shadow-xl hover:scale-103 cursor-pointer' : ''
       }`}>
       {/* Event Poster - Mobile layout always (1/3 width) */}
-      <div className='relative w-1/4 aspect-[724/1024] bg-gray-900 overflow-hidden flex-shrink-0'>
+      <div className='relative w-2/5 md:w-1/4 aspect-[724/1024] bg-gray-900 overflow-hidden flex-shrink-0'>
         <EventImage
           image={processedImage}
           title={title}
