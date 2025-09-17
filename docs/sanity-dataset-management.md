@@ -5,6 +5,7 @@ This guide covers how to backup, export, and sync data between Sanity datasets (
 ## Quick Reference
 
 ### Export Dataset to File
+
 ```bash
 # Export production to compressed backup
 npx sanity dataset export production backup-production.tar.gz
@@ -20,17 +21,19 @@ npx sanity dataset export production backup-production.tar.gz --no-assets
 ```
 
 ### Import Data into Dataset
+
 ```bash
 # Import backup file into development
 npx sanity dataset import backup-production.tar.gz development
 
-# Direct pipe (no intermediate file)
+# Direct pipe (no intermediate file) [THIS DOESN'T WORK]
 npx sanity dataset export production | npx sanity dataset import - development
 ```
 
 ## Common Workflows
 
 ### 1. Populate Empty Development Dataset
+
 When your development dataset is empty and you want production data:
 
 ```bash
@@ -42,6 +45,7 @@ npx sanity dataset import backup-production.tar.gz development
 ```
 
 ### 2. Complete Dataset Replacement (Clean Copy)
+
 When you want development to be identical to production:
 
 ```bash
@@ -56,6 +60,7 @@ npx sanity dataset import backup-production.tar.gz development
 ```
 
 ### 3. Selective Update (Merge/Overwrite)
+
 When you want to update development with production changes but keep dev-only content:
 
 ```bash
@@ -65,12 +70,12 @@ npx sanity dataset import backup-production.tar.gz development --replace
 
 ## Understanding Import Behaviors
 
-| Scenario | Command | Result |
-|----------|---------|---------|
-| Empty development dataset | `import backup.tar.gz development` | All production data copied over |
-| Development has existing data | `import backup.tar.gz development` | Error if document IDs conflict |
+| Scenario                      | Command                                      | Result                                                                           |
+| ----------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------- |
+| Empty development dataset     | `import backup.tar.gz development`           | All production data copied over                                                  |
+| Development has existing data | `import backup.tar.gz development`           | Error if document IDs conflict                                                   |
 | Development has existing data | `import backup.tar.gz development --replace` | Production documents overwrite matching dev documents, dev-only documents remain |
-| After deleting dataset | `import backup.tar.gz development` | Clean copy of production (no conflicts possible) |
+| After deleting dataset        | `import backup.tar.gz development`           | Clean copy of production (no conflicts possible)                                 |
 
 ## Important Notes
 
@@ -83,12 +88,14 @@ npx sanity dataset import backup-production.tar.gz development --replace
 ## Recommended Practices
 
 ### Regular Backups
+
 ```bash
 # Create dated backups of production
 npx sanity dataset export production backups/backup-$(date +%Y%m%d).tar.gz
 ```
 
 ### Development Refresh Workflow
+
 ```bash
 # Monthly clean refresh of development environment
 npx sanity dataset delete development
@@ -97,6 +104,7 @@ npx sanity dataset import backup-production.tar.gz development
 ```
 
 ### Safety First
+
 - Keep `.env.local` pointing to development dataset
 - Always test changes in development first
 - Create backups before major operations
