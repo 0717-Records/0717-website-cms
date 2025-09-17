@@ -26,12 +26,12 @@ export const blogHeaderBottomSpacing = 'mb-10 md:mb-14';
 /**
  * Space after PageSection titles and subtitles
  */
-export const sectionTitleBottomSpacing = 'mb-6 md:mb-8';
+export const sectionTitleBottomSpacing = 'mb-6';
 
 /**
  * Space after PageSection dividers
  */
-export const sectionDividerBottomSpacing = 'mb-8 md:mb-12';
+export const sectionDividerBottomSpacing = 'mb-6 md:mb-8';
 
 /**
  * Bottom padding for PageSections (after the last piece of content in that section)
