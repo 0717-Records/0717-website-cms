@@ -139,13 +139,11 @@ const BlockRenderer = ({
           
           if (block._type === 'pageSection') {
             // SPACE_B: PageSection that comes after orphaned content blocks
-            const hasOrphanedContentBefore = visibleBlocks
-              .slice(0, visibleIndex)
-              .some(prevBlock => 
-                prevBlock._type !== 'pageSection' && 
-                prevBlock._type !== 'subSection' && 
-                prevBlock._type !== 'subSubSection'
-              );
+            const previousBlock = hasSiblingBefore ? visibleBlocks[visibleIndex - 1] : null;
+            const hasOrphanedContentBefore = previousBlock &&
+              previousBlock._type !== 'pageSection' &&
+              previousBlock._type !== 'subSection' &&
+              previousBlock._type !== 'subSubSection';
             
             if (hasOrphanedContentBefore) {
               marginClass = pageSectionTopSpacing;
