@@ -6601,6 +6601,14 @@
       "heroSubtitle": {
         "type": "objectAttribute",
         "value": {
+          "type": "inline",
+          "name": "blockContent"
+        },
+        "optional": true
+      },
+      "heroFeaturedItemsSubtitle": {
+        "type": "objectAttribute",
+        "value": {
           "type": "string"
         },
         "optional": true

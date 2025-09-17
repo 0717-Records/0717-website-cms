@@ -32,7 +32,8 @@ const Page = async () => {
         heroBackgroundImages={page.heroBackgroundImages}
         heroImageTransitionDuration={4}
         heroTitle='Demo Hero 4 - Featured Items on background images'
-        heroSubtitle='This showcases the background images hero style with featured items.'
+        heroSubtitle={null}
+        heroFeaturedItemsSubtitle='This showcases the background images hero style with featured items.'
         heroCallToActionList={[
           {
             _type: 'embeddedCtaButton',

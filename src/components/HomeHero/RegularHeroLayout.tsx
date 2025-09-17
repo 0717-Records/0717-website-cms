@@ -38,7 +38,6 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
 
   const componentProps = {
     heroTitle,
-    heroSubtitle,
     heroTextColor,
     enableFeaturedItems,
     showHeroLogo,
@@ -46,6 +45,12 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
     documentId,
     documentType,
     showLogoBackColor,
+  };
+
+  const heroSubtitleProps = {
+    heroSubtitle,
+    documentId,
+    documentType,
   };
 
   // Map content position to Tailwind classes
@@ -111,7 +116,7 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
         <div
           className={`relative z-10 flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}`}>
           <HeroTitle {...componentProps} />
-          <HeroSubtitle {...componentProps} />
+          <HeroSubtitle {...heroSubtitleProps} />
           <HeroCTA {...componentProps} />
         </div>
       </div>

@@ -25,7 +25,7 @@ const HeroTitle = ({
   // Smaller font sizes when featured items are enabled
   const titleClasses = enableFeaturedItems
     ? `text-h6 sm:text-h5 font-bold ${getTextColorClasses(heroTextColor)}`
-    : `text-h3 sm:text-h1 font-bold ${getTextColorClasses(heroTextColor)}`;
+    : `text-h1 font-bold ${getTextColorClasses(heroTextColor)}`;
 
   return (
     <Heading

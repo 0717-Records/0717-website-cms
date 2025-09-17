@@ -3,7 +3,7 @@ import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { createSanityDataAttribute } from '../../utils/sectionHelpers';
 import FeaturedItems from './FeaturedItems';
 import HeroTitle from './HeroTitle';
-import HeroSubtitle from './HeroSubtitle';
+import HeroFeaturedItemsSubtitle from './HeroFeaturedItemsSubtitle';
 import HeroLogo from './HeroLogo';
 import HeroCTA from './HeroCTA';
 import { getTextColorClasses } from './heroUtils';
@@ -13,7 +13,7 @@ interface FeaturedItemsHeroLayoutProps {
   heroTextColor: NonNullable<HOME_PAGE_QUERYResult>['heroTextColor'];
   showHeroLogo: NonNullable<HOME_PAGE_QUERYResult>['showHeroLogo'];
   heroTitle: NonNullable<HOME_PAGE_QUERYResult>['heroTitle'];
-  heroSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroSubtitle'];
+  heroFeaturedItemsSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroFeaturedItemsSubtitle'];
   heroCallToActionList: NonNullable<HOME_PAGE_QUERYResult>['heroCallToActionList'];
   enableFeaturedItems: NonNullable<HOME_PAGE_QUERYResult>['enableFeaturedItems'];
   featuredImages: NonNullable<HOME_PAGE_QUERYResult>['featuredImages'];
@@ -27,7 +27,7 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
   const {
     heroTextColor,
     heroTitle,
-    heroSubtitle,
+    heroFeaturedItemsSubtitle,
     enableFeaturedItems,
     showHeroLogo,
     heroCallToActionList,
@@ -39,7 +39,6 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
 
   const componentProps = {
     heroTitle,
-    heroSubtitle,
     heroTextColor,
     enableFeaturedItems,
     showHeroLogo,
@@ -69,7 +68,12 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
       {/* Bottom Section: Subtitle and CTA */}
       <div
         className={`flex flex-col items-center text-center px-4 py-4 space-y-4 ${getTextColorClasses(heroTextColor)}`}>
-        <HeroSubtitle {...componentProps} />
+        <HeroFeaturedItemsSubtitle
+          heroFeaturedItemsSubtitle={heroFeaturedItemsSubtitle}
+          heroTextColor={heroTextColor}
+          documentId={documentId}
+          documentType={documentType}
+        />
         <HeroCTA {...componentProps} />
       </div>
     </div>

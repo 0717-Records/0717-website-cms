@@ -201,10 +201,19 @@ export const homePageType = defineType({
     }),
     defineField({
       name: 'heroSubtitle',
-      type: 'text',
+      type: 'blockContent',
       title: 'Hero Subtitle',
-      description: 'Plain text subtitle for the hero section (line breaks allowed)',
+      description: 'Rich text subtitle for the hero section (formatting, links, and styling allowed)',
       group: 'hero',
+      hidden: ({ document }) => !!document?.enableFeaturedItems,
+    }),
+    defineField({
+      name: 'heroFeaturedItemsSubtitle',
+      type: 'text',
+      title: 'Hero Subtitle (for Featured Items)',
+      description: 'Plain text subtitle displayed below featured items when featured items are enabled',
+      group: 'hero',
+      hidden: ({ document }) => !document?.enableFeaturedItems,
     }),
     createCTAListField({
       name: 'heroCallToActionList',

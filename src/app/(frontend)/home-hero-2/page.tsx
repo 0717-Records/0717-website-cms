@@ -32,7 +32,23 @@ const Page = async () => {
         heroBackgroundImages={page.heroBackgroundImages}
         heroImageTransitionDuration={4}
         heroTitle='Demo Hero 2 - Multi-Image Background'
-        heroSubtitle='Showcasing the multi-image carousel with white text on dynamic backgrounds'
+        heroSubtitle={[
+          {
+            _type: 'block',
+            _key: 'demo-subtitle',
+            style: 'normal',
+            markDefs: [],
+            children: [
+              {
+                _type: 'span',
+                _key: 'demo-span',
+                text: 'Showcasing the multi-image carousel with white text on dynamic backgrounds',
+                marks: []
+              }
+            ]
+          }
+        ]}
+        heroFeaturedItemsSubtitle={null}
         heroCallToActionList={page.heroCallToActionList}
         heroContentPosition='center-center'
         enableFeaturedItems={false}

@@ -20,6 +20,7 @@ interface HeroProps {
   heroImageTransitionDuration: NonNullable<HOME_PAGE_QUERYResult>['heroImageTransitionDuration'];
   heroTitle: NonNullable<HOME_PAGE_QUERYResult>['heroTitle'];
   heroSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroSubtitle'];
+  heroFeaturedItemsSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroFeaturedItemsSubtitle'];
   heroCallToActionList: NonNullable<HOME_PAGE_QUERYResult>['heroCallToActionList'];
   heroContentPosition: NonNullable<HOME_PAGE_QUERYResult>['heroContentPosition'];
   enableFeaturedItems: NonNullable<HOME_PAGE_QUERYResult>['enableFeaturedItems'];
@@ -36,6 +37,7 @@ const Hero = ({
   heroImageTransitionDuration,
   heroTitle,
   heroSubtitle,
+  heroFeaturedItemsSubtitle,
   heroCallToActionList,
   heroContentPosition,
   enableFeaturedItems,
@@ -119,7 +121,7 @@ const Hero = ({
           heroTextColor={heroTextColor}
           showHeroLogo={showHeroLogo}
           heroTitle={heroTitle}
-          heroSubtitle={heroSubtitle}
+          heroFeaturedItemsSubtitle={heroFeaturedItemsSubtitle}
           heroCallToActionList={heroCallToActionList}
           enableFeaturedItems={enableFeaturedItems}
           featuredImages={featuredImages}

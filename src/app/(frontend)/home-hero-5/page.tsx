@@ -32,7 +32,23 @@ const Page = async () => {
         heroBackgroundImages={page.heroBackgroundImages}
         heroImageTransitionDuration={4}
         heroTitle='Demo Hero 5 - Content Position'
-        heroSubtitle='This showcases the bottom-right content position, with logo switched off. All 9 positions are supported.'
+        heroSubtitle={[
+          {
+            _type: 'block',
+            _key: 'demo-subtitle-5',
+            style: 'normal',
+            markDefs: [],
+            children: [
+              {
+                _type: 'span',
+                _key: 'demo-span-5',
+                text: 'This showcases the bottom-right content position, with logo switched off. All 9 positions are supported.',
+                marks: []
+              }
+            ]
+          }
+        ]}
+        heroFeaturedItemsSubtitle={null}
         heroCallToActionList={[
           {
             _type: 'embeddedCtaButton',
