@@ -783,7 +783,7 @@
     }
   },
   {
-    "name": "ctaEvent",
+    "name": "ctaEvents",
     "type": "type",
     "value": {
       "type": "object",
@@ -792,36 +792,50 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "ctaEvent"
+            "value": "ctaEvents"
           }
         },
-        "event": {
+        "events": {
           "type": "objectAttribute",
           "value": {
-            "type": "object",
-            "attributes": {
-              "_ref": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                }
-              },
-              "_type": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string",
-                  "value": "reference"
-                }
-              },
-              "_weak": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "boolean"
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_ref": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
                 },
-                "optional": true
+                "_type": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string",
+                    "value": "reference"
+                  }
+                },
+                "_weak": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "boolean"
+                  },
+                  "optional": true
+                }
+              },
+              "dereferencesTo": "event",
+              "rest": {
+                "type": "object",
+                "attributes": {
+                  "_key": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
               }
-            },
-            "dereferencesTo": "event"
+            }
           },
           "optional": true
         }
@@ -3416,7 +3430,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "ctaEvent"
+                    "name": "ctaEvents"
                   }
                 },
                 {
@@ -3810,7 +3824,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "ctaEvent"
+                    "name": "ctaEvents"
                   }
                 },
                 {
@@ -4204,7 +4218,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "ctaEvent"
+                    "name": "ctaEvents"
                   }
                 },
                 {
@@ -4605,7 +4619,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "ctaEvent"
+                    "name": "ctaEvents"
                   }
                 },
                 {
@@ -4966,7 +4980,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "ctaEvent"
+              "name": "ctaEvents"
             }
           },
           {
@@ -6932,7 +6946,7 @@
                 },
                 "rest": {
                   "type": "inline",
-                  "name": "ctaEvent"
+                  "name": "ctaEvents"
                 }
               },
               {
@@ -8119,7 +8133,7 @@
                 },
                 "rest": {
                   "type": "inline",
-                  "name": "ctaEvent"
+                  "name": "ctaEvents"
                 }
               },
               {

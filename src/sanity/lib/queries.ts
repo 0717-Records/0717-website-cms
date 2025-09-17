@@ -78,9 +78,9 @@ const contentProjection = `
       }
     }
   },
-  _type == "ctaEvent" => {
+  _type == "ctaEvents" => {
     ...,
-    event->{
+    events[]->{
       _id,
       title,
       shortDescription,

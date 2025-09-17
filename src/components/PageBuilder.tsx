@@ -25,7 +25,7 @@ import Card from './blocks/Card';
 import CTAButton from './blocks/CTAButton';
 import CTACalloutLinkComponent from './blocks/CTACalloutLink';
 import CTAEmailButtonComponent from './blocks/CTAEmailButton';
-import CTAEvent from './blocks/CTAEvent';
+import CTAEvents from './blocks/CTAEvents';
 import CTABlogPost from './blocks/CTABlogPost';
 import CardGrid from './blocks/CardGrid';
 import ImageBlock from './blocks/Image';
@@ -355,10 +355,10 @@ const BlockRenderer = ({
               </BlockWrapper>
             );
 
-          case 'ctaEvent':
+          case 'ctaEvents':
             return (
               <BlockWrapper key={block._key}>
-                <CTAEvent {...block} />
+                <CTAEvents {...block} />
               </BlockWrapper>
             );
 

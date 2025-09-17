@@ -13,7 +13,7 @@ export const commonContentBlocks = [
   defineArrayMember({ type: 'ctaButton' }),
   defineArrayMember({ type: 'ctaCalloutLink' }),
   defineArrayMember({ type: 'ctaEmailButton' }),
-  defineArrayMember({ type: 'ctaEvent' }),
+  defineArrayMember({ type: 'ctaEvents' }),
   defineArrayMember({ type: 'ctaBlogPost' }),
   defineArrayMember({ type: 'cardGrid' }),
   defineArrayMember({ type: 'imageBlock' }),
