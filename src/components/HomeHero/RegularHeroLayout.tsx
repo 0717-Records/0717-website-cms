@@ -109,15 +109,58 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
 
   return (
     <div
-      className={`absolute z-[25] ${getTextColorClasses(heroTextColor)} ${getPositionClasses(heroContentPosition || 'center-center')}`}
+      className={`
+        absolute z-[25] ${getTextColorClasses(heroTextColor)}
+        ${getPositionClasses(heroContentPosition || 'center-center')}
+
+        /* Mobile: Full height centering with space for scroll arrow */
+        h-full max-h-[calc(100vh-8rem)] sm:max-h-none
+        flex flex-col justify-center
+
+        /* Desktop: Use position classes as before */
+        sm:h-auto sm:max-h-none sm:block
+      `}
       {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
-      <div className={`flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}`}>
-        <HeroLogo {...componentProps} />
-        <div
-          className={`relative z-10 flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}`}>
-          <HeroTitle {...componentProps} />
-          <HeroSubtitle {...heroSubtitleProps} />
-          <HeroCTA {...componentProps} />
+
+      {/* Mobile: Vertically centered flex container */}
+      <div className={`
+        flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}
+
+        /* Mobile: Ensure content scales to fit screen */
+        max-h-full overflow-hidden
+
+        /* Desktop: Normal layout */
+        sm:max-h-none sm:overflow-visible
+      `}>
+        {/* Logo with responsive scaling */}
+        <div className="flex-shrink-1 min-h-0">
+          <HeroLogo {...componentProps} />
+        </div>
+
+        {/* Main content with growth/shrink capabilities */}
+        <div className={`
+          relative z-10 flex flex-col ${logoConfig.alignment} ${logoConfig.spacing}
+
+          /* Mobile: Allow content to grow/shrink as needed */
+          flex-grow flex-shrink min-h-0
+
+          /* Desktop: Normal behavior */
+          sm:flex-grow-0 sm:flex-shrink-0 sm:min-h-auto
+        `}>
+          {/* Title with responsive scaling */}
+          <div className="flex-shrink-0">
+            <HeroTitle {...componentProps} />
+          </div>
+
+          {/* Subtitle that can grow/shrink for long content */}
+          <div className="flex-grow flex-shrink min-h-0 overflow-hidden">
+            <HeroSubtitle {...heroSubtitleProps} />
+          </div>
+
+          {/* CTA buttons - always visible */}
+          <div className="flex-shrink-0 mt-2 sm:mt-0">
+            <HeroCTA {...componentProps} />
+          </div>
         </div>
       </div>
     </div>

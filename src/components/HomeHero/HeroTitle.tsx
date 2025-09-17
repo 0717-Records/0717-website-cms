@@ -22,10 +22,16 @@ const HeroTitle = ({
 }: HeroTitleProps) => {
   if (!heroTitle) return null;
 
-  // Smaller font sizes when featured items are enabled
+  // Enhanced responsive title sizing
   const titleClasses = enableFeaturedItems
     ? `text-h6 sm:text-h5 font-bold ${getTextColorClasses(heroTextColor)}`
-    : `text-h1 font-bold ${getTextColorClasses(heroTextColor)}`;
+    : `
+        /* Mobile: Start smaller and scale up, allowing for shrinking when needed */
+        text-h5 min-[380px]:text-h4 min-[480px]:text-h3 sm:text-h2 md:text-h1
+        /* Allow text to scale down if content is too long */
+        leading-tight sm:leading-normal
+        font-bold ${getTextColorClasses(heroTextColor)}
+      `.trim();
 
   return (
     <Heading

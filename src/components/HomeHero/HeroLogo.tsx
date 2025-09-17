@@ -23,7 +23,10 @@ const HeroLogo = ({
 }: HeroLogoProps) => {
   if (showHeroLogo === false) return null;
 
-  const logoSize = enableFeaturedItems ? 'w-20 md:w-24 lg:w-28' : 'w-48 md:w-56 lg:w-64';
+  // Enhanced responsive logo sizing with better mobile scaling
+  const logoSize = enableFeaturedItems
+    ? 'w-16 sm:w-20 md:w-24 lg:w-28'
+    : 'w-32 min-w-24 max-w-48 sm:w-40 md:w-48 lg:w-56 xl:w-64';
   const logoSrc = stegaClean(heroTextColor) === 'white'
     ? '/images/logo-white-on-transparent.png'
     : '/images/logo-black-on-transparent.png';

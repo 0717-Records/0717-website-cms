@@ -6,6 +6,7 @@ import HeroImages from './HeroImages';
 import DefaultHeroBackground from './DefaultHeroBackground';
 import RegularHeroLayout from './RegularHeroLayout';
 import FeaturedItemsHeroLayout from './FeaturedItemsHeroLayout';
+import ScrollIndicator from './ScrollIndicator';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import { createSanityDataAttribute } from '../../utils/sectionHelpers';
@@ -143,6 +144,17 @@ const Hero = ({
           showLogoBackColor={currentHeroStyle === 'default'}
         />
       )}
+
+      {/* Scroll Indicator Arrow */}
+      {/* Hide on mobile when featured items are enabled, always show otherwise */}
+      <div
+        className={`
+          absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-30
+          ${enableFeaturedItems ? 'hidden sm:block' : 'block'}
+        `}
+      >
+        <ScrollIndicator textColor={stegaClean(heroTextColor) || 'black'} />
+      </div>
     </section>
   );
 };

@@ -18,7 +18,13 @@ const HeroSubtitle = ({ heroSubtitle, documentId, documentType }: HeroSubtitlePr
 
   return (
     <div
-      className="prose prose-slate max-w-none"
+      className="
+        prose prose-slate max-w-none
+        /* Mobile: Allow content to scale and fit within available space */
+        overflow-hidden
+        /* Responsive text sizing - let Rich Text components handle scaling */
+        text-center
+      "
       {...createSanityDataAttribute(documentId, documentType, 'heroSubtitle')}>
       <PortableText value={heroSubtitle} components={components} />
     </div>
