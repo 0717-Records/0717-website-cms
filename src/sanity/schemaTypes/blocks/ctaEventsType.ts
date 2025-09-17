@@ -30,7 +30,8 @@ export const ctaEventsType = defineType({
           },
         },
       ],
-      description: 'Choose multiple events to display. Events will be shown in the order you add them here. The event links (if available) will be used for navigation.',
+      description:
+        'Choose one or multiple events to display. Events will be shown in the order you add them here. The event links (if available) will be used for navigation.',
       validation: (Rule) => Rule.required().min(1).error('Please select at least one event'),
     }),
   ],
