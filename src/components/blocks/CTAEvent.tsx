@@ -31,6 +31,8 @@ interface DereferencedEvent {
   pastEventLink?: string | null;
 }
 
+// comment test
+
 // Type for referenced (not dereferenced) event
 interface ReferencedEvent {
   _ref: string;
