@@ -2621,27 +2621,10 @@
             "value": "spotifyWidget"
           }
         },
-        "url": {
+        "embedCode": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
-          },
-          "optional": true
-        },
-        "height": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "compact"
-              },
-              {
-                "type": "string",
-                "value": "normal"
-              }
-            ]
           },
           "optional": true
         }

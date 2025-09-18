@@ -12,70 +12,80 @@ interface SpotifyWidgetProps
   pathPrefix?: string;
 }
 
-const getSpotifyEmbedUrl = (url: string) => {
-  // Spotify share URLs: https://open.spotify.com/track/ID or https://open.spotify.com/album/ID etc.
-  // Embed URLs: https://open.spotify.com/embed/track/ID
-  const spotifyRegex =
-    /^https:\/\/open\.spotify\.com\/(track|album|playlist|artist|show|episode)\/([a-zA-Z0-9]+)(\?.*)?$/;
-  const match = url.match(spotifyRegex);
+interface EmbedAttributes {
+  src: string;
+  width?: string;
+  height?: string;
+}
 
-  if (!match) return null;
+const extractEmbedAttributes = (embedCode: string): EmbedAttributes | null => {
+  // Extract attributes from iframe embed code
+  const iframeRegex = /<iframe[^>]*src=["']([^"']*?)["'][^>]*>/i;
+  const srcMatch = embedCode.match(iframeRegex);
 
-  const [, contentType, contentId] = match;
-  return `https://open.spotify.com/embed/${contentType}/${contentId}?utm_source=generator`;
+  if (!srcMatch) return null;
+
+  const src = srcMatch[1];
+
+  // Extract width attribute (supports both pixels and percentages)
+  const widthRegex = /width=["']?(\d+%?)["']?/i;
+  const widthMatch = embedCode.match(widthRegex);
+  const width = widthMatch ? widthMatch[1] : undefined;
+
+  // Extract height attribute
+  const heightRegex = /height=["']?(\d+)["']?/i;
+  const heightMatch = embedCode.match(heightRegex);
+  const height = heightMatch ? heightMatch[1] : undefined;
+
+  return { src, width, height };
 };
 
 const SpotifyWidget: React.FC<SpotifyWidgetProps> = ({
-  url,
-  height = 'normal',
+  embedCode,
   className = '',
   documentId,
   documentType,
   pathPrefix,
 }) => {
-  const cleanUrl = stegaClean(url);
-  const cleanHeight = stegaClean(height) || 'normal';
+  const cleanEmbedCode = stegaClean(embedCode);
 
-  if (!cleanUrl) {
+  if (!cleanEmbedCode) {
     return null;
   }
 
-  const embedUrl = getSpotifyEmbedUrl(cleanUrl);
+  const embedAttributes = extractEmbedAttributes(cleanEmbedCode);
 
-  if (!embedUrl) {
+  if (!embedAttributes) {
     return (
       <div className={`${className} p-4 border border-red-200 rounded-lg bg-red-50`}>
         <p className='text-red-600'>
-          Invalid Spotify URL provided. Please use a valid Spotify share link (track, album,
-          playlist, artist, show, or episode).
+          Invalid Spotify embed code provided. Please paste a valid Spotify iframe embed code.
         </p>
       </div>
     );
   }
 
-  // Height options: compact (152px) for tracks, normal (352px) for playlists/albums
-  const getHeightClass = (heightOption: string) => {
-    switch (heightOption) {
-      case 'compact':
-        return 'h-[152px]';
-      case 'normal':
-      default:
-        return 'h-[352px]';
-    }
-  };
+  const { src, width, height } = embedAttributes;
 
-  const heightClass = getHeightClass(cleanHeight);
+  const embedHeight = height ? `h-[${height}px]` : 'h-[352px]'; // Default to 352px if no height specified
 
   // Create data attribute for the widget container if Sanity props are provided
   const widgetDataAttribute = pathPrefix
     ? createSanityDataAttribute(documentId, documentType, pathPrefix)
     : {};
 
+  console.log('Width from embed:', width);
+
+  // Generate width class - mobile always w-full, desktop uses embed width
+  const widthClass = width
+    ? `w-full md:w-[${width.includes('%') ? width : `${width}%`}]`
+    : 'w-full';
+
   return (
-    <div className={`w-full mx-auto ${className}`} {...widgetDataAttribute}>
+    <div className={`${className}`} {...widgetDataAttribute}>
       <iframe
-        src={embedUrl}
-        className={`w-full ${heightClass} rounded-xl border-0`}
+        src={src}
+        className={`${widthClass} mx-auto ${embedHeight} rounded-xl border-0`}
         allowFullScreen
         allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
         loading='lazy'

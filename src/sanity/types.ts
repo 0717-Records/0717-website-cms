@@ -434,8 +434,7 @@ export type BandcampWidget = {
 
 export type SpotifyWidget = {
   _type: "spotifyWidget";
-  url?: string;
-  height?: "compact" | "normal";
+  embedCode?: string;
 };
 
 export type YouTubeVideo = {
@@ -2453,8 +2452,7 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "spotifyWidget";
-      url?: string;
-      height?: "compact" | "normal";
+      embedCode?: string;
       image: null;
       content: null;
     } | {
@@ -2938,8 +2936,7 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "spotifyWidget";
-        url?: string;
-        height?: "compact" | "normal";
+        embedCode?: string;
         image: null;
         content: null;
       } | {
@@ -3404,8 +3401,7 @@ export type PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "spotifyWidget";
-          url?: string;
-          height?: "compact" | "normal";
+          embedCode?: string;
           image: null;
         } | {
           _key: string;
@@ -3577,8 +3573,7 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "spotifyWidget";
-    url?: string;
-    height?: "compact" | "normal";
+    embedCode?: string;
     image: null;
     content: null;
   } | {
@@ -4592,8 +4587,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "spotifyWidget";
-      url?: string;
-      height?: "compact" | "normal";
+      embedCode?: string;
       image: null;
       content: null;
     } | {
@@ -5077,8 +5071,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "spotifyWidget";
-        url?: string;
-        height?: "compact" | "normal";
+        embedCode?: string;
         image: null;
         content: null;
       } | {
@@ -5543,8 +5536,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "spotifyWidget";
-          url?: string;
-          height?: "compact" | "normal";
+          embedCode?: string;
           image: null;
         } | {
           _key: string;
@@ -5716,8 +5708,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "spotifyWidget";
-    url?: string;
-    height?: "compact" | "normal";
+    embedCode?: string;
     image: null;
     content: null;
   } | {
@@ -6958,8 +6949,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "spotifyWidget";
-      url?: string;
-      height?: "compact" | "normal";
+      embedCode?: string;
       image: null;
       content: null;
     } | {
@@ -7443,8 +7433,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "spotifyWidget";
-        url?: string;
-        height?: "compact" | "normal";
+        embedCode?: string;
         image: null;
         content: null;
       } | {
@@ -7909,8 +7898,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "spotifyWidget";
-          url?: string;
-          height?: "compact" | "normal";
+          embedCode?: string;
           image: null;
         } | {
           _key: string;
@@ -8082,8 +8070,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "spotifyWidget";
-    url?: string;
-    height?: "compact" | "normal";
+    embedCode?: string;
     image: null;
     content: null;
   } | {
@@ -9065,8 +9052,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "spotifyWidget";
-      url?: string;
-      height?: "compact" | "normal";
+      embedCode?: string;
       image: null;
       content: null;
     } | {
@@ -9550,8 +9536,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "spotifyWidget";
-        url?: string;
-        height?: "compact" | "normal";
+        embedCode?: string;
         image: null;
         content: null;
       } | {
@@ -10016,8 +10001,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "spotifyWidget";
-          url?: string;
-          height?: "compact" | "normal";
+          embedCode?: string;
           image: null;
         } | {
           _key: string;
@@ -10189,8 +10173,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "spotifyWidget";
-    url?: string;
-    height?: "compact" | "normal";
+    embedCode?: string;
     image: null;
     content: null;
   } | {
@@ -12039,8 +12022,7 @@ export type BLOG_POST_QUERYResult = {
     } | {
       _key: string;
       _type: "spotifyWidget";
-      url?: string;
-      height?: "compact" | "normal";
+      embedCode?: string;
       image: null;
       content: null;
     } | {
@@ -12524,8 +12506,7 @@ export type BLOG_POST_QUERYResult = {
       } | {
         _key: string;
         _type: "spotifyWidget";
-        url?: string;
-        height?: "compact" | "normal";
+        embedCode?: string;
         image: null;
         content: null;
       } | {
@@ -12990,8 +12971,7 @@ export type BLOG_POST_QUERYResult = {
         } | {
           _key: string;
           _type: "spotifyWidget";
-          url?: string;
-          height?: "compact" | "normal";
+          embedCode?: string;
           image: null;
         } | {
           _key: string;
@@ -13163,8 +13143,7 @@ export type BLOG_POST_QUERYResult = {
   } | {
     _key: string;
     _type: "spotifyWidget";
-    url?: string;
-    height?: "compact" | "normal";
+    embedCode?: string;
     image: null;
     content: null;
   } | {
@@ -13739,8 +13718,7 @@ export type COLLAB_QUERYResult = {
     } | {
       _key: string;
       _type: "spotifyWidget";
-      url?: string;
-      height?: "compact" | "normal";
+      embedCode?: string;
       image: null;
       content: null;
     } | {
@@ -14225,8 +14203,7 @@ export type COLLAB_QUERYResult = {
       } | {
         _key: string;
         _type: "spotifyWidget";
-        url?: string;
-        height?: "compact" | "normal";
+        embedCode?: string;
         image: null;
         content: null;
       } | {
@@ -14710,8 +14687,7 @@ export type COLLAB_QUERYResult = {
         } | {
           _key: string;
           _type: "spotifyWidget";
-          url?: string;
-          height?: "compact" | "normal";
+          embedCode?: string;
           image: null;
           content: null;
         } | {

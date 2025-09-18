@@ -1,3 +1,7 @@
+// AI Helper: This is a Sanity CMS schema definition. It defines the structure and validation rules for content types.
+// When modifying, ensure all fields have appropriate validation, titles, and descriptions for content editors.
+// Follow the existing patterns in other schema files for consistency.
+
 import { defineField, defineType } from 'sanity';
 import { PlayIcon } from '@sanity/icons';
 
@@ -6,71 +10,54 @@ export const spotifyWidgetType = defineType({
   title: 'Spotify Widget',
   type: 'object',
   icon: PlayIcon,
-  description: 'Embed Spotify tracks, albums, playlists, artists, shows, or episodes',
+  description: 'Embed Spotify tracks, albums, playlists, artists, shows, or episodes using embed code',
   fields: [
     defineField({
-      name: 'url',
-      title: 'Spotify Share URL',
-      type: 'url',
-      description: 'Paste the Spotify share link here. To get this: 1) Open Spotify, 2) Find your content, 3) Click the three dots (...), 4) Select "Share" → "Copy link to [content]"',
+      name: 'embedCode',
+      title: 'Spotify Embed Code',
+      type: 'text',
+      rows: 6,
+      description: 'Paste the Spotify embed code here. To get this: 1) Open Spotify Web Player, 2) Find your content, 3) Click the three dots (...), 4) Select "Share" → "Embed" → Copy the iframe code',
       validation: (Rule) =>
         Rule.required()
-          .uri({
-            scheme: ['https'],
-          })
-          .custom((url) => {
-            if (!url) return 'Spotify URL is required';
-            
-            const spotifyRegex = /^https:\/\/open\.spotify\.com\/(track|album|playlist|artist|show|episode)\/([a-zA-Z0-9]+)(\?.*)?$/;
-            
-            if (!spotifyRegex.test(url)) {
-              return 'Please enter a valid Spotify share URL (e.g., https://open.spotify.com/track/...)';
+          .custom((embedCode) => {
+            if (!embedCode) return 'Spotify embed code is required';
+
+            // Validate that it's a proper iframe with Spotify embed URL
+            const iframeRegex = /<iframe[^>]*src=["']([^"']*open\.spotify\.com\/embed\/[^"']*?)["'][^>]*>.*?<\/iframe>/is;
+
+            if (!iframeRegex.test(embedCode.trim())) {
+              return 'Please enter a valid Spotify embed code. It should be an iframe with a Spotify embed URL.';
             }
-            
+
             return true;
           }),
-    }),
-    defineField({
-      name: 'height',
-      title: 'Player Height',
-      type: 'string',
-      description: 'Choose the height of the Spotify player. Compact works well for single tracks, while Normal is better for albums and playlists.',
-      options: {
-        list: [
-          { title: 'Compact (152px) - Good for tracks', value: 'compact' },
-          { title: 'Normal (352px) - Good for albums/playlists', value: 'normal' },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'normal',
     }),
   ],
   preview: {
     select: {
-      url: 'url',
-      height: 'height',
+      embedCode: 'embedCode',
     },
-    prepare({ url, height }) {
-      // Extract content type and provide meaningful subtitle
-      const spotifyRegex = /^https:\/\/open\.spotify\.com\/(track|album|playlist|artist|show|episode)\/([a-zA-Z0-9]+)(\?.*)?$/;
-      const match = url?.match(spotifyRegex);
-      const contentType = match ? match[1] : 'content';
-      
+    prepare({ embedCode }) {
+      // Extract content type from embed code URL
+      const iframeRegex = /<iframe[^>]*src=["']([^"']*open\.spotify\.com\/embed\/([^/"']+)\/[^"']*?)["'][^>]*>/i;
+      const match = embedCode?.match(iframeRegex);
+      const contentType = match ? match[2] : 'content';
+
       const contentTypeLabels: Record<string, string> = {
         track: 'Track',
-        album: 'Album', 
+        album: 'Album',
         playlist: 'Playlist',
         artist: 'Artist',
         show: 'Podcast Show',
         episode: 'Podcast Episode',
       };
-      
+
       const label = contentTypeLabels[contentType] || 'Content';
-      const heightLabel = height === 'compact' ? 'Compact' : 'Normal';
-      
+
       return {
         title: `Spotify ${label}`,
-        subtitle: `${heightLabel} height • ${url ? url.slice(0, 50) + (url.length > 50 ? '...' : '') : 'No URL provided'}`,
+        subtitle: embedCode ? 'Embed code configured' : 'No embed code provided',
         media: PlayIcon,
       };
     },
