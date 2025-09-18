@@ -17,14 +17,20 @@ export const useBodyScrollLock = (isLocked: boolean) => {
       document.body.style.width = '100%';
 
       return () => {
+        // Get the current top value to restore the correct scroll position
+        const currentTop = document.body.style.top;
+        const scrollY = currentTop ? Math.abs(parseInt(currentTop)) : 0;
+
         // Restore scroll position and styles
         document.body.style.overflow = '';
         document.body.style.position = '';
         document.body.style.top = '';
         document.body.style.width = '';
 
-        // Restore scroll position immediately without requestAnimationFrame
-        window.scrollTo(0, scrollY);
+        // Use requestAnimationFrame to ensure DOM is ready for scroll restoration
+        requestAnimationFrame(() => {
+          window.scrollTo(0, scrollY);
+        });
       };
     }
   }, [isLocked]);

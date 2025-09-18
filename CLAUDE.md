@@ -629,6 +629,89 @@ Both files contain prominent warnings with ⚠️ symbols:
 
 **The current approach prioritizes maintainability while achieving performance goals.**
 
+## Body Scroll Lock Management
+**CRITICAL: Prevent page jumping when opening/closing modals, navigation, and overlays.**
+
+### The Problem
+The website uses `useBodyScrollLock` hook in multiple components to prevent background scrolling when overlays are open. However, when multiple components use this hook simultaneously, it can cause page jumping issues due to scroll position conflicts.
+
+### Components Using Body Scroll Lock
+These components currently use the `useBodyScrollLock` hook:
+- **VerticalNav** (`src/components/Header/VerticalNav/VerticalNav.tsx`)
+- **Modal** (`src/components/UI/Modal.tsx`)
+- **LoadingOverlay** (`src/components/UI/LoadingOverlay.tsx`)
+
+### Root Cause of Page Jumping
+When multiple components lock body scroll simultaneously:
+
+1. **First component** (e.g., Modal) captures original scroll position Y and applies CSS lock
+2. **Second component** (e.g., VerticalNav) captures scroll position (now 0 due to fixed positioning) and tries to apply lock again
+3. **Components close in different order** than they opened
+4. **Wrong scroll position gets restored**, causing the page to jump
+
+### The Reference Counting Solution
+The `useBodyScrollLock` hook (`src/hooks/useBodyScrollLock.ts`) now implements reference counting:
+
+```typescript
+// Global state tracks multiple simultaneous locks
+let lockCount = 0;
+let originalScrollY = 0;
+let isCurrentlyLocked = false;
+
+// Only the FIRST lock captures scroll position
+// Only the LAST unlock restores scroll position
+```
+
+### Critical Implementation Rules
+
+**✅ DO:**
+- Use `useBodyScrollLock(isOpen)` for any component that needs to prevent background scrolling
+- Trust the hook to handle multiple simultaneous locks correctly
+- Keep the hook implementation centralized in `src/hooks/useBodyScrollLock.ts`
+
+**❌ NEVER:**
+- Create custom scroll lock implementations for individual components
+- Directly manipulate `document.body.style` for scroll prevention
+- Use multiple different scroll lock libraries or approaches
+- Remove the reference counting logic from the hook
+
+### Why This Issue Keeps Recurring
+1. **Multiple components need scroll lock** - Modal, Navigation, LoadingOverlay
+2. **Hook appears to work in isolation** - Testing single components doesn't reveal the conflict
+3. **Edge case combinations** - Users opening multiple overlays simultaneously
+4. **Previous fixes were component-specific** - Didn't address the multi-component conflict
+
+### Warning Signs of Regression
+If users report page jumping when:
+- Opening vertical navigation while a modal is open
+- Closing modals after using navigation
+- Loading overlays appearing during navigation
+- Any combination of overlays being used together
+
+**IMMEDIATELY check if:**
+1. New components are using custom scroll lock instead of `useBodyScrollLock`
+2. The reference counting logic has been removed from the hook
+3. Multiple instances of scroll lock management exist
+
+### Debugging Steps
+If page jumping returns:
+
+1. **Check hook usage**: `grep -r "useBodyScrollLock" src/`
+2. **Verify single implementation**: Ensure only one scroll lock hook exists
+3. **Test component combinations**: Open Modal → Open VerticalNav → Close in various orders
+4. **Console log the lock count**: Add temporary logging to the hook to track reference counting
+
+### Prevention Checklist
+Before adding new overlay/modal components:
+
+- [ ] Use `useBodyScrollLock(isOpen)` for scroll prevention
+- [ ] Never implement custom scroll lock solutions
+- [ ] Test with existing overlays (Modal, VerticalNav, LoadingOverlay)
+- [ ] Verify no page jumping occurs when opening/closing in various combinations
+- [ ] Check that only one body scroll lock implementation exists in the codebase
+
+**This issue has been fixed multiple times. The solution is reference counting in the hook. Do not create alternative scroll lock implementations.**
+
 ## General Development Guidelines
 - Follow existing code patterns and conventions
 - Ensure proper TypeScript types are maintained
