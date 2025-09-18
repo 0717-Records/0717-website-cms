@@ -2914,7 +2914,7 @@
     }
   },
   {
-    "name": "cardGrid",
+    "name": "gridLayout",
     "type": "type",
     "value": {
       "type": "object",
@@ -2923,7 +2923,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "cardGrid"
+            "value": "gridLayout"
           }
         },
         "columns": {
@@ -2938,33 +2938,109 @@
               {
                 "type": "string",
                 "value": "3"
-              },
-              {
-                "type": "string",
-                "value": "4"
               }
             ]
           },
           "optional": true
         },
-        "cards": {
+        "content": {
           "type": "objectAttribute",
           "value": {
             "type": "array",
             "of": {
-              "type": "object",
-              "attributes": {
-                "_key": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
+              "type": "union",
+              "of": [
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "richText"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "card"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "imageBlock"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "youTubeVideo"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "spotifyWidget"
+                  }
+                },
+                {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "bandcampWidget"
                   }
                 }
-              },
-              "rest": {
-                "type": "inline",
-                "name": "card"
-              }
+              ]
             }
           },
           "optional": true
@@ -3713,7 +3789,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "cardGrid"
+                    "name": "gridLayout"
                   }
                 },
                 {
@@ -4107,7 +4183,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "cardGrid"
+                    "name": "gridLayout"
                   }
                 },
                 {
@@ -4501,7 +4577,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "cardGrid"
+                    "name": "gridLayout"
                   }
                 },
                 {
@@ -4902,7 +4978,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "cardGrid"
+                    "name": "gridLayout"
                   }
                 },
                 {
@@ -5263,7 +5339,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "cardGrid"
+              "name": "gridLayout"
             }
           },
           {
@@ -7267,7 +7343,7 @@
                 },
                 "rest": {
                   "type": "inline",
-                  "name": "cardGrid"
+                  "name": "gridLayout"
                 }
               },
               {
@@ -8454,7 +8530,7 @@
                 },
                 "rest": {
                   "type": "inline",
-                  "name": "cardGrid"
+                  "name": "gridLayout"
                 }
               },
               {

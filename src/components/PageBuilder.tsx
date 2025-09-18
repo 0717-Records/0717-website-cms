@@ -27,7 +27,7 @@ import CTACalloutLinkComponent from './blocks/CTACalloutLink';
 import CTAEmailButtonComponent from './blocks/CTAEmailButton';
 import CTAEvents from './blocks/CTAEvents';
 import CTABlogPost from './blocks/CTABlogPost';
-import CardGrid from './blocks/CardGrid';
+import GridLayout from './blocks/GridLayout';
 import ImageBlock from './blocks/Image';
 import ImageGallery from './blocks/ImageGallery';
 import YouTubeVideo from './blocks/YouTubeVideo';
@@ -369,10 +369,10 @@ const BlockRenderer = ({
               </BlockWrapper>
             );
 
-          case 'cardGrid':
+          case 'gridLayout':
             return (
               <BlockWrapper key={block._key}>
-                <CardGrid {...block} documentId={documentId} documentType={documentType} fieldPathPrefix={blockPath} />
+                <GridLayout {...block} documentId={documentId} documentType={documentType} fieldPathPrefix={blockPath} />
               </BlockWrapper>
             );
 

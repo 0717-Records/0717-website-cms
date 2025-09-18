@@ -14,7 +14,7 @@ import { dividerType } from './blocks/dividerType';
 import { itemListType } from './blocks/itemListType';
 import { richTextType } from './blocks/richTextType';
 import { cardType } from './blocks/cardType';
-import { cardGridType } from './blocks/cardGridType';
+import { gridLayoutType } from './blocks/gridLayoutType';
 import { iconType } from './blocks/iconType';
 import { imageType } from './blocks/imageType';
 import { imageGalleryType } from './blocks/imageGalleryType';
@@ -78,7 +78,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     itemListType,
     richTextType,
     cardType,
-    cardGridType,
+    gridLayoutType,
     iconType,
     imageType,
     imageGalleryType,

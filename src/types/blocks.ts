@@ -2,7 +2,7 @@
 // This type represents any block that can contain other blocks
 
 
-import type { ItemList, Divider, RichText, Quote, TextImage, Card, CardGrid, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, EmbeddedCtaEmailButton, CtaEvents, CtaBlogPost, SubSection, SubSubSection, EventBlock, CollabAllBlock, FavouriteBlock, CompanyLinksBlock, BlockList } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Quote, TextImage, Card, GridLayout, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, EmbeddedCtaEmailButton, CtaEvents, CtaBlogPost, SubSection, SubSubSection, EventBlock, CollabAllBlock, FavouriteBlock, CompanyLinksBlock, BlockList } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -27,7 +27,7 @@ export type RichTextBlock = RichText & { _key: string };
 export type QuoteBlock = Quote & { _key: string };
 export type TextImageBlock = TextImage & { _key: string };
 export type CardBlock = Card & { _key: string };
-export type CardGridBlock = CardGrid & { _key: string };
+export type GridLayoutBlock = GridLayout & { _key: string };
 export type IconBlock = Icon & { _key: string };
 export type ImageBlock = SanityImageBlock & { _key: string };
 export type ImageGalleryBlock = ImageGallery & { _key: string };
@@ -59,7 +59,7 @@ export type NestedBlock =
   | QuoteBlock
   | TextImageBlock
   | CardBlock
-  | CardGridBlock
+  | GridLayoutBlock
   | IconBlock
   | ImageBlock
   | ImageGalleryBlock
@@ -127,8 +127,8 @@ export const isCardBlock = (block: NestedBlock): block is CardBlock => {
   return block._type === 'card';
 };
 
-export const isCardGridBlock = (block: NestedBlock): block is CardGridBlock => {
-  return block._type === 'cardGrid';
+export const isGridLayoutBlock = (block: NestedBlock): block is GridLayoutBlock => {
+  return block._type === 'gridLayout';
 };
 
 export const isIconBlock = (block: NestedBlock): block is IconBlock => {

@@ -66,16 +66,32 @@ const contentProjection = `
       _type == "embeddedCtaEmailButton" => {...}
     }
   },
-  _type == "cardGrid" => {
+  _type == "gridLayout" => {
     ...,
-    cards[]{
+    content[]{
       ...,
-      ctaList[]{
-        _type,
-        _key,
-        _type == "embeddedCtaButton" => {${fullLinkProjection}},
-        _type == "embeddedCtaEmailButton" => {...}
-      }
+      _type == "card" => {
+        ...,
+        ctaList[]{
+          _type,
+          _key,
+          _type == "embeddedCtaButton" => {${fullLinkProjection}},
+          _type == "embeddedCtaEmailButton" => {...}
+        }
+      },
+      _type == "richText" => {...},
+      _type == "imageBlock" => {
+        ...,
+        image{
+          asset,
+          alt,
+          hotspot,
+          crop
+        }
+      },
+      _type == "youTubeVideo" => {...},
+      _type == "spotifyWidget" => {...},
+      _type == "bandcampWidget" => {...}
     }
   },
   _type == "ctaEvents" => {
