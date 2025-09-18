@@ -9,7 +9,13 @@ interface CardGridProps extends CardGridBlock {
   fieldPathPrefix?: string;
 }
 
-const CardGrid = ({ columns = '2', cards, documentId, documentType, fieldPathPrefix }: CardGridProps) => {
+const CardGrid = ({
+  columns = '2',
+  cards,
+  documentId,
+  documentType,
+  fieldPathPrefix,
+}: CardGridProps) => {
   if (!cards || !Array.isArray(cards) || cards.length === 0) {
     return null;
   }
@@ -33,7 +39,7 @@ const CardGrid = ({ columns = '2', cards, documentId, documentType, fieldPathPre
   const cardClasses = getCardClasses(validColumns);
 
   return (
-    <div className='w-full flex justify-center flex-wrap gap-8'>
+    <div className='w-full flex justify-center flex-wrap gap-4 md:gap-8'>
       {cards.map((card, idx) => (
         <Card
           key={card._key || idx}
@@ -42,7 +48,11 @@ const CardGrid = ({ columns = '2', cards, documentId, documentType, fieldPathPre
           isGridChild
           documentId={documentId}
           documentType={documentType}
-          fieldPathPrefix={fieldPathPrefix ? `${fieldPathPrefix}.cards[_key=="${card._key}"]` : `cards[_key=="${card._key}"]`}
+          fieldPathPrefix={
+            fieldPathPrefix
+              ? `${fieldPathPrefix}.cards[_key=="${card._key}"]`
+              : `cards[_key=="${card._key}"]`
+          }
         />
       ))}
     </div>
