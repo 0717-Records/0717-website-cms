@@ -120,7 +120,7 @@ const Hero = ({
       {/* <div className='flex-shrink-0 h-16' /> */}
 
       {/* Main content area - grows to fill available space */}
-      <div className='flex-1 flex flex-col justify-center relative z-[25]'>
+      <div className='flex-1 flex flex-col relative z-[25] min-h-0'>
         {enableFeaturedItems ? (
           <FeaturedItemsHeroLayout
             heroTextColor={heroTextColor}

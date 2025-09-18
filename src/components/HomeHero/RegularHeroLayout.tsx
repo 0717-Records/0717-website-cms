@@ -36,6 +36,54 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
     showLogoBackColor,
   } = props;
 
+  // Extract position components
+  const cleanPosition = stegaClean(
+    heroContentPosition?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
+      'center-center'
+  );
+  const [vertical, horizontal] = cleanPosition.split('-');
+
+  // Map vertical position to justify-content classes
+  const getVerticalAlignment = (vert: string) => {
+    switch (vert) {
+      case 'top':
+        return 'justify-start';
+      case 'bottom':
+        return 'justify-end';
+      case 'center':
+      default:
+        return 'justify-center';
+    }
+  };
+
+  // Map horizontal position to items and text alignment classes with mobile responsiveness
+  const getHorizontalAlignment = (horiz: string) => {
+    switch (horiz) {
+      case 'left':
+        return {
+          items: 'items-center md:items-start', // center on mobile, left on desktop
+          text: 'text-center md:text-left',
+          content: 'items-center md:items-start'
+        };
+      case 'right':
+        return {
+          items: 'items-center md:items-end', // center on mobile, right on desktop
+          text: 'text-center md:text-right',
+          content: 'items-center md:items-end'
+        };
+      case 'center':
+      default:
+        return {
+          items: 'items-center',
+          text: 'text-center',
+          content: 'items-center'
+        };
+    }
+  };
+
+  const verticalClasses = getVerticalAlignment(vertical);
+  const horizontalConfig = getHorizontalAlignment(horizontal);
+
   const componentProps = {
     heroTitle,
     heroTextColor,
@@ -51,57 +99,19 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
     heroSubtitle,
     documentId,
     documentType,
+    textAlignment: horizontal,
   };
-
-  // Map content position to flexbox alignment classes
-  const getFlexAlignment = (position: string) => {
-    const cleanPosition = stegaClean(
-      position?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
-        'center-center'
-    );
-
-    const [vertical, horizontal] = cleanPosition.split('-');
-
-    const justifyClasses = {
-      top: 'justify-start',
-      center: 'justify-center',
-      bottom: 'justify-end',
-    };
-
-    const alignClasses = {
-      left: 'items-start text-left',
-      center: 'items-center text-center',
-      right: 'items-end text-right',
-    };
-
-    return {
-      justify: justifyClasses[vertical as keyof typeof justifyClasses] || 'justify-center',
-      align: alignClasses[horizontal as keyof typeof alignClasses] || 'items-center text-center',
-    };
-  };
-
-  const flexConfig = getFlexAlignment(heroContentPosition || 'center-center');
-
-  const cleanPosition = stegaClean(
-    heroContentPosition?.trim().replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, '') ||
-      'center-center'
-  );
-  const [, horizontal] = cleanPosition.split('-');
-
-  // Determine container alignment based on horizontal position
-  const containerAlignment =
-    horizontal === 'left' ? 'items-start' : horizontal === 'right' ? 'items-end' : 'items-center';
 
   return (
     <div
       className={`
-        w-full h-full flex flex-col ${flexConfig.justify} ${flexConfig.align}
+        w-full flex-1 flex flex-col ${verticalClasses} ${horizontalConfig.items}
         ${getTextColorClasses(heroTextColor)}
         px-4 sm:px-8 lg:px-12
       `}
       {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
-      {/* Content container with consistent alignment */}
-      <div className={`flex flex-col ${containerAlignment} gap-4 sm:gap-6 max-w-4xl w-full mt-10`}>
+      {/* Content container with responsive alignment */}
+      <div className={`flex flex-col ${horizontalConfig.content} gap-4 sm:gap-6 max-w-4xl w-full`}>
         {/* Logo - can shrink when needed */}
         <div className='flex-shrink min-h-0'>
           <HeroLogo {...componentProps} />
