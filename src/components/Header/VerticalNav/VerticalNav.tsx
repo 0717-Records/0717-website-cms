@@ -64,7 +64,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
         {/* Menu Header */}
         <div className='flex items-center justify-between p-4 border-b border-gray-200'>
           {/* Logo in Menu */}
-          <Link href='/#home' onClick={onClose} className='flex items-center gap-2'>
+          <Link href='/' onClick={onClose} className='flex items-center gap-2'>
             {headerData?.logo ? (
               <div className='relative w-[160px] h-[60px]'>
                 <UnifiedImage
