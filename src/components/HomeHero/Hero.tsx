@@ -11,6 +11,7 @@ import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import { createSanityDataAttribute } from '../../utils/sectionHelpers';
 import { stegaClean } from '@sanity/client/stega';
+import { homeHeroBottomSpacing } from '@/utils/spacingConstants';
 
 interface HeroProps {
   heroStyle: NonNullable<HOME_PAGE_QUERYResult>['heroStyle'];
@@ -73,7 +74,7 @@ const Hero = ({
     <section
       id='home'
       data-hero
-      className={`border border-red-500 relative ${styles['hero-height']} flex flex-col ${
+      className={`border border-red-500 relative ${styles['hero-height']} flex flex-col ${homeHeroBottomSpacing} ${
         currentHeroStyle === 'background-images' ? heroBackgroundColor : ''
       }`}>
       {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
@@ -110,7 +111,7 @@ const Hero = ({
 
       {/* Default Hero Style */}
       {currentHeroStyle === 'default' && (
-        <div className='absolute inset-0 z-10'>
+        <div className='absolute inset-0 z-10 pointer-events-none'>
           <DefaultHeroBackground />
         </div>
       )}

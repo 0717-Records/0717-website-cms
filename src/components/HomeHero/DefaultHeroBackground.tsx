@@ -58,7 +58,7 @@ const DefaultHeroBackground = () => {
   return (
     <div
       ref={backgroundRef}
-      className='fixed inset-0 overflow-hidden transition-opacity duration-100 ease-linear pointer-events-none'
+      className='fixed inset-0 overflow-hidden transition-opacity duration-100 ease-linear'
       style={{ opacity }}>
       {/* Transparent background - allows body color to show through */}
 
