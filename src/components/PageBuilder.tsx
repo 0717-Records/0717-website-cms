@@ -330,7 +330,7 @@ const BlockRenderer = ({
           case 'card':
             return (
               <BlockWrapper key={block._key}>
-                <Card {...block} documentId={documentId} documentType={documentType} />
+                <Card {...block} documentId={documentId} documentType={documentType} fieldPathPrefix={blockPath} />
               </BlockWrapper>
             );
 
@@ -372,7 +372,7 @@ const BlockRenderer = ({
           case 'cardGrid':
             return (
               <BlockWrapper key={block._key}>
-                <CardGrid {...block} documentId={documentId} documentType={documentType} />
+                <CardGrid {...block} documentId={documentId} documentType={documentType} fieldPathPrefix={blockPath} />
               </BlockWrapper>
             );
 

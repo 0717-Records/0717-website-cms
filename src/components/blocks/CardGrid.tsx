@@ -6,9 +6,10 @@ import Card from './Card';
 interface CardGridProps extends CardGridBlock {
   documentId?: string;
   documentType?: string;
+  fieldPathPrefix?: string;
 }
 
-const CardGrid = ({ columns = '2', cards, documentId, documentType }: CardGridProps) => {
+const CardGrid = ({ columns = '2', cards, documentId, documentType, fieldPathPrefix }: CardGridProps) => {
   if (!cards || !Array.isArray(cards) || cards.length === 0) {
     return null;
   }
@@ -41,7 +42,7 @@ const CardGrid = ({ columns = '2', cards, documentId, documentType }: CardGridPr
           isGridChild
           documentId={documentId}
           documentType={documentType}
-          fieldPathPrefix={`cards[_key=="${card._key}"]`}
+          fieldPathPrefix={fieldPathPrefix ? `${fieldPathPrefix}.cards[_key=="${card._key}"]` : `cards[_key=="${card._key}"]`}
         />
       ))}
     </div>
