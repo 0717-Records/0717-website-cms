@@ -28,12 +28,12 @@ const RootLayout = ({
   return (
     <html lang='en'>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
         {!isProd && <meta name='robots' content='noindex, nofollow' />}
 
         {/* Resource hints for performance */}
-        <link rel="dns-prefetch" href="//cdn.sanity.io" />
-        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link rel='dns-prefetch' href='//cdn.sanity.io' />
+        <link rel='preconnect' href='https://cdn.sanity.io' crossOrigin='anonymous' />
 
         {/* Critical CSS inline for faster LCP - Simplified for maintainability */}
         {/*
@@ -44,8 +44,9 @@ const RootLayout = ({
           ⚠️
           ⚠️  DUPLICATED STYLES: header positioning, main padding, scroll padding, brand colors
         */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
             /* Critical layout-only styles - KEEP IN SYNC with globals.css */
             html {
               scroll-padding-top: 4.5rem; /* Mobile: matches h-18 */
@@ -64,24 +65,9 @@ const RootLayout = ({
               --color-brand-primary: #ffea00;
               --color-brand-secondary: #f4a300;
             }
-
-            /*
-              ⚠️ HEADER HEIGHT SYNC: These values MUST match:
-              - src/components/Header/Header.tsx (h-18 md:h-20)
-              - src/components/HomeHero/styles.module.css (hero-height calc values)
-              - src/app/globals.css (scroll-padding-top)
-            */
-            main {
-              padding-top: 4.5rem; /* Mobile: matches h-18 */
-            }
-
-            @media (min-width: 768px) {
-              main {
-                padding-top: 5rem; /* Desktop: matches h-20 */
-              }
-            }
-          `
-        }} />
+          `,
+          }}
+        />
 
         <script
           type='application/ld+json'

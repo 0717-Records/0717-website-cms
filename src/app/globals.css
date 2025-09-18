@@ -37,7 +37,6 @@
   ⚠️ HEADER HEIGHT SYNC: These values MUST match:
   - src/components/Header/Header.tsx (h-18 md:h-20)
   - src/components/HomeHero/styles.module.css (hero-height calc values)
-  - src/app/layout.tsx (main padding-top critical CSS)
 */
 html {
   scroll-padding-top: 4.5rem; /* Mobile: matches h-18 */

@@ -2,7 +2,6 @@
   ⚠️ HEADER HEIGHT SYNC: These values MUST match:
   - src/components/Header/Header.tsx (h-18 md:h-20)
   - src/app/globals.css (scroll-padding-top)
-  - src/app/layout.tsx (main padding-top critical CSS)
 */
 
 .hero-height {
