@@ -7,6 +7,7 @@ import type { HEADER_QUERYResult } from '@/sanity/types';
 import HorizontalNav from './HorizontalNav';
 import MenuButton from './MenuButton';
 import VerticalNav from './VerticalNav/VerticalNav';
+import MenuCallout from './MenuCallout';
 import SkipLink from '@/components/UI/SkipLink';
 
 interface HeaderProps {
@@ -86,13 +87,20 @@ const Header = ({ headerData }: HeaderProps) => {
           <HorizontalNav navLinks={headerData?.horizontalNav || null} />
         </div>
 
-        {/* Hamburger Menu Button */}
-        <MenuButton
-          variant='hamburger'
-          isMenuOpen={isMenuOpen}
-          onClick={toggleMenu}
-          ariaControls='mobile-navigation-menu'
-        />
+        {/* Hamburger Menu Button with Callout */}
+        <div className="relative">
+          <MenuButton
+            variant='hamburger'
+            isMenuOpen={isMenuOpen}
+            onClick={toggleMenu}
+            ariaControls='mobile-navigation-menu'
+          />
+
+          {/* Menu Callout - only show when menu is closed */}
+          {!isMenuOpen && (
+            <MenuCallout />
+          )}
+        </div>
       </header>
 
       {/* Vertical Menu */}
