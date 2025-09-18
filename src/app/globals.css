@@ -39,12 +39,12 @@
   - src/components/HomeHero/styles.module.css (hero-height calc values)
 */
 html {
-  scroll-padding-top: 4.5rem; /* Mobile: matches h-18 */
+  scroll-padding-top: 5rem; /* Must match layout.tsx */
 }
 
 @media (min-width: 768px) {
   html {
-    scroll-padding-top: 5rem; /* Desktop: matches h-20 */
+    scroll-padding-top: 6rem; /* Must match layout.tsx */
   }
 }
 

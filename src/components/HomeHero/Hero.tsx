@@ -117,7 +117,7 @@ const Hero = ({
       )}
 
       {/* Top padding for spacing from header - matches bottom */}
-      <div className='flex-shrink-0 h-16' />
+      {/* <div className='flex-shrink-0 h-16' /> */}
 
       {/* Main content area - grows to fill available space */}
       <div className='flex-1 flex flex-col justify-center relative z-[25]'>

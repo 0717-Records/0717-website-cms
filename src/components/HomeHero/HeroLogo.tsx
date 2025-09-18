@@ -50,8 +50,8 @@ const HeroLogo = ({
       />
       {showLogoBackColor && (
         <>
-          <div className='absolute top-1/2 left-1/2 w-64 h-64 md:w-80 md:h-80 lg:w-[22vw] lg:h-[22vw] rounded-full bg-gradient-to-br from-[#ffea00]/20 to-[#ffea00]/10 transform -translate-y-1/2 -translate-x-1/2 blur-md -z-10' />
-          <div className='absolute top-1/2 left-1/2 w-50 h-50 lg:w-[18vw] lg:h-[18vw] rounded-full bg-gradient-to-br from-[#ffea00]/30 to-[#ffea00]/20 transform -translate-y-1/2 -translate-x-1/2 blur-sm -z-10' />
+          <div className='absolute top-1/2 left-1/2 w-60 h-60 md:w-70 md:h-70 lg:w-[20vw] lg:h-[20vw] rounded-full bg-gradient-to-br from-[#ffea00]/20 to-[#ffea00]/10 transform -translate-y-1/2 -translate-x-1/2 blur-md -z-10' />
+          <div className='absolute top-1/2 left-1/2 w-40 h-40 md:w-50 md:h-50 lg:w-[15vw] lg:h-[15vw] rounded-full bg-gradient-to-br from-[#ffea00]/30 to-[#ffea00]/20 transform -translate-y-1/2 -translate-x-1/2 blur-sm -z-10' />
         </>
       )}
     </div>

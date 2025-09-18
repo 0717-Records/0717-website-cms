@@ -35,7 +35,7 @@ const ScrollIndicator = ({ textColor, className = '' }: ScrollIndicatorProps) =>
       `}
       aria-label='Scroll down to content'>
       {/* Animated arrow */}
-      <div className='relative'>
+      <div className='relative z-40'>
         <svg
           width='24'
           height='24'
