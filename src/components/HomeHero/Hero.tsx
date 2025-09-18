@@ -74,7 +74,7 @@ const Hero = ({
     <section
       id='home'
       data-hero
-      className={`border border-red-500 relative ${styles['hero-height']} flex flex-col ${homeHeroBottomSpacing} ${
+      className={`relative ${styles['hero-height']} flex flex-col ${homeHeroBottomSpacing} ${
         currentHeroStyle === 'background-images' ? heroBackgroundColor : ''
       }`}>
       {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}

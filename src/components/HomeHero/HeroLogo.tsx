@@ -27,9 +27,10 @@ const HeroLogo = ({
   const logoSize = enableFeaturedItems
     ? 'w-16 sm:w-20 md:w-24 lg:w-28'
     : 'w-32 min-w-24 max-w-48 sm:w-40 md:w-48 lg:w-56 xl:w-64';
-  const logoSrc = stegaClean(heroTextColor) === 'white'
-    ? '/images/logo-white-on-transparent.png'
-    : '/images/logo-black-on-transparent.png';
+  const logoSrc =
+    stegaClean(heroTextColor) === 'white'
+      ? '/images/logo-white-on-transparent.png'
+      : '/images/logo-black-on-transparent.png';
 
   return (
     <div
@@ -38,19 +39,19 @@ const HeroLogo = ({
       <UnifiedImage
         src={logoSrc}
         alt='07:17 Records Logo'
-        mode="sized"
+        mode='sized'
         width={500}
         height={500}
-        sizeContext="hero"
-        objectFit="contain"
+        sizeContext='hero'
+        objectFit='contain'
         className={`${logoSize} h-auto object-contain relative z-10 drop-shadow-lg drop-shadow-black/40`}
         priority
-        sizes="(max-width: 768px) 320px, (max-width: 1024px) 384px, 512px"
+        sizes='(max-width: 768px) 320px, (max-width: 1024px) 384px, 512px'
       />
       {showLogoBackColor && (
         <>
-          <div className='absolute top-1/2 left-1/2 w-64 h-64 md:w-80 md:h-80 lg:w-[25vw] lg:h-[25vw] rounded-full bg-gradient-to-br from-[#ffea00]/20 to-[#ffea00]/10 transform -translate-y-1/2 -translate-x-1/2 blur-md' />
-          <div className='absolute top-1/2 left-1/2 w-50 h-50 lg:w-[20vw] lg:h-[20vw] rounded-full bg-gradient-to-br from-[#ffea00]/30 to-[#ffea00]/20 transform -translate-y-1/2 -translate-x-1/2 blur-sm' />
+          <div className='absolute top-1/2 left-1/2 w-64 h-64 md:w-80 md:h-80 lg:w-[22vw] lg:h-[22vw] rounded-full bg-gradient-to-br from-[#ffea00]/20 to-[#ffea00]/10 transform -translate-y-1/2 -translate-x-1/2 blur-md -z-10' />
+          <div className='absolute top-1/2 left-1/2 w-50 h-50 lg:w-[18vw] lg:h-[18vw] rounded-full bg-gradient-to-br from-[#ffea00]/30 to-[#ffea00]/20 transform -translate-y-1/2 -translate-x-1/2 blur-sm -z-10' />
         </>
       )}
     </div>

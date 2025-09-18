@@ -65,18 +65,18 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
     const justifyClasses = {
       top: 'justify-start',
       center: 'justify-center',
-      bottom: 'justify-end'
+      bottom: 'justify-end',
     };
 
     const alignClasses = {
       left: 'items-start text-left',
       center: 'items-center text-center',
-      right: 'items-end text-right'
+      right: 'items-end text-right',
     };
 
     return {
       justify: justifyClasses[vertical as keyof typeof justifyClasses] || 'justify-center',
-      align: alignClasses[horizontal as keyof typeof alignClasses] || 'items-center text-center'
+      align: alignClasses[horizontal as keyof typeof alignClasses] || 'items-center text-center',
     };
   };
 
@@ -89,9 +89,8 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
   const [, horizontal] = cleanPosition.split('-');
 
   // Determine container alignment based on horizontal position
-  const containerAlignment = horizontal === 'left' ? 'items-start' :
-                            horizontal === 'right' ? 'items-end' :
-                            'items-center';
+  const containerAlignment =
+    horizontal === 'left' ? 'items-start' : horizontal === 'right' ? 'items-end' : 'items-center';
 
   return (
     <div
@@ -101,26 +100,25 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
         px-4 sm:px-8 lg:px-12
       `}
       {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
-
       {/* Content container with consistent alignment */}
       <div className={`flex flex-col ${containerAlignment} gap-4 sm:gap-6 max-w-4xl w-full`}>
         {/* Logo - can shrink when needed */}
-        <div className="flex-shrink min-h-0">
+        <div className='flex-shrink min-h-0'>
           <HeroLogo {...componentProps} />
         </div>
 
         {/* Title - priority content */}
-        <div className="flex-shrink-0">
+        <div className='flex-shrink-0'>
           <HeroTitle {...componentProps} />
         </div>
 
         {/* Subtitle - can grow/shrink as needed */}
-        <div className="flex-shrink min-h-0">
+        <div className='flex-shrink min-h-0'>
           <HeroSubtitle {...heroSubtitleProps} />
         </div>
 
         {/* CTA buttons - always visible, aligned with content */}
-        <div className="flex-shrink-0">
+        <div className='flex-shrink-0'>
           <HeroCTA {...componentProps} />
         </div>
       </div>
