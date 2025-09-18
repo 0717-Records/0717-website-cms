@@ -74,18 +74,20 @@ const SpotifyWidget: React.FC<SpotifyWidgetProps> = ({
     ? createSanityDataAttribute(documentId, documentType, pathPrefix)
     : {};
 
-  console.log('Width from embed:', width);
-
-  // Generate width class - mobile always w-full, desktop uses embed width
-  const widthClass = width
-    ? `w-full md:w-[${width.includes('%') ? width : `${width}%`}]`
-    : 'w-full';
-
   return (
     <div className={`${className}`} {...widgetDataAttribute}>
       <iframe
         src={src}
-        className={`${widthClass} mx-auto ${embedHeight} rounded-xl border-0`}
+        className={`hidden md:block mx-auto ${embedHeight} rounded-xl border-0`}
+        style={{ width: width ? (width.includes('%') ? width : `${width}%`) : '100%' }}
+        allowFullScreen
+        allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+        loading='lazy'
+        title='Spotify Player'
+      />
+      <iframe
+        src={src}
+        className={`md:hidden w-full mx-auto ${embedHeight} rounded-xl border-0`}
         allowFullScreen
         allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
         loading='lazy'
