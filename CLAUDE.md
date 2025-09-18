@@ -634,3 +634,22 @@ Both files contain prominent warnings with ⚠️ symbols:
 - Ensure proper TypeScript types are maintained
 - Test changes thoroughly before committing
 - Use existing utility functions and components where possible
+
+### TypeScript Error Checking
+**IMPORTANT: Always run `npm run typecheck` after making code changes** to ensure TypeScript errors are caught early. This script performs type checking without compilation and is faster than a full build.
+
+**When to run typecheck:**
+- After modifying component interfaces or props
+- After changing import/export statements
+- After adding or removing dependencies
+- After schema changes that affect types
+- After any code changes (unless trivial changes like comments)
+
+**Skip only for:**
+- Adding comments or documentation
+- Modifying CSS/styling without type changes
+- Non-code file changes (README, configs without type impact)
+
+```bash
+npm run typecheck
+```
