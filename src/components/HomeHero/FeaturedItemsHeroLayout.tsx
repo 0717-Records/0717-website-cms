@@ -49,25 +49,26 @@ const FeaturedItemsHeroLayout = (props: FeaturedItemsHeroLayoutProps) => {
   };
 
   return (
-    <div
-      className={`relative ${styles['hero-height']} flex flex-col justify-around items-center text-center px-8 z-[25]`}>
-      {/* Top Section: Logo and Title */}
-      <div
-        className={`flex flex-col items-center text-center px-4 py-4 ${getTextColorClasses(heroTextColor)}`}>
-        <HeroLogo {...componentProps} />
-        <HeroTitle {...componentProps} />
+    <div className={`w-full h-full flex flex-col justify-between items-center text-center px-4 sm:px-8 ${getTextColorClasses(heroTextColor)}`}>
+      {/* Top Section: Logo and Title - can shrink */}
+      <div className="flex flex-col items-center text-center gap-4 sm:gap-6 flex-shrink min-h-0">
+        <div className="flex-shrink min-h-0">
+          <HeroLogo {...componentProps} />
+        </div>
+        <div className="flex-shrink-0">
+          <HeroTitle {...componentProps} />
+        </div>
       </div>
 
-      {/* Center Section: Featured Images - can grow when wrapping */}
+      {/* Center Section: Featured Images - grows to fill space */}
       <div
-        className='w-full'
+        className='w-full flex-1 flex items-center justify-center py-4'
         {...createSanityDataAttribute(documentId, documentType, 'featuredImages')}>
         <FeaturedItems featuredImages={featuredImages} />
       </div>
 
-      {/* Bottom Section: Subtitle and CTA */}
-      <div
-        className={`flex flex-col items-center text-center px-4 py-4 space-y-4 ${getTextColorClasses(heroTextColor)}`}>
+      {/* Bottom Section: Subtitle and CTA - fixed height */}
+      <div className="flex flex-col items-center text-center gap-4 flex-shrink-0">
         <HeroFeaturedItemsSubtitle
           heroFeaturedItemsSubtitle={heroFeaturedItemsSubtitle}
           heroTextColor={heroTextColor}

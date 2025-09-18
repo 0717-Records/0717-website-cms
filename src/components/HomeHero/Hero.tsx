@@ -10,7 +10,6 @@ import ScrollIndicator from './ScrollIndicator';
 import type { HOME_PAGE_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 import { createSanityDataAttribute } from '../../utils/sectionHelpers';
-import { homeHeroBottomSpacing } from '@/utils/spacingConstants';
 import { stegaClean } from '@sanity/client/stega';
 
 interface HeroProps {
@@ -74,7 +73,7 @@ const Hero = ({
     <section
       id='home'
       data-hero
-      className={`relative ${styles['hero-height']} flex flex-col justify-center ${homeHeroBottomSpacing} ${
+      className={`relative ${styles['hero-height']} flex flex-col ${
         currentHeroStyle === 'background-images' ? heroBackgroundColor : ''
       }`}>
       {/* Z-index hierarchy: Background (z-10) → Gradient (z-20) → Content (z-[25]) → Header (z-30) → Mobile menu (z-40) */}
@@ -111,49 +110,50 @@ const Hero = ({
 
       {/* Default Hero Style */}
       {currentHeroStyle === 'default' && (
-        <div className='absolute z-10'>
+        <div className='absolute inset-0 z-10'>
           <DefaultHeroBackground />
         </div>
       )}
 
-      {/* Content */}
-      {enableFeaturedItems ? (
-        <FeaturedItemsHeroLayout
-          heroTextColor={heroTextColor}
-          showHeroLogo={showHeroLogo}
-          heroTitle={heroTitle}
-          heroFeaturedItemsSubtitle={heroFeaturedItemsSubtitle}
-          heroCallToActionList={heroCallToActionList}
-          enableFeaturedItems={enableFeaturedItems}
-          featuredImages={featuredImages}
-          documentId={documentId}
-          documentType={documentType}
-          showLogoBackColor={currentHeroStyle === 'default'}
-        />
-      ) : (
-        <RegularHeroLayout
-          heroTextColor={heroTextColor}
-          showHeroLogo={showHeroLogo}
-          heroTitle={heroTitle}
-          heroSubtitle={heroSubtitle}
-          heroCallToActionList={heroCallToActionList}
-          heroContentPosition={heroContentPosition}
-          enableFeaturedItems={enableFeaturedItems}
-          documentId={documentId}
-          documentType={documentType}
-          showLogoBackColor={currentHeroStyle === 'default'}
-        />
-      )}
+      {/* Top padding for spacing from header - matches bottom */}
+      <div className='flex-shrink-0 h-16' />
 
-      {/* Scroll Indicator Arrow */}
-      {/* Hide on mobile when featured items are enabled, always show otherwise */}
-      <div
-        className={`
-          absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-30
-          ${enableFeaturedItems ? 'hidden sm:block' : 'block'}
-        `}
-      >
-        <ScrollIndicator textColor={stegaClean(heroTextColor) || 'black'} />
+      {/* Main content area - grows to fill available space */}
+      <div className='flex-1 flex flex-col justify-center relative z-[25]'>
+        {enableFeaturedItems ? (
+          <FeaturedItemsHeroLayout
+            heroTextColor={heroTextColor}
+            showHeroLogo={showHeroLogo}
+            heroTitle={heroTitle}
+            heroFeaturedItemsSubtitle={heroFeaturedItemsSubtitle}
+            heroCallToActionList={heroCallToActionList}
+            enableFeaturedItems={enableFeaturedItems}
+            featuredImages={featuredImages}
+            documentId={documentId}
+            documentType={documentType}
+            showLogoBackColor={currentHeroStyle === 'default'}
+          />
+        ) : (
+          <RegularHeroLayout
+            heroTextColor={heroTextColor}
+            showHeroLogo={showHeroLogo}
+            heroTitle={heroTitle}
+            heroSubtitle={heroSubtitle}
+            heroCallToActionList={heroCallToActionList}
+            heroContentPosition={heroContentPosition}
+            enableFeaturedItems={enableFeaturedItems}
+            documentId={documentId}
+            documentType={documentType}
+            showLogoBackColor={currentHeroStyle === 'default'}
+          />
+        )}
+      </div>
+
+      {/* Bottom padding with scroll indicator - matches top */}
+      <div className='flex-shrink-0 flex flex-col items-center justify-center h-16'>
+        <div className={`${enableFeaturedItems ? 'hidden sm:block' : 'block'}`}>
+          <ScrollIndicator textColor={stegaClean(heroTextColor) || 'black'} />
+        </div>
       </div>
     </section>
   );

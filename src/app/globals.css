@@ -33,8 +33,20 @@
 }
 
 /* Base styles */
+/*
+  ⚠️ HEADER HEIGHT SYNC: These values MUST match:
+  - src/components/Header/Header.tsx (h-18 md:h-20)
+  - src/components/HomeHero/styles.module.css (hero-height calc values)
+  - src/app/layout.tsx (main padding-top critical CSS)
+*/
 html {
-  scroll-padding-top: 6rem; /* Adjust this value to match the height of your fixed header */
+  scroll-padding-top: 4.5rem; /* Mobile: matches h-18 */
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 5rem; /* Desktop: matches h-20 */
+  }
 }
 
 /* Font variant utilities */

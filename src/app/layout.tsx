@@ -75,10 +75,21 @@ const RootLayout = ({
               border-bottom: 1px solid #e5e7eb;
             }
 
-            /* Prevent FOUC */
+            /*
+              ⚠️ HEADER HEIGHT SYNC: These values MUST match:
+              - src/components/Header/Header.tsx (h-18 md:h-20)
+              - src/components/HomeHero/styles.module.css (hero-height calc values)
+              - src/app/globals.css (scroll-padding-top)
+            */
             main {
-              padding-top: 6rem;
+              padding-top: 4.5rem; /* Mobile: matches h-18 */
               min-height: 100vh;
+            }
+
+            @media (min-width: 768px) {
+              main {
+                padding-top: 5rem; /* Desktop: matches h-20 */
+              }
             }
 
             /* Critical button and interactive styles */
