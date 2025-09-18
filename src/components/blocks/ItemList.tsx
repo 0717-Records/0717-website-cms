@@ -18,20 +18,19 @@ const ItemList = ({ items = [], alignment, className = '', inheritAlignment }: I
 
   return (
     <div className={`${className}`.trim()}>
-      <div
-        className={`flex flex-wrap gap-4 md:gap-6 ${alignmentClasses}`}>
+      <div className={`flex flex-wrap gap-2 md:gap-3 ${alignmentClasses}`}>
         {items.map((item) => (
           <div
             key={item._key}
-            className='group flex items-center gap-3 px-4 py-3 rounded-2xl border border-gray-200'>
+            className='group flex items-center gap-3 px-3 py-1 rounded-2xl border border-gray-200'>
             {item.icon && item.icon.asset ? (
               <div className='relative w-6 h-6 flex-shrink-0'>
                 <UnifiedImage
                   src={item.icon}
                   alt={item.icon.alt || 'List item icon'}
-                  mode="fill"
-                  sizeContext="icon"
-                  objectFit="contain"
+                  mode='fill'
+                  sizeContext='icon'
+                  objectFit='contain'
                   sizes='24px'
                 />
               </div>
@@ -40,9 +39,7 @@ const ItemList = ({ items = [], alignment, className = '', inheritAlignment }: I
                 <div className='w-3 h-3 bg-gray-300 rounded animate-pulse'></div>
               </div>
             ) : null}
-            <span className='text-body-lg font-medium text-gray-800 whitespace-nowrap'>
-              {item.text}
-            </span>
+            <span className='font-medium text-gray-800 whitespace-nowrap'>{item.text}</span>
           </div>
         ))}
       </div>
