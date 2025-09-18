@@ -10,28 +10,30 @@ export const spotifyWidgetType = defineType({
   title: 'Spotify Widget',
   type: 'object',
   icon: PlayIcon,
-  description: 'Embed Spotify tracks, albums, playlists, artists, shows, or episodes using embed code',
+  description:
+    'Embed Spotify tracks, albums, playlists, artists, shows, or episodes using embed code',
   fields: [
     defineField({
       name: 'embedCode',
       title: 'Spotify Embed Code',
       type: 'text',
       rows: 6,
-      description: 'Paste the Spotify embed code here. To get this: 1) Open Spotify Web Player, 2) Find your content, 3) Click the three dots (...), 4) Select "Share" → "Embed" → Copy the iframe code',
+      description:
+        'Paste the Spotify embed code here. To get this: 1) Open Spotify Web Player (on desktop), 2) Find your content, 3) Click the three dots (...), 4) Select "Share" → "Embed playlist", 5) Adjust the settings as desired, 6) Click Copy to copy code and paste below',
       validation: (Rule) =>
-        Rule.required()
-          .custom((embedCode) => {
-            if (!embedCode) return 'Spotify embed code is required';
+        Rule.required().custom((embedCode) => {
+          if (!embedCode) return 'Spotify embed code is required';
 
-            // Validate that it's a proper iframe with Spotify embed URL
-            const iframeRegex = /<iframe[^>]*src=["']([^"']*open\.spotify\.com\/embed\/[^"']*?)["'][^>]*>.*?<\/iframe>/is;
+          // Validate that it's a proper iframe with Spotify embed URL
+          const iframeRegex =
+            /<iframe[^>]*src=["']([^"']*open\.spotify\.com\/embed\/[^"']*?)["'][^>]*>/i;
 
-            if (!iframeRegex.test(embedCode.trim())) {
-              return 'Please enter a valid Spotify embed code. It should be an iframe with a Spotify embed URL.';
-            }
+          if (!iframeRegex.test(embedCode.trim())) {
+            return 'Please enter a valid Spotify embed code. It should be an iframe with a Spotify embed URL.';
+          }
 
-            return true;
-          }),
+          return true;
+        }),
     }),
   ],
   preview: {
@@ -40,7 +42,8 @@ export const spotifyWidgetType = defineType({
     },
     prepare({ embedCode }) {
       // Extract content type from embed code URL
-      const iframeRegex = /<iframe[^>]*src=["']([^"']*open\.spotify\.com\/embed\/([^/"']+)\/[^"']*?)["'][^>]*>/i;
+      const iframeRegex =
+        /<iframe[^>]*src=["']([^"']*open\.spotify\.com\/embed\/([^/"']+)\/[^"']*?)["'][^>]*>/i;
       const match = embedCode?.match(iframeRegex);
       const contentType = match ? match[2] : 'content';
 
