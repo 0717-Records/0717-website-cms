@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import UnifiedImage from '@/components/UI/UnifiedImage';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';

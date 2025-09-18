@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import UnifiedImage from '@/components/UI/UnifiedImage';
 import type { HEADER_QUERYResult } from '@/sanity/types';
@@ -16,14 +16,15 @@ interface HeaderProps {
 
 const Header = ({ headerData }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [calloutHasShown, setCalloutHasShown] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
-  };
+  }, []);
 
   // Close menu on Escape key press
   useEffect(() => {
@@ -42,7 +43,7 @@ const Header = ({ headerData }: HeaderProps) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, closeMenu]);
 
   /* 
     HEADER HEIGHT DEFINITION:
@@ -96,9 +97,11 @@ const Header = ({ headerData }: HeaderProps) => {
             ariaControls='mobile-navigation-menu'
           />
 
-          {/* Menu Callout - only show when menu is closed */}
-          {!isMenuOpen && (
-            <MenuCallout />
+          {/* Menu Callout - only show when menu is closed and hasn't shown before */}
+          {!isMenuOpen && !calloutHasShown && (
+            <MenuCallout
+              onHide={() => setCalloutHasShown(true)}
+            />
           )}
         </div>
       </header>
