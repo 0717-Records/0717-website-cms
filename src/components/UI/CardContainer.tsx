@@ -11,6 +11,7 @@ const CardContainer = ({ children, className = '', isGridChild = false }: CardCo
   return (
     <div
       className={`
+        w-full 
         bg-card-gradient 
         border border-gray-200 
         rounded-lg 
@@ -23,7 +24,7 @@ const CardContainer = ({ children, className = '', isGridChild = false }: CardCo
         ${!isGridChild ? 'mx-auto' : ''}
         ${className}
       `.trim()}>
-      <div className='w-full'>{children}</div>
+      {children}
     </div>
   );
 };

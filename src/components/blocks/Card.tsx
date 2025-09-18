@@ -91,11 +91,11 @@ const Card = (props: CardProps) => {
   if (cleanCardStyle === 'info') {
     return (
       <CardContainer
-        className={`${className} ${icon?.showIcon ? 'flex flex-row items-start gap-6' : 'flex flex-col'}`}
+        className={`${className} flex flex-row items-start gap-6`}
         isGridChild={isGridChild}>
         {/* Icon - 1/3 width when present */}
         {icon && icon.showIcon && (
-          <div className='flex-shrink-0 w-1/3 flex justify-center'>
+          <div className='flex-shrink-0 flex justify-center'>
             <Icon
               image={icon.image}
               showIcon={icon.showIcon}
@@ -105,11 +105,11 @@ const Card = (props: CardProps) => {
         )}
 
         {/* Content - 2/3 width when icon present, full width otherwise */}
-        <div className={`${icon?.showIcon ? 'w-2/3' : 'w-full'} flex flex-col gap-4`}>
+        <div className={`flex flex-col gap-4 text-left`}>
           {/* Title */}
           {cleanTitle && (
             <div
-              className='text-h4'
+              className='text-h6 font-bold'
               {...createSanityDataAttribute(documentId, documentType, getFieldPath('title'))}>
               {cleanTitle}
             </div>
@@ -118,7 +118,7 @@ const Card = (props: CardProps) => {
           {/* Body Text */}
           {cleanBodyText && (
             <p
-              className='text-body-base text-gray-600 leading-relaxed whitespace-pre-line'
+              className='text-gray-600 leading-relaxed whitespace-pre-line'
               {...createSanityDataAttribute(documentId, documentType, getFieldPath('bodyText'))}>
               {cleanBodyText}
             </p>
