@@ -56,6 +56,41 @@ export const headerType = defineType({
         sortable: true,
       },
     }),
+    defineField({
+      name: 'hamburgerCallout',
+      title: 'Hamburger Menu Callout',
+      type: 'object',
+      description: 'Settings for the callout that appears next to the hamburger menu button',
+      fields: [
+        defineField({
+          name: 'enabled',
+          title: 'Enable Callout',
+          type: 'boolean',
+          description: 'Toggle to show or hide the hamburger menu callout',
+          initialValue: true,
+        }),
+        defineField({
+          name: 'text',
+          title: 'Callout Text',
+          type: 'string',
+          description: 'Text to display in the callout bubble',
+          initialValue: 'Explore more content',
+          validation: (rule) => rule.max(50).warning('Keep text short for better display'),
+        }),
+        defineField({
+          name: 'hideDelay',
+          title: 'Hide Delay (seconds)',
+          type: 'number',
+          description: 'How long the callout remains visible before auto-hiding',
+          initialValue: 5,
+          validation: (rule) => rule.min(1).max(30).integer(),
+        }),
+      ],
+      options: {
+        collapsible: true,
+        collapsed: false,
+      },
+    }),
   ],
   preview: {
     prepare() {

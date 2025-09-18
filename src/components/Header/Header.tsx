@@ -102,8 +102,10 @@ const Header = ({ headerData }: HeaderProps) => {
           />
 
           {/* Menu Callout - only show when menu is closed and hasn't shown before */}
-          {!isMenuOpen && !calloutHasShown && (
+          {!isMenuOpen && !calloutHasShown && headerData?.hamburgerCallout?.enabled && (
             <MenuCallout
+              text={headerData.hamburgerCallout.text || undefined}
+              hideDelay={(headerData.hamburgerCallout.hideDelay || 5) * 1000}
               onHide={() => setCalloutHasShown(true)}
             />
           )}
