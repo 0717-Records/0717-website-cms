@@ -24,19 +24,23 @@ export const cardType = defineType({
       group: 'style',
       options: {
         list: [
-          { 
-            title: 'Feature Card', 
+          {
+            title: 'Info Card',
+            value: 'info',
+          },
+          {
+            title: 'Feature Card',
             value: 'feature',
           },
-          { 
-            title: 'Statement Card', 
+          {
+            title: 'Statement Card',
             value: 'statement',
           },
         ],
         layout: 'radio',
       },
       initialValue: 'feature',
-      description: 'Choose the card layout style:\n\n• Feature Card: Standard layout with icon, title, description, and button arranged vertically. Perfect for highlighting services, features, or benefits.\n\n• Statement Card: Decorative layout with larger text and creative arrangement. Ideal for showcasing core values, mission statements, or key principles.',
+      description: 'Choose the card layout style:\n\n• Info Card: Condensed horizontal layout with icon on the left and content on the right. Perfect for compact information displays.\n\n• Feature Card: Standard layout with icon, title, description, and button arranged vertically. Perfect for highlighting services, features, or benefits.\n\n• Statement Card: Decorative layout with larger text and creative arrangement. Ideal for showcasing core values, mission statements, or key principles.',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -79,10 +83,10 @@ export const cardType = defineType({
     },
     prepare({ title, icon, bodyText, cardStyle, ctaList }) {
       const displayTitle = title || 'Untitled Card';
-      const styleLabel = cardStyle === 'statement' ? 'Statement' : 'Feature';
+      const styleLabel = cardStyle === 'statement' ? 'Statement' : cardStyle === 'info' ? 'Info' : 'Feature';
       const ctaCount = ctaList?.length || 0;
       const ctaLabel = ctaCount > 0 ? ` • ${ctaCount} CTA${ctaCount !== 1 ? 's' : ''}` : '';
-      
+
       const subtitle = icon
         ? `${styleLabel} • Icon: ${icon}${ctaLabel}`
         : bodyText

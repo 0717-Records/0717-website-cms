@@ -860,19 +860,6 @@ export type Header = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  logo?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
   horizontalNav?: Array<{
     _key: string;
   } & NavLink>;
@@ -885,6 +872,19 @@ export type Header = {
     enabled?: boolean;
     text?: string;
     hideDelay?: number;
+  };
+  logo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
   };
 };
 
@@ -1315,7 +1315,7 @@ export type Page = {
 
 export type Card = {
   _type: "card";
-  cardStyle?: "feature" | "statement";
+  cardStyle?: "info" | "feature" | "statement";
   icon?: Icon;
   title?: string;
   bodyText?: string;
@@ -1553,7 +1553,7 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "card";
-    cardStyle?: "feature" | "statement";
+    cardStyle?: "feature" | "info" | "statement";
     icon?: Icon;
     title?: string;
     bodyText?: string;
@@ -1624,7 +1624,7 @@ export type PAGE_QUERYResult = {
     cards: Array<{
       _key: string;
       _type: "card";
-      cardStyle?: "feature" | "statement";
+      cardStyle?: "feature" | "info" | "statement";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -1997,7 +1997,7 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "card";
-      cardStyle?: "feature" | "statement";
+      cardStyle?: "feature" | "info" | "statement";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -2068,7 +2068,7 @@ export type PAGE_QUERYResult = {
       cards: Array<{
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -2483,7 +2483,7 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -2554,7 +2554,7 @@ export type PAGE_QUERYResult = {
         cards: Array<{
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -2966,7 +2966,7 @@ export type PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -3036,7 +3036,7 @@ export type PAGE_QUERYResult = {
           cards: Array<{
             _key: string;
             _type: "card";
-            cardStyle?: "feature" | "statement";
+            cardStyle?: "feature" | "info" | "statement";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -3692,7 +3692,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "card";
-    cardStyle?: "feature" | "statement";
+    cardStyle?: "feature" | "info" | "statement";
     icon?: Icon;
     title?: string;
     bodyText?: string;
@@ -3763,7 +3763,7 @@ export type HOME_PAGE_QUERYResult = {
     cards: Array<{
       _key: string;
       _type: "card";
-      cardStyle?: "feature" | "statement";
+      cardStyle?: "feature" | "info" | "statement";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -4136,7 +4136,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "card";
-      cardStyle?: "feature" | "statement";
+      cardStyle?: "feature" | "info" | "statement";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -4207,7 +4207,7 @@ export type HOME_PAGE_QUERYResult = {
       cards: Array<{
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -4622,7 +4622,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -4693,7 +4693,7 @@ export type HOME_PAGE_QUERYResult = {
         cards: Array<{
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -5105,7 +5105,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -5175,7 +5175,7 @@ export type HOME_PAGE_QUERYResult = {
           cards: Array<{
             _key: string;
             _type: "card";
-            cardStyle?: "feature" | "statement";
+            cardStyle?: "feature" | "info" | "statement";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -6058,7 +6058,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "card";
-    cardStyle?: "feature" | "statement";
+    cardStyle?: "feature" | "info" | "statement";
     icon?: Icon;
     title?: string;
     bodyText?: string;
@@ -6129,7 +6129,7 @@ export type HOME_PAGE_QUERYResult = {
     cards: Array<{
       _key: string;
       _type: "card";
-      cardStyle?: "feature" | "statement";
+      cardStyle?: "feature" | "info" | "statement";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -6502,7 +6502,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "card";
-      cardStyle?: "feature" | "statement";
+      cardStyle?: "feature" | "info" | "statement";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -6573,7 +6573,7 @@ export type HOME_PAGE_QUERYResult = {
       cards: Array<{
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -6988,7 +6988,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -7059,7 +7059,7 @@ export type HOME_PAGE_QUERYResult = {
         cards: Array<{
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -7471,7 +7471,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -7541,7 +7541,7 @@ export type HOME_PAGE_QUERYResult = {
           cards: Array<{
             _key: string;
             _type: "card";
-            cardStyle?: "feature" | "statement";
+            cardStyle?: "feature" | "info" | "statement";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -8165,7 +8165,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "card";
-    cardStyle?: "feature" | "statement";
+    cardStyle?: "feature" | "info" | "statement";
     icon?: Icon;
     title?: string;
     bodyText?: string;
@@ -8236,7 +8236,7 @@ export type HOME_PAGE_QUERYResult = {
     cards: Array<{
       _key: string;
       _type: "card";
-      cardStyle?: "feature" | "statement";
+      cardStyle?: "feature" | "info" | "statement";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -8609,7 +8609,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "card";
-      cardStyle?: "feature" | "statement";
+      cardStyle?: "feature" | "info" | "statement";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -8680,7 +8680,7 @@ export type HOME_PAGE_QUERYResult = {
       cards: Array<{
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -9095,7 +9095,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -9166,7 +9166,7 @@ export type HOME_PAGE_QUERYResult = {
         cards: Array<{
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -9578,7 +9578,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -9648,7 +9648,7 @@ export type HOME_PAGE_QUERYResult = {
           cards: Array<{
             _key: string;
             _type: "card";
-            cardStyle?: "feature" | "statement";
+            cardStyle?: "feature" | "info" | "statement";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -11139,7 +11139,7 @@ export type BLOG_POST_QUERYResult = {
   } | {
     _key: string;
     _type: "card";
-    cardStyle?: "feature" | "statement";
+    cardStyle?: "feature" | "info" | "statement";
     icon?: Icon;
     title?: string;
     bodyText?: string;
@@ -11210,7 +11210,7 @@ export type BLOG_POST_QUERYResult = {
     cards: Array<{
       _key: string;
       _type: "card";
-      cardStyle?: "feature" | "statement";
+      cardStyle?: "feature" | "info" | "statement";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -11583,7 +11583,7 @@ export type BLOG_POST_QUERYResult = {
     } | {
       _key: string;
       _type: "card";
-      cardStyle?: "feature" | "statement";
+      cardStyle?: "feature" | "info" | "statement";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -11654,7 +11654,7 @@ export type BLOG_POST_QUERYResult = {
       cards: Array<{
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -12069,7 +12069,7 @@ export type BLOG_POST_QUERYResult = {
       } | {
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -12140,7 +12140,7 @@ export type BLOG_POST_QUERYResult = {
         cards: Array<{
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -12552,7 +12552,7 @@ export type BLOG_POST_QUERYResult = {
         } | {
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -12622,7 +12622,7 @@ export type BLOG_POST_QUERYResult = {
           cards: Array<{
             _key: string;
             _type: "card";
-            cardStyle?: "feature" | "statement";
+            cardStyle?: "feature" | "info" | "statement";
             icon?: Icon;
             title?: string;
             bodyText?: string;
@@ -13283,7 +13283,7 @@ export type COLLAB_QUERYResult = {
     } | {
       _key: string;
       _type: "card";
-      cardStyle?: "feature" | "statement";
+      cardStyle?: "feature" | "info" | "statement";
       icon?: Icon;
       title?: string;
       bodyText?: string;
@@ -13354,7 +13354,7 @@ export type COLLAB_QUERYResult = {
       cards: Array<{
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -13769,7 +13769,7 @@ export type COLLAB_QUERYResult = {
       } | {
         _key: string;
         _type: "card";
-        cardStyle?: "feature" | "statement";
+        cardStyle?: "feature" | "info" | "statement";
         icon?: Icon;
         title?: string;
         bodyText?: string;
@@ -13840,7 +13840,7 @@ export type COLLAB_QUERYResult = {
         cards: Array<{
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -14255,7 +14255,7 @@ export type COLLAB_QUERYResult = {
         } | {
           _key: string;
           _type: "card";
-          cardStyle?: "feature" | "statement";
+          cardStyle?: "feature" | "info" | "statement";
           icon?: Icon;
           title?: string;
           bodyText?: string;
@@ -14326,7 +14326,7 @@ export type COLLAB_QUERYResult = {
           cards: Array<{
             _key: string;
             _type: "card";
-            cardStyle?: "feature" | "statement";
+            cardStyle?: "feature" | "info" | "statement";
             icon?: Icon;
             title?: string;
             bodyText?: string;

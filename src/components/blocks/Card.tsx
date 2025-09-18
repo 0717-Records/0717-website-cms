@@ -87,7 +87,57 @@ const Card = (props: CardProps) => {
     );
   }
 
-  // Statement Card (Style 2) - Decorative layout for core values
+  // Info Card (Style 2) - Horizontal layout with icon on left, content on right
+  if (cleanCardStyle === 'info') {
+    return (
+      <CardContainer
+        className={`${className} ${icon?.showIcon ? 'flex flex-row items-start gap-6' : 'flex flex-col'}`}
+        isGridChild={isGridChild}>
+        {/* Icon - 1/3 width when present */}
+        {icon && icon.showIcon && (
+          <div className='flex-shrink-0 w-1/3 flex justify-center'>
+            <Icon
+              image={icon.image}
+              showIcon={icon.showIcon}
+              {...createSanityDataAttribute(documentId, documentType, fieldPathPrefix || '')}
+            />
+          </div>
+        )}
+
+        {/* Content - 2/3 width when icon present, full width otherwise */}
+        <div className={`${icon?.showIcon ? 'w-2/3' : 'w-full'} flex flex-col gap-4`}>
+          {/* Title */}
+          {cleanTitle && (
+            <div
+              className='text-h4'
+              {...createSanityDataAttribute(documentId, documentType, getFieldPath('title'))}>
+              {cleanTitle}
+            </div>
+          )}
+
+          {/* Body Text */}
+          {cleanBodyText && (
+            <p
+              className='text-body-base text-gray-600 leading-relaxed whitespace-pre-line'
+              {...createSanityDataAttribute(documentId, documentType, getFieldPath('bodyText'))}>
+              {cleanBodyText}
+            </p>
+          )}
+
+          {/* CTA Buttons */}
+          {ctaList && ctaList.length > 0 && (
+            <div
+              className='mt-2'
+              {...createSanityDataAttribute(documentId, documentType, getFieldPath('ctaList'))}>
+              <CTAList ctaList={ctaList} alignment='flex-col' />
+            </div>
+          )}
+        </div>
+      </CardContainer>
+    );
+  }
+
+  // Statement Card (Style 3) - Decorative layout for core values
   return (
     <CardContainer
       className={`${className} relative overflow-hidden bg-gradient-to-br from-gray-50 to-white border-2 border-gray-100`}
