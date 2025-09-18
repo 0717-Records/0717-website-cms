@@ -40,8 +40,8 @@ const MenuButton = ({ variant, isMenuOpen = false, onClick, className = '', aria
       aria-expanded={isMenuOpen}
       aria-controls={ariaControls}>
       <span
-        className={`block w-6 h-0.5 bg-black group-hover:bg-brand-secondary transition-all duration-300 ${
-          isMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+        className={`block w-6 h-0.5 bg-black group-hover:bg-brand-secondary transition-all duration-300 transform origin-center ${
+          isMenuOpen ? 'rotate-45 translate-y-2' : ''
         }`}
       />
       <span
@@ -50,8 +50,8 @@ const MenuButton = ({ variant, isMenuOpen = false, onClick, className = '', aria
         }`}
       />
       <span
-        className={`block w-6 h-0.5 bg-black group-hover:bg-brand-secondary transition-all duration-300 mt-1.5 ${
-          isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+        className={`block w-6 h-0.5 bg-black group-hover:bg-brand-secondary transition-all duration-300 mt-1.5 transform origin-center ${
+          isMenuOpen ? '-rotate-45 -translate-y-2' : ''
         }`}
       />
     </button>

@@ -39,7 +39,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
 
   return (
     <div
-      className={`fixed inset-0 z-40 transition-opacity duration-300 ${
+      className={`fixed inset-0 z-60 transition-opacity duration-300 ${
         isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}>
       {/* Background Overlay */}

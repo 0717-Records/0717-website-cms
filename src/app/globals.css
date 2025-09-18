@@ -3,14 +3,14 @@
 /*
   ⚠️  CRITICAL CSS DUPLICATION WARNING ⚠️
 
-  Some styles in this file are duplicated in src/app/layout.tsx as inline critical CSS
+  Essential layout styles in this file are duplicated in src/app/layout.tsx as inline critical CSS
   for performance optimization (faster LCP, reduced render blocking).
 
   When changing these values, update BOTH locations:
   1. This file (globals.css) - for full styling and consistency
   2. src/app/layout.tsx inline styles - for critical performance CSS
 
-  Affected styles: brand colors, typography, layout positioning, scroll padding
+  DUPLICATED STYLES (simplified): scroll-padding-top, main padding-top, brand colors (--color-brand-primary/secondary)
 */
 
 /* Brand Colors and Typography System - Tailwind v4 */
