@@ -204,8 +204,9 @@ export const HEADER_QUERY = defineQuery(`*[_id == "header"][0]{
   horizontalNav[]{${fullLinkProjection}},
   verticalNav[]{
     _type,
-    _type == "navLink" => {${fullLinkProjection}},
-    _type == "divider" => {...}
+    hideOnDesktop,
+    _type == "verticalNavLink" => {${fullLinkProjection}},
+    _type == "verticalNavDivider" => {...}
   },
   hamburgerCallout{
     enabled,

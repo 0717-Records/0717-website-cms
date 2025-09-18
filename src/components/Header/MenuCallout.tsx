@@ -13,7 +13,7 @@ interface MenuCalloutProps {
 
 const MenuCallout = ({
   text = 'Explore more content',
-  showDelay = 1000,
+  showDelay = 500,
   hideDelay = 5000,
   isVisible: externalVisible,
   onShow,

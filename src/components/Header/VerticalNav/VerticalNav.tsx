@@ -117,8 +117,13 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
                     }
                     const linkProps = getNavLinkProps(item);
                     const label = getNavLinkLabel(item);
+
+                    // RESPONSIVE VISIBILITY: hideOnDesktop aligns with HorizontalNav's lg breakpoint
+                    // ⚠️ IMPORTANT: If HorizontalNav.tsx line 25 'lg:flex' changes, update this 'lg:hidden' accordingly
+                    const visibilityClass = item.hideOnDesktop ? 'lg:hidden' : '';
+
                     return (
-                      <div key={`nav-link-${index}`}>
+                      <div key={`nav-link-${index}`} className={visibilityClass}>
                         <Link
                           {...linkProps}
                           onClick={onClose}
@@ -128,8 +133,12 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
                       </div>
                     );
                   } else if (isNavigationDivider(item)) {
+                    // RESPONSIVE VISIBILITY: hideOnDesktop aligns with HorizontalNav's lg breakpoint
+                    // ⚠️ IMPORTANT: If HorizontalNav.tsx line 25 'lg:flex' changes, update this 'lg:hidden' accordingly
+                    const visibilityClass = item.hideOnDesktop ? 'lg:hidden' : '';
+
                     return (
-                      <div key={`nav-divider-${index}`} className='py-2'>
+                      <div key={`nav-divider-${index}`} className={`py-2 ${visibilityClass}`}>
                         <Divider isSmall alignment='left' />
                       </div>
                     );

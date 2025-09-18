@@ -1,3 +1,7 @@
+// AI Helper: This is a Sanity CMS schema definition. It defines the structure and validation rules for content types.
+// When modifying, ensure all fields have appropriate validation, titles, and descriptions for content editors.
+// Follow the existing patterns in other schema files for consistency.
+
 import { MenuIcon } from '@sanity/icons';
 import { defineField, defineType, defineArrayMember } from 'sanity';
 
@@ -6,29 +10,27 @@ export const headerType = defineType({
   title: 'Header',
   type: 'document',
   icon: MenuIcon,
+  groups: [
+    {
+      name: 'horizontal',
+      title: 'Horizontal nav',
+    },
+    {
+      name: 'vertical',
+      title: 'Vertical nav',
+    },
+    {
+      name: 'general',
+      title: 'General',
+    },
+  ],
   fields: [
-    defineField({
-      name: 'logo',
-      type: 'image',
-      title: 'Logo',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative Text',
-          description: 'Helps explain what the logo is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
-        },
-      ],
-      description: 'Logo image for the header',
-    }),
     defineField({
       name: 'horizontalNav',
       title: 'Horizontal Navigation',
       type: 'array',
       description: 'Links displayed in the horizontal navigation bar',
+      group: 'horizontal',
       of: [
         defineArrayMember({
           type: 'navLink',
@@ -44,12 +46,13 @@ export const headerType = defineType({
       type: 'array',
       description:
         'Links displayed in the vertical navigation menu (when selecting the hamburger icon)',
+      group: 'vertical',
       of: [
         defineArrayMember({
-          type: 'navLink',
+          type: 'verticalNavLink',
         }),
         defineArrayMember({
-          type: 'divider',
+          type: 'verticalNavDivider',
         }),
       ],
       options: {
@@ -61,6 +64,7 @@ export const headerType = defineType({
       title: 'Hamburger Menu Callout',
       type: 'object',
       description: 'Settings for the callout that appears next to the hamburger menu button',
+      group: 'general',
       fields: [
         defineField({
           name: 'enabled',
@@ -90,6 +94,24 @@ export const headerType = defineType({
         collapsible: true,
         collapsed: false,
       },
+    }),
+    defineField({
+      name: 'logo',
+      type: 'image',
+      title: 'Logo',
+      group: 'general',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          description: 'Helps explain what the logo is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
+        },
+      ],
+      description: 'Logo image for the header',
     }),
   ],
   preview: {

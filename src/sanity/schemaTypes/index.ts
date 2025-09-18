@@ -47,6 +47,8 @@ import { companyLinksArrayType, collabLinksArrayType } from './shared/socialLink
 import { sideContentBlockType, sideContentType } from './shared/sideContentBlockType';
 import { ctaListType } from './shared/ctaListType';
 import { navLinkType } from './navigation/navLinkType';
+import { verticalNavLinkType } from './navigation/verticalNavLinkType';
+import { verticalNavDividerType } from './navigation/verticalNavDividerType';
 import { blogIndexPageType } from './blogIndexPageType';
 import { blogPostType } from './blogPostType';
 
@@ -106,5 +108,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     ctaListType,
     // Navigation Components
     navLinkType,
+    verticalNavLinkType,
+    verticalNavDividerType,
   ],
 };
