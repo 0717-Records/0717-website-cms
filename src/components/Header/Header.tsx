@@ -19,6 +19,10 @@ const Header = ({ headerData }: HeaderProps) => {
   const [calloutHasShown, setCalloutHasShown] = useState(false);
 
   const toggleMenu = () => {
+    // If callout is currently visible and we're opening the menu, mark it as shown
+    if (!isMenuOpen && !calloutHasShown) {
+      setCalloutHasShown(true);
+    }
     setIsMenuOpen(!isMenuOpen);
   };
 
