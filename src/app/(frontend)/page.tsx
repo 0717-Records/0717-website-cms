@@ -8,6 +8,7 @@ import { getFavourites } from '@/actions/favourites';
 import type { PAGE_QUERYResult } from '@/sanity/types';
 import Container from '@/components/Layout/Container';
 import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
+import FooterSwitcher from '@/components/Footer/FooterSwitcher';
 
 export async function generateMetadata() {
   const siteSettings = await getSiteSettings();
@@ -80,6 +81,9 @@ const Page = async () => {
           />
         </Container>
       )}
+
+      {/* Temporary Footer Variations - For Design Review Only */}
+      <FooterSwitcher />
     </>
   );
 };
