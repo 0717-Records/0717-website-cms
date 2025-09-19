@@ -30,6 +30,7 @@ const headerVariations = [
   { id: 'black', name: 'Black Header' },
   { id: 'yellow', name: 'Gradient Yellow' },
   { id: 'darkGradient', name: 'Dark Gradient' },
+  { id: 'blurred', name: 'Blurred Background' },
 ];
 
 const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
@@ -52,6 +53,8 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
       // Reset all header styles first
       header.style.background = '';
       header.style.backgroundColor = '';
+      header.style.backdropFilter = '';
+      header.style.setProperty('-webkit-backdrop-filter', '');
       header.style.color = '';
 
       // Get white logo element (for reuse across cases)
@@ -186,6 +189,53 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
           });
           break;
 
+        case 'blurred':
+          // Apply blurred background header styles with dark background
+          header.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+          header.style.backdropFilter = 'blur(10px)';
+          header.style.setProperty('-webkit-backdrop-filter', 'blur(10px)');
+          header.style.color = '#ffffff';
+
+          // Create white logo if it doesn't exist
+          let blurredWhiteLogoElement = whiteLogo;
+          if (!blurredWhiteLogoElement) {
+            blurredWhiteLogoElement = document.createElement('img');
+            blurredWhiteLogoElement.id = 'white-logo';
+            blurredWhiteLogoElement.src = '/images/logo-text-white.png';
+            blurredWhiteLogoElement.alt = '07:17 Records Logo';
+            blurredWhiteLogoElement.className = logo.className;
+
+            // Position it exactly over the original logo
+            blurredWhiteLogoElement.style.position = 'absolute';
+            blurredWhiteLogoElement.style.top = '0';
+            blurredWhiteLogoElement.style.left = '0';
+            blurredWhiteLogoElement.style.width = logo.style.width || getComputedStyle(logo).width;
+            blurredWhiteLogoElement.style.height =
+              logo.style.height || getComputedStyle(logo).height;
+            blurredWhiteLogoElement.style.zIndex = '10';
+            blurredWhiteLogoElement.style.objectFit = 'contain';
+
+            // Make parent relative if it isn't already
+            if (logo.parentElement) {
+              const parentStyle = getComputedStyle(logo.parentElement);
+              if (parentStyle.position === 'static') {
+                logo.parentElement.style.position = 'relative';
+              }
+              logo.parentElement.appendChild(blurredWhiteLogoElement);
+            }
+          }
+
+          // Hide black logo, show white logo
+          logo.style.opacity = '0';
+          blurredWhiteLogoElement.style.opacity = '1';
+
+          // Update menu button spans to white
+          const blurredHeaderSpans = menuButton.querySelectorAll('span');
+          blurredHeaderSpans.forEach((span) => {
+            (span as HTMLElement).style.backgroundColor = '#ffffff';
+          });
+          break;
+
         default:
           // Fallback to white header
           header.style.backgroundColor = '#ffffff';
@@ -207,6 +257,8 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
       if (header && logo && menuButton) {
         header.style.backgroundColor = '';
         header.style.background = '';
+        header.style.backdropFilter = '';
+        header.style.setProperty('-webkit-backdrop-filter', '');
         header.style.color = '';
         logo.style.opacity = '1';
 
