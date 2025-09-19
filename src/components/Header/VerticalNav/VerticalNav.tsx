@@ -61,7 +61,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: Ver
         role='dialog'
         aria-modal='true'
         aria-label='Main navigation menu'
-        className={`fixed top-0 right-0 h-full w-80 bg-white bg-opacity-90 backdrop-blur-md shadow-2xl transition-transform duration-300 ease-in-out flex flex-col ${
+        className={`fixed top-0 right-0 h-full w-90 max-w-screen bg-white bg-opacity-90 backdrop-blur-md shadow-2xl transition-transform duration-300 ease-in-out flex flex-col ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
         {/* Menu Header */}
@@ -73,9 +73,9 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: Ver
                 <UnifiedImage
                   src={headerData.logo}
                   alt={headerData.logo.alt || '07:17 Records'}
-                  mode="fill"
-                  sizeContext="logo"
-                  objectFit="contain"
+                  mode='fill'
+                  sizeContext='logo'
+                  objectFit='contain'
                   sizes='160px'
                   {...createSanityDataAttribute(headerData._id, 'header', 'logo')}
                 />
@@ -110,7 +110,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: Ver
             e.currentTarget.style.scrollbarColor = '#d1d5db transparent';
           }}>
           <nav className='px-10 py-12'>
-            <div className='space-y-6'>
+            <div className='space-y-8'>
               {navLinks && navLinks.length > 0 ? (
                 <>
                   {navLinks
@@ -135,7 +135,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: Ver
                           {/* Section Heading */}
                           {section.heading && (
                             <div className='mb-4'>
-                              <h3 className='text-subtle text-body-sm font-bold uppercase tracking-wide'>
+                              <h3 className='text-text-subtle text-body-sm uppercase tracking-wide'>
                                 {section.heading}
                               </h3>
                             </div>
@@ -157,7 +157,9 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: Ver
                               const linkVisibilityClass = link.hideOnDesktop ? 'lg:hidden' : '';
 
                               return (
-                                <div key={`nav-link-${sectionIndex}-${linkIndex}`} className={linkVisibilityClass}>
+                                <div
+                                  key={`nav-link-${sectionIndex}-${linkIndex}`}
+                                  className={linkVisibilityClass}>
                                   <Link
                                     {...linkProps}
                                     onClick={onClose}
@@ -192,7 +194,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: Ver
                   <div className='pt-6 border-t border-gray-300'>
                     {/* CTAs rendered in vertical column with full width */}
                     <div className='pt-6'>
-                      <CTAList ctaList={navCtas} alignment='flex-col' className='w-full [&>*]:w-full' />
+                      <CTAList ctaList={navCtas} alignment='flex-col' className='w-full' />
                     </div>
                   </div>
                 </>
