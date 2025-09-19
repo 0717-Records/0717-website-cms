@@ -18,6 +18,7 @@ import {
   getNavLinkLabel,
 } from '@/utils/navigationHelpers';
 import CTAList from '@/components/UI/CTAList';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 import styles from './VerticalNav.module.css';
 
 interface VerticalNavProps {
@@ -109,7 +110,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: Ver
           onMouseLeave={(e) => {
             e.currentTarget.style.scrollbarColor = '#d1d5db transparent';
           }}>
-          <nav className='px-10 py-12'>
+          <nav className='px-10 py-10'>
             <div className='space-y-8'>
               {navLinks && navLinks.length > 0 ? (
                 <>
@@ -151,6 +152,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: Ver
 
                               const linkProps = getNavLinkProps(link);
                               const label = getNavLinkLabel(link);
+                              const isExternal = link.linkType === 'external' || link.openInNewTab;
 
                               // RESPONSIVE VISIBILITY: hideOnDesktop aligns with HorizontalNav's lg breakpoint
                               // ⚠️ IMPORTANT: If HorizontalNav.tsx line 25 'lg:flex' changes, update this 'lg:hidden' accordingly
@@ -163,8 +165,11 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: Ver
                                   <Link
                                     {...linkProps}
                                     onClick={onClose}
-                                    className='block uppercase font-medium text-black hover:text-brand-secondary transition-colors'>
-                                    {label}
+                                    className='flex items-center justify-between w-full uppercase font-medium text-black hover:text-brand-secondary transition-colors'>
+                                    <span>{label}</span>
+                                    {isExternal && (
+                                      <FaExternalLinkAlt className='text-body-xs text-current ml-2 flex-shrink-0' />
+                                    )}
                                   </Link>
                                 </div>
                               );
