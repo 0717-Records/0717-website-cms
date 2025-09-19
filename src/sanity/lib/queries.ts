@@ -211,12 +211,6 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
 export const HEADER_QUERY = defineQuery(`*[_id == "header"][0]{
   _id,
   _type,
-  logo{
-    asset,
-    alt,
-    hotspot,
-    crop
-  },
   horizontalNav[]{${fullLinkProjection}},
   verticalNav[]{
     _type,
@@ -483,12 +477,6 @@ export const FAVOURITES_ALL_QUERY = defineQuery(`*[_type == "favourites"]|order(
 export const FOOTER_QUERY = defineQuery(`*[_type == "footer" && _id == "footer"][0]{
   _id,
   _type,
-  logo{
-    asset,
-    alt,
-    hotspot,
-    crop
-  },
   footerMessages[]{
     _key,
     title,

@@ -100,24 +100,6 @@ export const headerType = defineType({
         collapsed: false,
       },
     }),
-    defineField({
-      name: 'logo',
-      type: 'image',
-      title: 'Logo',
-      group: 'general',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative Text',
-          description: 'Helps explain what the logo is for SEO and screen readers. Highly recommended to provide something that describes the image; if not provided, the system will try to come up with something.',
-        },
-      ],
-      description: 'Logo image for the header',
-    }),
   ],
   preview: {
     prepare() {

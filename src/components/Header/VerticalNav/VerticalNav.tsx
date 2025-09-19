@@ -3,8 +3,6 @@
 import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import UnifiedImage from '@/components/UI/UnifiedImage';
-import { createSanityDataAttribute } from '@/utils/sectionHelpers';
-import type { HEADER_QUERYResult } from '@/sanity/types';
 import MenuButton from '../MenuButton';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 import { useFocusTrap } from '@/hooks/useFocusTrap';
@@ -26,10 +24,9 @@ interface VerticalNavProps {
   onClose: () => void;
   navLinks: VerticalNavData | null;
   navCtas: VerticalNavCTAData | null;
-  headerData: HEADER_QUERYResult | null;
 }
 
-const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: VerticalNavProps) => {
+const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas }: VerticalNavProps) => {
   useBodyScrollLock(isMenuOpen);
   const focusTrapRef = useFocusTrap(isMenuOpen);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -69,24 +66,16 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: Ver
         <div className='flex items-center justify-between p-4 border-b border-gray-200'>
           {/* Logo in Menu */}
           <Link href='/' onClick={onClose} className='flex items-center gap-2'>
-            {headerData?.logo ? (
-              <div className='relative w-[160px] h-[60px]'>
-                <UnifiedImage
-                  src={headerData.logo}
-                  alt={headerData.logo.alt || '07:17 Records'}
-                  mode='fill'
-                  sizeContext='logo'
-                  objectFit='contain'
-                  sizes='160px'
-                  {...createSanityDataAttribute(headerData._id, 'header', 'logo')}
-                />
-              </div>
-            ) : (
-              <>
-                <span className='text-body-xl font-bold'>07:17</span>
-                <span className='text-body-sm font-semibold'>Records</span>
-              </>
-            )}
+            <div className='relative w-[160px] h-[60px]'>
+              <UnifiedImage
+                src='/images/logo-text-black.png'
+                alt='07:17 Records Logo'
+                mode='fill'
+                sizeContext='logo'
+                objectFit='contain'
+                sizes='160px'
+              />
+            </div>
           </Link>
 
           {/* Close Button */}
