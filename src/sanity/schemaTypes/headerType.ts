@@ -4,6 +4,7 @@
 
 import { MenuIcon } from '@sanity/icons';
 import { defineField, defineType, defineArrayMember } from 'sanity';
+import { createCTAListField } from './shared/ctaListType';
 
 export const headerType = defineType({
   name: 'header',
@@ -45,19 +46,23 @@ export const headerType = defineType({
       title: 'Vertical Navigation',
       type: 'array',
       description:
-        'Links displayed in the vertical navigation menu (when selecting the hamburger icon)',
+        'Navigation sections displayed in the vertical navigation menu (when selecting the hamburger icon). Each section can contain multiple links and have an optional heading.',
       group: 'vertical',
       of: [
         defineArrayMember({
-          type: 'verticalNavLink',
-        }),
-        defineArrayMember({
-          type: 'verticalNavDivider',
+          type: 'navSection',
         }),
       ],
       options: {
         sortable: true,
       },
+      validation: (Rule) => Rule.min(1).error('At least one navigation section is required'),
+    }),
+    createCTAListField({
+      name: 'verticalNavCtas',
+      title: 'Vertical Navigation CTAs',
+      description: 'Call-to-action buttons displayed at the bottom of the vertical navigation menu. Leave empty if no CTAs are needed.',
+      group: 'vertical',
     }),
     defineField({
       name: 'hamburgerCallout',

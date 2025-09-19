@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import UnifiedImage from '@/components/UI/UnifiedImage';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
@@ -11,21 +11,24 @@ import { useFocusTrap } from '@/hooks/useFocusTrap';
 import Divider from '@/components/UI/Divider';
 import {
   VerticalNavData,
+  VerticalNavCTAData,
+  isNavigationSection,
   isNavigationLink,
-  isNavigationDivider,
   getNavLinkProps,
   getNavLinkLabel,
 } from '@/utils/navigationHelpers';
+import CTAList from '@/components/UI/CTAList';
 import styles from './VerticalNav.module.css';
 
 interface VerticalNavProps {
   isMenuOpen: boolean;
   onClose: () => void;
   navLinks: VerticalNavData | null;
+  navCtas: VerticalNavCTAData | null;
   headerData: HEADER_QUERYResult | null;
 }
 
-const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavProps) => {
+const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: VerticalNavProps) => {
   useBodyScrollLock(isMenuOpen);
   const focusTrapRef = useFocusTrap(isMenuOpen);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -109,94 +112,91 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, headerData }: VerticalNavP
           <nav className='px-10 py-12'>
             <div className='space-y-6'>
               {navLinks && navLinks.length > 0 ? (
-                navLinks.map((item, index) => {
-                  if (isNavigationLink(item)) {
-                    // Skip hidden navigation links
-                    if (item.hideLink) {
-                      return null;
-                    }
-                    const linkProps = getNavLinkProps(item);
-                    const label = getNavLinkLabel(item);
+                <>
+                  {navLinks
+                    .filter((section) => {
+                      if (!isNavigationSection(section)) return false;
+                      // Filter out sections that should be hidden entirely
+                      if (section.hideSection) return false;
+                      // Filter out sections hidden on desktop if we're on desktop
+                      // RESPONSIVE VISIBILITY: hideOnDesktop aligns with HorizontalNav's lg breakpoint
+                      // ⚠️ IMPORTANT: If HorizontalNav.tsx line 25 'lg:flex' changes, update this 'lg:hidden' accordingly
+                      return true; // Let CSS handle desktop hiding
+                    })
+                    .map((section, sectionIndex, filteredSections) => {
+                      if (!isNavigationSection(section)) return null;
 
-                    // RESPONSIVE VISIBILITY: hideOnDesktop aligns with HorizontalNav's lg breakpoint
-                    // ⚠️ IMPORTANT: If HorizontalNav.tsx line 25 'lg:flex' changes, update this 'lg:hidden' accordingly
-                    const visibilityClass = item.hideOnDesktop ? 'lg:hidden' : '';
+                      // RESPONSIVE VISIBILITY: hideOnDesktop aligns with HorizontalNav's lg breakpoint
+                      // ⚠️ IMPORTANT: If HorizontalNav.tsx line 25 'lg:flex' changes, update this 'lg:hidden' accordingly
+                      const sectionVisibilityClass = section.hideOnDesktop ? 'lg:hidden' : '';
 
-                    return (
-                      <div key={`nav-link-${index}`} className={visibilityClass}>
-                        <Link
-                          {...linkProps}
-                          onClick={onClose}
-                          className='block uppercase font-medium text-black hover:text-brand-secondary transition-colors'>
-                          {label}
-                        </Link>
-                      </div>
-                    );
-                  } else if (isNavigationDivider(item)) {
-                    // RESPONSIVE VISIBILITY: hideOnDesktop aligns with HorizontalNav's lg breakpoint
-                    // ⚠️ IMPORTANT: If HorizontalNav.tsx line 25 'lg:flex' changes, update this 'lg:hidden' accordingly
-                    const visibilityClass = item.hideOnDesktop ? 'lg:hidden' : '';
+                      return (
+                        <div key={`nav-section-${sectionIndex}`} className={sectionVisibilityClass}>
+                          {/* Section Heading */}
+                          {section.heading && (
+                            <div className='mb-4'>
+                              <h3 className='text-subtle text-body-sm font-bold uppercase tracking-wide'>
+                                {section.heading}
+                              </h3>
+                            </div>
+                          )}
 
-                    return (
-                      <div key={`nav-divider-${index}`} className={`py-2 ${visibilityClass}`}>
-                        <Divider isSmall alignment='left' />
-                      </div>
-                    );
-                  }
-                  return null;
-                })
+                          {/* Section Links */}
+                          <div className='space-y-4'>
+                            {section.links?.map((link, linkIndex) => {
+                              if (!isNavigationLink(link)) return null;
+
+                              // Skip hidden navigation links
+                              if (link.hideLink) return null;
+
+                              const linkProps = getNavLinkProps(link);
+                              const label = getNavLinkLabel(link);
+
+                              // RESPONSIVE VISIBILITY: hideOnDesktop aligns with HorizontalNav's lg breakpoint
+                              // ⚠️ IMPORTANT: If HorizontalNav.tsx line 25 'lg:flex' changes, update this 'lg:hidden' accordingly
+                              const linkVisibilityClass = link.hideOnDesktop ? 'lg:hidden' : '';
+
+                              return (
+                                <div key={`nav-link-${sectionIndex}-${linkIndex}`} className={linkVisibilityClass}>
+                                  <Link
+                                    {...linkProps}
+                                    onClick={onClose}
+                                    className='block uppercase font-medium text-black hover:text-brand-secondary transition-colors'>
+                                    {label}
+                                  </Link>
+                                </div>
+                              );
+                            })}
+                          </div>
+
+                          {/* Add divider between sections (but not after the last section) */}
+                          {sectionIndex < filteredSections.length - 1 && (
+                            <div className='pt-6'>
+                              <Divider isSmall alignment='left' />
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                </>
               ) : (
                 <div className='text-body-base text-gray-500 text-center'>
                   No navigation links configured
                 </div>
               )}
 
-              {/* 
-                ========================================
-                DELETE THIS ENTIRE BLOCK BEFORE PRODUCTION
-                From this comment down to the "END DELETE BLOCK" comment
-                ========================================
-              */}
-              <div className='py-2'>
-                <Divider isSmall alignment='left' />
-              </div>
-              <div>
-                <Link
-                  href='/home-hero-2'
-                  onClick={onClose}
-                  className='block uppercase font-medium text-gray-500 hover:text-brand-secondary transition-colors text-body-sm'>
-                  Demo Hero 2
-                </Link>
-              </div>
-              <div>
-                <Link
-                  href='/home-hero-3'
-                  onClick={onClose}
-                  className='block uppercase font-medium text-gray-500 hover:text-brand-secondary transition-colors text-body-sm'>
-                  Demo Hero 3
-                </Link>
-              </div>
-              <div>
-                <Link
-                  href='/home-hero-4'
-                  onClick={onClose}
-                  className='block uppercase font-medium text-gray-500 hover:text-brand-secondary transition-colors text-body-sm'>
-                  Demo Hero 4
-                </Link>
-              </div>
-              <div>
-                <Link
-                  href='/home-hero-5'
-                  onClick={onClose}
-                  className='block uppercase font-medium text-gray-500 hover:text-brand-secondary transition-colors text-body-sm'>
-                  Demo Hero 5
-                </Link>
-              </div>
-              {/* 
-                ========================================
-                END DELETE BLOCK - DELETE UP TO HERE
-                ========================================
-              */}
+              {/* Navigation CTAs */}
+              {navCtas && navCtas.length > 0 && (
+                <>
+                  {/* Separator line between navigation and CTAs */}
+                  <div className='pt-6 border-t border-gray-300'>
+                    {/* CTAs rendered in vertical column with full width */}
+                    <div className='pt-6'>
+                      <CTAList ctaList={navCtas} alignment='flex-col' className='w-full [&>*]:w-full' />
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </nav>
         </div>

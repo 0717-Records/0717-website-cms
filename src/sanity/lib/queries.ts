@@ -220,9 +220,16 @@ export const HEADER_QUERY = defineQuery(`*[_id == "header"][0]{
   horizontalNav[]{${fullLinkProjection}},
   verticalNav[]{
     _type,
+    hideSection,
     hideOnDesktop,
-    _type == "verticalNavLink" => {${fullLinkProjection}},
-    _type == "verticalNavDivider" => {...}
+    heading,
+    links[]{${fullLinkProjection}}
+  },
+  verticalNavCtas[]{
+    _type,
+    _key,
+    _type == "embeddedCtaButton" => {${fullLinkProjection}},
+    _type == "embeddedCtaEmailButton" => {...}
   },
   hamburgerCallout{
     enabled,

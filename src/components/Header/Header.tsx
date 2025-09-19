@@ -117,6 +117,7 @@ const Header = ({ headerData }: HeaderProps) => {
         isMenuOpen={isMenuOpen}
         onClose={closeMenu}
         navLinks={headerData?.verticalNav || null}
+        navCtas={headerData?.verticalNavCtas || null}
         headerData={headerData}
       />
     </>

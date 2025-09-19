@@ -3,8 +3,8 @@ import type { HEADER_QUERYResult } from '@/sanity/types';
 
 // Extract the types from the generated Sanity types
 type HeaderResult = Extract<HEADER_QUERYResult, { _type: 'header' }>;
-export type NavigationLink = Extract<NonNullable<HeaderResult['verticalNav']>[0], { _type: 'verticalNavLink' }>;
-export type NavigationDivider = Extract<NonNullable<HeaderResult['verticalNav']>[0], { _type: 'verticalNavDivider' }>;
+export type NavigationSection = Extract<NonNullable<HeaderResult['verticalNav']>[0], { _type: 'navSection' }>;
+export type NavigationLink = Extract<NonNullable<NavigationSection['links']>[0], { _type: 'verticalNavLink' }>;
 export type NavigationItem = NonNullable<HeaderResult['verticalNav']>[0];
 
 // For horizontal navigation (still uses original navLink type)
@@ -36,12 +36,12 @@ export function getNavLinkLabel(link: NavigationLink | HorizontalNavigationLink)
   return link.label || 'Unnamed Link';
 }
 
-export const isNavigationLink = (item: NavigationItem): item is NavigationLink => {
-  return item._type === 'verticalNavLink';
+export const isNavigationSection = (item: NavigationItem): item is NavigationSection => {
+  return item._type === 'navSection';
 };
 
-export const isNavigationDivider = (item: NavigationItem): item is NavigationDivider => {
-  return item._type === 'verticalNavDivider';
+export const isNavigationLink = (item: NavigationLink): item is NavigationLink => {
+  return item._type === 'verticalNavLink';
 };
 
 // Horizontal navigation utilities
@@ -68,3 +68,4 @@ export const getHorizontalNavLinkLabel = (link: HorizontalNavigationLink): strin
 
 export type HorizontalNavData = NonNullable<HeaderResult['horizontalNav']>;
 export type VerticalNavData = NonNullable<HeaderResult['verticalNav']>;
+export type VerticalNavCTAData = NonNullable<HeaderResult['verticalNavCtas']>;

@@ -49,6 +49,7 @@ import { ctaListType } from './shared/ctaListType';
 import { navLinkType } from './navigation/navLinkType';
 import { verticalNavLinkType } from './navigation/verticalNavLinkType';
 import { verticalNavDividerType } from './navigation/verticalNavDividerType';
+import { navSectionType } from './navigation/navSectionType';
 import { blogIndexPageType } from './blogIndexPageType';
 import { blogPostType } from './blogPostType';
 
@@ -110,5 +111,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     navLinkType,
     verticalNavLinkType,
     verticalNavDividerType,
+    navSectionType,
   ],
 };
