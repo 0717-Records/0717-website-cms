@@ -112,7 +112,7 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
       {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
       {/* Content container with responsive alignment */}
       <div
-        className={`flex flex-col ${horizontalConfig.content} ${horizontalConfig.text} gap-4 sm:gap-6 max-w-4xl w-full`}>
+        className={`flex flex-col ${horizontalConfig.content} ${horizontalConfig.text} gap-4 sm:gap-6 max-w-4xl w-full mt-6`}>
         {/* Logo - can shrink when needed */}
         <div className='flex-shrink min-h-0'>
           <HeroLogo {...componentProps} />
