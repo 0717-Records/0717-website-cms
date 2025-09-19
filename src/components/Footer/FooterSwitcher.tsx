@@ -13,10 +13,10 @@ import type {
 } from '@/sanity/types';
 
 const footerVariations = [
-  { id: 1, name: 'Dark Mode', component: Footer_1 },
-  { id: 2, name: 'Light Mode', component: Footer_2 },
+  { id: 1, name: 'Black Footer', component: Footer_1 },
+  { id: 2, name: 'White Footer', component: Footer_2 },
   { id: 3, name: 'Gradient Yellow', component: Footer_3 },
-  { id: 4, name: 'Dark Gradients', component: Footer_4 },
+  { id: 4, name: 'Dark Gradient', component: Footer_4 },
 ];
 
 interface FooterSwitcherProps {
@@ -123,7 +123,7 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
         case 'yellow':
           // Apply yellow gradient header styles
           header.style.background =
-            'linear-gradient(135deg, #fffacc90 0%, #fffef0 25%, #ffffff 50%, #fffef0 75%, #fffacc90 100%)';
+            'linear-gradient(135deg, #fffacc 0%, #fffef0 25%, #ffffff 50%, #fffef0 75%, #fffacc 100%)';
           header.style.color = '';
 
           // Show black logo, hide white logo
@@ -158,8 +158,10 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
             darkGradientWhiteLogoElement.style.position = 'absolute';
             darkGradientWhiteLogoElement.style.top = '0';
             darkGradientWhiteLogoElement.style.left = '0';
-            darkGradientWhiteLogoElement.style.width = logo.style.width || getComputedStyle(logo).width;
-            darkGradientWhiteLogoElement.style.height = logo.style.height || getComputedStyle(logo).height;
+            darkGradientWhiteLogoElement.style.width =
+              logo.style.width || getComputedStyle(logo).width;
+            darkGradientWhiteLogoElement.style.height =
+              logo.style.height || getComputedStyle(logo).height;
             darkGradientWhiteLogoElement.style.zIndex = '10';
             darkGradientWhiteLogoElement.style.objectFit = 'contain';
 
