@@ -30,7 +30,8 @@ const headerVariations = [
   { id: 'black', name: 'Black Header' },
   { id: 'yellow', name: 'Gradient Yellow' },
   { id: 'darkGradient', name: 'Dark Gradient' },
-  { id: 'blurred', name: 'Blurred Background' },
+  { id: 'blurred', name: 'Blurred Black' },
+  { id: 'blurredGradient', name: 'Blurred Dark Gradient' },
 ];
 
 const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
@@ -191,7 +192,7 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
 
         case 'blurred':
           // Apply blurred background header styles with dark background
-          header.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+          header.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
           header.style.backdropFilter = 'blur(10px)';
           header.style.setProperty('-webkit-backdrop-filter', 'blur(10px)');
           header.style.color = '#ffffff';
@@ -232,6 +233,55 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
           // Update menu button spans to white
           const blurredHeaderSpans = menuButton.querySelectorAll('span');
           blurredHeaderSpans.forEach((span) => {
+            (span as HTMLElement).style.backgroundColor = '#ffffff';
+          });
+          break;
+
+        case 'blurredGradient':
+          // Apply blurred background with dark gradient at 0.8 opacity
+          header.style.background =
+            'linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.8) 25%, rgba(58, 58, 58, 0.8) 50%, rgba(26, 26, 26, 0.8) 75%, rgba(0, 0, 0, 0.8) 100%)';
+          header.style.backdropFilter = 'blur(10px)';
+          header.style.setProperty('-webkit-backdrop-filter', 'blur(10px)');
+          header.style.color = '#ffffff';
+
+          // Create white logo if it doesn't exist
+          let blurredGradientWhiteLogoElement = whiteLogo;
+          if (!blurredGradientWhiteLogoElement) {
+            blurredGradientWhiteLogoElement = document.createElement('img');
+            blurredGradientWhiteLogoElement.id = 'white-logo';
+            blurredGradientWhiteLogoElement.src = '/images/logo-text-white.png';
+            blurredGradientWhiteLogoElement.alt = '07:17 Records Logo';
+            blurredGradientWhiteLogoElement.className = logo.className;
+
+            // Position it exactly over the original logo
+            blurredGradientWhiteLogoElement.style.position = 'absolute';
+            blurredGradientWhiteLogoElement.style.top = '0';
+            blurredGradientWhiteLogoElement.style.left = '0';
+            blurredGradientWhiteLogoElement.style.width =
+              logo.style.width || getComputedStyle(logo).width;
+            blurredGradientWhiteLogoElement.style.height =
+              logo.style.height || getComputedStyle(logo).height;
+            blurredGradientWhiteLogoElement.style.zIndex = '10';
+            blurredGradientWhiteLogoElement.style.objectFit = 'contain';
+
+            // Make parent relative if it isn't already
+            if (logo.parentElement) {
+              const parentStyle = getComputedStyle(logo.parentElement);
+              if (parentStyle.position === 'static') {
+                logo.parentElement.style.position = 'relative';
+              }
+              logo.parentElement.appendChild(blurredGradientWhiteLogoElement);
+            }
+          }
+
+          // Hide black logo, show white logo
+          logo.style.opacity = '0';
+          blurredGradientWhiteLogoElement.style.opacity = '1';
+
+          // Update menu button spans to white
+          const blurredGradientHeaderSpans = menuButton.querySelectorAll('span');
+          blurredGradientHeaderSpans.forEach((span) => {
             (span as HTMLElement).style.backgroundColor = '#ffffff';
           });
           break;
@@ -291,7 +341,11 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
               Header & Footer Design Variations (Temporary - For Review)
             </h3>
             <p className='text-body-sm text-gray-600'>
-              Select variations to preview different header and footer designs
+              Select variations to preview different header and footer designs.
+            </p>
+            <p className='text-body-sm text-gray-600'>
+              Scroll/navigate to different areas of the page/site to test the header/footer designs
+              in different contexts.
             </p>
           </div>
 
