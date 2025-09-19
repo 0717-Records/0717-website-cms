@@ -27,7 +27,7 @@ interface FooterProps {
   companyLinksData: COMPANY_LINKS_QUERYResult | null;
 }
 
-const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps) => {
+const Footer_1 = ({ footerData, siteSettingsData, companyLinksData }: FooterProps) => {
   const { isPageReady } = usePageLoad();
 
   // Get company links from company links data, filtering out hidden ones and invalid entries
@@ -161,7 +161,7 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
                   target='_blank'
                   rel='noopener noreferrer'
                   aria-label={link.label}
-                  title={link.label} // Hover text
+                  title={link.label}
                   className='group transition-transform duration-200 hover:scale-105'
                   {...createSanityDataAttribute(
                     'companyLinks',
@@ -213,4 +213,4 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
   );
 };
 
-export default Footer;
+export default Footer_1;
