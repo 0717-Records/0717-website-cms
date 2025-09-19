@@ -63,20 +63,20 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
         return {
           items: 'items-center md:items-start', // center on mobile, left on desktop
           text: 'text-center md:text-left',
-          content: 'items-center md:items-start'
+          content: 'items-center md:items-start',
         };
       case 'right':
         return {
           items: 'items-center md:items-end', // center on mobile, right on desktop
           text: 'text-center md:text-right',
-          content: 'items-center md:items-end'
+          content: 'items-center md:items-end',
         };
       case 'center':
       default:
         return {
           items: 'items-center',
           text: 'text-center',
-          content: 'items-center'
+          content: 'items-center',
         };
     }
   };
@@ -111,7 +111,8 @@ const RegularHeroLayout = (props: RegularHeroLayoutProps) => {
       `}
       {...createSanityDataAttribute(documentId, documentType, 'heroContentPosition')}>
       {/* Content container with responsive alignment */}
-      <div className={`flex flex-col ${horizontalConfig.content} gap-4 sm:gap-6 max-w-4xl w-full`}>
+      <div
+        className={`flex flex-col ${horizontalConfig.content} ${horizontalConfig.text} gap-4 sm:gap-6 max-w-4xl w-full`}>
         {/* Logo - can shrink when needed */}
         <div className='flex-shrink min-h-0'>
           <HeroLogo {...componentProps} />
