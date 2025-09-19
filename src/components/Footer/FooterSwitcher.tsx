@@ -19,13 +19,13 @@ const FooterSwitcher: React.FC = () => {
   const [selectedFooterVariation, setSelectedFooterVariation] = useState(1);
   const [selectedHeaderVariation, setSelectedHeaderVariation] = useState('white');
 
-
   // Apply header styles based on selected variation
   useEffect(() => {
     const header = document.querySelector('header');
     const logo = document.querySelector('header a img') as HTMLImageElement; // More specific selector for logo
-    const menuButton = document.querySelector('header button[aria-controls="mobile-navigation-menu"]');
-
+    const menuButton = document.querySelector(
+      'header button[aria-controls="mobile-navigation-menu"]'
+    );
 
     if (header && logo && menuButton) {
       if (selectedHeaderVariation === 'black') {
@@ -69,7 +69,7 @@ const FooterSwitcher: React.FC = () => {
 
         // Update menu button (hamburger) spans to white
         const menuButtonSpans = menuButton.querySelectorAll('span');
-        menuButtonSpans.forEach(span => {
+        menuButtonSpans.forEach((span) => {
           (span as HTMLElement).style.backgroundColor = '#ffffff';
         });
       } else {
@@ -88,7 +88,7 @@ const FooterSwitcher: React.FC = () => {
 
         // Update menu button (hamburger) spans to black (reset)
         const menuButtonSpans = menuButton.querySelectorAll('span');
-        menuButtonSpans.forEach(span => {
+        menuButtonSpans.forEach((span) => {
           (span as HTMLElement).style.backgroundColor = '';
         });
       }
@@ -108,7 +108,7 @@ const FooterSwitcher: React.FC = () => {
         }
 
         const menuButtonSpans = menuButton.querySelectorAll('span');
-        menuButtonSpans.forEach(span => {
+        menuButtonSpans.forEach((span) => {
           (span as HTMLElement).style.backgroundColor = '';
         });
       }
@@ -139,15 +139,16 @@ const FooterSwitcher: React.FC = () => {
           applyFooterElementStyles({
             backgroundColor: '#ffffff',
             textColor: '#1F2937',
-            accentColor: '#3B82F6',
+            accentColor: '#ffea00',
             separatorColor: '#E5E7EB',
             socialIconBg: 'linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)',
-            linkHoverColor: '#3B82F6'
+            linkHoverColor: '#3B82F6',
           });
           break;
 
         case 3: // Gradient Blue
-          footer.style.background = 'linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #1E40AF 100%)';
+          footer.style.background =
+            'linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #1E40AF 100%)';
           footer.style.color = '#ffffff';
           applyFooterElementStyles({
             backgroundColor: 'transparent',
@@ -155,12 +156,13 @@ const FooterSwitcher: React.FC = () => {
             accentColor: '#FDE047',
             separatorColor: 'rgba(255, 255, 255, 0.3)',
             socialIconBg: 'linear-gradient(135deg, #FDE047 0%, #FACC15 100%)',
-            linkHoverColor: '#FDE047'
+            linkHoverColor: '#FDE047',
           });
           break;
 
         case 4: // Purple Theme
-          footer.style.background = 'linear-gradient(135deg, #581C87 0%, #7C3AED 50%, #6B21A8 100%)';
+          footer.style.background =
+            'linear-gradient(135deg, #581C87 0%, #7C3AED 50%, #6B21A8 100%)';
           footer.style.color = '#ffffff';
           applyFooterElementStyles({
             backgroundColor: 'transparent',
@@ -168,12 +170,13 @@ const FooterSwitcher: React.FC = () => {
             accentColor: '#F472B6',
             separatorColor: 'rgba(255, 255, 255, 0.3)',
             socialIconBg: 'linear-gradient(135deg, #F472B6 0%, #EC4899 100%)',
-            linkHoverColor: '#F472B6'
+            linkHoverColor: '#F472B6',
           });
           break;
 
         case 5: // Green Theme
-          footer.style.background = 'linear-gradient(135deg, #064E3B 0%, #059669 50%, #047857 100%)';
+          footer.style.background =
+            'linear-gradient(135deg, #064E3B 0%, #059669 50%, #047857 100%)';
           footer.style.color = '#ffffff';
           applyFooterElementStyles({
             backgroundColor: 'transparent',
@@ -181,7 +184,7 @@ const FooterSwitcher: React.FC = () => {
             accentColor: '#FCD34D',
             separatorColor: 'rgba(255, 255, 255, 0.3)',
             socialIconBg: 'linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%)',
-            linkHoverColor: '#FCD34D'
+            linkHoverColor: '#FCD34D',
           });
           break;
       }
@@ -211,13 +214,13 @@ const FooterSwitcher: React.FC = () => {
     const copyright = document.querySelector('.footer-copyright');
     const quickLinksTitle = document.querySelector('.footer-quick-links-title');
 
-    messageTexts.forEach(el => (el as HTMLElement).style.color = colors.textColor);
+    messageTexts.forEach((el) => ((el as HTMLElement).style.color = colors.textColor));
     if (copyright) (copyright as HTMLElement).style.color = colors.textColor;
     if (quickLinksTitle) (quickLinksTitle as HTMLElement).style.color = colors.textColor;
 
     // Update accent colors (message titles)
     const messageTitles = document.querySelectorAll('.footer-message-title');
-    messageTitles.forEach(el => (el as HTMLElement).style.color = colors.accentColor);
+    messageTitles.forEach((el) => ((el as HTMLElement).style.color = colors.accentColor));
 
     // Update separator
     const separator = document.querySelector('.footer-separator');
@@ -225,22 +228,28 @@ const FooterSwitcher: React.FC = () => {
 
     // Update social icons background
     const socialIcons = document.querySelectorAll('.footer-social-icon');
-    socialIcons.forEach(el => (el as HTMLElement).style.background = colors.socialIconBg);
+    socialIcons.forEach((el) => ((el as HTMLElement).style.background = colors.socialIconBg));
 
     // Update quick links and legal links hover colors
     const quickLinks = document.querySelectorAll('.footer-quick-link');
     const legalLinks = document.querySelectorAll('.footer-legal-link');
 
-    quickLinks.forEach(el => {
+    quickLinks.forEach((el) => {
       (el as HTMLElement).style.color = colors.textColor;
-      el.addEventListener('mouseenter', () => (el as HTMLElement).style.color = colors.linkHoverColor);
-      el.addEventListener('mouseleave', () => (el as HTMLElement).style.color = colors.textColor);
+      el.addEventListener(
+        'mouseenter',
+        () => ((el as HTMLElement).style.color = colors.linkHoverColor)
+      );
+      el.addEventListener('mouseleave', () => ((el as HTMLElement).style.color = colors.textColor));
     });
 
-    legalLinks.forEach(el => {
+    legalLinks.forEach((el) => {
       (el as HTMLElement).style.color = colors.textColor;
-      el.addEventListener('mouseenter', () => (el as HTMLElement).style.color = colors.linkHoverColor);
-      el.addEventListener('mouseleave', () => (el as HTMLElement).style.color = colors.textColor);
+      el.addEventListener(
+        'mouseenter',
+        () => ((el as HTMLElement).style.color = colors.linkHoverColor)
+      );
+      el.addEventListener('mouseleave', () => ((el as HTMLElement).style.color = colors.textColor));
     });
   };
 
@@ -248,10 +257,10 @@ const FooterSwitcher: React.FC = () => {
   const resetFooterElementStyles = () => {
     const elements = document.querySelectorAll(
       '.footer-message-text, .footer-copyright, .footer-quick-links-title, ' +
-      '.footer-message-title, .footer-separator, .footer-social-icon, ' +
-      '.footer-quick-link, .footer-legal-link'
+        '.footer-message-title, .footer-separator, .footer-social-icon, ' +
+        '.footer-quick-link, .footer-legal-link'
     );
-    elements.forEach(el => {
+    elements.forEach((el) => {
       (el as HTMLElement).style.color = '';
       (el as HTMLElement).style.backgroundColor = '';
       (el as HTMLElement).style.background = '';
