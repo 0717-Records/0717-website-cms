@@ -14,6 +14,7 @@ import type {
   SITE_SETTINGS_QUERYResult,
   COMPANY_LINKS_QUERYResult,
 } from '@/sanity/types';
+import Divider from '../UI/Divider';
 
 interface FooterMessage {
   _key: string;
@@ -64,10 +65,9 @@ const Footer_3 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
 
   return (
     <footer
-      className={`py-10 px-6 md:px-16 w-full transition-opacity duration-500 ease-in-out text-white ${
+      className={`py-10 px-6 md:px-16 w-full transition-opacity duration-500 ease-in-out text-black bg-card-gradient ${
         isPageReady ? 'opacity-100' : 'opacity-0'
       }`}
-      style={{ background: 'linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #1E40AF 100%)' }}
       aria-label='Site Footer'>
       <div className='container md:grid grid-cols-3 grid-rows-[auto_auto] mx-auto'>
         {/* LEFT COLUMN */}
@@ -75,7 +75,7 @@ const Footer_3 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
           {/* Logo */}
           <Link href='/#home' className='footer-logo'>
             <UnifiedImage
-              src='/images/logo-text-white.png'
+              src='/images/logo-text-black.png'
               alt='07:17 Records Logo'
               mode='sized'
               width={400}
@@ -92,15 +92,14 @@ const Footer_3 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
               {footerMessages.map((message) => (
                 <div key={message._key} className='space-y-1'>
                   {message.title && (
-                    <div className='font-bold text-yellow-300 footer-message-title'>
+                    <div className='font-bold text-body-xl footer-message-title'>
                       {message.title}
                     </div>
                   )}
                   {message.message && (
-                    <div className='text-white text-body-lg footer-message-text'>
-                      {message.message}
-                    </div>
+                    <div className='text-body-lg footer-message-text mb-4'>{message.message}</div>
                   )}
+                  <Divider />
                 </div>
               ))}
             </div>
@@ -110,33 +109,33 @@ const Footer_3 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
         {/* CENTER COLUMN - Quick Links */}
         <div className='flex flex-col justify-start items-center col-start-2 row-start-1 mt-10 md:mt-0'>
           <div className='footer-quick-links'>
-            <h3 className='text-white text-body-lg font-semibold mb-4 footer-quick-links-title'>
+            <h3 className='text-body-xl font-semibold mb-4 footer-quick-links-title'>
               Quick Links
             </h3>
             <div className='space-y-2'>
               <Link
                 href='/artists'
-                className='block text-white hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
                 Home
               </Link>
               <Link
                 href='/releases'
-                className='block text-white hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
                 Blog
               </Link>
               <Link
                 href='/events'
-                className='block text-white hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
                 All Events
               </Link>
               <Link
                 href='/blog'
-                className='block text-white hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
                 Services
               </Link>
               <Link
                 href='/blog'
-                className='block text-white hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
                 Our Story
               </Link>
             </div>
@@ -187,26 +186,24 @@ const Footer_3 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
         {/* BOTTOM ROW - Copyright and Legal Links */}
         <div className='col-start-1 col-span-3 row-start-2 mt-20'>
           {/* Separator Line */}
-          <div className='w-full h-px bg-white bg-opacity-30 mb-6 footer-separator'></div>
+          <div className='w-full h-px bg-gray-200 bg-opacity-30 mb-6 footer-separator'></div>
 
           <div className='flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'>
             {/* Copyright */}
             {footerData?._type === 'footer' && footerData.copyrightText && (
-              <div className='text-white text-body-sm footer-copyright'>
-                {footerData.copyrightText}
-              </div>
+              <div className='text-body-sm footer-copyright'>{footerData.copyrightText}</div>
             )}
 
             {/* Legal Links */}
             <div className='flex flex-wrap justify-center gap-6 footer-legal-links'>
               <Link
                 href='/terms'
-                className='text-white hover:text-yellow-300 transition-colors duration-200 text-body-sm footer-legal-link'>
+                className='hover:text-yellow-300 transition-colors duration-200 text-body-sm footer-legal-link'>
                 Terms & Conditions
               </Link>
               <Link
                 href='/privacy'
-                className='text-white hover:text-yellow-300 transition-colors duration-200 text-body-sm footer-legal-link'>
+                className='hover:text-yellow-300 transition-colors duration-200 text-body-sm footer-legal-link'>
                 Privacy Policy
               </Link>
             </div>

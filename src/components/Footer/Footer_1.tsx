@@ -91,7 +91,7 @@ const Footer_1 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
               {footerMessages.map((message) => (
                 <div key={message._key} className='space-y-1'>
                   {message.title && (
-                    <div className='font-bold text-brand-secondary footer-message-title'>
+                    <div className='font-bold text-body-xl text-brand-primary footer-message-title'>
                       {message.title}
                     </div>
                   )}
@@ -109,7 +109,7 @@ const Footer_1 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
         {/* CENTER COLUMN - Quick Links */}
         <div className='flex flex-col justify-start items-center col-start-2 row-start-1 mt-10 md:mt-0'>
           <div className='footer-quick-links'>
-            <h3 className='text-white text-body-lg font-semibold mb-4 footer-quick-links-title'>
+            <h3 className='font-bold text-body-xl text-white mb-4 footer-quick-links-title'>
               Quick Links
             </h3>
             <div className='space-y-2'>

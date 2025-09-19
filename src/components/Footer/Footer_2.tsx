@@ -14,6 +14,7 @@ import type {
   SITE_SETTINGS_QUERYResult,
   COMPANY_LINKS_QUERYResult,
 } from '@/sanity/types';
+import Divider from '../UI/Divider';
 
 interface FooterMessage {
   _key: string;
@@ -91,15 +92,16 @@ const Footer_2 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
               {footerMessages.map((message) => (
                 <div key={message._key} className='space-y-1'>
                   {message.title && (
-                    <div className='font-bold text-black footer-message-title'>
+                    <div className='font-bold text-body-xl text-black footer-message-title'>
                       {message.title}
                     </div>
                   )}
                   {message.message && (
-                    <div className='text-gray-800 text-body-lg footer-message-text'>
+                    <div className='text-gray-800 text-body-lg footer-message-text mb-4'>
                       {message.message}
                     </div>
                   )}
+                  <Divider />
                 </div>
               ))}
             </div>
@@ -109,33 +111,33 @@ const Footer_2 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
         {/* CENTER COLUMN - Quick Links */}
         <div className='flex flex-col justify-start items-center col-start-2 row-start-1 mt-10 md:mt-0'>
           <div className='footer-quick-links'>
-            <h3 className='text-gray-800 text-body-lg font-semibold mb-4 footer-quick-links-title'>
+            <h3 className='text-body-xl font-semibold mb-4 footer-quick-links-title'>
               Quick Links
             </h3>
             <div className='space-y-2'>
               <Link
                 href='/artists'
-                className='block text-gray-800 hover:text-orange-500 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-orange-500 transition-colors duration-200 footer-quick-link'>
                 Home
               </Link>
               <Link
                 href='/releases'
-                className='block text-gray-800 hover:text-orange-500 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-orange-500 transition-colors duration-200 footer-quick-link'>
                 Blog
               </Link>
               <Link
                 href='/events'
-                className='block text-gray-800 hover:text-orange-500 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-orange-500 transition-colors duration-200 footer-quick-link'>
                 All Events
               </Link>
               <Link
                 href='/blog'
-                className='block text-gray-800 hover:text-orange-500 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-orange-500 transition-colors duration-200 footer-quick-link'>
                 Services
               </Link>
               <Link
                 href='/blog'
-                className='block text-gray-800 hover:text-orange-500 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-orange-500 transition-colors duration-200 footer-quick-link'>
                 Our Story
               </Link>
             </div>

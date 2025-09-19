@@ -13,7 +13,7 @@ import type {
 const footerVariations = [
   { id: 1, name: 'Dark Mode', component: Footer_1 },
   { id: 2, name: 'Light Mode', component: Footer_2 },
-  { id: 3, name: 'Gradient Blue', component: Footer_3 },
+  { id: 3, name: 'Gradient Yellow', component: Footer_3 },
 ];
 
 interface FooterSwitcherProps {
@@ -25,9 +25,14 @@ interface FooterSwitcherProps {
 const headerVariations = [
   { id: 'white', name: 'White Header' },
   { id: 'black', name: 'Black Header' },
+  { id: 'yellow', name: 'Gradient Yellow' },
 ];
 
-const FooterSwitcher: React.FC<FooterSwitcherProps> = ({ footerData, siteSettingsData, companyLinksData }) => {
+const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
+  footerData,
+  siteSettingsData,
+  companyLinksData,
+}) => {
   const [selectedFooterVariation, setSelectedFooterVariation] = useState(1);
   const [selectedHeaderVariation, setSelectedHeaderVariation] = useState('white');
 
@@ -40,69 +45,109 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({ footerData, siteSetting
     );
 
     if (header && logo && menuButton) {
-      if (selectedHeaderVariation === 'black') {
-        // Apply black header styles
-        header.style.backgroundColor = '#000000';
-        header.style.color = '#ffffff';
+      // Reset all header styles first
+      header.style.background = '';
+      header.style.backgroundColor = '';
+      header.style.color = '';
 
-        // Hide black logo and show white logo using CSS
+      // Get white logo element (for reuse across cases)
+      const whiteLogo = document.querySelector('#white-logo') as HTMLImageElement;
 
-        // Create white logo if it doesn't exist
-        let whiteLogo = document.querySelector('#white-logo') as HTMLImageElement;
-        if (!whiteLogo) {
-          whiteLogo = document.createElement('img');
-          whiteLogo.id = 'white-logo';
-          whiteLogo.src = '/images/logo-text-white.png';
-          whiteLogo.alt = '07:17 Records Logo';
-          whiteLogo.className = logo.className; // Copy same classes
+      switch (selectedHeaderVariation) {
+        case 'black':
+          // Apply black header styles
+          header.style.backgroundColor = '#000000';
+          header.style.color = '#ffffff';
 
-          // Position it exactly over the original logo
-          whiteLogo.style.position = 'absolute';
-          whiteLogo.style.top = '0';
-          whiteLogo.style.left = '0';
-          whiteLogo.style.width = logo.style.width || getComputedStyle(logo).width;
-          whiteLogo.style.height = logo.style.height || getComputedStyle(logo).height;
-          whiteLogo.style.zIndex = '10';
-          whiteLogo.style.objectFit = 'contain';
+          // Create white logo if it doesn't exist
+          let whiteLogoElement = whiteLogo;
+          if (!whiteLogoElement) {
+            whiteLogoElement = document.createElement('img');
+            whiteLogoElement.id = 'white-logo';
+            whiteLogoElement.src = '/images/logo-text-white.png';
+            whiteLogoElement.alt = '07:17 Records Logo';
+            whiteLogoElement.className = logo.className;
 
-          // Make parent relative if it isn't already
-          if (logo.parentElement) {
-            const parentStyle = getComputedStyle(logo.parentElement);
-            if (parentStyle.position === 'static') {
-              logo.parentElement.style.position = 'relative';
+            // Position it exactly over the original logo
+            whiteLogoElement.style.position = 'absolute';
+            whiteLogoElement.style.top = '0';
+            whiteLogoElement.style.left = '0';
+            whiteLogoElement.style.width = logo.style.width || getComputedStyle(logo).width;
+            whiteLogoElement.style.height = logo.style.height || getComputedStyle(logo).height;
+            whiteLogoElement.style.zIndex = '10';
+            whiteLogoElement.style.objectFit = 'contain';
+
+            // Make parent relative if it isn't already
+            if (logo.parentElement) {
+              const parentStyle = getComputedStyle(logo.parentElement);
+              if (parentStyle.position === 'static') {
+                logo.parentElement.style.position = 'relative';
+              }
+              logo.parentElement.appendChild(whiteLogoElement);
             }
-            logo.parentElement.appendChild(whiteLogo);
           }
-        }
 
-        // Hide black logo, show white logo
-        logo.style.opacity = '0';
-        whiteLogo.style.opacity = '1';
+          // Hide black logo, show white logo
+          logo.style.opacity = '0';
+          whiteLogoElement.style.opacity = '1';
 
-        // Update menu button (hamburger) spans to white
-        const menuButtonSpans = menuButton.querySelectorAll('span');
-        menuButtonSpans.forEach((span) => {
-          (span as HTMLElement).style.backgroundColor = '#ffffff';
-        });
-      } else {
-        // Apply white header styles (default)
-        header.style.backgroundColor = '#ffffff';
-        header.style.color = '';
+          // Update menu button spans to white
+          const blackHeaderSpans = menuButton.querySelectorAll('span');
+          blackHeaderSpans.forEach((span) => {
+            (span as HTMLElement).style.backgroundColor = '#ffffff';
+          });
+          break;
 
-        // Show black logo, hide white logo
-        const whiteLogo = document.querySelector('#white-logo') as HTMLImageElement;
+        case 'white':
+          // Apply white header styles (default)
+          header.style.backgroundColor = '#ffffff';
+          header.style.color = '';
 
-        // Show black logo, hide white logo
-        logo.style.opacity = '1';
-        if (whiteLogo) {
-          whiteLogo.style.opacity = '0';
-        }
+          // Show black logo, hide white logo
+          logo.style.opacity = '1';
+          if (whiteLogo) {
+            whiteLogo.style.opacity = '0';
+          }
 
-        // Update menu button (hamburger) spans to black (reset)
-        const menuButtonSpans = menuButton.querySelectorAll('span');
-        menuButtonSpans.forEach((span) => {
-          (span as HTMLElement).style.backgroundColor = '';
-        });
+          // Update menu button spans to black (reset)
+          const whiteHeaderSpans = menuButton.querySelectorAll('span');
+          whiteHeaderSpans.forEach((span) => {
+            (span as HTMLElement).style.backgroundColor = '';
+          });
+          break;
+
+        case 'yellow':
+          // Apply yellow gradient header styles
+          header.style.background =
+            'linear-gradient(135deg, #fffacc90 0%, #fffef0 25%, #ffffff 50%, #fffef0 75%, #fffacc90 100%)';
+          header.style.color = '';
+
+          // Show black logo, hide white logo
+          logo.style.opacity = '1';
+          if (whiteLogo) {
+            whiteLogo.style.opacity = '0';
+          }
+
+          // Update menu button spans to black (reset)
+          const yellowHeaderSpans = menuButton.querySelectorAll('span');
+          yellowHeaderSpans.forEach((span) => {
+            (span as HTMLElement).style.backgroundColor = '';
+          });
+          break;
+
+        default:
+          // Fallback to white header
+          header.style.backgroundColor = '#ffffff';
+          header.style.color = '';
+          logo.style.opacity = '1';
+          if (whiteLogo) {
+            whiteLogo.style.opacity = '0';
+          }
+          const defaultSpans = menuButton.querySelectorAll('span');
+          defaultSpans.forEach((span) => {
+            (span as HTMLElement).style.backgroundColor = '';
+          });
+          break;
       }
     }
 
@@ -128,9 +173,9 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({ footerData, siteSetting
   }, [selectedHeaderVariation]);
 
   // Get the selected footer component
-  const SelectedFooterComponent = footerVariations.find(
-    (variation) => variation.id === selectedFooterVariation
-  )?.component || Footer_1;
+  const SelectedFooterComponent =
+    footerVariations.find((variation) => variation.id === selectedFooterVariation)?.component ||
+    Footer_1;
 
   return (
     <div>
