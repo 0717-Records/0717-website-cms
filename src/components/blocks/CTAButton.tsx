@@ -69,10 +69,13 @@ const CTAButton = (props: CTAButtonProps) => {
 
   const alignmentClasses = getAlignmentClasses(alignment, inheritAlignment);
 
+  // Determine width class - if className contains 'w-full', use that, otherwise use responsive default
+  const widthClass = className.includes('w-full') ? 'w-full' : 'w-full sm:w-auto';
+
   return (
     <div className={`flex ${alignmentClasses} ${className}`.trim()}>
       <CTA
-        className='w-full sm:w-auto'
+        className={widthClass}
         href={href}
         variant={cleanVariant}
         target={shouldOpenInNewTab ? '_blank' : undefined}

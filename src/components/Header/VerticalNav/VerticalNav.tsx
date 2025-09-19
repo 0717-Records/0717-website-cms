@@ -194,7 +194,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas, headerData }: Ver
                   <div className='pt-6 border-t border-gray-300'>
                     {/* CTAs rendered in vertical column with full width */}
                     <div className='pt-6'>
-                      <CTAList ctaList={navCtas} alignment='flex-col' className='w-full' />
+                      <CTAList ctaList={navCtas} alignment='flex-col' fullWidth={true} />
                     </div>
                   </div>
                 </>

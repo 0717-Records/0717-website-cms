@@ -13,9 +13,10 @@ interface CTAListProps {
   ctaList: CTAListItem[] | null | undefined;
   alignment?: 'flex-row' | 'flex-col';
   className?: string;
+  fullWidth?: boolean;
 }
 
-const CTAList = ({ ctaList, alignment = 'flex-row', className = '' }: CTAListProps) => {
+const CTAList = ({ ctaList, alignment = 'flex-row', className = '', fullWidth = false }: CTAListProps) => {
   // Return nothing if no CTAs
   if (!ctaList || ctaList.length === 0) {
     return null;
@@ -35,6 +36,9 @@ const CTAList = ({ ctaList, alignment = 'flex-row', className = '' }: CTAListPro
   return (
     <div className={`${getAlignmentClasses()} ${className}`.trim()}>
       {ctaList.map((cta) => {
+        // Apply full width class if fullWidth prop is true
+        const ctaClassName = fullWidth ? 'w-full' : '';
+
         if (cta._type === 'embeddedCtaButton') {
           return (
             <CTAButton
@@ -47,10 +51,11 @@ const CTAList = ({ ctaList, alignment = 'flex-row', className = '' }: CTAListPro
               openInNewTab={cta.openInNewTab as boolean}
               computedHref={cta.computedHref as string}
               pageSectionId={cta.pageSectionId as string}
+              className={ctaClassName}
             />
           );
         } else if (cta._type === 'embeddedCtaEmailButton') {
-          return <CTAEmailButton key={cta._key} />;
+          return <CTAEmailButton key={cta._key} className={ctaClassName} />;
         }
         return null;
       })}

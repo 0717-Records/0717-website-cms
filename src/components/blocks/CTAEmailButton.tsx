@@ -18,10 +18,13 @@ const CTAEmailButtonComponent = (props: CTAEmailButtonProps) => {
     return <CTAEmailButton className={className} />;
   }
 
+  // Determine width class - if className contains 'w-full', use that, otherwise use responsive default
+  const widthClass = className.includes('w-full') ? 'w-full' : 'w-full sm:w-auto';
+
   // For non-embedded versions (with alignment field), render with alignment wrapper
   return (
     <div className={`flex ${alignmentClasses} ${className}`.trim()}>
-      <CTAEmailButton className='w-full sm:w-auto' />
+      <CTAEmailButton className={widthClass} />
     </div>
   );
 };
