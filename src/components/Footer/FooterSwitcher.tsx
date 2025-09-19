@@ -16,7 +16,7 @@ const footerVariations = [
   { id: 1, name: 'Dark Mode', component: Footer_1 },
   { id: 2, name: 'Light Mode', component: Footer_2 },
   { id: 3, name: 'Gradient Yellow', component: Footer_3 },
-  { id: 4, name: 'Brand Gradients', component: Footer_4 },
+  { id: 4, name: 'Dark Gradients', component: Footer_4 },
 ];
 
 interface FooterSwitcherProps {
@@ -29,6 +29,7 @@ const headerVariations = [
   { id: 'white', name: 'White Header' },
   { id: 'black', name: 'Black Header' },
   { id: 'yellow', name: 'Gradient Yellow' },
+  { id: 'darkGradient', name: 'Dark Gradient' },
 ];
 
 const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
@@ -138,6 +139,51 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
           });
           break;
 
+        case 'darkGradient':
+          // Apply dark gradient header styles (same as Footer_4)
+          header.style.background =
+            'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #3a3a3a 50%, #1a1a1a 75%, #000000 100%)';
+          header.style.color = '#ffffff';
+
+          // Create white logo if it doesn't exist
+          let darkGradientWhiteLogoElement = whiteLogo;
+          if (!darkGradientWhiteLogoElement) {
+            darkGradientWhiteLogoElement = document.createElement('img');
+            darkGradientWhiteLogoElement.id = 'white-logo';
+            darkGradientWhiteLogoElement.src = '/images/logo-text-white.png';
+            darkGradientWhiteLogoElement.alt = '07:17 Records Logo';
+            darkGradientWhiteLogoElement.className = logo.className;
+
+            // Position it exactly over the original logo
+            darkGradientWhiteLogoElement.style.position = 'absolute';
+            darkGradientWhiteLogoElement.style.top = '0';
+            darkGradientWhiteLogoElement.style.left = '0';
+            darkGradientWhiteLogoElement.style.width = logo.style.width || getComputedStyle(logo).width;
+            darkGradientWhiteLogoElement.style.height = logo.style.height || getComputedStyle(logo).height;
+            darkGradientWhiteLogoElement.style.zIndex = '10';
+            darkGradientWhiteLogoElement.style.objectFit = 'contain';
+
+            // Make parent relative if it isn't already
+            if (logo.parentElement) {
+              const parentStyle = getComputedStyle(logo.parentElement);
+              if (parentStyle.position === 'static') {
+                logo.parentElement.style.position = 'relative';
+              }
+              logo.parentElement.appendChild(darkGradientWhiteLogoElement);
+            }
+          }
+
+          // Hide black logo, show white logo
+          logo.style.opacity = '0';
+          darkGradientWhiteLogoElement.style.opacity = '1';
+
+          // Update menu button spans to white
+          const darkGradientHeaderSpans = menuButton.querySelectorAll('span');
+          darkGradientHeaderSpans.forEach((span) => {
+            (span as HTMLElement).style.backgroundColor = '#ffffff';
+          });
+          break;
+
         default:
           // Fallback to white header
           header.style.backgroundColor = '#ffffff';
@@ -158,6 +204,7 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
     return () => {
       if (header && logo && menuButton) {
         header.style.backgroundColor = '';
+        header.style.background = '';
         header.style.color = '';
         logo.style.opacity = '1';
 

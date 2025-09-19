@@ -69,14 +69,16 @@ const Footer_4 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
         isPageReady ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
-        background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)',
+        background:
+          'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #3a3a3a 50%, #1a1a1a 75%, #000000 100%)',
       }}
       aria-label='Site Footer'>
       {/* Subtle brand accent overlay */}
       <div
         className='absolute inset-0 opacity-10 pointer-events-none'
         style={{
-          background: 'linear-gradient(45deg, transparent 0%, rgba(255, 234, 0, 0.3) 30%, transparent 50%, rgba(255, 200, 0, 0.2) 70%, transparent 100%)',
+          background:
+            'linear-gradient(45deg, transparent 0%, rgba(255, 234, 0, 0.3) 30%, transparent 50%, rgba(255, 200, 0, 0.2) 70%, transparent 100%)',
         }}
       />
 
@@ -112,7 +114,7 @@ const Footer_4 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
                       {message.message}
                     </div>
                   )}
-                  <Divider />
+                  {/* <Divider /> */}
                 </div>
               ))}
             </div>
