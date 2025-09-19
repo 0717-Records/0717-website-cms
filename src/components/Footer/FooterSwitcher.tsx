@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Footer_1 from './Footer_1';
 import Footer_2 from './Footer_2';
 import Footer_3 from './Footer_3';
+import Footer_4 from './Footer_4';
+
 import type {
   FOOTER_QUERYResult,
   SITE_SETTINGS_QUERYResult,
@@ -14,6 +16,7 @@ const footerVariations = [
   { id: 1, name: 'Dark Mode', component: Footer_1 },
   { id: 2, name: 'Light Mode', component: Footer_2 },
   { id: 3, name: 'Gradient Yellow', component: Footer_3 },
+  { id: 4, name: 'Brand Gradients', component: Footer_4 },
 ];
 
 interface FooterSwitcherProps {
