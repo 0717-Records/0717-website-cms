@@ -58,18 +58,10 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
     };
   });
 
-  // Cast footer data to include proper footerMessages array and logo
+  // Cast footer data to include proper footerMessages array
   const footerMessages =
     footerData?._type === 'footer'
       ? (footerData as unknown as { footerMessages?: FooterMessage[] })?.footerMessages
-      : null;
-  const footerLogo =
-    footerData?._type === 'footer'
-      ? (
-          footerData as unknown as {
-            logo?: { asset?: object; alt?: string; hotspot?: object; crop?: object };
-          }
-        )?.logo
       : null;
 
   return (
@@ -83,24 +75,16 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
         <div className='flex flex-col items-center md:items-start col-start-1 row-start-1 text-center md:text-left'>
           {/* Logo */}
           <Link href='/#home' className=''>
-            {footerLogo ? (
-              <UnifiedImage
-                src={footerLogo}
-                alt={footerLogo.alt || '07:17 Records'}
-                mode="sized"
-                width={400}
-                height={190}
-                sizeContext="logo"
-                objectFit="contain"
-                className='w-[200px] md:w-[300px] h-auto'
-                {...createSanityDataAttribute(footerData?._id, 'footer', 'logo')}
-              />
-            ) : (
-              <div className='flex items-center gap-2'>
-                <span className='text-h6 font-bold'>07:17</span>
-                <span className='text-body-lg font-semibold'>Records</span>
-              </div>
-            )}
+            <UnifiedImage
+              src='/images/logo-text-white.png'
+              alt='07:17 Records Logo'
+              mode="sized"
+              width={400}
+              height={190}
+              sizeContext="logo"
+              objectFit="contain"
+              className='w-[200px] md:w-[300px] h-auto'
+            />
           </Link>
 
           {/* Messages */}

@@ -62,29 +62,17 @@ const Header = ({ headerData }: HeaderProps) => {
       <header className='w-full px-4 md:px-8 h-18 md:h-20 flex items-center justify-between gap-8 sticky top-0 z-50 bg-white'>
         {/* Logo */}
         <Link href='/#home' className='flex items-center gap-2'>
-          {headerData?.logo ? (
-            <UnifiedImage
-              src={headerData.logo}
-              alt={headerData.logo.alt || '07:17 Records'}
-              mode='sized'
-              width={200}
-              height={125}
-              sizeContext='logo'
-              objectFit='contain'
-              className='w-[160px] md:w-[180px] h-auto'
-              priority
-              documentId={headerData._id}
-              documentType='header'
-              fieldPath='logo'
-            />
-          ) : (
-            <>
-              <span className='text-body-xl md:text-h6 font-bold'>07:17</span>
-              <span className='hidden md:inline text-body-sm md:text-body-lg font-semibold'>
-                Records
-              </span>
-            </>
-          )}
+          <UnifiedImage
+            src='/images/logo-text-black.png'
+            alt='07:17 Records Logo'
+            mode='sized'
+            width={200}
+            height={125}
+            sizeContext='logo'
+            objectFit='contain'
+            className='w-[160px] md:w-[180px] h-auto'
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -118,7 +106,6 @@ const Header = ({ headerData }: HeaderProps) => {
         onClose={closeMenu}
         navLinks={headerData?.verticalNav || null}
         navCtas={headerData?.verticalNavCtas || null}
-        headerData={headerData}
       />
     </>
   );
