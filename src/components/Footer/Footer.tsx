@@ -32,17 +32,15 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
 
   // Get company links from company links data, filtering out hidden ones and invalid entries
   const companyLinks =
-    companyLinksData?.companyLinks?.socialLinksArray?.filter(
-      (link) => {
-        if (!link.url || link.hideFromFooter) return false;
-        
-        // Get final platform from auto-detection or manual selection
-        const detected = detectPlatformFromUrl(link.url);
-        const finalPlatform = detected?.key || link.platform;
-        
-        return finalPlatform && typeof finalPlatform === 'string' && finalPlatform.trim() !== '';
-      }
-    ) || [];
+    companyLinksData?.companyLinks?.socialLinksArray?.filter((link) => {
+      if (!link.url || link.hideFromFooter) return false;
+
+      // Get final platform from auto-detection or manual selection
+      const detected = detectPlatformFromUrl(link.url);
+      const finalPlatform = detected?.key || link.platform;
+
+      return finalPlatform && typeof finalPlatform === 'string' && finalPlatform.trim() !== '';
+    }) || [];
 
   // Transform company links to display format with final platform values
   const transformedLinks = companyLinks.map((link) => {
@@ -65,10 +63,10 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
       : null;
 
   return (
-    <footer 
+    <footer
       className={`bg-black text-white py-10 px-6 md:px-16 w-full transition-opacity duration-500 ease-in-out ${
         isPageReady ? 'opacity-100' : 'opacity-0'
-      }`} 
+      }`}
       aria-label='Site Footer'>
       <div className='container md:grid grid-cols-3 grid-rows-[auto_auto] mx-auto'>
         {/* LEFT COLUMN */}
@@ -78,11 +76,11 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
             <UnifiedImage
               src='/images/logo-text-white.png'
               alt='07:17 Records Logo'
-              mode="sized"
+              mode='sized'
               width={400}
               height={190}
-              sizeContext="logo"
-              objectFit="contain"
+              sizeContext='logo'
+              objectFit='contain'
               className='w-[200px] md:w-[300px] h-auto'
             />
           </Link>
@@ -93,10 +91,14 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
               {footerMessages.map((message) => (
                 <div key={message._key} className='space-y-1'>
                   {message.title && (
-                    <div className='font-bold text-brand-secondary footer-message-title'>{message.title}</div>
+                    <div className='font-bold text-brand-secondary footer-message-title'>
+                      {message.title}
+                    </div>
                   )}
                   {message.message && (
-                    <div className='text-white text-body-lg footer-message-text'>{message.message}</div>
+                    <div className='text-white text-body-lg footer-message-text'>
+                      {message.message}
+                    </div>
                   )}
                 </div>
               ))}
@@ -107,25 +109,34 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
         {/* CENTER COLUMN - Quick Links */}
         <div className='flex flex-col justify-start items-center col-start-2 row-start-1 mt-10 md:mt-0'>
           <div className='footer-quick-links'>
-            <h3 className='text-white text-body-lg font-semibold mb-4 footer-quick-links-title'>Quick Links</h3>
+            <h3 className='text-white text-body-lg font-semibold mb-4 footer-quick-links-title'>
+              Quick Links
+            </h3>
             <div className='space-y-2'>
-              <Link href='/artists' className='block text-white hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
-                Artists
+              <Link
+                href='/artists'
+                className='block text-white hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
+                Home
               </Link>
-              <Link href='/releases' className='block text-white hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
-                Releases
-              </Link>
-              <Link href='/events' className='block text-white hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
-                Events
-              </Link>
-              <Link href='/blog' className='block text-white hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
+              <Link
+                href='/releases'
+                className='block text-white hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
                 Blog
               </Link>
-              <Link href='/collabs' className='block text-white hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
-                Collaborations
+              <Link
+                href='/events'
+                className='block text-white hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
+                All Events
               </Link>
-              <Link href='/about' className='block text-white hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
-                About
+              <Link
+                href='/blog'
+                className='block text-white hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
+                Services
+              </Link>
+              <Link
+                href='/blog'
+                className='block text-white hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
+                Our Story
               </Link>
             </div>
           </div>
@@ -184,10 +195,14 @@ const Footer = ({ footerData, siteSettingsData, companyLinksData }: FooterProps)
 
             {/* Legal Links */}
             <div className='flex flex-wrap justify-center gap-6 footer-legal-links'>
-              <Link href='/terms' className='text-white hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
+              <Link
+                href='/terms'
+                className='text-white hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
                 Terms & Conditions
               </Link>
-              <Link href='/privacy' className='text-white hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
+              <Link
+                href='/privacy'
+                className='text-white hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
                 Privacy Policy
               </Link>
             </div>
