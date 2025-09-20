@@ -12,28 +12,80 @@ export const eventBlockType = defineType({
   icon: CalendarIcon,
   fields: [
     defineField({
-      name: 'maxEvents',
-      title: 'Maximum Number of Events',
-      type: 'number',
-      description: 'Maximum number of upcoming events to display. Leave empty to show all upcoming events.',
-      initialValue: 6,
+      name: 'events',
+      title: 'Select Events',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'event' }],
+          options: {
+            filter: () => {
+              // This will show all events, sorted by latest first
+              return {
+                filter: '_type == "event"',
+                params: {},
+              };
+            },
+          },
+        },
+      ],
+      description:
+        'Choose one or multiple events to display. Events will be shown in the order you add them here.',
+      validation: (Rule) => Rule.required().min(1).error('Please select at least one event'),
+    }),
+    defineField({
+      name: 'displayStyle',
+      title: 'Display Style',
+      type: 'string',
+      description: 'Choose how to display the events',
+      options: {
+        list: [
+          { title: 'Poster Only', value: 'posterOnly' },
+          { title: 'Detailed', value: 'detailed' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'detailed',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'showCTA',
+      title: 'Show Event Organization CTA',
+      type: 'boolean',
+      description: 'Show a call-to-action asking users to contact the label to help organize their event',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'ctaMessage',
+      title: 'CTA Message',
+      type: 'text',
+      description: 'Message to display in the CTA section',
+      hidden: ({ parent }) => !parent?.showCTA,
       validation: (Rule) =>
-        Rule.min(1)
-          .max(50)
-          .integer()
-          .warning('We recommend showing between 1-12 events for better user experience'),
+        Rule.custom((value, context) => {
+          const parent = context.parent as { showCTA?: boolean };
+          if (parent?.showCTA && !value) {
+            return 'CTA message is required when CTA is enabled';
+          }
+          return true;
+        }),
     }),
   ],
   preview: {
     select: {
-      maxEvents: 'maxEvents',
+      events: 'events',
+      displayStyle: 'displayStyle',
+      showCTA: 'showCTA',
     },
-    prepare({ maxEvents }) {
-      const limitText = maxEvents ? ` (max ${maxEvents})` : '';
-      
+    prepare({ events, displayStyle, showCTA }) {
+      const eventCount = events?.length || 0;
+      const styleText = displayStyle === 'posterOnly' ? 'Poster Only' : 'Detailed';
+      const ctaText = showCTA ? ' + CTA' : '';
+
       return {
         title: 'Event Block',
-        subtitle: `Upcoming Events${limitText}`,
+        subtitle: `${eventCount} event${eventCount !== 1 ? 's' : ''} • ${styleText}${ctaText}`,
         media: CalendarIcon,
       };
     },

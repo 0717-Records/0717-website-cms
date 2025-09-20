@@ -435,7 +435,14 @@ const BlockRenderer = ({
           case 'eventBlock':
             return (
               <BlockWrapper key={block._key}>
-                <EventBlock maxEvents={block.maxEvents} events={events || []} />
+                <EventBlock
+                  events={(block as unknown as { events: EVENTS_QUERYResult }).events || []}
+                  displayStyle={block.displayStyle || 'detailed'}
+                  showCTA={block.showCTA}
+                  ctaMessage={block.ctaMessage}
+                  generateSchema={true}
+                  baseUrl='https://0717records.com'
+                />
               </BlockWrapper>
             );
 

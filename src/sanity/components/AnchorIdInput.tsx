@@ -51,13 +51,18 @@ export const AnchorIdInput = (props: ExtendedProps) => {
   // Generate anchor ID from title with uniqueness checking
   const generateAnchorId = useCallback(
     (title: string) => {
-      const generated = title
+      let generated = title
         .toLowerCase()
         .replace(/[^\w\s-]/g, '') // Remove special chars except word chars, spaces, hyphens
         .replace(/\s+/g, '-') // Replace spaces with hyphens
         .replace(/-+/g, '-') // Remove duplicate hyphens
         .replace(/^-+|-+$/g, '') // Remove leading/trailing hyphens
         .slice(0, 50);
+
+      // Ensure the ID doesn't start with a number (invalid CSS selector)
+      if (generated && /^\d/.test(generated)) {
+        generated = 'section-' + generated;
+      }
 
       // Check for duplicates and auto-increment
       if (document?.content) {

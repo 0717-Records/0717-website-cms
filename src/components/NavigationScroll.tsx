@@ -48,6 +48,13 @@ export default function NavigationScroll() {
       return false;
     };
 
+    // Helper function to safely check for element within parent
+    const containsTargetElement = (parentElement: Element) => {
+      // Use getElementById from the parent's ownerDocument instead of querySelector
+      const targetElement = parentElement.ownerDocument.getElementById(targetId);
+      return targetElement && parentElement.contains(targetElement);
+    };
+
     // If page is ready, try to scroll immediately
     if (isPageReady) {
       if (findAndScrollToElement()) {
@@ -64,7 +71,7 @@ export default function NavigationScroll() {
             if (node.nodeType === Node.ELEMENT_NODE) {
               const element = node as Element;
               // Check if the added element is our target or contains our target
-              if (element.id === targetId || element.querySelector(`#${targetId}`)) {
+              if (element.id === targetId || containsTargetElement(element)) {
                 if (findAndScrollToElement()) {
                   observer.disconnect();
                   return;

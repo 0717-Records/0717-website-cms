@@ -136,6 +136,30 @@ const contentProjection = `
       hasOverrideDate,
       overrideDate
     }
+  },
+  _type == "eventBlock" => {
+    ...,
+    events[]->{
+      _id,
+      title,
+      shortDescription,
+      venue,
+      location,
+      image{
+        asset,
+        alt,
+        hotspot,
+        crop
+      },
+      tags,
+      link,
+      startDate,
+      endDate,
+      timeDescription,
+      pastEventText,
+      pastEventLinkBehavior,
+      pastEventLink
+    }
   }
 `;
 
