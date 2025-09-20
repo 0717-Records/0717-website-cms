@@ -11,15 +11,12 @@ import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '
 import {
   generateArticleSchema,
   getOrganizationDataFromSiteSettings,
-  generateStructuredDataScript
+  generateStructuredDataScript,
 } from '@/lib/structuredData';
 import BreadcrumbStructuredData from '@/components/StructuredData/BreadcrumbStructuredData';
 
 export async function generateMetadata() {
-  const [siteSettings, privacyData] = await Promise.all([
-    getSiteSettings(),
-    getPrivacyPolicy(),
-  ]);
+  const [siteSettings, privacyData] = await Promise.all([getSiteSettings(), getPrivacyPolicy()]);
 
   if (!siteSettings) {
     return {
@@ -32,7 +29,8 @@ export async function generateMetadata() {
 
   return generatePageMetadata({
     title,
-    description: siteSettings.siteDescription || 'Privacy policy for our website and how we handle your data',
+    description:
+      siteSettings.siteDescription || 'Privacy policy for our website and how we handle your data',
     siteSettings,
     canonicalUrl: generateCanonicalUrl('/privacy-policy'),
   });
@@ -101,7 +99,7 @@ const PrivacyPolicyPage = async () => {
         breadcrumbPageTitle={privacyData.title || 'Privacy Policy'}
       />
 
-      <Container>
+      <Container textAlign='left'>
         {/* Page Content */}
         {privacyData.content && (
           <PageBuilder
@@ -119,6 +117,7 @@ const PrivacyPolicyPage = async () => {
             collabs={collabs}
             favourites={favourites}
             companyLinks={companyLinks}
+            alignment='left'
           />
         )}
       </Container>

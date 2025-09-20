@@ -11,15 +11,12 @@ import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '
 import {
   generateArticleSchema,
   getOrganizationDataFromSiteSettings,
-  generateStructuredDataScript
+  generateStructuredDataScript,
 } from '@/lib/structuredData';
 import BreadcrumbStructuredData from '@/components/StructuredData/BreadcrumbStructuredData';
 
 export async function generateMetadata() {
-  const [siteSettings, termsData] = await Promise.all([
-    getSiteSettings(),
-    getTermsAndConditions(),
-  ]);
+  const [siteSettings, termsData] = await Promise.all([getSiteSettings(), getTermsAndConditions()]);
 
   if (!siteSettings) {
     return {
@@ -32,7 +29,8 @@ export async function generateMetadata() {
 
   return generatePageMetadata({
     title,
-    description: siteSettings.siteDescription || 'Terms and conditions for using our website and services',
+    description:
+      siteSettings.siteDescription || 'Terms and conditions for using our website and services',
     siteSettings,
     canonicalUrl: generateCanonicalUrl('/terms-and-conditions'),
   });
@@ -101,7 +99,7 @@ const TermsAndConditionsPage = async () => {
         breadcrumbPageTitle={termsData.title || 'Terms & Conditions'}
       />
 
-      <Container>
+      <Container textAlign='left'>
         {/* Page Content */}
         {termsData.content && (
           <PageBuilder
@@ -119,6 +117,7 @@ const TermsAndConditionsPage = async () => {
             collabs={collabs}
             favourites={favourites}
             companyLinks={companyLinks}
+            alignment='left'
           />
         )}
       </Container>
