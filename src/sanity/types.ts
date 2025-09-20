@@ -901,6 +901,120 @@ export type BlockContent = Array<{
   _key: string;
 }>;
 
+export type PrivacyPolicy = {
+  _id: string;
+  _type: "privacyPolicy";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hide?: boolean;
+  title?: string;
+  content?: Array<{
+    _key: string;
+  } & PageSection | {
+    _key: string;
+  } & Divider | {
+    _key: string;
+  } & ItemList | {
+    _key: string;
+  } & RichText | {
+    _key: string;
+  } & Quote | {
+    _key: string;
+  } & TextImage | {
+    _key: string;
+  } & Card | {
+    _key: string;
+  } & CtaButton | {
+    _key: string;
+  } & CtaCalloutLink | {
+    _key: string;
+  } & CtaEmailButton | {
+    _key: string;
+  } & CtaEvents | {
+    _key: string;
+  } & CtaBlogPost | {
+    _key: string;
+  } & GridLayout | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
+    _key: string;
+  } & YouTubeVideo | {
+    _key: string;
+  } & SpotifyWidget | {
+    _key: string;
+  } & BandcampWidget | {
+    _key: string;
+  } & EventBlock | {
+    _key: string;
+  } & CollabAllBlock | {
+    _key: string;
+  } & FavouriteBlock | {
+    _key: string;
+  } & CompanyLinksBlock | {
+    _key: string;
+  } & BlockList>;
+};
+
+export type TermsAndConditions = {
+  _id: string;
+  _type: "termsAndConditions";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hide?: boolean;
+  title?: string;
+  content?: Array<{
+    _key: string;
+  } & PageSection | {
+    _key: string;
+  } & Divider | {
+    _key: string;
+  } & ItemList | {
+    _key: string;
+  } & RichText | {
+    _key: string;
+  } & Quote | {
+    _key: string;
+  } & TextImage | {
+    _key: string;
+  } & Card | {
+    _key: string;
+  } & CtaButton | {
+    _key: string;
+  } & CtaCalloutLink | {
+    _key: string;
+  } & CtaEmailButton | {
+    _key: string;
+  } & CtaEvents | {
+    _key: string;
+  } & CtaBlogPost | {
+    _key: string;
+  } & GridLayout | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
+    _key: string;
+  } & YouTubeVideo | {
+    _key: string;
+  } & SpotifyWidget | {
+    _key: string;
+  } & BandcampWidget | {
+    _key: string;
+  } & EventBlock | {
+    _key: string;
+  } & CollabAllBlock | {
+    _key: string;
+  } & FavouriteBlock | {
+    _key: string;
+  } & CompanyLinksBlock | {
+    _key: string;
+  } & BlockList>;
+};
+
 export type Favourites = {
   _id: string;
   _type: "favourites";
@@ -1512,7 +1626,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = NavSection | VerticalNavDivider | VerticalNavLink | NavLink | CtaList | SideContent | SideContentBlock | BlockList | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaBlogPost | CtaEvents | HomeHeroCtaButton | EmbeddedCtaEmailButton | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | GridLayout | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Event | HomePage | BlogPost | BlogIndexPage | Collab | CollabLinksArray | EventsIndexPage | Page | Card | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = NavSection | VerticalNavDivider | VerticalNavLink | NavLink | CtaList | SideContent | SideContentBlock | BlockList | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaBlogPost | CtaEvents | HomeHeroCtaButton | EmbeddedCtaEmailButton | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | GridLayout | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | PrivacyPolicy | TermsAndConditions | Favourites | Event | HomePage | BlogPost | BlogIndexPage | Collab | CollabLinksArray | EventsIndexPage | Page | Card | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY
@@ -11163,6 +11277,2346 @@ export type HOME_PAGE_QUERYResult = {
   }> | null;
 } | {
   _id: string;
+  _type: "privacyPolicy";
+  heroStyle: null;
+  heroTextColor: null;
+  showHeroLogo: null;
+  enableFeaturedItems: null;
+  featuredImages: null;
+  heroBackgroundImages: null;
+  heroImageTransitionDuration: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  heroFeaturedItemsSubtitle: null;
+  heroCallToActionList: null;
+  heroContentPosition: null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | {
+  _id: string;
   _type: "sanity.fileAsset";
   heroStyle: null;
   heroTextColor: null;
@@ -11209,6 +13663,2346 @@ export type HOME_PAGE_QUERYResult = {
   heroCallToActionList: null;
   heroContentPosition: null;
   content: null;
+} | {
+  _id: string;
+  _type: "termsAndConditions";
+  heroStyle: null;
+  heroTextColor: null;
+  showHeroLogo: null;
+  enableFeaturedItems: null;
+  featuredImages: null;
+  heroBackgroundImages: null;
+  heroImageTransitionDuration: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  heroFeaturedItemsSubtitle: null;
+  heroCallToActionList: null;
+  heroContentPosition: null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
 } | null;
 // Variable: HEADER_QUERY
 // Query: *[_id == "header"][0]{  _id,  _type,  horizontalNav[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  verticalNav[]{    _type,    hideSection,    hideOnDesktop,    heading,    links[]{  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )}  },  verticalNavCtas[]{    _type,    _key,    _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},    _type == "embeddedCtaEmailButton" => {...}  },  hamburgerCallout{    enabled,    text,    hideDelay  }}
@@ -11465,6 +16259,13 @@ export type HEADER_QUERYResult = {
   hamburgerCallout: null;
 } | {
   _id: string;
+  _type: "privacyPolicy";
+  horizontalNav: null;
+  verticalNav: null;
+  verticalNavCtas: null;
+  hamburgerCallout: null;
+} | {
+  _id: string;
   _type: "sanity.fileAsset";
   horizontalNav: null;
   verticalNav: null;
@@ -11480,6 +16281,13 @@ export type HEADER_QUERYResult = {
 } | {
   _id: string;
   _type: "siteSettings";
+  horizontalNav: null;
+  verticalNav: null;
+  verticalNavCtas: null;
+  hamburgerCallout: null;
+} | {
+  _id: string;
+  _type: "termsAndConditions";
   horizontalNav: null;
   verticalNav: null;
   verticalNavCtas: null;
@@ -11588,6 +16396,15 @@ export type SITE_SETTINGS_QUERYResult = {
   companyEmail: null;
 } | {
   _id: string;
+  _type: "privacyPolicy";
+  siteTitle: null;
+  defaultPageTitle: null;
+  siteDescription: null;
+  seoKeywords: null;
+  defaultOgImage: null;
+  companyEmail: null;
+} | {
+  _id: string;
   _type: "sanity.fileAsset";
   siteTitle: null;
   defaultPageTitle: null;
@@ -11623,6 +16440,15 @@ export type SITE_SETTINGS_QUERYResult = {
     crop: SanityImageCrop | null;
   } | null;
   companyEmail: string | null;
+} | {
+  _id: string;
+  _type: "termsAndConditions";
+  siteTitle: null;
+  defaultPageTitle: null;
+  siteDescription: null;
+  seoKeywords: null;
+  defaultOgImage: null;
+  companyEmail: null;
 } | null;
 // Variable: COMPANY_LINKS_QUERY
 // Query: *[_id == "companyLinks"][0]{  _id,  _type,  companyLinks{    _type,    socialLinksArray[]{      _key,      platform,      url,      customTitle,      hideFromFooter    }  }}
@@ -11681,6 +16507,10 @@ export type COMPANY_LINKS_QUERYResult = {
   companyLinks: null;
 } | {
   _id: string;
+  _type: "privacyPolicy";
+  companyLinks: null;
+} | {
+  _id: string;
   _type: "sanity.fileAsset";
   companyLinks: null;
 } | {
@@ -11690,6 +16520,10 @@ export type COMPANY_LINKS_QUERYResult = {
 } | {
   _id: string;
   _type: "siteSettings";
+  companyLinks: null;
+} | {
+  _id: string;
+  _type: "termsAndConditions";
   companyLinks: null;
 } | null;
 // Variable: EVENTS_QUERY
@@ -11844,6 +16678,16 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   eventsMessage: null;
 } | {
   _id: string;
+  _type: "privacyPolicy";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
+} | {
+  _id: string;
   _type: "sanity.fileAsset";
   title: string | null;
   backgroundImage: null;
@@ -11866,6 +16710,16 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   _id: string;
   _type: "siteSettings";
   title: null;
+  backgroundImage: null;
+  subtitle: null;
+  noUpcomingEventsMessage: null;
+  noPastEventsMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
+} | {
+  _id: string;
+  _type: "termsAndConditions";
+  title: string | null;
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
@@ -12031,6 +16885,15 @@ export type BLOG_INDEX_PAGE_QUERYResult = {
   closingCard: Card | null;
 } | {
   _id: string;
+  _type: "privacyPolicy";
+  title: string | null;
+  heroImage: null;
+  subtitle: null;
+  noArticlesMessage: null;
+  hasClosingCard: null;
+  closingCard: null;
+} | {
+  _id: string;
   _type: "sanity.fileAsset";
   title: string | null;
   heroImage: null;
@@ -12051,6 +16914,15 @@ export type BLOG_INDEX_PAGE_QUERYResult = {
   _id: string;
   _type: "siteSettings";
   title: null;
+  heroImage: null;
+  subtitle: null;
+  noArticlesMessage: null;
+  hasClosingCard: null;
+  closingCard: null;
+} | {
+  _id: string;
+  _type: "termsAndConditions";
+  title: string | null;
   heroImage: null;
   subtitle: null;
   noArticlesMessage: null;
@@ -16354,6 +21226,23476 @@ export type ALL_BLOG_POSTS_SLUGS_QUERYResult = Array<{
   title: string | null;
   slug: Slug | null;
 }>;
+// Variable: TERMS_AND_CONDITIONS_QUERY
+// Query: *[_id == "termsAndConditions"][0]{  _id,  _type,  _updatedAt,  hide,  title,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "gridLayout" => {    ...,    content[]{      ...,      _type == "card" => {        ...,        ctaList[]{          _type,          _key,          _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},          _type == "embeddedCtaEmailButton" => {...}        }      },      _type == "richText" => {...},      _type == "imageBlock" => {        ...,        image{          asset,          alt,          hotspot,          crop        }      },      _type == "youTubeVideo" => {...},      _type == "spotifyWidget" => {...},      _type == "bandcampWidget" => {...}    }  },  _type == "ctaEvents" => {    ...,    events[]->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "gridLayout" => {    ...,    content[]{      ...,      _type == "card" => {        ...,        ctaList[]{          _type,          _key,          _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},          _type == "embeddedCtaEmailButton" => {...}        }      },      _type == "richText" => {...},      _type == "imageBlock" => {        ...,        image{          asset,          alt,          hotspot,          crop        }      },      _type == "youTubeVideo" => {...},      _type == "spotifyWidget" => {...},      _type == "bandcampWidget" => {...}    }  },  _type == "ctaEvents" => {    ...,    events[]->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "gridLayout" => {    ...,    content[]{      ...,      _type == "card" => {        ...,        ctaList[]{          _type,          _key,          _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},          _type == "embeddedCtaEmailButton" => {...}        }      },      _type == "richText" => {...},      _type == "imageBlock" => {        ...,        image{          asset,          alt,          hotspot,          crop        }      },      _type == "youTubeVideo" => {...},      _type == "spotifyWidget" => {...},      _type == "bandcampWidget" => {...}    }  },  _type == "ctaEvents" => {    ...,    events[]->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "gridLayout" => {    ...,    content[]{      ...,      _type == "card" => {        ...,        ctaList[]{          _type,          _key,          _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},          _type == "embeddedCtaEmailButton" => {...}        }      },      _type == "richText" => {...},      _type == "imageBlock" => {        ...,        image{          asset,          alt,          hotspot,          crop        }      },      _type == "youTubeVideo" => {...},      _type == "spotifyWidget" => {...},      _type == "bandcampWidget" => {...}    }  },  _type == "ctaEvents" => {    ...,    events[]->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  }      }    }  }}}
+export type TERMS_AND_CONDITIONS_QUERYResult = {
+  _id: string;
+  _type: "blogIndexPage";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
+  _type: "blogPost";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | {
+  _id: string;
+  _type: "collab";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "companyLinks";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "event";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
+  _type: "eventsIndexPage";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
+  _type: "favourites";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "footer";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "header";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "homePage";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | {
+  _id: string;
+  _type: "page";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | {
+  _id: string;
+  _type: "privacyPolicy";
+  _updatedAt: string;
+  hide: boolean | null;
+  title: string | null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | {
+  _id: string;
+  _type: "sanity.fileAsset";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
+  _type: "sanity.imageAsset";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
+  _type: "siteSettings";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "termsAndConditions";
+  _updatedAt: string;
+  hide: boolean | null;
+  title: string | null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | null;
+// Variable: PRIVACY_POLICY_QUERY
+// Query: *[_id == "privacyPolicy"][0]{  _id,  _type,  _updatedAt,  hide,  title,  content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "gridLayout" => {    ...,    content[]{      ...,      _type == "card" => {        ...,        ctaList[]{          _type,          _key,          _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},          _type == "embeddedCtaEmailButton" => {...}        }      },      _type == "richText" => {...},      _type == "imageBlock" => {        ...,        image{          asset,          alt,          hotspot,          crop        }      },      _type == "youTubeVideo" => {...},      _type == "spotifyWidget" => {...},      _type == "bandcampWidget" => {...}    }  },  _type == "ctaEvents" => {    ...,    events[]->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },  "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "gridLayout" => {    ...,    content[]{      ...,      _type == "card" => {        ...,        ctaList[]{          _type,          _key,          _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},          _type == "embeddedCtaEmailButton" => {...}        }      },      _type == "richText" => {...},      _type == "imageBlock" => {        ...,        image{          asset,          alt,          hotspot,          crop        }      },      _type == "youTubeVideo" => {...},      _type == "spotifyWidget" => {...},      _type == "bandcampWidget" => {...}    }  },  _type == "ctaEvents" => {    ...,    events[]->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },    "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "gridLayout" => {    ...,    content[]{      ...,      _type == "card" => {        ...,        ctaList[]{          _type,          _key,          _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},          _type == "embeddedCtaEmailButton" => {...}        }      },      _type == "richText" => {...},      _type == "imageBlock" => {        ...,        image{          asset,          alt,          hotspot,          crop        }      },      _type == "youTubeVideo" => {...},      _type == "spotifyWidget" => {...},      _type == "bandcampWidget" => {...}    }  },  _type == "ctaEvents" => {    ...,    events[]->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  },      "content": content[]{  ...,  image{    asset,    alt,    hotspot,    crop  },  _type == "pageSection" => {    ...,    anchorId  },  _type == "subSection" => {    ...,    anchorId  },  _type == "subSubSection" => {    ...,    anchorId  },  _type == "ctaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCalloutLink" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "ctaCard" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},  _type == "card" => {    ...,    ctaList[]{      _type,      _key,      _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},      _type == "embeddedCtaEmailButton" => {...}    }  },  _type == "gridLayout" => {    ...,    content[]{      ...,      _type == "card" => {        ...,        ctaList[]{          _type,          _key,          _type == "embeddedCtaButton" => {  ...,  internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )},  "computedHref": select(    linkType == "external" => externalUrl,    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/") + "#" + pageSectionId,    linkType == "internal" =>       coalesce(internalLink->{  _id,  _type,  title,  slug,  "pageType": _type,  "href": select(    _type == "homePage" => "/",    _type == "eventsIndexPage" => "/events",    _type == "blogIndexPage" => "/blog",    _type == "blogPost" => "/blog/" + slug.current,    _type == "collab" => "/collabs/" + slug.current,    "/" + slug.current  )}.href, "/"),    "/"  )},          _type == "embeddedCtaEmailButton" => {...}        }      },      _type == "richText" => {...},      _type == "imageBlock" => {        ...,        image{          asset,          alt,          hotspot,          crop        }      },      _type == "youTubeVideo" => {...},      _type == "spotifyWidget" => {...},      _type == "bandcampWidget" => {...}    }  },  _type == "ctaEvents" => {    ...,    events[]->{      _id,      title,      shortDescription,      venue,      location,      image{        asset,        alt,        hotspot,        crop      },      tags,      link,      startDate,      endDate,      timeDescription,      pastEventText,      pastEventLinkBehavior,      pastEventLink    }  },  _type == "ctaBlogPost" => {    ...,    blogPost->{      _id,      _createdAt,      title,      slug,      subtitle,      author,      mainImage{        asset,        alt,        hotspot,        crop      },      hasOverrideDate,      overrideDate    }  }      }    }  }}}
+export type PRIVACY_POLICY_QUERYResult = {
+  _id: string;
+  _type: "blogIndexPage";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
+  _type: "blogPost";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | {
+  _id: string;
+  _type: "collab";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "companyLinks";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "event";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
+  _type: "eventsIndexPage";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
+  _type: "favourites";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "footer";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "header";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "homePage";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | {
+  _id: string;
+  _type: "page";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | {
+  _id: string;
+  _type: "privacyPolicy";
+  _updatedAt: string;
+  hide: boolean | null;
+  title: string | null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | {
+  _id: string;
+  _type: "sanity.fileAsset";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
+  _type: "sanity.imageAsset";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
+  _type: "siteSettings";
+  _updatedAt: string;
+  hide: null;
+  title: null;
+  content: null;
+} | {
+  _id: string;
+  _type: "termsAndConditions";
+  _updatedAt: string;
+  hide: boolean | null;
+  title: string | null;
+  content: Array<{
+    _key: string;
+    _type: "bandcampWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "blockList";
+    items?: Array<{
+      leftContent?: string;
+      rightContent?: string;
+      _type: "blockListItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "card";
+    cardStyle?: "feature" | "info" | "statement";
+    icon?: Icon;
+    title?: string;
+    bodyText?: string;
+    ctaList: Array<{
+      _type: "embeddedCtaButton";
+      _key: string;
+      text?: string;
+      variant?: "filled" | "outline";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+    } | {
+      _type: "embeddedCtaEmailButton";
+      _key: string;
+      buttonText?: string;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "collabAllBlock";
+    ctaText?: string;
+    noCollabsMessage?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "companyLinksBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaBlogPost";
+    blogPost: {
+      _id: string;
+      _createdAt: string;
+      title: string | null;
+      slug: Slug | null;
+      subtitle: string | null;
+      author: string | null;
+      mainImage: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      hasOverrideDate: boolean | null;
+      overrideDate: string | null;
+    } | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaButton";
+    text?: string;
+    variant?: "filled" | "outline";
+    alignment?: "center" | "inherit" | "left" | "right";
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    image: null;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaCalloutLink";
+    heading?: string;
+    text?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    linkType?: "external" | "internal";
+    internalLink: {
+      _id: string;
+      _type: "blogIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "blogIndexPage";
+      href: "/blog";
+    } | {
+      _id: string;
+      _type: "blogPost";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "blogPost";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "collab";
+      title: null;
+      slug: Slug | null;
+      pageType: "collab";
+      href: string | null;
+    } | {
+      _id: string;
+      _type: "eventsIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "eventsIndexPage";
+      href: "/events";
+    } | {
+      _id: string;
+      _type: "homePage";
+      title: null;
+      slug: null;
+      pageType: "homePage";
+      href: "/";
+    } | {
+      _id: string;
+      _type: "page";
+      title: string | null;
+      slug: Slug | null;
+      pageType: "page";
+      href: string | null;
+    } | null;
+    externalUrl?: string;
+    pageSectionId?: string;
+    openInNewTab?: boolean;
+    computedHref: string | "/" | null | "/blog" | "/events";
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEmailButton";
+    alignment?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "ctaEvents";
+    events: Array<{
+      _id: string;
+      title: string | null;
+      shortDescription: string | null;
+      venue: string | null;
+      location: string | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      tags: Array<string> | null;
+      link: string | null;
+      startDate: string | null;
+      endDate: string | null;
+      timeDescription: string | null;
+      pastEventText: string | null;
+      pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+      pastEventLink: string | null;
+    }> | null;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "divider";
+    style?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "eventBlock";
+    maxEvents?: number;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "favouriteBlock";
+    blockAdded?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "gridLayout";
+    columns?: "2" | "3";
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "imageBlock";
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    size?: "full" | "small";
+    caption?: string;
+    content: null;
+  } | {
+    _key: string;
+    _type: "imageGallery";
+    columns?: "2" | "3" | "4";
+    images?: Array<{
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      caption?: string;
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "itemList";
+    alignment?: "center" | "inherit" | "left" | "right";
+    items?: Array<{
+      text?: string;
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      _type: "listItem";
+      _key: string;
+    }>;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "pageSection";
+    hideSection?: boolean;
+    title?: string;
+    subtitle?: string;
+    anchorId: string | null;
+    content: Array<{
+      _key: string;
+      _type: "bandcampWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "blockList";
+      items?: Array<{
+        leftContent?: string;
+        rightContent?: string;
+        _type: "blockListItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "card";
+      cardStyle?: "feature" | "info" | "statement";
+      icon?: Icon;
+      title?: string;
+      bodyText?: string;
+      ctaList: Array<{
+        _type: "embeddedCtaButton";
+        _key: string;
+        text?: string;
+        variant?: "filled" | "outline";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+      } | {
+        _type: "embeddedCtaEmailButton";
+        _key: string;
+        buttonText?: string;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "collabAllBlock";
+      ctaText?: string;
+      noCollabsMessage?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "companyLinksBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaBlogPost";
+      blogPost: {
+        _id: string;
+        _createdAt: string;
+        title: string | null;
+        slug: Slug | null;
+        subtitle: string | null;
+        author: string | null;
+        mainImage: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        hasOverrideDate: boolean | null;
+        overrideDate: string | null;
+      } | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaButton";
+      text?: string;
+      variant?: "filled" | "outline";
+      alignment?: "center" | "inherit" | "left" | "right";
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      image: null;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaCalloutLink";
+      heading?: string;
+      text?: string;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+      };
+      linkType?: "external" | "internal";
+      internalLink: {
+        _id: string;
+        _type: "blogIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "blogIndexPage";
+        href: "/blog";
+      } | {
+        _id: string;
+        _type: "blogPost";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "blogPost";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "collab";
+        title: null;
+        slug: Slug | null;
+        pageType: "collab";
+        href: string | null;
+      } | {
+        _id: string;
+        _type: "eventsIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "eventsIndexPage";
+        href: "/events";
+      } | {
+        _id: string;
+        _type: "homePage";
+        title: null;
+        slug: null;
+        pageType: "homePage";
+        href: "/";
+      } | {
+        _id: string;
+        _type: "page";
+        title: string | null;
+        slug: Slug | null;
+        pageType: "page";
+        href: string | null;
+      } | null;
+      externalUrl?: string;
+      pageSectionId?: string;
+      openInNewTab?: boolean;
+      computedHref: string | "/" | null | "/blog" | "/events";
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEmailButton";
+      alignment?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "ctaEvents";
+      events: Array<{
+        _id: string;
+        title: string | null;
+        shortDescription: string | null;
+        venue: string | null;
+        location: string | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        tags: Array<string> | null;
+        link: string | null;
+        startDate: string | null;
+        endDate: string | null;
+        timeDescription: string | null;
+        pastEventText: string | null;
+        pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+        pastEventLink: string | null;
+      }> | null;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "divider";
+      style?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "eventBlock";
+      maxEvents?: number;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "favouriteBlock";
+      blockAdded?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "gridLayout";
+      columns?: "2" | "3";
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "imageBlock";
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      size?: "full" | "small";
+      caption?: string;
+      content: null;
+    } | {
+      _key: string;
+      _type: "imageGallery";
+      columns?: "2" | "3" | "4";
+      images?: Array<{
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        caption?: string;
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "itemList";
+      alignment?: "center" | "inherit" | "left" | "right";
+      items?: Array<{
+        text?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "quote";
+      text?: string;
+      attribution?: string;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "richText";
+      isCallout?: boolean;
+      textAlign?: "center" | "inherit" | "left" | "right";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "spotifyWidget";
+      embedCode?: string;
+      image: null;
+      content: null;
+    } | {
+      _key: string;
+      _type: "subSection";
+      hideSection?: boolean;
+      title?: string;
+      anchorId: string | null;
+      content: Array<{
+        _key: string;
+        _type: "bandcampWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "blockList";
+        items?: Array<{
+          leftContent?: string;
+          rightContent?: string;
+          _type: "blockListItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "card";
+        cardStyle?: "feature" | "info" | "statement";
+        icon?: Icon;
+        title?: string;
+        bodyText?: string;
+        ctaList: Array<{
+          _type: "embeddedCtaButton";
+          _key: string;
+          text?: string;
+          variant?: "filled" | "outline";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _type: "embeddedCtaEmailButton";
+          _key: string;
+          buttonText?: string;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "collabAllBlock";
+        ctaText?: string;
+        noCollabsMessage?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "companyLinksBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaBlogPost";
+        blogPost: {
+          _id: string;
+          _createdAt: string;
+          title: string | null;
+          slug: Slug | null;
+          subtitle: string | null;
+          author: string | null;
+          mainImage: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          hasOverrideDate: boolean | null;
+          overrideDate: string | null;
+        } | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaButton";
+        text?: string;
+        variant?: "filled" | "outline";
+        alignment?: "center" | "inherit" | "left" | "right";
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        image: null;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaCalloutLink";
+        heading?: string;
+        text?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        };
+        linkType?: "external" | "internal";
+        internalLink: {
+          _id: string;
+          _type: "blogIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "blogIndexPage";
+          href: "/blog";
+        } | {
+          _id: string;
+          _type: "blogPost";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "blogPost";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "collab";
+          title: null;
+          slug: Slug | null;
+          pageType: "collab";
+          href: string | null;
+        } | {
+          _id: string;
+          _type: "eventsIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "eventsIndexPage";
+          href: "/events";
+        } | {
+          _id: string;
+          _type: "homePage";
+          title: null;
+          slug: null;
+          pageType: "homePage";
+          href: "/";
+        } | {
+          _id: string;
+          _type: "page";
+          title: string | null;
+          slug: Slug | null;
+          pageType: "page";
+          href: string | null;
+        } | null;
+        externalUrl?: string;
+        pageSectionId?: string;
+        openInNewTab?: boolean;
+        computedHref: string | "/" | null | "/blog" | "/events";
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEmailButton";
+        alignment?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "ctaEvents";
+        events: Array<{
+          _id: string;
+          title: string | null;
+          shortDescription: string | null;
+          venue: string | null;
+          location: string | null;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          tags: Array<string> | null;
+          link: string | null;
+          startDate: string | null;
+          endDate: string | null;
+          timeDescription: string | null;
+          pastEventText: string | null;
+          pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+          pastEventLink: string | null;
+        }> | null;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "divider";
+        style?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "eventBlock";
+        maxEvents?: number;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "favouriteBlock";
+        blockAdded?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "gridLayout";
+        columns?: "2" | "3";
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "imageBlock";
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        size?: "full" | "small";
+        caption?: string;
+        content: null;
+      } | {
+        _key: string;
+        _type: "imageGallery";
+        columns?: "2" | "3" | "4";
+        images?: Array<{
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          caption?: string;
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "itemList";
+        alignment?: "center" | "inherit" | "left" | "right";
+        items?: Array<{
+          text?: string;
+          icon?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          _type: "listItem";
+          _key: string;
+        }>;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "quote";
+        text?: string;
+        attribution?: string;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "richText";
+        isCallout?: boolean;
+        textAlign?: "center" | "inherit" | "left" | "right";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "spotifyWidget";
+        embedCode?: string;
+        image: null;
+        content: null;
+      } | {
+        _key: string;
+        _type: "subSubSection";
+        hideSection?: boolean;
+        title?: string;
+        anchorId: string | null;
+        content: Array<{
+          _key: string;
+          _type: "bandcampWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "blockList";
+          items?: Array<{
+            leftContent?: string;
+            rightContent?: string;
+            _type: "blockListItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "card";
+          cardStyle?: "feature" | "info" | "statement";
+          icon?: Icon;
+          title?: string;
+          bodyText?: string;
+          ctaList: Array<{
+            _type: "embeddedCtaButton";
+            _key: string;
+            text?: string;
+            variant?: "filled" | "outline";
+            linkType?: "external" | "internal";
+            internalLink: {
+              _id: string;
+              _type: "blogIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "blogIndexPage";
+              href: "/blog";
+            } | {
+              _id: string;
+              _type: "blogPost";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "blogPost";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "collab";
+              title: null;
+              slug: Slug | null;
+              pageType: "collab";
+              href: string | null;
+            } | {
+              _id: string;
+              _type: "eventsIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "eventsIndexPage";
+              href: "/events";
+            } | {
+              _id: string;
+              _type: "homePage";
+              title: null;
+              slug: null;
+              pageType: "homePage";
+              href: "/";
+            } | {
+              _id: string;
+              _type: "page";
+              title: string | null;
+              slug: Slug | null;
+              pageType: "page";
+              href: string | null;
+            } | null;
+            externalUrl?: string;
+            pageSectionId?: string;
+            openInNewTab?: boolean;
+            computedHref: string | "/" | null | "/blog" | "/events";
+          } | {
+            _type: "embeddedCtaEmailButton";
+            _key: string;
+            buttonText?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "collabAllBlock";
+          ctaText?: string;
+          noCollabsMessage?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "companyLinksBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaBlogPost";
+          blogPost: {
+            _id: string;
+            _createdAt: string;
+            title: string | null;
+            slug: Slug | null;
+            subtitle: string | null;
+            author: string | null;
+            mainImage: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            hasOverrideDate: boolean | null;
+            overrideDate: string | null;
+          } | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaButton";
+          text?: string;
+          variant?: "filled" | "outline";
+          alignment?: "center" | "inherit" | "left" | "right";
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          image: null;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaCalloutLink";
+          heading?: string;
+          text?: string;
+          image?: {
+            asset?: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            };
+            media?: unknown;
+            hotspot?: SanityImageHotspot;
+            crop?: SanityImageCrop;
+            alt?: string;
+            _type: "image";
+          };
+          linkType?: "external" | "internal";
+          internalLink: {
+            _id: string;
+            _type: "blogIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "blogIndexPage";
+            href: "/blog";
+          } | {
+            _id: string;
+            _type: "blogPost";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "blogPost";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "collab";
+            title: null;
+            slug: Slug | null;
+            pageType: "collab";
+            href: string | null;
+          } | {
+            _id: string;
+            _type: "eventsIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "eventsIndexPage";
+            href: "/events";
+          } | {
+            _id: string;
+            _type: "homePage";
+            title: null;
+            slug: null;
+            pageType: "homePage";
+            href: "/";
+          } | {
+            _id: string;
+            _type: "page";
+            title: string | null;
+            slug: Slug | null;
+            pageType: "page";
+            href: string | null;
+          } | null;
+          externalUrl?: string;
+          pageSectionId?: string;
+          openInNewTab?: boolean;
+          computedHref: string | "/" | null | "/blog" | "/events";
+        } | {
+          _key: string;
+          _type: "ctaEmailButton";
+          alignment?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "ctaEvents";
+          events: Array<{
+            _id: string;
+            title: string | null;
+            shortDescription: string | null;
+            venue: string | null;
+            location: string | null;
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            tags: Array<string> | null;
+            link: string | null;
+            startDate: string | null;
+            endDate: string | null;
+            timeDescription: string | null;
+            pastEventText: string | null;
+            pastEventLinkBehavior: "change" | "keep" | "remove" | null;
+            pastEventLink: string | null;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "divider";
+          style?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "eventBlock";
+          maxEvents?: number;
+          image: null;
+        } | {
+          _key: string;
+          _type: "favouriteBlock";
+          blockAdded?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "gridLayout";
+          columns?: "2" | "3";
+          content: Array<{
+            _key: string;
+            _type: "bandcampWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "card";
+            cardStyle?: "feature" | "info" | "statement";
+            icon?: Icon;
+            title?: string;
+            bodyText?: string;
+            ctaList: Array<{
+              _type: "embeddedCtaButton";
+              _key: string;
+              text?: string;
+              variant?: "filled" | "outline";
+              linkType?: "external" | "internal";
+              internalLink: {
+                _id: string;
+                _type: "blogIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "blogIndexPage";
+                href: "/blog";
+              } | {
+                _id: string;
+                _type: "blogPost";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "blogPost";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "collab";
+                title: null;
+                slug: Slug | null;
+                pageType: "collab";
+                href: string | null;
+              } | {
+                _id: string;
+                _type: "eventsIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "eventsIndexPage";
+                href: "/events";
+              } | {
+                _id: string;
+                _type: "homePage";
+                title: null;
+                slug: null;
+                pageType: "homePage";
+                href: "/";
+              } | {
+                _id: string;
+                _type: "page";
+                title: string | null;
+                slug: Slug | null;
+                pageType: "page";
+                href: string | null;
+              } | null;
+              externalUrl?: string;
+              pageSectionId?: string;
+              openInNewTab?: boolean;
+              computedHref: string | "/" | null | "/blog" | "/events";
+            } | {
+              _type: "embeddedCtaEmailButton";
+              _key: string;
+              buttonText?: string;
+            }> | null;
+          } | {
+            _key: string;
+            _type: "imageBlock";
+            image: {
+              asset: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              } | null;
+              alt: string | null;
+              hotspot: SanityImageHotspot | null;
+              crop: SanityImageCrop | null;
+            } | null;
+            size?: "full" | "small";
+            caption?: string;
+          } | {
+            _key: string;
+            _type: "richText";
+            isCallout?: boolean;
+            textAlign?: "center" | "inherit" | "left" | "right";
+            content?: Array<{
+              children?: Array<{
+                marks?: Array<string>;
+                text?: string;
+                _type: "span";
+                _key: string;
+              }>;
+              style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+              listItem?: "bullet" | "number";
+              markDefs?: Array<{
+                _key: string;
+              } & Color | {
+                href?: string;
+                _type: "link";
+                _key: string;
+              }>;
+              level?: number;
+              _type: "block";
+              _key: string;
+            }>;
+          } | {
+            _key: string;
+            _type: "spotifyWidget";
+            embedCode?: string;
+          } | {
+            _key: string;
+            _type: "youTubeVideo";
+            url?: string;
+          }> | null;
+          image: null;
+        } | {
+          _key: string;
+          _type: "imageBlock";
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          size?: "full" | "small";
+          caption?: string;
+        } | {
+          _key: string;
+          _type: "imageGallery";
+          columns?: "2" | "3" | "4";
+          images?: Array<{
+            image?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            caption?: string;
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "itemList";
+          alignment?: "center" | "inherit" | "left" | "right";
+          items?: Array<{
+            text?: string;
+            icon?: {
+              asset?: {
+                _ref: string;
+                _type: "reference";
+                _weak?: boolean;
+                [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+              };
+              media?: unknown;
+              hotspot?: SanityImageHotspot;
+              crop?: SanityImageCrop;
+              alt?: string;
+              _type: "image";
+            };
+            _type: "listItem";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "quote";
+          text?: string;
+          attribution?: string;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          image: null;
+        } | {
+          _key: string;
+          _type: "richText";
+          isCallout?: boolean;
+          textAlign?: "center" | "inherit" | "left" | "right";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: null;
+        } | {
+          _key: string;
+          _type: "spotifyWidget";
+          embedCode?: string;
+          image: null;
+        } | {
+          _key: string;
+          _type: "textImage";
+          content?: Array<{
+            children?: Array<{
+              marks?: Array<string>;
+              text?: string;
+              _type: "span";
+              _key: string;
+            }>;
+            style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+            listItem?: "bullet" | "number";
+            markDefs?: Array<{
+              _key: string;
+            } & Color | {
+              href?: string;
+              _type: "link";
+              _key: string;
+            }>;
+            level?: number;
+            _type: "block";
+            _key: string;
+          }>;
+          image: {
+            asset: {
+              _ref: string;
+              _type: "reference";
+              _weak?: boolean;
+              [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+            } | null;
+            alt: string | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+          } | null;
+          layout?: "text-left" | "text-right";
+        } | {
+          _key: string;
+          _type: "youTubeVideo";
+          url?: string;
+          image: null;
+        }> | null;
+        image: null;
+      } | {
+        _key: string;
+        _type: "textImage";
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            _key: string;
+          } & Color | {
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+          image: null;
+        }> | null;
+        image: {
+          asset: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          } | null;
+          alt: string | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+        } | null;
+        layout?: "text-left" | "text-right";
+      } | {
+        _key: string;
+        _type: "youTubeVideo";
+        url?: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: null;
+    } | {
+      _key: string;
+      _type: "textImage";
+      content: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          _key: string;
+        } & Color | {
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+        image: null;
+        content: null;
+      }> | null;
+      image: {
+        asset: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        } | null;
+        alt: string | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+      } | null;
+      layout?: "text-left" | "text-right";
+    } | {
+      _key: string;
+      _type: "youTubeVideo";
+      url?: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "quote";
+    text?: string;
+    attribution?: string;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "richText";
+    isCallout?: boolean;
+    textAlign?: "center" | "inherit" | "left" | "right";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: null;
+  } | {
+    _key: string;
+    _type: "spotifyWidget";
+    embedCode?: string;
+    image: null;
+    content: null;
+  } | {
+    _key: string;
+    _type: "textImage";
+    content: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "body-2xl" | "body-3xl" | "body-lg" | "body-sm" | "body-xl" | "body-xs" | "normal" | "standout";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        _key: string;
+      } & Color | {
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+      image: null;
+      content: null;
+    }> | null;
+    image: {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      } | null;
+      alt: string | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+    } | null;
+    layout?: "text-left" | "text-right";
+  } | {
+    _key: string;
+    _type: "youTubeVideo";
+    url?: string;
+    image: null;
+    content: null;
+  }> | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -16377,5 +44719,7 @@ declare module "@sanity/client" {
     "*[_type == \"footer\" && _id == \"footer\"][0]{\n  _id,\n  _type,\n  footerMessages[]{\n    _key,\n    title,\n    message\n  },\n  copyrightText\n}": FOOTER_QUERYResult;
     "*[_type == \"page\" && defined(slug.current)]{\n  _id,\n  _updatedAt,\n  title,\n  slug\n}": ALL_PAGES_QUERYResult;
     "*[_type == \"blogPost\" && defined(slug.current)]{\n  _id,\n  _updatedAt,\n  title,\n  slug\n}": ALL_BLOG_POSTS_SLUGS_QUERYResult;
+    "*[_id == \"termsAndConditions\"][0]{\n  _id,\n  _type,\n  _updatedAt,\n  hide,\n  title,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n\n      }\n    }\n  }\n}\n}": TERMS_AND_CONDITIONS_QUERYResult;
+    "*[_id == \"privacyPolicy\"][0]{\n  _id,\n  _type,\n  _updatedAt,\n  hide,\n  title,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  }\n\n      }\n    }\n  }\n}\n}": PRIVACY_POLICY_QUERYResult;
   }
 }

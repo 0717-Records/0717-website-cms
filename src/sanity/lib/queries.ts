@@ -499,3 +499,22 @@ export const ALL_BLOG_POSTS_SLUGS_QUERY = defineQuery(`*[_type == "blogPost" && 
   title,
   slug
 }`);
+
+// Legal document queries
+export const TERMS_AND_CONDITIONS_QUERY = defineQuery(`*[_id == "termsAndConditions"][0]{
+  _id,
+  _type,
+  _updatedAt,
+  hide,
+  title,
+  ${recursiveContent}
+}`);
+
+export const PRIVACY_POLICY_QUERY = defineQuery(`*[_id == "privacyPolicy"][0]{
+  _id,
+  _type,
+  _updatedAt,
+  hide,
+  title,
+  ${recursiveContent}
+}`);

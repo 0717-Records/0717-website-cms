@@ -13,6 +13,9 @@ export { getCollab, getCollabSlugs, getCollabSlugsForGeneration, getCollabs, get
 // Site data actions
 export { getHeader, getFooter, getSiteSettings, getCompanyLinks } from './siteData';
 
+// Legal actions
+export { getTermsAndConditions, getPrivacyPolicy } from './legal';
+
 // Types
 export type {
   HOME_PAGE_QUERYResult,

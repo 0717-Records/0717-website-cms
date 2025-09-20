@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAllPages, getAllBlogPostsForSitemap, getCollabsForSitemap } from '@/actions';
+import { getAllPages, getAllBlogPostsForSitemap, getCollabsForSitemap, getTermsAndConditions, getPrivacyPolicy } from '@/actions';
 
 // ISR: Cache for 1 hour, but allow immediate updates via webhook
 export const revalidate = 3600;
@@ -15,10 +15,12 @@ export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://0717records.com';
 
   // Fetch all content from Sanity
-  const [pages, blogPosts, collabs] = await Promise.all([
+  const [pages, blogPosts, collabs, termsAndConditions, privacyPolicy] = await Promise.all([
     getAllPages(),
     getAllBlogPostsForSitemap(),
     getCollabsForSitemap(),
+    getTermsAndConditions(),
+    getPrivacyPolicy(),
   ]);
 
   const staticPages: SitemapUrl[] = [
@@ -27,6 +29,27 @@ export async function GET() {
     { url: '/events', changefreq: 'weekly', priority: '0.8' },
     { url: '/collabs', changefreq: 'weekly', priority: '0.8' },
   ];
+
+  // Add legal pages if they exist and are not hidden
+  const legalPages: SitemapUrl[] = [];
+
+  if (termsAndConditions && !termsAndConditions.hide) {
+    legalPages.push({
+      url: '/terms-and-conditions',
+      lastmod: termsAndConditions._updatedAt,
+      changefreq: 'monthly',
+      priority: '0.5'
+    });
+  }
+
+  if (privacyPolicy && !privacyPolicy.hide) {
+    legalPages.push({
+      url: '/privacy-policy',
+      lastmod: privacyPolicy._updatedAt,
+      changefreq: 'monthly',
+      priority: '0.5'
+    });
+  }
 
   const dynamicUrls: SitemapUrl[] = [
     // Blog posts
@@ -53,7 +76,7 @@ export async function GET() {
     // Note: Events don't have individual pages, only listing page
   ];
 
-  const allUrls = [...staticPages, ...dynamicUrls];
+  const allUrls = [...staticPages, ...legalPages, ...dynamicUrls];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

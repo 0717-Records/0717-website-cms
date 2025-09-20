@@ -52,6 +52,8 @@ import { verticalNavDividerType } from './navigation/verticalNavDividerType';
 import { navSectionType } from './navigation/navSectionType';
 import { blogIndexPageType } from './blogIndexPageType';
 import { blogPostType } from './blogPostType';
+import { termsAndConditionsType } from './termsAndConditionsType';
+import { privacyPolicyType } from './privacyPolicyType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -66,6 +68,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     eventsIndexPageType,
     collabType,
     favouritesType,
+    termsAndConditionsType,
+    privacyPolicyType,
     blockContentType,
     // Objects
     headerType,
