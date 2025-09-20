@@ -107,7 +107,7 @@ const Footer_3 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
         </div>
 
         {/* CENTER COLUMN - Quick Links */}
-        <div className='flex flex-col justify-start items-center col-start-2 row-start-1 mt-10 md:mt-0'>
+        <div className='flex flex-col justify-start items-center col-start-2 row-start-1 mt-10 md:mt-0 text-center md:text-left'>
           <div className='footer-quick-links'>
             <h3 className='text-body-xl font-semibold mb-4 footer-quick-links-title'>
               Quick Links
