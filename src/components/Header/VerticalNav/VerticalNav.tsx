@@ -54,7 +54,10 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas }: VerticalNavProp
     if (backgroundColor === 'rgb(0, 0, 0)' || backgroundColor === 'rgba(0, 0, 0, 1)') {
       setHeaderVariation('black');
       setUseWhiteLogo(true);
-    } else if (background.includes('linear-gradient') && (background.includes('fffacc') || background.includes('rgb(255, 250, 204)'))) {
+    } else if (
+      background.includes('linear-gradient') &&
+      (background.includes('fffacc') || background.includes('rgb(255, 250, 204)'))
+    ) {
       // Check for yellow gradient - also check for RGB equivalent of #fffacc
       setHeaderVariation('yellow');
       setUseWhiteLogo(false);
@@ -126,32 +129,32 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas }: VerticalNavProp
         }`}>
         {/* Menu Header */}
         <div
-          className={`flex items-center justify-between px-4 h-18 md:h-20 border-b transition-all duration-300 ${
+          className={`flex items-center justify-between px-4 h-18 md:h-20 transition-all duration-300 ${
             headerVariation === 'white'
-              ? 'bg-white border-gray-200'
+              ? 'bg-white'
               : headerVariation === 'black'
-              ? 'bg-black border-gray-700'
-              : headerVariation === 'yellow'
-              ? 'border-gray-200'
-              : headerVariation === 'darkGradient'
-              ? 'border-gray-700'
-              : headerVariation === 'blurred'
-              ? 'border-gray-700'
-              : headerVariation === 'blurredGradient'
-              ? 'border-gray-700'
-              : 'bg-white border-gray-200'
+                ? 'bg-black'
+                : headerVariation === 'yellow'
+                  ? ''
+                  : headerVariation === 'darkGradient'
+                    ? ''
+                    : headerVariation === 'blurred'
+                      ? ''
+                      : headerVariation === 'blurredGradient'
+                        ? ''
+                        : 'bg-white '
           }`}
           style={{
             background:
               headerVariation === 'yellow'
                 ? 'linear-gradient(135deg, #fffacc 0%, #fffef0 25%, #ffffff 50%, #fffef0 75%, #fffacc 100%)'
                 : headerVariation === 'darkGradient'
-                ? 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #3a3a3a 50%, #1a1a1a 75%, #000000 100%)'
-                : headerVariation === 'blurred'
-                ? 'rgba(0, 0, 0, 0.8)'
-                : headerVariation === 'blurredGradient'
-                ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.8) 25%, rgba(58, 58, 58, 0.8) 50%, rgba(26, 26, 26, 0.8) 75%, rgba(0, 0, 0, 0.8) 100%)'
-                : undefined,
+                  ? 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #3a3a3a 50%, #1a1a1a 75%, #000000 100%)'
+                  : headerVariation === 'blurred'
+                    ? 'rgba(0, 0, 0, 0.8)'
+                    : headerVariation === 'blurredGradient'
+                      ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.8) 25%, rgba(58, 58, 58, 0.8) 50%, rgba(26, 26, 26, 0.8) 75%, rgba(0, 0, 0, 0.8) 100%)'
+                      : undefined,
             backdropFilter:
               headerVariation === 'blurred' || headerVariation === 'blurredGradient'
                 ? 'blur(10px)'
@@ -186,7 +189,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas }: VerticalNavProp
         {/* Menu Navigation */}
         <div
           ref={scrollContainerRef}
-          className='flex-1 overflow-y-auto overflow-x-hidden'
+          className='flex-1 overflow-y-auto overflow-x-hidden bg-gray-50'
           style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#d1d5db transparent',
