@@ -54,8 +54,8 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas }: VerticalNavProp
     if (backgroundColor === 'rgb(0, 0, 0)' || backgroundColor === 'rgba(0, 0, 0, 1)') {
       setHeaderVariation('black');
       setUseWhiteLogo(true);
-    } else if (background.includes('linear-gradient') && background.includes('fffacc')) {
-      // Check for yellow gradient first (has fffacc color)
+    } else if (background.includes('linear-gradient') && (background.includes('fffacc') || background.includes('rgb(255, 250, 204)'))) {
+      // Check for yellow gradient - also check for RGB equivalent of #fffacc
       setHeaderVariation('yellow');
       setUseWhiteLogo(false);
     } else if (background.includes('linear-gradient') && background.includes('0, 0, 0')) {
