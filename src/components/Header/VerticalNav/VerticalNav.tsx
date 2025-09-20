@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import UnifiedImage from '@/components/UI/UnifiedImage';
 import MenuButton from '../MenuButton';
@@ -30,6 +30,8 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas }: VerticalNavProp
   useBodyScrollLock(isMenuOpen);
   const focusTrapRef = useFocusTrap(isMenuOpen);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [headerVariation, setHeaderVariation] = useState('white');
+  const [useWhiteLogo, setUseWhiteLogo] = useState(false);
 
   // Scroll to top when menu opens
   useEffect(() => {
@@ -37,6 +39,66 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas }: VerticalNavProp
       scrollContainerRef.current.scrollTop = 0;
     }
   }, [isMenuOpen]);
+
+  // Check header style function
+  const checkHeaderStyle = useCallback(() => {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    const headerStyle = getComputedStyle(header);
+    const backgroundColor = headerStyle.backgroundColor;
+    const background = headerStyle.background;
+    const backdropFilter = headerStyle.backdropFilter;
+
+    // Determine header variation based on styles
+    if (backgroundColor === 'rgb(0, 0, 0)' || backgroundColor === 'rgba(0, 0, 0, 1)') {
+      setHeaderVariation('black');
+      setUseWhiteLogo(true);
+    } else if (background.includes('linear-gradient') && background.includes('fffacc')) {
+      // Check for yellow gradient first (has fffacc color)
+      setHeaderVariation('yellow');
+      setUseWhiteLogo(false);
+    } else if (background.includes('linear-gradient') && background.includes('0, 0, 0')) {
+      if (backdropFilter.includes('blur')) {
+        setHeaderVariation('blurredGradient');
+      } else {
+        setHeaderVariation('darkGradient');
+      }
+      setUseWhiteLogo(true);
+    } else if (backgroundColor.includes('rgba(0, 0, 0, 0.8)') && backdropFilter.includes('blur')) {
+      setHeaderVariation('blurred');
+      setUseWhiteLogo(true);
+    } else {
+      setHeaderVariation('white');
+      setUseWhiteLogo(false);
+    }
+  }, []);
+
+  // Listen for header variation changes by observing the main header
+  useEffect(() => {
+    // Initial check
+    checkHeaderStyle();
+
+    // Create mutation observer to watch for header style changes
+    const observer = new MutationObserver(checkHeaderStyle);
+    const header = document.querySelector('header');
+
+    if (header) {
+      observer.observe(header, {
+        attributes: true,
+        attributeFilter: ['style'],
+        subtree: true,
+      });
+    }
+
+    // Also listen for style changes with a periodic check as backup
+    const interval = setInterval(checkHeaderStyle, 100);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
+  }, [checkHeaderStyle]);
 
   return (
     <div
@@ -63,12 +125,47 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas }: VerticalNavProp
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
         {/* Menu Header */}
-        <div className='flex items-center justify-between px-4 h-18 md:h-20 border-b border-gray-200'>
+        <div
+          className={`flex items-center justify-between px-4 h-18 md:h-20 border-b transition-all duration-300 ${
+            headerVariation === 'white'
+              ? 'bg-white border-gray-200'
+              : headerVariation === 'black'
+              ? 'bg-black border-gray-700'
+              : headerVariation === 'yellow'
+              ? 'border-gray-200'
+              : headerVariation === 'darkGradient'
+              ? 'border-gray-700'
+              : headerVariation === 'blurred'
+              ? 'border-gray-700'
+              : headerVariation === 'blurredGradient'
+              ? 'border-gray-700'
+              : 'bg-white border-gray-200'
+          }`}
+          style={{
+            background:
+              headerVariation === 'yellow'
+                ? 'linear-gradient(135deg, #fffacc 0%, #fffef0 25%, #ffffff 50%, #fffef0 75%, #fffacc 100%)'
+                : headerVariation === 'darkGradient'
+                ? 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #3a3a3a 50%, #1a1a1a 75%, #000000 100%)'
+                : headerVariation === 'blurred'
+                ? 'rgba(0, 0, 0, 0.8)'
+                : headerVariation === 'blurredGradient'
+                ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.8) 25%, rgba(58, 58, 58, 0.8) 50%, rgba(26, 26, 26, 0.8) 75%, rgba(0, 0, 0, 0.8) 100%)'
+                : undefined,
+            backdropFilter:
+              headerVariation === 'blurred' || headerVariation === 'blurredGradient'
+                ? 'blur(10px)'
+                : undefined,
+            WebkitBackdropFilter:
+              headerVariation === 'blurred' || headerVariation === 'blurredGradient'
+                ? 'blur(10px)'
+                : undefined,
+          }}>
           {/* Logo in Menu */}
           <Link href='/' onClick={onClose} className='flex items-center gap-2'>
             <div className='relative w-[160px] h-[60px]'>
               <UnifiedImage
-                src='/images/logo-text-black.png'
+                src={useWhiteLogo ? '/images/logo-text-white.png' : '/images/logo-text-black.png'}
                 alt='07:17 Records Logo'
                 mode='fill'
                 sizeContext='logo'
@@ -79,7 +176,11 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas }: VerticalNavProp
           </Link>
 
           {/* Close Button */}
-          <MenuButton variant='close' onClick={onClose} />
+          <MenuButton
+            variant='close'
+            onClick={onClose}
+            className={useWhiteLogo ? 'text-white' : 'text-black'}
+          />
         </div>
 
         {/* Menu Navigation */}
