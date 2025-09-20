@@ -17,7 +17,7 @@ export const privacyPolicyType = defineType({
       title: 'Hide Page',
       type: 'boolean',
       description:
-        'Hide this page from the frontend. When hidden, the page will show a not found error.',
+        'Hide this page from the frontend. When hidden, the link will automatically be removed from the Footer and visiting the URL manually will show a not found error.',
       initialValue: false,
     }),
     defineField({
