@@ -6,9 +6,10 @@ import { useSiteData } from '@/contexts/SiteDataContext';
 
 interface CTAEmailButtonProps {
   className?: string;
+  textClasses?: string;
 }
 
-const CTAEmailButton = ({ className = '' }: CTAEmailButtonProps) => {
+const CTAEmailButton = ({ className = '', textClasses }: CTAEmailButtonProps) => {
   const { companyEmail } = useSiteData();
   const email = companyEmail || 'noemailexists@noemail.com';
   const [isCopied, setIsCopied] = useState(false);
@@ -40,7 +41,6 @@ const CTAEmailButton = ({ className = '' }: CTAEmailButtonProps) => {
       className={`
         bg-brand-gradient 
         inline-flex 
-        flex-wrap 
         justify-center 
         items-center 
         max-w-full 
@@ -63,7 +63,7 @@ const CTAEmailButton = ({ className = '' }: CTAEmailButtonProps) => {
         ${className}
       `.trim()}
       title={`Copy email: ${email}`}>
-      <span className='text-body-base'>{email}</span>
+      <span className={`${textClasses ? textClasses : 'text-body-base'}`}>{email}</span>
       <div className='flex-shrink-0 w-8 h-8 bg-black rounded-full flex items-center justify-center group-hover:bg-brand-primary transition-colors duration-200'>
         <Icon className='w-4 h-4 text-white group-hover:text-black transition-colors duration-200' />
       </div>

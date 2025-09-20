@@ -12,6 +12,22 @@ export const eventBlockType = defineType({
   icon: CalendarIcon,
   fields: [
     defineField({
+      name: 'itemsPerRow',
+      title: 'Items Per Row',
+      type: 'string',
+      description:
+        'Maximum number of events to display per row on desktop. Note: If CTA is enabled, it will be included in this count.',
+      options: {
+        list: [
+          { title: '3 items per row', value: '3' },
+          { title: '4 items per row', value: '4' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: '3',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'events',
       title: 'Select Events',
       type: 'array',
@@ -53,7 +69,8 @@ export const eventBlockType = defineType({
       name: 'showCTA',
       title: 'Show Event Organization CTA',
       type: 'boolean',
-      description: 'Show a call-to-action asking users to contact the label to help organize their event',
+      description:
+        'Show a call-to-action asking users to contact the label to help organize their event',
       initialValue: false,
     }),
     defineField({
@@ -77,15 +94,17 @@ export const eventBlockType = defineType({
       events: 'events',
       displayStyle: 'displayStyle',
       showCTA: 'showCTA',
+      itemsPerRow: 'itemsPerRow',
     },
-    prepare({ events, displayStyle, showCTA }) {
+    prepare({ events, displayStyle, showCTA, itemsPerRow }) {
       const eventCount = events?.length || 0;
       const styleText = displayStyle === 'posterOnly' ? 'Poster Only' : 'Detailed';
       const ctaText = showCTA ? ' + CTA' : '';
+      const itemsText = itemsPerRow ? ` • ${itemsPerRow}/row` : '';
 
       return {
         title: 'Event Block',
-        subtitle: `${eventCount} event${eventCount !== 1 ? 's' : ''} • ${styleText}${ctaText}`,
+        subtitle: `${eventCount} event${eventCount !== 1 ? 's' : ''} • ${styleText}${ctaText}${itemsText}`,
         media: CalendarIcon,
       };
     },

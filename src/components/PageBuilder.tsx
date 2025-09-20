@@ -440,6 +440,7 @@ const BlockRenderer = ({
                   displayStyle={block.displayStyle || 'detailed'}
                   showCTA={block.showCTA}
                   ctaMessage={block.ctaMessage}
+                  itemsPerRow={block.itemsPerRow || '3'}
                   generateSchema={true}
                   baseUrl='https://0717records.com'
                 />

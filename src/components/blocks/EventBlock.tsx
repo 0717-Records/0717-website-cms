@@ -12,6 +12,7 @@ interface EventBlockProps {
   displayStyle: 'posterOnly' | 'detailed';
   showCTA?: boolean;
   ctaMessage?: string;
+  itemsPerRow?: '3' | '4';
   // Optional schema generation props
   generateSchema?: boolean;
   baseUrl?: string;
@@ -38,6 +39,7 @@ const EventBlock = ({
   displayStyle,
   showCTA = false,
   ctaMessage,
+  itemsPerRow = '3',
   generateSchema = false,
   baseUrl,
 }: EventBlockProps) => {
@@ -51,6 +53,12 @@ const EventBlock = ({
     return dateB - dateA;
   });
 
+  // Calculate grid classes based on itemsPerRow
+  const gridClasses =
+    itemsPerRow === '4'
+      ? 'w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3*1.5rem)/4)]' // 4 items per row on large screens
+      : 'w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-2*1.5rem)/3)]'; // 3 items per row on large screens
+
   if (sortedEvents.length === 0 && !showCTA) {
     return (
       <div className='text-center py-16'>
@@ -62,7 +70,7 @@ const EventBlock = ({
 
   return (
     <div className='w-full'>
-      <div className='flex flex-wrap justify-center gap-4 md:gap-8'>
+      <div className='flex flex-wrap justify-center gap-4 sm:gap-6'>
         {/* Render event cards */}
         {sortedEvents.map((event, index: number) => {
           const isPast = isEventPast(event);
@@ -75,9 +83,7 @@ const EventBlock = ({
           const hasLink = Boolean(eventLink);
 
           return (
-            <div
-              key={`${event.title}-${index}`}
-              className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] flex'>
+            <div key={`${event.title}-${index}`} className={`${gridClasses} flex`}>
               {displayStyle === 'posterOnly' ? (
                 // Poster Only Style - Just the image, clickable if has link
                 <div
@@ -130,16 +136,20 @@ const EventBlock = ({
 
         {/* CTA Item - appears at the end of the events list */}
         {showCTA && ctaMessage && (
-          <div className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] flex'>
+          <div className={`${gridClasses} flex`}>
             <div className='w-full h-full bg-white rounded-lg shadow-lg overflow-hidden'>
               {displayStyle === 'posterOnly' ? (
                 // Poster Only CTA Style
-                <div className='relative w-full aspect-[724/1024] bg-card-gradient overflow-hidden flex flex-col items-center justify-center p-6 text-center'>
+                <div className='relative w-full aspect-[724/1024] bg-card-gradient overflow-hidden flex flex-col items-center justify-center p-4 text-center'>
                   <div className='text-9xl md:text-body-8xl mb-4'>🎭</div>
-                  <p className='text-body-xl text-gray-700 mb-6 max-w-xs leading-relaxed whitespace-pre-line'>
+                  <p
+                    className={`${itemsPerRow === '4' ? 'text-body-base' : 'text-body-xl'} text-gray-700 mb-6 max-w-xs leading-relaxed whitespace-pre-line`}>
                     {ctaMessage}
                   </p>
-                  <CTAEmailButton className='flex-shrink-0' />
+                  <CTAEmailButton
+                    className='flex-shrink-0'
+                    textClasses='text-body-base md:text-body-sm'
+                  />
                 </div>
               ) : (
                 // Detailed CTA Style
@@ -150,10 +160,11 @@ const EventBlock = ({
                   </div>
                   {/* CTA Content area */}
                   <div className='p-3 md:p-4 flex flex-col items-start md:items-center text-left md:text-center justify-center flex-grow w-2/3 md:w-full'>
-                    <p className='text-body-xl text-gray-700 mb-6 leading-relaxed whitespace-pre-line'>
+                    <p
+                      className={`text-body-lg text-gray-700 mb-6 leading-relaxed whitespace-pre-line`}>
                       {ctaMessage}
                     </p>
-                    <CTAEmailButton />
+                    <CTAEmailButton textClasses='text-body-base md:text-body-sm' />
                   </div>
                 </div>
               )}
