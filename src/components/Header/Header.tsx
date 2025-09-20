@@ -55,6 +55,7 @@ const Header = ({ headerData }: HeaderProps) => {
     
     ⚠️ IMPORTANT: If these heights are changed, update the corresponding values in:
     src/components/HomeHero/styles.module.css
+    and in the vertical nav
   */
   return (
     <>
@@ -81,7 +82,7 @@ const Header = ({ headerData }: HeaderProps) => {
         </div>
 
         {/* Hamburger Menu Button with Callout */}
-        <div className="relative">
+        <div className='relative'>
           <MenuButton
             variant='hamburger'
             isMenuOpen={isMenuOpen}

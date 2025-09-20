@@ -63,7 +63,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas }: VerticalNavProp
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
         {/* Menu Header */}
-        <div className='flex items-center justify-between p-4 border-b border-gray-200'>
+        <div className='flex items-center justify-between px-4 h-18 md:h-20 border-b border-gray-200'>
           {/* Logo in Menu */}
           <Link href='/' onClick={onClose} className='flex items-center gap-2'>
             <div className='relative w-[160px] h-[60px]'>
