@@ -129,7 +129,7 @@ const VerticalNav = ({ isMenuOpen, onClose, navLinks, navCtas }: VerticalNavProp
         }`}>
         {/* Menu Header */}
         <div
-          className={`flex items-center justify-between px-4 h-18 md:h-20 transition-all duration-300 ${
+          className={`flex items-center justify-between px-4 h-18 md:h-20 transition-all duration-300 shadow-md relative z-10 ${
             headerVariation === 'white'
               ? 'bg-white'
               : headerVariation === 'black'
