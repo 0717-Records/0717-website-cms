@@ -11,7 +11,9 @@ const PROTECTED_DOCUMENT_TYPES = [
   'homePage',
   'blogIndexPage',
   'eventsIndexPage',
-  'companyLinks'
+  'companyLinks',
+  'termsAndConditions',
+  'privacyPolicy'
 ];
 
 export const protectedDocumentActions: DocumentActionsResolver = (prev, { schemaType }) => {

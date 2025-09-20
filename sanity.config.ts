@@ -42,8 +42,8 @@ export default defineConfig({
     colorInput(),
   ],
   document: {
-    newDocumentOptions: (prev) => prev.filter((item) => 
-      !['siteSettings', 'header', 'footer', 'homePage', 'blogIndexPage', 'eventsIndexPage', 'companyLinks'].includes(item.templateId)
+    newDocumentOptions: (prev) => prev.filter((item) =>
+      !['siteSettings', 'header', 'footer', 'homePage', 'blogIndexPage', 'eventsIndexPage', 'companyLinks', 'termsAndConditions', 'privacyPolicy'].includes(item.templateId)
     ),
     actions: protectedDocumentActions,
     // Document actions temporarily removed to fix build
