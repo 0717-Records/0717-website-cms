@@ -39,7 +39,7 @@ const EventBlock = ({
   showCTA = false,
   ctaMessage,
   generateSchema = false,
-  baseUrl
+  baseUrl,
 }: EventBlockProps) => {
   // Transform Sanity data to EventCard format
   const transformedEvents = transformEvents(events);
@@ -80,9 +80,12 @@ const EventBlock = ({
               className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] flex'>
               {displayStyle === 'posterOnly' ? (
                 // Poster Only Style - Just the image, clickable if has link
-                <div className={`w-full h-full bg-white rounded-lg shadow-lg overflow-hidden ${
-                  hasLink ? 'transition-all duration-300 hover:shadow-xl hover:scale-103 cursor-pointer' : ''
-                }`}>
+                <div
+                  className={`w-full h-full bg-white rounded-lg shadow-lg overflow-hidden ${
+                    hasLink
+                      ? 'transition-all duration-300 hover:shadow-xl hover:scale-103 cursor-pointer'
+                      : ''
+                  }`}>
                   <div className='relative w-full aspect-[724/1024] bg-gray-900 overflow-hidden'>
                     {hasLink && eventLink ? (
                       <a
@@ -131,9 +134,9 @@ const EventBlock = ({
             <div className='w-full h-full bg-white rounded-lg shadow-lg overflow-hidden'>
               {displayStyle === 'posterOnly' ? (
                 // Poster Only CTA Style
-                <div className='relative w-full aspect-[724/1024] bg-gray-100 overflow-hidden flex flex-col items-center justify-center p-6 text-center'>
-                  <div className='text-body-6xl mb-4'>🎭</div>
-                  <p className='text-body-base text-gray-700 mb-6 max-w-xs leading-relaxed'>
+                <div className='relative w-full aspect-[724/1024] bg-card-gradient overflow-hidden flex flex-col items-center justify-center p-6 text-center'>
+                  <div className='text-9xl md:text-body-8xl mb-4'>🎭</div>
+                  <p className='text-body-xl text-gray-700 mb-6 max-w-xs leading-relaxed whitespace-pre-line'>
                     {ctaMessage}
                   </p>
                   <CTAEmailButton className='flex-shrink-0' />
@@ -142,12 +145,12 @@ const EventBlock = ({
                 // Detailed CTA Style
                 <div className='flex flex-row md:flex-col h-full'>
                   {/* CTA "Poster" area */}
-                  <div className='relative w-1/3 md:w-full aspect-[724/1024] bg-gray-100 overflow-hidden flex items-center justify-center flex-shrink-0'>
-                    <div className='text-body-8xl md:text-h1'>🎭</div>
+                  <div className='relative w-1/3 md:w-full aspect-[724/1024] bg-card-gradient overflow-hidden flex items-center justify-center flex-shrink-0'>
+                    <div className='text-body-8xl'>🎭</div>
                   </div>
                   {/* CTA Content area */}
                   <div className='p-3 md:p-4 flex flex-col items-start md:items-center text-left md:text-center justify-center flex-grow w-2/3 md:w-full'>
-                    <p className='text-body-base text-gray-700 mb-6 leading-relaxed'>
+                    <p className='text-body-xl text-gray-700 mb-6 leading-relaxed whitespace-pre-line'>
                       {ctaMessage}
                     </p>
                     <CTAEmailButton />
