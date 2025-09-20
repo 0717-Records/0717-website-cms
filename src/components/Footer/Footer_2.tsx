@@ -201,12 +201,12 @@ const Footer_2 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
             {/* Legal Links */}
             <div className='flex flex-wrap justify-center gap-6 footer-legal-links'>
               <Link
-                href='/terms'
+                href='/terms-and-conditions'
                 className='text-gray-800 hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
                 Terms & Conditions
               </Link>
               <Link
-                href='/privacy'
+                href='/privacy-policy'
                 className='text-gray-800 hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
                 Privacy Policy
               </Link>
