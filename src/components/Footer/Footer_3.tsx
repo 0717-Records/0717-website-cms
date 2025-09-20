@@ -115,27 +115,27 @@ const Footer_3 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
             <div className='space-y-2'>
               <Link
                 href='/artists'
-                className='block hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
                 Home
               </Link>
               <Link
                 href='/releases'
-                className='block hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
                 Blog
               </Link>
               <Link
                 href='/events'
-                className='block hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
                 All Events
               </Link>
               <Link
                 href='/blog'
-                className='block hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
                 Services
               </Link>
               <Link
                 href='/blog'
-                className='block hover:text-yellow-300 transition-colors duration-200 footer-quick-link'>
+                className='block hover:text-brand-secondary transition-colors duration-200 footer-quick-link'>
                 Our Story
               </Link>
             </div>
@@ -198,12 +198,12 @@ const Footer_3 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
             <div className='flex flex-wrap justify-center gap-6 footer-legal-links'>
               <Link
                 href='/terms'
-                className='hover:text-yellow-300 transition-colors duration-200 text-body-sm footer-legal-link'>
+                className='hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
                 Terms & Conditions
               </Link>
               <Link
                 href='/privacy'
-                className='hover:text-yellow-300 transition-colors duration-200 text-body-sm footer-legal-link'>
+                className='hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
                 Privacy Policy
               </Link>
             </div>
