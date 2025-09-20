@@ -181,6 +181,7 @@ export type CollabAllBlock = {
 
 export type EventBlock = {
   _type: "eventBlock";
+  itemsPerRow?: "3" | "4";
   events?: Array<{
     _ref: string;
     _type: "reference";
@@ -191,7 +192,6 @@ export type EventBlock = {
   displayStyle?: "posterOnly" | "detailed";
   showCTA?: boolean;
   ctaMessage?: string;
-  itemsPerRow?: "3" | "4";
 };
 
 export type CtaBlogPost = {
@@ -1941,6 +1941,7 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -1970,7 +1971,6 @@ export type PAGE_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -2478,6 +2478,7 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -2507,7 +2508,6 @@ export type PAGE_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -3055,6 +3055,7 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -3084,7 +3085,6 @@ export type PAGE_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -3614,6 +3614,7 @@ export type PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -3643,7 +3644,6 @@ export type PAGE_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -4429,6 +4429,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -4458,7 +4459,6 @@ export type HOME_PAGE_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -4966,6 +4966,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -4995,7 +4996,6 @@ export type HOME_PAGE_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -5543,6 +5543,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -5572,7 +5573,6 @@ export type HOME_PAGE_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -6102,6 +6102,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -6131,7 +6132,6 @@ export type HOME_PAGE_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -7144,6 +7144,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -7173,7 +7174,6 @@ export type HOME_PAGE_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -7681,6 +7681,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -7710,7 +7711,6 @@ export type HOME_PAGE_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -8258,6 +8258,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -8287,7 +8288,6 @@ export type HOME_PAGE_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -8817,6 +8817,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -8846,7 +8847,6 @@ export type HOME_PAGE_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -9600,6 +9600,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -9629,7 +9630,6 @@ export type HOME_PAGE_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -10137,6 +10137,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -10166,7 +10167,6 @@ export type HOME_PAGE_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -10714,6 +10714,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -10743,7 +10744,6 @@ export type HOME_PAGE_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -11273,6 +11273,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -11302,7 +11303,6 @@ export type HOME_PAGE_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -12056,6 +12056,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -12085,7 +12086,6 @@ export type HOME_PAGE_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -12593,6 +12593,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -12622,7 +12623,6 @@ export type HOME_PAGE_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -13170,6 +13170,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -13199,7 +13200,6 @@ export type HOME_PAGE_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -13729,6 +13729,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -13758,7 +13759,6 @@ export type HOME_PAGE_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -14560,6 +14560,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -14589,7 +14590,6 @@ export type HOME_PAGE_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -15097,6 +15097,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -15126,7 +15127,6 @@ export type HOME_PAGE_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -15674,6 +15674,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -15703,7 +15704,6 @@ export type HOME_PAGE_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -16233,6 +16233,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -16262,7 +16263,6 @@ export type HOME_PAGE_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -17951,6 +17951,7 @@ export type BLOG_POST_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -17980,7 +17981,6 @@ export type BLOG_POST_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -18488,6 +18488,7 @@ export type BLOG_POST_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -18517,7 +18518,6 @@ export type BLOG_POST_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -19065,6 +19065,7 @@ export type BLOG_POST_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -19094,7 +19095,6 @@ export type BLOG_POST_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -19624,6 +19624,7 @@ export type BLOG_POST_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -19653,7 +19654,6 @@ export type BLOG_POST_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -20444,6 +20444,7 @@ export type COLLAB_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -20473,7 +20474,6 @@ export type COLLAB_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -21022,6 +21022,7 @@ export type COLLAB_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -21051,7 +21052,6 @@ export type COLLAB_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -21599,6 +21599,7 @@ export type COLLAB_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -21628,7 +21629,6 @@ export type COLLAB_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
           content: null;
         } | {
@@ -22442,6 +22442,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -22471,7 +22472,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -22979,6 +22979,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -23008,7 +23009,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -23556,6 +23556,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -23585,7 +23586,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -24115,6 +24115,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -24144,7 +24145,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -24938,6 +24938,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -24967,7 +24968,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -25475,6 +25475,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -25504,7 +25505,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -26052,6 +26052,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -26081,7 +26082,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -26611,6 +26611,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -26640,7 +26641,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -27385,6 +27385,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -27414,7 +27415,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -27922,6 +27922,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -27951,7 +27952,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -28499,6 +28499,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -28528,7 +28529,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -29058,6 +29058,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -29087,7 +29088,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -29832,6 +29832,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -29861,7 +29862,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -30369,6 +30369,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -30398,7 +30399,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -30946,6 +30946,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -30975,7 +30976,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -31505,6 +31505,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -31534,7 +31535,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -32300,6 +32300,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -32329,7 +32330,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -32837,6 +32837,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -32866,7 +32867,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -33414,6 +33414,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -33443,7 +33444,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -33973,6 +33973,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -34002,7 +34003,6 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -34757,6 +34757,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -34786,7 +34787,6 @@ export type PRIVACY_POLICY_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -35294,6 +35294,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -35323,7 +35324,6 @@ export type PRIVACY_POLICY_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -35871,6 +35871,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -35900,7 +35901,6 @@ export type PRIVACY_POLICY_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -36430,6 +36430,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -36459,7 +36460,6 @@ export type PRIVACY_POLICY_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -37253,6 +37253,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -37282,7 +37283,6 @@ export type PRIVACY_POLICY_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -37790,6 +37790,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -37819,7 +37820,6 @@ export type PRIVACY_POLICY_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -38367,6 +38367,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -38396,7 +38397,6 @@ export type PRIVACY_POLICY_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -38926,6 +38926,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -38955,7 +38956,6 @@ export type PRIVACY_POLICY_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -39700,6 +39700,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -39729,7 +39730,6 @@ export type PRIVACY_POLICY_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -40237,6 +40237,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -40266,7 +40267,6 @@ export type PRIVACY_POLICY_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -40814,6 +40814,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -40843,7 +40844,6 @@ export type PRIVACY_POLICY_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -41373,6 +41373,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -41402,7 +41403,6 @@ export type PRIVACY_POLICY_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -42147,6 +42147,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -42176,7 +42177,6 @@ export type PRIVACY_POLICY_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -42684,6 +42684,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -42713,7 +42714,6 @@ export type PRIVACY_POLICY_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -43261,6 +43261,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -43290,7 +43291,6 @@ export type PRIVACY_POLICY_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -43820,6 +43820,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -43849,7 +43850,6 @@ export type PRIVACY_POLICY_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;
@@ -44615,6 +44615,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
+    itemsPerRow?: "3" | "4";
     events: Array<{
       _id: string;
       title: string | null;
@@ -44644,7 +44645,6 @@ export type PRIVACY_POLICY_QUERYResult = {
     displayStyle?: "detailed" | "posterOnly";
     showCTA?: boolean;
     ctaMessage?: string;
-    itemsPerRow?: "3" | "4";
     image: null;
     content: null;
   } | {
@@ -45152,6 +45152,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
+      itemsPerRow?: "3" | "4";
       events: Array<{
         _id: string;
         title: string | null;
@@ -45181,7 +45182,6 @@ export type PRIVACY_POLICY_QUERYResult = {
       displayStyle?: "detailed" | "posterOnly";
       showCTA?: boolean;
       ctaMessage?: string;
-      itemsPerRow?: "3" | "4";
       image: null;
       content: null;
     } | {
@@ -45729,6 +45729,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
+        itemsPerRow?: "3" | "4";
         events: Array<{
           _id: string;
           title: string | null;
@@ -45758,7 +45759,6 @@ export type PRIVACY_POLICY_QUERYResult = {
         displayStyle?: "detailed" | "posterOnly";
         showCTA?: boolean;
         ctaMessage?: string;
-        itemsPerRow?: "3" | "4";
         image: null;
         content: null;
       } | {
@@ -46288,6 +46288,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
+          itemsPerRow?: "3" | "4";
           events: Array<{
             _id: string;
             title: string | null;
@@ -46317,7 +46318,6 @@ export type PRIVACY_POLICY_QUERYResult = {
           displayStyle?: "detailed" | "posterOnly";
           showCTA?: boolean;
           ctaMessage?: string;
-          itemsPerRow?: "3" | "4";
           image: null;
         } | {
           _key: string;

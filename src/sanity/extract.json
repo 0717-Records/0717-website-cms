@@ -1055,6 +1055,23 @@
             "value": "eventBlock"
           }
         },
+        "itemsPerRow": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "3"
+              },
+              {
+                "type": "string",
+                "value": "4"
+              }
+            ]
+          },
+          "optional": true
+        },
         "events": {
           "type": "objectAttribute",
           "value": {
@@ -1127,23 +1144,6 @@
           "type": "objectAttribute",
           "value": {
             "type": "string"
-          },
-          "optional": true
-        },
-        "itemsPerRow": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "3"
-              },
-              {
-                "type": "string",
-                "value": "4"
-              }
-            ]
           },
           "optional": true
         }

@@ -142,23 +142,35 @@ const EventCard = (props: EventCardProps) => {
           </div>
         )} */}
 
-        {/* Venue and Location */}
-        <div className='flex items-center text-text-subtle text-body-sm sm:text-body-base mb-2 md:mb-3'>
-          <FaLocationDot className='mr-1 md:mr-2 text-brand-secondary' />
-          <span>{venue ? `${venue}, ${location}` : location}</span>
-        </div>
-
-        {/* Tags */}
-        {tags && tags.length > 0 && (
-          <div className='flex flex-wrap justify-start md:justify-center gap-1 md:gap-2 mb-2 md:mb-4'>
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className='px-1 py-0.5 md:px-2 md:py-1 bg-gray-100 text-text-subtle text-body-xs sm:text-body-sm rounded'>
-                {tag}
-              </span>
-            ))}
+        {/* Past Event Message or Event Details */}
+        {isPast ? (
+          /* Past Event Message */
+          <div className='flex items-center justify-start md:justify-center text-text-subtle text-body-sm sm:text-body-base mb-2 md:mb-4'>
+            <span className='whitespace-pre-line'>
+              {pastEventText || 'This Event Has Been.\nThanks For Your Support.'}
+            </span>
           </div>
+        ) : (
+          <>
+            {/* Venue and Location - Only for upcoming events */}
+            <div className='flex items-center text-text-subtle text-body-sm sm:text-body-base mb-2 md:mb-3'>
+              <FaLocationDot className='mr-1 md:mr-2 text-brand-secondary' />
+              <span>{venue ? `${venue}, ${location}` : location}</span>
+            </div>
+
+            {/* Tags - Only for upcoming events */}
+            {tags && tags.length > 0 && (
+              <div className='flex flex-wrap justify-start md:justify-center gap-1 md:gap-2 mb-2 md:mb-4'>
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className='px-1 py-0.5 md:px-2 md:py-1 bg-gray-100 text-text-subtle text-body-xs sm:text-body-sm rounded'>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

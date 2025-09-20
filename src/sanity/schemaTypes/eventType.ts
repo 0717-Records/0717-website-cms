@@ -162,7 +162,7 @@ export const eventType = defineType({
       group: 'past',
       rows: 3,
       description:
-        'Text that will display over the event image when the event has ended. Use line breaks to separate sentences. Event becomes "past" at 12:00 AM the day after the Start Date (single-day events) or End Date (multi-day events).',
+        'Text that will display in place of venue and tags when the event has ended. Use line breaks to separate sentences. Event becomes "past" at 12:00 AM the day after the Start Date (single-day events) or End Date (multi-day events).',
       initialValue: 'This Event Has Been.\nThanks For Your Support.',
     }),
     defineField({
