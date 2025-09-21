@@ -9,6 +9,7 @@ import Card from '@/components/blocks/Card';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
 import { getSiteSettings } from '@/actions';
 import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
+import { closingCardSpacing } from '@/utils/spacingConstants';
 
 export async function generateMetadata() {
   const [siteSettings, eventsIndexPage] = await Promise.all([
@@ -76,7 +77,8 @@ export default async function EventsPage() {
         <PageSection
           title='Past Events'
           documentId={eventsIndexPage?._id}
-          documentType={eventsIndexPage?._type}>
+          documentType={eventsIndexPage?._type}
+          shouldApplyBottomPadding={false}>
           <EventList
             events={allEvents}
             filter='past'
@@ -88,13 +90,14 @@ export default async function EventsPage() {
 
         {/* Events Message Card - moved to bottom of page */}
         {eventsIndexPage?.hasEventsMessage && eventsIndexPage?.eventsMessage && (
-          <Card
-            {...eventsIndexPage.eventsMessage}
-            documentId={eventsIndexPage._id}
-            documentType={eventsIndexPage._type}
-            fieldPathPrefix='eventsMessage'
-            className={'mt-12 md:mt-16'}
-          />
+          <div className={closingCardSpacing}>
+            <Card
+              {...eventsIndexPage.eventsMessage}
+              documentId={eventsIndexPage._id}
+              documentType={eventsIndexPage._type}
+              fieldPathPrefix='eventsMessage'
+            />
+          </div>
         )}
       </Container>
     </>
