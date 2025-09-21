@@ -148,35 +148,6 @@ export const collabType = defineType({
           .error('Short description is required and should be 10-300 characters'),
     }),
     defineField({
-      name: 'useShortDescriptionForCards',
-      title: 'Use Short Description for Cards',
-      type: 'boolean',
-      group: 'content',
-      description:
-        'Use the short description above for card previews. Uncheck to provide a custom card description.',
-      initialValue: true,
-    }),
-    defineField({
-      name: 'cardDescription',
-      title: 'Card Description',
-      type: 'text',
-      group: 'content',
-      description: 'Custom description for use in cards and previews',
-      rows: 2,
-      hidden: ({ parent }) => parent?.useShortDescriptionForCards !== false,
-      validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const parent = context.parent as Record<string, unknown>;
-          if (parent?.useShortDescriptionForCards === false && !value) {
-            return 'Card description is required when not using short description for cards';
-          }
-          if (value && value.length > 200) {
-            return 'Card description must be 200 characters or less';
-          }
-          return true;
-        }),
-    }),
-    defineField({
       name: 'bio',
       title: 'Bio',
       type: 'text',

@@ -1013,7 +1013,7 @@
     }
   },
   {
-    "name": "collabAllBlock",
+    "name": "collabBlock",
     "type": "type",
     "value": {
       "type": "object",
@@ -1022,17 +1022,34 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "collabAllBlock"
+            "value": "collabBlock"
           }
         },
-        "ctaText": {
+        "itemsPerRow": {
           "type": "objectAttribute",
           "value": {
-            "type": "string"
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "3"
+              },
+              {
+                "type": "string",
+                "value": "4"
+              }
+            ]
           },
           "optional": true
         },
-        "noCollabsMessage": {
+        "showCTA": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
+        "ctaMessage": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -4055,7 +4072,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "collabAllBlock"
+                    "name": "collabBlock"
                   }
                 },
                 {
@@ -4449,7 +4466,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "collabAllBlock"
+                    "name": "collabBlock"
                   }
                 },
                 {
@@ -4843,7 +4860,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "collabAllBlock"
+                    "name": "collabBlock"
                   }
                 },
                 {
@@ -5244,7 +5261,7 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "collabAllBlock"
+                    "name": "collabBlock"
                   }
                 },
                 {
@@ -5605,7 +5622,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "collabAllBlock"
+              "name": "collabBlock"
             }
           },
           {
@@ -6409,7 +6426,7 @@
                 },
                 "rest": {
                   "type": "inline",
-                  "name": "collabAllBlock"
+                  "name": "collabBlock"
                 }
               },
               {
@@ -6817,7 +6834,7 @@
                 },
                 "rest": {
                   "type": "inline",
-                  "name": "collabAllBlock"
+                  "name": "collabBlock"
                 }
               },
               {
@@ -8261,7 +8278,7 @@
                 },
                 "rest": {
                   "type": "inline",
-                  "name": "collabAllBlock"
+                  "name": "collabBlock"
                 }
               },
               {
@@ -8704,20 +8721,6 @@
         "optional": true
       },
       "shortDescription": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "useShortDescriptionForCards": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "boolean"
-        },
-        "optional": true
-      },
-      "cardDescription": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
@@ -9455,7 +9458,7 @@
                 },
                 "rest": {
                   "type": "inline",
-                  "name": "collabAllBlock"
+                  "name": "collabBlock"
                 }
               },
               {

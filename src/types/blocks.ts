@@ -2,7 +2,7 @@
 // This type represents any block that can contain other blocks
 
 
-import type { ItemList, Divider, RichText, Quote, TextImage, Card, GridLayout, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, EmbeddedCtaEmailButton, CtaEvents, CtaBlogPost, SubSection, SubSubSection, EventBlock, CollabAllBlock, FavouriteBlock, CompanyLinksBlock, BlockList } from '@/sanity/types';
+import type { ItemList, Divider, RichText, Quote, TextImage, Card, GridLayout, Icon, ImageBlock as SanityImageBlock, ImageGallery, YouTubeVideo, SpotifyWidget, BandcampWidget, PageSection, CtaButton, CtaCalloutLink, CtaEmailButton, EmbeddedCtaButton, EmbeddedCtaEmailButton, CtaEvents, CtaBlogPost, SubSection, SubSubSection, EventBlock, CollabBlock, FavouriteBlock, CompanyLinksBlock, BlockList } from '@/sanity/types';
 
 export interface BaseBlock {
   _key: string;
@@ -42,7 +42,7 @@ export type EmbeddedCTAEmailButtonBlock = EmbeddedCtaEmailButton & { _key: strin
 export type CTAEventsBlock = CtaEvents & { _key: string };
 export type CTABlogPostBlock = CtaBlogPost & { _key: string };
 export type EventBlockType = EventBlock & { _key: string };
-export type CollabAllBlockType = CollabAllBlock & { _key: string };
+export type CollabBlockType = CollabBlock & { _key: string };
 export type FavouriteBlockType = FavouriteBlock & { _key: string };
 export type CompanyLinksBlockType = CompanyLinksBlock & { _key: string };
 export type BlockListBlock = BlockList & { _key: string };
@@ -73,7 +73,7 @@ export type NestedBlock =
   | CTAEventsBlock
   | CTABlogPostBlock
   | EventBlockType
-  | CollabAllBlockType
+  | CollabBlockType
   | FavouriteBlockType
   | CompanyLinksBlockType
   | BlockListBlock;
@@ -183,8 +183,8 @@ export const isEventBlock = (block: NestedBlock): block is EventBlockType => {
   return block._type === 'eventBlock';
 };
 
-export const isCollabAllBlock = (block: NestedBlock): block is CollabAllBlockType => {
-  return block._type === 'collabAllBlock';
+export const isCollabBlock = (block: NestedBlock): block is CollabBlockType => {
+  return block._type === 'collabBlock';
 };
 
 export const isFavouriteBlock = (block: NestedBlock): block is FavouriteBlockType => {

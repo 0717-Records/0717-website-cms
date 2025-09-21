@@ -173,10 +173,11 @@ export type FavouriteBlock = {
   blockAdded?: string;
 };
 
-export type CollabAllBlock = {
-  _type: "collabAllBlock";
-  ctaText?: string;
-  noCollabsMessage?: string;
+export type CollabBlock = {
+  _type: "collabBlock";
+  itemsPerRow?: "3" | "4";
+  showCTA?: boolean;
+  ctaMessage?: string;
 };
 
 export type EventBlock = {
@@ -637,7 +638,7 @@ export type SubSubSection = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock | {
+  } & CollabBlock | {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
@@ -691,7 +692,7 @@ export type SubSection = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock | {
+  } & CollabBlock | {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
@@ -745,7 +746,7 @@ export type CollabPageSection = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock | {
+  } & CollabBlock | {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
@@ -800,7 +801,7 @@ export type PageSection = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock | {
+  } & CollabBlock | {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
@@ -849,7 +850,7 @@ export type PageBuilder = Array<{
   _key: string;
 } & EventBlock | {
   _key: string;
-} & CollabAllBlock | {
+} & CollabBlock | {
   _key: string;
 } & FavouriteBlock | {
   _key: string;
@@ -960,7 +961,7 @@ export type PrivacyPolicy = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock | {
+  } & CollabBlock | {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
@@ -1017,7 +1018,7 @@ export type TermsAndConditions = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock | {
+  } & CollabBlock | {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
@@ -1233,7 +1234,7 @@ export type BlogPost = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock | {
+  } & CollabBlock | {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
@@ -1308,8 +1309,6 @@ export type Collab = {
     _type: "image";
   };
   shortDescription?: string;
-  useShortDescriptionForCards?: boolean;
-  cardDescription?: string;
   bio?: string;
   mainContent?: Array<{
     _key: string;
@@ -1420,7 +1419,7 @@ export type Page = {
     _key: string;
   } & EventBlock | {
     _key: string;
-  } & CollabAllBlock | {
+  } & CollabBlock | {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
@@ -1638,7 +1637,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = NavSection | VerticalNavDivider | VerticalNavLink | NavLink | CtaList | SideContent | SideContentBlock | BlockList | CompanyLinksBlock | FavouriteBlock | CollabAllBlock | EventBlock | CtaBlogPost | CtaEvents | HomeHeroCtaButton | EmbeddedCtaEmailButton | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | GridLayout | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | PrivacyPolicy | TermsAndConditions | Favourites | Event | HomePage | BlogPost | BlogIndexPage | Collab | CollabLinksArray | EventsIndexPage | Page | Card | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = NavSection | VerticalNavDivider | VerticalNavLink | NavLink | CtaList | SideContent | SideContentBlock | BlockList | CompanyLinksBlock | FavouriteBlock | CollabBlock | EventBlock | CtaBlogPost | CtaEvents | HomeHeroCtaButton | EmbeddedCtaEmailButton | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | GridLayout | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | PrivacyPolicy | TermsAndConditions | Favourites | Event | HomePage | BlogPost | BlogIndexPage | Collab | CollabLinksArray | EventsIndexPage | Page | Card | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY
@@ -1737,9 +1736,10 @@ export type PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -2275,9 +2275,10 @@ export type PAGE_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -2853,9 +2854,10 @@ export type PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -3421,9 +3423,10 @@ export type PAGE_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -4229,9 +4232,10 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -4767,9 +4771,10 @@ export type HOME_PAGE_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -5345,9 +5350,10 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -5913,9 +5919,10 @@ export type HOME_PAGE_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -6948,9 +6955,10 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -7486,9 +7494,10 @@ export type HOME_PAGE_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -8064,9 +8073,10 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -8632,9 +8642,10 @@ export type HOME_PAGE_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -9408,9 +9419,10 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -9946,9 +9958,10 @@ export type HOME_PAGE_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -10524,9 +10537,10 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -11092,9 +11106,10 @@ export type HOME_PAGE_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -11868,9 +11883,10 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -12406,9 +12422,10 @@ export type HOME_PAGE_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -12984,9 +13001,10 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -13552,9 +13570,10 @@ export type HOME_PAGE_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -14376,9 +14395,10 @@ export type HOME_PAGE_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -14914,9 +14934,10 @@ export type HOME_PAGE_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -15492,9 +15513,10 @@ export type HOME_PAGE_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -16060,9 +16082,10 @@ export type HOME_PAGE_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -17787,9 +17810,10 @@ export type BLOG_POST_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -18325,9 +18349,10 @@ export type BLOG_POST_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -18903,9 +18928,10 @@ export type BLOG_POST_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -19471,9 +19497,10 @@ export type BLOG_POST_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -20284,9 +20311,10 @@ export type COLLAB_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -20863,9 +20891,10 @@ export type COLLAB_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -21441,9 +21470,10 @@ export type COLLAB_QUERYResult = {
           content: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
           content: null;
         } | {
@@ -22123,8 +22153,8 @@ export type COLLABS_ALL_QUERYResult = Array<{
     crop: SanityImageCrop | null;
   } | null;
   shortDescription: string | null;
-  useShortDescriptionForCards: boolean | null;
-  cardDescription: string | null;
+  useShortDescriptionForCards: null;
+  cardDescription: null;
 }>;
 // Variable: COLLABS_SITEMAP_QUERY
 // Query: *[_type == "collab" && defined(slug.current)]{  _id,  _updatedAt,  name,  slug}
@@ -22285,9 +22315,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -22823,9 +22854,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -23401,9 +23433,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -23969,9 +24002,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -24785,9 +24819,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -25323,9 +25358,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -25901,9 +25937,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -26469,9 +26506,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -27236,9 +27274,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -27774,9 +27813,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -28352,9 +28392,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -28920,9 +28961,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -29687,9 +29729,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -30225,9 +30268,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -30803,9 +30847,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -31371,9 +31416,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -32159,9 +32205,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -32697,9 +32744,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -33275,9 +33323,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -33843,9 +33892,10 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -34620,9 +34670,10 @@ export type PRIVACY_POLICY_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -35158,9 +35209,10 @@ export type PRIVACY_POLICY_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -35736,9 +35788,10 @@ export type PRIVACY_POLICY_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -36304,9 +36357,10 @@ export type PRIVACY_POLICY_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -37120,9 +37174,10 @@ export type PRIVACY_POLICY_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -37658,9 +37713,10 @@ export type PRIVACY_POLICY_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -38236,9 +38292,10 @@ export type PRIVACY_POLICY_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -38804,9 +38861,10 @@ export type PRIVACY_POLICY_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -39571,9 +39629,10 @@ export type PRIVACY_POLICY_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -40109,9 +40168,10 @@ export type PRIVACY_POLICY_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -40687,9 +40747,10 @@ export type PRIVACY_POLICY_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -41255,9 +41316,10 @@ export type PRIVACY_POLICY_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -42022,9 +42084,10 @@ export type PRIVACY_POLICY_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -42560,9 +42623,10 @@ export type PRIVACY_POLICY_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -43138,9 +43202,10 @@ export type PRIVACY_POLICY_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -43706,9 +43771,10 @@ export type PRIVACY_POLICY_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;
@@ -44494,9 +44560,10 @@ export type PRIVACY_POLICY_QUERYResult = {
     content: null;
   } | {
     _key: string;
-    _type: "collabAllBlock";
-    ctaText?: string;
-    noCollabsMessage?: string;
+    _type: "collabBlock";
+    itemsPerRow?: "3" | "4";
+    showCTA?: boolean;
+    ctaMessage?: string;
     image: null;
     content: null;
   } | {
@@ -45032,9 +45099,10 @@ export type PRIVACY_POLICY_QUERYResult = {
       content: null;
     } | {
       _key: string;
-      _type: "collabAllBlock";
-      ctaText?: string;
-      noCollabsMessage?: string;
+      _type: "collabBlock";
+      itemsPerRow?: "3" | "4";
+      showCTA?: boolean;
+      ctaMessage?: string;
       image: null;
       content: null;
     } | {
@@ -45610,9 +45678,10 @@ export type PRIVACY_POLICY_QUERYResult = {
         content: null;
       } | {
         _key: string;
-        _type: "collabAllBlock";
-        ctaText?: string;
-        noCollabsMessage?: string;
+        _type: "collabBlock";
+        itemsPerRow?: "3" | "4";
+        showCTA?: boolean;
+        ctaMessage?: string;
         image: null;
         content: null;
       } | {
@@ -46178,9 +46247,10 @@ export type PRIVACY_POLICY_QUERYResult = {
           image: null;
         } | {
           _key: string;
-          _type: "collabAllBlock";
-          ctaText?: string;
-          noCollabsMessage?: string;
+          _type: "collabBlock";
+          itemsPerRow?: "3" | "4";
+          showCTA?: boolean;
+          ctaMessage?: string;
           image: null;
         } | {
           _key: string;

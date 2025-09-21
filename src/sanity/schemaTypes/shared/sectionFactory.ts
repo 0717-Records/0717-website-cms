@@ -22,7 +22,7 @@ export const commonContentBlocks = [
   defineArrayMember({ type: 'spotifyWidget' }),
   defineArrayMember({ type: 'bandcampWidget' }),
   defineArrayMember({ type: 'eventBlock' }),
-  defineArrayMember({ type: 'collabAllBlock' }),
+  defineArrayMember({ type: 'collabBlock' }),
   defineArrayMember({ type: 'favouriteBlock' }),
   defineArrayMember({ type: 'companyLinksBlock' }),
   defineArrayMember({ type: 'blockList' }),

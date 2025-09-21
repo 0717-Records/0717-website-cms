@@ -34,7 +34,7 @@ import YouTubeVideo from './blocks/YouTubeVideo';
 import SpotifyWidget from './blocks/SpotifyWidget';
 import BandcampWidget from './blocks/BandcampWidget';
 import EventBlock from './blocks/EventBlock';
-import CollabAllBlock from './blocks/CollabAllBlock';
+import CollabBlock from './blocks/CollabBlock';
 import FavouriteBlock from './blocks/FavouriteBlock';
 import CompanyLinksBlock from './blocks/CompanyLinksBlock';
 import BlockList from './blocks/BlockList';
@@ -449,16 +449,14 @@ const BlockRenderer = ({
               </BlockWrapper>
             );
 
-          case 'collabAllBlock':
+          case 'collabBlock':
             return (
               <BlockWrapper key={block._key}>
-                <CollabAllBlock
-                  ctaText={block.ctaText || 'View Details'}
-                  noCollabsMessage={
-                    block.noCollabsMessage ||
-                    'No collaborations available at the moment. Check back soon!'
-                  }
+                <CollabBlock
                   collabs={collabs || []}
+                  itemsPerRow={block.itemsPerRow || '3'}
+                  showCTA={block.showCTA}
+                  ctaMessage={block.ctaMessage}
                 />
               </BlockWrapper>
             );
