@@ -20,7 +20,10 @@ const EventHelpCTA = ({
         {displayStyle === 'posterOnly' ? (
           // Poster Only CTA Style
           <div className='relative w-full aspect-[724/1024] bg-card-gradient overflow-hidden flex flex-col items-center justify-center p-4 text-center'>
-            <div className='text-8xl md:text-body-8xl mb-4'>🎭</div>
+            <div
+              className={`text-8xl ${itemsPerRow === '4' ? 'md:text-body-6xl' : 'md:text-body-8xl'} mb-4`}>
+              🎭
+            </div>
             <p
               className={`${itemsPerRow === '4' ? 'text-body-xl md:text-body-base' : 'text-body-xl'} text-gray-700 mb-6 max-w-xs leading-relaxed whitespace-pre-line`}>
               {message}

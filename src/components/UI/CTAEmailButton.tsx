@@ -43,7 +43,6 @@ const CTAEmailButton = ({ className = '', textClasses }: CTAEmailButtonProps) =>
         inline-flex 
         justify-center 
         items-center 
-        flex-wrap 
         max-w-full 
         px-5 
         py-3 
@@ -60,7 +59,7 @@ const CTAEmailButton = ({ className = '', textClasses }: CTAEmailButtonProps) =>
         cursor-pointer 
         active:scale-90
         text-black
-        group
+        group 
         ${className}
       `.trim()}
       title={`Copy email: ${email}`}>

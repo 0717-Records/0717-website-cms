@@ -73,19 +73,20 @@ const EventBlock = ({
 
   // For manual mode, sort events by their order in the array (as set by editor)
   // For automatic mode, events are already sorted by date
-  const sortedEvents = eventListType === 'manual'
-    ? transformedEvents // Keep editor's order for manual selection
-    : [...transformedEvents].sort((a, b) => {
-        const dateA = new Date(a.startDate).getTime();
-        const dateB = new Date(b.startDate).getTime();
-        return dateB - dateA; // Most recent/future first for automatic
-      });
+  const sortedEvents =
+    eventListType === 'manual'
+      ? transformedEvents // Keep editor's order for manual selection
+      : [...transformedEvents].sort((a, b) => {
+          const dateA = new Date(a.startDate).getTime();
+          const dateB = new Date(b.startDate).getTime();
+          return dateB - dateA; // Most recent/future first for automatic
+        });
 
   // Calculate grid classes based on itemsPerRow
   const gridClasses =
     itemsPerRow === '4'
-      ? 'w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3*1.5rem)/4)]' // 4 items per row on large screens
-      : 'w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-2*1.5rem)/3)]'; // 3 items per row on large screens
+      ? 'w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3*1rem)/4)]' // 4 items per row on large screens
+      : 'w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-2*1rem)/3)]'; // 3 items per row on large screens
 
   if (sortedEvents.length === 0 && !showCTA) {
     return (
@@ -98,7 +99,7 @@ const EventBlock = ({
 
   return (
     <div className='w-full'>
-      <div className='flex flex-wrap justify-center gap-4 sm:gap-6'>
+      <div className='flex flex-wrap justify-center gap-4'>
         {/* Render event cards */}
         {sortedEvents.map((event, index: number) => {
           const isPast = isEventPast(event);
