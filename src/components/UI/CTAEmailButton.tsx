@@ -43,6 +43,7 @@ const CTAEmailButton = ({ className = '', textClasses }: CTAEmailButtonProps) =>
         inline-flex 
         justify-center 
         items-center 
+        flex-wrap 
         max-w-full 
         px-5 
         py-3 
