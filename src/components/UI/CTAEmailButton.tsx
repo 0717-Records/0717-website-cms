@@ -64,8 +64,8 @@ const CTAEmailButton = ({ className = '', textClasses }: CTAEmailButtonProps) =>
       `.trim()}
       title={`Copy email: ${email}`}>
       <span className={`${textClasses ? textClasses : 'text-body-base'}`}>{email}</span>
-      <div className='flex-shrink-0 w-8 h-8 bg-black rounded-full flex items-center justify-center group-hover:bg-brand-primary transition-colors duration-200'>
-        <Icon className='w-4 h-4 text-white group-hover:text-black transition-colors duration-200' />
+      <div className='flex-shrink-0 w-8 h-8 [@media(max-width:380px)]:w-6 [@media(max-width:380px)]:h-6 bg-black rounded-full flex items-center justify-center group-hover:bg-brand-primary transition-colors duration-200'>
+        <Icon className='w-4 h-4 [@media(max-width:380px)]:w-3 [@media(max-width:380px)]:h-3 text-white group-hover:text-black transition-colors duration-200' />
       </div>
     </button>
   );
