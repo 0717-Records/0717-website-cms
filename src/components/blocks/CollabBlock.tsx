@@ -62,7 +62,11 @@ const CollabBlock = ({
                     mode='fill'
                     sizeContext={itemsPerRow === '4' ? 'thumbnail' : 'profile'}
                     objectFit='cover'
-                    sizes={itemsPerRow === '4' ? '(max-width: 768px) 120px, 160px' : '(max-width: 768px) 150px, 200px'}
+                    sizes={
+                      itemsPerRow === '4'
+                        ? '(max-width: 768px) 120px, 160px'
+                        : '(max-width: 768px) 150px, 200px'
+                    }
                     fallback={
                       <div className='w-full h-full flex items-center justify-center'>
                         <UsersIcon className='text-white text-body-3xl md:text-body-4xl' />
@@ -94,15 +98,18 @@ const CollabBlock = ({
         {/* Collab Help CTA - appears at the end of the collabs list */}
         {showCTA && ctaMessage && (
           <div className={`${gridClasses} flex-shrink-0`}>
-            <div className='group cursor-pointer w-full transition-all duration-200 focus:outline-none rounded-lg px-1 sm:px-4'>
+            <div className='w-full rounded-lg px-1 sm:px-4'>
               <div className='text-center space-y-3'>
                 {/* Handshake Icon with gradient background */}
-                <div className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-card-gradient flex items-center justify-center transition-transform duration-200 group-hover:scale-105'>
-                  <div className={`${itemsPerRow === '4' ? 'text-body-6xl' : 'text-body-8xl'}`}>🤝</div>
+                <div className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-card-gradient shadow-lg flex items-center justify-center'>
+                  <div className={`${itemsPerRow === '4' ? 'text-body-6xl' : 'text-body-8xl'}`}>
+                    🤝
+                  </div>
                 </div>
 
                 {/* CTA Message */}
-                <div className={`${itemsPerRow === '4' ? 'text-body-sm' : 'text-body-base'} text-gray-700 leading-relaxed whitespace-pre-line px-2`}>
+                <div
+                  className={`${itemsPerRow === '4' ? 'text-body-sm' : 'text-body-xl'} leading-relaxed whitespace-pre-line px-2`}>
                   {ctaMessage}
                 </div>
 
@@ -110,7 +117,6 @@ const CollabBlock = ({
                 <div className='mt-4'>
                   <CTAEmailButton
                     textClasses={itemsPerRow === '4' ? 'text-body-xs' : 'text-body-sm'}
-                    className='scale-90'
                   />
                 </div>
               </div>

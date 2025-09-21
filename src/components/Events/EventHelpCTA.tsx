@@ -25,7 +25,7 @@ const EventHelpCTA = ({
               🎭
             </div>
             <p
-              className={`${itemsPerRow === '4' ? 'text-body-xl md:text-body-base' : 'text-body-xl'} text-gray-700 mb-6 max-w-xs leading-relaxed whitespace-pre-line`}>
+              className={`${itemsPerRow === '4' ? 'text-body-xl md:text-body-base' : 'text-body-xl'} mb-6 max-w-xs leading-relaxed whitespace-pre-line`}>
               {message}
             </p>
             <CTAEmailButton
@@ -42,9 +42,7 @@ const EventHelpCTA = ({
             </div>
             {/* CTA Content area */}
             <div className='p-4 flex flex-col items-start md:items-center text-left md:text-center justify-center flex-grow w-2/3 md:w-full'>
-              <p className={`text-body-lg text-gray-700 mb-6 leading-relaxed whitespace-pre-line`}>
-                {message}
-              </p>
+              <p className={`text-body-lg mb-6 leading-relaxed whitespace-pre-line`}>{message}</p>
               <CTAEmailButton textClasses='text-body-base md:text-body-sm' />
             </div>
           </div>
