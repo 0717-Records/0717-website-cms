@@ -101,12 +101,14 @@ const EventList = ({
 
         {/* Show Event Help CTA for upcoming events when there are no events */}
         {filter === 'upcoming' && showEventHelpCTA && eventHelpCTAMessage && (
-          <div className='mt-8'>
-            <EventHelpCTA
-              message={eventHelpCTAMessage}
-              displayStyle='detailed'
-              gridClasses='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)]'
-            />
+          <div className='flex justify-center mt-8'>
+            <div className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] flex'>
+              <EventHelpCTA
+                message={eventHelpCTAMessage}
+                displayStyle='detailed'
+                gridClasses='w-full'
+              />
+            </div>
           </div>
         )}
       </>
