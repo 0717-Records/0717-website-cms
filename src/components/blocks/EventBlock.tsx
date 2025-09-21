@@ -1,14 +1,16 @@
 import React from 'react';
 import EventCard from '../Events/EventCard';
 import EventImage from '../Events/EventImage';
+import EventHelpCTA from '../Events/EventHelpCTA';
 import CTA from '../UI/CTA';
-import CTAEmailButton from '../UI/CTAEmailButton';
 import { transformEvents } from '@/utils/transformEvents';
 import { getEventLink } from '../Events/eventUtils';
 import type { EVENTS_QUERYResult } from '@/sanity/types';
 
 interface EventBlockProps {
-  events: EVENTS_QUERYResult;
+  events?: EVENTS_QUERYResult;
+  allEvents?: EVENTS_QUERYResult; // For automatic mode
+  eventListType?: 'automatic' | 'manual';
   displayStyle: 'posterOnly' | 'detailed';
   showCTA?: boolean;
   ctaMessage?: string;
@@ -36,6 +38,8 @@ function isEventPast(event: { startDate: string; endDate?: string | null }): boo
 
 const EventBlock = ({
   events,
+  allEvents,
+  eventListType = 'manual',
   displayStyle,
   showCTA = false,
   ctaMessage,
@@ -43,15 +47,39 @@ const EventBlock = ({
   generateSchema = false,
   baseUrl,
 }: EventBlockProps) => {
-  // Transform Sanity data to EventCard format
-  const transformedEvents = transformEvents(events);
+  // Determine which events to use based on eventListType
+  let eventsToUse: EVENTS_QUERYResult = [];
 
-  // Sort events by startDate (most recent first)
-  const sortedEvents = [...transformedEvents].sort((a, b) => {
-    const dateA = new Date(a.startDate).getTime();
-    const dateB = new Date(b.startDate).getTime();
-    return dateB - dateA;
-  });
+  if (eventListType === 'manual') {
+    eventsToUse = events || [];
+  } else if (eventListType === 'automatic' && allEvents) {
+    // Calculate how many events to show (including CTA if enabled)
+    const maxEvents = parseInt(itemsPerRow, 10);
+    const eventsToShow = showCTA ? maxEvents - 1 : maxEvents;
+
+    // Sort all events by date (latest/furthest in future first, then go backwards in time)
+    const sortedByDate = [...allEvents].sort((a, b) => {
+      const dateA = new Date(a.startDate || '').getTime();
+      const dateB = new Date(b.startDate || '').getTime();
+      return dateB - dateA; // Most recent/future first
+    });
+
+    // Take the first N events
+    eventsToUse = sortedByDate.slice(0, eventsToShow);
+  }
+
+  // Transform Sanity data to EventCard format
+  const transformedEvents = transformEvents(eventsToUse);
+
+  // For manual mode, sort events by their order in the array (as set by editor)
+  // For automatic mode, events are already sorted by date
+  const sortedEvents = eventListType === 'manual'
+    ? transformedEvents // Keep editor's order for manual selection
+    : [...transformedEvents].sort((a, b) => {
+        const dateA = new Date(a.startDate).getTime();
+        const dateB = new Date(b.startDate).getTime();
+        return dateB - dateA; // Most recent/future first for automatic
+      });
 
   // Calculate grid classes based on itemsPerRow
   const gridClasses =
@@ -136,40 +164,12 @@ const EventBlock = ({
 
         {/* CTA Item - appears at the end of the events list */}
         {showCTA && ctaMessage && (
-          <div className={`${gridClasses} flex`}>
-            <div className='w-full h-full bg-white rounded-lg shadow-lg overflow-hidden'>
-              {displayStyle === 'posterOnly' ? (
-                // Poster Only CTA Style
-                <div className='relative w-full aspect-[724/1024] bg-card-gradient overflow-hidden flex flex-col items-center justify-center p-4 text-center'>
-                  <div className='text-9xl md:text-body-8xl mb-4'>🎭</div>
-                  <p
-                    className={`${itemsPerRow === '4' ? 'text-body-base' : 'text-body-xl'} text-gray-700 mb-6 max-w-xs leading-relaxed whitespace-pre-line`}>
-                    {ctaMessage}
-                  </p>
-                  <CTAEmailButton
-                    className='flex-shrink-0'
-                    textClasses='text-body-base md:text-body-sm'
-                  />
-                </div>
-              ) : (
-                // Detailed CTA Style
-                <div className='flex flex-row md:flex-col h-full'>
-                  {/* CTA "Poster" area */}
-                  <div className='relative w-1/3 md:w-full aspect-[724/1024] bg-card-gradient overflow-hidden flex items-center justify-center flex-shrink-0'>
-                    <div className='text-body-8xl'>🎭</div>
-                  </div>
-                  {/* CTA Content area */}
-                  <div className='p-3 md:p-4 flex flex-col items-start md:items-center text-left md:text-center justify-center flex-grow w-2/3 md:w-full'>
-                    <p
-                      className={`text-body-lg text-gray-700 mb-6 leading-relaxed whitespace-pre-line`}>
-                      {ctaMessage}
-                    </p>
-                    <CTAEmailButton textClasses='text-body-base md:text-body-sm' />
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
+          <EventHelpCTA
+            message={ctaMessage}
+            displayStyle={displayStyle}
+            itemsPerRow={itemsPerRow}
+            gridClasses={gridClasses}
+          />
         )}
       </div>
 

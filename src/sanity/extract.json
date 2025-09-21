@@ -1072,6 +1072,23 @@
           },
           "optional": true
         },
+        "eventListType": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "automatic"
+              },
+              {
+                "type": "string",
+                "value": "manual"
+              }
+            ]
+          },
+          "optional": true
+        },
         "events": {
           "type": "objectAttribute",
           "value": {
@@ -8970,6 +8987,20 @@
         },
         "optional": true
       },
+      "showEventHelpCTA": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
+      "eventHelpCTAMessage": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "hasEventsMessage": {
         "type": "objectAttribute",
         "value": {
@@ -8982,13 +9013,6 @@
         "value": {
           "type": "inline",
           "name": "card"
-        },
-        "optional": true
-      },
-      "noPastEventsMessage": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
         },
         "optional": true
       }

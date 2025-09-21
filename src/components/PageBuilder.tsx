@@ -437,6 +437,8 @@ const BlockRenderer = ({
               <BlockWrapper key={block._key}>
                 <EventBlock
                   events={(block as unknown as { events: EVENTS_QUERYResult }).events || []}
+                  allEvents={events}
+                  eventListType={(block as unknown as { eventListType?: string }).eventListType as 'automatic' | 'manual' || 'manual'}
                   displayStyle={block.displayStyle || 'detailed'}
                   showCTA={block.showCTA}
                   ctaMessage={block.ctaMessage}

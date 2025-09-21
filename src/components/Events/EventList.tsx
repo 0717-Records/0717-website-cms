@@ -1,5 +1,6 @@
 import React from 'react';
 import EventCard from './EventCard';
+import EventHelpCTA from './EventHelpCTA';
 
 interface Event {
   title: string;
@@ -22,6 +23,9 @@ interface EventListProps {
   filter: 'all' | 'upcoming' | 'past';
   limit?: number;
   noEventsText: string;
+  // Event Help CTA props
+  showEventHelpCTA?: boolean;
+  eventHelpCTAMessage?: string;
   // Optional schema generation props
   generateSchema?: boolean;
   baseUrl?: string;
@@ -43,7 +47,16 @@ function isEventPast(event: Event): boolean {
   return nowInNZ >= dayAfterEvent;
 }
 
-const EventList = ({ events, filter, limit, noEventsText, generateSchema = false, baseUrl }: EventListProps) => {
+const EventList = ({
+  events,
+  filter,
+  limit,
+  noEventsText,
+  showEventHelpCTA = false,
+  eventHelpCTAMessage,
+  generateSchema = false,
+  baseUrl,
+}: EventListProps) => {
   // Filter events based on the filter prop
   let filteredEvents: Event[] = [];
 
@@ -81,23 +94,56 @@ const EventList = ({ events, filter, limit, noEventsText, generateSchema = false
 
   if (filteredEvents.length === 0) {
     return (
-      <div className='text-center py-16'>
-        <div className='text-gray-400 text-h2 mb-4'>🎭</div>
-        <p className='text-gray-500 text-body-lg'>{noEventsText}</p>
-      </div>
+      <>
+        <div className='text-center'>
+          <p className='text-gray-500 text-body-lg'>{noEventsText}</p>
+        </div>
+
+        {/* Show Event Help CTA for upcoming events when there are no events */}
+        {filter === 'upcoming' && showEventHelpCTA && eventHelpCTAMessage && (
+          <div className='mt-8'>
+            <EventHelpCTA
+              message={eventHelpCTAMessage}
+              displayStyle='detailed'
+              gridClasses='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)]'
+            />
+          </div>
+        )}
+      </>
     );
   }
 
   return (
-    <div className='flex flex-wrap justify-center gap-4 md:gap-8'>
-      {filteredEvents.map((event, index: number) => (
-        <div
-          key={`${filter}-${event.title}-${index}`}
-          className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] flex'>
-          <EventCard {...event} isPast={isEventPast(event)} generateSchema={generateSchema} baseUrl={baseUrl} />
-        </div>
-      ))}
-    </div>
+    <>
+      <div className='flex flex-wrap justify-center gap-4 md:gap-8'>
+        {filteredEvents.map((event, index: number) => (
+          <div
+            key={`${filter}-${event.title}-${index}`}
+            className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] flex'>
+            <EventCard
+              {...event}
+              isPast={isEventPast(event)}
+              generateSchema={generateSchema}
+              baseUrl={baseUrl}
+            />
+          </div>
+        ))}
+
+        {/* Show Event Help CTA for upcoming events at the end of the list */}
+        {filter === 'upcoming' &&
+          showEventHelpCTA &&
+          eventHelpCTAMessage &&
+          filteredEvents.length > 0 && (
+            <div className='w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] flex'>
+              <EventHelpCTA
+                message={eventHelpCTAMessage}
+                displayStyle='detailed'
+                gridClasses='w-full'
+              />
+            </div>
+          )}
+      </div>
+    </>
   );
 };
 

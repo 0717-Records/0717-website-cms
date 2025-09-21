@@ -68,6 +68,31 @@ export const eventsIndexPageType = defineType({
       group: 'content',
     }),
     defineField({
+      name: 'showEventHelpCTA',
+      title: 'Show Event Help CTA',
+      type: 'boolean',
+      description:
+        'Show a call-to-action asking users to contact the label to help organize their event',
+      initialValue: false,
+      group: 'content',
+    }),
+    defineField({
+      name: 'eventHelpCTAMessage',
+      title: 'Event Help CTA Message',
+      type: 'text',
+      description: 'Message to display in the Event Help CTA section',
+      group: 'content',
+      hidden: ({ parent }) => !parent?.showEventHelpCTA,
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as { showEventHelpCTA?: boolean };
+          if (parent?.showEventHelpCTA && !value) {
+            return 'Event Help CTA message is required when CTA is enabled';
+          }
+          return true;
+        }),
+    }),
+    defineField({
       name: 'hasEventsMessage',
       title: 'Show Events Message Card',
       type: 'boolean',
@@ -81,19 +106,8 @@ export const eventsIndexPageType = defineType({
       type: 'card',
       group: 'content',
       description:
-        'Card displayed at the bottom of the Upcoming Events section with optional call-to-action',
+        'Card displayed at the bottom of the page with optional call-to-action',
       hidden: ({ parent }) => !parent?.hasEventsMessage,
-    }),
-    defineField({
-      name: 'noPastEventsMessage',
-      type: 'text',
-      title: 'No Past Events Message',
-      description:
-        'Message displayed when there are no past events to show. This appears in the "Past Events" section when the events list is empty.',
-      rows: 2,
-      initialValue: 'No past events to display yet.',
-      validation: (Rule) => Rule.required().error('No past events message is required'),
-      group: 'content',
     }),
   ],
   preview: {

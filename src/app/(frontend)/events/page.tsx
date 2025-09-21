@@ -66,20 +66,11 @@ export default async function EventsPage() {
               eventsIndexPage?.noUpcomingEventsMessage ||
               'No upcoming events at the moment. Check back soon!'
             }
+            showEventHelpCTA={eventsIndexPage?.showEventHelpCTA || false}
+            eventHelpCTAMessage={eventsIndexPage?.eventHelpCTAMessage || undefined}
             generateSchema={true}
             baseUrl={baseUrl}
           />
-
-          {/* Events Message Card */}
-          {eventsIndexPage?.hasEventsMessage && eventsIndexPage?.eventsMessage && (
-            <Card
-              {...eventsIndexPage.eventsMessage}
-              documentId={eventsIndexPage._id}
-              documentType={eventsIndexPage._type}
-              fieldPathPrefix='eventsMessage'
-              className={'mt-12 md:mt-16'}
-            />
-          )}
         </PageSection>
         {/* Past Events Section */}
         <PageSection
@@ -89,11 +80,22 @@ export default async function EventsPage() {
           <EventList
             events={allEvents}
             filter='past'
-            noEventsText={eventsIndexPage?.noPastEventsMessage || 'No past events to display yet.'}
+            noEventsText='No past events to display yet.'
             generateSchema={true}
             baseUrl={baseUrl}
           />
         </PageSection>
+
+        {/* Events Message Card - moved to bottom of page */}
+        {eventsIndexPage?.hasEventsMessage && eventsIndexPage?.eventsMessage && (
+          <Card
+            {...eventsIndexPage.eventsMessage}
+            documentId={eventsIndexPage._id}
+            documentType={eventsIndexPage._type}
+            fieldPathPrefix='eventsMessage'
+            className={'mt-12 md:mt-16'}
+          />
+        )}
       </Container>
     </>
   );

@@ -28,6 +28,24 @@ export const eventBlockType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'eventListType',
+      title: 'Event List',
+      type: 'string',
+      description: 'Choose how to generate the event list',
+      options: {
+        list: [
+          {
+            title: 'Automatic (latest events used based on items per row selected)',
+            value: 'automatic',
+          },
+          { title: 'Manual selection', value: 'manual' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'automatic',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'events',
       title: 'Select Events',
       type: 'array',
@@ -48,7 +66,15 @@ export const eventBlockType = defineType({
       ],
       description:
         'Choose one or multiple events to display. Events will be shown in the order you add them here.',
-      validation: (Rule) => Rule.required().min(1).error('Please select at least one event'),
+      hidden: ({ parent }) => parent?.eventListType !== 'manual',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as { eventListType?: string };
+          if (parent?.eventListType === 'manual' && (!value || value.length === 0)) {
+            return 'Please select at least one event when using manual selection';
+          }
+          return true;
+        }),
     }),
     defineField({
       name: 'displayStyle',
@@ -67,7 +93,7 @@ export const eventBlockType = defineType({
     }),
     defineField({
       name: 'showCTA',
-      title: 'Show Event Organization CTA',
+      title: 'Show Event Help CTA',
       type: 'boolean',
       description:
         'Show a call-to-action asking users to contact the label to help organize their event',
@@ -92,19 +118,21 @@ export const eventBlockType = defineType({
   preview: {
     select: {
       events: 'events',
+      eventListType: 'eventListType',
       displayStyle: 'displayStyle',
       showCTA: 'showCTA',
       itemsPerRow: 'itemsPerRow',
     },
-    prepare({ events, displayStyle, showCTA, itemsPerRow }) {
-      const eventCount = events?.length || 0;
+    prepare({ events, eventListType, displayStyle, showCTA, itemsPerRow }) {
+      const eventCount = eventListType === 'manual' ? events?.length || 0 : 'Auto';
       const styleText = displayStyle === 'posterOnly' ? 'Poster Only' : 'Detailed';
       const ctaText = showCTA ? ' + CTA' : '';
       const itemsText = itemsPerRow ? ` • ${itemsPerRow}/row` : '';
+      const listTypeText = eventListType === 'automatic' ? 'Auto' : 'Manual';
 
       return {
         title: 'Event Block',
-        subtitle: `${eventCount} event${eventCount !== 1 ? 's' : ''} • ${styleText}${ctaText}${itemsText}`,
+        subtitle: `${listTypeText} • ${eventCount} event${eventCount !== 1 && eventCount !== 'Auto' ? 's' : ''} • ${styleText}${ctaText}${itemsText}`,
         media: CalendarIcon,
       };
     },

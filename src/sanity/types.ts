@@ -182,6 +182,7 @@ export type CollabAllBlock = {
 export type EventBlock = {
   _type: "eventBlock";
   itemsPerRow?: "3" | "4";
+  eventListType?: "automatic" | "manual";
   events?: Array<{
     _ref: string;
     _type: "reference";
@@ -1351,9 +1352,10 @@ export type EventsIndexPage = {
   };
   subtitle?: string;
   noUpcomingEventsMessage?: string;
+  showEventHelpCTA?: boolean;
+  eventHelpCTAMessage?: string;
   hasEventsMessage?: boolean;
   eventsMessage?: Card;
-  noPastEventsMessage?: string;
 };
 
 export type Page = {
@@ -1942,6 +1944,7 @@ export type PAGE_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -2479,6 +2482,7 @@ export type PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -3056,6 +3060,7 @@ export type PAGE_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -3615,6 +3620,7 @@ export type PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -4430,6 +4436,7 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -4967,6 +4974,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -5544,6 +5552,7 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -6103,6 +6112,7 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -7145,6 +7155,7 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -7682,6 +7693,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -8259,6 +8271,7 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -8818,6 +8831,7 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -9601,6 +9615,7 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -10138,6 +10153,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -10715,6 +10731,7 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -11274,6 +11291,7 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -12057,6 +12075,7 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -12594,6 +12613,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -13171,6 +13191,7 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -13730,6 +13751,7 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -14561,6 +14583,7 @@ export type HOME_PAGE_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -15098,6 +15121,7 @@ export type HOME_PAGE_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -15675,6 +15699,7 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -16234,6 +16259,7 @@ export type HOME_PAGE_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -17261,7 +17287,7 @@ export type EVENTS_QUERYResult = Array<{
   pastEventLink: string | null;
 }>;
 // Variable: EVENTS_INDEX_PAGE_QUERY
-// Query: *[_id == "eventsIndexPage"][0]{  _id,  _type,  title,  backgroundImage{    asset,    alt,    hotspot,    crop  },  subtitle,  noUpcomingEventsMessage,  noPastEventsMessage,  hasEventsMessage,  eventsMessage}
+// Query: *[_id == "eventsIndexPage"][0]{  _id,  _type,  title,  backgroundImage{    asset,    alt,    hotspot,    crop  },  subtitle,  noUpcomingEventsMessage,  showEventHelpCTA,  eventHelpCTAMessage,  hasEventsMessage,  eventsMessage}
 export type EVENTS_INDEX_PAGE_QUERYResult = {
   _id: string;
   _type: "blogIndexPage";
@@ -17269,7 +17295,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: string | null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17279,7 +17306,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: string | null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17289,7 +17317,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17299,7 +17328,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17309,7 +17339,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17329,7 +17360,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   } | null;
   subtitle: string | null;
   noUpcomingEventsMessage: string | null;
-  noPastEventsMessage: string | null;
+  showEventHelpCTA: boolean | null;
+  eventHelpCTAMessage: string | null;
   hasEventsMessage: boolean | null;
   eventsMessage: Card | null;
 } | {
@@ -17339,7 +17371,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17349,7 +17382,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17359,7 +17393,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17369,7 +17404,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17379,7 +17415,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: string | null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17389,7 +17426,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17399,7 +17437,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17409,7 +17448,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17419,7 +17459,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | {
@@ -17429,7 +17470,8 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   backgroundImage: null;
   subtitle: null;
   noUpcomingEventsMessage: null;
-  noPastEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
   hasEventsMessage: null;
   eventsMessage: null;
 } | null;
@@ -17952,6 +17994,7 @@ export type BLOG_POST_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -18489,6 +18532,7 @@ export type BLOG_POST_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -19066,6 +19110,7 @@ export type BLOG_POST_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -19625,6 +19670,7 @@ export type BLOG_POST_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -20445,6 +20491,7 @@ export type COLLAB_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -21023,6 +21070,7 @@ export type COLLAB_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -21600,6 +21648,7 @@ export type COLLAB_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -22443,6 +22492,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -22980,6 +23030,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -23557,6 +23608,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -24116,6 +24168,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -24939,6 +24992,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -25476,6 +25530,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -26053,6 +26108,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -26612,6 +26668,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -27386,6 +27443,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -27923,6 +27981,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -28500,6 +28559,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -29059,6 +29119,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -29833,6 +29894,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -30370,6 +30432,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -30947,6 +31010,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -31506,6 +31570,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -32301,6 +32366,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -32838,6 +32904,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -33415,6 +33482,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -33974,6 +34042,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -34758,6 +34827,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -35295,6 +35365,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -35872,6 +35943,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -36431,6 +36503,7 @@ export type PRIVACY_POLICY_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -37254,6 +37327,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -37791,6 +37865,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -38368,6 +38443,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -38927,6 +39003,7 @@ export type PRIVACY_POLICY_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -39701,6 +39778,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -40238,6 +40316,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -40815,6 +40894,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -41374,6 +41454,7 @@ export type PRIVACY_POLICY_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -42148,6 +42229,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -42685,6 +42767,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -43262,6 +43345,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -43821,6 +43905,7 @@ export type PRIVACY_POLICY_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -44616,6 +44701,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     _key: string;
     _type: "eventBlock";
     itemsPerRow?: "3" | "4";
+    eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
       title: string | null;
@@ -45153,6 +45239,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       _key: string;
       _type: "eventBlock";
       itemsPerRow?: "3" | "4";
+      eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
         title: string | null;
@@ -45730,6 +45817,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         _key: string;
         _type: "eventBlock";
         itemsPerRow?: "3" | "4";
+        eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
           title: string | null;
@@ -46289,6 +46377,7 @@ export type PRIVACY_POLICY_QUERYResult = {
           _key: string;
           _type: "eventBlock";
           itemsPerRow?: "3" | "4";
+          eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
             title: string | null;
@@ -46776,7 +46865,7 @@ declare module "@sanity/client" {
     "*[_id == \"siteSettings\"][0]{\n  _id,\n  _type,\n  siteTitle,\n  defaultPageTitle,\n  siteDescription,\n  seoKeywords,\n  defaultOgImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  companyEmail\n}": SITE_SETTINGS_QUERYResult;
     "*[_id == \"companyLinks\"][0]{\n  _id,\n  _type,\n  companyLinks{\n    _type,\n    socialLinksArray[]{\n      _key,\n      platform,\n      url,\n      customTitle,\n      hideFromFooter\n    }\n  }\n}": COMPANY_LINKS_QUERYResult;
     "*[_type == \"event\"]|order(startDate desc){\n  _id,\n  title,\n  shortDescription,\n  venue,\n  location,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  tags,\n  link,\n  startDate,\n  endDate,\n  timeDescription,\n  pastEventText,\n  pastEventLinkBehavior,\n  pastEventLink\n}": EVENTS_QUERYResult;
-    "*[_id == \"eventsIndexPage\"][0]{\n  _id,\n  _type,\n  title,\n  backgroundImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  subtitle,\n  noUpcomingEventsMessage,\n  noPastEventsMessage,\n  hasEventsMessage,\n  eventsMessage\n}": EVENTS_INDEX_PAGE_QUERYResult;
+    "*[_id == \"eventsIndexPage\"][0]{\n  _id,\n  _type,\n  title,\n  backgroundImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  subtitle,\n  noUpcomingEventsMessage,\n  showEventHelpCTA,\n  eventHelpCTAMessage,\n  hasEventsMessage,\n  eventsMessage\n}": EVENTS_INDEX_PAGE_QUERYResult;
     "*[_type == \"blogPost\"]|order(coalesce(overrideDate, _createdAt) desc){\n  _id,\n  _createdAt,\n  title,\n  slug,\n  subtitle,\n  author,\n  mainImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  hasOverrideDate,\n  overrideDate,\n  hasClosingCard,\n  closingCard\n}": BLOG_POSTS_QUERYResult;
     "*[_id == \"blogIndexPage\"][0]{\n  _id,\n  _type,\n  title,\n  heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  subtitle,\n  noArticlesMessage,\n  hasClosingCard,\n  closingCard\n}": BLOG_INDEX_PAGE_QUERYResult;
     "*[_type == \"blogPost\" && slug.current == $slug][0]{\n  _id,\n  _type,\n  _createdAt,\n  _updatedAt,\n  title,\n  slug,\n  subtitle,\n  author,\n  mainImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  hasOverrideDate,\n  overrideDate,\n  content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  },\n  _type == \"eventBlock\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n  \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  },\n  _type == \"eventBlock\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n    \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  },\n  _type == \"eventBlock\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n,\n      \"content\": content[]{\n  ...,\n  image{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  _type == \"pageSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"subSubSection\" => {\n    ...,\n    anchorId\n  },\n  _type == \"ctaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCalloutLink\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"ctaCard\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n  _type == \"card\" => {\n    ...,\n    ctaList[]{\n      _type,\n      _key,\n      _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n      _type == \"embeddedCtaEmailButton\" => {...}\n    }\n  },\n  _type == \"gridLayout\" => {\n    ...,\n    content[]{\n      ...,\n      _type == \"card\" => {\n        ...,\n        ctaList[]{\n          _type,\n          _key,\n          _type == \"embeddedCtaButton\" => {\n  ...,\n  internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n},\n  \"computedHref\": select(\n    linkType == \"external\" => externalUrl,\n    linkType == \"internal\" && defined(pageSectionId) && pageSectionId != \"\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\") + \"#\" + pageSectionId,\n    linkType == \"internal\" => \n      coalesce(internalLink->{\n  _id,\n  _type,\n  title,\n  slug,\n  \"pageType\": _type,\n  \"href\": select(\n    _type == \"homePage\" => \"/\",\n    _type == \"eventsIndexPage\" => \"/events\",\n    _type == \"blogIndexPage\" => \"/blog\",\n    _type == \"blogPost\" => \"/blog/\" + slug.current,\n    _type == \"collab\" => \"/collabs/\" + slug.current,\n    \"/\" + slug.current\n  )\n}.href, \"/\"),\n    \"/\"\n  )\n},\n          _type == \"embeddedCtaEmailButton\" => {...}\n        }\n      },\n      _type == \"richText\" => {...},\n      _type == \"imageBlock\" => {\n        ...,\n        image{\n          asset,\n          alt,\n          hotspot,\n          crop\n        }\n      },\n      _type == \"youTubeVideo\" => {...},\n      _type == \"spotifyWidget\" => {...},\n      _type == \"bandcampWidget\" => {...}\n    }\n  },\n  _type == \"ctaEvents\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  },\n  _type == \"ctaBlogPost\" => {\n    ...,\n    blogPost->{\n      _id,\n      _createdAt,\n      title,\n      slug,\n      subtitle,\n      author,\n      mainImage{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      hasOverrideDate,\n      overrideDate\n    }\n  },\n  _type == \"eventBlock\" => {\n    ...,\n    events[]->{\n      _id,\n      title,\n      shortDescription,\n      venue,\n      location,\n      image{\n        asset,\n        alt,\n        hotspot,\n        crop\n      },\n      tags,\n      link,\n      startDate,\n      endDate,\n      timeDescription,\n      pastEventText,\n      pastEventLinkBehavior,\n      pastEventLink\n    }\n  }\n\n      }\n    }\n  }\n},\n  hasClosingCard,\n  closingCard,\n  \"blogIndexHeroImage\": *[_id == \"blogIndexPage\"][0].heroImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  }\n}": BLOG_POST_QUERYResult;
