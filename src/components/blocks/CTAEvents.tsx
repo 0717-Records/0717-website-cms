@@ -52,6 +52,7 @@ function isDereferencedEvent(
 // Transform function to convert DereferencedEvent to EventList compatible format
 function transformEvent(event: DereferencedEvent) {
   return {
+    _id: event._id!,
     title: event.title!,
     shortDescription: event.shortDescription,
     venue: event.venue,

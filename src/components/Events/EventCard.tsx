@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import { FaLocationDot } from 'react-icons/fa6';
 import { formatEventDate, getEventLink } from '@/components/Events/eventUtils';
 import EventImage from '@/components/Events/EventImage';
+import { createDataAttribute } from 'next-sanity';
+import { client } from '@/sanity/lib/client';
 import {
   generateEventSchema,
   generateStructuredDataScript,
@@ -26,6 +28,10 @@ interface EventCardProps {
   // Optional schema generation props
   generateSchema?: boolean;
   baseUrl?: string;
+  // Optional Sanity Live Editing props
+  documentId?: string;
+  documentType?: string;
+  fieldPathPrefix?: string;
 }
 
 const EventCard = (props: EventCardProps) => {
@@ -43,7 +49,18 @@ const EventCard = (props: EventCardProps) => {
     isPast,
     generateSchema = false,
     baseUrl = 'https://0717records.com',
+    documentId,
+    documentType,
+    fieldPathPrefix,
   } = props;
+
+  // Sanity Live Editing configuration
+  const { projectId, dataset, stega } = client.config();
+  const createDataAttributeConfig = {
+    projectId,
+    dataset,
+    baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
+  };
 
   const { dateDisplay, timeDisplay } = formatEventDate(startDate, endDate, timeDescription);
   const eventLink = getEventLink({
@@ -99,7 +116,16 @@ const EventCard = (props: EventCardProps) => {
         hasLink ? 'group hover:shadow-xl hover:scale-103 cursor-pointer' : ''
       }`}>
       {/* Event Poster */}
-      <div className='relative w-1/3 md:w-full aspect-[724/1024] bg-gray-900 overflow-hidden flex-shrink-0'>
+      <div
+        className='relative w-1/3 md:w-full aspect-[724/1024] bg-gray-900 overflow-hidden flex-shrink-0'
+        {...(documentId && documentType && fieldPathPrefix !== undefined && {
+          'data-sanity': createDataAttribute({
+            ...createDataAttributeConfig,
+            id: documentId,
+            type: documentType,
+            path: fieldPathPrefix ? `${fieldPathPrefix}.image` : 'image',
+          }).toString()
+        })}>
         <EventImage
           image={image}
           title={title}
@@ -112,7 +138,16 @@ const EventCard = (props: EventCardProps) => {
       {/* Event Details */}
       <div className='p-3 md:p-4 flex flex-col items-start md:items-center text-left md:text-center flex-grow w-2/3 md:w-full'>
         {/* Date / Time */}
-        <div className='text-brand-secondary text-body-sm sm:text-body-base mb-2 md:mb-1'>
+        <div
+          className='text-brand-secondary text-body-sm sm:text-body-base mb-2 md:mb-1'
+          {...(documentId && documentType && fieldPathPrefix !== undefined && {
+            'data-sanity': createDataAttribute({
+              ...createDataAttributeConfig,
+              id: documentId,
+              type: documentType,
+              path: fieldPathPrefix ? `${fieldPathPrefix}.startDate` : 'startDate',
+            }).toString()
+          })}>
           <span>{dateDisplay}</span>
           {timeDisplay && (
             <>
@@ -122,7 +157,16 @@ const EventCard = (props: EventCardProps) => {
           )}
         </div>
         {timeDisplay && (
-          <div className='hidden md:block text-body-sm sm:text-body-base text-brand-secondary mb-3'>
+          <div
+            className='hidden md:block text-body-sm sm:text-body-base text-brand-secondary mb-3'
+            {...(documentId && documentType && fieldPathPrefix !== undefined && {
+              'data-sanity': createDataAttribute({
+                ...createDataAttributeConfig,
+                id: documentId,
+                type: documentType,
+                path: fieldPathPrefix ? `${fieldPathPrefix}.timeDescription` : 'timeDescription',
+              }).toString()
+            })}>
             {timeDisplay}
           </div>
         )}

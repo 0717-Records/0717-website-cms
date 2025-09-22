@@ -1,25 +1,10 @@
 import React from 'react';
 import EventCard from './EventCard';
 import EventHelpCTA from './EventHelpCTA';
-
-interface Event {
-  title: string;
-  shortDescription?: string | null;
-  venue?: string | null;
-  location: string;
-  image?: string | null;
-  tags?: string[] | null;
-  link?: string | null;
-  startDate: string;
-  endDate?: string | null;
-  timeDescription?: string | null;
-  pastEventText: string;
-  pastEventLinkBehavior: 'keep' | 'change' | 'remove';
-  pastEventLink?: string | null;
-}
+import type { TransformedEvent } from '@/utils/transformEvents';
 
 interface EventListProps {
-  events: Event[];
+  events: TransformedEvent[];
   filter: 'all' | 'upcoming' | 'past';
   limit?: number;
   noEventsText: string;
@@ -31,7 +16,7 @@ interface EventListProps {
   baseUrl?: string;
 }
 
-function isEventPast(event: Event): boolean {
+function isEventPast(event: TransformedEvent): boolean {
   // Get current date/time in New Zealand timezone
   const nowInNZ = new Date(new Date().toLocaleString('en-US', { timeZone: 'Pacific/Auckland' }));
 
@@ -58,7 +43,7 @@ const EventList = ({
   baseUrl,
 }: EventListProps) => {
   // Filter events based on the filter prop
-  let filteredEvents: Event[] = [];
+  let filteredEvents: TransformedEvent[] = [];
 
   switch (filter) {
     case 'upcoming':
@@ -127,6 +112,9 @@ const EventList = ({
               isPast={isEventPast(event)}
               generateSchema={generateSchema}
               baseUrl={baseUrl}
+              documentId={event._id}
+              documentType="event"
+              fieldPathPrefix=""
             />
           </div>
         ))}

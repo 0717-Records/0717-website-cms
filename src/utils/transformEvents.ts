@@ -2,6 +2,7 @@ import type { EVENTS_QUERYResult } from '@/sanity/types';
 import { urlFor } from '@/sanity/lib/image';
 
 export interface TransformedEvent {
+  _id: string;
   title: string;
   shortDescription?: string | null;
   venue?: string | null;
@@ -19,8 +20,9 @@ export interface TransformedEvent {
 
 export function transformEvents(events: EVENTS_QUERYResult): TransformedEvent[] {
   return events
-    .filter((event) => event.title && event.location && event.startDate) // Filter out invalid events
+    .filter((event) => event._id && event.title && event.location && event.startDate) // Filter out invalid events
     .map((event) => ({
+      _id: event._id!,
       title: event.title!,
       shortDescription: event.shortDescription,
       venue: event.venue,

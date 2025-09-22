@@ -5,6 +5,8 @@ import EventHelpCTA from '../Events/EventHelpCTA';
 import CTA from '../UI/CTA';
 import { transformEvents } from '@/utils/transformEvents';
 import { getEventLink } from '../Events/eventUtils';
+import { createDataAttribute } from 'next-sanity';
+import { client } from '@/sanity/lib/client';
 import type { EVENTS_QUERYResult } from '@/sanity/types';
 
 interface EventBlockProps {
@@ -47,6 +49,13 @@ const EventBlock = ({
   generateSchema = false,
   baseUrl,
 }: EventBlockProps) => {
+  // Sanity Live Editing configuration
+  const { projectId, dataset, stega } = client.config();
+  const createDataAttributeConfig = {
+    projectId,
+    dataset,
+    baseUrl: typeof stega.studioUrl === 'string' ? stega.studioUrl : '',
+  };
   // Determine which events to use based on eventListType
   let eventsToUse: EVENTS_QUERYResult = [];
 
@@ -121,7 +130,16 @@ const EventBlock = ({
                       ? 'transition-all duration-300 hover:shadow-xl hover:scale-103 cursor-pointer'
                       : ''
                   }`}>
-                  <div className='relative w-full aspect-[724/1024] bg-gray-900 overflow-hidden'>
+                  <div
+                    className='relative w-full aspect-[724/1024] bg-gray-900 overflow-hidden'
+                    {...{
+                      'data-sanity': createDataAttribute({
+                        ...createDataAttributeConfig,
+                        id: event._id,
+                        type: 'event',
+                        path: 'image',
+                      }).toString()
+                    }}>
                     {hasLink && eventLink ? (
                       <a
                         href={eventLink}
@@ -157,6 +175,9 @@ const EventBlock = ({
                   isPast={isPast}
                   generateSchema={generateSchema}
                   baseUrl={baseUrl}
+                  documentId={event._id}
+                  documentType="event"
+                  fieldPathPrefix=""
                 />
               )}
             </div>
