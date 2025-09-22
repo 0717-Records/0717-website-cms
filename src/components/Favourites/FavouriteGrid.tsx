@@ -45,7 +45,9 @@ const FavouriteGrid: React.FC<FavouriteGridProps> = ({
       <div
         className={`flex flex-wrap justify-center ${itemsPerRow === '4' ? ' gap-x-8 md:gap-x-4' : 'gap-x-8'} gap-y-10`}>
         {displayFavourites.map((favourite, index) => (
-          <div key={favourite._id || `favourite-${index}`} className={`${gridClasses} flex-shrink-0 px-1 sm:px-4`}>
+          <div
+            key={favourite._id || `favourite-${index}`}
+            className={`${gridClasses} flex-shrink-0 px-1 sm:px-4`}>
             <FavouriteItem favourite={favourite} itemsPerRow={itemsPerRow} />
           </div>
         ))}
@@ -54,7 +56,7 @@ const FavouriteGrid: React.FC<FavouriteGridProps> = ({
       {/* View All Favourites Button */}
       {showViewAllButton && (
         <div className='flex justify-center mt-8'>
-          <CTA href='/favourites' variant='outline'>
+          <CTA href={viewAllUrl} variant='outline'>
             View all favourites
           </CTA>
         </div>

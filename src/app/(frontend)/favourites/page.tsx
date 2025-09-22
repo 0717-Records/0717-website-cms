@@ -1,7 +1,6 @@
 import FavouriteGrid from '@/components/Favourites/FavouriteGrid';
 import { getAllFavourites, getFavouritesIndexPage } from '@/actions/favourites';
 import PageHero from '@/components/Page/PageHero';
-import PageSection from '@/components/Layout/PageSection';
 import Container from '@/components/Layout/Container';
 import Card from '@/components/blocks/Card';
 import PageSubtitle from '@/components/Typography/PageSubtitle';
