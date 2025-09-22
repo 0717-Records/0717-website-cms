@@ -20,7 +20,9 @@ const CTAButton = (props: CTAButtonProps) => {
     openInNewTab = false,
     computedHref,
     className = '',
+    pageSectionId,
   } = props;
+
 
   const cleanText = stegaClean(text);
   const cleanExternalUrl = stegaClean(externalUrl);
@@ -42,11 +44,52 @@ const CTAButton = (props: CTAButtonProps) => {
       if (internalLink) {
         // Handle both reference objects and dereferenced objects
         if ('href' in internalLink && internalLink.href) {
-          // Use the pre-computed href from the GROQ query
+          // Use the pre-computed href from the GROQ query (dereferenced object)
           href = internalLink.href;
         } else if ('slug' in internalLink && internalLink.slug?.current) {
           // Fallback to slug-based URL for backward compatibility
           href = `/${internalLink.slug.current}`;
+        } else {
+
+          // Check if this is a dereferenced object (has actual page type) or reference object
+          const pageType = internalLink._type;
+          if (pageType && pageType !== 'reference') {
+            // This is a dereferenced object - use the actual page type for URL generation
+            if (pageType === 'homePage') {
+              href = '/';
+            } else if (pageType === 'eventsIndexPage') {
+              href = '/events';
+            } else if (pageType === 'favouritesIndexPage') {
+              href = '/favourites';
+            } else if (pageType === 'blogIndexPage') {
+              href = '/blog';
+            } else if (pageType === 'termsAndConditions') {
+              href = '/terms-and-conditions';
+            } else if (pageType === 'privacyPolicy') {
+              href = '/privacy-policy';
+            } else if (pageType === 'blogPost' && 'slug' in internalLink && internalLink.slug?.current) {
+              href = `/blog/${internalLink.slug.current}`;
+            } else if (pageType === 'collab' && 'slug' in internalLink && internalLink.slug?.current) {
+              href = `/collabs/${internalLink.slug.current}`;
+            } else if ('slug' in internalLink && internalLink.slug?.current) {
+              href = `/${internalLink.slug.current}`;
+            }
+          } else if (pageType === 'reference' && '_ref' in internalLink) {
+            // This is a reference object - we need the _ref to identify the page
+            if (internalLink._ref === 'homePage') {
+              href = '/';
+            } else if (internalLink._ref === 'eventsIndexPage') {
+              href = '/events';
+            } else if (internalLink._ref === 'favouritesIndexPage') {
+              href = '/favourites';
+            } else if (internalLink._ref === 'blogIndexPage') {
+              href = '/blog';
+            } else if (internalLink._ref === 'termsAndConditions') {
+              href = '/terms-and-conditions';
+            } else if (internalLink._ref === 'privacyPolicy') {
+              href = '/privacy-policy';
+            }
+          }
         }
         // If it's just a reference, we can't build the URL without dereferencing
         // This would need to be handled in the GROQ query by dereferencing with ->
@@ -57,6 +100,11 @@ const CTAButton = (props: CTAButtonProps) => {
     } else if (linkType === 'external' && cleanExternalUrl) {
       href = cleanExternalUrl;
     }
+  }
+
+  // Add section anchor if pageSectionId is provided for internal links
+  if (href && linkType === 'internal' && pageSectionId) {
+    href = `${href}#${stegaClean(pageSectionId)}`;
   }
 
   // Don't render if no valid href

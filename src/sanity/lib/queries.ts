@@ -11,9 +11,12 @@ const internalLinkProjection = `{
   "href": select(
     _type == "homePage" => "/",
     _type == "eventsIndexPage" => "/events",
+    _type == "favouritesIndexPage" => "/favourites",
     _type == "blogIndexPage" => "/blog",
     _type == "blogPost" => "/blog/" + slug.current,
     _type == "collab" => "/collabs/" + slug.current,
+    _type == "termsAndConditions" => "/terms-and-conditions",
+    _type == "privacyPolicy" => "/privacy-policy",
     "/" + slug.current
   )
 }`;

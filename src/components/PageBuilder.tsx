@@ -468,7 +468,7 @@ const BlockRenderer = ({
                   favourites={favourites || []}
                   itemsPerRow={(block as { itemsPerRow?: '3' | '4' }).itemsPerRow}
                   favouriteListType={(block as { favouriteListType?: 'automatic' | 'manual' }).favouriteListType}
-                  selectedFavourites={(block as { favourites?: any[] }).favourites}
+                  selectedFavourites={(block as { favourites?: FAVOURITES_ALL_QUERYResult }).favourites}
                 />
               </BlockWrapper>
             );
