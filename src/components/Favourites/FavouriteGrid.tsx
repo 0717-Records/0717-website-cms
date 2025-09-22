@@ -26,8 +26,8 @@ const FavouriteGrid: React.FC<FavouriteGridProps> = ({
   // Calculate grid classes based on itemsPerRow (matching CollabBlock pattern)
   const gridClasses =
     itemsPerRow === '4'
-      ? 'w-[calc((100%-1*2rem)/2)] sm:w-[calc((100%-2*1rem)/3)] md:w-[calc((100%-3*1rem)/4)]'
-      : 'w-[calc((100%-1*2rem)/2)] sm:w-[calc((100%-2*2rem)/3)]';
+      ? 'w-[calc((100%-1*1rem)/2)] sm:w-[calc((100%-2*1rem)/3)] md:w-[calc((100%-3*1rem)/4)]'
+      : 'w-[calc((100%-1*1rem)/2)] sm:w-[calc((100%-2*2rem)/3)]';
 
   if (displayFavourites.length === 0) {
     return (
