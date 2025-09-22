@@ -163,6 +163,24 @@ const contentProjection = `
       pastEventLinkBehavior,
       pastEventLink
     }
+  },
+  _type == "favouriteBlock" => {
+    ...,
+    favourites[]->{
+      _id,
+      name,
+      category,
+      order,
+      profileImage{
+        asset,
+        alt,
+        hotspot,
+        crop
+      },
+      description,
+      link,
+      linkLabel
+    }
   }
 `;
 

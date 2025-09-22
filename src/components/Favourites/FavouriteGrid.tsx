@@ -44,8 +44,8 @@ const FavouriteGrid: React.FC<FavouriteGridProps> = ({
     <div className='w-full'>
       <div
         className={`flex flex-wrap justify-center ${itemsPerRow === '4' ? ' gap-x-8 md:gap-x-4' : 'gap-x-8'} gap-y-10`}>
-        {displayFavourites.map((favourite) => (
-          <div key={favourite._id} className={`${gridClasses} flex-shrink-0 px-1 sm:px-4`}>
+        {displayFavourites.map((favourite, index) => (
+          <div key={favourite._id || `favourite-${index}`} className={`${gridClasses} flex-shrink-0 px-1 sm:px-4`}>
             <FavouriteItem favourite={favourite} itemsPerRow={itemsPerRow} />
           </div>
         ))}
