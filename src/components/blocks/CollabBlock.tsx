@@ -115,7 +115,6 @@ const CollabBlock = ({
               <div className='mt-4'>
                 <CTAEmailButton
                   className={`${itemsPerRow === '4' ? 'flex-wrap' : 'flex-wrap md:flex-nowrap'}`}
-                  textClasses='text-body-base md:text-body-sm'
                 />
               </div>
             </div>
