@@ -24,6 +24,109 @@ When creating or modifying Sanity schema files, include this standardized commen
 
 This comment should be referenced and applied consistently across all schema files to maintain development standards.
 
+### Singleton Page Implementation Checklist
+**CRITICAL: When creating singleton pages (pages that should only exist once), you MUST complete ALL of these steps to ensure proper integration:**
+
+#### 1. Schema Definition
+Create the singleton schema with proper structure:
+```javascript
+export const newSingletonType = defineType({
+  name: 'newSingletonName',
+  title: 'New Singleton Page Title',
+  type: 'document',
+  icon: YourChosenIcon,
+  fields: [
+    // Your fields here
+  ],
+  preview: {
+    prepare() {
+      return {
+        title: 'New Singleton Page Title'
+      };
+    }
+  }
+});
+```
+
+#### 2. Desk Structure Configuration
+**Update `src/sanity/structure.ts`** to:
+- Add the singleton to the appropriate section in the desk structure
+- Ensure it appears as a single item, not a list
+- Group it logically with related singletons
+
+```javascript
+S.listItem()
+  .title('New Singleton Page Title')
+  .id('newSingletonName')
+  .child(S.document().schemaType('newSingletonName').documentId('newSingletonName'))
+```
+
+#### 3. Protected Document Actions
+**Update `src/sanity/lib/protectedDocumentActions.ts`** to prevent deletion and duplication:
+```javascript
+const PROTECTED_SINGLETON_IDS = [
+  'homePage',
+  'header',
+  'footer',
+  // ... existing singletons
+  'newSingletonName', // ADD NEW SINGLETON HERE
+];
+```
+
+This prevents the singleton from:
+- Being deleted accidentally
+- Being duplicated (which would break the singleton pattern)
+- Appearing in the create menu (+ button) in Sanity Studio
+
+#### 4. Internal Link System Integration
+**Update `src/sanity/schemaTypes/shared/linkSystem.ts`** to make the singleton selectable in internal links:
+```javascript
+export const LINKABLE_PAGE_TYPES = [
+  { type: 'homePage' },
+  { type: 'eventsIndexPage' },
+  // ... existing linkable types
+  { type: 'newSingletonName' }, // ADD NEW SINGLETON HERE
+];
+```
+
+#### 5. GROQ Query URL Generation
+**Update `src/sanity/lib/queries.ts`** to include URL generation for the singleton:
+```javascript
+const internalLinkProjection = `{
+  // ... existing fields
+  "href": select(
+    _type == "homePage" => "/",
+    _type == "eventsIndexPage" => "/events",
+    // ... existing URL mappings
+    _type == "newSingletonName" => "/your-url-path",
+    "/" + slug.current
+  )
+}`;
+```
+
+#### 6. Validation Checklist
+After implementing a singleton page, verify:
+- [ ] Singleton does NOT appear in Sanity Studio's create menu (+ button)
+- [ ] Singleton cannot be deleted or duplicated in Sanity Studio
+- [ ] Singleton appears in internal link selection dropdowns
+- [ ] CTAs linking to the singleton generate correct URLs
+- [ ] The singleton appears properly in the desk structure
+
+#### Common Mistakes to Avoid:
+- **Forgetting step 3**: Singleton will appear in create menu and can be deleted
+- **Forgetting step 4**: Singleton won't be available for internal linking
+- **Forgetting step 5**: Internal links to singleton will generate incorrect URLs
+- **Inconsistent naming**: Use the same identifier across all files
+
+#### Why This Process Matters:
+Singletons represent unique pages that should only exist once (like "About Us", "Contact", etc.). If any step is missed:
+- Content editors might accidentally create duplicates
+- Links to the singleton might break
+- The singleton might be accidentally deleted
+- The admin interface becomes confusing
+
+**ALWAYS complete all 6 steps when creating any singleton page to ensure proper functionality and prevent issues discovered later.**
+
 ## Typography Guidelines
 **IMPORTANT: Always use custom font size classes from globals.css instead of native Tailwind font size classes.**
 
