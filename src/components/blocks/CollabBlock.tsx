@@ -27,8 +27,8 @@ const CollabBlock = ({
   // Calculate grid classes based on itemsPerRow
   const gridClasses =
     itemsPerRow === '4'
-      ? 'w-full sm:w-[calc((100%-2*2rem)/3)] md:w-[calc((100%-3*1rem)/4)]'
-      : 'w-full sm:w-[calc((100%-2*2rem)/3)]';
+      ? 'w-[calc((100%-1*2rem)/2)] sm:w-[calc((100%-2*2rem)/3)] md:w-[calc((100%-3*1rem)/4)]'
+      : 'w-[calc((100%-1*2rem)/2)] sm:w-[calc((100%-2*2rem)/3)]';
 
   if (displayCollabs.length === 0 && !showCTA) {
     return (
@@ -44,7 +44,7 @@ const CollabBlock = ({
   return (
     <div className='w-full'>
       <div
-        className={`flex flex-wrap justify-center ${itemsPerRow === '4' ? ' gap-x-8 md:gap-x-4' : 'gap-x-8'} gap-y-10`}>
+        className={`flex flex-wrap justify-center ${itemsPerRow === '4' ? 'gap-x-4' : 'gap-x-4 sm:gap-x-8'} gap-y-8`}>
         {/* Render collab items */}
         {displayCollabs.map((collab) => (
           <div key={collab._id} className={`${gridClasses} flex-shrink-0 px-1 sm:px-4`}>
@@ -56,7 +56,7 @@ const CollabBlock = ({
                 {/* Profile Image */}
                 <div
                   {...createSanityDataAttribute(collab._id, 'collab', 'previewImage')}
-                  className='mx-auto relative w-[80%] sm:w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'>
+                  className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'>
                   <UnifiedImage
                     src={collab.previewImage}
                     alt={collab.previewImage?.alt || `${collab.name} profile image`}
@@ -102,7 +102,7 @@ const CollabBlock = ({
             <div className='w-full'>
               <div className='text-center space-y-3 px-1 sm:px-4'>
                 {/* Handshake Icon with gradient background */}
-                <div className='mx-auto relative w-[80%] sm:w-full aspect-square rounded-full overflow-hidden bg-card-gradient shadow-lg flex items-center justify-center'>
+                <div className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-card-gradient shadow-lg flex items-center justify-center'>
                   <div className='text-8xl'>🤝</div>
                 </div>
 

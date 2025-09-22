@@ -23,7 +23,7 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite, itemsPerRow = 
     <>
       <button
         onClick={() => setIsModalOpen(true)}
-        className='group cursor-pointer w-full transition-all duration-200 focus:outline-none px-1 sm:px-4 '
+        className='group cursor-pointer w-full transition-all duration-200 focus:outline-none'
         tabIndex={0}
         role='button'
         aria-label={`View details for ${favourite.name}`}>
@@ -31,7 +31,7 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite, itemsPerRow = 
           {/* Profile Image */}
           <div
             {...createSanityDataAttribute(favourite._id, 'favourites', 'profileImage')}
-            className='mx-auto relative w-[80%] sm:w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'>
+            className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'>
             <UnifiedImage
               src={favourite.profileImage}
               alt={imageAlt}

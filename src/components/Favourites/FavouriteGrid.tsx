@@ -26,8 +26,8 @@ const FavouriteGrid: React.FC<FavouriteGridProps> = ({
   // Calculate grid classes based on itemsPerRow (matching CollabBlock pattern)
   const gridClasses =
     itemsPerRow === '4'
-      ? 'w-full sm:w-[calc((100%-2*2rem)/3)] md:w-[calc((100%-3*1rem)/4)]'
-      : 'w-full sm:w-[calc((100%-2*2rem)/3)]';
+      ? 'w-[calc((100%-1*2rem)/2)] sm:w-[calc((100%-2*2rem)/3)] md:w-[calc((100%-3*1rem)/4)]'
+      : 'w-[calc((100%-1*2rem)/2)] sm:w-[calc((100%-2*2rem)/3)]';
 
   if (displayFavourites.length === 0) {
     return (
@@ -43,7 +43,7 @@ const FavouriteGrid: React.FC<FavouriteGridProps> = ({
   return (
     <div className='w-full'>
       <div
-        className={`flex flex-wrap justify-center ${itemsPerRow === '4' ? ' gap-x-8 md:gap-x-4' : 'gap-x-8'} gap-y-10`}>
+        className={`flex flex-wrap justify-center ${itemsPerRow === '4' ? 'gap-x-4' : 'gap-x-4 sm:gap-x-8'} gap-y-8`}>
         {displayFavourites.map((favourite, index) => (
           <div
             key={favourite._id || `favourite-${index}`}
