@@ -107,9 +107,7 @@ const CollabBlock = ({
                 </div>
 
                 {/* CTA Message */}
-                <div className={`text-body-xl leading-relaxed whitespace-pre-line px-2`}>
-                  {ctaMessage}
-                </div>
+                <div className={`leading-relaxed whitespace-pre-line px-2`}>{ctaMessage}</div>
               </div>
               {/* CTA Email Button */}
               <div className='mt-4'>
