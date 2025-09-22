@@ -24,7 +24,7 @@ const FavouriteBlock: React.FC<FavouriteBlockProps> = ({ favourites }) => {
           {favourites.map((favourite) => (
             <div
               key={favourite._id}
-              className='w-[calc(50%-1.5rem)] sm:w-[calc(33.333%-4rem)] flex-shrink-0'>
+              className='w-[calc((100%-1*1rem)/2)] sm:w-[calc((100%-2*2rem)/3)] flex-shrink-0'>
               <FavouriteItem favourite={favourite} />
             </div>
           ))}

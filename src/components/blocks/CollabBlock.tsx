@@ -27,8 +27,8 @@ const CollabBlock = ({
   // Calculate grid classes based on itemsPerRow
   const gridClasses =
     itemsPerRow === '4'
-      ? 'w-[calc(50%-1.5rem)] sm:w-[calc(33.333%-4rem)] lg:w-[calc(25%-6rem)]' // 4 items per row on large screens
-      : 'w-[calc(50%-1.5rem)] sm:w-[calc(33.333%-4rem)]'; // 3 items per row on large screens
+      ? 'w-full sm:w-[calc((100%-2*2rem)/3)] md:w-[calc((100%-3*1rem)/4)]'
+      : 'w-full sm:w-[calc((100%-2*2rem)/3)]';
 
   if (displayCollabs.length === 0 && !showCTA) {
     return (
@@ -43,24 +43,25 @@ const CollabBlock = ({
 
   return (
     <div className='w-full'>
-      <div className='flex flex-wrap justify-center gap-x-4 gap-y-5 md:gap-x-8 md:gap-y-10'>
+      <div
+        className={`flex flex-wrap justify-center ${itemsPerRow === '4' ? ' gap-x-8 md:gap-x-4' : 'gap-x-8'} gap-y-10`}>
         {/* Render collab items */}
         {displayCollabs.map((collab) => (
-          <div key={collab._id} className={`${gridClasses} flex-shrink-0`}>
+          <div key={collab._id} className={`${gridClasses} flex-shrink-0 px-1 sm:px-4`}>
             <Link
               href={`/collabs/${collab.slug?.current || ''}`}
-              className='group cursor-pointer w-full transition-all duration-200 focus:outline-none rounded-lg px-1 sm:px-4 block'
+              className='group cursor-pointer w-full transition-all duration-200 focus:outline-none rounded-lg block'
               aria-label={`View details for ${collab.name}`}>
               <div className='text-center space-y-3'>
                 {/* Profile Image */}
                 <div
                   {...createSanityDataAttribute(collab._id, 'collab', 'previewImage')}
-                  className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'>
+                  className='mx-auto relative w-[80%] sm:w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'>
                   <UnifiedImage
                     src={collab.previewImage}
                     alt={collab.previewImage?.alt || `${collab.name} profile image`}
                     mode='fill'
-                    sizeContext={itemsPerRow === '4' ? 'thumbnail' : 'profile'}
+                    sizeContext={'profile'}
                     objectFit='cover'
                     sizes={
                       itemsPerRow === '4'
@@ -78,7 +79,7 @@ const CollabBlock = ({
                 {/* Name */}
                 <div
                   {...createSanityDataAttribute(collab._id, 'collab', 'name')}
-                  className={`${itemsPerRow === '4' ? 'text-body-lg' : 'text-h6'} font-bold text-gray-900 transition-colors duration-200 group-hover:underline`}>
+                  className={`text-h6 font-bold transition-colors duration-200 group-hover:underline`}>
                   {collab.name}
                 </div>
 
@@ -86,7 +87,7 @@ const CollabBlock = ({
                 {collab.category && (
                   <div
                     {...createSanityDataAttribute(collab._id, 'collab', 'category')}
-                    className={`${itemsPerRow === '4' ? 'text-body-sm' : 'text-body-base'} font-medium text-brand-secondary`}>
+                    className={`font-medium text-brand-secondary`}>
                     {collab.category}
                   </div>
                 )}
@@ -98,27 +99,24 @@ const CollabBlock = ({
         {/* Collab Help CTA - appears at the end of the collabs list */}
         {showCTA && ctaMessage && (
           <div className={`${gridClasses} flex-shrink-0`}>
-            <div className='w-full rounded-lg px-1 sm:px-4'>
-              <div className='text-center space-y-3'>
+            <div className='w-full'>
+              <div className='text-center space-y-3 px-1 sm:px-4'>
                 {/* Handshake Icon with gradient background */}
-                <div className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-card-gradient shadow-lg flex items-center justify-center'>
-                  <div className={`${itemsPerRow === '4' ? 'text-body-6xl' : 'text-body-8xl'}`}>
-                    🤝
-                  </div>
+                <div className='mx-auto relative w-[80%] sm:w-full aspect-square rounded-full overflow-hidden bg-card-gradient shadow-lg flex items-center justify-center'>
+                  <div className='text-8xl'>🤝</div>
                 </div>
 
                 {/* CTA Message */}
-                <div
-                  className={`${itemsPerRow === '4' ? 'text-body-sm' : 'text-body-xl'} leading-relaxed whitespace-pre-line px-2`}>
+                <div className={`text-body-xl leading-relaxed whitespace-pre-line px-2`}>
                   {ctaMessage}
                 </div>
-
-                {/* CTA Email Button */}
-                <div className='mt-4'>
-                  <CTAEmailButton
-                    textClasses={itemsPerRow === '4' ? 'text-body-xs' : 'text-body-sm'}
-                  />
-                </div>
+              </div>
+              {/* CTA Email Button */}
+              <div className='mt-4'>
+                <CTAEmailButton
+                  className={`${itemsPerRow === '4' ? 'flex-wrap' : 'flex-wrap md:flex-nowrap'}`}
+                  textClasses='text-body-base md:text-body-sm'
+                />
               </div>
             </div>
           </div>

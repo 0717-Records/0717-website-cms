@@ -22,7 +22,7 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
     <>
       <button
         onClick={() => setIsModalOpen(true)}
-        className='group cursor-pointer w-full transition-all duration-200 focus:outline-none rounded-lg px-1 sm:px-4'
+        className='group cursor-pointer w-full transition-all duration-200 focus:outline-none px-1 sm:px-4 '
         tabIndex={0}
         role='button'
         aria-label={`View details for ${favourite.name}`}>
@@ -30,14 +30,13 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
           {/* Profile Image */}
           <div
             {...createSanityDataAttribute(favourite._id, 'favourites', 'profileImage')}
-            className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'
-          >
+            className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'>
             <UnifiedImage
               src={favourite.profileImage}
               alt={imageAlt}
-              mode="fill"
-              sizeContext="profile"
-              objectFit="cover"
+              mode='fill'
+              sizeContext='profile'
+              objectFit='cover'
               sizes='(max-width: 768px) 150px, 200px'
               fallback={
                 <div className='w-full h-full flex items-center justify-center'>
@@ -48,19 +47,17 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
           </div>
 
           {/* Name */}
-          <div 
+          <div
             {...createSanityDataAttribute(favourite._id, 'favourites', 'name')}
-            className='text-h6 font-bold text-gray-900 transition-colors duration-200 group-hover:underline'
-          >
+            className='text-h6 font-bold text-gray-900 transition-colors duration-200 group-hover:underline'>
             {favourite.name}
           </div>
 
           {/* Category */}
           {favourite.category && (
-            <div 
+            <div
               {...createSanityDataAttribute(favourite._id, 'favourites', 'category')}
-              className='text-body-base font-medium text-brand-secondary'
-            >
+              className='text-body-base font-medium text-brand-secondary'>
               {favourite.category}
             </div>
           )}
@@ -76,10 +73,9 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
           </p>
           {favourite.link && favourite.linkLabel && (
             <p>
-              <a 
+              <a
                 href={favourite.link}
-                {...createSanityDataAttribute(favourite._id, 'favourites', 'link')}
-              >
+                {...createSanityDataAttribute(favourite._id, 'favourites', 'link')}>
                 {favourite.linkLabel}
               </a>
             </p>
