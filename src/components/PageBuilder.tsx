@@ -464,7 +464,12 @@ const BlockRenderer = ({
           case 'favouriteBlock':
             return (
               <BlockWrapper key={block._key}>
-                <FavouriteBlock favourites={favourites || []} />
+                <FavouriteBlock
+                  favourites={favourites || []}
+                  itemsPerRow={(block as { itemsPerRow?: '3' | '4' }).itemsPerRow}
+                  favouriteListType={(block as { favouriteListType?: 'automatic' | 'manual' }).favouriteListType}
+                  selectedFavourites={(block as { favourites?: any[] }).favourites}
+                />
               </BlockWrapper>
             );
 

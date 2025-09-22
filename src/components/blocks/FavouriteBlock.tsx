@@ -1,36 +1,39 @@
 import React from 'react';
-import FavouriteItem from '../Favourites/FavouriteItem';
+import FavouriteGrid from '../Favourites/FavouriteGrid';
 import type { FAVOURITES_ALL_QUERYResult } from '@/sanity/types';
 
 interface FavouriteBlockProps {
   favourites: FAVOURITES_ALL_QUERYResult;
+  itemsPerRow?: '3' | '4';
+  favouriteListType?: 'automatic' | 'manual';
+  selectedFavourites?: FAVOURITES_ALL_QUERYResult;
 }
 
-const FavouriteBlock: React.FC<FavouriteBlockProps> = ({ favourites }) => {
-  if (!favourites || favourites.length === 0) {
-    return (
-      <div className='text-center py-16'>
-        <div className='text-gray-400 text-h2 mb-4'>❤️</div>
-        <p className='text-gray-500 text-body-lg'>No favourites available at the moment.</p>
-      </div>
-    );
+const FavouriteBlock: React.FC<FavouriteBlockProps> = ({
+  favourites,
+  itemsPerRow = '3',
+  favouriteListType = 'automatic',
+  selectedFavourites,
+}) => {
+  // Determine which favourites to display based on list type
+  let displayFavourites: FAVOURITES_ALL_QUERYResult;
+
+  if (favouriteListType === 'manual' && selectedFavourites) {
+    // Use manually selected favourites in the order they were selected
+    displayFavourites = selectedFavourites;
+  } else {
+    // Use automatic mode - get enough favourites to fill a row based on itemsPerRow
+    const maxItems = parseInt(itemsPerRow, 10);
+    displayFavourites = (favourites || []).slice(0, maxItems);
   }
 
   return (
-    <>
-      <div className='w-full'>
-        {/* Grid using flexbox with responsive columns */}
-        <div className='flex flex-wrap justify-center gap-x-4 gap-y-5 md:gap-x-8 md:gap-y-10'>
-          {favourites.map((favourite) => (
-            <div
-              key={favourite._id}
-              className='w-[calc((100%-1*1rem)/2)] sm:w-[calc((100%-2*2rem)/3)] flex-shrink-0'>
-              <FavouriteItem favourite={favourite} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
+    <FavouriteGrid
+      favourites={displayFavourites}
+      itemsPerRow={itemsPerRow}
+      showViewAllButton={true}
+      viewAllUrl="/favourites"
+    />
   );
 };
 

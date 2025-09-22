@@ -499,6 +499,21 @@ export const FAVOURITES_ALL_QUERY = defineQuery(`*[_type == "favourites"]|order(
   linkLabel
 }`);
 
+export const FAVOURITES_INDEX_PAGE_QUERY = defineQuery(`*[_id == "favouritesIndexPage"][0]{
+  _id,
+  _type,
+  title,
+  backgroundImage{
+    asset,
+    alt,
+    hotspot,
+    crop
+  },
+  subtitle,
+  showFavouritesMessage,
+  favouritesMessage
+}`);
+
 export const FOOTER_QUERY = defineQuery(`*[_type == "footer" && _id == "footer"][0]{
   _id,
   _type,

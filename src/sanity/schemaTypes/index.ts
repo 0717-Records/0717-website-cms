@@ -43,6 +43,7 @@ import { eventsIndexPageType } from './eventsIndexPageType';
 import { collabType } from './collabType';
 import { collabPageSectionType } from './collabPageSectionType';
 import { favouritesType } from './favouritesType';
+import { favouritesIndexPageType } from './favouritesIndexPageType';
 import { companyLinksArrayType, collabLinksArrayType } from './shared/socialLinksArrayType';
 import { sideContentBlockType, sideContentType } from './shared/sideContentBlockType';
 import { ctaListType } from './shared/ctaListType';
@@ -68,6 +69,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     eventsIndexPageType,
     collabType,
     favouritesType,
+    favouritesIndexPageType,
     termsAndConditionsType,
     privacyPolicyType,
     blockContentType,

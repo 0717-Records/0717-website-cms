@@ -43,7 +43,7 @@ export default defineConfig({
   ],
   document: {
     newDocumentOptions: (prev) => prev.filter((item) =>
-      !['siteSettings', 'header', 'footer', 'homePage', 'blogIndexPage', 'eventsIndexPage', 'companyLinks', 'termsAndConditions', 'privacyPolicy'].includes(item.templateId)
+      !['siteSettings', 'header', 'footer', 'homePage', 'blogIndexPage', 'eventsIndexPage', 'favouritesIndexPage', 'companyLinks', 'termsAndConditions', 'privacyPolicy'].includes(item.templateId)
     ),
     actions: protectedDocumentActions,
     // Document actions temporarily removed to fix build

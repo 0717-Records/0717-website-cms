@@ -11,9 +11,10 @@ type FavouriteData = FAVOURITES_ALL_QUERYResult[0];
 
 interface FavouriteItemProps {
   favourite: FavouriteData;
+  itemsPerRow?: '3' | '4';
 }
 
-const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
+const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite, itemsPerRow = '3' }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const imageAlt = favourite.profileImage?.alt || `${favourite.name} profile image`;
@@ -30,14 +31,18 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite }) => {
           {/* Profile Image */}
           <div
             {...createSanityDataAttribute(favourite._id, 'favourites', 'profileImage')}
-            className='mx-auto relative w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'>
+            className='mx-auto relative w-[80%] sm:w-full aspect-square rounded-full overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-primary transition-transform duration-200 group-hover:scale-105'>
             <UnifiedImage
               src={favourite.profileImage}
               alt={imageAlt}
               mode='fill'
               sizeContext='profile'
               objectFit='cover'
-              sizes='(max-width: 768px) 150px, 200px'
+              sizes={
+                itemsPerRow === '4'
+                  ? '(max-width: 768px) 120px, 160px'
+                  : '(max-width: 768px) 150px, 200px'
+              }
               fallback={
                 <div className='w-full h-full flex items-center justify-center'>
                   <HeartIcon className='text-white text-body-3xl md:text-body-4xl' />

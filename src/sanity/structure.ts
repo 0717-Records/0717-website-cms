@@ -107,7 +107,29 @@ export const structure: StructureResolver = (S) =>
         .id('favourites')
         .title('❤️ Favourites')
         .child(
-          S.documentTypeList('favourites').title('Favourites')
+          S.list()
+            .title('Favourite Management')
+            .items([
+              // Favourites Index Page - Singleton
+              S.listItem()
+                .id('favouritesIndexPage')
+                .schemaType('favouritesIndexPage')
+                .title('Favourites Index Page')
+                .child(
+                  S.editor()
+                    .id('favouritesIndexPage')
+                    .schemaType('favouritesIndexPage')
+                    .documentId('favouritesIndexPage')
+                    .title('Favourites Index Page')
+                ),
+              // Individual Favourites
+              S.listItem()
+                .id('favourites')
+                .title('Favourites')
+                .child(
+                  S.documentTypeList('favourites').title('Favourites')
+                ),
+            ])
         ),
 
       S.divider(),

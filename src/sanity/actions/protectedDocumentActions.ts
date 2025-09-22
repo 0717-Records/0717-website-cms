@@ -11,6 +11,7 @@ const PROTECTED_DOCUMENT_TYPES = [
   'homePage',
   'blogIndexPage',
   'eventsIndexPage',
+  'favouritesIndexPage',
   'companyLinks',
   'termsAndConditions',
   'privacyPolicy'

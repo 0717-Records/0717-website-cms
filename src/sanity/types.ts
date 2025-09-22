@@ -54,6 +54,11 @@ export type VerticalNavLink = {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "favouritesIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "collab";
   } | {
     _ref: string;
@@ -65,6 +70,16 @@ export type VerticalNavLink = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "blogPost";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "termsAndConditions";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "privacyPolicy";
   };
   externalUrl?: string;
   pageSectionId?: string;
@@ -95,6 +110,11 @@ export type NavLink = {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "favouritesIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "collab";
   } | {
     _ref: string;
@@ -106,6 +126,16 @@ export type NavLink = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "blogPost";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "termsAndConditions";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "privacyPolicy";
   };
   externalUrl?: string;
   pageSectionId?: string;
@@ -170,7 +200,15 @@ export type CompanyLinksBlock = {
 
 export type FavouriteBlock = {
   _type: "favouriteBlock";
-  blockAdded?: string;
+  itemsPerRow?: "3" | "4";
+  favouriteListType?: "automatic" | "manual";
+  favourites?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "favourites";
+  }>;
 };
 
 export type CollabBlock = {
@@ -240,6 +278,11 @@ export type HomeHeroCtaButton = {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "favouritesIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "collab";
   } | {
     _ref: string;
@@ -251,6 +294,16 @@ export type HomeHeroCtaButton = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "blogPost";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "termsAndConditions";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "privacyPolicy";
   };
   externalUrl?: string;
   pageSectionId?: string;
@@ -286,6 +339,11 @@ export type EmbeddedCtaButton = {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "favouritesIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "collab";
   } | {
     _ref: string;
@@ -297,6 +355,16 @@ export type EmbeddedCtaButton = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "blogPost";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "termsAndConditions";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "privacyPolicy";
   };
   externalUrl?: string;
   pageSectionId?: string;
@@ -345,6 +413,11 @@ export type CtaCalloutLink = {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "favouritesIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "collab";
   } | {
     _ref: string;
@@ -356,6 +429,16 @@ export type CtaCalloutLink = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "blogPost";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "termsAndConditions";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "privacyPolicy";
   };
   externalUrl?: string;
   pageSectionId?: string;
@@ -387,6 +470,11 @@ export type CtaButton = {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "favouritesIndexPage";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "collab";
   } | {
     _ref: string;
@@ -398,6 +486,16 @@ export type CtaButton = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "blogPost";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "termsAndConditions";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "privacyPolicy";
   };
   externalUrl?: string;
   pageSectionId?: string;
@@ -913,120 +1011,6 @@ export type BlockContent = Array<{
   _key: string;
 }>;
 
-export type PrivacyPolicy = {
-  _id: string;
-  _type: "privacyPolicy";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hide?: boolean;
-  title?: string;
-  content?: Array<{
-    _key: string;
-  } & PageSection | {
-    _key: string;
-  } & Divider | {
-    _key: string;
-  } & ItemList | {
-    _key: string;
-  } & RichText | {
-    _key: string;
-  } & Quote | {
-    _key: string;
-  } & TextImage | {
-    _key: string;
-  } & Card | {
-    _key: string;
-  } & CtaButton | {
-    _key: string;
-  } & CtaCalloutLink | {
-    _key: string;
-  } & CtaEmailButton | {
-    _key: string;
-  } & CtaEvents | {
-    _key: string;
-  } & CtaBlogPost | {
-    _key: string;
-  } & GridLayout | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
-    _key: string;
-  } & YouTubeVideo | {
-    _key: string;
-  } & SpotifyWidget | {
-    _key: string;
-  } & BandcampWidget | {
-    _key: string;
-  } & EventBlock | {
-    _key: string;
-  } & CollabBlock | {
-    _key: string;
-  } & FavouriteBlock | {
-    _key: string;
-  } & CompanyLinksBlock | {
-    _key: string;
-  } & BlockList>;
-};
-
-export type TermsAndConditions = {
-  _id: string;
-  _type: "termsAndConditions";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  hide?: boolean;
-  title?: string;
-  content?: Array<{
-    _key: string;
-  } & PageSection | {
-    _key: string;
-  } & Divider | {
-    _key: string;
-  } & ItemList | {
-    _key: string;
-  } & RichText | {
-    _key: string;
-  } & Quote | {
-    _key: string;
-  } & TextImage | {
-    _key: string;
-  } & Card | {
-    _key: string;
-  } & CtaButton | {
-    _key: string;
-  } & CtaCalloutLink | {
-    _key: string;
-  } & CtaEmailButton | {
-    _key: string;
-  } & CtaEvents | {
-    _key: string;
-  } & CtaBlogPost | {
-    _key: string;
-  } & GridLayout | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
-    _key: string;
-  } & YouTubeVideo | {
-    _key: string;
-  } & SpotifyWidget | {
-    _key: string;
-  } & BandcampWidget | {
-    _key: string;
-  } & EventBlock | {
-    _key: string;
-  } & CollabBlock | {
-    _key: string;
-  } & FavouriteBlock | {
-    _key: string;
-  } & CompanyLinksBlock | {
-    _key: string;
-  } & BlockList>;
-};
-
 export type Favourites = {
   _id: string;
   _type: "favourites";
@@ -1144,6 +1128,11 @@ export type HomePage = {
       _ref: string;
       _type: "reference";
       _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "favouritesIndexPage";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "collab";
     } | {
       _ref: string;
@@ -1155,6 +1144,16 @@ export type HomePage = {
       _type: "reference";
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "blogPost";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "termsAndConditions";
+    } | {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "privacyPolicy";
     };
     externalUrl?: string;
     pageSectionId?: string;
@@ -1167,6 +1166,120 @@ export type HomePage = {
   heroFeaturedItemsSubtitle?: string;
   heroCallToActionList?: CtaList;
   content?: PageBuilder;
+};
+
+export type PrivacyPolicy = {
+  _id: string;
+  _type: "privacyPolicy";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hide?: boolean;
+  title?: string;
+  content?: Array<{
+    _key: string;
+  } & PageSection | {
+    _key: string;
+  } & Divider | {
+    _key: string;
+  } & ItemList | {
+    _key: string;
+  } & RichText | {
+    _key: string;
+  } & Quote | {
+    _key: string;
+  } & TextImage | {
+    _key: string;
+  } & Card | {
+    _key: string;
+  } & CtaButton | {
+    _key: string;
+  } & CtaCalloutLink | {
+    _key: string;
+  } & CtaEmailButton | {
+    _key: string;
+  } & CtaEvents | {
+    _key: string;
+  } & CtaBlogPost | {
+    _key: string;
+  } & GridLayout | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
+    _key: string;
+  } & YouTubeVideo | {
+    _key: string;
+  } & SpotifyWidget | {
+    _key: string;
+  } & BandcampWidget | {
+    _key: string;
+  } & EventBlock | {
+    _key: string;
+  } & CollabBlock | {
+    _key: string;
+  } & FavouriteBlock | {
+    _key: string;
+  } & CompanyLinksBlock | {
+    _key: string;
+  } & BlockList>;
+};
+
+export type TermsAndConditions = {
+  _id: string;
+  _type: "termsAndConditions";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hide?: boolean;
+  title?: string;
+  content?: Array<{
+    _key: string;
+  } & PageSection | {
+    _key: string;
+  } & Divider | {
+    _key: string;
+  } & ItemList | {
+    _key: string;
+  } & RichText | {
+    _key: string;
+  } & Quote | {
+    _key: string;
+  } & TextImage | {
+    _key: string;
+  } & Card | {
+    _key: string;
+  } & CtaButton | {
+    _key: string;
+  } & CtaCalloutLink | {
+    _key: string;
+  } & CtaEmailButton | {
+    _key: string;
+  } & CtaEvents | {
+    _key: string;
+  } & CtaBlogPost | {
+    _key: string;
+  } & GridLayout | {
+    _key: string;
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
+    _key: string;
+  } & YouTubeVideo | {
+    _key: string;
+  } & SpotifyWidget | {
+    _key: string;
+  } & BandcampWidget | {
+    _key: string;
+  } & EventBlock | {
+    _key: string;
+  } & CollabBlock | {
+    _key: string;
+  } & FavouriteBlock | {
+    _key: string;
+  } & CompanyLinksBlock | {
+    _key: string;
+  } & BlockList>;
 };
 
 export type BlogPost = {
@@ -1327,6 +1440,31 @@ export type CollabLinksArray = {
     _type: "socialLinkItem";
     _key: string;
   }>;
+};
+
+export type FavouritesIndexPage = {
+  _id: string;
+  _type: "favouritesIndexPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  backgroundImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  subtitle?: string;
+  showFavouritesMessage?: boolean;
+  favouritesMessage?: Card;
 };
 
 export type EventsIndexPage = {
@@ -1637,7 +1775,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = NavSection | VerticalNavDivider | VerticalNavLink | NavLink | CtaList | SideContent | SideContentBlock | BlockList | CompanyLinksBlock | FavouriteBlock | CollabBlock | EventBlock | CtaBlogPost | CtaEvents | HomeHeroCtaButton | EmbeddedCtaEmailButton | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | GridLayout | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | PrivacyPolicy | TermsAndConditions | Favourites | Event | HomePage | BlogPost | BlogIndexPage | Collab | CollabLinksArray | EventsIndexPage | Page | Card | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = NavSection | VerticalNavDivider | VerticalNavLink | NavLink | CtaList | SideContent | SideContentBlock | BlockList | CompanyLinksBlock | FavouriteBlock | CollabBlock | EventBlock | CtaBlogPost | CtaEvents | HomeHeroCtaButton | EmbeddedCtaEmailButton | EmbeddedCtaButton | CtaEmailButton | CtaCalloutLink | CtaButton | TextImage | Quote | BandcampWidget | SpotifyWidget | YouTubeVideo | ImageGallery | ImageBlock | GridLayout | Icon | RichText | ItemList | Divider | SubSubSection | SubSection | CollabPageSection | PageSection | PageBuilder | Footer | Header | BlockContent | Favourites | Event | HomePage | PrivacyPolicy | TermsAndConditions | BlogPost | BlogIndexPage | Collab | CollabLinksArray | FavouritesIndexPage | EventsIndexPage | Page | Card | CompanyLinks | CompanyLinksArray | SiteSettings | Color | RgbaColor | HsvaColor | HslaColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY
@@ -1710,6 +1848,13 @@ export type PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -1722,6 +1867,20 @@ export type PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -1811,6 +1970,13 @@ export type PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -1823,6 +1989,20 @@ export type PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -1879,6 +2059,13 @@ export type PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -1891,6 +2078,20 @@ export type PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -1979,7 +2180,15 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -2035,6 +2244,13 @@ export type PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -2047,6 +2263,20 @@ export type PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -2249,6 +2479,13 @@ export type PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -2261,6 +2498,20 @@ export type PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -2350,6 +2601,13 @@ export type PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -2362,6 +2620,20 @@ export type PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -2418,6 +2690,13 @@ export type PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -2430,6 +2709,20 @@ export type PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -2518,7 +2811,15 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -2574,6 +2875,13 @@ export type PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -2586,6 +2894,20 @@ export type PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -2828,6 +3150,13 @@ export type PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -2840,6 +3169,20 @@ export type PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -2929,6 +3272,13 @@ export type PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -2941,6 +3291,20 @@ export type PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -2997,6 +3361,13 @@ export type PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -3009,6 +3380,20 @@ export type PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -3097,7 +3482,15 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -3152,6 +3545,13 @@ export type PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -3164,6 +3564,20 @@ export type PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -3398,6 +3812,13 @@ export type PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -3410,6 +3831,20 @@ export type PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -3495,6 +3930,13 @@ export type PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -3507,6 +3949,20 @@ export type PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -3562,6 +4018,13 @@ export type PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -3574,6 +4037,20 @@ export type PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -3657,7 +4134,15 @@ export type PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -3710,6 +4195,13 @@ export type PAGE_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -3722,6 +4214,20 @@ export type PAGE_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -4206,6 +4712,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -4218,6 +4731,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -4307,6 +4834,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -4319,6 +4853,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -4375,6 +4923,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -4387,6 +4942,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -4475,7 +5044,15 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -4531,6 +5108,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -4543,6 +5127,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -4745,6 +5343,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -4757,6 +5362,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -4846,6 +5465,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -4858,6 +5484,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -4914,6 +5554,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -4926,6 +5573,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -5014,7 +5675,15 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -5070,6 +5739,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -5082,6 +5758,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -5324,6 +6014,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -5336,6 +6033,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -5425,6 +6136,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -5437,6 +6155,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -5493,6 +6225,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -5505,6 +6244,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -5593,7 +6346,15 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -5648,6 +6409,13 @@ export type HOME_PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -5660,6 +6428,20 @@ export type HOME_PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -5894,6 +6676,13 @@ export type HOME_PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -5906,6 +6695,20 @@ export type HOME_PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -5991,6 +6794,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -6003,6 +6813,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -6058,6 +6882,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -6070,6 +6901,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -6153,7 +6998,15 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -6206,6 +7059,13 @@ export type HOME_PAGE_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -6218,6 +7078,20 @@ export type HOME_PAGE_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -6677,6 +7551,22 @@ export type HOME_PAGE_QUERYResult = {
   content: null;
 } | {
   _id: string;
+  _type: "favouritesIndexPage";
+  heroStyle: null;
+  heroTextColor: null;
+  showHeroLogo: null;
+  enableFeaturedItems: null;
+  featuredImages: null;
+  heroBackgroundImages: null;
+  heroImageTransitionDuration: null;
+  heroTitle: null;
+  heroSubtitle: null;
+  heroFeaturedItemsSubtitle: null;
+  heroCallToActionList: null;
+  heroContentPosition: null;
+  content: null;
+} | {
+  _id: string;
   _type: "footer";
   heroStyle: null;
   heroTextColor: null;
@@ -6756,6 +7646,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -6768,6 +7665,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -6846,6 +7757,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -6858,6 +7776,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -6929,6 +7861,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -6941,6 +7880,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -7030,6 +7983,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -7042,6 +8002,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -7098,6 +8072,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -7110,6 +8091,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -7198,7 +8193,15 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -7254,6 +8257,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -7266,6 +8276,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -7468,6 +8492,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -7480,6 +8511,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -7569,6 +8614,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -7581,6 +8633,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -7637,6 +8703,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -7649,6 +8722,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -7737,7 +8824,15 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -7793,6 +8888,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -7805,6 +8907,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -8047,6 +9163,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -8059,6 +9182,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -8148,6 +9285,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -8160,6 +9304,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -8216,6 +9374,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -8228,6 +9393,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -8316,7 +9495,15 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -8371,6 +9558,13 @@ export type HOME_PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -8383,6 +9577,20 @@ export type HOME_PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -8617,6 +9825,13 @@ export type HOME_PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -8629,6 +9844,20 @@ export type HOME_PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -8714,6 +9943,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -8726,6 +9962,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -8781,6 +10031,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -8793,6 +10050,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -8876,7 +10147,15 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -8929,6 +10208,13 @@ export type HOME_PAGE_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -8941,6 +10227,20 @@ export type HOME_PAGE_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -9393,6 +10693,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -9405,6 +10712,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -9494,6 +10815,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -9506,6 +10834,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -9562,6 +10904,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -9574,6 +10923,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -9662,7 +11025,15 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -9718,6 +11089,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -9730,6 +11108,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -9932,6 +11324,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -9944,6 +11343,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -10033,6 +11446,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -10045,6 +11465,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -10101,6 +11535,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -10113,6 +11554,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -10201,7 +11656,15 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -10257,6 +11720,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -10269,6 +11739,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -10511,6 +11995,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -10523,6 +12014,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -10612,6 +12117,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -10624,6 +12136,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -10680,6 +12206,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -10692,6 +12225,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -10780,7 +12327,15 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -10835,6 +12390,13 @@ export type HOME_PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -10847,6 +12409,20 @@ export type HOME_PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -11081,6 +12657,13 @@ export type HOME_PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -11093,6 +12676,20 @@ export type HOME_PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -11178,6 +12775,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -11190,6 +12794,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -11245,6 +12863,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -11257,6 +12882,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -11340,7 +12979,15 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -11393,6 +13040,13 @@ export type HOME_PAGE_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -11405,6 +13059,20 @@ export type HOME_PAGE_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -11857,6 +13525,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -11869,6 +13544,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -11958,6 +13647,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -11970,6 +13666,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -12026,6 +13736,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -12038,6 +13755,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -12126,7 +13857,15 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -12182,6 +13921,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -12194,6 +13940,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -12396,6 +14156,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -12408,6 +14175,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -12497,6 +14278,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -12509,6 +14297,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -12565,6 +14367,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -12577,6 +14386,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -12665,7 +14488,15 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -12721,6 +14552,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -12733,6 +14571,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -12975,6 +14827,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -12987,6 +14846,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -13076,6 +14949,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -13088,6 +14968,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -13144,6 +15038,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -13156,6 +15057,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -13244,7 +15159,15 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -13299,6 +15222,13 @@ export type HOME_PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -13311,6 +15241,20 @@ export type HOME_PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -13545,6 +15489,13 @@ export type HOME_PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -13557,6 +15508,20 @@ export type HOME_PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -13642,6 +15607,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -13654,6 +15626,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -13709,6 +15695,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -13721,6 +15714,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -13804,7 +15811,15 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -13857,6 +15872,13 @@ export type HOME_PAGE_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -13869,6 +15891,20 @@ export type HOME_PAGE_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -14369,6 +16405,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -14381,6 +16424,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -14470,6 +16527,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -14482,6 +16546,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -14538,6 +16616,13 @@ export type HOME_PAGE_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -14550,6 +16635,20 @@ export type HOME_PAGE_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -14638,7 +16737,15 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -14694,6 +16801,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -14706,6 +16820,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -14908,6 +17036,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -14920,6 +17055,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -15009,6 +17158,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -15021,6 +17177,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -15077,6 +17247,13 @@ export type HOME_PAGE_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -15089,6 +17266,20 @@ export type HOME_PAGE_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -15177,7 +17368,15 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -15233,6 +17432,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -15245,6 +17451,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -15487,6 +17707,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -15499,6 +17726,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -15588,6 +17829,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -15600,6 +17848,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -15656,6 +17918,13 @@ export type HOME_PAGE_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -15668,6 +17937,20 @@ export type HOME_PAGE_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -15756,7 +18039,15 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -15811,6 +18102,13 @@ export type HOME_PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -15823,6 +18121,20 @@ export type HOME_PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -16057,6 +18369,13 @@ export type HOME_PAGE_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -16069,6 +18388,20 @@ export type HOME_PAGE_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -16154,6 +18487,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -16166,6 +18506,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -16221,6 +18575,13 @@ export type HOME_PAGE_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -16233,6 +18594,20 @@ export type HOME_PAGE_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -16316,7 +18691,15 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -16369,6 +18752,13 @@ export type HOME_PAGE_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -16381,6 +18771,20 @@ export type HOME_PAGE_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -16812,6 +19216,13 @@ export type HEADER_QUERYResult = {
   hamburgerCallout: null;
 } | {
   _id: string;
+  _type: "favouritesIndexPage";
+  horizontalNav: null;
+  verticalNav: null;
+  verticalNavCtas: null;
+  hamburgerCallout: null;
+} | {
+  _id: string;
   _type: "footer";
   horizontalNav: null;
   verticalNav: null;
@@ -16856,6 +19267,13 @@ export type HEADER_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -16868,6 +19286,20 @@ export type HEADER_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -16916,6 +19348,13 @@ export type HEADER_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -16928,6 +19367,20 @@ export type HEADER_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -16971,6 +19424,13 @@ export type HEADER_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -16983,6 +19443,20 @@ export type HEADER_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -17107,6 +19581,15 @@ export type SITE_SETTINGS_QUERYResult = {
 } | {
   _id: string;
   _type: "favourites";
+  siteTitle: null;
+  defaultPageTitle: null;
+  siteDescription: null;
+  seoKeywords: null;
+  defaultOgImage: null;
+  companyEmail: null;
+} | {
+  _id: string;
+  _type: "favouritesIndexPage";
   siteTitle: null;
   defaultPageTitle: null;
   siteDescription: null;
@@ -17243,6 +19726,10 @@ export type COMPANY_LINKS_QUERYResult = {
 } | {
   _id: string;
   _type: "favourites";
+  companyLinks: null;
+} | {
+  _id: string;
+  _type: "favouritesIndexPage";
   companyLinks: null;
 } | {
   _id: string;
@@ -17393,6 +19880,27 @@ export type EVENTS_INDEX_PAGE_QUERYResult = {
   title: null;
   backgroundImage: null;
   subtitle: null;
+  noUpcomingEventsMessage: null;
+  showEventHelpCTA: null;
+  eventHelpCTAMessage: null;
+  hasEventsMessage: null;
+  eventsMessage: null;
+} | {
+  _id: string;
+  _type: "favouritesIndexPage";
+  title: string | null;
+  backgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    } | null;
+    alt: string | null;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
+  } | null;
+  subtitle: string | null;
   noUpcomingEventsMessage: null;
   showEventHelpCTA: null;
   eventHelpCTAMessage: null;
@@ -17610,6 +20118,15 @@ export type BLOG_INDEX_PAGE_QUERYResult = {
   closingCard: null;
 } | {
   _id: string;
+  _type: "favouritesIndexPage";
+  title: string | null;
+  heroImage: null;
+  subtitle: string | null;
+  noArticlesMessage: null;
+  hasClosingCard: null;
+  closingCard: null;
+} | {
+  _id: string;
   _type: "footer";
   title: null;
   heroImage: null;
@@ -17784,6 +20301,13 @@ export type BLOG_POST_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -17796,6 +20320,20 @@ export type BLOG_POST_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -17885,6 +20423,13 @@ export type BLOG_POST_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -17897,6 +20442,20 @@ export type BLOG_POST_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -17953,6 +20512,13 @@ export type BLOG_POST_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -17965,6 +20531,20 @@ export type BLOG_POST_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -18053,7 +20633,15 @@ export type BLOG_POST_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -18109,6 +20697,13 @@ export type BLOG_POST_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -18121,6 +20716,20 @@ export type BLOG_POST_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -18323,6 +20932,13 @@ export type BLOG_POST_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -18335,6 +20951,20 @@ export type BLOG_POST_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -18424,6 +21054,13 @@ export type BLOG_POST_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -18436,6 +21073,20 @@ export type BLOG_POST_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -18492,6 +21143,13 @@ export type BLOG_POST_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -18504,6 +21162,20 @@ export type BLOG_POST_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -18592,7 +21264,15 @@ export type BLOG_POST_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -18648,6 +21328,13 @@ export type BLOG_POST_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -18660,6 +21347,20 @@ export type BLOG_POST_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -18902,6 +21603,13 @@ export type BLOG_POST_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -18914,6 +21622,20 @@ export type BLOG_POST_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -19003,6 +21725,13 @@ export type BLOG_POST_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -19015,6 +21744,20 @@ export type BLOG_POST_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -19071,6 +21814,13 @@ export type BLOG_POST_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -19083,6 +21833,20 @@ export type BLOG_POST_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -19171,7 +21935,15 @@ export type BLOG_POST_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -19226,6 +21998,13 @@ export type BLOG_POST_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -19238,6 +22017,20 @@ export type BLOG_POST_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -19472,6 +22265,13 @@ export type BLOG_POST_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -19484,6 +22284,20 @@ export type BLOG_POST_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -19569,6 +22383,13 @@ export type BLOG_POST_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -19581,6 +22402,20 @@ export type BLOG_POST_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -19636,6 +22471,13 @@ export type BLOG_POST_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -19648,6 +22490,20 @@ export type BLOG_POST_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -19731,7 +22587,15 @@ export type BLOG_POST_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -19784,6 +22648,13 @@ export type BLOG_POST_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -19796,6 +22667,20 @@ export type BLOG_POST_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -20285,6 +23170,13 @@ export type COLLAB_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -20297,6 +23189,20 @@ export type COLLAB_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -20386,6 +23292,13 @@ export type COLLAB_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -20398,6 +23311,20 @@ export type COLLAB_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -20454,6 +23381,13 @@ export type COLLAB_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -20466,6 +23400,20 @@ export type COLLAB_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -20554,7 +23502,15 @@ export type COLLAB_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -20610,6 +23566,13 @@ export type COLLAB_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -20622,6 +23585,20 @@ export type COLLAB_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -20865,6 +23842,13 @@ export type COLLAB_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -20877,6 +23861,20 @@ export type COLLAB_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -20966,6 +23964,13 @@ export type COLLAB_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -20978,6 +23983,20 @@ export type COLLAB_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -21034,6 +24053,13 @@ export type COLLAB_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -21046,6 +24072,20 @@ export type COLLAB_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -21134,7 +24174,15 @@ export type COLLAB_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -21190,6 +24238,13 @@ export type COLLAB_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -21202,6 +24257,20 @@ export type COLLAB_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -21444,6 +24513,13 @@ export type COLLAB_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -21456,6 +24532,20 @@ export type COLLAB_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -21545,6 +24635,13 @@ export type COLLAB_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -21557,6 +24654,20 @@ export type COLLAB_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -21613,6 +24724,13 @@ export type COLLAB_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -21625,6 +24743,20 @@ export type COLLAB_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -21713,7 +24845,15 @@ export type COLLAB_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
           content: null;
         } | {
@@ -21768,6 +24908,13 @@ export type COLLAB_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -21780,6 +24927,20 @@ export type COLLAB_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -22186,6 +25347,165 @@ export type FAVOURITES_ALL_QUERYResult = Array<{
   link: string | null;
   linkLabel: string | null;
 }>;
+// Variable: FAVOURITES_INDEX_PAGE_QUERY
+// Query: *[_id == "favouritesIndexPage"][0]{  _id,  _type,  title,  backgroundImage{    asset,    alt,    hotspot,    crop  },  subtitle,  showFavouritesMessage,  favouritesMessage}
+export type FAVOURITES_INDEX_PAGE_QUERYResult = {
+  _id: string;
+  _type: "blogIndexPage";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: string | null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "blogPost";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: string | null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "collab";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "companyLinks";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "event";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "eventsIndexPage";
+  title: string | null;
+  backgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    } | null;
+    alt: string | null;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
+  } | null;
+  subtitle: string | null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "favourites";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "favouritesIndexPage";
+  title: string | null;
+  backgroundImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    } | null;
+    alt: string | null;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
+  } | null;
+  subtitle: string | null;
+  showFavouritesMessage: boolean | null;
+  favouritesMessage: Card | null;
+} | {
+  _id: string;
+  _type: "footer";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "header";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "homePage";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "page";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: string | null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "privacyPolicy";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "sanity.fileAsset";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "sanity.imageAsset";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "siteSettings";
+  title: null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | {
+  _id: string;
+  _type: "termsAndConditions";
+  title: string | null;
+  backgroundImage: null;
+  subtitle: null;
+  showFavouritesMessage: null;
+  favouritesMessage: null;
+} | null;
 // Variable: FOOTER_QUERY
 // Query: *[_type == "footer" && _id == "footer"][0]{  _id,  _type,  footerMessages[]{    _key,    title,    message  },  copyrightText}
 export type FOOTER_QUERYResult = {
@@ -22289,6 +25609,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -22301,6 +25628,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -22390,6 +25731,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -22402,6 +25750,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -22458,6 +25820,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -22470,6 +25839,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -22558,7 +25941,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -22614,6 +26005,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -22626,6 +26024,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -22828,6 +26240,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -22840,6 +26259,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -22929,6 +26362,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -22941,6 +26381,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -22997,6 +26451,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -23009,6 +26470,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -23097,7 +26572,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -23153,6 +26636,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -23165,6 +26655,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -23407,6 +26911,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -23419,6 +26930,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -23508,6 +27033,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -23520,6 +27052,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -23576,6 +27122,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -23588,6 +27141,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -23676,7 +27243,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -23731,6 +27306,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -23743,6 +27325,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -23977,6 +27573,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -23989,6 +27592,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -24074,6 +27691,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -24086,6 +27710,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -24141,6 +27779,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -24153,6 +27798,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -24236,7 +27895,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -24289,6 +27956,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -24301,6 +27975,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -24715,6 +28403,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   content: null;
 } | {
   _id: string;
+  _type: "favouritesIndexPage";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
   _type: "footer";
   _updatedAt: string;
   hide: null;
@@ -24793,6 +28488,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -24805,6 +28507,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -24894,6 +28610,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -24906,6 +28629,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -24962,6 +28699,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -24974,6 +28718,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -25062,7 +28820,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -25118,6 +28884,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -25130,6 +28903,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -25332,6 +29119,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -25344,6 +29138,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -25433,6 +29241,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -25445,6 +29260,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -25501,6 +29330,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -25513,6 +29349,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -25601,7 +29451,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -25657,6 +29515,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -25669,6 +29534,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -25911,6 +29790,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -25923,6 +29809,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -26012,6 +29912,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -26024,6 +29931,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -26080,6 +30001,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -26092,6 +30020,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -26180,7 +30122,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -26235,6 +30185,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -26247,6 +30204,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -26481,6 +30452,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -26493,6 +30471,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -26578,6 +30570,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -26590,6 +30589,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -26645,6 +30658,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -26657,6 +30677,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -26740,7 +30774,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -26793,6 +30835,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -26805,6 +30854,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -27248,6 +31311,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -27260,6 +31330,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -27349,6 +31433,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -27361,6 +31452,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -27417,6 +31522,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -27429,6 +31541,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -27517,7 +31643,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -27573,6 +31707,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -27585,6 +31726,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -27787,6 +31942,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -27799,6 +31961,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -27888,6 +32064,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -27900,6 +32083,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -27956,6 +32153,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -27968,6 +32172,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -28056,7 +32274,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -28112,6 +32338,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -28124,6 +32357,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -28366,6 +32613,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -28378,6 +32632,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -28467,6 +32735,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -28479,6 +32754,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -28535,6 +32824,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -28547,6 +32843,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -28635,7 +32945,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -28690,6 +33008,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -28702,6 +33027,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -28936,6 +33275,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -28948,6 +33294,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -29033,6 +33393,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -29045,6 +33412,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -29100,6 +33481,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -29112,6 +33500,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -29195,7 +33597,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -29248,6 +33658,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -29260,6 +33677,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -29703,6 +34134,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -29715,6 +34153,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -29804,6 +34256,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -29816,6 +34275,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -29872,6 +34345,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -29884,6 +34364,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -29972,7 +34466,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -30028,6 +34530,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -30040,6 +34549,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -30242,6 +34765,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -30254,6 +34784,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -30343,6 +34887,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -30355,6 +34906,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -30411,6 +34976,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -30423,6 +34995,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -30511,7 +35097,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -30567,6 +35161,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -30579,6 +35180,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -30821,6 +35436,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -30833,6 +35455,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -30922,6 +35558,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -30934,6 +35577,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -30990,6 +35647,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -31002,6 +35666,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -31090,7 +35768,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -31145,6 +35831,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -31157,6 +35850,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -31391,6 +36098,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -31403,6 +36117,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -31488,6 +36216,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -31500,6 +36235,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -31555,6 +36304,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -31567,6 +36323,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -31650,7 +36420,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -31703,6 +36481,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -31715,6 +36500,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -32179,6 +36978,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -32191,6 +36997,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -32280,6 +37100,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -32292,6 +37119,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -32348,6 +37189,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -32360,6 +37208,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -32448,7 +37310,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -32504,6 +37374,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -32516,6 +37393,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -32718,6 +37609,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -32730,6 +37628,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -32819,6 +37731,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -32831,6 +37750,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -32887,6 +37820,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -32899,6 +37839,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -32987,7 +37941,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -33043,6 +38005,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -33055,6 +38024,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -33297,6 +38280,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -33309,6 +38299,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -33398,6 +38402,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -33410,6 +38421,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -33466,6 +38491,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -33478,6 +38510,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -33566,7 +38612,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -33621,6 +38675,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -33633,6 +38694,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -33867,6 +38942,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -33879,6 +38961,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -33964,6 +39060,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -33976,6 +39079,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -34031,6 +39148,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -34043,6 +39167,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -34126,7 +39264,15 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -34179,6 +39325,13 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -34191,6 +39344,20 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -34644,6 +39811,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -34656,6 +39830,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -34745,6 +39933,13 @@ export type PRIVACY_POLICY_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -34757,6 +39952,20 @@ export type PRIVACY_POLICY_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -34813,6 +40022,13 @@ export type PRIVACY_POLICY_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -34825,6 +40041,20 @@ export type PRIVACY_POLICY_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -34913,7 +40143,15 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -34969,6 +40207,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -34981,6 +40226,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -35183,6 +40442,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -35195,6 +40461,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -35284,6 +40564,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -35296,6 +40583,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -35352,6 +40653,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -35364,6 +40672,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -35452,7 +40774,15 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -35508,6 +40838,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -35520,6 +40857,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -35762,6 +41113,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -35774,6 +41132,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -35863,6 +41235,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -35875,6 +41254,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -35931,6 +41324,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -35943,6 +41343,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -36031,7 +41445,15 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -36086,6 +41508,13 @@ export type PRIVACY_POLICY_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -36098,6 +41527,20 @@ export type PRIVACY_POLICY_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -36332,6 +41775,13 @@ export type PRIVACY_POLICY_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -36344,6 +41794,20 @@ export type PRIVACY_POLICY_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -36429,6 +41893,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -36441,6 +41912,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -36496,6 +41981,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -36508,6 +42000,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -36591,7 +42097,15 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -36644,6 +42158,13 @@ export type PRIVACY_POLICY_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -36656,6 +42177,20 @@ export type PRIVACY_POLICY_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -37070,6 +42605,13 @@ export type PRIVACY_POLICY_QUERYResult = {
   content: null;
 } | {
   _id: string;
+  _type: "favouritesIndexPage";
+  _updatedAt: string;
+  hide: null;
+  title: string | null;
+  content: null;
+} | {
+  _id: string;
   _type: "footer";
   _updatedAt: string;
   hide: null;
@@ -37148,6 +42690,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -37160,6 +42709,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -37249,6 +42812,13 @@ export type PRIVACY_POLICY_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -37261,6 +42831,20 @@ export type PRIVACY_POLICY_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -37317,6 +42901,13 @@ export type PRIVACY_POLICY_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -37329,6 +42920,20 @@ export type PRIVACY_POLICY_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -37417,7 +43022,15 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -37473,6 +43086,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -37485,6 +43105,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -37687,6 +43321,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -37699,6 +43340,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -37788,6 +43443,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -37800,6 +43462,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -37856,6 +43532,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -37868,6 +43551,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -37956,7 +43653,15 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -38012,6 +43717,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -38024,6 +43736,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -38266,6 +43992,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -38278,6 +44011,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -38367,6 +44114,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -38379,6 +44133,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -38435,6 +44203,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -38447,6 +44222,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -38535,7 +44324,15 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -38590,6 +44387,13 @@ export type PRIVACY_POLICY_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -38602,6 +44406,20 @@ export type PRIVACY_POLICY_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -38836,6 +44654,13 @@ export type PRIVACY_POLICY_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -38848,6 +44673,20 @@ export type PRIVACY_POLICY_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -38933,6 +44772,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -38945,6 +44791,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -39000,6 +44860,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -39012,6 +44879,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -39095,7 +44976,15 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -39148,6 +45037,13 @@ export type PRIVACY_POLICY_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -39160,6 +45056,20 @@ export type PRIVACY_POLICY_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -39603,6 +45513,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -39615,6 +45532,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -39704,6 +45635,13 @@ export type PRIVACY_POLICY_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -39716,6 +45654,20 @@ export type PRIVACY_POLICY_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -39772,6 +45724,13 @@ export type PRIVACY_POLICY_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -39784,6 +45743,20 @@ export type PRIVACY_POLICY_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -39872,7 +45845,15 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -39928,6 +45909,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -39940,6 +45928,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -40142,6 +46144,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -40154,6 +46163,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -40243,6 +46266,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -40255,6 +46285,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -40311,6 +46355,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -40323,6 +46374,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -40411,7 +46476,15 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -40467,6 +46540,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -40479,6 +46559,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -40721,6 +46815,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -40733,6 +46834,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -40822,6 +46937,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -40834,6 +46956,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -40890,6 +47026,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -40902,6 +47045,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -40990,7 +47147,15 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -41045,6 +47210,13 @@ export type PRIVACY_POLICY_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -41057,6 +47229,20 @@ export type PRIVACY_POLICY_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -41291,6 +47477,13 @@ export type PRIVACY_POLICY_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -41303,6 +47496,20 @@ export type PRIVACY_POLICY_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -41388,6 +47595,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -41400,6 +47614,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -41455,6 +47683,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -41467,6 +47702,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -41550,7 +47799,15 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -41603,6 +47860,13 @@ export type PRIVACY_POLICY_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -41615,6 +47879,20 @@ export type PRIVACY_POLICY_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -42058,6 +48336,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -42070,6 +48355,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -42159,6 +48458,13 @@ export type PRIVACY_POLICY_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -42171,6 +48477,20 @@ export type PRIVACY_POLICY_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -42227,6 +48547,13 @@ export type PRIVACY_POLICY_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -42239,6 +48566,20 @@ export type PRIVACY_POLICY_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -42327,7 +48668,15 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -42383,6 +48732,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -42395,6 +48751,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -42597,6 +48967,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -42609,6 +48986,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -42698,6 +49089,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -42710,6 +49108,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -42766,6 +49178,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -42778,6 +49197,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -42866,7 +49299,15 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -42922,6 +49363,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -42934,6 +49382,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -43176,6 +49638,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -43188,6 +49657,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -43277,6 +49760,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -43289,6 +49779,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -43345,6 +49849,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -43357,6 +49868,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -43445,7 +49970,15 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -43500,6 +50033,13 @@ export type PRIVACY_POLICY_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -43512,6 +50052,20 @@ export type PRIVACY_POLICY_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -43746,6 +50300,13 @@ export type PRIVACY_POLICY_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -43758,6 +50319,20 @@ export type PRIVACY_POLICY_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -43843,6 +50418,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -43855,6 +50437,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -43910,6 +50506,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -43922,6 +50525,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -44005,7 +50622,15 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -44058,6 +50683,13 @@ export type PRIVACY_POLICY_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -44070,6 +50702,20 @@ export type PRIVACY_POLICY_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -44534,6 +51180,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -44546,6 +51199,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -44635,6 +51302,13 @@ export type PRIVACY_POLICY_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -44647,6 +51321,20 @@ export type PRIVACY_POLICY_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -44703,6 +51391,13 @@ export type PRIVACY_POLICY_QUERYResult = {
       href: "/events";
     } | {
       _id: string;
+      _type: "favouritesIndexPage";
+      title: string | null;
+      slug: null;
+      pageType: "favouritesIndexPage";
+      href: null;
+    } | {
+      _id: string;
       _type: "homePage";
       title: null;
       slug: null;
@@ -44715,6 +51410,20 @@ export type PRIVACY_POLICY_QUERYResult = {
       slug: Slug | null;
       pageType: "page";
       href: string | null;
+    } | {
+      _id: string;
+      _type: "privacyPolicy";
+      title: string | null;
+      slug: null;
+      pageType: "privacyPolicy";
+      href: null;
+    } | {
+      _id: string;
+      _type: "termsAndConditions";
+      title: string | null;
+      slug: null;
+      pageType: "termsAndConditions";
+      href: null;
     } | null;
     externalUrl?: string;
     pageSectionId?: string;
@@ -44803,7 +51512,15 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    blockAdded?: string;
+    itemsPerRow?: "3" | "4";
+    favouriteListType?: "automatic" | "manual";
+    favourites?: Array<{
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      _key: string;
+      [internalGroqTypeReferenceTo]?: "favourites";
+    }>;
     image: null;
     content: null;
   } | {
@@ -44859,6 +51576,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -44871,6 +51595,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -45073,6 +51811,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -45085,6 +51830,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -45174,6 +51933,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -45186,6 +51952,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -45242,6 +52022,13 @@ export type PRIVACY_POLICY_QUERYResult = {
         href: "/events";
       } | {
         _id: string;
+        _type: "favouritesIndexPage";
+        title: string | null;
+        slug: null;
+        pageType: "favouritesIndexPage";
+        href: null;
+      } | {
+        _id: string;
         _type: "homePage";
         title: null;
         slug: null;
@@ -45254,6 +52041,20 @@ export type PRIVACY_POLICY_QUERYResult = {
         slug: Slug | null;
         pageType: "page";
         href: string | null;
+      } | {
+        _id: string;
+        _type: "privacyPolicy";
+        title: string | null;
+        slug: null;
+        pageType: "privacyPolicy";
+        href: null;
+      } | {
+        _id: string;
+        _type: "termsAndConditions";
+        title: string | null;
+        slug: null;
+        pageType: "termsAndConditions";
+        href: null;
       } | null;
       externalUrl?: string;
       pageSectionId?: string;
@@ -45342,7 +52143,15 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      blockAdded?: string;
+      itemsPerRow?: "3" | "4";
+      favouriteListType?: "automatic" | "manual";
+      favourites?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "favourites";
+      }>;
       image: null;
       content: null;
     } | {
@@ -45398,6 +52207,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -45410,6 +52226,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -45652,6 +52482,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -45664,6 +52501,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -45753,6 +52604,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -45765,6 +52623,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -45821,6 +52693,13 @@ export type PRIVACY_POLICY_QUERYResult = {
           href: "/events";
         } | {
           _id: string;
+          _type: "favouritesIndexPage";
+          title: string | null;
+          slug: null;
+          pageType: "favouritesIndexPage";
+          href: null;
+        } | {
+          _id: string;
           _type: "homePage";
           title: null;
           slug: null;
@@ -45833,6 +52712,20 @@ export type PRIVACY_POLICY_QUERYResult = {
           slug: Slug | null;
           pageType: "page";
           href: string | null;
+        } | {
+          _id: string;
+          _type: "privacyPolicy";
+          title: string | null;
+          slug: null;
+          pageType: "privacyPolicy";
+          href: null;
+        } | {
+          _id: string;
+          _type: "termsAndConditions";
+          title: string | null;
+          slug: null;
+          pageType: "termsAndConditions";
+          href: null;
         } | null;
         externalUrl?: string;
         pageSectionId?: string;
@@ -45921,7 +52814,15 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        blockAdded?: string;
+        itemsPerRow?: "3" | "4";
+        favouriteListType?: "automatic" | "manual";
+        favourites?: Array<{
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          _key: string;
+          [internalGroqTypeReferenceTo]?: "favourites";
+        }>;
         image: null;
         content: null;
       } | {
@@ -45976,6 +52877,13 @@ export type PRIVACY_POLICY_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -45988,6 +52896,20 @@ export type PRIVACY_POLICY_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -46222,6 +53144,13 @@ export type PRIVACY_POLICY_QUERYResult = {
               href: "/events";
             } | {
               _id: string;
+              _type: "favouritesIndexPage";
+              title: string | null;
+              slug: null;
+              pageType: "favouritesIndexPage";
+              href: null;
+            } | {
+              _id: string;
               _type: "homePage";
               title: null;
               slug: null;
@@ -46234,6 +53163,20 @@ export type PRIVACY_POLICY_QUERYResult = {
               slug: Slug | null;
               pageType: "page";
               href: string | null;
+            } | {
+              _id: string;
+              _type: "privacyPolicy";
+              title: string | null;
+              slug: null;
+              pageType: "privacyPolicy";
+              href: null;
+            } | {
+              _id: string;
+              _type: "termsAndConditions";
+              title: string | null;
+              slug: null;
+              pageType: "termsAndConditions";
+              href: null;
             } | null;
             externalUrl?: string;
             pageSectionId?: string;
@@ -46319,6 +53262,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -46331,6 +53281,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -46386,6 +53350,13 @@ export type PRIVACY_POLICY_QUERYResult = {
             href: "/events";
           } | {
             _id: string;
+            _type: "favouritesIndexPage";
+            title: string | null;
+            slug: null;
+            pageType: "favouritesIndexPage";
+            href: null;
+          } | {
+            _id: string;
             _type: "homePage";
             title: null;
             slug: null;
@@ -46398,6 +53369,20 @@ export type PRIVACY_POLICY_QUERYResult = {
             slug: Slug | null;
             pageType: "page";
             href: string | null;
+          } | {
+            _id: string;
+            _type: "privacyPolicy";
+            title: string | null;
+            slug: null;
+            pageType: "privacyPolicy";
+            href: null;
+          } | {
+            _id: string;
+            _type: "termsAndConditions";
+            title: string | null;
+            slug: null;
+            pageType: "termsAndConditions";
+            href: null;
           } | null;
           externalUrl?: string;
           pageSectionId?: string;
@@ -46481,7 +53466,15 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          blockAdded?: string;
+          itemsPerRow?: "3" | "4";
+          favouriteListType?: "automatic" | "manual";
+          favourites?: Array<{
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            _key: string;
+            [internalGroqTypeReferenceTo]?: "favourites";
+          }>;
           image: null;
         } | {
           _key: string;
@@ -46534,6 +53527,13 @@ export type PRIVACY_POLICY_QUERYResult = {
                 href: "/events";
               } | {
                 _id: string;
+                _type: "favouritesIndexPage";
+                title: string | null;
+                slug: null;
+                pageType: "favouritesIndexPage";
+                href: null;
+              } | {
+                _id: string;
                 _type: "homePage";
                 title: null;
                 slug: null;
@@ -46546,6 +53546,20 @@ export type PRIVACY_POLICY_QUERYResult = {
                 slug: Slug | null;
                 pageType: "page";
                 href: string | null;
+              } | {
+                _id: string;
+                _type: "privacyPolicy";
+                title: string | null;
+                slug: null;
+                pageType: "privacyPolicy";
+                href: null;
+              } | {
+                _id: string;
+                _type: "termsAndConditions";
+                title: string | null;
+                slug: null;
+                pageType: "termsAndConditions";
+                href: null;
               } | null;
               externalUrl?: string;
               pageSectionId?: string;
@@ -46944,6 +53958,7 @@ declare module "@sanity/client" {
     "*[_type == \"collab\" && defined(slug.current)]|order(order asc, name asc){\n  _id,\n  name,\n  slug,\n  category,\n  location,\n  order,\n  previewImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  shortDescription,\n  useShortDescriptionForCards,\n  cardDescription\n}": COLLABS_ALL_QUERYResult;
     "*[_type == \"collab\" && defined(slug.current)]{\n  _id,\n  _updatedAt,\n  name,\n  slug\n}": COLLABS_SITEMAP_QUERYResult;
     "*[_type == \"favourites\"]|order(order asc, name asc){\n  _id,\n  name,\n  category,\n  order,\n  profileImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  description,\n  link,\n  linkLabel\n}": FAVOURITES_ALL_QUERYResult;
+    "*[_id == \"favouritesIndexPage\"][0]{\n  _id,\n  _type,\n  title,\n  backgroundImage{\n    asset,\n    alt,\n    hotspot,\n    crop\n  },\n  subtitle,\n  showFavouritesMessage,\n  favouritesMessage\n}": FAVOURITES_INDEX_PAGE_QUERYResult;
     "*[_type == \"footer\" && _id == \"footer\"][0]{\n  _id,\n  _type,\n  footerMessages[]{\n    _key,\n    title,\n    message\n  },\n  copyrightText\n}": FOOTER_QUERYResult;
     "*[_type == \"page\" && defined(slug.current)]{\n  _id,\n  _updatedAt,\n  title,\n  slug\n}": ALL_PAGES_QUERYResult;
     "*[_type == \"blogPost\" && defined(slug.current)]{\n  _id,\n  _updatedAt,\n  title,\n  slug\n}": ALL_BLOG_POSTS_SLUGS_QUERYResult;

@@ -10,25 +10,92 @@ export const favouriteBlockType = defineType({
   title: 'Favourite Block',
   type: 'object',
   icon: HeartIcon,
-  description: 'Displays all favourite bands and artists in a responsive grid layout',
+  description: 'Displays favourite bands and artists in a responsive grid layout',
   options: {
     columns: 1,
     collapsible: false,
   },
   fields: [
     defineField({
-      name: 'blockAdded',
-      title: 'Favourite Block Added!',
+      name: 'itemsPerRow',
+      title: 'Items Per Row',
       type: 'string',
-      initialValue: 'This block will display all favourites in order. You can close this dialog.',
-      readOnly: true,
+      description:
+        'Maximum number of favourites to display per row on desktop.',
+      options: {
+        list: [
+          { title: '3 items per row', value: '3' },
+          { title: '4 items per row', value: '4' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: '3',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'favouriteListType',
+      title: 'Favourite List',
+      type: 'string',
+      description: 'Choose how to generate the favourite list',
+      options: {
+        list: [
+          {
+            title: 'Automatic (uses ordering from Favourites Index page to fill a single row)',
+            value: 'automatic',
+          },
+          { title: 'Manual selection', value: 'manual' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'automatic',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'favourites',
+      title: 'Select Favourites',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'favourites' }],
+          options: {
+            filter: () => {
+              // This will show all favourites, sorted by display order
+              return {
+                filter: '_type == "favourites"',
+                params: {},
+              };
+            },
+          },
+        },
+      ],
+      description:
+        'Choose one or multiple favourites to display. Favourites will be shown in the order you add them here.',
+      hidden: ({ parent }) => parent?.favouriteListType !== 'manual',
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as { favouriteListType?: string };
+          if (parent?.favouriteListType === 'manual' && (!value || value.length === 0)) {
+            return 'Please select at least one favourite when using manual selection';
+          }
+          return true;
+        }),
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      favourites: 'favourites',
+      favouriteListType: 'favouriteListType',
+      itemsPerRow: 'itemsPerRow',
+    },
+    prepare({ favourites, favouriteListType, itemsPerRow }) {
+      const favouriteCount = favouriteListType === 'manual' ? favourites?.length || 0 : 'Auto';
+      const itemsText = itemsPerRow ? ` • ${itemsPerRow}/row` : '';
+      const listTypeText = favouriteListType === 'automatic' ? 'Auto' : 'Manual';
+
       return {
-        title: 'Favourites Block',
-        subtitle: 'Displays all favourite bands and artists in a responsive grid',
+        title: 'Favourite Block',
+        subtitle: `${listTypeText} • ${favouriteCount} favourite${favouriteCount !== 1 && favouriteCount !== 'Auto' ? 's' : ''}${itemsText}`,
         media: HeartIcon,
       };
     },

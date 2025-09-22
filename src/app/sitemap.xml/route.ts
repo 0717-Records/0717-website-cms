@@ -28,6 +28,7 @@ export async function GET() {
     { url: '/blog', changefreq: 'daily', priority: '0.9' },
     { url: '/events', changefreq: 'weekly', priority: '0.8' },
     { url: '/collabs', changefreq: 'weekly', priority: '0.8' },
+    { url: '/favourites', changefreq: 'weekly', priority: '0.8' },
   ];
 
   // Add legal pages if they exist and are not hidden

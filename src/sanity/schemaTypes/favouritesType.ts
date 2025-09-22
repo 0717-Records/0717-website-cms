@@ -48,7 +48,7 @@ export const favouritesType = defineType({
       name: 'order',
       title: 'Display Order',
       type: 'number',
-      description: 'Order in which this favourite appears (lower numbers appear first)',
+      description: 'Controls ordering on the Favourites Index page and when auto is selected for the Favourite Block (lower numbers appear first)',
       initialValue: 100,
       validation: (Rule) =>
         Rule.required()
