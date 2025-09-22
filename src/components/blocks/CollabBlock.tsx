@@ -27,7 +27,7 @@ const CollabBlock = ({
   // Calculate grid classes based on itemsPerRow
   const gridClasses =
     itemsPerRow === '4'
-      ? 'w-[calc((100%-1*2rem)/2)] sm:w-[calc((100%-2*2rem)/3)] md:w-[calc((100%-3*1rem)/4)]'
+      ? 'w-[calc((100%-1*2rem)/2)] sm:w-[calc((100%-2*1rem)/3)] md:w-[calc((100%-3*1rem)/4)]'
       : 'w-[calc((100%-1*2rem)/2)] sm:w-[calc((100%-2*2rem)/3)]';
 
   if (displayCollabs.length === 0 && !showCTA) {
