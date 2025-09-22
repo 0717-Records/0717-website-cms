@@ -68,7 +68,7 @@ const CTAEmailButton = ({ className = '' }: CTAEmailButtonProps) => {
           <Icon className='w-4 h-4 text-white group-hover:text-black transition-colors duration-200' />
         </div>
       </div>
-      <span className='text-body-sm sm:text-body-base truncate max-w-full leading-tight transition-colors duration-200'>
+      <span className='text-body-xs sm:text-body-base truncate max-w-full leading-tight transition-colors duration-200'>
         {email}
       </span>
     </button>
