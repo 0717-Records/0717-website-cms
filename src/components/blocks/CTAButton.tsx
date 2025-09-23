@@ -23,7 +23,6 @@ const CTAButton = (props: CTAButtonProps) => {
     pageSectionId,
   } = props;
 
-
   const cleanText = stegaClean(text);
   const cleanExternalUrl = stegaClean(externalUrl);
   const cleanVariant = stegaClean(variant) as 'filled' | 'outline';
@@ -50,7 +49,6 @@ const CTAButton = (props: CTAButtonProps) => {
           // Fallback to slug-based URL for backward compatibility
           href = `/${internalLink.slug.current}`;
         } else {
-
           // Check if this is a dereferenced object (has actual page type) or reference object
           const pageType = internalLink._type;
           if (pageType && pageType !== 'reference') {
@@ -67,9 +65,17 @@ const CTAButton = (props: CTAButtonProps) => {
               href = '/terms-and-conditions';
             } else if (pageType === 'privacyPolicy') {
               href = '/privacy-policy';
-            } else if (pageType === 'blogPost' && 'slug' in internalLink && internalLink.slug?.current) {
+            } else if (
+              pageType === 'blogPost' &&
+              'slug' in internalLink &&
+              internalLink.slug?.current
+            ) {
               href = `/blog/${internalLink.slug.current}`;
-            } else if (pageType === 'collab' && 'slug' in internalLink && internalLink.slug?.current) {
+            } else if (
+              pageType === 'collab' &&
+              'slug' in internalLink &&
+              internalLink.slug?.current
+            ) {
               href = `/collabs/${internalLink.slug.current}`;
             } else if ('slug' in internalLink && internalLink.slug?.current) {
               href = `/${internalLink.slug.current}`;
@@ -118,7 +124,7 @@ const CTAButton = (props: CTAButtonProps) => {
   const alignmentClasses = getAlignmentClasses(alignment, inheritAlignment);
 
   // Determine width class - if className contains 'w-full', use that, otherwise use responsive default
-  const widthClass = className.includes('w-full') ? 'w-full' : 'w-full sm:w-auto';
+  const widthClass = className.includes('w-full') ? 'w-full' : 'w-auto';
 
   return (
     <div className={`flex ${alignmentClasses} ${className}`.trim()}>
