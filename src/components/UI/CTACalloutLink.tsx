@@ -41,12 +41,14 @@ const CTACalloutLink = ({
   const content = (
     <div
       className={`
-        bg-brand-secondary/10 
-        border border-brand-secondary/20 
-        rounded-lg 
-        py-4 
-        px-6 
-        sm:py-6 
+        bg-brand-secondary/10
+        border border-brand-secondary/20
+        rounded-lg
+        py-3
+        px-4
+        [@media(min-width:400px)]:py-4
+        [@media(min-width:400px)]:px-6
+        sm:py-6
         sm:px-8 
         w-full 
         ${maxCardWidth}  
@@ -60,11 +62,11 @@ const CTACalloutLink = ({
         group
         ${className}
       `.trim()}>
-      <div className='flex flex-col [@media(min-width:400px)]:flex-row justify-center items-center gap-6 md:gap-10'>
+      <div className='flex flex-row justify-center items-center gap-4 [@media(min-width:400px)]:gap-6 md:gap-8'>
         {/* Image */}
         {image && (
           <div className='flex-shrink-0'>
-            <div className='w-18 h-18 [@media(min-width:400px)]:w-24 [@media(min-width:400px)]:h-24 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center'>
+            <div className='w-16 h-16 [@media(min-width:400px)]:w-24 [@media(min-width:400px)]:h-24 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center'>
               <Image
                 src={image.src}
                 alt={image.alt}
@@ -78,15 +80,17 @@ const CTACalloutLink = ({
 
         {/* Content */}
         {(heading || text) && (
-          <div className='flex-grow text-center [@media(min-width:400px)]:text-left'>
-            {heading && <div className='font-semibold text-body-lg mb-1'>{heading}</div>}
-            {text && <p className='text-gray-600 leading-relaxed whitespace-pre-line'>{text}</p>}
+          <div className='flex-grow text-left min-w-0'>
+            {heading && <div className='font-semibold text-body-base [@media(min-width:400px)]:text-body-lg mb-1 leading-tight'>{heading}</div>}
+            {text && <p className='text-gray-600 text-body-sm [@media(min-width:400px)]:text-body-base leading-snug [@media(min-width:400px)]:leading-relaxed whitespace-pre-line'>{text}</p>}
           </div>
         )}
 
-        {/* Link Icon */}
-        <div className='flex-shrink-0 bg-brand-secondary group-hover:bg-brand-primary p-4 [@media(min-width:400px)]:p-6 rounded-full transition-colors duration-200'>
-          <LinkIcon className='w-6 h-6 text-black' />
+        {/* Link Icon - Consistent style with hover circle */}
+        <div className='flex-shrink-0 flex items-center justify-center'>
+          <div className='group-hover:bg-brand-primary p-3 rounded-full transition-all duration-200 group-hover:shadow-sm'>
+            <LinkIcon className='w-5 h-5 text-brand-secondary group-hover:text-black transition-colors duration-200' />
+          </div>
         </div>
       </div>
     </div>
