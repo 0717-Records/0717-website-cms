@@ -434,13 +434,8 @@ const sideContentProjection = `sideContent[]{
   ctaBlocks[]{
     _type,
     _key,
-    _type == "ctaCalloutLink" => {
-      ...,
-      internalLink->${internalLinkProjection}
-    },
-    _type == "ctaEmailButton" => {
-      ...
-    }
+    _type == "embeddedCtaButton" => {${fullLinkProjection}},
+    _type == "embeddedCtaEmailButton" => {...}
   }
 }`;
 
