@@ -251,7 +251,8 @@ const BlockRenderer = ({
                   topTextPath={`${blockPath}.topText`}
                   inheritAlignment={alignment}
                   textAlign={(block as { textAlign?: string }).textAlign}
-                  shouldApplyBottomPadding={shouldApplyBottomPadding}>
+                  shouldApplyBottomPadding={shouldApplyBottomPadding}
+                  useCompactGap={(block as { useCompactGap?: boolean }).useCompactGap}>
                   {renderNestedContent(block.content)}
                 </PageSection>
               </BlockWrapper>

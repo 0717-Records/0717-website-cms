@@ -40,6 +40,12 @@ export const sectionBottomPadding = 'pb-26 md:pb-40';
 export const collabSectionBottomPadding = 'pb-16 md:pb-20';
 
 /**
+ * Compact bottom padding for PageSections when useCompactGap is enabled
+ * Provides smaller spacing between sections for better visual flow
+ */
+export const sectionCompactBottomPadding = 'pb-12 md:pb-16';
+
+/**
  * Space after most content blocks (with exceptions defined in implementation)
  */
 export const contentBlockBottomSpacing = 'mb-6 md:mb-8';

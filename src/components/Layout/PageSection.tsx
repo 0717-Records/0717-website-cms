@@ -15,6 +15,7 @@ import {
   sectionTitleBottomSpacing,
   sectionDividerBottomSpacing,
   sectionBottomPadding,
+  sectionCompactBottomPadding,
 } from '@/utils/spacingConstants';
 
 // Context to track if PageSection has a title (affects nested section heading levels)
@@ -30,6 +31,7 @@ interface PageSectionProps extends SanityLiveEditingProps {
   inheritAlignment?: 'left' | 'center' | 'right';
   textAlign?: string; // NOTE: This field is currently not set in the CMS, but has been left here for the future in case we want to allow for section level text alignment control in the CMS
   shouldApplyBottomPadding?: boolean; // Whether to apply bottom padding (omitted for last section if no orphaned content follows)
+  useCompactGap?: boolean; // Whether to use compact spacing instead of default spacing
   topTextPath?: string;
 }
 
@@ -48,6 +50,7 @@ const PageSection = ({
   inheritAlignment,
   textAlign = 'inherit',
   shouldApplyBottomPadding = true,
+  useCompactGap = false,
 }: PageSectionProps) => {
   // Create data attributes for Sanity live editing
   const titleDataAttribute = createSanityDataAttribute(documentId, documentType, titlePath);
@@ -73,11 +76,17 @@ const PageSection = ({
 
   const hasTitle = Boolean(title);
 
+  // Determine which bottom padding to use based on compact gap setting and shouldApplyBottomPadding
+  const getBottomPaddingClass = () => {
+    if (!shouldApplyBottomPadding) return '';
+    return useCompactGap ? sectionCompactBottomPadding : sectionBottomPadding;
+  };
+
   return (
     <PageSectionContext.Provider value={{ hasTitle }}>
       <section
         id={anchorId ? stegaClean(anchorId) : undefined}
-        className={`${shouldApplyBottomPadding ? sectionBottomPadding : ''} ${className}`.trim()}>
+        className={`${getBottomPaddingClass()} ${className}`.trim()}>
         {/* Title is now always present since it's required */}
         <div className={getTextAlignClass(effectiveTextAlign)}>
           <Heading

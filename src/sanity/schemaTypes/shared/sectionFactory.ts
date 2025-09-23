@@ -130,6 +130,18 @@ export function createSectionSchema(config: SectionFactoryConfig) {
     }));
   }
 
+  // Add compact gap field for PageSection only - insert after topText or at appropriate position
+  if (config.name === 'pageSection') {
+    const insertPosition = config.hasSubtitle ? 4 : 3;
+    fields.splice(insertPosition, 0, defineField({
+      name: 'useCompactGap',
+      title: 'Use Compact Gap After Section',
+      type: 'boolean',
+      description: 'Add a smaller gap after this section instead of the default spacing. Note: Gap size may be overridden by other layout rules depending on content placement. Large gaps work best for long sections with varied content, while compact gaps suit shorter text-focused sections.',
+      initialValue: false,
+    }));
+  }
+
 
 
   // Build content array with allowed child sections and common blocks
