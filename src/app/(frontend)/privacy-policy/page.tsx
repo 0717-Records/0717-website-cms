@@ -101,6 +101,11 @@ const PrivacyPolicyPage = async () => {
 
       <Container textAlign='left'>
         {/* Page Content */}
+        {privacyData.topText && (
+          <p className="text-body-sm text-brand-secondary font-bold mb-8">
+            {privacyData.topText}
+          </p>
+        )}
         {privacyData.content && (
           <PageBuilder
             content={privacyData.content}

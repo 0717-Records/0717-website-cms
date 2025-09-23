@@ -569,6 +569,7 @@ export const TERMS_AND_CONDITIONS_QUERY = defineQuery(`*[_id == "termsAndConditi
   _updatedAt,
   hide,
   title,
+  topText,
   ${recursiveContent}
 }`);
 
@@ -578,5 +579,6 @@ export const PRIVACY_POLICY_QUERY = defineQuery(`*[_id == "privacyPolicy"][0]{
   _updatedAt,
   hide,
   title,
+  topText,
   ${recursiveContent}
 }`);

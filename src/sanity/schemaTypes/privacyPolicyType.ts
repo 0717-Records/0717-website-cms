@@ -29,6 +29,12 @@ export const privacyPolicyType = defineType({
       initialValue: 'Privacy Policy',
     }),
     defineField({
+      name: 'topText',
+      title: 'Top Text',
+      type: 'string',
+      description: 'Optional text displayed at the top of the page. Can be used for last updated dates, notices, or any contextual information.',
+    }),
+    defineField({
       name: 'content',
       title: 'Privacy Policy Content',
       type: 'array',

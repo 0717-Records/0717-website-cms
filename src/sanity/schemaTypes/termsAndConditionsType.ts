@@ -29,6 +29,12 @@ export const termsAndConditionsType = defineType({
       initialValue: 'Terms & Conditions',
     }),
     defineField({
+      name: 'topText',
+      title: 'Top Text',
+      type: 'string',
+      description: 'Optional text displayed at the top of the page. Can be used for last updated dates, notices, or any contextual information.',
+    }),
+    defineField({
       name: 'content',
       title: 'Terms & Conditions Content',
       type: 'array',

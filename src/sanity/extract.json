@@ -7677,6 +7677,13 @@
         },
         "optional": true
       },
+      "topText": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "content": {
         "type": "objectAttribute",
         "value": {
@@ -8079,6 +8086,13 @@
         "optional": true
       },
       "title": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "topText": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
