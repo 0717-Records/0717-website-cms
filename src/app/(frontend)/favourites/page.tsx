@@ -53,7 +53,7 @@ export default async function FavouritesPage() {
         )}
 
         {/* Favourites Section */}
-        <FavouriteGrid favourites={allFavourites} itemsPerRow='3' showViewAllButton={false} />
+        <FavouriteGrid favourites={allFavourites} rowSize='large' showViewAllButton={false} />
 
         {/* Favourites Message Card - moved to bottom of page */}
         {favouritesIndexPage?.showFavouritesMessage && favouritesIndexPage?.favouritesMessage && (

@@ -200,8 +200,9 @@ export type CompanyLinksBlock = {
 
 export type FavouriteBlock = {
   _type: "favouriteBlock";
-  itemsPerRow?: "3" | "4";
+  rowSize?: "small" | "large";
   favouriteListType?: "automatic" | "manual";
+  maxItemsPerBlock?: number;
   favourites?: Array<{
     _ref: string;
     _type: "reference";
@@ -213,14 +214,14 @@ export type FavouriteBlock = {
 
 export type CollabBlock = {
   _type: "collabBlock";
-  itemsPerRow?: "3" | "4";
+  rowSize?: "small" | "large";
   showCTA?: boolean;
   ctaMessage?: string;
 };
 
 export type EventBlock = {
   _type: "eventBlock";
-  itemsPerRow?: "3" | "4";
+  rowSize?: "small" | "large";
   eventListType?: "automatic" | "manual";
   events?: Array<{
     _ref: string;
@@ -1899,7 +1900,7 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -2147,7 +2148,7 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -2183,8 +2184,9 @@ export type PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -2544,7 +2546,7 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -2792,7 +2794,7 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -2828,8 +2830,9 @@ export type PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -3228,7 +3231,7 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -3476,7 +3479,7 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -3512,8 +3515,9 @@ export type PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -3902,7 +3906,7 @@ export type PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -4142,7 +4146,7 @@ export type PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -4177,8 +4181,9 @@ export type PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -4816,7 +4821,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -5064,7 +5069,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -5100,8 +5105,9 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -5461,7 +5467,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -5709,7 +5715,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -5745,8 +5751,9 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -6145,7 +6152,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -6393,7 +6400,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -6429,8 +6436,9 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -6819,7 +6827,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -7059,7 +7067,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -7094,8 +7102,9 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -8018,7 +8027,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -8266,7 +8275,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -8302,8 +8311,9 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -8663,7 +8673,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -8911,7 +8921,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -8947,8 +8957,9 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -9347,7 +9358,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -9595,7 +9606,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -9631,8 +9642,9 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -10021,7 +10033,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -10261,7 +10273,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -10296,8 +10308,9 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -10903,7 +10916,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -11151,7 +11164,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -11187,8 +11200,9 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -11548,7 +11562,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -11796,7 +11810,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -11832,8 +11846,9 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -12232,7 +12247,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -12480,7 +12495,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -12516,8 +12531,9 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -12906,7 +12922,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -13146,7 +13162,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -13181,8 +13197,9 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -13788,7 +13805,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -14036,7 +14053,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -14072,8 +14089,9 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -14433,7 +14451,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -14681,7 +14699,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -14717,8 +14735,9 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -15117,7 +15136,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -15365,7 +15384,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -15401,8 +15420,9 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -15791,7 +15811,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -16031,7 +16051,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -16066,8 +16086,9 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -16721,7 +16742,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -16969,7 +16990,7 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -17005,8 +17026,9 @@ export type HOME_PAGE_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -17366,7 +17388,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -17614,7 +17636,7 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -17650,8 +17672,9 @@ export type HOME_PAGE_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -18050,7 +18073,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -18298,7 +18321,7 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -18334,8 +18357,9 @@ export type HOME_PAGE_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -18724,7 +18748,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -18964,7 +18988,7 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -18999,8 +19023,9 @@ export type HOME_PAGE_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -20670,7 +20695,7 @@ export type BLOG_POST_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -20918,7 +20943,7 @@ export type BLOG_POST_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -20954,8 +20979,9 @@ export type BLOG_POST_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -21315,7 +21341,7 @@ export type BLOG_POST_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -21563,7 +21589,7 @@ export type BLOG_POST_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -21599,8 +21625,9 @@ export type BLOG_POST_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -21999,7 +22026,7 @@ export type BLOG_POST_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -22247,7 +22274,7 @@ export type BLOG_POST_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -22283,8 +22310,9 @@ export type BLOG_POST_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -22673,7 +22701,7 @@ export type BLOG_POST_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -22913,7 +22941,7 @@ export type BLOG_POST_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -22948,8 +22976,9 @@ export type BLOG_POST_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -23592,7 +23621,7 @@ export type COLLAB_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -23840,7 +23869,7 @@ export type COLLAB_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -23876,8 +23905,9 @@ export type COLLAB_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -24277,7 +24307,7 @@ export type COLLAB_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -24525,7 +24555,7 @@ export type COLLAB_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -24561,8 +24591,9 @@ export type COLLAB_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -24961,7 +24992,7 @@ export type COLLAB_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -25209,7 +25240,7 @@ export type COLLAB_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -25245,8 +25276,9 @@ export type COLLAB_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -26072,7 +26104,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -26320,7 +26352,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -26356,8 +26388,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -26717,7 +26750,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -26965,7 +26998,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -27001,8 +27034,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -27401,7 +27435,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -27649,7 +27683,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -27685,8 +27719,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -28075,7 +28110,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -28315,7 +28350,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -28350,8 +28385,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -29013,7 +29049,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -29261,7 +29297,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -29297,8 +29333,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -29658,7 +29695,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -29906,7 +29943,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -29942,8 +29979,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -30342,7 +30380,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -30590,7 +30628,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -30626,8 +30664,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -31016,7 +31055,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -31256,7 +31295,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -31291,8 +31330,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -31890,7 +31930,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -32138,7 +32178,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -32174,8 +32214,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -32535,7 +32576,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -32783,7 +32824,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -32819,8 +32860,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -33219,7 +33261,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -33467,7 +33509,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -33503,8 +33545,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -33893,7 +33936,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -34133,7 +34176,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -34168,8 +34211,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -34767,7 +34811,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -35015,7 +35059,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -35051,8 +35095,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -35412,7 +35457,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -35660,7 +35705,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -35696,8 +35741,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -36096,7 +36142,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -36344,7 +36390,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -36380,8 +36426,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -36770,7 +36817,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -37010,7 +37057,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -37045,8 +37092,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -37668,7 +37716,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -37916,7 +37964,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -37952,8 +38000,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -38313,7 +38362,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -38561,7 +38610,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -38597,8 +38646,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -38997,7 +39047,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -39245,7 +39295,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -39281,8 +39331,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -39671,7 +39722,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -39911,7 +39962,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -39946,8 +39997,9 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -40556,7 +40608,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -40804,7 +40856,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -40840,8 +40892,9 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -41201,7 +41254,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -41449,7 +41502,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -41485,8 +41538,9 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -41885,7 +41939,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -42133,7 +42187,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -42169,8 +42223,9 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -42559,7 +42614,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -42799,7 +42854,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -42834,8 +42889,9 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -43497,7 +43553,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -43745,7 +43801,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -43781,8 +43837,9 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -44142,7 +44199,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -44390,7 +44447,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -44426,8 +44483,9 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -44826,7 +44884,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -45074,7 +45132,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -45110,8 +45168,9 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -45500,7 +45559,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -45740,7 +45799,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -45775,8 +45834,9 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -46374,7 +46434,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -46622,7 +46682,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -46658,8 +46718,9 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -47019,7 +47080,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -47267,7 +47328,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -47303,8 +47364,9 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -47703,7 +47765,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -47951,7 +48013,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -47987,8 +48049,9 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -48377,7 +48440,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -48617,7 +48680,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -48652,8 +48715,9 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -49251,7 +49315,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -49499,7 +49563,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -49535,8 +49599,9 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -49896,7 +49961,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -50144,7 +50209,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -50180,8 +50245,9 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -50580,7 +50646,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -50828,7 +50894,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -50864,8 +50930,9 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -51254,7 +51321,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -51494,7 +51561,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -51529,8 +51596,9 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;
@@ -52152,7 +52220,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "collabBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     showCTA?: boolean;
     ctaMessage?: string;
     image: null;
@@ -52400,7 +52468,7 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "eventBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     eventListType?: "automatic" | "manual";
     events: Array<{
       _id: string;
@@ -52436,8 +52504,9 @@ export type PRIVACY_POLICY_QUERYResult = {
   } | {
     _key: string;
     _type: "favouriteBlock";
-    itemsPerRow?: "3" | "4";
+    rowSize?: "large" | "small";
     favouriteListType?: "automatic" | "manual";
+    maxItemsPerBlock?: number;
     favourites: Array<{
       _id: string;
       name: string | null;
@@ -52797,7 +52866,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "collabBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       showCTA?: boolean;
       ctaMessage?: string;
       image: null;
@@ -53045,7 +53114,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "eventBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       eventListType?: "automatic" | "manual";
       events: Array<{
         _id: string;
@@ -53081,8 +53150,9 @@ export type PRIVACY_POLICY_QUERYResult = {
     } | {
       _key: string;
       _type: "favouriteBlock";
-      itemsPerRow?: "3" | "4";
+      rowSize?: "large" | "small";
       favouriteListType?: "automatic" | "manual";
+      maxItemsPerBlock?: number;
       favourites: Array<{
         _id: string;
         name: string | null;
@@ -53481,7 +53551,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "collabBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         showCTA?: boolean;
         ctaMessage?: string;
         image: null;
@@ -53729,7 +53799,7 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "eventBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         eventListType?: "automatic" | "manual";
         events: Array<{
           _id: string;
@@ -53765,8 +53835,9 @@ export type PRIVACY_POLICY_QUERYResult = {
       } | {
         _key: string;
         _type: "favouriteBlock";
-        itemsPerRow?: "3" | "4";
+        rowSize?: "large" | "small";
         favouriteListType?: "automatic" | "manual";
+        maxItemsPerBlock?: number;
         favourites: Array<{
           _id: string;
           name: string | null;
@@ -54155,7 +54226,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "collabBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           showCTA?: boolean;
           ctaMessage?: string;
           image: null;
@@ -54395,7 +54466,7 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "eventBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           eventListType?: "automatic" | "manual";
           events: Array<{
             _id: string;
@@ -54430,8 +54501,9 @@ export type PRIVACY_POLICY_QUERYResult = {
         } | {
           _key: string;
           _type: "favouriteBlock";
-          itemsPerRow?: "3" | "4";
+          rowSize?: "large" | "small";
           favouriteListType?: "automatic" | "manual";
+          maxItemsPerBlock?: number;
           favourites: Array<{
             _id: string;
             name: string | null;

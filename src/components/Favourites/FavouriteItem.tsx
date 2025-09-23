@@ -11,10 +11,10 @@ type FavouriteData = FAVOURITES_ALL_QUERYResult[0];
 
 interface FavouriteItemProps {
   favourite: FavouriteData;
-  itemsPerRow?: '3' | '4';
+  rowSize?: 'small' | 'large';
 }
 
-const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite, itemsPerRow = '3' }) => {
+const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite, rowSize = 'large' }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const imageAlt = favourite.profileImage?.alt || `${favourite.name} profile image`;
@@ -39,7 +39,7 @@ const FavouriteItem: React.FC<FavouriteItemProps> = ({ favourite, itemsPerRow = 
               sizeContext='profile'
               objectFit='cover'
               sizes={
-                itemsPerRow === '4'
+                rowSize === 'small'
                   ? '(max-width: 768px) 120px, 160px'
                   : '(max-width: 768px) 150px, 200px'
               }

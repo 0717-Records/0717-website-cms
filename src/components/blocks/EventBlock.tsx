@@ -16,7 +16,7 @@ interface EventBlockProps {
   displayStyle: 'posterOnly' | 'detailed';
   showCTA?: boolean;
   ctaMessage?: string;
-  itemsPerRow?: '3' | '4';
+  rowSize?: 'small' | 'large';
   // Optional schema generation props
   generateSchema?: boolean;
   baseUrl?: string;
@@ -45,7 +45,7 @@ const EventBlock = ({
   displayStyle,
   showCTA = false,
   ctaMessage,
-  itemsPerRow = '3',
+  rowSize = 'large',
   generateSchema = false,
   baseUrl,
 }: EventBlockProps) => {
@@ -62,8 +62,8 @@ const EventBlock = ({
   if (eventListType === 'manual') {
     eventsToUse = events || [];
   } else if (eventListType === 'automatic' && allEvents) {
-    // Calculate how many events to show (including CTA if enabled)
-    const maxEvents = parseInt(itemsPerRow, 10);
+    // Calculate how many events to show based on row size (small=4, large=3)
+    const maxEvents = rowSize === 'small' ? 4 : 3;
     const eventsToShow = showCTA ? maxEvents - 1 : maxEvents;
 
     // Sort all events by date (latest/furthest in future first, then go backwards in time)
@@ -91,11 +91,11 @@ const EventBlock = ({
           return dateB - dateA; // Most recent/future first for automatic
         });
 
-  // Calculate grid classes based on itemsPerRow
+  // Calculate grid classes based on row size (small=4 items, large=3 items)
   const gridClasses =
-    itemsPerRow === '4'
-      ? 'w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3*1rem)/4)]' // 4 items per row on large screens
-      : 'w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-2*1rem)/3)]'; // 3 items per row on large screens
+    rowSize === 'small'
+      ? 'w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3*1rem)/4)]' // Small row size: 4 items per row on large screens
+      : 'w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-2*1rem)/3)]'; // Large row size: 3 items per row on large screens
 
   if (sortedEvents.length === 0 && !showCTA) {
     return (
@@ -189,7 +189,7 @@ const EventBlock = ({
           <EventHelpCTA
             message={ctaMessage}
             displayStyle={displayStyle}
-            itemsPerRow={itemsPerRow}
+            rowSize={rowSize}
             gridClasses={gridClasses}
           />
         )}

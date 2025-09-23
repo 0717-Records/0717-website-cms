@@ -12,19 +12,19 @@ export const eventBlockType = defineType({
   icon: CalendarIcon,
   fields: [
     defineField({
-      name: 'itemsPerRow',
-      title: 'Items Per Row',
+      name: 'rowSize',
+      title: 'Row Size',
       type: 'string',
       description:
-        'Maximum number of events to display per row on desktop. Note: If CTA is enabled, it will be included in this count.',
+        'Selection informs the height of the row, which informs the size of the cards and the max that can fit on a row. Small allows 4 items per row, Large allows 3 items per row. If CTA is enabled, it will be included in this count.',
       options: {
         list: [
-          { title: '3 items per row', value: '3' },
-          { title: '4 items per row', value: '4' },
+          { title: 'Small (4 items per row)', value: 'small' },
+          { title: 'Large (3 items per row)', value: 'large' },
         ],
         layout: 'radio',
       },
-      initialValue: '3',
+      initialValue: 'large',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -121,18 +121,18 @@ export const eventBlockType = defineType({
       eventListType: 'eventListType',
       displayStyle: 'displayStyle',
       showCTA: 'showCTA',
-      itemsPerRow: 'itemsPerRow',
+      rowSize: 'rowSize',
     },
-    prepare({ events, eventListType, displayStyle, showCTA, itemsPerRow }) {
+    prepare({ events, eventListType, displayStyle, showCTA, rowSize }) {
       const eventCount = eventListType === 'manual' ? events?.length || 0 : 'Auto';
       const styleText = displayStyle === 'posterOnly' ? 'Poster Only' : 'Detailed';
       const ctaText = showCTA ? ' + CTA' : '';
-      const itemsText = itemsPerRow ? ` • ${itemsPerRow}/row` : '';
+      const rowSizeText = rowSize ? ` • ${rowSize === 'small' ? 'Small (4/row)' : 'Large (3/row)'}` : '';
       const listTypeText = eventListType === 'automatic' ? 'Auto' : 'Manual';
 
       return {
         title: 'Event Block',
-        subtitle: `${listTypeText} • ${eventCount} event${eventCount !== 1 && eventCount !== 'Auto' ? 's' : ''} • ${styleText}${ctaText}${itemsText}`,
+        subtitle: `${listTypeText} • ${eventCount} event${eventCount !== 1 && eventCount !== 'Auto' ? 's' : ''} • ${styleText}${ctaText}${rowSizeText}`,
         media: CalendarIcon,
       };
     },

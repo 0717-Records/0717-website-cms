@@ -8,27 +8,27 @@ import { createSanityDataAttribute } from '@/utils/sectionHelpers';
 
 interface CollabBlockProps {
   collabs: COLLABS_ALL_QUERYResult;
-  itemsPerRow?: '3' | '4';
+  rowSize?: 'small' | 'large';
   showCTA?: boolean;
   ctaMessage?: string;
 }
 
 const CollabBlock = ({
   collabs,
-  itemsPerRow = '3',
+  rowSize = 'large',
   showCTA = false,
   ctaMessage,
 }: CollabBlockProps) => {
-  // Calculate how many collabs to show (including CTA if enabled)
-  const maxItems = parseInt(itemsPerRow, 10);
+  // Calculate how many collabs to show based on row size (small=4, large=3)
+  const maxItems = rowSize === 'small' ? 4 : 3;
   const collabsToShow = showCTA ? maxItems - 1 : maxItems;
   const displayCollabs = collabs ? collabs.slice(0, collabsToShow) : [];
 
-  // Calculate grid classes based on itemsPerRow
+  // Calculate grid classes based on row size (small=4 items, large=3 items)
   const gridClasses =
-    itemsPerRow === '4'
-      ? 'w-[calc((100%-1*1rem)/2)] sm:w-[calc((100%-2*1rem)/3)] md:w-[calc((100%-3*1rem)/4)]'
-      : 'w-[calc((100%-1*1rem)/2)] sm:w-[calc((100%-2*2rem)/3)]';
+    rowSize === 'small'
+      ? 'w-[calc((100%-1*1rem)/2)] sm:w-[calc((100%-2*1rem)/3)] md:w-[calc((100%-3*1rem)/4)]' // Small row size: 4 items per row
+      : 'w-[calc((100%-1*1rem)/2)] sm:w-[calc((100%-2*2rem)/3)]'; // Large row size: 3 items per row
 
   if (displayCollabs.length === 0 && !showCTA) {
     return (
@@ -44,7 +44,7 @@ const CollabBlock = ({
   return (
     <div className='w-full'>
       <div
-        className={`flex flex-wrap justify-center ${itemsPerRow === '4' ? 'gap-x-4' : 'gap-x-4 sm:gap-x-8'} gap-y-8`}>
+        className={`flex flex-wrap justify-center ${rowSize === 'small' ? 'gap-x-4' : 'gap-x-4 sm:gap-x-8'} gap-y-8`}>
         {/* Render collab items */}
         {displayCollabs.map((collab) => (
           <div key={collab._id} className={`${gridClasses} flex-shrink-0 px-1 sm:px-4`}>
@@ -64,7 +64,7 @@ const CollabBlock = ({
                     sizeContext={'profile'}
                     objectFit='cover'
                     sizes={
-                      itemsPerRow === '4'
+                      rowSize === 'small'
                         ? '(max-width: 768px) 120px, 160px'
                         : '(max-width: 768px) 150px, 200px'
                     }
@@ -111,9 +111,7 @@ const CollabBlock = ({
               </div>
               {/* CTA Email Button */}
               <div className='mt-4'>
-                <CTAEmailButton
-                  className={`${itemsPerRow === '4' ? 'flex-wrap' : 'flex-wrap md:flex-nowrap'}`}
-                />
+                <CTAEmailButton />
               </div>
             </div>
           </div>

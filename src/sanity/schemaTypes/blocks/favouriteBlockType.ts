@@ -17,19 +17,19 @@ export const favouriteBlockType = defineType({
   },
   fields: [
     defineField({
-      name: 'itemsPerRow',
-      title: 'Items Per Row',
+      name: 'rowSize',
+      title: 'Row Size',
       type: 'string',
       description:
-        'Maximum number of favourites to display per row on desktop.',
+        'Selection informs the height of the row, which informs the size of the cards and the max that can fit on a row. Small allows 4 items per row, Large allows 3 items per row.',
       options: {
         list: [
-          { title: '3 items per row', value: '3' },
-          { title: '4 items per row', value: '4' },
+          { title: 'Small (4 items per row)', value: 'small' },
+          { title: 'Large (3 items per row)', value: 'large' },
         ],
         layout: 'radio',
       },
-      initialValue: '3',
+      initialValue: 'large',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -49,6 +49,15 @@ export const favouriteBlockType = defineType({
       },
       initialValue: 'automatic',
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'maxItemsPerBlock',
+      title: 'Max Items Per Block',
+      type: 'number',
+      description: 'Maximum number of items that can appear in the entire block. This informs the maximum number of favourites displayed when using automatic selection.',
+      initialValue: 4,
+      hidden: ({ parent }) => parent?.favouriteListType !== 'automatic',
+      validation: (Rule) => Rule.min(1).max(20).integer(),
     }),
     defineField({
       name: 'favourites',
@@ -86,16 +95,17 @@ export const favouriteBlockType = defineType({
     select: {
       favourites: 'favourites',
       favouriteListType: 'favouriteListType',
-      itemsPerRow: 'itemsPerRow',
+      rowSize: 'rowSize',
+      maxItemsPerBlock: 'maxItemsPerBlock',
     },
-    prepare({ favourites, favouriteListType, itemsPerRow }) {
-      const favouriteCount = favouriteListType === 'manual' ? favourites?.length || 0 : 'Auto';
-      const itemsText = itemsPerRow ? ` • ${itemsPerRow}/row` : '';
+    prepare({ favourites, favouriteListType, rowSize, maxItemsPerBlock }) {
+      const favouriteCount = favouriteListType === 'manual' ? favourites?.length || 0 : `Auto (max ${maxItemsPerBlock || 4})`;
+      const rowSizeText = rowSize ? ` • ${rowSize === 'small' ? 'Small (4/row)' : 'Large (3/row)'}` : '';
       const listTypeText = favouriteListType === 'automatic' ? 'Auto' : 'Manual';
 
       return {
         title: 'Favourite Block',
-        subtitle: `${listTypeText} • ${favouriteCount} favourite${favouriteCount !== 1 && favouriteCount !== 'Auto' ? 's' : ''}${itemsText}`,
+        subtitle: `${listTypeText} • ${favouriteCount} favourite${favouriteCount !== 1 && !favouriteCount.toString().includes('Auto') ? 's' : ''}${rowSizeText}`,
         media: HeartIcon,
       };
     },

@@ -444,7 +444,7 @@ const BlockRenderer = ({
                   displayStyle={block.displayStyle || 'detailed'}
                   showCTA={block.showCTA}
                   ctaMessage={block.ctaMessage}
-                  itemsPerRow={block.itemsPerRow || '3'}
+                  rowSize={(block as unknown as { rowSize?: string }).rowSize as 'small' | 'large' || 'large'}
                   generateSchema={true}
                   baseUrl='https://0717records.com'
                 />
@@ -456,7 +456,7 @@ const BlockRenderer = ({
               <BlockWrapper key={block._key}>
                 <CollabBlock
                   collabs={collabs || []}
-                  itemsPerRow={block.itemsPerRow || '3'}
+                  rowSize={(block as unknown as { rowSize?: string }).rowSize as 'small' | 'large' || 'large'}
                   showCTA={block.showCTA}
                   ctaMessage={block.ctaMessage}
                 />
@@ -468,9 +468,10 @@ const BlockRenderer = ({
               <BlockWrapper key={block._key}>
                 <FavouriteBlock
                   favourites={favourites || []}
-                  itemsPerRow={(block as { itemsPerRow?: '3' | '4' }).itemsPerRow}
+                  rowSize={(block as unknown as { rowSize?: string }).rowSize as 'small' | 'large' || 'large'}
                   favouriteListType={(block as { favouriteListType?: 'automatic' | 'manual' }).favouriteListType}
                   selectedFavourites={(block as { favourites?: FAVOURITES_ALL_QUERYResult }).favourites}
+                  maxItemsPerBlock={(block as unknown as { maxItemsPerBlock?: number }).maxItemsPerBlock || 4}
                 />
               </BlockWrapper>
             );

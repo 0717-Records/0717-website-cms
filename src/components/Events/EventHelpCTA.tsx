@@ -4,14 +4,14 @@ import CTAEmailButton from '../UI/CTAEmailButton';
 interface EventHelpCTAProps {
   message: string;
   displayStyle: 'posterOnly' | 'detailed';
-  itemsPerRow?: '3' | '4';
+  rowSize?: 'small' | 'large';
   gridClasses: string;
 }
 
 const EventHelpCTA = ({
   message,
   displayStyle,
-  itemsPerRow = '3',
+  rowSize = 'large',
   gridClasses,
 }: EventHelpCTAProps) => {
   return (
@@ -21,11 +21,11 @@ const EventHelpCTA = ({
           // Poster Only CTA Style
           <div className='relative w-full aspect-[724/1024] bg-card-gradient overflow-hidden flex flex-col items-center justify-center p-4 text-center'>
             <div
-              className={`text-8xl ${itemsPerRow === '4' ? 'md:text-body-6xl' : 'md:text-body-8xl'} mb-4`}>
+              className={`text-8xl ${rowSize === 'small' ? 'md:text-body-6xl' : 'md:text-body-8xl'} mb-4`}>
               🎭
             </div>
             <p
-              className={`${itemsPerRow === '4' ? 'text-body-xl md:text-body-base' : 'text-body-xl'} mb-6 max-w-xs leading-relaxed whitespace-pre-line`}>
+              className={`${rowSize === 'small' ? 'text-body-xl md:text-body-base' : 'text-body-xl'} mb-6 max-w-xs leading-relaxed whitespace-pre-line`}>
               {message}
             </p>
             <CTAEmailButton className='flex-shrink-0' />

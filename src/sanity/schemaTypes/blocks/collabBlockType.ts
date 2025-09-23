@@ -13,19 +13,19 @@ export const collabBlockType = defineType({
   description: 'Shows all collaborations in a responsive grid layout',
   fields: [
     defineField({
-      name: 'itemsPerRow',
-      title: 'Items Per Row',
+      name: 'rowSize',
+      title: 'Row Size',
       type: 'string',
       description:
-        'Maximum number of collaborations to display per row on desktop. Note: If CTA is enabled, it will be included in this count.',
+        'Selection informs the height of the row, which informs the size of the cards and the max that can fit on a row. Small allows 4 items per row, Large allows 3 items per row. If CTA is enabled, it will be included in this count.',
       options: {
         list: [
-          { title: '3 items per row', value: '3' },
-          { title: '4 items per row', value: '4' },
+          { title: 'Small (4 items per row)', value: 'small' },
+          { title: 'Large (3 items per row)', value: 'large' },
         ],
         layout: 'radio',
       },
-      initialValue: '3',
+      initialValue: 'large',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -55,15 +55,15 @@ export const collabBlockType = defineType({
   preview: {
     select: {
       showCTA: 'showCTA',
-      itemsPerRow: 'itemsPerRow',
+      rowSize: 'rowSize',
     },
-    prepare({ showCTA, itemsPerRow }) {
+    prepare({ showCTA, rowSize }) {
       const ctaText = showCTA ? ' + CTA' : '';
-      const itemsText = itemsPerRow ? ` • ${itemsPerRow}/row` : '';
+      const rowSizeText = rowSize ? ` • ${rowSize === 'small' ? 'Small (4/row)' : 'Large (3/row)'}` : '';
 
       return {
         title: 'Collaboration Block',
-        subtitle: `All collaborations${ctaText}${itemsText}`,
+        subtitle: `All collaborations${ctaText}${rowSizeText}`,
         media: UsersIcon,
       };
     },

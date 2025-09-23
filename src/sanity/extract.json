@@ -1158,18 +1158,18 @@
             "value": "favouriteBlock"
           }
         },
-        "itemsPerRow": {
+        "rowSize": {
           "type": "objectAttribute",
           "value": {
             "type": "union",
             "of": [
               {
                 "type": "string",
-                "value": "3"
+                "value": "small"
               },
               {
                 "type": "string",
-                "value": "4"
+                "value": "large"
               }
             ]
           },
@@ -1189,6 +1189,13 @@
                 "value": "manual"
               }
             ]
+          },
+          "optional": true
+        },
+        "maxItemsPerBlock": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
           },
           "optional": true
         },
@@ -1252,18 +1259,18 @@
             "value": "collabBlock"
           }
         },
-        "itemsPerRow": {
+        "rowSize": {
           "type": "objectAttribute",
           "value": {
             "type": "union",
             "of": [
               {
                 "type": "string",
-                "value": "3"
+                "value": "small"
               },
               {
                 "type": "string",
-                "value": "4"
+                "value": "large"
               }
             ]
           },
@@ -1299,18 +1306,18 @@
             "value": "eventBlock"
           }
         },
-        "itemsPerRow": {
+        "rowSize": {
           "type": "objectAttribute",
           "value": {
             "type": "union",
             "of": [
               {
                 "type": "string",
-                "value": "3"
+                "value": "small"
               },
               {
                 "type": "string",
-                "value": "4"
+                "value": "large"
               }
             ]
           },
