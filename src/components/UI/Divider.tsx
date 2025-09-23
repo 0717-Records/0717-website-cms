@@ -75,40 +75,32 @@ const Divider = ({ className = '', isSmall = false, alignment = 'center' }: Divi
     );
   }
 
-  // Center alignment: use original design
+  // Center alignment: full width with center element
   if (isSmall) {
     return (
-      <div className={`flex items-center ${justifyClass} ${className}`.trim()}>
-        <div className='flex items-center space-x-2'>
-          {/* Left line */}
-          <div className='w-8 h-0.5 bg-brand-gradient'></div>
-          {/* Left dot */}
-          <div className='w-2 h-2 rounded-full bg-brand-primary'></div>
-          {/* Center line */}
-          <div className='w-4 h-0.5 bg-brand-gradient'></div>
-          {/* Right dot */}
-          <div className='w-2 h-2 rounded-full bg-brand-primary'></div>
-          {/* Right line */}
-          <div className='w-8 h-0.5 bg-brand-gradient'></div>
-        </div>
+      <div className={`flex items-center w-full ${className}`.trim()}>
+        {/* Left line - full width */}
+        <div className='flex-1 h-0.5 bg-brand-gradient mr-2'></div>
+        {/* Center element: dot, line, dot */}
+        <div className='w-2 h-2 rounded-full bg-brand-primary'></div>
+        <div className='w-4 h-0.5 bg-brand-gradient mx-2'></div>
+        <div className='w-2 h-2 rounded-full bg-brand-primary'></div>
+        {/* Right line - full width */}
+        <div className='flex-1 h-0.5 bg-brand-gradient ml-2'></div>
       </div>
     );
   }
 
   return (
-    <div className={`flex items-center ${justifyClass} ${className}`.trim()}>
-      <div className='flex items-center space-x-4'>
-        {/* Left line */}
-        <div className='w-16 md:w-24 h-0.5 bg-brand-gradient'></div>
-        {/* Left dot */}
-        <div className='w-2 h-2 rounded-full bg-brand-primary'></div>
-        {/* Center line */}
-        <div className='w-8 md:w-12 h-0.5 bg-brand-gradient'></div>
-        {/* Right dot */}
-        <div className='w-2 h-2 rounded-full bg-brand-primary'></div>
-        {/* Right line */}
-        <div className='w-16 md:w-24 h-0.5 bg-brand-gradient'></div>
-      </div>
+    <div className={`flex items-center w-full ${className}`.trim()}>
+      {/* Left line - full width */}
+      <div className='flex-1 h-0.5 bg-brand-gradient mr-4'></div>
+      {/* Center element: dot, line, dot */}
+      <div className='w-2 h-2 rounded-full bg-brand-primary'></div>
+      <div className='w-8 md:w-12 h-0.5 bg-brand-gradient mx-4'></div>
+      <div className='w-2 h-2 rounded-full bg-brand-primary'></div>
+      {/* Right line - full width */}
+      <div className='flex-1 h-0.5 bg-brand-gradient ml-4'></div>
     </div>
   );
 };

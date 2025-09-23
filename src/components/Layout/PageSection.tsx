@@ -82,12 +82,18 @@ const PageSection = ({
         <div className={getTextAlignClass(effectiveTextAlign)}>
           <Heading
             level='h2'
-            showUnderline
             showMargin={false}
             className={sectionTitleBottomSpacing}
             {...titleDataAttribute}>
             {stegaClean(title)}
           </Heading>
+          {topText && (
+            <p
+              className={`text-body-sm text-brand-secondary font-bold max-w-4xl whitespace-pre-line ${sectionTitleBottomSpacing} ${getSubtitleMarginClass(effectiveTextAlign)}`}
+              {...topTextDataAttribute}>
+              {stegaClean(topText)}
+            </p>
+          )}
           {subtitle && (
             <p
               className={`text-body-xl text-text-subtle max-w-4xl whitespace-pre-line ${sectionTitleBottomSpacing} ${getSubtitleMarginClass(effectiveTextAlign)}`}
@@ -98,13 +104,6 @@ const PageSection = ({
           <div className={sectionDividerBottomSpacing}>
             <Divider alignment={effectiveTextAlign} />
           </div>
-          {topText && (
-            <p
-              className={`text-body-sm text-brand-secondary font-bold max-w-4xl whitespace-pre-line ${sectionTitleBottomSpacing} ${getSubtitleMarginClass(effectiveTextAlign)}`}
-              {...topTextDataAttribute}>
-              {stegaClean(topText)}
-            </p>
-          )}
         </div>
         {children}
       </section>
