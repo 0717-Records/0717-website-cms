@@ -19,7 +19,8 @@ const getPlatformEmoji = (platformKey: string): string => {
     facebook: '📘', // Blue Facebook-like icon
     instagram: '📷', // Camera for Instagram
     youtube: '📺', // TV for YouTube
-    twitter: '🐦', // Bird for Twitter/X
+    linkedin: '👔', // Professional/business attire for LinkedIn
+    twitter: '❌', // X symbol for Twitter/X
     soundcloud: '🎵', // Musical note for SoundCloud
     bandcamp: '🎸', // Guitar for Bandcamp
     spotify: '🎧', // Headphones for Spotify
@@ -27,7 +28,7 @@ const getPlatformEmoji = (platformKey: string): string => {
     officialWebsite: '🌐', // Globe for official website
     genericLink: '🔗', // Chain link for generic links
   };
-  
+
   return emojiMap[platformKey] || '🔗';
 };
 

@@ -39,14 +39,22 @@ export const SOCIAL_PLATFORMS: PlatformConfig[] = [
       'Please enter a valid YouTube URL',
   },
   {
+    key: 'linkedin',
+    label: 'LinkedIn',
+    icon: 'users',
+    placeholder: 'https://linkedin.com/in/yourprofile or https://linkedin.com/company/yourcompany',
+    urlValidation: (value: string) =>
+      value.includes('linkedin.com') || 'Please enter a valid LinkedIn URL',
+  },
+  {
     key: 'twitter',
-    label: 'X/Twitter',
-    icon: 'twitter',
+    label: 'X',
+    icon: 'x',
     placeholder: 'https://x.com/yourusername or https://twitter.com/yourusername',
     urlValidation: (value: string) =>
       value.includes('twitter.com') ||
       value.includes('x.com') ||
-      'Please enter a valid X/Twitter URL',
+      'Please enter a valid X URL',
   },
   {
     key: 'soundcloud',
