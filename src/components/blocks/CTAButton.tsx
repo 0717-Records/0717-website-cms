@@ -32,85 +32,23 @@ const CTAButton = (props: CTAButtonProps) => {
     return null;
   }
 
-  // Use computed href from enhanced GROQ query if available, otherwise fallback to legacy logic
+  // Use computed href from GROQ query (already includes section anchors)
+  // or fallback to internalLink.href for queries that don't use fullLinkProjection
   let href = '';
 
   if (computedHref) {
+    // Use computedHref (includes anchors) - HomeHero, PageBuilder CTAs
     href = stegaClean(computedHref);
-  } else {
-    // Legacy href computation for backward compatibility
-    if (linkType === 'internal') {
-      if (internalLink) {
-        // Handle both reference objects and dereferenced objects
-        if ('href' in internalLink && internalLink.href) {
-          // Use the pre-computed href from the GROQ query (dereferenced object)
-          href = internalLink.href;
-        } else if ('slug' in internalLink && internalLink.slug?.current) {
-          // Fallback to slug-based URL for backward compatibility
-          href = `/${internalLink.slug.current}`;
-        } else {
-          // Check if this is a dereferenced object (has actual page type) or reference object
-          const pageType = internalLink._type;
-          if (pageType && pageType !== 'reference') {
-            // This is a dereferenced object - use the actual page type for URL generation
-            if (pageType === 'homePage') {
-              href = '/';
-            } else if (pageType === 'eventsIndexPage') {
-              href = '/events';
-            } else if (pageType === 'favouritesIndexPage') {
-              href = '/favourites';
-            } else if (pageType === 'blogIndexPage') {
-              href = '/blog';
-            } else if (pageType === 'termsAndConditions') {
-              href = '/terms-and-conditions';
-            } else if (pageType === 'privacyPolicy') {
-              href = '/privacy-policy';
-            } else if (
-              pageType === 'blogPost' &&
-              'slug' in internalLink &&
-              internalLink.slug?.current
-            ) {
-              href = `/blog/${internalLink.slug.current}`;
-            } else if (
-              pageType === 'collab' &&
-              'slug' in internalLink &&
-              internalLink.slug?.current
-            ) {
-              href = `/collabs/${internalLink.slug.current}`;
-            } else if ('slug' in internalLink && internalLink.slug?.current) {
-              href = `/${internalLink.slug.current}`;
-            }
-          } else if (pageType === 'reference' && '_ref' in internalLink) {
-            // This is a reference object - we need the _ref to identify the page
-            if (internalLink._ref === 'homePage') {
-              href = '/';
-            } else if (internalLink._ref === 'eventsIndexPage') {
-              href = '/events';
-            } else if (internalLink._ref === 'favouritesIndexPage') {
-              href = '/favourites';
-            } else if (internalLink._ref === 'blogIndexPage') {
-              href = '/blog';
-            } else if (internalLink._ref === 'termsAndConditions') {
-              href = '/terms-and-conditions';
-            } else if (internalLink._ref === 'privacyPolicy') {
-              href = '/privacy-policy';
-            }
-          }
-        }
-        // If it's just a reference, we can't build the URL without dereferencing
-        // This would need to be handled in the GROQ query by dereferencing with ->
-      } else {
-        // Default to home page if no internal link is selected
-        href = '/';
-      }
-    } else if (linkType === 'external' && cleanExternalUrl) {
-      href = cleanExternalUrl;
-    }
-  }
+  } else if (linkType === 'internal' && internalLink?.href) {
+    // Fallback for closing cards and other CTAs without computedHref
+    href = internalLink.href;
 
-  // Add section anchor if pageSectionId is provided for internal links
-  if (href && linkType === 'internal' && pageSectionId) {
-    href = `${href}#${stegaClean(pageSectionId)}`;
+    // Add section anchor only in fallback mode
+    if (pageSectionId) {
+      href = `${href}#${stegaClean(pageSectionId)}`;
+    }
+  } else if (linkType === 'external' && cleanExternalUrl) {
+    href = cleanExternalUrl;
   }
 
   // Don't render if no valid href

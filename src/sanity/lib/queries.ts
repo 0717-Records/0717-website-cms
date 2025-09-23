@@ -27,13 +27,24 @@ const fullLinkProjection = `
   internalLink->${internalLinkProjection},
   "computedHref": select(
     linkType == "external" => externalUrl,
-    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" => 
+    linkType == "internal" && defined(pageSectionId) && pageSectionId != "" =>
       coalesce(internalLink->${internalLinkProjection}.href, "/") + "#" + pageSectionId,
-    linkType == "internal" => 
+    linkType == "internal" =>
       coalesce(internalLink->${internalLinkProjection}.href, "/"),
     "/"
   )
 `;
+
+// Closing card projection that properly expands CTA data
+const closingCardProjection = `{
+  ...,
+  ctaList[]{
+    _type,
+    _key,
+    _type == "embeddedCtaButton" => {${fullLinkProjection}},
+    _type == "embeddedCtaEmailButton" => {...}
+  }
+}`;
 
 // Single content block projection that recursively handles nested content
 // Add new block types here and they'll work at all nesting levels automatically
@@ -213,7 +224,7 @@ export const PAGE_QUERY = defineQuery(`*[_type == "page" && slug.current == $slu
     crop
   },
   hasClosingCard,
-  closingCard
+  closingCard${closingCardProjection}
 }`);
 
 export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{
@@ -366,7 +377,7 @@ export const BLOG_POSTS_QUERY = defineQuery(`*[_type == "blogPost"]|order(coales
   hasOverrideDate,
   overrideDate,
   hasClosingCard,
-  closingCard
+  closingCard${closingCardProjection}
 }`);
 
 export const BLOG_INDEX_PAGE_QUERY = defineQuery(`*[_id == "blogIndexPage"][0]{
@@ -382,7 +393,7 @@ export const BLOG_INDEX_PAGE_QUERY = defineQuery(`*[_id == "blogIndexPage"][0]{
   subtitle,
   noArticlesMessage,
   hasClosingCard,
-  closingCard
+  closingCard${closingCardProjection}
 }`);
 
 export const BLOG_POST_QUERY = defineQuery(`*[_type == "blogPost" && slug.current == $slug][0]{
@@ -404,7 +415,7 @@ export const BLOG_POST_QUERY = defineQuery(`*[_type == "blogPost" && slug.curren
   overrideDate,
   ${recursiveContent},
   hasClosingCard,
-  closingCard,
+  closingCard${closingCardProjection},
   "blogIndexHeroImage": *[_id == "blogIndexPage"][0].heroImage{
     asset,
     alt,
@@ -533,7 +544,15 @@ export const FAVOURITES_INDEX_PAGE_QUERY = defineQuery(`*[_id == "favouritesInde
   },
   subtitle,
   showFavouritesMessage,
-  favouritesMessage
+  favouritesMessage{
+    ...,
+    ctaList[]{
+      _type,
+      _key,
+      _type == "embeddedCtaButton" => {${fullLinkProjection}},
+      _type == "embeddedCtaEmailButton" => {...}
+    }
+  }
 }`);
 
 export const FOOTER_QUERY = defineQuery(`*[_type == "footer" && _id == "footer"][0]{
