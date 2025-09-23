@@ -860,6 +860,7 @@ export type PageSection = {
   title?: string;
   subtitle?: string;
   topText?: string;
+  useCompactGap?: boolean;
   anchorId?: string;
   content?: Array<{
     _key: string;
@@ -2437,6 +2438,7 @@ export type PAGE_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -5358,6 +5360,7 @@ export type HOME_PAGE_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -8564,6 +8567,7 @@ export type HOME_PAGE_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -11453,6 +11457,7 @@ export type HOME_PAGE_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -14342,6 +14347,7 @@ export type HOME_PAGE_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -17279,6 +17285,7 @@ export type HOME_PAGE_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -21232,6 +21239,7 @@ export type BLOG_POST_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -26641,6 +26649,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -29586,6 +29595,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -32467,6 +32477,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -35348,6 +35359,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -38253,6 +38265,7 @@ export type TERMS_AND_CONDITIONS_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -41145,6 +41158,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -44090,6 +44104,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -46971,6 +46986,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -49852,6 +49868,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;
@@ -52757,6 +52774,7 @@ export type PRIVACY_POLICY_QUERYResult = {
     title?: string;
     subtitle?: string;
     topText: string | null;
+    useCompactGap?: boolean;
     anchorId: string | null;
     content: Array<{
       _key: string;

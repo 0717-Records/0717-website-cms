@@ -5503,6 +5503,13 @@
           },
           "optional": true
         },
+        "useCompactGap": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "anchorId": {
           "type": "objectAttribute",
           "value": {
