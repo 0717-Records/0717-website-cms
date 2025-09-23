@@ -44,7 +44,7 @@ const Card = (props: CardProps) => {
   if (cleanCardStyle === 'feature') {
     return (
       <CardContainer
-        className={`${className} flex flex-col gap-6 text-center items-center`}
+        className={`${className} flex flex-col text-center items-center`}
         isGridChild={isGridChild}>
         {/* Icon */}
         {icon && icon.showIcon && (
@@ -60,7 +60,7 @@ const Card = (props: CardProps) => {
         {/* Title */}
         {cleanTitle && (
           <div {...createSanityDataAttribute(documentId, documentType, getFieldPath('title'))}>
-            <Heading level='h3' showUnderline asDiv>
+            <Heading level='h4' showUnderline asDiv>
               {cleanTitle}
             </Heading>
           </div>
@@ -69,7 +69,7 @@ const Card = (props: CardProps) => {
         {/* Body Text */}
         {cleanBodyText && (
           <p
-            className='text-body-xl text-gray-600 leading-relaxed whitespace-pre-line'
+            className='text-body-lg text-gray-600 leading-relaxed whitespace-pre-line'
             {...createSanityDataAttribute(documentId, documentType, getFieldPath('bodyText'))}>
             {cleanBodyText}
           </p>
@@ -78,7 +78,7 @@ const Card = (props: CardProps) => {
         {/* CTA Buttons */}
         {ctaList && ctaList.length > 0 && (
           <div
-            className='pt-6'
+            className='mt-4'
             {...createSanityDataAttribute(documentId, documentType, getFieldPath('ctaList'))}>
             <CTAList ctaList={ctaList} alignment='flex-col' />
           </div>
