@@ -119,6 +119,17 @@ export function createSectionSchema(config: SectionFactoryConfig) {
     }));
   }
 
+  // Add topText field for PageSection only - insert after subtitle (or after anchor ID if no subtitle)
+  if (config.name === 'pageSection') {
+    const insertPosition = config.hasSubtitle ? 3 : 2;
+    fields.splice(insertPosition, 0, defineField({
+      name: 'topText',
+      title: 'Top Text',
+      type: 'string',
+      description: 'Optional text displayed at the top of the section. Can be used for posting dates, timestamps, or any contextual information.',
+    }));
+  }
+
 
 
   // Build content array with allowed child sections and common blocks
@@ -148,9 +159,10 @@ export function createSectionSchema(config: SectionFactoryConfig) {
         title: 'title',
         hideSection: 'hideSection',
         ...(config.hasSubtitle && { subtitle: 'subtitle' }),
+        ...(config.name === 'pageSection' && { topText: 'topText' }),
         content: 'content',
       },
-      prepare(selection: { title?: string; hideSection?: boolean; subtitle?: string; content?: unknown[] }) {
+      prepare(selection: { title?: string; hideSection?: boolean; subtitle?: string; topText?: string; content?: unknown[] }) {
         const { title, hideSection, subtitle, content } = selection;
         const blockCount = Array.isArray(content) ? content.length : 0;
         const displaySubtitle = subtitle 

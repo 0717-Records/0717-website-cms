@@ -47,7 +47,8 @@ const contentProjection = `
   },
   _type == "pageSection" => {
     ...,
-    anchorId
+    anchorId,
+    topText
   },
   _type == "subSection" => {
     ...,

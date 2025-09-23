@@ -25,10 +25,12 @@ interface PageSectionProps extends SanityLiveEditingProps {
   className?: string;
   title: string; // Now required since titles are mandatory
   subtitle?: string;
+  topText?: string;
   anchorId?: string; // ID for anchor linking
   inheritAlignment?: 'left' | 'center' | 'right';
   textAlign?: string; // NOTE: This field is currently not set in the CMS, but has been left here for the future in case we want to allow for section level text alignment control in the CMS
   shouldApplyBottomPadding?: boolean; // Whether to apply bottom padding (omitted for last section if no orphaned content follows)
+  topTextPath?: string;
 }
 
 const PageSection = ({
@@ -36,11 +38,13 @@ const PageSection = ({
   className = '',
   title,
   subtitle,
+  topText,
   anchorId,
   documentId,
   documentType,
   titlePath,
   subtitlePath,
+  topTextPath,
   inheritAlignment,
   textAlign = 'inherit',
   shouldApplyBottomPadding = true,
@@ -48,6 +52,7 @@ const PageSection = ({
   // Create data attributes for Sanity live editing
   const titleDataAttribute = createSanityDataAttribute(documentId, documentType, titlePath);
   const subtitleDataAttribute = createSanityDataAttribute(documentId, documentType, subtitlePath);
+  const topTextDataAttribute = createSanityDataAttribute(documentId, documentType, topTextPath);
 
   // Resolve alignment using shared utility (same as other components)
   const cleanTextAlign = stegaClean(textAlign) || 'inherit';
@@ -93,6 +98,13 @@ const PageSection = ({
           <div className={sectionDividerBottomSpacing}>
             <Divider alignment={effectiveTextAlign} />
           </div>
+          {topText && (
+            <p
+              className={`text-body-sm text-brand-secondary font-bold max-w-4xl whitespace-pre-line ${sectionTitleBottomSpacing} ${getSubtitleMarginClass(effectiveTextAlign)}`}
+              {...topTextDataAttribute}>
+              {stegaClean(topText)}
+            </p>
+          )}
         </div>
         {children}
       </section>

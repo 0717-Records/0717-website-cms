@@ -5489,6 +5489,13 @@
           },
           "optional": true
         },
+        "topText": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "anchorId": {
           "type": "objectAttribute",
           "value": {

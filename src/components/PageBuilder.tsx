@@ -242,11 +242,13 @@ const BlockRenderer = ({
                 <PageSection
                   title={block.title!} // Required field
                   subtitle={block.subtitle}
+                  topText={(block as { topText?: string }).topText}
                   anchorId={block.anchorId}
                   documentId={documentId}
                   documentType={documentType}
                   titlePath={`${blockPath}.title`}
                   subtitlePath={`${blockPath}.subtitle`}
+                  topTextPath={`${blockPath}.topText`}
                   inheritAlignment={alignment}
                   textAlign={(block as { textAlign?: string }).textAlign}
                   shouldApplyBottomPadding={shouldApplyBottomPadding}>
