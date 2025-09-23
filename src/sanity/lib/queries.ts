@@ -357,7 +357,7 @@ export const EVENTS_INDEX_PAGE_QUERY = defineQuery(`*[_id == "eventsIndexPage"][
   showEventHelpCTA,
   eventHelpCTAMessage,
   hasEventsMessage,
-  eventsMessage
+  eventsMessage${closingCardProjection}
 }`);
 
 // Blog Post Queries

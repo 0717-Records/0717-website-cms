@@ -7,6 +7,7 @@ import PageSubtitle from '@/components/Typography/PageSubtitle';
 import { getSiteSettings } from '@/actions';
 import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
 import { closingCardSpacing } from '@/utils/spacingConstants';
+import { normalizeClosingCardForCard } from '@/utils/closingCardHelpers';
 
 export async function generateMetadata() {
   const [siteSettings, favouritesIndexPage] = await Promise.all([
@@ -59,7 +60,7 @@ export default async function FavouritesPage() {
         {favouritesIndexPage?.showFavouritesMessage && favouritesIndexPage?.favouritesMessage && (
           <div className={closingCardSpacing}>
             <Card
-              {...favouritesIndexPage.favouritesMessage}
+              {...normalizeClosingCardForCard(favouritesIndexPage.favouritesMessage)}
               documentId={favouritesIndexPage._id}
               documentType={favouritesIndexPage._type}
               fieldPathPrefix='favouritesMessage'

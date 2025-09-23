@@ -7,6 +7,7 @@ import PageSubtitle from '@/components/Typography/PageSubtitle';
 import { closingCardSpacing } from '@/utils/spacingConstants';
 import { getSiteSettings } from '@/actions';
 import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '@/lib/metadata';
+import { normalizeClosingCardForCard } from '@/utils/closingCardHelpers';
 
 export async function generateMetadata() {
   const [siteSettings, blogIndexPage] = await Promise.all([
@@ -62,7 +63,7 @@ export default async function BlogPage() {
         {blogIndexPage?.hasClosingCard && blogIndexPage?.closingCard && (
           <div className={closingCardSpacing}>
             <Card
-              {...blogIndexPage.closingCard}
+              {...normalizeClosingCardForCard(blogIndexPage.closingCard)}
               documentId={blogIndexPage._id}
               documentType={blogIndexPage._type}
               fieldPathPrefix='closingCard'

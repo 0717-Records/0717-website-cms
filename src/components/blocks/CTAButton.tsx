@@ -39,7 +39,7 @@ const CTAButton = (props: CTAButtonProps) => {
   if (computedHref) {
     // Use computedHref (includes anchors) - HomeHero, PageBuilder CTAs
     href = stegaClean(computedHref);
-  } else if (linkType === 'internal' && internalLink?.href) {
+  } else if (linkType === 'internal' && internalLink && 'href' in internalLink && internalLink.href) {
     // Fallback for closing cards and other CTAs without computedHref
     href = internalLink.href;
 

@@ -18,6 +18,7 @@ import {
 } from '@/lib/structuredData';
 import BreadcrumbStructuredData from '@/components/StructuredData/BreadcrumbStructuredData';
 import { urlFor } from '@/sanity/lib/image';
+import { normalizeClosingCardForCard } from '@/utils/closingCardHelpers';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -144,7 +145,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
         {page.hasClosingCard && page.closingCard && (
           <div className={closingCardSpacing}>
             <Card
-              {...(page.closingCard as NonNullable<typeof page.closingCard>)}
+              {...normalizeClosingCardForCard(page.closingCard)}
               documentId={page._id}
               documentType={page._type}
               fieldPathPrefix='closingCard'
