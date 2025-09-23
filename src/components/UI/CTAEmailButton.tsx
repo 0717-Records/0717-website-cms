@@ -61,14 +61,14 @@ const CTAEmailButton = ({ className = '' }: CTAEmailButtonProps) => {
       `.trim()}
       title={`Copy email: ${email}`}>
       <div className='flex items-center gap-x-1.5'>
-        <span className={`transition-colors duration-200 text-body-sm sm:text-body-base`}>
+        <span className={`transition-colors duration-200 text-body-sm`}>
           {isCopied ? 'Copied!' : 'Copy email'}
         </span>
         <div className='flex-shrink-0 w-7 h-7 bg-black rounded-full flex items-center justify-center group-hover:bg-brand-primary transition-colors duration-200'>
           <Icon className='w-4 h-4 text-white group-hover:text-black transition-colors duration-200' />
         </div>
       </div>
-      <span className='text-body-sm sm:text-body-base truncate max-w-full leading-tight transition-colors duration-200'>
+      <span className='text-body-sm truncate max-w-full leading-tight transition-colors duration-200'>
         {email}
       </span>
     </button>
