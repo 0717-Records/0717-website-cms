@@ -110,6 +110,16 @@ export const eventType = defineType({
         }).error('Please enter a valid URL starting with http:// or https://'),
     }),
     defineField({
+      name: 'linkLabel',
+      title: 'Link Label',
+      type: 'string',
+      group: 'additional',
+      description:
+        'Text that will appear on the CTA button. This will be used for the CTA button text.',
+      placeholder: 'More Info',
+      validation: (Rule) => Rule.max(50).warning('Keep link label concise - under 50 characters'),
+    }),
+    defineField({
       name: 'startDate',
       title: 'Start Date',
       type: 'date',
@@ -216,6 +226,17 @@ export const eventType = defineType({
           }
           return true;
         }),
+    }),
+    defineField({
+      name: 'pastEventLinkLabel',
+      title: 'Past Event Link Label',
+      type: 'string',
+      group: 'past',
+      description:
+        'Text that will appear on the CTA button for the past event link. This will be used for the CTA button text.',
+      placeholder: 'More Info',
+      hidden: ({ parent }) => parent?.pastEventLinkBehavior !== 'change',
+      validation: (Rule) => Rule.max(50).warning('Keep link label concise - under 50 characters'),
     }),
   ],
   orderings: [

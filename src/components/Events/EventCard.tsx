@@ -21,12 +21,14 @@ interface EventCardProps {
   image?: string | null;
   tags?: string[] | null;
   link?: string | null;
+  linkLabel?: string | null;
   startDate: string;
   endDate?: string | null;
   timeDescription?: string | null;
   pastEventText: string;
   pastEventLinkBehavior: 'keep' | 'change' | 'remove';
   pastEventLink?: string | null;
+  pastEventLinkLabel?: string | null;
   isPast: boolean;
   // Optional schema generation props
   generateSchema?: boolean;
@@ -249,10 +251,12 @@ const EventCard = (props: EventCardProps) => {
         title={title}
         image={image}
         link={props.link}
+        linkLabel={props.linkLabel}
         isPast={isPast}
         pastEventText={pastEventText}
         pastEventLinkBehavior={props.pastEventLinkBehavior}
         pastEventLink={props.pastEventLink}
+        pastEventLinkLabel={props.pastEventLinkLabel}
       />
     </>
   );

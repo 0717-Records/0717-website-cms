@@ -13,10 +13,12 @@ interface EventModalProps {
   title: string;
   image?: string | null;
   link?: string | null;
+  linkLabel?: string | null;
   isPast: boolean;
   pastEventText: string;
   pastEventLinkBehavior: 'keep' | 'change' | 'remove';
   pastEventLink?: string | null;
+  pastEventLinkLabel?: string | null;
 }
 
 const EventModal: React.FC<EventModalProps> = ({
@@ -25,10 +27,12 @@ const EventModal: React.FC<EventModalProps> = ({
   title,
   image,
   link,
+  linkLabel,
   isPast,
   pastEventText,
   pastEventLinkBehavior,
   pastEventLink,
+  pastEventLinkLabel,
 }) => {
   const eventLink = getEventLink({
     link,
@@ -37,6 +41,19 @@ const EventModal: React.FC<EventModalProps> = ({
     pastEventLink,
   });
   const hasLink = Boolean(eventLink);
+
+  // Determine which label to use based on event state and availability
+  const getCtaLabel = () => {
+    if (isPast && pastEventLinkBehavior === 'change' && pastEventLinkLabel) {
+      return pastEventLinkLabel;
+    }
+    if (linkLabel) {
+      return linkLabel;
+    }
+    return 'More Info';
+  };
+
+  const ctaLabel = getCtaLabel();
 
   return (
     <Modal
@@ -69,7 +86,7 @@ const EventModal: React.FC<EventModalProps> = ({
         {hasLink && eventLink && (
           <div className='flex-shrink-0 w-full max-w-[400px] pointer-events-auto'>
             <CTA href={eventLink} variant='filled' target='_blank' rel='noopener noreferrer'>
-              More Info
+              {ctaLabel}
               <FaExternalLinkAlt className='ml-2' />
             </CTA>
           </div>

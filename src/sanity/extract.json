@@ -6816,6 +6816,13 @@
         },
         "optional": true
       },
+      "linkLabel": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "startDate": {
         "type": "objectAttribute",
         "value": {
@@ -6866,6 +6873,13 @@
         "optional": true
       },
       "pastEventLink": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "pastEventLinkLabel": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

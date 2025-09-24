@@ -144,12 +144,14 @@ const contentProjection = `
       },
       tags,
       link,
+      linkLabel,
       startDate,
       endDate,
       timeDescription,
       pastEventText,
       pastEventLinkBehavior,
-      pastEventLink
+      pastEventLink,
+      pastEventLinkLabel
     }
   },
   _type == "favouriteBlock" => {
@@ -310,12 +312,14 @@ export const EVENTS_QUERY = defineQuery(`*[_type == "event"]|order(startDate des
   },
   tags,
   link,
+  linkLabel,
   startDate,
   endDate,
   timeDescription,
   pastEventText,
   pastEventLinkBehavior,
-  pastEventLink
+  pastEventLink,
+  pastEventLinkLabel
 }`);
 
 export const EVENTS_INDEX_PAGE_QUERY = defineQuery(`*[_id == "eventsIndexPage"][0]{

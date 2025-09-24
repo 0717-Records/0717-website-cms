@@ -197,10 +197,12 @@ const CTAEvents = ({
           title={selectedEvent.title}
           image={selectedEvent.image}
           link={selectedEvent.link}
+          linkLabel={selectedEvent.linkLabel}
           isPast={isEventPast(selectedEvent)}
           pastEventText={selectedEvent.pastEventText}
           pastEventLinkBehavior={selectedEvent.pastEventLinkBehavior}
           pastEventLink={selectedEvent.pastEventLink}
+          pastEventLinkLabel={selectedEvent.pastEventLinkLabel}
         />
       )}
     </div>
