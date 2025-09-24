@@ -55,7 +55,12 @@ export const structure: StructureResolver = (S) =>
                 .id('blogPosts')
                 .title('Blog Posts')
                 .child(
-                  S.documentTypeList('blogPost').title('Blog Posts')
+                  S.documentTypeList('blogPost')
+                    .title('Blog Posts')
+                    .defaultOrdering([
+                      { field: 'overrideDate', direction: 'desc' },
+                      { field: '_createdAt', direction: 'desc' }
+                    ])
                 ),
             ])
         ),

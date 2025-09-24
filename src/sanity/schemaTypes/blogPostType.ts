@@ -2,8 +2,10 @@
 // When modifying, ensure all fields have appropriate validation, titles, and descriptions for content editors.
 // Follow the existing patterns in other schema files for consistency.
 
+import React from 'react';
 import { EditIcon } from '@sanity/icons';
 import { defineField, defineType, defineArrayMember } from 'sanity';
+import { useFormValue } from 'sanity';
 import { commonContentBlocks } from './shared/sectionFactory';
 
 export const blogPostType = defineType({
@@ -85,11 +87,68 @@ export const blogPostType = defineType({
       group: 'meta',
     }),
     defineField({
+      name: 'currentPublicationDate',
+      type: 'string',
+      title: '📅 Current Publication Date',
+      description: 'This shows what publication date will be displayed on the frontend',
+      readOnly: true,
+      group: 'meta',
+      components: {
+        input: (props) => {
+          // Use Sanity's useFormValue hook to get current form data
+          const createdAt = useFormValue(['_createdAt']);
+          const hasOverride = useFormValue(['hasOverrideDate']);
+          const overrideDate = useFormValue(['overrideDate']);
+
+          let displayDate = 'Document not saved yet';
+
+          if (createdAt) {
+            const baseDate = new Date(createdAt).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+            });
+
+            if (hasOverride && overrideDate) {
+              const customDate = new Date(overrideDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+              });
+              displayDate = `${customDate} (Custom override of ${baseDate})`;
+            } else {
+              displayDate = `${baseDate} (Document creation date)`;
+            }
+          }
+
+          return React.createElement('div', {
+            style: {
+              padding: '12px',
+              backgroundColor: '#e8f5e8',
+              border: '2px solid #4caf50',
+              borderRadius: '8px',
+              fontFamily: 'system-ui, -apple-system, sans-serif',
+              fontSize: '14px',
+              fontWeight: '500',
+              color: '#2e7d32',
+              marginBottom: '16px'
+            }
+          }, [
+            React.createElement('strong', { key: 'label' }, 'Publication Date: '),
+            displayDate
+          ]);
+        }
+      }
+    }),
+    defineField({
       name: 'hasOverrideDate',
       title: 'Override Publication Date',
       type: 'boolean',
-      description:
-        'Enable to set a custom publication date instead of using the document creation/publishing date',
+      description: 'Check this box to set a custom publication date instead of using the document creation date',
       initialValue: false,
       group: 'meta',
     }),
@@ -97,8 +156,7 @@ export const blogPostType = defineType({
       name: 'overrideDate',
       type: 'datetime',
       title: 'Custom Publication Date',
-      description:
-        'Custom publication date for the article. By default, the document publishing date is used on the frontend. Use this field to override it with a different date of your choice.',
+      description: 'Select your preferred publication date. This will be used instead of the document creation date.',
       validation: (Rule) =>
         Rule.custom((value, context) => {
           const parent = context.parent as { hasOverrideDate?: boolean };
@@ -108,6 +166,7 @@ export const blogPostType = defineType({
           return true;
         }),
       hidden: ({ parent }) => !parent?.hasOverrideDate,
+      initialValue: ({ document }) => document?._createdAt || new Date().toISOString(),
       group: 'meta',
     }),
     defineField({
@@ -170,7 +229,7 @@ export const blogPostType = defineType({
             ? new Date(publishedAt).toLocaleDateString()
             : '';
 
-      const subtitleParts = [author ? `By ${author}` : null, displayDate].filter(Boolean);
+      const subtitleParts = [displayDate ? `Published date: ${displayDate}` : null].filter(Boolean);
 
       return {
         title: title || 'Untitled Blog Post',
@@ -207,4 +266,7 @@ export const blogPostType = defineType({
       by: [{ field: 'title', direction: 'desc' }],
     },
   ],
+  initialValue: {
+    hasOverrideDate: false,
+  },
 });

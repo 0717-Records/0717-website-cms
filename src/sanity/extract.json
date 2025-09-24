@@ -8612,6 +8612,13 @@
         },
         "optional": true
       },
+      "currentPublicationDate": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "hasOverrideDate": {
         "type": "objectAttribute",
         "value": {
