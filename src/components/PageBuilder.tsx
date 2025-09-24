@@ -33,7 +33,6 @@ import ImageGallery from './blocks/ImageGallery';
 import YouTubeVideo from './blocks/YouTubeVideo';
 import SpotifyWidget from './blocks/SpotifyWidget';
 import BandcampWidget from './blocks/BandcampWidget';
-import EventBlock from './blocks/EventBlock';
 import CollabBlock from './blocks/CollabBlock';
 import FavouriteBlock from './blocks/FavouriteBlock';
 import CompanyLinksBlock from './blocks/CompanyLinksBlock';
@@ -358,13 +357,6 @@ const BlockRenderer = ({
               </BlockWrapper>
             );
 
-          case 'ctaEvents':
-            return (
-              <BlockWrapper key={block._key}>
-                <CTAEvents {...block} />
-              </BlockWrapper>
-            );
-
           case 'ctaBlogPost':
             return (
               <BlockWrapper key={block._key}>
@@ -435,10 +427,10 @@ const BlockRenderer = ({
               </BlockWrapper>
             );
 
-          case 'eventBlock':
+          case 'ctaEvents':
             return (
               <BlockWrapper key={block._key}>
-                <EventBlock
+                <CTAEvents
                   events={(block as unknown as { events: EVENTS_QUERYResult }).events || []}
                   allEvents={events}
                   eventListType={(block as unknown as { eventListType?: string }).eventListType as 'automatic' | 'manual' || 'manual'}
@@ -446,6 +438,7 @@ const BlockRenderer = ({
                   showCTA={block.showCTA}
                   ctaMessage={block.ctaMessage}
                   rowSize={(block as unknown as { rowSize?: string }).rowSize as 'small' | 'large' || 'large'}
+                  hideViewAllButton={(block as unknown as { hideViewAllButton?: boolean }).hideViewAllButton ?? false}
                   generateSchema={true}
                   baseUrl='https://0717records.com'
                 />

@@ -109,30 +109,6 @@ const contentProjection = `
       _type == "bandcampWidget" => {...}
     }
   },
-  _type == "ctaEvents" => {
-    ...,
-    events[]->{
-      _id,
-      title,
-      shortDescription,
-      venue,
-      location,
-      image{
-        asset,
-        alt,
-        hotspot,
-        crop
-      },
-      tags,
-      link,
-      startDate,
-      endDate,
-      timeDescription,
-      pastEventText,
-      pastEventLinkBehavior,
-      pastEventLink
-    }
-  },
   _type == "ctaBlogPost" => {
     ...,
     blogPost->{
@@ -152,7 +128,7 @@ const contentProjection = `
       overrideDate
     }
   },
-  _type == "eventBlock" => {
+  _type == "ctaEvents" => {
     ...,
     events[]->{
       _id,

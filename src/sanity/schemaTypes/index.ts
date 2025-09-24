@@ -31,7 +31,6 @@ import { embeddedCtaEmailButtonType } from './blocks/embeddedCtaEmailButtonType'
 import { homeHeroCtaButtonType } from './blocks/homeHeroCtaButtonType';
 import { ctaEventsType } from './blocks/ctaEventsType';
 import { ctaBlogPostType } from './blocks/ctaBlogPostType';
-import { eventBlockType } from './blocks/eventBlockType';
 import { collabBlockType } from './blocks/collabBlockType';
 import { favouriteBlockType } from './blocks/favouriteBlockType';
 import { companyLinksBlockType } from './blocks/companyLinksBlockType';
@@ -102,7 +101,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     homeHeroCtaButtonType,
     ctaEventsType,
     ctaBlogPostType,
-    eventBlockType,
     collabBlockType,
     favouriteBlockType,
     companyLinksBlockType,

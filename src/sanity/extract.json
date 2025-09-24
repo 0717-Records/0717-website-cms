@@ -1294,7 +1294,7 @@
     }
   },
   {
-    "name": "eventBlock",
+    "name": "ctaBlogPost",
     "type": "type",
     "value": {
       "type": "object",
@@ -1303,7 +1303,53 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "eventBlock"
+            "value": "ctaBlogPost"
+          }
+        },
+        "blogPost": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "object",
+            "attributes": {
+              "_ref": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              },
+              "_type": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string",
+                  "value": "reference"
+                }
+              },
+              "_weak": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "boolean"
+                },
+                "optional": true
+              }
+            },
+            "dereferencesTo": "blogPost"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "ctaEvents",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "ctaEvents"
           }
         },
         "rowSize": {
@@ -1414,110 +1460,11 @@
             "type": "string"
           },
           "optional": true
-        }
-      }
-    }
-  },
-  {
-    "name": "ctaBlogPost",
-    "type": "type",
-    "value": {
-      "type": "object",
-      "attributes": {
-        "_type": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string",
-            "value": "ctaBlogPost"
-          }
         },
-        "blogPost": {
+        "hideViewAllButton": {
           "type": "objectAttribute",
           "value": {
-            "type": "object",
-            "attributes": {
-              "_ref": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                }
-              },
-              "_type": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string",
-                  "value": "reference"
-                }
-              },
-              "_weak": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "boolean"
-                },
-                "optional": true
-              }
-            },
-            "dereferencesTo": "blogPost"
-          },
-          "optional": true
-        }
-      }
-    }
-  },
-  {
-    "name": "ctaEvents",
-    "type": "type",
-    "value": {
-      "type": "object",
-      "attributes": {
-        "_type": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string",
-            "value": "ctaEvents"
-          }
-        },
-        "events": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "array",
-            "of": {
-              "type": "object",
-              "attributes": {
-                "_ref": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string"
-                  }
-                },
-                "_type": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "string",
-                    "value": "reference"
-                  }
-                },
-                "_weak": {
-                  "type": "objectAttribute",
-                  "value": {
-                    "type": "boolean"
-                  },
-                  "optional": true
-                }
-              },
-              "dereferencesTo": "event",
-              "rest": {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
+            "type": "boolean"
           },
           "optional": true
         }
@@ -4603,21 +4550,6 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "eventBlock"
-                  }
-                },
-                {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "rest": {
-                    "type": "inline",
                     "name": "collabBlock"
                   }
                 },
@@ -4997,21 +4929,6 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "eventBlock"
-                  }
-                },
-                {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "rest": {
-                    "type": "inline",
                     "name": "collabBlock"
                   }
                 },
@@ -5377,21 +5294,6 @@
                   "rest": {
                     "type": "inline",
                     "name": "bandcampWidget"
-                  }
-                },
-                {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "rest": {
-                    "type": "inline",
-                    "name": "eventBlock"
                   }
                 },
                 {
@@ -5806,21 +5708,6 @@
                   },
                   "rest": {
                     "type": "inline",
-                    "name": "eventBlock"
-                  }
-                },
-                {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "rest": {
-                    "type": "inline",
                     "name": "collabBlock"
                   }
                 },
@@ -6153,21 +6040,6 @@
             "rest": {
               "type": "inline",
               "name": "bandcampWidget"
-            }
-          },
-          {
-            "type": "object",
-            "attributes": {
-              "_key": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                }
-              }
-            },
-            "rest": {
-              "type": "inline",
-              "name": "eventBlock"
             }
           },
           {
@@ -7987,21 +7859,6 @@
                 },
                 "rest": {
                   "type": "inline",
-                  "name": "eventBlock"
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "inline",
                   "name": "collabBlock"
                 }
               },
@@ -8388,21 +8245,6 @@
                 "rest": {
                   "type": "inline",
                   "name": "bandcampWidget"
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "inline",
-                  "name": "eventBlock"
                 }
               },
               {
@@ -8908,21 +8750,6 @@
                 "rest": {
                   "type": "inline",
                   "name": "bandcampWidget"
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "inline",
-                  "name": "eventBlock"
                 }
               },
               {
@@ -10230,21 +10057,6 @@
                 "rest": {
                   "type": "inline",
                   "name": "bandcampWidget"
-                }
-              },
-              {
-                "type": "object",
-                "attributes": {
-                  "_key": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "inline",
-                  "name": "eventBlock"
                 }
               },
               {
