@@ -52,7 +52,7 @@ const EventModal: React.FC<EventModalProps> = ({
             style={{
               width: 'min(90vw, calc(90vh - 80px) * 724 / 1024)',
               height: 'min(calc(90vw * 1024 / 724), calc(90vh - 80px))',
-              aspectRatio: '724 / 1024'
+              aspectRatio: '724 / 1024',
             }}>
             <EventImage
               image={image}
@@ -68,12 +68,7 @@ const EventModal: React.FC<EventModalProps> = ({
         {/* CTA Button - only show if there's a link */}
         {hasLink && eventLink && (
           <div className='flex-shrink-0 w-full max-w-[400px] pointer-events-auto'>
-            <CTA
-              href={eventLink}
-              variant='filled'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='w-full'>
+            <CTA href={eventLink} variant='filled' target='_blank' rel='noopener noreferrer'>
               More Info
               <FaExternalLinkAlt className='ml-2' />
             </CTA>
