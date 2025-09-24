@@ -50,12 +50,12 @@ const BlogCard = (props: BlogCardProps) => {
           <UnifiedImage
             src={mainImage}
             alt={`${title || 'Blog post'} image`}
-            mode="fill"
-            sizeContext="card"
-            objectFit="cover"
+            mode='fill'
+            sizeContext='card'
+            objectFit='cover'
             priority
             generateSchema
-            schemaContext="blog"
+            schemaContext='blog'
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw'
             className='transition-all duration-300'
             fallback={
@@ -71,11 +71,11 @@ const BlogCard = (props: BlogCardProps) => {
         {/* Blog Post Details */}
         <div className='p-6 flex flex-col flex-grow text-left'>
           {/* Title */}
-          <h2 className='text-body-lg font-medium mb-3 text-gray-800 transition-all duration-300 leading-tight group-hover:underline line-clamp-2'>
+          <h2 className='text-body-lg font-medium mb-6 text-gray-800 transition-all duration-300 leading-tight group-hover:underline line-clamp-2'>
             {title}
           </h2>
 
-          <div className='flex justify-between mb-4'>
+          <div className='flex justify-between mb-6'>
             {/* Author */}
             {author && (
               <div className='flex items-center text-text-subtle text-body-sm'>
