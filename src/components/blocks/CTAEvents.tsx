@@ -100,8 +100,8 @@ const CTAEvents = ({
   // Calculate grid classes based on row size (small=4 items, large=3 items)
   const gridClasses =
     rowSize === 'small'
-      ? `${displayStyle === 'posterOnly' ? 'w-full [@media(min-width:500px)]:w-[calc((100%-1rem)/2)]' : 'w-full sm:w-[calc((100%-1rem)/2)]'}  lg:w-[calc((100%-3*1rem)/4)]` // Small row size: 4 items per row on large screens
-      : `${displayStyle === 'posterOnly' ? 'w-full [@media(min-width:500px)]:w-[calc((100%-1rem)/2)]' : 'w-full sm:w-[calc((100%-1rem)/2)]'} md:w-[calc((100%-2*1rem)/3)]`; // Large row size: 3 items per row on large screens
+      ? `${displayStyle === 'posterOnly' ? 'w-full xs:w-[calc((100%-1rem)/2)]' : 'w-full sm:w-[calc((100%-1rem)/2)]'}  lg:w-[calc((100%-3*1rem)/4)]` // Small row size: 4 items per row on large screens
+      : `${displayStyle === 'posterOnly' ? 'w-full xs:w-[calc((100%-1rem)/2)]' : 'w-full sm:w-[calc((100%-1rem)/2)]'} md:w-[calc((100%-2*1rem)/3)]`; // Large row size: 3 items per row on large screens
 
   if (sortedEvents.length === 0 && !showCTA) {
     return (

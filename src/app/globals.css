@@ -30,6 +30,9 @@
 
   /* Typography Scale System */
   --font-scale-base: 1.125rem; /* WARNING: if changing this please change the same in BodyTextPreview.tsx */
+
+  /* Custom Breakpoints */
+  --breakpoint-xs: 500px;
 }
 
 /* Base styles */
