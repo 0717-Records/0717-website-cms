@@ -15,7 +15,7 @@ import { generateMetadata as generatePageMetadata, generateCanonicalUrl } from '
 import {
   generateBlogPostSchema,
   getOrganizationDataFromSiteSettings,
-  generateStructuredDataScript
+  generateStructuredDataScript,
 } from '@/lib/structuredData';
 import BreadcrumbStructuredData from '@/components/StructuredData/BreadcrumbStructuredData';
 import { normalizeClosingCardForCard } from '@/utils/closingCardHelpers';
@@ -41,10 +41,7 @@ function formatBlogDate(
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const [siteSettings, post] = await Promise.all([
-    getSiteSettings(),
-    getBlogPostBySlug(slug),
-  ]);
+  const [siteSettings, post] = await Promise.all([getSiteSettings(), getBlogPostBySlug(slug)]);
 
   if (!siteSettings) {
     return {
@@ -74,7 +71,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const [post, companyLinks, siteSettings] = await Promise.all([
     getBlogPostBySlug(slug),
     getCompanyLinks(),
-    getSiteSettings()
+    getSiteSettings(),
   ]);
 
   if (!post) {
@@ -94,7 +91,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   // Generate BlogPosting structured data
   let blogPostSchema;
   if (siteSettings) {
-    const publishDate = post.hasOverrideDate && post.overrideDate ? post.overrideDate : post._createdAt;
+    const publishDate =
+      post.hasOverrideDate && post.overrideDate ? post.overrideDate : post._createdAt;
     const modifiedDate = post._updatedAt;
 
     const organizationData = getOrganizationDataFromSiteSettings(siteSettings, baseUrl);
@@ -131,9 +129,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         documentId={post._id}
         documentType={post._type}
         showBreadcrumb={true}
-        breadcrumbPageTitle="Blog"
+        breadcrumbPageTitle='Blog'
         breadcrumbClickable={true}
-        breadcrumbHref="/blog"
+        breadcrumbHref='/blog'
       />
 
       <Container textAlign='left'>
@@ -177,12 +175,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <UnifiedImage
                 src={post.mainImage}
                 alt={post.title || 'Blog post image'}
-                mode="fill"
-                sizeContext="hero"
-                objectFit="cover"
+                mode='fill'
+                sizeContext='hero'
+                objectFit='cover'
                 priority
                 generateSchema
-                schemaContext="blog"
+                schemaContext='blog'
                 sizes='(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw'
                 className='rounded-lg'
               />
@@ -204,6 +202,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </div>
         )}
+
+        {/* Prev & Next Links */}
 
         {/* Closing Card */}
         {post.hasClosingCard && post.closingCard && (
