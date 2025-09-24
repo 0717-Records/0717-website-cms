@@ -61,7 +61,7 @@ const EventModal: React.FC<EventModalProps> = ({
       closeModal={closeModal}
       aria-labelledby='event-modal-title'
       aria-describedby='event-modal-description'>
-      <div className='flex flex-col items-center justify-center h-full w-full gap-4 p-4 pointer-events-none'>
+      <div className='flex flex-col items-center justify-center h-full w-full gap-4 mt-8 p-4 pointer-events-none'>
         {/* Event Image - constrained by available space */}
         <div className='pointer-events-auto'>
           <div
