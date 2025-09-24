@@ -20,6 +20,7 @@ import {
 import BreadcrumbStructuredData from '@/components/StructuredData/BreadcrumbStructuredData';
 import { normalizeClosingCardForCard } from '@/utils/closingCardHelpers';
 import BlogPostNavigation from '@/components/Blog/BlogPostNavigation';
+import CTA from '@/components/UI/CTA';
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -206,10 +207,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         )}
 
         {/* Prev & Next Links */}
-        <BlogPostNavigation
-          prevPost={adjacentPosts?.nextPost}
-          nextPost={adjacentPosts?.prevPost}
-        />
+        <BlogPostNavigation prevPost={adjacentPosts?.nextPost} nextPost={adjacentPosts?.prevPost} />
+
+        <div className='flex justify-center mt-8'>
+          <CTA href='/blog' variant='outline'>
+            Back to blog
+          </CTA>
+        </div>
 
         {/* Closing Card */}
         {post.hasClosingCard && post.closingCard && (
