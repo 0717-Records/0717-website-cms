@@ -815,6 +815,160 @@ Before adding new overlay/modal components:
 
 **This issue has been fixed multiple times. The solution is reference counting in the hook. Do not create alternative scroll lock implementations.**
 
+## Anchor Link Navigation and Scroll Lock System
+**CRITICAL: Understanding the complex interaction between anchor links, loading states, and scroll locks.**
+
+### The Problem
+The website has a sophisticated interaction between multiple systems that can cause anchor link failures and page jumping:
+
+1. **Loading States**: `LoadingOverlay` appears during page navigation with scroll lock
+2. **Navigation Menu**: `VerticalNav` uses scroll lock when open
+3. **Anchor Links**: `NavigationScroll` attempts to scroll to hash fragments
+4. **Scroll Restoration**: Multiple scroll locks can conflict and cause position jumping
+
+### Root Cause of Issues
+**Anchor Links Failing (especially in local development):**
+- `LoadingOverlay` uses `useBodyScrollLock` during page loading
+- When loading finishes, scroll restoration happens AFTER `NavigationScroll` attempts anchor navigation
+- This causes anchor scrolling to be overridden, leaving user at top of page
+
+**Page Jumping When Opening/Closing Navigation:**
+- When scroll locks are applied/removed, scrollbar appearance changes cause layout shifts
+- Multiple components using scroll lock simultaneously can restore wrong scroll positions
+- Body positioning changes without scrollbar width compensation cause visual jumps
+
+### Current Implementation (Fixed)
+
+#### 1. Enhanced Scroll Lock System (`src/hooks/useBodyScrollLock.ts`)
+**Features:**
+- **Reference counting**: Tracks multiple simultaneous scroll locks
+- **Scrollbar compensation**: Prevents layout shift when scrollbar disappears
+- **Event system**: Notifies when all scroll locks are released
+- **Position restoration**: Only restores scroll position when ALL locks are released
+
+**Key Implementation Details:**
+```typescript
+// Global state prevents conflicts
+let lockCount = 0;
+let originalScrollY = 0;
+let isCurrentlyLocked = false;
+
+// Scrollbar width compensation prevents jumping
+const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+// Custom event notifies when safe to scroll
+window.dispatchEvent(new CustomEvent(SCROLL_UNLOCK_EVENT));
+```
+
+#### 2. Anchor Link Navigation (`src/components/NavigationScroll.tsx`)
+**Features:**
+- **Dual waiting system**: Waits for both page readiness AND scroll lock release
+- **Event-driven scrolling**: Uses custom events to know when scroll restoration is complete
+- **Pending scroll tracking**: Maintains intended scroll target until conditions are met
+- **Fallback mechanisms**: Multiple strategies to ensure anchor scrolling succeeds
+
+**Key Implementation Details:**
+```typescript
+// Waits for scroll locks before attempting navigation
+const waitForScrollUnlockAndScroll = () => {
+  if (scrollLockStatus.isAnyScrollLocked()) {
+    // Wait for all locks to be released
+    const cleanup = scrollLockStatus.onScrollUnlocked(() => {
+      setTimeout(attemptScroll, 50); // Small delay ensures restoration is complete
+    });
+    return cleanup;
+  } else {
+    attemptScroll(); // Safe to scroll immediately
+  }
+};
+```
+
+#### 3. Component Integration
+**Components using scroll lock:**
+- `LoadingOverlay` - During page loading
+- `VerticalNav` - When navigation menu is open
+- `Modal` - When modals are displayed
+
+**All components use the same `useBodyScrollLock` hook to ensure proper coordination.**
+
+### Troubleshooting Guide
+
+#### Anchor Links Not Working
+**Symptoms:** Links with `#section` work on production but fail locally, user ends up at top of page
+**Likely Causes:**
+1. Loading overlay scroll lock is interfering with anchor navigation
+2. Page content not ready when scroll attempt occurs
+3. Target element not yet rendered in DOM
+
+**Debugging Steps:**
+1. Check if issue only occurs with loading state
+2. Verify `isPageReady` is being set correctly
+3. Confirm target element exists when scroll attempts
+4. Look for console errors in `NavigationScroll` component
+
+#### Page Jumping When Using Navigation
+**Symptoms:** Content shifts left/right when opening/closing vertical nav
+**Likely Causes:**
+1. Scrollbar width not being compensated
+2. Multiple scroll locks conflicting
+3. Custom scroll lock implementation bypassing the reference counting system
+
+**Debugging Steps:**
+1. Check if multiple components are using different scroll lock methods
+2. Verify `paddingRight` compensation is being applied
+3. Test with single vs multiple overlays open
+4. Ensure only `useBodyScrollLock` hook is used (no custom implementations)
+
+#### Loading State Conflicts
+**Symptoms:** Anchor links work sometimes but not others, inconsistent behavior
+**Likely Causes:**
+1. Race condition between loading finish and scroll attempt
+2. `setPageReady` not being called correctly
+3. Scroll unlock event not firing
+
+**Debugging Steps:**
+1. Add logging to `NavigationScroll` to track when scroll attempts occur
+2. Verify `PageReadyTrigger` is properly detecting content readiness
+3. Check timing of `LoadingOverlay` hide and scroll unlock events
+
+### Prevention Guidelines
+
+#### When Adding New Overlays/Modals
+**✅ DO:**
+- Use `useBodyScrollLock(isOpen)` for scroll prevention
+- Test with existing overlays (navigation + new component simultaneously)
+- Verify no layout shifting when opening/closing
+- Ensure anchor links work with new component open
+
+**❌ NEVER:**
+- Create custom scroll lock implementations
+- Directly manipulate `document.body.style` for scroll prevention
+- Use multiple different scroll lock libraries
+- Bypass the reference counting system
+
+#### When Modifying Navigation/Loading Logic
+**✅ DO:**
+- Maintain the dual-waiting system (page ready + scroll unlock)
+- Use the event-driven approach for coordination
+- Test anchor links in local development environment
+- Verify smooth navigation menu interactions
+
+**❌ NEVER:**
+- Remove the scroll unlock event system
+- Attempt anchor navigation before page/scroll readiness
+- Create competing scroll restoration logic
+
+### Code Locations
+- **Scroll lock hook**: `src/hooks/useBodyScrollLock.ts`
+- **Anchor navigation**: `src/components/NavigationScroll.tsx`
+- **Loading overlay**: `src/components/UI/LoadingOverlay.tsx`
+- **Vertical navigation**: `src/components/Header/VerticalNav/VerticalNav.tsx`
+- **Page ready detection**: `src/components/PageReadyTrigger.tsx`
+- **Page load context**: `src/contexts/PageLoadContext.tsx`
+
+**IMPORTANT: These systems work together as a coordinated whole. Modifying one component without understanding the others can reintroduce the issues this solution was designed to fix.**
+
 ## General Development Guidelines
 - Follow existing code patterns and conventions
 - Ensure proper TypeScript types are maintained
