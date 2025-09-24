@@ -94,7 +94,7 @@ export const blogPostType = defineType({
       readOnly: true,
       group: 'meta',
       components: {
-        input: (props) => {
+        input: function PublicationDateDisplay() {
           // Use Sanity's useFormValue hook to get current form data
           const createdAt = useFormValue(['_createdAt']);
           const hasOverride = useFormValue(['hasOverrideDate']);
@@ -102,7 +102,7 @@ export const blogPostType = defineType({
 
           let displayDate = 'Document not saved yet';
 
-          if (createdAt) {
+          if (createdAt && typeof createdAt === 'string') {
             const baseDate = new Date(createdAt).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
@@ -111,7 +111,7 @@ export const blogPostType = defineType({
               minute: '2-digit',
             });
 
-            if (hasOverride && overrideDate) {
+            if (hasOverride && overrideDate && typeof overrideDate === 'string') {
               const customDate = new Date(overrideDate).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
