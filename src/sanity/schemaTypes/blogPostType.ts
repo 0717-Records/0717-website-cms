@@ -229,7 +229,7 @@ export const blogPostType = defineType({
             ? new Date(publishedAt).toLocaleDateString()
             : '';
 
-      const subtitleParts = [displayDate ? `Published date: ${displayDate}` : null].filter(Boolean);
+      const subtitleParts = [displayDate ? `Original published: ${displayDate}` : null].filter(Boolean);
 
       return {
         title: title || 'Untitled Blog Post',
@@ -239,22 +239,6 @@ export const blogPostType = defineType({
     },
   },
   orderings: [
-    {
-      title: 'Publication Date, New',
-      name: 'publicationDateDesc',
-      by: [
-        { field: 'overrideDate', direction: 'desc' },
-        { field: '_createdAt', direction: 'desc' },
-      ],
-    },
-    {
-      title: 'Publication Date, Old',
-      name: 'publicationDateAsc',
-      by: [
-        { field: 'overrideDate', direction: 'asc' },
-        { field: '_createdAt', direction: 'asc' },
-      ],
-    },
     {
       title: 'Title A-Z',
       name: 'titleAsc',
