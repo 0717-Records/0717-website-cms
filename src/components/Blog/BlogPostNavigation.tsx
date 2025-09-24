@@ -28,7 +28,7 @@ export default function BlogPostNavigation({ prevPost, nextPost }: BlogPostNavig
           {prevPost ? (
             <Link
               href={`/blog/${prevPost.slug.current}`}
-              className='group flex items-start gap-4 p-6 rounded-lg border border-gray-200 bg-white shadow-sm hover:border-brand-secondary hover:shadow-md transition-all duration-300 w-full'>
+              className='group bg-brand-secondary/10 border border-brand-secondary/20 rounded-lg py-6 px-6 w-full hover:bg-brand-secondary/15 hover:border-brand-secondary/30 hover:shadow-md transition-all duration-200 cursor-pointer flex items-start gap-4'>
               <div className='flex-shrink-0 mt-1'>
                 <div className='group-hover:bg-brand-primary p-3 rounded-full transition-all duration-200 group-hover:shadow-sm'>
                   <FaChevronLeft className='text-brand-secondary group-hover:text-black transition-colors duration-200' />
@@ -51,7 +51,7 @@ export default function BlogPostNavigation({ prevPost, nextPost }: BlogPostNavig
           {nextPost ? (
             <Link
               href={`/blog/${nextPost.slug.current}`}
-              className='group flex items-start gap-4 p-6 rounded-lg border border-gray-200 bg-white shadow-sm hover:border-brand-secondary hover:shadow-md transition-all duration-300 text-right w-full'>
+              className='group bg-brand-secondary/10 border border-brand-secondary/20 rounded-lg py-6 px-6 w-full hover:bg-brand-secondary/15 hover:border-brand-secondary/30 hover:shadow-md transition-all duration-200 cursor-pointer flex items-start gap-4 text-right'>
               <div className='min-w-0 flex-1'>
                 <p className='text-body-sm text-text-subtle font-medium mb-1'>Next Post</p>
                 <h3 className='text-body-lg font-semibold text-gray-900 group-hover:text-brand-secondary transition-colors duration-300 line-clamp-2'>
