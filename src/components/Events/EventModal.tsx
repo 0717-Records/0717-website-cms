@@ -44,9 +44,9 @@ const EventModal: React.FC<EventModalProps> = ({
       closeModal={closeModal}
       aria-labelledby='event-modal-title'
       aria-describedby='event-modal-description'>
-      <div className='flex flex-col items-center justify-center h-full w-full gap-4 p-4'>
+      <div className='flex flex-col items-center justify-center h-full w-full gap-4 p-4 pointer-events-none'>
         {/* Event Image - constrained by available space */}
-        <div className='flex-1 flex items-center justify-center w-full min-h-0'>
+        <div className='pointer-events-auto'>
           <div
             className='relative bg-gray-900 rounded-lg overflow-hidden shadow-lg'
             style={{
@@ -67,7 +67,7 @@ const EventModal: React.FC<EventModalProps> = ({
 
         {/* CTA Button - only show if there's a link */}
         {hasLink && eventLink && (
-          <div className='flex-shrink-0 w-full max-w-[400px]'>
+          <div className='flex-shrink-0 w-full max-w-[400px] pointer-events-auto'>
             <CTA
               href={eventLink}
               variant='filled'
