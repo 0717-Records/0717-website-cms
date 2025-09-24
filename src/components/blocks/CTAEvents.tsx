@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import EventCard from '../Events/EventCard';
 import EventImage from '../Events/EventImage';
+import EventModal from '../Events/EventModal';
 import EventHelpCTA from '../Events/EventHelpCTA';
 import CTA from '../UI/CTA';
 import { transformEvents } from '@/utils/transformEvents';
@@ -8,6 +9,7 @@ import { getEventLink } from '../Events/eventUtils';
 import { createDataAttribute } from 'next-sanity';
 import { client } from '@/sanity/lib/client';
 import type { EVENTS_QUERYResult } from '@/sanity/types';
+import type { TransformedEvent } from '@/utils/transformEvents';
 
 interface CTAEventsProps {
   events?: EVENTS_QUERYResult;
@@ -51,6 +53,9 @@ const CTAEvents = ({
   generateSchema = false,
   baseUrl,
 }: CTAEventsProps) => {
+  const [selectedEvent, setSelectedEvent] = useState<TransformedEvent | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Sanity Live Editing configuration
   const { projectId, dataset, stega } = client.config();
   const createDataAttributeConfig = {
@@ -114,24 +119,18 @@ const CTAEvents = ({
         {/* Render event cards */}
         {sortedEvents.map((event, index: number) => {
           const isPast = isEventPast(event);
-          const eventLink = getEventLink({
-            link: event.link,
-            isPast,
-            pastEventLinkBehavior: event.pastEventLinkBehavior,
-            pastEventLink: event.pastEventLink,
-          });
-          const hasLink = Boolean(eventLink);
+          const handlePosterClick = () => {
+            setSelectedEvent(event);
+            setIsModalOpen(true);
+          };
 
           return (
             <div key={`${event.title}-${index}`} className={`${gridClasses} flex`}>
               {displayStyle === 'posterOnly' ? (
-                // Poster Only Style - Just the image, clickable if has link
+                // Poster Only Style - Just the image, always clickable to open modal
                 <div
-                  className={`w-full h-full bg-white rounded-lg shadow-lg overflow-hidden ${
-                    hasLink
-                      ? 'transition-all duration-300 hover:shadow-xl hover:scale-103 cursor-pointer'
-                      : ''
-                  }`}>
+                  className={`w-full h-full bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-103 cursor-pointer`}
+                  onClick={handlePosterClick}>
                   <div
                     className='relative w-full aspect-[724/1024] bg-gray-900 overflow-hidden'
                     {...{
@@ -142,32 +141,14 @@ const CTAEvents = ({
                         path: 'image',
                       }).toString(),
                     }}>
-                    {hasLink && eventLink ? (
-                      <a
-                        href={eventLink}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        className='block w-full h-full text-inherit no-underline'
-                        aria-label={`View details for ${event.title} event`}>
-                        <EventImage
-                          image={event.image}
-                          title={event.title}
-                          isPast={isPast}
-                          pastEventText={event.pastEventText}
-                          sizes='(max-width: 768px) 100vw, 400px'
-                          fallbackIconSize='text-h2'
-                        />
-                      </a>
-                    ) : (
-                      <EventImage
-                        image={event.image}
-                        title={event.title}
-                        isPast={isPast}
-                        pastEventText={event.pastEventText}
-                        sizes='(max-width: 768px) 100vw, 400px'
-                        fallbackIconSize='text-h2'
-                      />
-                    )}
+                    <EventImage
+                      image={event.image}
+                      title={event.title}
+                      isPast={isPast}
+                      pastEventText={event.pastEventText}
+                      sizes='(max-width: 768px) 100vw, 400px'
+                      fallbackIconSize='text-h2'
+                    />
                   </div>
                 </div>
               ) : (
@@ -204,6 +185,24 @@ const CTAEvents = ({
             View all events
           </CTA>
         </div>
+      )}
+
+      {/* Event Modal - for poster-only events */}
+      {selectedEvent && (
+        <EventModal
+          isModalOpen={isModalOpen}
+          closeModal={() => {
+            setIsModalOpen(false);
+            setSelectedEvent(null);
+          }}
+          title={selectedEvent.title}
+          image={selectedEvent.image}
+          link={selectedEvent.link}
+          isPast={isEventPast(selectedEvent)}
+          pastEventText={selectedEvent.pastEventText}
+          pastEventLinkBehavior={selectedEvent.pastEventLinkBehavior}
+          pastEventLink={selectedEvent.pastEventLink}
+        />
       )}
     </div>
   );

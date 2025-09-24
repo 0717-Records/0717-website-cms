@@ -44,10 +44,16 @@ const EventModal: React.FC<EventModalProps> = ({
       closeModal={closeModal}
       aria-labelledby='event-modal-title'
       aria-describedby='event-modal-description'>
-      <div className='flex flex-col items-center justify-center h-full w-full max-w-[90vw] max-h-[90vh] gap-4 px-4'>
-        {/* Event Image - takes available vertical space while maintaining aspect ratio */}
-        <div className='flex-1 flex items-center justify-center w-full'>
-          <div className='relative max-w-full max-h-full aspect-[724/1024] bg-gray-900 rounded-lg overflow-hidden shadow-lg'>
+      <div className='flex flex-col items-center justify-center h-full w-full gap-4 p-4'>
+        {/* Event Image - constrained by available space */}
+        <div className='flex-1 flex items-center justify-center w-full min-h-0'>
+          <div
+            className='relative bg-gray-900 rounded-lg overflow-hidden shadow-lg'
+            style={{
+              width: 'min(90vw, calc(90vh - 80px) * 724 / 1024)',
+              height: 'min(calc(90vw * 1024 / 724), calc(90vh - 80px))',
+              aspectRatio: '724 / 1024'
+            }}>
             <EventImage
               image={image}
               title={title}
