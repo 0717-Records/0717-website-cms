@@ -112,20 +112,22 @@ const EventCard = (props: EventCardProps) => {
 
   const cardContent = (
     <div
-      className={`w-full h-full bg-white rounded-lg shadow-lg overflow-hidden flex flex-row md:flex-col transition-all duration-300 ${
+      className={`w-full h-full bg-white rounded-lg shadow-lg overflow-hidden flex flex-row sm:flex-col transition-all duration-300 ${
         hasLink ? 'group hover:shadow-xl hover:scale-103 cursor-pointer' : ''
       }`}>
       {/* Event Poster */}
       <div
-        className='relative w-1/3 md:w-full aspect-[724/1024] bg-gray-900 overflow-hidden flex-shrink-0'
-        {...(documentId && documentType && fieldPathPrefix !== undefined && {
-          'data-sanity': createDataAttribute({
-            ...createDataAttributeConfig,
-            id: documentId,
-            type: documentType,
-            path: fieldPathPrefix ? `${fieldPathPrefix}.image` : 'image',
-          }).toString()
-        })}>
+        className='relative w-1/3 sm:w-full aspect-[724/1024] bg-gray-900 overflow-hidden flex-shrink-0'
+        {...(documentId &&
+          documentType &&
+          fieldPathPrefix !== undefined && {
+            'data-sanity': createDataAttribute({
+              ...createDataAttributeConfig,
+              id: documentId,
+              type: documentType,
+              path: fieldPathPrefix ? `${fieldPathPrefix}.image` : 'image',
+            }).toString(),
+          })}>
         <EventImage
           image={image}
           title={title}
@@ -136,37 +138,41 @@ const EventCard = (props: EventCardProps) => {
         />
       </div>
       {/* Event Details */}
-      <div className='p-3 md:p-4 flex flex-col items-start md:items-center text-left md:text-center flex-grow w-2/3 md:w-full'>
+      <div className='p-3 md:p-4 flex flex-col items-start sm:items-center text-left sm:text-center flex-grow w-2/3 sm:w-full'>
         {/* Date / Time */}
         <div
           className='text-brand-secondary text-body-sm sm:text-body-base mb-2 md:mb-1'
-          {...(documentId && documentType && fieldPathPrefix !== undefined && {
-            'data-sanity': createDataAttribute({
-              ...createDataAttributeConfig,
-              id: documentId,
-              type: documentType,
-              path: fieldPathPrefix ? `${fieldPathPrefix}.startDate` : 'startDate',
-            }).toString()
-          })}>
+          {...(documentId &&
+            documentType &&
+            fieldPathPrefix !== undefined && {
+              'data-sanity': createDataAttribute({
+                ...createDataAttributeConfig,
+                id: documentId,
+                type: documentType,
+                path: fieldPathPrefix ? `${fieldPathPrefix}.startDate` : 'startDate',
+              }).toString(),
+            })}>
           <span>{dateDisplay}</span>
           {timeDisplay && (
             <>
-              <span className='md:hidden mx-1'>•</span>
-              <span className='md:hidden'>{timeDisplay}</span>
+              <span className='sm:hidden mx-1'>•</span>
+              <span className='sm:hidden'>{timeDisplay}</span>
             </>
           )}
         </div>
         {timeDisplay && (
           <div
-            className='hidden md:block text-body-sm sm:text-body-base text-brand-secondary mb-3'
-            {...(documentId && documentType && fieldPathPrefix !== undefined && {
-              'data-sanity': createDataAttribute({
-                ...createDataAttributeConfig,
-                id: documentId,
-                type: documentType,
-                path: fieldPathPrefix ? `${fieldPathPrefix}.timeDescription` : 'timeDescription',
-              }).toString()
-            })}>
+            className='hidden sm:block text-body-sm sm:text-body-base text-brand-secondary mb-3'
+            {...(documentId &&
+              documentType &&
+              fieldPathPrefix !== undefined && {
+                'data-sanity': createDataAttribute({
+                  ...createDataAttributeConfig,
+                  id: documentId,
+                  type: documentType,
+                  path: fieldPathPrefix ? `${fieldPathPrefix}.timeDescription` : 'timeDescription',
+                }).toString(),
+              })}>
             {timeDisplay}
           </div>
         )}
@@ -189,7 +195,7 @@ const EventCard = (props: EventCardProps) => {
         {/* Past Event Message or Event Details */}
         {isPast ? (
           /* Past Event Message */
-          <div className='flex items-center justify-start md:justify-center text-text-subtle text-body-sm sm:text-body-base mb-2 md:mb-4'>
+          <div className='flex items-center justify-start sm:justify-center text-text-subtle text-body-sm sm:text-body-base mb-2 md:mb-4'>
             <span className='whitespace-pre-line'>
               {pastEventText || 'This Event Has Been.\nThanks For Your Support.'}
             </span>
@@ -197,18 +203,18 @@ const EventCard = (props: EventCardProps) => {
         ) : (
           <>
             {/* Venue and Location - Only for upcoming events */}
-            <div className='flex items-center text-text-subtle text-body-sm sm:text-body-base mb-2 md:mb-3'>
-              <FaLocationDot className='mr-1 md:mr-2 text-brand-secondary' />
+            <div className='flex items-center text-text-subtle text-body-sm sm:text-body-base mb-2 sm:mb-3'>
+              <FaLocationDot className='mr-1 sm:mr-2 text-brand-secondary' />
               <span>{venue ? `${venue}, ${location}` : location}</span>
             </div>
 
             {/* Tags - Only for upcoming events */}
             {tags && tags.length > 0 && (
-              <div className='flex flex-wrap justify-start md:justify-center gap-1 md:gap-2 mb-2 md:mb-4'>
+              <div className='flex flex-wrap justify-start sm:justify-center gap-1 sm:gap-2 mb-2 sm:mb-4'>
                 {tags.map((tag) => (
                   <span
                     key={tag}
-                    className='px-1 py-0.5 md:px-2 md:py-1 bg-gray-100 text-text-subtle text-body-xs sm:text-body-sm rounded'>
+                    className='px-1 py-0.5 sm:px-2 sm:py-1 bg-gray-100 text-text-subtle text-body-xs sm:text-body-sm rounded'>
                     {tag}
                   </span>
                 ))}
