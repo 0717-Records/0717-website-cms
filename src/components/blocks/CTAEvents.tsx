@@ -5,7 +5,6 @@ import EventModal from '../Events/EventModal';
 import EventHelpCTA from '../Events/EventHelpCTA';
 import CTA from '../UI/CTA';
 import { transformEvents } from '@/utils/transformEvents';
-import { getEventLink } from '../Events/eventUtils';
 import { createDataAttribute } from 'next-sanity';
 import { client } from '@/sanity/lib/client';
 import type { EVENTS_QUERYResult } from '@/sanity/types';
