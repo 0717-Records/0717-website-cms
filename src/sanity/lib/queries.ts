@@ -424,6 +424,26 @@ export const BLOG_POST_QUERY = defineQuery(`*[_type == "blogPost" && slug.curren
   }
 }`);
 
+export const ADJACENT_BLOG_POSTS_QUERY = defineQuery(`{
+  "currentPost": *[_type == "blogPost" && slug.current == $slug][0]{
+    _id,
+    title,
+    hasOverrideDate,
+    overrideDate,
+    _createdAt
+  },
+  "prevPost": *[_type == "blogPost" && coalesce(overrideDate, _createdAt) > coalesce(*[_type == "blogPost" && slug.current == $slug][0].overrideDate, *[_type == "blogPost" && slug.current == $slug][0]._createdAt)]|order(coalesce(overrideDate, _createdAt) asc)[0]{
+    _id,
+    title,
+    slug
+  },
+  "nextPost": *[_type == "blogPost" && coalesce(overrideDate, _createdAt) < coalesce(*[_type == "blogPost" && slug.current == $slug][0].overrideDate, *[_type == "blogPost" && slug.current == $slug][0]._createdAt)]|order(coalesce(overrideDate, _createdAt) desc)[0]{
+    _id,
+    title,
+    slug
+  }
+}`);
+
 // Side content projection for sidebar sections
 const sideContentProjection = `sideContent[]{
   _type,
