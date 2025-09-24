@@ -1,7 +1,10 @@
-import React, { useMemo } from 'react';
+'use client';
+
+import React, { useMemo, useState } from 'react';
 import { FaLocationDot } from 'react-icons/fa6';
 import { formatEventDate, getEventLink } from '@/components/Events/eventUtils';
 import EventImage from '@/components/Events/EventImage';
+import EventModal from '@/components/Events/EventModal';
 import { createDataAttribute } from 'next-sanity';
 import { client } from '@/sanity/lib/client';
 import {
@@ -54,6 +57,8 @@ const EventCard = (props: EventCardProps) => {
     fieldPathPrefix,
   } = props;
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Sanity Live Editing configuration
   const { projectId, dataset, stega } = client.config();
   const createDataAttributeConfig = {
@@ -69,7 +74,6 @@ const EventCard = (props: EventCardProps) => {
     pastEventLinkBehavior: props.pastEventLinkBehavior,
     pastEventLink: props.pastEventLink,
   });
-  const hasLink = Boolean(eventLink);
 
   // Generate Event schema with location data
   const eventSchema = useMemo(() => {
@@ -110,11 +114,14 @@ const EventCard = (props: EventCardProps) => {
     baseUrl,
   ]);
 
+  const handleCardClick = () => {
+    setIsModalOpen(true);
+  };
+
   const cardContent = (
     <div
-      className={`w-full h-full bg-white rounded-lg shadow-lg overflow-hidden flex flex-row sm:flex-col transition-all duration-300 ${
-        hasLink ? 'group hover:shadow-xl hover:scale-103 cursor-pointer' : ''
-      }`}>
+      className={`w-full h-full bg-white rounded-lg shadow-lg overflow-hidden flex flex-row sm:flex-col transition-all duration-300 cursor-pointer group hover:shadow-xl hover:scale-103`}
+      onClick={handleCardClick}>
       {/* Event Poster */}
       <div
         className='relative w-1/3 sm:w-full aspect-[724/1024] bg-gray-900 overflow-hidden flex-shrink-0'
@@ -179,9 +186,7 @@ const EventCard = (props: EventCardProps) => {
 
         {/* Title */}
         <p
-          className={`text-h7 font-medium mb-2 md:mb-3 text-body-lg text-gray-800 transition-all duration-300 leading-tight ${
-            hasLink ? 'group-hover:underline' : ''
-          }`}>
+          className={`text-h7 font-medium mb-2 md:mb-3 text-body-lg text-gray-800 transition-all duration-300 leading-tight group-hover:underline`}>
           {title}
         </p>
 
@@ -226,30 +231,6 @@ const EventCard = (props: EventCardProps) => {
     </div>
   );
 
-  // If there's a link, wrap the entire card in an anchor tag
-  if (hasLink && eventLink) {
-    return (
-      <>
-        {/* Event Schema Markup */}
-        {eventSchema && (
-          <script
-            type='application/ld+json'
-            dangerouslySetInnerHTML={generateStructuredDataScript(eventSchema)}
-          />
-        )}
-        <a
-          href={eventLink}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='block w-full h-full text-inherit no-underline'
-          aria-label={`View details for ${title} event`}>
-          {cardContent}
-        </a>
-      </>
-    );
-  }
-
-  // If no link, return the card content directly
   return (
     <>
       {/* Event Schema Markup */}
@@ -260,6 +241,19 @@ const EventCard = (props: EventCardProps) => {
         />
       )}
       {cardContent}
+
+      {/* Event Modal */}
+      <EventModal
+        isModalOpen={isModalOpen}
+        closeModal={() => setIsModalOpen(false)}
+        title={title}
+        image={image}
+        link={props.link}
+        isPast={isPast}
+        pastEventText={pastEventText}
+        pastEventLinkBehavior={props.pastEventLinkBehavior}
+        pastEventLink={props.pastEventLink}
+      />
     </>
   );
 };
