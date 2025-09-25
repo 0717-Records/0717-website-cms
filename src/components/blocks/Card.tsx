@@ -48,7 +48,7 @@ const Card = (props: CardProps) => {
         isGridChild={isGridChild}>
         {/* Icon */}
         {icon && icon.showIcon && (
-          <div className='flex justify-center'>
+          <div className='flex justify-center mb-4 md:mb-0'>
             <Icon
               image={icon.image}
               showIcon={icon.showIcon}
