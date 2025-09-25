@@ -50,6 +50,7 @@ const Page = async () => {
         ]}
         heroFeaturedItemsSubtitle={null}
         heroCallToActionList={page.heroCallToActionList}
+        hideScrollIndicator={page.hideScrollIndicator}
         heroContentPosition='center-center'
         enableFeaturedItems={false}
         featuredImages={page.featuredImages}

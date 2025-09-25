@@ -221,6 +221,14 @@ export const homePageType = defineType({
       description: 'Add one or multiple call-to-action buttons to the hero section. Leave empty if no CTAs are needed.',
       group: 'hero',
     }),
+    defineField({
+      name: 'hideScrollIndicator',
+      type: 'boolean',
+      title: 'Hide Scroll Indicator',
+      description: 'Turn this switch ON to hide the scroll indicator arrow. By default (OFF), the scroll indicator is visible to guide users to scroll down.',
+      group: 'hero',
+      initialValue: false,
+    }),
 
     // Page Content Fields
     defineField({

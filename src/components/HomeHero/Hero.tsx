@@ -23,6 +23,7 @@ interface HeroProps {
   heroSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroSubtitle'];
   heroFeaturedItemsSubtitle: NonNullable<HOME_PAGE_QUERYResult>['heroFeaturedItemsSubtitle'];
   heroCallToActionList: NonNullable<HOME_PAGE_QUERYResult>['heroCallToActionList'];
+  hideScrollIndicator: NonNullable<HOME_PAGE_QUERYResult>['hideScrollIndicator'];
   heroContentPosition: NonNullable<HOME_PAGE_QUERYResult>['heroContentPosition'];
   enableFeaturedItems: NonNullable<HOME_PAGE_QUERYResult>['enableFeaturedItems'];
   featuredImages: NonNullable<HOME_PAGE_QUERYResult>['featuredImages'];
@@ -40,6 +41,7 @@ const Hero = ({
   heroSubtitle,
   heroFeaturedItemsSubtitle,
   heroCallToActionList,
+  hideScrollIndicator,
   heroContentPosition,
   enableFeaturedItems,
   featuredImages,
@@ -152,9 +154,11 @@ const Hero = ({
 
       {/* Bottom padding with scroll indicator - matches top */}
       <div className='flex-shrink-0 flex flex-col items-center justify-center h-16'>
-        <div className={`${enableFeaturedItems ? 'hidden sm:block' : 'block'}`}>
-          <ScrollIndicator textColor={stegaClean(heroTextColor) || 'black'} />
-        </div>
+        {!stegaClean(hideScrollIndicator) && (
+          <div className={`${enableFeaturedItems ? 'hidden sm:block' : 'block'}`}>
+            <ScrollIndicator textColor={stegaClean(heroTextColor) || 'black'} />
+          </div>
+        )}
       </div>
     </section>
   );

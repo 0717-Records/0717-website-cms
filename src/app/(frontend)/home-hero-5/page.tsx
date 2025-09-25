@@ -60,6 +60,7 @@ const Page = async () => {
             variant: 'filled',
           },
         ]}
+        hideScrollIndicator={page.hideScrollIndicator}
         heroContentPosition='bottom-right'
         enableFeaturedItems={false}
         featuredImages={page.featuredImages}

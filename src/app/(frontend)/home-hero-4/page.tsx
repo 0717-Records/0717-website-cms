@@ -55,6 +55,7 @@ const Page = async () => {
             variant: 'filled',
           },
         ]}
+        hideScrollIndicator={page.hideScrollIndicator}
         heroContentPosition={page.heroContentPosition}
         enableFeaturedItems={true}
         featuredImages={page.featuredImages}
