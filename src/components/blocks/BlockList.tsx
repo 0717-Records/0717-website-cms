@@ -1,6 +1,7 @@
 import React from 'react';
 import type { BlockListBlock } from '@/types/blocks';
 import { createSanityDataAttribute } from '@/utils/sectionHelpers';
+import { maxCardWidth } from '@/utils/spacingConstants';
 
 interface BlockListProps extends Omit<BlockListBlock, '_type' | '_key'> {
   className?: string;
@@ -14,7 +15,7 @@ const BlockList = ({
   className = '',
   documentId,
   documentType,
-  fieldPathPrefix = ''
+  fieldPathPrefix = '',
 }: BlockListProps) => {
   if (!items || items.length === 0) {
     return null;
@@ -28,11 +29,13 @@ const BlockList = ({
         return (
           <div
             key={item._key}
-            className='flex items-center justify-between w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg'>
+            className={`flex items-center justify-between mx-auto w-full ${maxCardWidth} px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg`}>
             {/* Left Hand Side (primary) content */}
             <div className='flex-shrink-0'>
               <span
-                {...(documentId && documentType ? createSanityDataAttribute(documentId, documentType, `${itemPath}.leftContent`) : {})}
+                {...(documentId && documentType
+                  ? createSanityDataAttribute(documentId, documentType, `${itemPath}.leftContent`)
+                  : {})}
                 className='text-body-lg font-bold text-gray-900'>
                 {item.leftContent}
               </span>
@@ -42,7 +45,13 @@ const BlockList = ({
             <div className='flex-shrink-0 text-right'>
               {item.rightContent && (
                 <span
-                  {...(documentId && documentType ? createSanityDataAttribute(documentId, documentType, `${itemPath}.rightContent`) : {})}
+                  {...(documentId && documentType
+                    ? createSanityDataAttribute(
+                        documentId,
+                        documentType,
+                        `${itemPath}.rightContent`
+                      )
+                    : {})}
                   className='text-body-base text-gray-700'>
                   {item.rightContent}
                 </span>
