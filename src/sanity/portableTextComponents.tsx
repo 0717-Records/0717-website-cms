@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 import { PortableTextComponents } from 'next-sanity';
 import { urlFor } from '@/sanity/lib/image';
@@ -36,22 +37,88 @@ export const createComponents = (alignment: string = 'left'): PortableTextCompon
   return {
   block: {
     // Default style (what users get when they just start typing)
-    normal: ({ children }) => <p className='text-body-base'>{children}</p>,
+    normal: ({ children }) => {
+      // Handle empty blocks (empty lines) - render a paragraph with a non-breaking space
+      if (!children || (Array.isArray(children) && children.length === 0) || children === '') {
+        return <p className='text-body-base'>&nbsp;</p>;
+      }
+
+      // Check if children contains only empty spans or text nodes
+      const hasOnlyEmptyContent = React.Children.toArray(children).every(child => {
+        if (typeof child === 'string') {
+          return child.trim() === '';
+        }
+        // Check if it's a React element with empty content
+        if (React.isValidElement(child)) {
+          const props = child.props as { children?: unknown };
+          if (props.children) {
+            const childContent = props.children;
+            return typeof childContent === 'string' && childContent.trim() === '';
+          }
+        }
+        return false;
+      });
+
+      if (hasOnlyEmptyContent) {
+        return <p className='text-body-base'>&nbsp;</p>;
+      }
+
+      return <p className='text-body-base'>{children}</p>;
+    },
 
     // Body text styles - using appropriate semantic tags with typography utilities
-    'body-xs': ({ children }) => <figcaption className='text-body-xs'>{children}</figcaption>,
-    'body-sm': ({ children }) => <p className='text-body-sm'>{children}</p>,
-    'body-lg': ({ children }) => <p className='text-body-lg'>{children}</p>,
-    'body-xl': ({ children }) => <p className='text-body-xl'>{children}</p>,
-    'body-2xl': ({ children }) => <p className='text-body-2xl'>{children}</p>,
-    'body-3xl': ({ children }) => <p className='text-body-3xl'>{children}</p>,
+    'body-xs': ({ children }) => {
+      if (!children || (Array.isArray(children) && children.length === 0) || children === '') {
+        return <figcaption className='text-body-xs'>&nbsp;</figcaption>;
+      }
+      return <figcaption className='text-body-xs'>{children}</figcaption>;
+    },
+    'body-sm': ({ children }) => {
+      if (!children || (Array.isArray(children) && children.length === 0) || children === '') {
+        return <p className='text-body-sm'>&nbsp;</p>;
+      }
+      return <p className='text-body-sm'>{children}</p>;
+    },
+    'body-lg': ({ children }) => {
+      if (!children || (Array.isArray(children) && children.length === 0) || children === '') {
+        return <p className='text-body-lg'>&nbsp;</p>;
+      }
+      return <p className='text-body-lg'>{children}</p>;
+    },
+    'body-xl': ({ children }) => {
+      if (!children || (Array.isArray(children) && children.length === 0) || children === '') {
+        return <p className='text-body-xl'>&nbsp;</p>;
+      }
+      return <p className='text-body-xl'>{children}</p>;
+    },
+    'body-2xl': ({ children }) => {
+      if (!children || (Array.isArray(children) && children.length === 0) || children === '') {
+        return <p className='text-body-2xl'>&nbsp;</p>;
+      }
+      return <p className='text-body-2xl'>{children}</p>;
+    },
+    'body-3xl': ({ children }) => {
+      if (!children || (Array.isArray(children) && children.length === 0) || children === '') {
+        return <p className='text-body-3xl'>&nbsp;</p>;
+      }
+      return <p className='text-body-3xl'>{children}</p>;
+    },
 
     // Special styles
-    standout: ({ children }) => (
-      <div className={alignmentClasses.standoutClass}>
-        {children}
-      </div>
-    ),
+    standout: ({ children }) => {
+      if (!children || (Array.isArray(children) && children.length === 0) || children === '') {
+        return (
+          <div className={alignmentClasses.standoutClass}>
+            &nbsp;
+          </div>
+        );
+      }
+      return (
+        <div className={alignmentClasses.standoutClass}>
+          {children}
+        </div>
+      );
+    },
   },
 
     list: {
