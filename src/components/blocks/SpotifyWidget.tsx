@@ -67,19 +67,22 @@ const SpotifyWidget: React.FC<SpotifyWidgetProps> = ({
 
   const { src, width, height } = embedAttributes;
 
-  const embedHeight = height ? `h-[${height}px]` : 'h-[352px]'; // Default to 352px if no height specified
-
   // Create data attribute for the widget container if Sanity props are provided
   const widgetDataAttribute = pathPrefix
     ? createSanityDataAttribute(documentId, documentType, pathPrefix)
     : {};
 
+  const iframeStyle = {
+    width: width ? (width.includes('%') ? width : `${width}%`) : '100%',
+    height: height ? `${height}px` : '352px' // Default to 352px if no height specified
+  };
+
   return (
     <div className={`${className}`} {...widgetDataAttribute}>
       <iframe
         src={src}
-        className={`hidden md:block mx-auto ${embedHeight} rounded-xl border-0`}
-        style={{ width: width ? (width.includes('%') ? width : `${width}%`) : '100%' }}
+        className="hidden md:block mx-auto rounded-xl border-0"
+        style={iframeStyle}
         allowFullScreen
         allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
         loading='lazy'
@@ -87,7 +90,8 @@ const SpotifyWidget: React.FC<SpotifyWidgetProps> = ({
       />
       <iframe
         src={src}
-        className={`md:hidden w-full mx-auto ${embedHeight} rounded-xl border-0`}
+        className="md:hidden w-full mx-auto rounded-xl border-0"
+        style={iframeStyle}
         allowFullScreen
         allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
         loading='lazy'
