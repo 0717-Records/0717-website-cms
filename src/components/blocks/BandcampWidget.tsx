@@ -69,37 +69,33 @@ const BandcampWidget: React.FC<BandcampWidgetProps> = ({
 
   // Determine max width - use embedWidth if available, otherwise default to 700px
   const maxWidth = embedWidth ? parseInt(embedWidth) : 700;
-  const baseClasses = `w-full max-w-[${maxWidth}px]`;
 
-  let sizeClasses = '';
-  let style = undefined;
+  const style: React.CSSProperties = {
+    width: `${maxWidth}px`,
+  };
 
-  // Determine widget type and size classes
+  // Determine widget type and apply appropriate styles
   if (size === 'small') {
     // SLIM: Small size with no artwork
-    sizeClasses = 'h-[42px]';
+    style.height = '42px';
   } else if (minimal === 'true') {
     // ARTWORK ONLY: Square aspect ratio
-    sizeClasses = 'aspect-square';
+    style.aspectRatio = '1';
   } else if ((artwork === 'none' || artwork === 'small') && tracklist === 'false') {
     // SMALL PLAYER: Small/no artwork with no tracklist
-    sizeClasses = 'h-[120px] md:my-8';
+    style.height = '120px';
   } else if (artwork === 'none' || artwork === 'small') {
-    // SMALL PLAYER WITH TRACKLIST: Small/no artwork with tracklist (use inline style for mobile)
-    style = { height: `${getHeight(406)}px` };
-    sizeClasses = 'md:my-8';
+    // SMALL PLAYER WITH TRACKLIST: Small/no artwork with tracklist
+    style.height = `${getHeight(406)}px`;
   } else {
-    // BIG ARTWORK: Use aspect ratio based on dimensions (use inline style for mobile)
-    style = { aspectRatio: `${maxWidth} / ${getHeight(500)}` };
+    // BIG ARTWORK: Use aspect ratio based on dimensions
+    style.aspectRatio = `${maxWidth} / ${getHeight(500)}`;
   }
 
-  const className = sizeClasses ? `${baseClasses} ${sizeClasses}` : baseClasses;
-
   return (
-    <div className='w-full rounded-2xl flex justify-center bg-gradient-to-br from-gray-200 to-gray-100'>
+    <div className='w-full rounded-2xl flex justify-center'>
       <iframe
         {...widgetDataAttribute}
-        className={className}
         style={style}
         src={embedUrl}
         title='Bandcamp Player'
