@@ -693,15 +693,19 @@ export type SubSubSection = {
     _key: string;
   } & Divider | {
     _key: string;
+  } & RichText | {
+    _key: string;
   } & ItemList | {
     _key: string;
-  } & RichText | {
+  } & BlockList | {
     _key: string;
   } & Quote | {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & Card | {
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -713,11 +717,9 @@ export type SubSubSection = {
     _key: string;
   } & CtaBlogPost | {
     _key: string;
+  } & Card | {
+    _key: string;
   } & GridLayout | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
     _key: string;
   } & YouTubeVideo | {
     _key: string;
@@ -729,9 +731,7 @@ export type SubSubSection = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock | {
-    _key: string;
-  } & BlockList>;
+  } & CompanyLinksBlock>;
 };
 
 export type SubSection = {
@@ -745,15 +745,19 @@ export type SubSection = {
     _key: string;
   } & Divider | {
     _key: string;
+  } & RichText | {
+    _key: string;
   } & ItemList | {
     _key: string;
-  } & RichText | {
+  } & BlockList | {
     _key: string;
   } & Quote | {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & Card | {
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -765,11 +769,9 @@ export type SubSection = {
     _key: string;
   } & CtaBlogPost | {
     _key: string;
+  } & Card | {
+    _key: string;
   } & GridLayout | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
     _key: string;
   } & YouTubeVideo | {
     _key: string;
@@ -781,9 +783,7 @@ export type SubSection = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock | {
-    _key: string;
-  } & BlockList>;
+  } & CompanyLinksBlock>;
 };
 
 export type CollabPageSection = {
@@ -797,15 +797,19 @@ export type CollabPageSection = {
     _key: string;
   } & Divider | {
     _key: string;
+  } & RichText | {
+    _key: string;
   } & ItemList | {
     _key: string;
-  } & RichText | {
+  } & BlockList | {
     _key: string;
   } & Quote | {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & Card | {
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -817,11 +821,9 @@ export type CollabPageSection = {
     _key: string;
   } & CtaBlogPost | {
     _key: string;
+  } & Card | {
+    _key: string;
   } & GridLayout | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
     _key: string;
   } & YouTubeVideo | {
     _key: string;
@@ -833,9 +835,7 @@ export type CollabPageSection = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock | {
-    _key: string;
-  } & BlockList>;
+  } & CompanyLinksBlock>;
 };
 
 export type PageSection = {
@@ -852,15 +852,19 @@ export type PageSection = {
     _key: string;
   } & Divider | {
     _key: string;
+  } & RichText | {
+    _key: string;
   } & ItemList | {
     _key: string;
-  } & RichText | {
+  } & BlockList | {
     _key: string;
   } & Quote | {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & Card | {
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -872,11 +876,9 @@ export type PageSection = {
     _key: string;
   } & CtaBlogPost | {
     _key: string;
+  } & Card | {
+    _key: string;
   } & GridLayout | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
     _key: string;
   } & YouTubeVideo | {
     _key: string;
@@ -888,9 +890,7 @@ export type PageSection = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock | {
-    _key: string;
-  } & BlockList>;
+  } & CompanyLinksBlock>;
 };
 
 export type PageBuilder = Array<{
@@ -899,15 +899,19 @@ export type PageBuilder = Array<{
   _key: string;
 } & Divider | {
   _key: string;
+} & RichText | {
+  _key: string;
 } & ItemList | {
   _key: string;
-} & RichText | {
+} & BlockList | {
   _key: string;
 } & Quote | {
   _key: string;
 } & TextImage | {
   _key: string;
-} & Card | {
+} & ImageBlock | {
+  _key: string;
+} & ImageGallery | {
   _key: string;
 } & CtaButton | {
   _key: string;
@@ -919,11 +923,9 @@ export type PageBuilder = Array<{
   _key: string;
 } & CtaBlogPost | {
   _key: string;
+} & Card | {
+  _key: string;
 } & GridLayout | {
-  _key: string;
-} & ImageBlock | {
-  _key: string;
-} & ImageGallery | {
   _key: string;
 } & YouTubeVideo | {
   _key: string;
@@ -935,9 +937,7 @@ export type PageBuilder = Array<{
   _key: string;
 } & FavouriteBlock | {
   _key: string;
-} & CompanyLinksBlock | {
-  _key: string;
-} & BlockList>;
+} & CompanyLinksBlock>;
 
 export type Footer = {
   _id: string;
@@ -1168,15 +1168,19 @@ export type PrivacyPolicy = {
     _key: string;
   } & Divider | {
     _key: string;
+  } & RichText | {
+    _key: string;
   } & ItemList | {
     _key: string;
-  } & RichText | {
+  } & BlockList | {
     _key: string;
   } & Quote | {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & Card | {
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -1188,11 +1192,9 @@ export type PrivacyPolicy = {
     _key: string;
   } & CtaBlogPost | {
     _key: string;
+  } & Card | {
+    _key: string;
   } & GridLayout | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
     _key: string;
   } & YouTubeVideo | {
     _key: string;
@@ -1204,9 +1206,7 @@ export type PrivacyPolicy = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock | {
-    _key: string;
-  } & BlockList>;
+  } & CompanyLinksBlock>;
 };
 
 export type TermsAndConditions = {
@@ -1224,15 +1224,19 @@ export type TermsAndConditions = {
     _key: string;
   } & Divider | {
     _key: string;
+  } & RichText | {
+    _key: string;
   } & ItemList | {
     _key: string;
-  } & RichText | {
+  } & BlockList | {
     _key: string;
   } & Quote | {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & Card | {
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -1244,11 +1248,9 @@ export type TermsAndConditions = {
     _key: string;
   } & CtaBlogPost | {
     _key: string;
+  } & Card | {
+    _key: string;
   } & GridLayout | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
     _key: string;
   } & YouTubeVideo | {
     _key: string;
@@ -1260,9 +1262,7 @@ export type TermsAndConditions = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock | {
-    _key: string;
-  } & BlockList>;
+  } & CompanyLinksBlock>;
 };
 
 export type BlogPost = {
@@ -1297,15 +1297,19 @@ export type BlogPost = {
     _key: string;
   } & Divider | {
     _key: string;
+  } & RichText | {
+    _key: string;
   } & ItemList | {
     _key: string;
-  } & RichText | {
+  } & BlockList | {
     _key: string;
   } & Quote | {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & Card | {
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -1317,11 +1321,9 @@ export type BlogPost = {
     _key: string;
   } & CtaBlogPost | {
     _key: string;
+  } & Card | {
+    _key: string;
   } & GridLayout | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
     _key: string;
   } & YouTubeVideo | {
     _key: string;
@@ -1333,9 +1335,7 @@ export type BlogPost = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock | {
-    _key: string;
-  } & BlockList>;
+  } & CompanyLinksBlock>;
   hasClosingCard?: boolean;
   closingCard?: Card;
 };
@@ -1505,15 +1505,19 @@ export type Page = {
     _key: string;
   } & Divider | {
     _key: string;
+  } & RichText | {
+    _key: string;
   } & ItemList | {
     _key: string;
-  } & RichText | {
+  } & BlockList | {
     _key: string;
   } & Quote | {
     _key: string;
   } & TextImage | {
     _key: string;
-  } & Card | {
+  } & ImageBlock | {
+    _key: string;
+  } & ImageGallery | {
     _key: string;
   } & CtaButton | {
     _key: string;
@@ -1525,11 +1529,9 @@ export type Page = {
     _key: string;
   } & CtaBlogPost | {
     _key: string;
+  } & Card | {
+    _key: string;
   } & GridLayout | {
-    _key: string;
-  } & ImageBlock | {
-    _key: string;
-  } & ImageGallery | {
     _key: string;
   } & YouTubeVideo | {
     _key: string;
@@ -1541,9 +1543,7 @@ export type Page = {
     _key: string;
   } & FavouriteBlock | {
     _key: string;
-  } & CompanyLinksBlock | {
-    _key: string;
-  } & BlockList>;
+  } & CompanyLinksBlock>;
   hasClosingCard?: boolean;
   closingCard?: Card;
 };
