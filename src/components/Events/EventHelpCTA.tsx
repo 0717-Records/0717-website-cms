@@ -20,11 +20,12 @@ const EventHelpCTA = ({
         {displayStyle === 'posterOnly' ? (
           // Poster Only CTA Style
           <div className='relative w-full aspect-[724/1024] bg-card-gradient overflow-hidden flex flex-col items-center justify-center p-4 text-center'>
-            <div className={`${rowSize === 'small' ? 'text-body-8xl' : 'text-body-8xl'} mb-4`}>
+            <div
+              className={`${rowSize === 'small' ? 'text-body-8xl xs:text-body-6xl' : 'text-body-8xl'} mb-4`}>
               🎭
             </div>
             <p
-              className={`${rowSize === 'small' ? 'text-body-xl' : 'text-body-xl'} mb-6 max-w-xs leading-relaxed whitespace-pre-line`}>
+              className={`${rowSize === 'small' ? 'text-body-xl xs:text-body-base' : 'text-body-xl'} mb-6 max-w-xs leading-relaxed whitespace-pre-line`}>
               {message}
             </p>
             <CTAEmailButton className='flex-shrink-0' />
