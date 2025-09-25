@@ -59,18 +59,38 @@ export const ctaCalloutLinkType = defineType({
       heading: 'heading',
       text: 'text',
       linkType: 'linkType',
-      internalTitle: 'internalLink.title',
+      internalLinkTitle: 'internalLink.title',
+      internalLinkName: 'internalLink.name',
+      internalLinkType: 'internalLink._type',
+      internalLinkSlug: 'internalLink.slug.current',
       externalUrl: 'externalUrl',
       openInNewTab: 'openInNewTab',
+      pageSection: 'pageSectionId',
       imageAsset: 'image.asset',
     },
-    prepare({ heading, text, linkType, internalTitle, externalUrl, openInNewTab, imageAsset }) {
+    prepare({ heading, text, linkType, internalLinkTitle, internalLinkName, internalLinkType, internalLinkSlug, externalUrl, openInNewTab, pageSection, imageAsset }) {
       const title = heading || (text ? text.slice(0, 50) + (text.length > 50 ? '...' : '') : 'Callout Link');
-      
+
       let linkInfo = 'No link';
-      if (linkType === 'internal' && internalTitle) {
+      if (linkType === 'internal') {
+        let pageName = '';
+        if (internalLinkTitle) {
+          pageName = internalLinkTitle;
+        } else if (internalLinkName) {
+          pageName = internalLinkName;
+        } else if (internalLinkSlug) {
+          pageName = `/${internalLinkSlug}`;
+        } else if (internalLinkType === 'homePage') {
+          pageName = 'Home Page';
+        } else if (internalLinkType) {
+          pageName = internalLinkType;
+        } else {
+          pageName = 'Home Page (default)';
+        }
+
+        const sectionIndicator = pageSection ? ` #${pageSection}` : '';
         const newTabIndicator = openInNewTab ? ' ↗' : '';
-        linkInfo = `→ ${internalTitle}${newTabIndicator}`;
+        linkInfo = `→ ${pageName}${sectionIndicator}${newTabIndicator}`;
       } else if (linkType === 'external' && externalUrl) {
         try {
           const url = new URL(externalUrl);
