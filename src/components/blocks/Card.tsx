@@ -48,7 +48,7 @@ const Card = (props: CardProps) => {
         isGridChild={isGridChild}>
         {/* Icon */}
         {icon && icon.showIcon && (
-          <div className='flex justify-center mb-4 md:mb-0'>
+          <div className='flex justify-center mb-4'>
             <Icon
               image={icon.image}
               showIcon={icon.showIcon}
@@ -60,7 +60,7 @@ const Card = (props: CardProps) => {
         {/* Title */}
         {cleanTitle && (
           <div {...createSanityDataAttribute(documentId, documentType, getFieldPath('title'))}>
-            <Heading level='h4' showUnderline asDiv>
+            <Heading className='mb-6' level='h4' showUnderline asDiv>
               {cleanTitle}
             </Heading>
           </div>
@@ -104,8 +104,8 @@ const Card = (props: CardProps) => {
           </div>
         )}
 
-        {/* Content - 2/3 width when icon present, full width otherwise */}
-        <div className={`flex flex-col gap-4 text-left`}>
+        {/* Content */}
+        <div className={`flex flex-col gap-4 ${icon && icon.showIcon ? 'text-left' : ''}`}>
           {/* Title */}
           {cleanTitle && (
             <div
@@ -129,7 +129,10 @@ const Card = (props: CardProps) => {
             <div
               className='mt-2'
               {...createSanityDataAttribute(documentId, documentType, getFieldPath('ctaList'))}>
-              <CTAList ctaList={ctaList} alignment='flex-col' />
+              <CTAList
+                ctaList={ctaList}
+                alignment={`${icon && icon.showIcon ? 'flex-col-left' : 'flex-col'}`}
+              />
             </div>
           )}
         </div>
@@ -142,7 +145,7 @@ const Card = (props: CardProps) => {
     <CardContainer
       className={`${className} relative overflow-hidden bg-gradient-to-br from-gray-50 to-white border-2 border-gray-100`}
       isGridChild={isGridChild}>
-      <div className='relative z-10 flex flex-col lg:flex-row items-center gap-8 p-3 lg:p-4'>
+      <div className='relative z-10 flex flex-col lg:flex-row items-start gap-8 p-3 lg:p-4'>
         {/* Left side - Icon */}
         {icon && icon.showIcon && (
           <div className='flex-shrink-0 relative'>

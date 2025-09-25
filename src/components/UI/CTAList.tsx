@@ -11,12 +11,17 @@ interface CTAListItem {
 
 interface CTAListProps {
   ctaList: CTAListItem[] | null | undefined;
-  alignment?: 'flex-row' | 'flex-col';
+  alignment?: 'flex-row' | 'flex-col' | 'flex-col-left';
   className?: string;
   fullWidth?: boolean;
 }
 
-const CTAList = ({ ctaList, alignment = 'flex-row', className = '', fullWidth = false }: CTAListProps) => {
+const CTAList = ({
+  ctaList,
+  alignment = 'flex-row',
+  className = '',
+  fullWidth = false,
+}: CTAListProps) => {
   // Return nothing if no CTAs
   if (!ctaList || ctaList.length === 0) {
     return null;
@@ -24,12 +29,19 @@ const CTAList = ({ ctaList, alignment = 'flex-row', className = '', fullWidth = 
 
   // Get base alignment classes
   const getAlignmentClasses = () => {
-    if (alignment === 'flex-row') {
-      // Desktop/tablet: horizontal layout, Mobile: vertical layout
-      return 'flex flex-col md:flex-row justify-start items-center gap-4';
-    } else {
-      // Always vertical layout
-      return 'flex flex-col justify-center items-center gap-4';
+    switch (alignment) {
+      case 'flex-row':
+        // Desktop/tablet: horizontal layout, Mobile: vertical layout
+        return 'flex flex-col md:flex-row justify-start items-center gap-4';
+
+      case 'flex-col-left':
+        // Always vertical layout, but aligned to the left
+        return 'flex flex-col justify-center items-start gap-4';
+
+      case 'flex-col':
+      default:
+        // Always vertical layout, centered
+        return 'flex flex-col justify-center items-center gap-4';
     }
   };
 
