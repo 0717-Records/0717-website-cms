@@ -11,7 +11,7 @@ export { getAllEvents, getEventsIndexPage } from './events';
 export { getCollab, getCollabSlugs, getCollabSlugsForGeneration, getCollabs, getCollabsForSitemap } from './collabs';
 
 // Site data actions
-export { getHeader, getFooter, getSiteSettings, getCompanyLinks } from './siteData';
+export { getHeader, getFooter, getSiteSettings, getCompanyLinks, getLegalPagesVisibility } from './siteData';
 
 // Legal actions
 export { getTermsAndConditions, getPrivacyPolicy } from './legal';

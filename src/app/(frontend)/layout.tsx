@@ -10,7 +10,7 @@ import DisableDraftMode from '@/components/DisableDraftMode';
 import NavigationScroll from '@/components/NavigationScroll';
 import PageReadyTrigger from '@/components/PageReadyTrigger';
 import { Signika } from 'next/font/google';
-import { getHeader, getFooter, getSiteSettings, getCompanyLinks } from '@/actions';
+import { getHeader, getFooter, getSiteSettings, getCompanyLinks, getLegalPagesVisibility } from '@/actions';
 import { SiteDataProvider } from '@/contexts/SiteDataContext';
 import { PageLoadProvider } from '@/contexts/PageLoadContext';
 import { generateMetadata as generateDefaultMetadata } from '@/lib/metadata';
@@ -48,6 +48,7 @@ const FrontendLayout = async ({
   const footerData = await getFooter();
   const siteSettingsData = await getSiteSettings();
   const companyLinksData = await getCompanyLinks();
+  const legalPagesVisibilityData = await getLegalPagesVisibility();
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://0717records.com';
 
@@ -92,6 +93,7 @@ const FrontendLayout = async ({
             footerData={footerData}
             siteSettingsData={siteSettingsData}
             companyLinksData={companyLinksData}
+            legalPagesVisibilityData={legalPagesVisibilityData}
           />
           <SanityLive />
           {(await draftMode()).isEnabled && (

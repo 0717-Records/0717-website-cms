@@ -597,3 +597,9 @@ export const PRIVACY_POLICY_QUERY = defineQuery(`*[_id == "privacyPolicy"][0]{
   topText,
   ${recursiveContent}
 }`);
+
+// Legal pages visibility query for footer
+export const LEGAL_PAGES_VISIBILITY_QUERY = defineQuery(`{
+  "termsAndConditions": *[_id == "termsAndConditions"][0]{_id, hide},
+  "privacyPolicy": *[_id == "privacyPolicy"][0]{_id, hide}
+}`);

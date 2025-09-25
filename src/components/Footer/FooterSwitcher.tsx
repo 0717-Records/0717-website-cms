@@ -10,6 +10,7 @@ import type {
   FOOTER_QUERYResult,
   SITE_SETTINGS_QUERYResult,
   COMPANY_LINKS_QUERYResult,
+  LEGAL_PAGES_VISIBILITY_QUERYResult,
 } from '@/sanity/types';
 
 const footerVariations = [
@@ -23,6 +24,7 @@ interface FooterSwitcherProps {
   footerData: FOOTER_QUERYResult | null;
   siteSettingsData: SITE_SETTINGS_QUERYResult | null;
   companyLinksData: COMPANY_LINKS_QUERYResult | null;
+  legalPagesVisibilityData: LEGAL_PAGES_VISIBILITY_QUERYResult | null;
 }
 
 const headerVariations = [
@@ -38,6 +40,7 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
   footerData,
   siteSettingsData,
   companyLinksData,
+  legalPagesVisibilityData,
 }) => {
   const [selectedFooterVariation, setSelectedFooterVariation] = useState(1);
   const [selectedHeaderVariation, setSelectedHeaderVariation] = useState('white');
@@ -398,6 +401,7 @@ const FooterSwitcher: React.FC<FooterSwitcherProps> = ({
         footerData={footerData}
         siteSettingsData={siteSettingsData}
         companyLinksData={companyLinksData}
+        legalPagesVisibilityData={legalPagesVisibilityData}
       />
     </div>
   );

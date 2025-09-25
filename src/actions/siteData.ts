@@ -1,6 +1,6 @@
 import { sanityFetch } from '@/sanity/lib/live';
-import { HEADER_QUERY, FOOTER_QUERY, SITE_SETTINGS_QUERY, COMPANY_LINKS_QUERY } from '@/sanity/lib/queries';
-import type { FOOTER_QUERYResult, HEADER_QUERYResult, SITE_SETTINGS_QUERYResult, COMPANY_LINKS_QUERYResult } from '@/sanity/types';
+import { HEADER_QUERY, FOOTER_QUERY, SITE_SETTINGS_QUERY, COMPANY_LINKS_QUERY, LEGAL_PAGES_VISIBILITY_QUERY } from '@/sanity/lib/queries';
+import type { FOOTER_QUERYResult, HEADER_QUERYResult, SITE_SETTINGS_QUERYResult, COMPANY_LINKS_QUERYResult, LEGAL_PAGES_VISIBILITY_QUERYResult } from '@/sanity/types';
 
 // Header actions
 export async function getHeader(): Promise<HEADER_QUERYResult | null> {
@@ -33,6 +33,15 @@ export async function getSiteSettings(): Promise<SITE_SETTINGS_QUERYResult | nul
 export async function getCompanyLinks(): Promise<COMPANY_LINKS_QUERYResult | null> {
   const { data } = await sanityFetch({
     query: COMPANY_LINKS_QUERY,
+  });
+
+  return data;
+}
+
+// Legal Pages Visibility actions
+export async function getLegalPagesVisibility(): Promise<LEGAL_PAGES_VISIBILITY_QUERYResult | null> {
+  const { data } = await sanityFetch({
+    query: LEGAL_PAGES_VISIBILITY_QUERY,
   });
 
   return data;

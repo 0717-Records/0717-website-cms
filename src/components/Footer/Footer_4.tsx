@@ -13,6 +13,7 @@ import type {
   FOOTER_QUERYResult,
   SITE_SETTINGS_QUERYResult,
   COMPANY_LINKS_QUERYResult,
+  LEGAL_PAGES_VISIBILITY_QUERYResult,
 } from '@/sanity/types';
 import Divider from '../UI/Divider';
 
@@ -26,9 +27,10 @@ interface FooterProps {
   footerData: FOOTER_QUERYResult | null;
   siteSettingsData: SITE_SETTINGS_QUERYResult | null;
   companyLinksData: COMPANY_LINKS_QUERYResult | null;
+  legalPagesVisibilityData: LEGAL_PAGES_VISIBILITY_QUERYResult | null;
 }
 
-const Footer_4 = ({ footerData, siteSettingsData, companyLinksData }: FooterProps) => {
+const Footer_4 = ({ footerData, siteSettingsData, companyLinksData, legalPagesVisibilityData }: FooterProps) => {
   const { isPageReady } = usePageLoad();
 
   // Get company links from company links data, filtering out hidden ones and invalid entries
@@ -211,16 +213,20 @@ const Footer_4 = ({ footerData, siteSettingsData, companyLinksData }: FooterProp
 
             {/* Legal Links */}
             <div className='flex flex-wrap justify-center gap-6 footer-legal-links'>
-              <Link
-                href='/terms-and-conditions'
-                className='text-white hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
-                Terms & Conditions
-              </Link>
-              <Link
-                href='/privacy-policy'
-                className='text-white hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
-                Privacy Policy
-              </Link>
+              {!legalPagesVisibilityData?.termsAndConditions?.hide && (
+                <Link
+                  href='/terms-and-conditions'
+                  className='text-white hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
+                  Terms & Conditions
+                </Link>
+              )}
+              {!legalPagesVisibilityData?.privacyPolicy?.hide && (
+                <Link
+                  href='/privacy-policy'
+                  className='text-white hover:text-brand-secondary transition-colors duration-200 text-body-sm footer-legal-link'>
+                  Privacy Policy
+                </Link>
+              )}
             </div>
           </div>
         </div>
