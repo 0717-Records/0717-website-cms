@@ -145,7 +145,7 @@ const Card = (props: CardProps) => {
     <CardContainer
       className={`${className} relative overflow-hidden bg-gradient-to-br from-gray-50 to-white border-2 border-gray-100`}
       isGridChild={isGridChild}>
-      <div className='relative z-10 flex flex-col lg:flex-row items-start gap-8 p-3 lg:p-4'>
+      <div className='relative z-10 flex flex-col items-center lg:flex-row lg:items-start gap-8 p-3 lg:p-4'>
         {/* Left side - Icon */}
         {icon && icon.showIcon && (
           <div className='flex-shrink-0 relative'>
