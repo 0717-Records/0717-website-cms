@@ -1,6 +1,8 @@
+import { SITE_CONFIG } from '@/lib/constants';
+
 export function GET(): Response {
   // Get the base URL, defaulting to production URL if not set
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://0717records.com'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || SITE_CONFIG.PRODUCTION_DOMAIN
 
   const robotsText = [
     'User-agent: *',

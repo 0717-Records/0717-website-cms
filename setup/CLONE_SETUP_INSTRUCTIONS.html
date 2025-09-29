@@ -291,8 +291,8 @@
                     <li><a href="#step2">Step 2: Update Dependencies</a></li>
                     <li><a href="#step3">Step 3: Update Project Identity</a></li>
                     <li><a href="#step4">Step 4: Environment Variables</a></li>
-                    <li><a href="#step5">Step 5: Domain References</a></li>
-                    <li><a href="#step6">Step 6: Organization Schema</a></li>
+                    <li><a href="#step5">Step 5: Site Configuration (NEW!)</a></li>
+                    <li><a href="#step6">Step 6: Schema Default Values</a></li>
                     <li><a href="#step7">Step 7: Test Setup</a></li>
                     <li><a href="#verification">Verification Checklist</a></li>
                 </ul>
@@ -400,55 +400,58 @@ SANITY_API_WRITE_TOKEN="your-sanity-api-write-token"</code></pre>
             </section>
 
             <section id="step5">
-                <h2><span class="step-number">5</span>Update Domain References (CRITICAL)</h2>
+                <h2><span class="step-number">5</span>Update Site Configuration (CRITICAL)</h2>
 
-                <h3>A. Domain Fallback Values</h3>
-                <p>Update the hardcoded domain fallbacks in these files:</p>
+                <div class="note">
+                    <strong>✨ Centralized Configuration:</strong> This project now uses a centralized constants file, so you only need to update one file for all domain and organization references!
+                </div>
 
-                <h4>1. File: src/app/robots.txt/route.ts</h4>
+                <h3>A. Update Constants File (Single Source of Truth)</h3>
+                <div class="file-path"><strong>File:</strong> src/lib/constants.ts</div>
+                <p>Update all values in this file with your project details:</p>
+
+                <pre class="js"><code>// Site configuration constants
+export const SITE_CONFIG = {
+  // Production domain - update this for your new project
+  PRODUCTION_DOMAIN: 'https://your-domain.com',        // Change from 'https://0717records.com'
+
+  // Organization information
+  ORGANIZATION_NAME: 'Your Organization Name',         // Change from '07:17 Records'
+  ORGANIZATION_DESCRIPTION: 'Your organization description', // Change from 'Thank You For Creating'
+
+  // Contact information
+  ORGANIZATION_EMAIL: 'your-email@your-domain.com',    // Change from '0717records@gmail.com'
+} as const;</code></pre>
+
+                <div class="important">
+                    <strong>That's it!</strong> All other files automatically use these values. No need to manually update robots.txt, sitemap, layouts, or schema files individually.
+                </div>
+
+                <h3>B. Files That Automatically Update</h3>
+                <p>These files now automatically use the constants (no manual changes needed):</p>
                 <ul>
-                    <li><strong>Line 3:</strong> Change <code>'https://0717records.com'</code> to <code>'https://your-domain.com'</code></li>
+                    <li><code>src/app/robots.txt/route.ts</code> - Uses <code>SITE_CONFIG.PRODUCTION_DOMAIN</code></li>
+                    <li><code>src/app/sitemap.xml/route.ts</code> - Uses <code>SITE_CONFIG.PRODUCTION_DOMAIN</code></li>
+                    <li><code>src/app/layout.tsx</code> - Uses <code>SITE_CONFIG.PRODUCTION_DOMAIN</code> and <code>ORGANIZATION_NAME</code></li>
+                    <li><code>src/app/(frontend)/layout.tsx</code> - Uses <code>SITE_CONFIG.PRODUCTION_DOMAIN</code> and <code>ORGANIZATION_NAME</code></li>
                 </ul>
 
-                <h4>2. File: src/app/sitemap.xml/route.ts</h4>
+                <h3>C. Additional Email References (Optional)</h3>
+                <h4>File: scripts/pages/pages.json</h4>
                 <ul>
-                    <li><strong>Line 15:</strong> Change <code>'https://0717records.com'</code> to <code>'https://your-domain.com'</code></li>
-                </ul>
-
-                <h4>3. File: src/app/layout.tsx</h4>
-                <ul>
-                    <li><strong>Line 17:</strong> Change <code>'https://0717records.com'</code> to <code>'https://your-domain.com'</code></li>
-                </ul>
-
-                <h4>4. File: src/app/(frontend)/layout.tsx</h4>
-                <ul>
-                    <li><strong>Line 53:</strong> Change <code>'https://0717records.com'</code> to <code>'https://your-domain.com'</code></li>
-                </ul>
-
-                <h3>B. Email References</h3>
-                <h4>1. File: scripts/pages/pages.json</h4>
-                <ul>
-                    <li><strong>Line 683:</strong> Change <code>newsletter@0717records.com</code> to <code>newsletter@your-domain.com</code></li>
+                    <li><strong>Line 683:</strong> Update <code>newsletter@0717records.com</code> to match your <code>ORGANIZATION_EMAIL</code> value</li>
                 </ul>
             </section>
 
             <section id="step6">
-                <h2><span class="step-number">6</span>Update Organization Schema and Branding</h2>
+                <h2><span class="step-number">6</span>Update Sanity Schema Default Values</h2>
 
-                <h3>A. Main Organization Schema</h3>
-                <div class="file-path"><strong>File:</strong> src/app/layout.tsx</div>
-                <p><strong>Lines 20-26,</strong> update the organization schema:</p>
+                <div class="note">
+                    <strong>Good News:</strong> Organization schema and metadata now automatically use your constants! Only Sanity schema defaults need manual updates.
+                </div>
 
-                <pre class="js"><code>const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Your Organization Name',                    // Change from '07:17 Records'
-  url: baseUrl,
-  description: 'Your organization description',     // Change from 'Thank You For Creating'
-};</code></pre>
-
-                <h3>B. Sanity Schema Default Values</h3>
-                <p>Update these schema initial values:</p>
+                <h3>A. Sanity Schema Default Values (Manual Updates Required)</h3>
+                <p>These schema files still need manual updates for default values:</p>
 
                 <h4>1. File: src/sanity/schemaTypes/siteSettingsType.ts</h4>
                 <ul>
@@ -460,17 +463,26 @@ SANITY_API_WRITE_TOKEN="your-sanity-api-write-token"</code></pre>
                     <li><strong>Line 64:</strong> Change <code>initialValue: '© 07:17 Records 2025'</code> to <code>initialValue: '© Your Organization Name 2025'</code></li>
                 </ul>
 
-                <h3>C. Structured Data Fallbacks</h3>
-                <div class="file-path"><strong>File:</strong> src/lib/structuredData.ts</div>
+                <h3>B. Additional References (Manual Updates Required)</h3>
+                <p>These files still contain hardcoded references:</p>
+
+                <h4>1. File: src/lib/structuredData.ts</h4>
                 <ul>
                     <li><strong>Line 200:</strong> Change <code>'07:17 Records'</code> to <code>'Your Organization Name'</code></li>
                     <li><strong>Line 215:</strong> Change <code>'07:17 Records'</code> to <code>'Your Organization Name'</code></li>
                 </ul>
 
-                <h3>D. Event Organizer Reference</h3>
-                <div class="file-path"><strong>File:</strong> src/components/Events/EventCard.tsx</div>
+                <h4>2. File: src/components/Events/EventCard.tsx</h4>
                 <ul>
                     <li><strong>Line 86:</strong> Change <code>'07:17 Records'</code> to <code>'Your Organization Name'</code></li>
+                </ul>
+
+                <h3>C. Files That Now Update Automatically</h3>
+                <p>Thanks to the constants file, these are now automatic:</p>
+                <ul>
+                    <li>✅ <strong>Organization schema</strong> in layout files</li>
+                    <li>✅ <strong>Site metadata</strong> and fallback titles</li>
+                    <li>✅ <strong>Domain references</strong> in robots.txt and sitemap</li>
                 </ul>
             </section>
 

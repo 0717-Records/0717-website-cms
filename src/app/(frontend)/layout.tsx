@@ -21,6 +21,7 @@ import {
   getWebSiteDataFromSiteSettings,
   generateStructuredDataScript,
 } from '@/lib/structuredData';
+import { SITE_CONFIG } from '@/lib/constants';
 
 const signika = Signika({ subsets: ['latin'] });
 
@@ -28,8 +29,8 @@ export async function generateMetadata() {
   const siteSettings = await getSiteSettings();
   if (!siteSettings) {
     return {
-      title: '07:17 Records | Thank You For Creating',
-      description: 'Welcome to 07:17 Records',
+      title: `${SITE_CONFIG.ORGANIZATION_NAME} | ${SITE_CONFIG.ORGANIZATION_DESCRIPTION}`,
+      description: `Welcome to ${SITE_CONFIG.ORGANIZATION_NAME}`,
     };
   }
 
@@ -50,7 +51,7 @@ const FrontendLayout = async ({
   const companyLinksData = await getCompanyLinks();
   const legalPagesVisibilityData = await getLegalPagesVisibility();
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://0717records.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || SITE_CONFIG.PRODUCTION_DOMAIN;
 
   // Generate structured data if site settings are available
   let organizationSchema;

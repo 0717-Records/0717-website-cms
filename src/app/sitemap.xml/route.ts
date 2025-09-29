@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getAllPages, getAllBlogPostsForSitemap, getCollabsForSitemap, getTermsAndConditions, getPrivacyPolicy } from '@/actions';
+import { SITE_CONFIG } from '@/lib/constants';
 
 // ISR: Cache for 1 hour, but allow immediate updates via webhook
 export const revalidate = 3600;
@@ -12,7 +13,7 @@ type SitemapUrl = {
 };
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://0717records.com';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || SITE_CONFIG.PRODUCTION_DOMAIN;
 
   // Fetch all content from Sanity
   const [pages, blogPosts, collabs, termsAndConditions, privacyPolicy] = await Promise.all([

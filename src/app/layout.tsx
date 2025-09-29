@@ -1,6 +1,7 @@
 import React from 'react';
 import { Signika } from 'next/font/google';
 import '@/app/globals.css';
+import { SITE_CONFIG } from '@/lib/constants';
 
 const signika = Signika({
   subsets: ['latin'],
@@ -14,15 +15,15 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   const isProd = process.env.NEXT_PUBLIC_ENV === 'production';
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://0717records.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || SITE_CONFIG.PRODUCTION_DOMAIN;
 
   // Basic organization structured data
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: '07:17 Records',
+    name: SITE_CONFIG.ORGANIZATION_NAME,
     url: baseUrl,
-    description: 'Thank You For Creating',
+    description: SITE_CONFIG.ORGANIZATION_DESCRIPTION,
   };
 
   return (
