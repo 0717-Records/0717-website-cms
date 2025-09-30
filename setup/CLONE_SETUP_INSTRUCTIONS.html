@@ -304,13 +304,13 @@
             </section>
 
             <section id="step1">
-                <h2><span class="step-number">1</span>Clone Specific Branch and Update Git Remote</h2>
+                <h2><span class="step-number">1</span>Clone Specific Branch and Create New GitHub Repository</h2>
 
                 <div class="important">
-                    <strong>IMPORTANT:</strong> This will clone only a specific branch without git history, perfect for starting a new project.
+                    <strong>IMPORTANT:</strong> This will clone only a specific branch without git history, then push it to a completely new GitHub repository.
                 </div>
 
-                <h3>Clone only the specific branch you want (without history):</h3>
+                <h3>Step 1a: Clone only the specific branch you want (without history):</h3>
                 <pre class="bash"><code># Replace 'branch-name' with the branch you want to clone
 # Replace 'new-project-name' with your desired project folder name
 git clone --depth 1 --branch &lt;branch-name&gt; &lt;current-repo-url&gt; &lt;new-project-name&gt;
@@ -321,7 +321,7 @@ cd &lt;new-project-name&gt;</code></pre>
                     <br><code>git clone --depth 1 --branch development https://github.com/user/repo.git my-new-project</code>
                 </div>
 
-                <h3>Remove existing git history and start fresh:</h3>
+                <h3>Step 1b: Remove existing git history and start fresh:</h3>
                 <pre class="bash"><code># Remove the existing git repository
 rm -rf .git
 
@@ -331,23 +331,74 @@ git init
 # Add all files to the new repository
 git add .
 
-# Create your first commit
+# Create your first commit with fresh history
 git commit -m "Initial commit from template"</code></pre>
 
-                <h3>Connect to your new repository:</h3>
-                <pre class="bash"><code># Add your new repository as the origin
+                <h3>Step 1c: Create the new repository on GitHub (in your organization):</h3>
+                <p><strong>Option A: Using GitHub CLI (recommended):</strong></p>
+                <pre class="bash"><code># Install GitHub CLI if you haven't already: https://cli.github.com/
+
+# Create a new PRIVATE repository under your organization
+gh repo create &lt;organization-name/new-repo-name&gt; --private --source=. --remote=origin --push
+
+# Or create a PUBLIC repository under your organization
+gh repo create &lt;organization-name/new-repo-name&gt; --public --source=. --remote=origin --push</code></pre>
+
+                <div class="note">
+                    <strong>Example for organization:</strong>
+                    <br><code>gh repo create my-org/my-new-cms --private --source=. --remote=origin --push</code>
+                    <br><br>
+                    <strong>Example for personal account:</strong>
+                    <br><code>gh repo create myusername/my-new-cms --private --source=. --remote=origin --push</code>
+                </div>
+
+                <p><strong>Option B: Manual GitHub creation (organization):</strong></p>
+                <ol>
+                    <li>Go to your organization page: <code>https://github.com/orgs/&lt;organization-name&gt;/repositories</code></li>
+                    <li>Click the green <strong>"New repository"</strong> button</li>
+                    <li>Enter your repository name</li>
+                    <li>Choose visibility (Private or Public)</li>
+                    <li><strong>DO NOT</strong> initialize with README, .gitignore, or license</li>
+                    <li>Click <strong>"Create repository"</strong></li>
+                    <li>Copy the repository URL (e.g., <code>https://github.com/organization-name/new-repo.git</code>)</li>
+                </ol>
+
+                <pre class="bash"><code># Connect to your new repository
 git remote add origin &lt;new-repo-url&gt;
 
-# Push to your new repository
+# Push to your new repository (creates main branch)
 git push -u origin main</code></pre>
+
+                <div class="note">
+                    <strong>Note:</strong> You must be an owner or have appropriate permissions in the organization to create repositories.
+                </div>
+
+                <h3>Step 1d: Create the branch from the cloned code (optional but recommended):</h3>
+                <pre class="bash"><code># Create and push the branch that matches the one you cloned
+# Replace 'branch-name' with the same branch you cloned earlier
+git checkout -b &lt;branch-name&gt;
+git push -u origin &lt;branch-name&gt;
+
+# Switch back to main if desired
+git checkout main</code></pre>
+
+                <div class="note">
+                    <strong>Example workflow:</strong>
+                    <br>If you cloned the 'development' branch:
+                    <br><code>git checkout -b development</code>
+                    <br><code>git push -u origin development</code>
+                    <br><br>Now your new repo has both <code>main</code> and <code>development</code> branches with the same code, but fresh git history.
+                </div>
 
                 <div class="note">
                     <strong>What this approach gives you:</strong>
                     <ul>
-                        <li>✅ Only the specific branch you want</li>
-                        <li>✅ Current state without any git history</li>
-                        <li>✅ Clean start for your new project</li>
-                        <li>✅ No unwanted branches or commits</li>
+                        <li>✅ Only the specific branch content you want</li>
+                        <li>✅ Fresh git history starting from scratch</li>
+                        <li>✅ New GitHub repository with your desired name</li>
+                        <li>✅ Main branch with your code</li>
+                        <li>✅ Optional matching branch name for consistency</li>
+                        <li>✅ No old commits or history from the original repo</li>
                     </ul>
                 </div>
             </section>

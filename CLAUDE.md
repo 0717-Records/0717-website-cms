@@ -969,6 +969,157 @@ const waitForScrollUnlockAndScroll = () => {
 
 **IMPORTANT: These systems work together as a coordinated whole. Modifying one component without understanding the others can reintroduce the issues this solution was designed to fix.**
 
+## Code Style & Architecture
+
+### TypeScript Standards
+- Always use TypeScript with strict type checking
+- Import types using `import type { ... }` syntax when importing only types
+- Use proper return type annotations for functions
+- Prefer interface over type for object definitions when possible
+- Never use `any` type - the ESLint configuration prohibits this
+
+### React & Next.js Patterns
+- Use functional components with hooks
+- Always use arrow function syntax for React components following the `rafce` pattern:
+  ```tsx
+  import React from 'react'
+
+  const ComponentName = () => {
+    return (
+      <div>ComponentName</div>
+    )
+  }
+
+  export default ComponentName
+  ```
+- Use `export default` at the bottom of component files
+- Always use Next.js `<Link>` component for internal navigation instead of `<a>` tags
+- Prefer Server Components when possible (Next.js App Router)
+- Use `async/await` for server-side data fetching
+- Always destructure props in function parameters
+- Use proper Next.js conventions for file-based routing
+- **Maintain semantic heading hierarchy** (h1 → h2 → h3 → h4 → h5 → h6) to ensure proper document structure and accessibility
+
+### File Organization
+- Components go in `src/components/`
+- Data fetching actions go in `src/actions/`
+- Sanity-related code goes in `src/sanity/`
+- Use index files for clean imports
+
+### Naming Conventions
+
+**Files:**
+- Use PascalCase for component files: `PostCard.tsx`
+- Use kebab-case for page routes: `[slug]/page.tsx`
+- Use camelCase for utility/action files: `getAllPosts.ts`
+
+**Variables & Functions:**
+- Use camelCase for variables and functions
+- Use PascalCase for components and types
+- Use descriptive names that indicate purpose
+- Prefix action functions with verbs: `getPostBySlug`, `createPost`
+
+**CSS Classes:**
+- Use Tailwind utility classes
+- Prefer utility classes over custom CSS
+- Use responsive prefixes consistently
+- Group related classes logically
+- **Utilize existing global CSS classes and custom utilities** from `src/app/globals.css` before creating new styles
+
+### Data Fetching Architecture
+- Use action functions from `src/actions/` instead of direct sanityFetch calls
+- Actions should be organized by feature (pages, blog posts, events, collabs, etc.)
+- Always use proper TypeScript types from Sanity's generated types
+- Handle null/undefined cases gracefully
+
+**Example action function:**
+```tsx
+import { sanityFetch } from '@/sanity/lib/live';
+import { QUERY_NAME } from '@/sanity/lib/queries';
+import type { QUERY_NAMEResult } from '@/sanity/types';
+
+export async function getDataBySlug(slug: string): Promise<QUERY_NAMEResult | null> {
+  const { data } = await sanityFetch({
+    query: QUERY_NAME,
+    params: { slug },
+  });
+
+  return data;
+}
+```
+
+**Example page component:**
+```tsx
+import { getPageBySlug } from '@/actions';
+
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const page = await getPageBySlug(slug);
+
+  if (!page) {
+    notFound();
+  }
+
+  return (
+    <div className="container mx-auto">
+      {/* Page content */}
+    </div>
+  );
+}
+```
+
+### Sanity Integration
+- Use generated types from `src/sanity/types.ts`
+- Prefer query result types (e.g., `PAGE_QUERYResult`) over base types
+- Keep queries in `src/sanity/lib/queries.ts`
+- Use `sanityFetch` from live.ts for real-time updates
+- **Implement live editing for all new components and blocks** by adding proper data attributes (see `docs/sanity-live-editing-guide.md` for detailed implementation patterns)
+- When creating new Sanity schema types or blocks, ensure frontend components include the necessary `data-sanity` attributes for presentation view compatibility
+
+### Component Structure
+- Keep components focused on presentation
+- Extract business logic to action functions
+- Use proper prop typing
+- Handle loading and error states
+- **Maintain semantic heading hierarchy** (h1 → h2 → h3 → h4 → h5 → h6)
+
+### Block Spacing Standards
+
+**Standardized Block Spacing System:**
+- **Between blocks**: `mb-8` (2rem) is automatically applied to all blocks except the last one in a group
+- **Section padding**: `py-16 md:py-24` (4rem/6rem vertical)
+- **Section header spacing**: `mb-8 md:mb-12` (2rem/3rem) for title/subtitle areas
+
+**Implementation:**
+- The `PageBuilder` automatically adds `mb-8` to all blocks except the last one
+- Individual components should NOT add their own bottom margins - spacing is handled centrally
+- Last blocks in a group get no bottom margin to avoid conflicting with section padding
+- This ensures consistent spacing across all block combinations
+
+**When adding new block components:**
+1. Do NOT add bottom margins (`mb-*`) to the root element
+2. Focus on internal spacing and padding within the component
+3. The PageBuilder will handle spacing between blocks automatically
+4. For standalone components outside of PageBuilder, manually add `mb-8` if needed
+
+**Heading Component Spacing:**
+- Headings used in Rich Text content: Default `showMargin={true}` provides `mb-4` spacing
+- Headings used as standalone blocks: Use `showMargin={false}` to rely on PageBuilder spacing
+- Section titles: Use `showMargin={false}` with manual `className='mb-6'` for specific spacing
+
+### Error Handling
+- Always handle null/undefined responses from Sanity
+- Use Next.js `notFound()` for 404 cases
+- Provide meaningful error messages
+- Handle loading states appropriately
+
+### File Management Best Practices
+
+**Always use Git commands for file operations to prevent files reappearing:**
+- **For renaming files**: Use `git mv old-file.tsx new-file.tsx` instead of `mv`
+- **For deleting files**: Use `git rm file.tsx` instead of `rm`
+- **Never use terminal `mv` or `rm`** for tracked files - this causes files to reappear when VS Code reopens
+
 ## General Development Guidelines
 - Follow existing code patterns and conventions
 - Ensure proper TypeScript types are maintained
