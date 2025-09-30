@@ -304,15 +304,52 @@
             </section>
 
             <section id="step1">
-                <h2><span class="step-number">1</span>Clone Repository and Update Git Remote</h2>
+                <h2><span class="step-number">1</span>Clone Specific Branch and Update Git Remote</h2>
 
-                <h3>Clone the repository:</h3>
-                <pre class="bash"><code>git clone &lt;current-repo-url&gt; &lt;new-project-name&gt;
+                <div class="important">
+                    <strong>IMPORTANT:</strong> This will clone only a specific branch without git history, perfect for starting a new project.
+                </div>
+
+                <h3>Clone only the specific branch you want (without history):</h3>
+                <pre class="bash"><code># Replace 'branch-name' with the branch you want to clone
+# Replace 'new-project-name' with your desired project folder name
+git clone --depth 1 --branch &lt;branch-name&gt; &lt;current-repo-url&gt; &lt;new-project-name&gt;
 cd &lt;new-project-name&gt;</code></pre>
 
-                <h3>Update Git remote to point to your new repository:</h3>
-                <pre class="bash"><code>git remote set-url origin &lt;new-repo-url&gt;
+                <div class="note">
+                    <strong>Example:</strong> If you want to clone the 'development' branch:
+                    <br><code>git clone --depth 1 --branch development https://github.com/user/repo.git my-new-project</code>
+                </div>
+
+                <h3>Remove existing git history and start fresh:</h3>
+                <pre class="bash"><code># Remove the existing git repository
+rm -rf .git
+
+# Initialize a new git repository
+git init
+
+# Add all files to the new repository
+git add .
+
+# Create your first commit
+git commit -m "Initial commit from template"</code></pre>
+
+                <h3>Connect to your new repository:</h3>
+                <pre class="bash"><code># Add your new repository as the origin
+git remote add origin &lt;new-repo-url&gt;
+
+# Push to your new repository
 git push -u origin main</code></pre>
+
+                <div class="note">
+                    <strong>What this approach gives you:</strong>
+                    <ul>
+                        <li>✅ Only the specific branch you want</li>
+                        <li>✅ Current state without any git history</li>
+                        <li>✅ Clean start for your new project</li>
+                        <li>✅ No unwanted branches or commits</li>
+                    </ul>
+                </div>
             </section>
 
             <section id="step2">
